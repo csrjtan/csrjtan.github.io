@@ -4,21 +4,52 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>CSRJTAN</title>
+  <title>Research_For_UAVs | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   
     <meta name="author" content="CsrjTan">
   
   
-  <meta name="description" content="blog csrjtan tanrunj">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CSRJTAN">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="目的：调研无人机网络项目的相关资料。
+TOPICS: Efficient methods for object detection,object recognition and event/scene understanding,
+including dangerous objects/events like fire and heavy smoke
+要求：2015-8-18下午前，英文整理文档，">
+  
+  <meta name="description" content="目的：调研无人机网络项目的相关资料。
+TOPICS: Efficient methods for object detection,object recognition and event/scene understanding,
+including dangerous objects/events like fire and heavy smoke
+要求：2015-8-18下午前，英文整理文档，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Research_For_UAVs">
+<meta property="og:url" content="http://yoursite.com/2015/08/16/object-detection-research/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="blog csrjtan tanrunj">
+<meta property="og:description" content="目的：调研无人机网络项目的相关资料。
+TOPICS: Efficient methods for object detection,object recognition and event/scene understanding,
+including dangerous objects/events like fire and heavy smoke
+要求：2015-8-18下午前，英文整理文档，">
+<meta property="og:image" content="http://yoursite.com/img/typical_recognition_system.png">
+<meta property="og:image" content="http://yoursite.com/img/alignment.png">
+<meta property="og:image" content="http://yoursite.com/img/geomeric_primitive.png">
+<meta property="og:image" content="http://yoursite.com/img/geometric.png">
+<meta property="og:image" content="http://yoursite.com/img/manifold.png">
+<meta property="og:image" content="http://yoursite.com/img/sift.png">
+<meta property="og:image" content="http://yoursite.com/img/part_model.png">
+<meta property="og:image" content="http://yoursite.com/img/object_hypothesis.png">
+<meta property="og:image" content="http://yoursite.com/img/dpm.png">
+<meta property="og:image" content="http://yoursite.com/img/bag_of_words.png">
+<meta property="og:image" content="http://yoursite.com/img/CNN.png">
+<meta property="og:image" content="http://yoursite.com/img/RCNN.png">
+<meta property="og:image" content="http://yoursite.com/img/word_recog.png">
+<meta property="og:image" content="http://yoursite.com/img/finger_recog.png">
+<meta property="og:image" content="http://yoursite.com/img/face_recog.jpeg">
+<meta property="og:image" content="http://yoursite.com/img/cover_recog.png">
+<meta property="og:updated_time" content="2015-08-18T03:58:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSRJTAN">
-<meta name="twitter:description" content="blog csrjtan tanrunj">
+<meta name="twitter:title" content="Research_For_UAVs">
+<meta name="twitter:description" content="目的：调研无人机网络项目的相关资料。
+TOPICS: Efficient methods for object detection,object recognition and event/scene understanding,
+including dangerous objects/events like fire and heavy smoke
+要求：2015-8-18下午前，英文整理文档，">
   
   
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -64,108 +95,7 @@ var _hmt = _hmt || [];
   </nav>
   <div class="clearfix"></div>
 </header>
-    <div class="content">
-
-
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/16/paper-research-01/">
-  <time datetime="2015-08-16T13:12:12.000Z">
-    2015-08-16
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/16/paper-research-01/">Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517" target="_blank" rel="external">Paper Link</a></p>
-<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
-<h3 id="Author:Paul_Viola,Michael_Jones">Author:Paul Viola,Michael Jones</h3><blockquote>
-<h3 id="Key_Contributions:">Key Contributions:</h3><h3 id="1-Integral_Image">1.Integral Image</h3><h3 id="2-Learning_algorithm_based_on_AdaBoost">2.Learning algorithm based on AdaBoost</h3><h3 id="3-Combine_Classifiers_in_Cascade">3.Combine Classifiers in Cascade</h3></blockquote>
-<h3 id="Methods:">Methods:</h3><ul>
-<li><p>Represent and classify images based on simple features rather than pixels directly(operates <strong>faster</strong> and easily encode <strong>ad-hoc</strong> domain knowledge)</p>
-</li>
-<li><p><strong>Three</strong> kinds of simple features are used in the paper</p>
-<ol>
-<li>Two-Rectangles features (A and B)</li>
-<li>Three-Rectangles features (C)</li>
-<li><p>Four-Rectangles features (D)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/sceneryfeatures.jpg" alt="Three-types-of-Features"></p>
-<p>The feature value calculation:<br>$$\sum{pixel\ values\ in\ white}-\sum{pixel\ values\ in\ gray}$$</p>
-</li>
-</ol>
-</li>
-<li><p><strong>Contributions 1:Integral Image</strong><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery3.jpg" alt=""><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery1.jpg" alt=""></p>
-</li>
-<li><p>Contributions 2:Learning Algorithm based on AdaBoost</p>
-<blockquote>
-<p><strong>The advantages of AdaBoost:</strong><br>1.Used for <strong>feature selection</strong> and <strong>classifier training</strong><br>2.Selecting small set of <strong>good features</strong> from large feature set<br>3.Used a set of <strong>weak learners</strong> to form a strong one<br>4.Guarantees the training error of strong classifier very <strong>low</strong></p>
-</blockquote>
-<p><strong>The Pesudo of Adaboost:</strong><br><img src="/img/pesudo.png" alt="The pesudo"></p>
-</li>
-<li><p>Contributions 3:Combine Classifiers in Cascade</p>
-<ul>
-<li>Building cascade of classifiers(Increase Performance &amp; Reduce computation)</li>
-<li>Simpler classifiers apply early to <strong>reject majority</strong> of sub windows and apply complex classifiers to achieve low false positive</li>
-<li>Subsequent classifiers are trained using examples,which pass through all the previous stages<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery4.JPG" alt="Cascade Model"></li>
-</ul>
-</li>
-<li><p>How to use</p>
-<ol>
-<li>User selects maximun FPR(False Prediction Rate) and minimun acceptable DR(Detection Rate) per each stage</li>
-<li>User selects target</li>
-<li>Each stage is trained by adding features until the target DR and FPRs are met</li>
-<li>Stages are added until the overall target for DR and FPR are met</li>
-</ol>
-</li>
-<li><p>Further optimization</p>
-<ol>
-<li>Number of classifier stages</li>
-<li>Number of features in each stage</li>
-<li>Threshold of each stage</li>
-<li>Minimun number of features that achieved accuracy</li>
-</ol>
-</li>
-<li><p>Conclusion</p>
-<ol>
-<li>Solution achieves the goal of real time object detection</li>
-<li>Conjunction of simple rectangle features and integral image gives a efficient feature representation</li>
-<li>AdaBoost is used for the feature selection and classifier training</li>
-<li>Cascade of classifiers allows to quickly discard background regions and concentrate more on ojbect-like regions</li>
-</ol>
-</li>
-<li><p>Approximately Performance<br> Accuracy:Front-Face around 68.8%,Profile around 33%<br> Time:every picture with 67 millisecond</p>
-</li>
-</ul>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
-
-
-
-  
-    <article class="post">
+    <div class="content"><article class="post">
   <header>
     
       <div class="icon"></div>
@@ -177,7 +107,7 @@ var _hmt = _hmt || [];
     
     
   
-    <h1 class="title"><a href="/2015/08/16/object-detection-research/">Research_For_UAVs</a></h1>
+    <h1 class="title">Research_For_UAVs</h1>
   
 
   </header>
@@ -244,112 +174,29 @@ including dangerous objects/events like fire and heavy smoke
 
     
   </div>
-  <footer class="end-sep">
+  <footer>
     
       
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
-
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/16/paper-reading-20150816/">
-  <time datetime="2015-08-16T07:26:29.000Z">
-    2015-08-16
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/16/paper-reading-20150816/">论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p>作者：Jungong Han,Ling Shao</p>
-<h3 id="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。">这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3>
-    
+  <div class="tags">
+    <a class="tags-link" href="/tags/Object-Recognition-paper/">Object_Recognition paper</a>
   </div>
-  <footer class="end-sep">
-    
-      
-      
+
     
     <div class="clearfix"></div>
   </footer>
 </article>
 
 
-
-
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/12/birth/">
-  <time datetime="2015-08-12T12:15:30.000Z">
-    2015-08-12
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/12/birth/">写在23岁生日前夕</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <blockquote>
-<p>祝渐行渐远的自己，生日安好</p>
-</blockquote>
-<h3 id="&nbsp;&nbsp;&nbsp;&nbsp;成长一岁，对自己要有新的要求，不想公众写太多生活，建立这个博客希望可以帮助自己总结学习，在工作和学习的路上踏踏实实。">&nbsp;&nbsp;&nbsp;&nbsp;成长一岁，对自己要有新的要求，不想公众写太多生活，建立这个博客希望可以帮助自己总结学习，在工作和学习的路上踏踏实实。</h3><h2 id="新的一岁，新的要求：">新的一岁，新的要求：</h2><ul>
-<li>工作上，学术和编程能力的提升</li>
-<li>生活上，爱家人，爱生活，爱伴侣</li>
-<li>坚持读，坚持学，坚持写，坚持</li>
-</ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">  &#12298;&#25104;&#38271;&#30340;&#22825;&#31354;&#12299;&#10;&#25105;&#27785;&#28024;&#22312;&#33258;&#24049;&#30340;&#19990;&#30028;&#37324;&#10;&#20889;&#30528;&#26080;&#20851;&#26159;&#38750;&#30340;&#27468;&#35875;&#10;&#28857;&#34013;&#30340;&#31508;&#35302;&#10;&#21010;&#36807;&#20102;&#24180;&#36731;&#30340;&#22825;&#31354;&#10;&#19968;&#21482;&#39134;&#40479;&#24102;&#36208;&#25105;&#30340;&#38738;&#26149;&#10;&#36824;&#25105;&#65292;&#23681;&#26376;&#27785;&#28096;&#30340;&#24125;&#23376;&#10;&#36731;&#22768;&#35828;&#36947;&#10;&#24180;&#36731;&#24635;&#19981;&#26159;&#27704;&#36828;&#30340;&#20511;&#21475;</span><br></pre></td></tr></table></figure>
-<p><img src="/img/birth_cake.png" alt="cake"></p>
-
-    
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+</section>
 
 
 
-
-
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
 
 </div>
   </div>
@@ -386,7 +233,7 @@ including dangerous objects/events like fire and heavy smoke
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   }());
 </script>
