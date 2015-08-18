@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》 | CSRJTAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="CsrjTan">
+  
+  
+    <meta name="description" content="原文：Click作者：Jungong Han,Ling Shao
+这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。主要用于入门延伸阅读所用。
+介绍Kinect实现和技术原理的论文《Microsof">
+  
+  <meta name="description" content="原文：Click作者：Jungong Han,Ling Shao
+这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。主要用于入门延伸阅读所用。
+介绍Kinect实现和技术原理的论文《Microsof">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》">
+<meta property="og:url" content="http://yoursite.com/2015/08/18/paper-reading-20150816/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="原文：Click作者：Jungong Han,Ling Shao
+这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。主要用于入门延伸阅读所用。
+介绍Kinect实现和技术原理的论文《Microsof">
+<meta property="og:image" content="http://yoursite.com/img/activity_recog.png">
+<meta property="og:updated_time" content="2015-08-18T12:53:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》">
+<meta name="twitter:description" content="原文：Click作者：Jungong Han,Ling Shao
+这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。主要用于入门延伸阅读所用。
+介绍Kinect实现和技术原理的论文《Microsof">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+  
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+
+</script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">CSRJTAN</a></h1>
+    <p><a href="/">Keep Moving</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/18/paper-reading-20150816/">
+  <time datetime="2015-08-18T07:26:29.000Z">
+    2015-08-18
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194" target="_blank" rel="external">Click</a><br>作者：Jungong Han,Ling Shao</p>
+<h3 id="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。">这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3><p>这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。<br>主要用于入门延伸阅读所用。</p>
+<p>介绍Kinect实现和技术原理的论文<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6190806" target="_blank" rel="external">《Microsoft Kinect Sensor and Its Effect》</a></p>
+<p>关于深度信息的光线三维成像原理查看论文<a href="https://www.osapublishing.org/aop/fulltext.cfm?uri=aop-3-2-128&amp;id=211561" target="_blank" rel="external">《Structured-Light 3D Surface Imaging: A Tutorial, Advances in Optics and Photonics》</a></p>
+<pre><code>-<span class="ruby"> 硬件：<span class="constant">RGB</span> <span class="constant">Camera</span>,<span class="number">3</span>D <span class="constant">Depth</span> <span class="constant">Sensor</span>,<span class="constant">Motorized</span> <span class="constant">Tilt</span>(调整角度)
+</span>-<span class="ruby"> 软件：<span class="constant">OpenNI</span>, <span class="constant">Microsoft</span> <span class="constant">Kinect</span> <span class="constant">SDK</span>,<span class="constant">OpenKinect</span></span>
+</code></pre><p>1.预处理：</p>
+<ul>
+<li><p>Kinect重标定,广泛的基本方法《Accurate and Practical Cali-<br>bration of A Depth and Color Camera Pair》</p>
+</li>
+<li><p>深度信息的过滤,《Joint Denoising and Interpolation of Depth Maps for MS Kinect Sensors》通过在物体边界寻找空间对应点，物体在彩图分割转移到深度图中。<br>  《 Structure Guided Fusion for Depth Map Inpainting, Pattern Recognition Letters 》</p>
+</li>
+</ul>
+<p>2.物体跟踪和识别</p>
+<ul>
+<li>DETECTION:《Leveraging RGB-D Data: Adaptive Fusion and Domain Adaptation for Object Detection》</li>
+<li>室内切割《 Indoor Segmentation and Support Inference from RGBD Images》 其中包含RGBD数据集</li>
+<li>行为识别 《Accurate 3D Pose Estimation from A Single Depth Image》<img src="/img/activity_recog.png" alt="Basic processing pipeline of Activity Recognition"></li>
+<li>场景识别  《RGB-(D) Scene Labeling: Features and Algorithms》使用加入深度信息的FEATURE有利于提高COMPACITY，抵挡灯光影响和杂乱影响。然而，计算量加大难以实时Real-time</li>
+</ul>
+<p>3.手势识别和分析 4.手势动作（然而这个我并不关心，谢谢）</p>
+<h2 id="5-室内3D匹配"><strong>5.室内3D匹配</strong></h2><p>  AIM：对室内环境的数字化表达，室内三维重建<br>  研究包含两部分：1.数据和特征的抽取 2.循环检测并全局优化</p>
+<h3 id="A-稀疏（sparse）特征匹配">A.稀疏（sparse）特征匹配</h3><p>  典型《RGB-D Mapping: Using Depth Cameras for Dense 3D Modeling of Indoor Environments》 优化结合appearance and shape（依赖深度图所得） 通过Iterative Closest Point(ICP)算法。</p>
+<h3 id="B-密集点云匹配（Dense_points_tracking_between_two_frames）">B.密集点云匹配（Dense points tracking between two frames）</h3><p>  计算量大，不易实时，但有成功的论文《KinectFusion: Real-Time Dense Surface Mapping and Tracking》</p>
+<p>  针对特定问题下的论文：<br>  LARGE LIGHTING VARIATIONS《Dense RGB-D Mapping for Real-Time Localisation and Navigation》<br>  CAMERA ROAM FREE《Moving Volume KinectFusion》<br>  室内基准实验数据集 《A Benchmark for the Evaluation of RGB-D SLAM Systems》</p>
+<p>6.问题&amp;展望&amp;总结</p>
+<ul>
+<li>REAL-WORLD应用</li>
+<li>有效算法模型</li>
+<li>RGB-D信息高效整合</li>
+</ul>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/RGBD-论文/">RGBD 论文</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+
+</div>
+  </div>
+  <footer id="footer">
+
+<div class="copyright">
+  
+  &copy; 2015 <a href="/">CsrjTan</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+        
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var disqus_shortname = 'blog2csrjtan';
+
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
