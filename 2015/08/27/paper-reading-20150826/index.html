@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications | CSRJTAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="CsrjTan">
+  
+  
+    <meta name="description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
+Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.
+
+Introducesec">
+  
+  <meta name="description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
+Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.
+
+Introducesec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications">
+<meta property="og:url" content="http://yoursite.com/2015/08/27/paper-reading-20150826/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
+Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.
+
+Introducesec">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png">
+<meta property="og:updated_time" content="2015-08-27T05:46:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications">
+<meta name="twitter:description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
+Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.
+
+Introducesec">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+  
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+
+</script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">CSRJTAN</a></h1>
+    <p><a href="/">Keep Moving</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/27/paper-reading-20150826/">
+  <time datetime="2015-08-27T01:57:19.000Z">
+    2015-08-27
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
+<p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.</p>
+<ol>
+<li>Introduce<br>sec 2 介绍原理和模型<br>sec 3 介绍误差影响要素<br>sec 4 实验结果和分析<br>sec 5 总结和remark</li>
+</ol>
+<p>2.<strong>深度测量 with triangulation</strong></p>
+<p>Triangulation Methods of Kinect [<a href="https://www.google.com/patents/US8150142" target="_blank" rel="external">1</a>] laser source emits single beam which split into multiple beams by diffraction.</p>
+<p>The <strong>reference pattern</strong> is obtained by capturing a plane at a known distance.</p>
+<p><strong>Disparity</strong>:The shifts are measured for all speckles by a simple image correlation procedure,which yield a disparity image.</p>
+<p>以下图为例，分析<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png" alt=""><br>o为参考平面，k为目标物体位置。由laser projector（不动）发出多个光束，ir camera调整角度使接收到的目标反射光斑落在参考平面上，得到偏移位置d.</p>
+<p>假设完成相机标定后，则 $ Z_0 $, f, b 已知，d也可以获得。<br>根据数学三角原理得到：</p>
+<p>$$ \frac{D}{b}=\frac{Z_0-Z_k}{Z_0} $$ and $$\frac{d}{f}=\frac{D}{Z_k}$$<br>推导化简得:<br>$$ Z_k = \frac{Z_0}{1+\frac{Z_0}{fb}d} $$ （1）<br>假设坐标系正交，得到Z轴坐标距离后，由于f定义了关于点的图像规模（imaging scale）所以得到物体的光点坐标为<br>$$ X_k=-\frac{Z_k}{f}(x_k-x_0+\delta x)$$<br>$$ Y_k=-\frac{Z_k}{f}(y_k-y_0+\delta y)$$<br>其中$x_k$ 和 $y_k$为图像坐标点，$x_0$ 和 $y_0$为坐标原点，$\delta x$ 和$\delta y$ 是镜头扭曲误差校正系数</p>
+<p>3.相机标定<br>我们需要求得标定的参数变量如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png" alt=""><br>前三个通过红外照相机标准标定可得<br>由于USB带宽所限，标定use reduced infrared images instead of actual sensor。<br>Disparity measurement 采样为0~2047 11bits，则 d = md’+n。 m, n为线性化参数。<br>代入 公式（1）可得<br>$$Z^{-1}_k = (\frac{m}{fb}d’ +(Z^{-1}_0 + \frac {n}{fb})) $$<br>通过测得(x,y,d’)可以映射到世界坐标系的(X,Y,Z)</p>
+<p>4.加入颜色元素</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/paper/">paper</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+
+</div>
+  </div>
+  <footer id="footer">
+
+<div class="copyright">
+  
+  &copy; 2015 <a href="/">CsrjTan</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+        
+</footer>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var disqus_shortname = 'blog2csrjtan';
+
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
