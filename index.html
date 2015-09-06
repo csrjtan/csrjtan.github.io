@@ -74,6 +74,133 @@ var _hmt = _hmt || [];
   <header>
     
       <div class="icon"></div>
+      <a href="/2015/09/03/ppt-learning-Stereo-Vision/">
+  <time datetime="2015-09-03T08:11:25.000Z">
+    2015-09-03
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/09/03/ppt-learning-Stereo-Vision/">ppt_learning_Stereo_Vision</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf" target="_blank" rel="external">原文链接</a></p>
+<h3 id="Stereo_Vision:Algorithms_and_Applications">Stereo Vision:Algorithms and Applications</h3><h4 id="Author:Stefano_Mattoccia">Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html" target="_blank" rel="external">Stefano Mattoccia</a></h4><h4 id="Lab:University_of_Bologna">Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用</p>
+<h3 id="1-Intro">1.Intro</h3><p>Target:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息</p>
+<ul>
+<li>双目视觉系统</li>
+<li>密度立体算法</li>
+<li>立体视觉应用</li>
+</ul>
+<h4 id="定义:Epipolar_constraint(极几何约束)">定义:Epipolar constraint(极几何约束)</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/epipolar_constraint.png" alt=""><br>对于图像R，P和Q在同一点上，近的掩盖远的<br>对于图像T，P和Q映在p和q上，红线 $PO_R$ 落在绿线pq的同一平面 $\Pi_T$上，这个称为极约束</p>
+<h4 id="定义：视差（Disparity）">定义：视差（Disparity）</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/disparity.png" alt=""><br>经过三角形相似性原理可以推导得到<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/dis_res.png" alt=""></p>
+<h4 id="定义：双目视界（Horopter）">定义：双目视界（Horopter）</h4><p>The range field of system is constrained by disparity range [d<em>{min},d</em>{max}]<br>一般可以离散化视差值，较好的离散化是通过subpixel方法可得<br>若用5个离散化的值，则可设置[d<em>{min},d</em>{min}+4]</p>
+<h3 id="2-Overview_of_stereo_vision_system">2.Overview of stereo vision system</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/overview_stereo.png" alt=""></p>
+<h4 id="2-1_Calibration(offline)">2.1 Calibration(offline)</h4><p>  target:finding parameters of the camera system</p>
+<ul>
+<li>Intrinsic parameters of two cameras:Focal length,image center,lenses distortion</li>
+<li>Extrinsic parameters R and T aligns of two cameras<br>Methods:用10+对已知的立体点匹配，最典型用checkerboard<br>可用Opencv,Matlab<a href="http://www.vision.caltech.edu/bouguetj/calib_doc/" target="_blank" rel="external">[1]</a>,详细的标定方法可参考资料[2,3,4]</li>
+</ul>
+<h4 id="2-2_Rectification">2.2 Rectification</h4><p>  target: Adjust stereo camera in standard form<br>  steps: a) removes lens distortions<br>             b) turns the stereo pair in standard form</p>
+<h4 id="2-3_Stereo_Correspondence">2.3 Stereo Correspondence</h4><p>  target: finding homologous points in stereo pair, generate disparity map</p>
+<h4 id="2-4_Triangulation">2.4 Triangulation</h4><p>  target: Calculate the position of the correspondence in the 3D</p>
+<p>  $Z=\frac{b*f}{d}$        $X=Z\frac{x_R}{f}$      $Y=Z\frac{y_R}{f}$</p>
+<p>Relevant:</p>
+<ul>
+<li>Datasets:stereo sequences<br>  <a href="http://vision.deis.unibo.it/~smatt/stereo.htm" target="_blank" rel="external">Including</a> </li>
+</ul>
+<ul>
+<li>calibration parameters</li>
+<li>original sequences</li>
+<li>rectified sequences</li>
+<li>disparity maps</li>
+</ul>
+<ul>
+<li><a href="http://vision.middlebury.edu/stereo/eval/" target="_blank" rel="external">Middlebury stereo evaluation</a><br>提供了一个框架和一个数据集来测试新颖方法的性能和效果基线</li>
+</ul>
+<p>待克服的难点：The common pitfalls make the stereo correspondence so challenging: Photometric distortions and noise, Specular surfaces, Foreshortening, Perspective distortions, Uniform/Ambiguous regions, Repetitive patterns, Transparent objects, Occlusions and discontinuities</p>
+<h3 id="3-The_correspondence_problem">3.The correspondence problem</h3><p>  由于[5]，大部分立体算法基于一下步骤：</p>
+<ul>
+<li>1.匹配代价计算（Matching cost computation）</li>
+<li>2.代价聚合(Cost Aggregation)</li>
+<li>3.视差计算/优化(Disparity computation/Optimization)</li>
+<li>4.视差精细(Disparity refinement)<br>Local:1-&gt;2-&gt;3    (用WTA策略)<br>Global:1(-&gt;2)-&gt;3   semi-global</li>
+</ul>
+<h4 id="3-1_预处理（0）">3.1 预处理（0）</h4><p>  典型方法：Laplacian of Gaussian(LoG)滤波[6],邻域均值去除[7],Bilateral Filtering[8]</p>
+<p>  <strong>优化</strong>简单的像素比对方法:</p>
+<ul>
+<li>Local 用窗口像素代价聚合减小 Signal to noise ratio(SNR)</li>
+<li>Global 最小化代价函数，优化Pixel-based的代价匹配</li>
+</ul>
+<p>$$E(d)=E_{data}(d) + E_{smooth}(d)$$</p>
+<h4 id="3-2_匹配代价计算(1)">3.2 匹配代价计算(1)</h4><p>  3.2.1 单值匹配</p>
+<ul>
+<li>绝对值差<br>$e(x,y,d) = |I_R(x,y)-I_T(x+d,y)|$</li>
+<li>平方差<br>$e(x,y,d) = (I_R(x,y)-I_T(x+d,y))^2$</li>
+<li>鲁棒方法<br>限制outliers的影响，如Truncated Absolute Differences(TAD)<br>$e(x,y,d) = min \{ |I_R(x,y)-I_T(x+d,y)|,T \}$<br>3.2.2 区域匹配</li>
+<li>绝对和（SAD）<br>$C(x,y,d) = \sum_{x\in S}|I_R(x,y)-I_T(x+d,y)|$</li>
+<li>平方差和 （SSD）<br>$C(x,y,d) = \sum_{x\in S}(I_R(x,y)-I_T(x+d,y))^2$</li>
+<li>截断绝对差和（STAD)<br>$C(x,y,d) = \sum_{x\in S}\{|I_R(x,y)-I_T(x+d,y)|,T\}$<br>其他一些方法：Normalized Cross Correlation[9], Zero mean Normalized Cross Correlation[10], Gradient based MF[11], Non parametric[12,13], Mutual Information[14]</li>
+</ul>
+<h4 id="3-3_代价聚合(2)">3.3 代价聚合(2)</h4><p>  固定窗口(FW):<br>  弊端：1.假设图像正面平行 2.忽略深度不连续性 3.不能解决均匀区域 4.无法解决重复区域<br>  优势：简单，使用，实时，不占内存空间，硬件耗电小<br>  优化方法：1.积分图Integral Images（II 1984） 2.箱过滤Box-Filtering(BF 1981) 3.Single Instruction Multiple Data(SIMD)<br>  ![ttp://7xl4js.com1.z0.glb.clouddn.com/BF1.png]<br>  ![ttp://7xl4js.com1.z0.glb.clouddn.com/BF2.png]<br>  两者比较：每个点都需要四次运算，II可以处理不通形状的窗口，但需要更多内存，容易溢出，因为若果图片大小为S，则需要$S^2$。不同的BF可以参看[15]</p>
+<p>  3.3.1 一个具体的示例（LIVE DEMO）[16][17]</p>
+<pre><code>-<span class="ruby"> 灰度图
+</span>-<span class="ruby"> 预处理：均值提取
+</span>-<span class="ruby"> 代价匹配： 绝对差
+</span>-<span class="ruby"> 聚合代价： 固定窗口（<span class="constant">FW</span>）
+</span>-<span class="ruby"> 视差选择： 胜者为王(<span class="constant">WTA</span>)
+</span>-<span class="ruby"> 局外点优化
+</span>-<span class="ruby"> 抛弃均匀区域
+</span>-<span class="ruby"> 优化：<span class="constant">BF</span>+<span class="constant">SIMD</span>
+</span>-<span class="ruby"> 像素插值<span class="number">1</span>/<span class="number">16</span>对于每个像素
+</span>-<span class="ruby"> 实时运行在普通<span class="constant">PC</span>上</span>
+</code></pre><p>  3.3.2 一些好的方法<br>   Shiftable Windows[18], Multiple Window[19], Variable Window [20], Segmentation based(Assume each segment smoothly)[21], Bilateral Filtering[22], Adaptive Weights[23], Segment Supoort[24], Fast Aggregation[25], Fast Bilateral Stereo(FBS)[26], Locally Consistent(LC) stereo[27]</p>
+<h4 id="3-4_视差计算/优化(3)">3.4 视差计算/优化(3)</h4><p>  目的：寻找最佳的视差点，最小化代价函数<br>  由于是NP-Hard问题，可以用近似的方法求解</p>
+<ul>
+<li>Graph Cuts[28]</li>
+<li>Belief Propagation[29]</li>
+<li>Cooperative optimization[30]</li>
+<li>一些能量最小化的方法可以参看PAMI期刊文章[31]</li>
+<li>Dynamic Programming(DP) [5]</li>
+<li>Scanline Optimization(SO) [32]</li>
+<li>SO + Support Aggregation [33]</li>
+<li>Enforcing Local Consistency of disparity in SO/DP [34]</li>
+</ul>
+<h4 id="3-5_视差精细(4)">3.5 视差精细(4)</h4><ul>
+<li>匹配算法包括一些outliers，必须识别并纠正</li>
+<li>由于细化了像素级别，需要优化视差的精确性<br>3.5.1 Sub-pixel插值<br>计算临近插值最小的值，[35]提出了floating-point free方法<br>3.5.2 图像滤波<br>中值滤波，形态操作，BF<br>3.5.3 双向匹配（Bidirection Matching,BM）<br>用于检测outliers[36],左右匹配差异小于T，一般T为1<br>$$|d_{LR}(x,y) - d_{RL}(x+d_{LR}(x,y),y)|&lt;T$$<br>3.5.4 单向匹配步骤(Single Matching Phase,SMP)[37]<br>3.5.5 分割方法<br>Segmentation based outliers identification and replacement<br>基于两个假设:1.每段分割片的视差变化平滑 2.每个分割面近似在同一平面<br>对于每个切割面都在3D平面,满足 $d(x,y)=ax+by+\gamma$<br>对于这样鲁棒的平面，可以使用方法：RANSAC[38]和Histogram Voting[30]<br>3.5.6 Accurate Localization of borders and occlusions[39]</li>
+</ul>
+<h3 id="4-应用">4.应用</h3><p>  3D跟踪：物体计数、监控轨迹、安保<br>  扫描，2D和3D转化，增强现实 </p>
+<p>  列出的下列Reference请耐心仔细阅读，可参考原PPT的概括进行参考阅读。由于PPT是2012更新的，一些2010后的前沿方法请另外查询，从CVPR、PAMI等会议或MiddleBury的测评网站上查询阅读。</p>
+<hr>
+<p>[1] Jean-Yves Bouguet , Camera Calibration Toolbox for Matlab<br>[2] E. Trucco, A. Verri, Introductory Techniques for 3-D Computer Vision, Prentice Hall, 1998<br>[3] R.I.Hartley, A. Zisserman, Multiple View Geometry in Computer Vision, Cambridge University Press, 2000<br>[4] G. Bradsky, A. Kaehler, Learning Opencv, O’Reilly, 2008<br>[5] D. Scharstein and R. Szeliski, A taxonomy and evaluation of dense two-frame stereo correspondence algorithms<br>Int. Jour. Computer Vision, 47(1/2/3):7–42, 2002<br>[6] T. Kanade, H. Kato, S. Kimura, A. Yoshida, and K. Oda, Development of a Video-Rate Stereo Machine<br>International Robotics and Systems Conference (IROS ‘95), Human Robot Interaction and Cooperative Robots, 1995<br>[7] O. Faugeras, B. Hotz, H. Mathieu, T. Viville, Z. Zhang, P. Fua, E. Thron, L. Moll, G. Berry,<br>Real-time correlation-based stereo: Algorithm. Implementation and Applications, INRIA TR n. 2013, 1993<br>[8] A. Ansar, A. Castano, L. Matthies, Enhanced real-time stereo using bilateral filtering<br>IEEE Conference on Computer Vision and Pattern Recognition 2004<br>[9] S. Mattoccia, F. Tombari, L. Di Stefano, Fast full-search equivalent template matching by Enhanced Bounded<br>Correlation, IEEE Transactions on Image Processing, 17(4), pp 528-538, April 2008<br>[10] L. Di Stefano, S. Mattoccia, F. Tombari, ZNCC-based template matching using Bounded Partial Correlation<br>Pattern Recognition Letters, 16(14), pp 2129-2134, October 2005<br>[11] F. Tombari, L. Di Stefano, S. Mattoccia, A. Galanti, Performance evaluation of robust matching measures<br>3rd International Conference on Computer Vision Theory and Applications (VISAPP 2008)<br>[12] R. Zabih, J John Woodll Non-parametric Local Transforms for Computing Visual Correspondence, ECCV 1994<br>[13] D. N. Bhat, S. K. Nayar, Ordinal measures for visual correspondence, CVPR 1996<br>[14] H. Hirschmüller. Stereo vision in structured environments by consistent semi-global matching.<br>CVPR 2006, PAMI 30(2):328-341, 2008<br>[15] Changming Sun, Recursive Algorithms for Diamond, Hexagon and General Polygonal Shaped Window Operations<br>Pattern Recognition Letters, 27(6):556-566, April 2006<br>[16] L. Di Stefano, M. Marchionni, S. Mattoccia, A fast area-based stereo matching algorithm, Image and Vision Computing,<br>22(12), pp 983-1005, October 2004<br>[17] L. Di Stefano, M. Marchionni, S. Mattoccia, A PC-based real-time stereo vision system, Machine Graphics &amp; Vision,<br>13(3), pp. 197-220, January 2004<br>[18] D. Scharstein and R. Szeliski, A taxonomy and evaluation of dense two-frame stereo correspondence algorithms<br>Int. Jour. Computer Vision, 47(1/2/3):7–42, 2002<br>[19] H. Hirschmuller, P. Innocent, and J. Garibaldi, Real-time correlation-based stereo vision with reduced border errors<br>Int. Journ. of Computer Vision, 47:1–3, 2002<br>[20]  O. Veksler. Fast variable window for stereo correspondence using integral images, In Proc. Conf. on Computer Vision<br>and Pattern Recognition (CVPR 2003), pages 556–561, 2003<br>[21]  M. Gerrits and P. Bekaert. Local Stereo Matching with Segmentation-based Outlier Rejection<br>In Proc. Canadian Conf. on Computer and Robot Vision (CRV 2006), pages 66-66, 2006<br>[22] C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images. In ICCV98, pages 839–846, 1998<br>[23] K. Yoon and I. Kweon. Adaptive support-weight approach for correspondence search IEEE PAMI, 28(4):650–656, 2006<br>[24] F. Tombari, S. Mattoccia, L. Di Stefano, Segmentation-based adaptive support for accurate stereo correspondence IEEE Pacific-Rim Symposium on Image and Video Technology (PSIVT 2007)<br>[25] F. Tombari, S. Mattoccia, L. Di Stefano, E. Addimanda, Near real-time stereo based on effective cost aggregation International Conference on Pattern Recognition (ICPR 2008)<br>[26] S. Mattoccia, S. Giardino,A. Gambini, Accurate and efficient cost aggregation strategy for stereo correspondence<br>based on approximated joint bilateral filtering, Asian Conference on Computer Vision (ACCV2009)<br>[27] S. Mattoccia, A locally global approach to stereo correspondence, 3D Digital Imaging and Modeling (3DIM2009)<br>[28] V. Kolmogorov and R. Zabih, Computing visual correspondence with occlusions using graph cuts, ICCV 2001<br>[29] A. Klaus, M. Sormann and K. Karner, Segment-based stereo matching using belief propagation and a self-adapting<br>dissimilarity measure, ICPR 2006<br>[30] Z. Wang and Z. Zheng, A region based stereo matching algorithm using cooperative optimization, CVPR 2008<br>[31] R.Szeliski, R. Zabih, D. Scharstein, O. Veksler, V. Kolmogorov, A. Agarwala, M. Tappen, C. Rother, A Comparative<br>Study of Energy Minimization Methods for Markov Random Fields with Smoothness-Based Priors, IEEE Transactions on<br>Pattern Analysis and Machine Intelligence, 30, 6, June 2008, pp 1068-1080<br>[32] H. Hirschmüller. Stereo vision in structured environments by consistent semi-global matching.<br>CVPR 2006, PAMI 30(2):328-341, 2008<br>[33] S. Mattoccia, F. Tombari, and L. Di Stefano, Stereo vision enabling precise border localization within a scanline<br>optimization framework, ACCV 2007<br>[34] S. Mattoccia, Improving the accuracy of fast dense stereo correspondence algorithms by enforcing local consistency of disparity fields, 3DPVT2010<br>[35] L. Di Stefano, S. Mattoccia, Real-time stereo within the VIDET project Real-Time Imaging, 8(5), pp. 439-453, Oct. 2002<br>[36] P. Fua, Combining stereo and monocular information to compute dense depth maps that preserve depth discontinuities 12th. Int. Joint Conf. on Artificial Intelligence, pp 1292–1298, 1993<br>[37] L. Di Stefano, M. Marchionni, S. Mattoccia, A fast area-based stereo matching algorithm, Image and Vision Computing,<br>22(12), pp 983-1005, October 2004<br>[38] M. A. Fischler and R. C. Bolles, Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image<br>Analysis and Automated Cartography, Comm. of the ACM 24: 381–395, June 1981<br>[39] S. Mattoccia, F. Tombari, and L. Di Stefano, Stereo vision enabling precise border localization within a scanline optimization framework, ACCV 2007</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2015/08/27/paper-reading-20150826/">
   <time datetime="2015-08-27T01:57:19.000Z">
     2015-08-27
@@ -91,16 +218,14 @@ var _hmt = _hmt || [];
     
       <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
 <p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.</p>
-<ol>
-<li>Introduce<br>sec 2 介绍原理和模型<br>sec 3 介绍误差影响要素<br>sec 4 实验结果和分析<br>sec 5 总结和remark</li>
-</ol>
+<p>1.<strong>Introduce</strong><br>   sec 1 介绍全文<br>   sec 2 介绍原理和模型<br>   sec 3 介绍误差影响要素<br>   sec 4 实验结果和分析<br>   sec 5 总结和remark</p>
 <p>2.<strong>深度测量 with triangulation</strong></p>
 <p>Triangulation Methods of Kinect [<a href="https://www.google.com/patents/US8150142" target="_blank" rel="external">1</a>] laser source emits single beam which split into multiple beams by diffraction.</p>
 <p>The <strong>reference pattern</strong> is obtained by capturing a plane at a known distance.</p>
 <p><strong>Disparity</strong>:The shifts are measured for all speckles by a simple image correlation procedure,which yield a disparity image.</p>
 <p>以下图为例，分析<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png" alt=""><br>o为参考平面，k为目标物体位置。由laser projector（不动）发出多个光束，ir camera调整角度使接收到的目标反射光斑落在参考平面上，得到偏移位置d.</p>
 <p>假设完成相机标定后，则 $ Z_0 $, f, b 已知，d也可以获得。<br>根据数学三角原理得到：</p>
-<p>$$ \frac{D}{b}=\frac{Z_0-Z_k}{Z_0} $$ and $$\frac{d}{f}=\frac{D}{Z_k}$$<br>推导化简得:<br>$$ Z_k = \frac{Z_0}{1+\frac{Z_0}{fb}d} $$ （1）<br>假设坐标系正交，得到Z轴坐标距离后，由于f定义了关于点的图像规模（imaging scale）所以得到物体的光点坐标为<br>$$ X_k=-\frac{Z_k}{f}(x_k-x_0+\delta x)$$<br>$$ Y_k=-\frac{Z_k}{f}(y_k-y_0+\delta y)$$<br>其中$x_k$ 和 $y_k$为图像坐标点，$x_0$ 和 $y_0$为坐标原点，$\delta x$ 和$\delta y$ 是镜头扭曲误差校正系数</p>
+<p>$$ \frac{D}{b}=\frac{Z_0-Z_k}{Z_0} $$<br>$$\frac{d}{f}=\frac{D}{Z_k}$$<br>推导化简得:<br>            $ Z_k = \frac{Z_0}{1+\frac{Z_0}{fb}d} $ （1）<br>假设坐标系正交，得到Z轴坐标距离后，由于f定义了关于点的图像规模（imaging scale）所以得到物体的光点坐标为<br>$$ X_k=-\frac{Z_k}{f}(x_k-x_0+\delta x)$$<br>$$ Y_k=-\frac{Z_k}{f}(y_k-y_0+\delta y)$$<br>其中$x_k$ 和 $y_k$为图像坐标点，$x_0$ 和 $y_0$为坐标原点，$\delta x$ 和$\delta y$ 是镜头扭曲误差校正系数</p>
 <p>3.相机标定<br>我们需要求得标定的参数变量如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png" alt=""><br>前三个通过红外照相机标准标定可得<br>由于USB带宽所限，标定use reduced infrared images instead of actual sensor。<br>Disparity measurement 采样为0~2047 11bits，则 d = md’+n。 m, n为线性化参数。<br>代入 公式（1）可得<br>$$Z^{-1}_k = (\frac{m}{fb}d’ +(Z^{-1}_0 + \frac {n}{fb})) $$<br>通过测得(x,y,d’)可以映射到世界坐标系的(X,Y,Z)</p>
 <p>4.加入颜色元素</p>
 

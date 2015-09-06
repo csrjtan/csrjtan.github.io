@@ -12,30 +12,26 @@
   
     <meta name="description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
 Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.
-
-Introducesec">
+1.Introduce">
   
   <meta name="description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
 Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.
-
-Introducesec">
+1.Introduce">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications">
 <meta property="og:url" content="http://yoursite.com/2015/08/27/paper-reading-20150826/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
 Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.
-
-Introducesec">
+1.Introduce">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png">
-<meta property="og:updated_time" content="2015-08-27T05:46:27.000Z">
+<meta property="og:updated_time" content="2015-09-06T03:29:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications">
 <meta name="twitter:description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
 Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.
-
-Introducesec">
+1.Introduce">
   
   
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -102,16 +98,14 @@ var _hmt = _hmt || [];
     
       <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
 <p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.</p>
-<ol>
-<li>Introduce<br>sec 2 介绍原理和模型<br>sec 3 介绍误差影响要素<br>sec 4 实验结果和分析<br>sec 5 总结和remark</li>
-</ol>
+<p>1.<strong>Introduce</strong><br>   sec 1 介绍全文<br>   sec 2 介绍原理和模型<br>   sec 3 介绍误差影响要素<br>   sec 4 实验结果和分析<br>   sec 5 总结和remark</p>
 <p>2.<strong>深度测量 with triangulation</strong></p>
 <p>Triangulation Methods of Kinect [<a href="https://www.google.com/patents/US8150142" target="_blank" rel="external">1</a>] laser source emits single beam which split into multiple beams by diffraction.</p>
 <p>The <strong>reference pattern</strong> is obtained by capturing a plane at a known distance.</p>
 <p><strong>Disparity</strong>:The shifts are measured for all speckles by a simple image correlation procedure,which yield a disparity image.</p>
 <p>以下图为例，分析<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png" alt=""><br>o为参考平面，k为目标物体位置。由laser projector（不动）发出多个光束，ir camera调整角度使接收到的目标反射光斑落在参考平面上，得到偏移位置d.</p>
 <p>假设完成相机标定后，则 $ Z_0 $, f, b 已知，d也可以获得。<br>根据数学三角原理得到：</p>
-<p>$$ \frac{D}{b}=\frac{Z_0-Z_k}{Z_0} $$ and $$\frac{d}{f}=\frac{D}{Z_k}$$<br>推导化简得:<br>$$ Z_k = \frac{Z_0}{1+\frac{Z_0}{fb}d} $$ （1）<br>假设坐标系正交，得到Z轴坐标距离后，由于f定义了关于点的图像规模（imaging scale）所以得到物体的光点坐标为<br>$$ X_k=-\frac{Z_k}{f}(x_k-x_0+\delta x)$$<br>$$ Y_k=-\frac{Z_k}{f}(y_k-y_0+\delta y)$$<br>其中$x_k$ 和 $y_k$为图像坐标点，$x_0$ 和 $y_0$为坐标原点，$\delta x$ 和$\delta y$ 是镜头扭曲误差校正系数</p>
+<p>$$ \frac{D}{b}=\frac{Z_0-Z_k}{Z_0} $$<br>$$\frac{d}{f}=\frac{D}{Z_k}$$<br>推导化简得:<br>            $ Z_k = \frac{Z_0}{1+\frac{Z_0}{fb}d} $ （1）<br>假设坐标系正交，得到Z轴坐标距离后，由于f定义了关于点的图像规模（imaging scale）所以得到物体的光点坐标为<br>$$ X_k=-\frac{Z_k}{f}(x_k-x_0+\delta x)$$<br>$$ Y_k=-\frac{Z_k}{f}(y_k-y_0+\delta y)$$<br>其中$x_k$ 和 $y_k$为图像坐标点，$x_0$ 和 $y_0$为坐标原点，$\delta x$ 和$\delta y$ 是镜头扭曲误差校正系数</p>
 <p>3.相机标定<br>我们需要求得标定的参数变量如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png" alt=""><br>前三个通过红外照相机标准标定可得<br>由于USB带宽所限，标定use reduced infrared images instead of actual sensor。<br>Disparity measurement 采样为0~2047 11bits，则 d = md’+n。 m, n为线性化参数。<br>代入 公式（1）可得<br>$$Z^{-1}_k = (\frac{m}{fb}d’ +(Z^{-1}_0 + \frac {n}{fb})) $$<br>通过测得(x,y,d’)可以映射到世界坐标系的(X,Y,Z)</p>
 <p>4.加入颜色元素</p>
 
