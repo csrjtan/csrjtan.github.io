@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
 </ul>
 <h4 id="定义:Epipolar_constraint(极几何约束)">定义:Epipolar constraint(极几何约束)</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/epipolar_constraint.png" alt=""><br>对于图像R，P和Q在同一点上，近的掩盖远的<br>对于图像T，P和Q映在p和q上，红线 $PO_R$ 落在绿线pq的同一平面 $\Pi_T$上，这个称为极约束</p>
 <h4 id="定义：视差（Disparity）">定义：视差（Disparity）</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/disparity.png" alt=""><br>经过三角形相似性原理可以推导得到<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/dis_res.png" alt=""></p>
-<h4 id="定义：双目视界（Horopter）">定义：双目视界（Horopter）</h4><p>The range field of system is constrained by disparity range [d<em>{min},d</em>{max}]<br>一般可以离散化视差值，较好的离散化是通过subpixel方法可得<br>若用5个离散化的值，则可设置[d<em>{min},d</em>{min}+4]</p>
+<h4 id="定义：双目视界（Horopter）">定义：双目视界（Horopter）</h4><p>The range field of system is constrained by disparity range $[d_{min},d_{max}]$<br>一般可以离散化视差值，较好的离散化是通过subpixel方法可得<br>若用5个离散化的值，则可设置 $[d_{min},d_{min}+4]$</p>
 <h3 id="2-Overview_of_stereo_vision_system">2.Overview of stereo vision system</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/overview_stereo.png" alt=""></p>
 <h4 id="2-1_Calibration(offline)">2.1 Calibration(offline)</h4><p>  target:finding parameters of the camera system</p>
 <ul>
@@ -629,5 +629,35 @@ including dangerous objects/events like fire and heavy smoke
   })(jQuery);
 </script>
 
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>
