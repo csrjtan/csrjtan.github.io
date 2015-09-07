@@ -10,27 +10,47 @@
     <meta name="author" content="CsrjTan">
   
   
-    <meta name="description" content="原文：Click作者：Jungong Han,Ling Shao
-这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。主要用于入门延伸阅读所用。
-介绍Kinect实现和技术原理的论文《Microsof">
+    <meta name="description" content="MathJax.Hub.Config({
+  tex2jax: {inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]]}
+});
+
+
+
+原文：Click作者：Jungong Han,Ling Shao
+这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一">
   
-  <meta name="description" content="原文：Click作者：Jungong Han,Ling Shao
-这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。主要用于入门延伸阅读所用。
-介绍Kinect实现和技术原理的论文《Microsof">
+  <meta name="description" content="MathJax.Hub.Config({
+  tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]}
+});
+
+
+
+原文：Click作者：Jungong Han,Ling Shao
+这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》">
 <meta property="og:url" content="http://yoursite.com/2015/08/18/paper-reading-20150816/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="原文：Click作者：Jungong Han,Ling Shao
-这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。主要用于入门延伸阅读所用。
-介绍Kinect实现和技术原理的论文《Microsof">
+<meta property="og:description" content="MathJax.Hub.Config({
+  tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]}
+});
+
+
+
+原文：Click作者：Jungong Han,Ling Shao
+这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20activity_recog.png">
-<meta property="og:updated_time" content="2015-08-21T03:40:16.000Z">
+<meta property="og:updated_time" content="2015-09-07T08:36:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》">
-<meta name="twitter:description" content="原文：Click作者：Jungong Han,Ling Shao
-这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。主要用于入门延伸阅读所用。
-介绍Kinect实现和技术原理的论文《Microsof">
+<meta name="twitter:description" content="MathJax.Hub.Config({
+  tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]}
+});
+
+
+
+原文：Click作者：Jungong Han,Ling Shao
+这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。这是一">
   
   
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -95,7 +115,16 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194" target="_blank" rel="external">Click</a><br>作者：Jungong Han,Ling Shao</p>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="path-to-mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194" target="_blank" rel="external">Click</a><br>作者：Jungong Han,Ling Shao</p>
 <h3 id="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。">这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3><p>这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。<br>主要用于入门延伸阅读所用。</p>
 <p>介绍Kinect实现和技术原理的论文<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6190806" target="_blank" rel="external">《Microsoft Kinect Sensor and Its Effect》</a></p>
 <p>关于深度信息的光线三维成像原理查看论文<a href="https://www.osapublishing.org/aop/fulltext.cfm?uri=aop-3-2-128&amp;id=211561" target="_blank" rel="external">《Structured-Light 3D Surface Imaging: A Tutorial, Advances in Optics and Photonics》</a></p>
