@@ -149,18 +149,18 @@ var _hmt = _hmt || [];
 <li>平方差和 （SSD）<br>$C(x,y,d) = \sum_{x\in S}(I_R(x,y)-I_T(x+d,y))^2$</li>
 <li>截断绝对差和（STAD)<br>$C(x,y,d) = \sum_{x\in S}\{|I_R(x,y)-I_T(x+d,y)|,T\}$<br>其他一些方法：Normalized Cross Correlation[9], Zero mean Normalized Cross Correlation[10], Gradient based MF[11], Non parametric[12,13], Mutual Information[14]</li>
 </ul>
-<h4 id="3-3_代价聚合(2)">3.3 代价聚合(2)</h4><p>  固定窗口(FW):<br>  弊端：1.假设图像正面平行 2.忽略深度不连续性 3.不能解决均匀区域 4.无法解决重复区域<br>  优势：简单，使用，实时，不占内存空间，硬件耗电小<br>  优化方法：1.积分图Integral Images（II 1984） 2.箱过滤Box-Filtering(BF 1981) 3.Single Instruction Multiple Data(SIMD)<br>  ![<a href="http://7xl4js.com1.z0.glb.clouddn.com/BF1.png" target="_blank" rel="external">http://7xl4js.com1.z0.glb.clouddn.com/BF1.png</a>]<br>  ![<a href="http://7xl4js.com1.z0.glb.clouddn.com/BF2.png" target="_blank" rel="external">http://7xl4js.com1.z0.glb.clouddn.com/BF2.png</a>]<br>  两者比较：每个点都需要四次运算，II可以处理不通形状的窗口，但需要更多内存，容易溢出，因为若果图片大小为S，则需要$S^2$。不同的BF可以参看[15]</p>
+<h4 id="3-3_代价聚合(2)">3.3 代价聚合(2)</h4><p>  固定窗口(FW):<br>  弊端：1.假设图像正面平行 2.忽略深度不连续性 3.不能解决均匀区域 4.无法解决重复区域<br>  优势：简单，使用，实时，不占内存空间，硬件耗电小<br>  优化方法：1.积分图Integral Images（II 1984） 2.箱过滤Box-Filtering(BF 1981) 3.Single Instruction Multiple Data(SIMD)<br>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/BF1.png" alt=""><br>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/BF2.png" alt=""><br>  两者比较：每个点都需要四次运算，II可以处理不通形状的窗口，但需要更多内存，容易溢出，因为若果图片大小为S，则需要$S^2$。不同的BF可以参看[15]</p>
 <p>  3.3.1 一个具体的示例（LIVE DEMO）[16][17]</p>
 <pre><code>-<span class="ruby"> 灰度图
-</span>-<span class="ruby"> 预处理：均值提取
-</span>-<span class="ruby"> 代价匹配： 绝对差
-</span>-<span class="ruby"> 聚合代价： 固定窗口（<span class="constant">FW</span>）
-</span>-<span class="ruby"> 视差选择： 胜者为王(<span class="constant">WTA</span>)
-</span>-<span class="ruby"> 局外点优化
-</span>-<span class="ruby"> 抛弃均匀区域
-</span>-<span class="ruby"> 优化：<span class="constant">BF</span>+<span class="constant">SIMD</span>
-</span>-<span class="ruby"> 像素插值<span class="number">1</span>/<span class="number">16</span>对于每个像素
-</span>-<span class="ruby"> 实时运行在普通<span class="constant">PC</span>上</span>
+</span>  -<span class="ruby"> 预处理：均值提取
+</span>  -<span class="ruby"> 代价匹配： 绝对差
+</span>  -<span class="ruby"> 聚合代价： 固定窗口（<span class="constant">FW</span>）
+</span>  -<span class="ruby"> 视差选择： 胜者为王(<span class="constant">WTA</span>)
+</span>  -<span class="ruby"> 局外点优化
+</span>  -<span class="ruby"> 抛弃均匀区域
+</span>  -<span class="ruby"> 优化：<span class="constant">BF</span>+<span class="constant">SIMD</span>
+</span>  -<span class="ruby"> 像素插值<span class="number">1</span>/<span class="number">16</span>对于每个像素
+</span>  -<span class="ruby"> 实时运行在普通<span class="constant">PC</span>上</span>
 </code></pre><p>  3.3.2 一些好的方法<br>   Shiftable Windows[18], Multiple Window[19], Variable Window [20], Segmentation based(Assume each segment smoothly)[21], Bilateral Filtering[22], Adaptive Weights[23], Segment Supoort[24], Fast Aggregation[25], Fast Bilateral Stereo(FBS)[26], Locally Consistent(LC) stereo[27]</p>
 <h4 id="3-4_视差计算/优化(3)">3.4 视差计算/优化(3)</h4><p>  目的：寻找最佳的视差点，最小化代价函数<br>  由于是NP-Hard问题，可以用近似的方法求解</p>
 <ul>
