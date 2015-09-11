@@ -10,32 +10,48 @@
     <meta name="author" content="CsrjTan">
   
   
-    <meta name="description" content="MathJax.Hub.Config({  tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’]]}});
-原文链接
-Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实">
+    <meta name="description" content="原文链接
+Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用
+1.IntroTarget:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息
+
+双目视觉系统
+密度立体算法
+立体">
   
-  <meta name="description" content="MathJax.Hub.Config({  tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’]]}});
-原文链接
-Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实">
+  <meta name="description" content="原文链接
+Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用
+1.IntroTarget:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息
+
+双目视觉系统
+密度立体算法
+立体">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ppt_learning_Stereo_Vision">
 <meta property="og:url" content="http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="MathJax.Hub.Config({  tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’]]}});
-原文链接
-Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实">
+<meta property="og:description" content="原文链接
+Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用
+1.IntroTarget:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息
+
+双目视觉系统
+密度立体算法
+立体">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/epipolar_constraint.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/disparity.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/dis_res.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/overview_stereo.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/BF1.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/BF2.png">
-<meta property="og:updated_time" content="2015-09-08T01:27:20.000Z">
+<meta property="og:updated_time" content="2015-09-11T05:32:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ppt_learning_Stereo_Vision">
-<meta name="twitter:description" content="MathJax.Hub.Config({  tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’]]}});
-原文链接
-Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实">
+<meta name="twitter:description" content="原文链接
+Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用
+1.IntroTarget:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息
+
+双目视觉系统
+密度立体算法
+立体">
   
   
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -100,9 +116,7 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><br></script></p>
-<p><script type="text/x-mathjax-config"><br>MathJax.Hub.Config({<br>  tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’]]}<br>});<br></script></p>
-<p><script type="text/javascript" src="path-to-mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><br><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf" target="_blank" rel="external">原文链接</a></p>
+      <p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf" target="_blank" rel="external">原文链接</a></p>
 <h3 id="Stereo_Vision:Algorithms_and_Applications">Stereo Vision:Algorithms and Applications</h3><h4 id="Author:Stefano_Mattoccia">Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html" target="_blank" rel="external">Stefano Mattoccia</a></h4><h4 id="Lab:University_of_Bologna">Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用</p>
 <h3 id="1-Intro">1.Intro</h3><p>Target:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息</p>
 <ul>
@@ -258,6 +272,7 @@ var _hmt = _hmt || [];
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
