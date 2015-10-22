@@ -20,8 +20,6 @@
 <meta name="twitter:title" content="CSRJTAN">
 <meta name="twitter:description" content="blog csrjtan tanrunj">
   
-    <link rel="alternate" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
-  
   
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
   
@@ -56,9 +54,10 @@ var _hmt = _hmt || [];
       
         <li><a href="/archives">Archives</a></li>
       
+        <li><a href="/about">About</a></li>
       
-        <li><a href="/atom.xml">RSS</a></li>
       
+     
     </ul>
     <div class="clearfix"></div>
   </nav>
@@ -89,26 +88,15 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <h3 id="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”">整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”</h3><p>最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/构建项目.png" alt=""></p>
-<h3 id="chap_1-进入架构的世界">chap 1.进入架构的世界</h3><p>软件架构包括：定义问题、需求分析、规划构建、软件架构、<strong>详细设计</strong>、<strong>编码和单元测试</strong>、集成测试、集成、系统测试以及保障维护</p>
-<p>作者强调设计和架构是很重要的，不要一上来就抠码，接下来分析如何设计，这对软件质量有实质性的帮助。</p>
-<h3 id="chap_2-用隐喻来充分理解软件开发">chap 2.用隐喻来充分理解软件开发</h3><p>软件领域有一些共同的隐喻，用于方便交流，更好地理解抽象概念。</p>
-<h3 id="chap_3-前期准备">chap 3.前期准备</h3><p><strong>涉及</strong>：程序组织、主要的类（80/20法则）、数据设计、业务规则、用户界面设计、资源管理、安全性、性能、可伸缩小、互用性、国际化/本地化、输入输出、错误处理、容错性、<br>架构可能性、过度工程、关于“买”还是“造”的决策、关于复用、变更策略、架构总体质量<br>目标：在于降低风险，同时增强系统清晰度可读性</p>
-<h3 id="chap_4-关键的“构建”决策">chap 4.关键的“构建”决策</h3><p>选择编程语言、编程约定（人为规则）、深入一种语言、<strong>发明自己编码约定标准类库以及其他改进措施</strong></p>
-<h3 id="chap_5-软件构建中的设计">chap 5.软件构建中的设计</h3><p>正确认识设计：险恶、无章法、确定取舍、调整顺序、不确定、启发式过程</p>
-<p>要点：管理复杂度</p>
-<p><strong>目标</strong>：最小复杂度、易于维护、松散耦合、可扩展、可充用、高扇入（大量高层类用同一基础类）、低扇出（减少使用不同底层类的个数）、可移植性、精简性、层次性、用标准技术</p>
-<p>层次：软件系统-&gt;子系统或包（定义通讯规则来分隔）-&gt; 类 -&gt; 子程序 -&gt;内部编程</p>
-<p><em>找出现实世界对象：辩识对象及其方法属性，确定对对象进行的操作，确定各对象对其他对对象的操作，确定对象可见部分，定义接口</em></p>
-<p>最后就是将类形成一致的抽象，继而层次化各个类，尽可能达到信息隐藏：1.隐藏复杂度 2.隐藏变化源</p>
-<p>为此，我们要明确信息隐藏的障碍和难点：信息过渡分散、有循环的依赖、误把类内数据当全局数据、找出容易改变的区域隔离开（包括业务规则、硬件依赖、IO、困难的设计区域、枚举出状态变量）</p>
-<p><strong>保持松散耦合</strong>：常见简单数据参数耦合、简单对象耦合、对象参数耦合、语义耦合（复杂！）</p>
-<h4 id="学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法">学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法</h4><p>最后需要明确项目的类型来规划设计到哪一个细节阶段，并记录<strong>设计成果</strong>，保留设计挂图</p>
-
+      <h3 id="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”">整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”</h3><p>最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。
     
   </div>
   <footer class="end-sep">
     
+      
+        <div class="alignleft">
+          <a href="/2015/10/20/代码大全（读书笔记1）/#more" class="more-link">阅读全文</a>
+        </div>
       
       
     
@@ -137,101 +125,16 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf" target="_blank" rel="external">原文链接</a></p>
-<h3 id="Stereo_Vision:Algorithms_and_Applications">Stereo Vision:Algorithms and Applications</h3><h4 id="Author:Stefano_Mattoccia">Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html" target="_blank" rel="external">Stefano Mattoccia</a></h4><h4 id="Lab:University_of_Bologna">Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用</p>
-<h3 id="1-Intro">1.Intro</h3><p>Target:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息</p>
-<ul>
-<li>双目视觉系统</li>
-<li>密度立体算法</li>
-<li>立体视觉应用</li>
-</ul>
-<h4 id="定义:Epipolar_constraint(极几何约束)">定义:Epipolar constraint(极几何约束)</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/epipolar_constraint.png" alt=""><br>对于图像R，P和Q在同一点上，近的掩盖远的<br>对于图像T，P和Q映在p和q上，红线 $PO_R$ 落在绿线pq的同一平面 $\Pi_T$上，这个称为极约束</p>
-<h4 id="定义：视差（Disparity）">定义：视差（Disparity）</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/disparity.png" alt=""><br>经过三角形相似性原理可以推导得到<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/dis_res.png" alt=""></p>
-<h4 id="定义：双目视界（Horopter）">定义：双目视界（Horopter）</h4><p>The range field of system is constrained by disparity range $[d_{min},d_{max}]$<br>一般可以离散化视差值，较好的离散化是通过subpixel方法可得<br>若用5个离散化的值，则可设置 $[d_{min},d_{min}+4]$</p>
-<h3 id="2-Overview_of_stereo_vision_system">2.Overview of stereo vision system</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/overview_stereo.png" alt=""></p>
-<h4 id="2-1_Calibration(offline)">2.1 Calibration(offline)</h4><p>  target:finding parameters of the camera system</p>
-<ul>
-<li>Intrinsic parameters of two cameras:Focal length,image center,lenses distortion</li>
-<li>Extrinsic parameters R and T aligns of two cameras<br>Methods:用10+对已知的立体点匹配，最典型用checkerboard<br>可用Opencv,Matlab<a href="http://www.vision.caltech.edu/bouguetj/calib_doc/" target="_blank" rel="external">[1]</a>,详细的标定方法可参考资料[2,3,4]</li>
-</ul>
-<h4 id="2-2_Rectification">2.2 Rectification</h4><p>  target: Adjust stereo camera in standard form<br>  steps: a) removes lens distortions<br>             b) turns the stereo pair in standard form</p>
-<h4 id="2-3_Stereo_Correspondence">2.3 Stereo Correspondence</h4><p>  target: finding homologous points in stereo pair, generate disparity map</p>
-<h4 id="2-4_Triangulation">2.4 Triangulation</h4><p>  target: Calculate the position of the correspondence in the 3D</p>
-<p>  $Z=\frac{b*f}{d}$        $X=Z\frac{x_R}{f}$      $Y=Z\frac{y_R}{f}$</p>
-<p>Relevant:</p>
-<ul>
-<li>Datasets:stereo sequences<br>  <a href="http://vision.deis.unibo.it/~smatt/stereo.htm" target="_blank" rel="external">Including</a> </li>
-</ul>
-<ul>
-<li>calibration parameters</li>
-<li>original sequences</li>
-<li>rectified sequences</li>
-<li>disparity maps</li>
-</ul>
-<ul>
-<li><a href="http://vision.middlebury.edu/stereo/eval/" target="_blank" rel="external">Middlebury stereo evaluation</a><br>提供了一个框架和一个数据集来测试新颖方法的性能和效果基线</li>
-</ul>
-<p>待克服的难点：The common pitfalls make the stereo correspondence so challenging: Photometric distortions and noise, Specular surfaces, Foreshortening, Perspective distortions, Uniform/Ambiguous regions, Repetitive patterns, Transparent objects, Occlusions and discontinuities</p>
-<h3 id="3-The_correspondence_problem">3.The correspondence problem</h3><p>  由于[5]，大部分立体算法基于一下步骤：</p>
-<ul>
-<li>1.匹配代价计算（Matching cost computation）</li>
-<li>2.代价聚合(Cost Aggregation)</li>
-<li>3.视差计算/优化(Disparity computation/Optimization)</li>
-<li>4.视差精细(Disparity refinement)<br>Local:1-&gt;2-&gt;3    (用WTA策略)<br>Global:1(-&gt;2)-&gt;3   semi-global</li>
-</ul>
-<h4 id="3-1_预处理（0）">3.1 预处理（0）</h4><p>  典型方法：Laplacian of Gaussian(LoG)滤波[6],邻域均值去除[7],Bilateral Filtering[8]</p>
-<p>  <strong>优化</strong>简单的像素比对方法:</p>
-<ul>
-<li>Local 用窗口像素代价聚合减小 Signal to noise ratio(SNR)</li>
-<li>Global 最小化代价函数，优化Pixel-based的代价匹配</li>
-</ul>
-<p>$$E(d)=E_{data}(d) + E_{smooth}(d)$$</p>
-<h4 id="3-2_匹配代价计算(1)">3.2 匹配代价计算(1)</h4><p>  3.2.1 单值匹配</p>
-<ul>
-<li>绝对值差<br>$e(x,y,d) = |I_R(x,y)-I_T(x+d,y)|$</li>
-<li>平方差<br>$e(x,y,d) = (I_R(x,y)-I_T(x+d,y))^2$</li>
-<li>鲁棒方法<br>限制outliers的影响，如Truncated Absolute Differences(TAD)<br>$e(x,y,d) = min \{ |I_R(x,y)-I_T(x+d,y)|,T \}$<br>3.2.2 区域匹配</li>
-<li>绝对和（SAD）<br>$C(x,y,d) = \sum_{x\in S}|I_R(x,y)-I_T(x+d,y)|$</li>
-<li>平方差和 （SSD）<br>$C(x,y,d) = \sum_{x\in S}(I_R(x,y)-I_T(x+d,y))^2$</li>
-<li>截断绝对差和（STAD)<br>$C(x,y,d) = \sum_{x\in S}\{|I_R(x,y)-I_T(x+d,y)|,T\}$<br>其他一些方法：Normalized Cross Correlation[9], Zero mean Normalized Cross Correlation[10], Gradient based MF[11], Non parametric[12,13], Mutual Information[14]</li>
-</ul>
-<h4 id="3-3_代价聚合(2)">3.3 代价聚合(2)</h4><p>  固定窗口(FW):<br>  弊端：1.假设图像正面平行 2.忽略深度不连续性 3.不能解决均匀区域 4.无法解决重复区域<br>  优势：简单，使用，实时，不占内存空间，硬件耗电小<br>  优化方法：1.积分图Integral Images（II 1984） 2.箱过滤Box-Filtering(BF 1981) 3.Single Instruction Multiple Data(SIMD)<br>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/BF1.png" alt=""><br>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/BF2.png" alt=""><br>  两者比较：每个点都需要四次运算，II可以处理不通形状的窗口，但需要更多内存，容易溢出，因为若果图片大小为S，则需要$S^2$。不同的BF可以参看[15]</p>
-<p>  3.3.1 一个具体的示例（LIVE DEMO）[16][17]</p>
-<pre><code>-<span class="ruby"> 灰度图
-</span>  -<span class="ruby"> 预处理：均值提取
-</span>  -<span class="ruby"> 代价匹配： 绝对差
-</span>  -<span class="ruby"> 聚合代价： 固定窗口（<span class="constant">FW</span>）
-</span>  -<span class="ruby"> 视差选择： 胜者为王(<span class="constant">WTA</span>)
-</span>  -<span class="ruby"> 局外点优化
-</span>  -<span class="ruby"> 抛弃均匀区域
-</span>  -<span class="ruby"> 优化：<span class="constant">BF</span>+<span class="constant">SIMD</span>
-</span>  -<span class="ruby"> 像素插值<span class="number">1</span>/<span class="number">16</span>对于每个像素
-</span>  -<span class="ruby"> 实时运行在普通<span class="constant">PC</span>上</span>
-</code></pre><p>  3.3.2 一些好的方法<br>   Shiftable Windows[18], Multiple Window[19], Variable Window [20], Segmentation based(Assume each segment smoothly)[21], Bilateral Filtering[22], Adaptive Weights[23], Segment Supoort[24], Fast Aggregation[25], Fast Bilateral Stereo(FBS)[26], Locally Consistent(LC) stereo[27]</p>
-<h4 id="3-4_视差计算/优化(3)">3.4 视差计算/优化(3)</h4><p>  目的：寻找最佳的视差点，最小化代价函数<br>  由于是NP-Hard问题，可以用近似的方法求解</p>
-<ul>
-<li>Graph Cuts[28]</li>
-<li>Belief Propagation[29]</li>
-<li>Cooperative optimization[30]</li>
-<li>一些能量最小化的方法可以参看PAMI期刊文章[31]</li>
-<li>Dynamic Programming(DP) [5]</li>
-<li>Scanline Optimization(SO) [32]</li>
-<li>SO + Support Aggregation [33]</li>
-<li>Enforcing Local Consistency of disparity in SO/DP [34]</li>
-</ul>
-<h4 id="3-5_视差精细(4)">3.5 视差精细(4)</h4><ul>
-<li>匹配算法包括一些outliers，必须识别并纠正</li>
-<li>由于细化了像素级别，需要优化视差的精确性<br>3.5.1 Sub-pixel插值<br>计算临近插值最小的值，[35]提出了floating-point free方法<br>3.5.2 图像滤波<br>中值滤波，形态操作，BF<br>3.5.3 双向匹配（Bidirection Matching,BM）<br>用于检测outliers[36],左右匹配差异小于T，一般T为1<br>$$|d_{LR}(x,y) - d_{RL}(x+d_{LR}(x,y),y)|&lt;T$$<br>3.5.4 单向匹配步骤(Single Matching Phase,SMP)[37]<br>3.5.5 分割方法<br>Segmentation based outliers identification and replacement<br>基于两个假设:1.每段分割片的视差变化平滑 2.每个分割面近似在同一平面<br>对于每个切割面都在3D平面,满足 $d(x,y)=ax+by+\gamma$<br>对于这样鲁棒的平面，可以使用方法：RANSAC[38]和Histogram Voting[30]<br>3.5.6 Accurate Localization of borders and occlusions[39]</li>
-</ul>
-<h3 id="4-应用">4.应用</h3><p>  3D跟踪：物体计数、监控轨迹、安保<br>  扫描，2D和3D转化，增强现实 </p>
-<p>  列出的下列Reference请耐心仔细阅读，可参考原PPT的概括进行参考阅读。由于PPT是2012更新的，一些2010后的前沿方法请另外查询，从CVPR、PAMI等会议或MiddleBury的测评网站上查询阅读。</p>
-<hr>
-<p>[1] Jean-Yves Bouguet , Camera Calibration Toolbox for Matlab<br>[2] E. Trucco, A. Verri, Introductory Techniques for 3-D Computer Vision, Prentice Hall, 1998<br>[3] R.I.Hartley, A. Zisserman, Multiple View Geometry in Computer Vision, Cambridge University Press, 2000<br>[4] G. Bradsky, A. Kaehler, Learning Opencv, O’Reilly, 2008<br>[5] D. Scharstein and R. Szeliski, A taxonomy and evaluation of dense two-frame stereo correspondence algorithms<br>Int. Jour. Computer Vision, 47(1/2/3):7–42, 2002<br>[6] T. Kanade, H. Kato, S. Kimura, A. Yoshida, and K. Oda, Development of a Video-Rate Stereo Machine<br>International Robotics and Systems Conference (IROS ‘95), Human Robot Interaction and Cooperative Robots, 1995<br>[7] O. Faugeras, B. Hotz, H. Mathieu, T. Viville, Z. Zhang, P. Fua, E. Thron, L. Moll, G. Berry,<br>Real-time correlation-based stereo: Algorithm. Implementation and Applications, INRIA TR n. 2013, 1993<br>[8] A. Ansar, A. Castano, L. Matthies, Enhanced real-time stereo using bilateral filtering<br>IEEE Conference on Computer Vision and Pattern Recognition 2004<br>[9] S. Mattoccia, F. Tombari, L. Di Stefano, Fast full-search equivalent template matching by Enhanced Bounded<br>Correlation, IEEE Transactions on Image Processing, 17(4), pp 528-538, April 2008<br>[10] L. Di Stefano, S. Mattoccia, F. Tombari, ZNCC-based template matching using Bounded Partial Correlation<br>Pattern Recognition Letters, 16(14), pp 2129-2134, October 2005<br>[11] F. Tombari, L. Di Stefano, S. Mattoccia, A. Galanti, Performance evaluation of robust matching measures<br>3rd International Conference on Computer Vision Theory and Applications (VISAPP 2008)<br>[12] R. Zabih, J John Woodll Non-parametric Local Transforms for Computing Visual Correspondence, ECCV 1994<br>[13] D. N. Bhat, S. K. Nayar, Ordinal measures for visual correspondence, CVPR 1996<br>[14] H. Hirschmüller. Stereo vision in structured environments by consistent semi-global matching.<br>CVPR 2006, PAMI 30(2):328-341, 2008<br>[15] Changming Sun, Recursive Algorithms for Diamond, Hexagon and General Polygonal Shaped Window Operations<br>Pattern Recognition Letters, 27(6):556-566, April 2006<br>[16] L. Di Stefano, M. Marchionni, S. Mattoccia, A fast area-based stereo matching algorithm, Image and Vision Computing,<br>22(12), pp 983-1005, October 2004<br>[17] L. Di Stefano, M. Marchionni, S. Mattoccia, A PC-based real-time stereo vision system, Machine Graphics &amp; Vision,<br>13(3), pp. 197-220, January 2004<br>[18] D. Scharstein and R. Szeliski, A taxonomy and evaluation of dense two-frame stereo correspondence algorithms<br>Int. Jour. Computer Vision, 47(1/2/3):7–42, 2002<br>[19] H. Hirschmuller, P. Innocent, and J. Garibaldi, Real-time correlation-based stereo vision with reduced border errors<br>Int. Journ. of Computer Vision, 47:1–3, 2002<br>[20]  O. Veksler. Fast variable window for stereo correspondence using integral images, In Proc. Conf. on Computer Vision<br>and Pattern Recognition (CVPR 2003), pages 556–561, 2003<br>[21]  M. Gerrits and P. Bekaert. Local Stereo Matching with Segmentation-based Outlier Rejection<br>In Proc. Canadian Conf. on Computer and Robot Vision (CRV 2006), pages 66-66, 2006<br>[22] C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images. In ICCV98, pages 839–846, 1998<br>[23] K. Yoon and I. Kweon. Adaptive support-weight approach for correspondence search IEEE PAMI, 28(4):650–656, 2006<br>[24] F. Tombari, S. Mattoccia, L. Di Stefano, Segmentation-based adaptive support for accurate stereo correspondence IEEE Pacific-Rim Symposium on Image and Video Technology (PSIVT 2007)<br>[25] F. Tombari, S. Mattoccia, L. Di Stefano, E. Addimanda, Near real-time stereo based on effective cost aggregation International Conference on Pattern Recognition (ICPR 2008)<br>[26] S. Mattoccia, S. Giardino,A. Gambini, Accurate and efficient cost aggregation strategy for stereo correspondence<br>based on approximated joint bilateral filtering, Asian Conference on Computer Vision (ACCV2009)<br>[27] S. Mattoccia, A locally global approach to stereo correspondence, 3D Digital Imaging and Modeling (3DIM2009)<br>[28] V. Kolmogorov and R. Zabih, Computing visual correspondence with occlusions using graph cuts, ICCV 2001<br>[29] A. Klaus, M. Sormann and K. Karner, Segment-based stereo matching using belief propagation and a self-adapting<br>dissimilarity measure, ICPR 2006<br>[30] Z. Wang and Z. Zheng, A region based stereo matching algorithm using cooperative optimization, CVPR 2008<br>[31] R.Szeliski, R. Zabih, D. Scharstein, O. Veksler, V. Kolmogorov, A. Agarwala, M. Tappen, C. Rother, A Comparative<br>Study of Energy Minimization Methods for Markov Random Fields with Smoothness-Based Priors, IEEE Transactions on<br>Pattern Analysis and Machine Intelligence, 30, 6, June 2008, pp 1068-1080<br>[32] H. Hirschmüller. Stereo vision in structured environments by consistent semi-global matching.<br>CVPR 2006, PAMI 30(2):328-341, 2008<br>[33] S. Mattoccia, F. Tombari, and L. Di Stefano, Stereo vision enabling precise border localization within a scanline<br>optimization framework, ACCV 2007<br>[34] S. Mattoccia, Improving the accuracy of fast dense stereo correspondence algorithms by enforcing local consistency of disparity fields, 3DPVT2010<br>[35] L. Di Stefano, S. Mattoccia, Real-time stereo within the VIDET project Real-Time Imaging, 8(5), pp. 439-453, Oct. 2002<br>[36] P. Fua, Combining stereo and monocular information to compute dense depth maps that preserve depth discontinuities 12th. Int. Joint Conf. on Artificial Intelligence, pp 1292–1298, 1993<br>[37] L. Di Stefano, M. Marchionni, S. Mattoccia, A fast area-based stereo matching algorithm, Image and Vision Computing,<br>22(12), pp 983-1005, October 2004<br>[38] M. A. Fischler and R. C. Bolles, Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image<br>Analysis and Automated Cartography, Comm. of the ACM 24: 381–395, June 1981<br>[39] S. Mattoccia, F. Tombari, and L. Di Stefano, Stereo vision enabling precise border localization within a scanline optimization framework, ACCV 2007</p>
-
+      <p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf">原文链接</a></p>
+<h3 id="Stereo_Vision:Algorithms_and_Applications">Stereo Vision:Algorithms and Applications</h3><h4 id="Author:Stefano_Mattoccia">Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html">Stefano Mattoccia</a></h4><h4 id="Lab:University_of_Bologna">Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用<br>
     
   </div>
   <footer class="end-sep">
     
+      
+        <div class="alignleft">
+          <a href="/2015/09/03/ppt-learning-Stereo-Vision/#more" class="more-link">阅读全文</a>
+        </div>
       
       
     
@@ -261,22 +164,15 @@ var _hmt = _hmt || [];
   <div class="entry">
     
       <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
-<p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.</p>
-<p>1.<strong>Introduce</strong><br>   sec 1 介绍全文<br>   sec 2 介绍原理和模型<br>   sec 3 介绍误差影响要素<br>   sec 4 实验结果和分析<br>   sec 5 总结和remark</p>
-<p>2.<strong>深度测量 with triangulation</strong></p>
-<p>Triangulation Methods of Kinect [<a href="https://www.google.com/patents/US8150142" target="_blank" rel="external">1</a>] laser source emits single beam which split into multiple beams by diffraction.</p>
-<p>The <strong>reference pattern</strong> is obtained by capturing a plane at a known distance.</p>
-<p><strong>Disparity</strong>:The shifts are measured for all speckles by a simple image correlation procedure,which yield a disparity image.</p>
-<p>以下图为例，分析<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png" alt=""><br>o为参考平面，k为目标物体位置。由laser projector（不动）发出多个光束，ir camera调整角度使接收到的目标反射光斑落在参考平面上，得到偏移位置d.</p>
-<p>假设完成相机标定后，则 $ Z_0 $, f, b 已知，d也可以获得。<br>根据数学三角原理得到：</p>
-<p>$$ \frac{D}{b}=\frac{Z_0-Z_k}{Z_0} $$<br>$$\frac{d}{f}=\frac{D}{Z_k}$$<br>推导化简得:<br>            $ Z_k = \frac{Z_0}{1+\frac{Z_0}{fb}d} $ （1）<br>假设坐标系正交，得到Z轴坐标距离后，由于f定义了关于点的图像规模（imaging scale）所以得到物体的光点坐标为<br>$$ X_k=-\frac{Z_k}{f}(x_k-x_0+\delta x)$$<br>$$ Y_k=-\frac{Z_k}{f}(y_k-y_0+\delta y)$$<br>其中$x_k$ 和 $y_k$为图像坐标点，$x_0$ 和 $y_0$为坐标原点，$\delta x$ 和$\delta y$ 是镜头扭曲误差校正系数</p>
-<p>3.相机标定<br>我们需要求得标定的参数变量如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png" alt=""><br>前三个通过红外照相机标准标定可得<br>由于USB带宽所限，标定use reduced infrared images instead of actual sensor。<br>Disparity measurement 采样为0~2047 11bits，则 d = md’+n。 m, n为线性化参数。<br>代入 公式（1）可得<br>$$Z^{-1}_k = (\frac{m}{fb}d’ +(Z^{-1}_0 + \frac {n}{fb})) $$<br>通过测得(x,y,d’)可以映射到世界坐标系的(X,Y,Z)</p>
-<p>4.加入颜色元素</p>
-
+<p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.<br>
     
   </div>
   <footer class="end-sep">
     
+      
+        <div class="alignleft">
+          <a href="/2015/08/27/paper-reading-20150826/#more" class="more-link">阅读全文</a>
+        </div>
       
       
     
@@ -305,42 +201,16 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194" target="_blank" rel="external">Click</a><br>作者：Jungong Han,Ling Shao</p>
-<h3 id="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。">这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3><p>这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。<br>主要用于入门延伸阅读所用。</p>
-<p>介绍Kinect实现和技术原理的论文<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6190806" target="_blank" rel="external">《Microsoft Kinect Sensor and Its Effect》</a></p>
-<p>关于深度信息的光线三维成像原理查看论文<a href="https://www.osapublishing.org/aop/fulltext.cfm?uri=aop-3-2-128&amp;id=211561" target="_blank" rel="external">《Structured-Light 3D Surface Imaging: A Tutorial, Advances in Optics and Photonics》</a></p>
-<pre><code>-<span class="ruby"> 硬件：<span class="constant">RGB</span> <span class="constant">Camera</span>,<span class="number">3</span>D <span class="constant">Depth</span> <span class="constant">Sensor</span>,<span class="constant">Motorized</span> <span class="constant">Tilt</span>(调整角度)
-</span>-<span class="ruby"> 软件：<span class="constant">OpenNI</span>, <span class="constant">Microsoft</span> <span class="constant">Kinect</span> <span class="constant">SDK</span>,<span class="constant">OpenKinect</span></span>
-</code></pre><p>1.预处理：</p>
-<ul>
-<li><p>Kinect重标定,广泛的基本方法《Accurate and Practical Cali-<br>bration of A Depth and Color Camera Pair》</p>
-</li>
-<li><p>深度信息的过滤,《Joint Denoising and Interpolation of Depth Maps for MS Kinect Sensors》通过在物体边界寻找空间对应点，物体在彩图分割转移到深度图中。<br>  《 Structure Guided Fusion for Depth Map Inpainting, Pattern Recognition Letters 》</p>
-</li>
-</ul>
-<p>2.物体跟踪和识别</p>
-<ul>
-<li>DETECTION:《Leveraging RGB-D Data: Adaptive Fusion and Domain Adaptation for Object Detection》</li>
-<li>室内切割《 Indoor Segmentation and Support Inference from RGBD Images》 其中包含RGBD数据集</li>
-<li>行为识别 《Accurate 3D Pose Estimation from A Single Depth Image》<img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20activity_recog.png" alt="Basic processing pipeline of Activity Recognition"></li>
-<li>场景识别  《RGB-(D) Scene Labeling: Features and Algorithms》使用加入深度信息的FEATURE有利于提高COMPACITY，抵挡灯光影响和杂乱影响。然而，计算量加大难以实时Real-time</li>
-</ul>
-<p>3.手势识别和分析 4.手势动作（然而这个我并不关心，谢谢）</p>
-<h2 id="5-室内3D匹配"><strong>5.室内3D匹配</strong></h2><p>  AIM：对室内环境的数字化表达，室内三维重建<br>  研究包含两部分：1.数据和特征的抽取 2.循环检测并全局优化</p>
-<h3 id="A-稀疏（sparse）特征匹配">A.稀疏（sparse）特征匹配</h3><p>  典型《RGB-D Mapping: Using Depth Cameras for Dense 3D Modeling of Indoor Environments》 优化结合appearance and shape（依赖深度图所得） 通过Iterative Closest Point(ICP)算法。</p>
-<h3 id="B-密集点云匹配（Dense_points_tracking_between_two_frames）">B.密集点云匹配（Dense points tracking between two frames）</h3><p>  计算量大，不易实时，但有成功的论文《KinectFusion: Real-Time Dense Surface Mapping and Tracking》</p>
-<p>  针对特定问题下的论文：<br>  LARGE LIGHTING VARIATIONS《Dense RGB-D Mapping for Real-Time Localisation and Navigation》<br>  CAMERA ROAM FREE《Moving Volume KinectFusion》<br>  室内基准实验数据集 《A Benchmark for the Evaluation of RGB-D SLAM Systems》</p>
-<p>6.问题&amp;展望&amp;总结</p>
-<ul>
-<li>REAL-WORLD应用</li>
-<li>有效算法模型</li>
-<li>RGB-D信息高效整合</li>
-</ul>
-
+      <p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194">Click</a><br>作者：Jungong Han,Ling Shao</p>
+<h3 id="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。">这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3>
     
   </div>
   <footer class="end-sep">
     
+      
+        <div class="alignleft">
+          <a href="/2015/08/18/paper-reading-20150816/#more" class="more-link">阅读全文</a>
+        </div>
       
       
     
@@ -369,68 +239,19 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517" target="_blank" rel="external">Paper Link</a></p>
+      <p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517">Paper Link</a></p>
 <h3 id="Author:Paul_Viola,Michael_Jones">Author:Paul Viola,Michael Jones</h3><blockquote>
 <h3 id="Key_Contributions:">Key Contributions:</h3><h3 id="1-Integral_Image">1.Integral Image</h3><h3 id="2-Learning_algorithm_based_on_AdaBoost">2.Learning algorithm based on AdaBoost</h3><h3 id="3-Combine_Classifiers_in_Cascade">3.Combine Classifiers in Cascade</h3></blockquote>
 <h3 id="Methods:">Methods:</h3><ul>
-<li><p>Represent and classify images based on simple features rather than pixels directly(operates <strong>faster</strong> and easily encode <strong>ad-hoc</strong> domain knowledge)</p>
-</li>
-<li><p><strong>Three</strong> kinds of simple features are used in the paper</p>
-<ol>
-<li>Two-Rectangles features (A and B)</li>
-<li>Three-Rectangles features (C)</li>
-<li><p>Four-Rectangles features (D)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/sceneryfeatures.jpg" alt="Three-types-of-Features"></p>
-<p>The feature value calculation:<br>$$\sum{pixel\ values\ in\ white}-\sum{pixel\ values\ in\ gray}$$</p>
-</li>
-</ol>
-</li>
-<li><p><strong>Contributions 1:Integral Image</strong><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery3.jpg" alt=""><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery1.jpg" alt=""></p>
-</li>
-<li><p>Contributions 2:Learning Algorithm based on AdaBoost</p>
-<blockquote>
-<p><strong>The advantages of AdaBoost:</strong><br>1.Used for <strong>feature selection</strong> and <strong>classifier training</strong><br>2.Selecting small set of <strong>good features</strong> from large feature set<br>3.Used a set of <strong>weak learners</strong> to form a strong one<br>4.Guarantees the training error of strong classifier very <strong>low</strong></p>
-</blockquote>
-<p><strong>The Pesudo of Adaboost:</strong><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20pesudo.png" alt="The pesudo"></p>
-</li>
-<li><p>Contributions 3:Combine Classifiers in Cascade</p>
-<ul>
-<li>Building cascade of classifiers(Increase Performance &amp; Reduce computation)</li>
-<li>Simpler classifiers apply early to <strong>reject majority</strong> of sub windows and apply complex classifiers to achieve low false positive</li>
-<li>Subsequent classifiers are trained using examples,which pass through all the previous stages<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery4.JPG" alt="Cascade Model"></li>
-</ul>
-</li>
-<li><p>How to use</p>
-<ol>
-<li>User selects maximun FPR(False Prediction Rate) and minimun acceptable DR(Detection Rate) per each stage</li>
-<li>User selects target</li>
-<li>Each stage is trained by adding features until the target DR and FPRs are met</li>
-<li>Stages are added until the overall target for DR and FPR are met</li>
-</ol>
-</li>
-<li><p>Further optimization</p>
-<ol>
-<li>Number of classifier stages</li>
-<li>Number of features in each stage</li>
-<li>Threshold of each stage</li>
-<li>Minimun number of features that achieved accuracy</li>
-</ol>
-</li>
-<li><p>Conclusion</p>
-<ol>
-<li>Solution achieves the goal of real time object detection</li>
-<li>Conjunction of simple rectangle features and integral image gives a efficient feature representation</li>
-<li>AdaBoost is used for the feature selection and classifier training</li>
-<li>Cascade of classifiers allows to quickly discard background regions and concentrate more on ojbect-like regions</li>
-</ol>
-</li>
-<li><p>Approximately Performance<br> Accuracy:Front-Face around 68.8%,Profile around 33%<br> Time:every picture with 67 millisecond</p>
-</li>
-</ul>
-
+<li>Represent and classify images based on simple features rather than pixels directly(operates <strong>faster</strong> and easily encode <strong>ad-hoc</strong> domain knowledge)
     
   </div>
   <footer class="end-sep">
     
+      
+        <div class="alignleft">
+          <a href="/2015/08/16/paper-research-01/#more" class="more-link">阅读全文</a>
+        </div>
       
       
     
@@ -463,67 +284,15 @@ var _hmt = _hmt || [];
 TOPICS: Efficient methods for object detection,object recognition and event/scene understanding,
 including dangerous objects/events like fire and heavy smoke
 要求：2015-8-18下午前，英文整理文档，简要文字加上直观图片说明相关领域内代表性的方法以及最好的方法，包含至少15篇参考文献。
-</code></pre><h1 id="OBJECT_DETECTION_&amp;_RECOGNITION">OBJECT DETECTION &amp; RECOGNITION</h1><p> <strong>1.HISTORY&amp;OVERVIEW</strong> <a href="http://www.cs.unc.edu/~lazebnik/spring10/lec16_recognition_intro.pdf" target="_blank" rel="external">[1]</a> <a href="http://www.researchgate.net/publication/257484936_50_Years_of_object_recognition_Directions_forward" target="_blank" rel="external">[2]</a></p>
-<ul>
-<li><p>Targets:There are about 10,000 to 30,000 visual object categories. Including Scene categorization(city, outdoor), Image-level annotaion(are there people), Object detection(where are the people) and Image parsing(people building).</p>
-<p>P.Perona[3] discerns <strong>five levels</strong> of tasks of increasing difficulty in the <strong>recognition problem</strong>:<br>1.Verification: Is a particular item present in an image patch?<br>2.Detection and Localization: Given a complex image, decide if a particular exemplar object is located some-where in this image, and provide accurate location information on this object.<br>3.Classification: Given an image patch, decide which of the multiple possible categories are present in that patch.<br>4.Naming: Given a large complex image (instead of an image patch as in the classification problem) determine the location and labels of the objects present in that image.<br>5.Description: Given a complex image, name all the objects present in the image, and describe the actions and re-lationships of the various objects within the context of this image. As the author indicates, this is also sometimes referred to as scene understanding.</p>
-</li>
-<li><p>The <strong>components</strong> used in a typical object recognition system:The feature extraction, followed by feature grouping, followed by object hypothesis generation, followed by an object verification stage.But nowadays methods have <strong>blurred</strong> the distinction between the mentioned component.<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20typical_recognition_system.png" alt="Classical Recognition System"></p>
-</li>
-<li><p><strong>Timeline</strong> of recognition</p>
-<ul>
-<li>Late 1980s:Alignment,Geometric Primitives</li>
-<li>Early 1990s:Invariants,Appearance-based Methods</li>
-<li>Mid-late 1990s:Sliding Windows Approaches</li>
-<li>Late 1990s:Feature-based Methods</li>
-<li>Early 2000s:Parts-and-shape Models</li>
-<li>2003-late 2000s:Bags of Features</li>
-<li>Present Trends:Machine Learning,Deep Learning,Combination of local and global Methods,Modeling Context,Emphasis on “Image Parsing”<br>(you can see the detail of methods in the <a href="http://www.cs.unc.edu/~lazebnik/spring10/lec16_recognition_intro.pdf" target="_blank" rel="external">Slides</a>)</li>
-</ul>
-<p><strong>2.Efficient Methods &amp; Relative Papers</strong></p>
-</li>
-<li><h3 id="Alignment_&amp;_Geometric_Primitives">Alignment &amp; Geometric Primitives</h3><p> <strong>1.Alignment:</strong>Transformation between pairs of features matches in two images<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20alignment.png" alt="Transformation"><br>e.g.《Object Recognition Using Alignment》<a href="http://www.cse.unr.edu/~bebis/CS773C/ObjectRecognition/Papers/Huttenlocher87.pdf" target="_blank" rel="external">[4]</a> based on the assumption and the method that the position, orientation and scale of an object in three-space can be determined from three pairs of corresponding model and image points.</p>
-<p> <strong>2.Geometric Primitives:</strong>Decribed model-based system with <strong>Volumn Models</strong><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20geomeric_primitive.png" alt="Volumn Models"><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20geometric.png" alt="Model-Based"><br>e.g.《Symbolic reasoning among 3-D models and 2-D images》<a href="http://www.sciencedirect.com/science/article/pii/000437028190028X" target="_blank" rel="external">[5]</a> Describe <strong>model-based</strong> systems in models,prediction of image features,description of image features and interpretation which relates image features to models.</p>
-</li>
-<li><h3 id="Invariants_&amp;_Appearance-based">Invariants &amp; Appearance-based</h3><p> <strong>1.Geometric invariants:</strong>Used to probide an efficient indexing mechanism for object recognition system.<br> e.g.《Geometric hashing: an overview》<a href="http://www.computer.org/csdl/mags/cs/1997/04/c4010.pdf" target="_blank" rel="external">[6]</a> Typical deformations discussed in the literature include 2D translations,rotations and scalings.</p>
-<p> <strong>Limits</strong>:The above method only suit for <strong>monocular</strong> viewpoint invariants.</p>
-<p> <strong>2.Appearance-based:</strong>Including Eigenfaces,Color Histograms and appearance manifolds.<br> e.g.《Face Recognition Using Eigenfaces 》<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=139758" target="_blank" rel="external">[7]</a> treats face recognition as a two-dimensional recognition problem and makes that the face images are projected onto a <strong>feature space</strong> which best encodes the variation among known face images.(<a href="http://blog.csdn.net/feirose/article/details/39552887" target="_blank" rel="external">实现原理</a>)</p>
-<p> e.g.《Color Indexing》<a href="http://link.springer.com/article/10.1007/BF00130487" target="_blank" rel="external">[8]</a> demonstrates that <strong>color histograms</strong> of multicolored objects provide a robust,efficient cue for indexing into a large database of models</p>
-<p> e.g. 《Visual learning and recognition of 3d objects from appearance》<a href="http://link.springer.com/article/10.1007/BF01421486" target="_blank" rel="external">[9]</a> used the <strong>manifolds</strong> for object detection.<br> <img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20manifold.png" alt="manifold"><br> <strong>Limits</strong>:<br> 1.Require global registration of patterns<br> 2.Not robust to clutter,occlusion,geometric transformations</p>
-</li>
-<li><h3 id="Sliding_Window_Approaches">Sliding Window Approaches</h3><p> e.g. 《Rapid Object Detection using a Boosted Cascade of Simple Features》<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517" target="_blank" rel="external">[10]</a> It is <strong>prominent</strong> and milestone in face detection，more than 11500 citations and widely used solution for the real-time Object Detection.The very detailed of the method can click on <a href="/2015/08/16/paper-research-01/">this</a> (Strongly Recommend)<br> <strong>Limits</strong>:Can not handle clutter and occlusion well</p>
-</li>
-<li><h3 id="Feature-based_Methods">Feature-based Methods</h3><p> e.g. 《Distinctive Image Features from Scale-Invariant Keypoints》<a href="http://download.springer.com/static/pdf/941/art%253A10.1023%252FB%253AVISI.0000029664.99615.94.pdf?originUrl=http%3A%2F%2Flink.springer.com%2Farticle%2F10.1023%2FB%3AVISI.0000029664.99615.94&amp;token2=exp=1439832722~acl=%2Fstatic%2Fpdf%2F941%2Fart%25253A10.1023%25252FB%25253AVISI.0000029664.99615.94.pdf%3ForiginUrl%3Dhttp%253A%252F%252Flink.springer.com%252Farticle%252F10.1023%252FB%253AVISI.0000029664.99615.94*~hmac=8324543a7075217178c5cd6bc912ca31a21f7476c9e9c3037381dad9019bc3fb" target="_blank" rel="external">[11]</a> the sift feature by Lowe,object detection via the feature points matching.The keypoints have been shown to be invariant to image rotation and scale and robust across a substantial range of affine distortion,addition of noise, and change in illumination.<br> <img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20sift.png" alt="SIFT Feature"><br> <strong>Limits</strong>:Can not real-time with large computation</p>
-</li>
-<li><h3 id="Part-based_Methods"><a href="http://cs.nyu.edu/~fergus/teaching/vision_2012/11_parts_models.pdf" target="_blank" rel="external">Part-based Methods</a></h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20part_model.png" alt="Part-based Model"></p>
-<ul>
-<li>Object as a set of parts</li>
-<li>Relative locations between parts</li>
-<li>Appearance of part<br>e.g. 《Object Detection with Discriminatively Trained Part Based Model》<a href="http://lear.inrialpes.fr/~oneata/reading_group/dpm.pdf" target="_blank" rel="external">[12]</a> use Hog Features,Part Model and Latent SVM to work.<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20object_hypothesis.png" alt="Object hypohesis with component part"><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20dpm.png" alt="Detected with part-based method"></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><h3 id="Bag-of-features_Models">Bag-of-features Models</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20bag_of_words.png" alt="Bag of words"><br>e.g. 《Local features and kernels for classification of texture<br>and object categories: A comprehensive study》<a href="http://lear.inrialpes.fr/pubs/2007/ZMLS07/ZhangMarszalekLazebnikSchmid-IJCV07-ClassificationStudy.pdf" target="_blank" rel="external">[13]</a> achieved very impressive result in the <a href="http://host.robots.ox.ac.uk/pascal/VOC/" target="_blank" rel="external">PASCAL Visual Object Classes Challenge</a></p>
-<p><strong>Limits</strong>:Ignore the spatial relationships among the patches</p>
-</li>
-<li><h3 id="Neural-network_models">Neural-network models</h3><p>e.g. 《ImageNet Classification with Deep Convolutional<br>Neural Networks》<a href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="external">[14]</a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20CNN.png" alt="Convolution Neutral Network"></p>
-<p>e.g. 《Rich feature hierarchies for accurate object detection and semantic segmentation》<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6909475" target="_blank" rel="external">[15]</a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20RCNN.png" alt="RCNN,some relevant methods:fast RCNN,faster RCNN,SPP"></p>
-</li>
-<li><h3 id="Scene/Event_Recognition">Scene/Event Recognition</h3><p><strong>Scene</strong>: 《Modeling the shape of the scene: a holistic representation of the spatial envelope》<a href="http://people.csail.mit.edu/torralba/code/spatialenvelope/" target="_blank" rel="external">[16]</a> performs good at scene recognition.<br><strong>Event</strong>: 《Video-based event recognition:activity representation and probabilistic recognition methods》<a href="http://ac.els-cdn.com/S1077314204000712/1-s2.0-S1077314204000712-main.pdf?_tid=bf1117ce-4572-11e5-9fbb-00000aab0f27&amp;acdnat=1439879663_064adeae1298edd050e4715f458da8cb" target="_blank" rel="external">[17]</a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20event_recog.png" alt="Event Recognition System"></p>
-</li>
-</ul>
-<p> <strong>3.Applications for nowadays</strong></p>
-<p>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20word_recog.png" alt="Reading license plates,zip codes,checks "></p>
-<p>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20finger_recog.png" alt="Fingerprint recognition"></p>
-<p>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20face_recog.jpeg" alt="Face detection"></p>
-<p>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20cover_recog.png" alt="Recognition of flat textured objects(Covers)"></p>
-<p><strong>4.References</strong><br>[1] Fei-Fei Li, Rob Fergus, Antonio Torralba, and Jean Ponce. “Object Recognition:History and Overview.” CS.UNC.EDU , 2011<br>[2] Andreopoulos, Alexander, and John K. Tsotsos. “50 Years of object recognition: Directions forward.” Computer Vision and Image Understanding 117.8 (2013): 827-891.<br>[3] P. Perona, “Object Categorization: Computer and Human Perspectives, chap.” Visual Recognition circa 2008, Cambridge University Press,<br>55–68, 2009.<br>[4] Huttenlocher, Daniel P., and Shimon Ullman. “Object recognition using alignment.” Proc. ICCV. Vol. 87. 1987.<br>[5] Brooks, Rodney A. “Symbolic reasoning among 3-D models and 2-D images.” Artificial intelligence 17.1 (1981): 285-348.<br>[6] Wolfson, Haim J., and Isidore Rigoutsos. “Geometric hashing: An overview.” Computing in Science &amp; Engineering 4 (1997): 10-21.<br>[7] Turk, Matthew, and Alex P. Pentland. “Face recognition using eigenfaces.” Computer Vision and Pattern Recognition, 1991. Proceedings CVPR’91., IEEE Computer Society Conference on. IEEE, 1991.<br>[8] Swain, Michael J., and Dana H. Ballard. “Color indexing.” International journal of computer vision 7.1 (1991): 11-32.<br>[9] Murase, Hiroshi, and Shree K. Nayar. “Visual learning and recognition of 3-D objects from appearance.” International journal of computer vision 14.1 (1995): 5-24.<br>[10] Viola, Paul, and Michael Jones. “Rapid object detection using a boosted cascade of simple features.” Computer Vision and Pattern Recognition, 2001. CVPR 2001. Proceedings of the 2001 IEEE Computer Society Conference on. Vol. 1. IEEE, 2001.<br>[11] Lowe, David G. “Distinctive image features from scale-invariant keypoints.” International journal of computer vision 60.2 (2004): 91-110.<br>[12] Felzenszwalb, Pedro F., et al. “Object detection with discriminatively trained part-based models.” Pattern Analysis and Machine Intelligence, IEEE Transactions on 32.9 (2010): 1627-1645.<br>[13] Zhang, Jianguo, et al. “Local features and kernels for classification of texture and object categories: A comprehensive study.” International journal of computer vision 73.2 (2007): 213-238.<br>[14] Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. “Imagenet classification with deep convolutional neural networks.” Advances in neural information processing systems. 2012.<br>[15] Girshick, Ross, et al. “Rich feature hierarchies for accurate object detection and semantic segmentation.” Computer Vision and Pattern Recognition (CVPR), 2014 IEEE Conference on. IEEE, 2014.<br>[16] Oliva, Aude, and Antonio Torralba. “Modeling the shape of the scene: A holistic representation of the spatial envelope.” International journal of computer vision 42.3 (2001): 145-175.<br>[17] Hongeng, Somboon, Ram Nevatia, and Francois Bremond. “Video-based event recognition: activity representation and probabilistic recognition methods.” Computer Vision and Image Understanding 96.2 (2004): 129-162.</p>
-
+</code></pre>
     
   </div>
   <footer class="end-sep">
     
+      
+        <div class="alignleft">
+          <a href="/2015/08/16/object-detection-research/#more" class="more-link">阅读全文</a>
+        </div>
       
       
     
@@ -590,18 +359,31 @@ including dangerous objects/events like fire and heavy smoke
   &copy; 2015 <a href="/">CsrjTan</a>
   
 </div>
+
 <div class="theme-copyright">
   Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
    | 
-  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+  Redesign by <a href="https://github.com/csrjtan" target="_blank">tanrunj</a>
 </div>
-<div class="clearfix"></div></footer>
+
+<div class="clearfix"></div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span></footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 <script src="/js/scale.fix.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
 
+<nav id="pagination" >
+    
+    
+    <div class="clearfix"></div>
+</nav>
 <script type="text/javascript">
   var duoshuoQuery = { short_name: 'tanrunj' };
   (function() {
@@ -616,6 +398,8 @@ including dangerous objects/events like fire and heavy smoke
 
 
 
+
+
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
@@ -624,35 +408,7 @@ including dangerous objects/events like fire and heavy smoke
   })(jQuery);
 </script>
 
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 </body>
 </html>
+
+<a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
