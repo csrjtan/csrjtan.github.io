@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Guidance:A Visual Sensing Platform For Robotic Applications | CSRJTAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="CsrjTan">
+  
+  
+    <meta name="description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
+由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。
+1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
+  
+  <meta name="description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
+由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。
+1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Guidance:A Visual Sensing Platform For Robotic Applications">
+<meta property="og:url" content="http://yoursite.com/2015/10/28/paper-reading-20151028/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
+由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。
+1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/guidance_2.png">
+<meta property="og:updated_time" content="2015-10-28T14:13:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Guidance:A Visual Sensing Platform For Robotic Applications">
+<meta name="twitter:description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
+由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。
+1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">CSRJTAN</a></h1>
+    <p><a href="/">Keep Moving</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+      
+     
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/10/28/paper-reading-20151028/">
+  <time datetime="2015-10-28T12:38:38.000Z">
+    2015-10-28
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Guidance:A Visual Sensing Platform For Robotic Applications</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="DJI在CVPR15上发的关于GUIDANCE组件的文章">DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
+<p>由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。<br>这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。</p>
+<h3 id="1-Introduction">1.Introduction</h3><p>提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用于机器人定位位置识别。大部分是单目的，这里也有双目的方法[4]。这里GUIDANCE包括了5个方向的双目，可以提供深度图，超声数据，障碍物距离等内容。接下来，故事的展开分为内置函数，SDK接口以及相关应用</p>
+<h3 id="2-内置：Guidance是升级版的[6]">2.内置：Guidance是升级版的[6]</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png" alt="SDK_Build_In"><br><a id="more"></a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_2.png" alt=""><br>对于Matching Refinement用了[7]</p>
+<h3 id="4-可扩展的智能应用：">4.可扩展的智能应用：</h3><p>1.Autonomous Navigation<br>  拥有高精度的GPS定位<br>2.Visual SLAM[8]<br>  依赖高精度的VO结果<br>3.Depth Based Tracking</p>
+<p>为了开发SLAM避障，请阅读下面黑体</p>
+<p>[1]C. Forster, M. Pizzoli, and D. Scaramuzza. SVO: Fast semi- direct monocular visual odometry. In ICRA, 2014.<br><strong>[2]J. Engel, T. Schops, and D. Cremers. LSD-SLAM: Large- scale direct monocular SLAM. In ECCV, 2014.<br>[3]A. Davison. Real-time simultaneous localisation and map- ping with a single camera. In Computer Vision, 2003. Proceedings. Ninth IEEE International Conference on, pages 1403–1410 vol.2, Oct 2003 </strong><br>[4] F. Endres, J. Hess, N. Engelhard, J. Sturm, D. Cremers, and W. Burgard. An evaluation of the RGB-D SLAM system. In Robotics and Automation (ICRA), 2012 IEEE International Conference on, pages 1691–1696, May 2012.<br>[5]D. Honegger, L. Meier, P. Tanskanen, and M. Pollefeys. An open source and open hardware embedded metric optical flow cmos camera for indoor and outdoor applications. In Robotics and Automation (ICRA), IEEE International Con- ference on, pages 1736–1741, May 2013.<br>[6]G. Zhou, A. Liu, K. Yang, T. Wang, and Z. Li. An embedded solution to visual mapping for consumer drones. In Computer Vision and Pattern Recognition Workshops (CVPRW), IEEE Conference on, pages 670–675, 2014.</p>
+<p>[7]B. D. Lucas and T. Kanade. An iterative image registration technique with an application to stereo vision. In Proceed- ings of the 7th International Joint Conference on Artificial<br>Intelligence - Volume 2, pages 674–679, 1981<br><strong>[8]G. Klein and D. Murray. Parallel tracking and mapping for small AR workspaces. In Sixth IEEE and ACM Internation- al Symposium on Mixed and Augmented Reality (ISMAR), 2007.</strong></p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/paper/">paper</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-paper-reading-20151028" data-title="Guidance:A Visual Sensing Platform For Robotic Applications" data-url="http://yoursite.com/2015/10/28/paper-reading-20151028/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tanrunj"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">CsrjTan</a>
+  
+</div>
+
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="https://github.com/csrjtan" target="_blank">tanrunj</a>
+</div>
+
+<div class="clearfix"></div>
+
+
+ <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2015/10/27/camera-calibration/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'tanrunj' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+<a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>

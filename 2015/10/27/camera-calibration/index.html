@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration9.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration10.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration11.png">
-<meta property="og:updated_time" content="2015-10-27T05:22:09.000Z">
+<meta property="og:updated_time" content="2015-10-27T15:10:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="摄像头校正（Camera Calibration）">
 <meta name="twitter:description" content="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习首先分享一下好的资源Richard’s blog 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。
@@ -116,13 +116,13 @@ var _hmt = _hmt || [];
 <h3 id="1-针孔模型(Pinhole_model)">1.针孔模型(Pinhole model)</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png" alt=""></p>
 <p>从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:<br>$$-x=f\frac{X}{Z}$$</p>
 <p>换一个方式，由于人眼看到的并非是倒像，其实可以如下图一样，将成像平面前移到眼睛前方，或者进行一个重新对应成像的过程，从而把倒像恢复，但大小不变的。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration2.png" alt=""><br>$$x=f\frac{X}{Z}$$</p>
-<p>为了使得影像中心没有偏差，加入位移参数$C_x和C_y$，另外成像平面的像素长宽的比例不一样，所以可以加入$s_x和s_y$调整。但这是可以和焦距融合的，所以最终得到公式：<br>$$q=M* Q$$<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration3.png" alt=""><br>$f_x f_y c_x c_y$为摄像机的内参数，一旦标定是固定不变的。</p>
+<p>为了使得影像中心没有偏差，加入位移参数$C_x和C_y$，另外成像平面的像素长宽的比例不一样，所以可以加入$s_x和s_y$调整。但这是可以和焦距融合的，所以最终得到公式：<br>$$q=M* Q$$<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration3.png" alt=""><br>$f_x ，f_y ，c_x ，c_y$为摄像机的内参数，一旦标定是固定不变的。</p>
 <h3 id="2-透镜模型">2.透镜模型</h3><p>由于针孔对光线的采集不足，需要长曝光，这是不可取的。所以选用透镜，但这回带来透镜畸变，主要是径向（Radial）和切向(Tangent)畸变<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration4.png" alt=""><br>校正选用的Model如下，其中径向由泰勒展开的前三个偶数项（由于中心对称的偶函数），而切向的恢复拟合模型可以参考详细的数学方法，这里不关注。</p>
 <p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration5.png" alt="校正radial"></p>
 <p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration6.png" alt="校正tangent"><br>这里k1,k2,p1,p2,k3成为摄像机的形变参数(Distortion parameteres)</p>
 <h3 id="3-Calibration">3.Calibration</h3><p>外部参数是用来将世界坐标系和Camera坐标系之间的坐标系统进行转换。通过3个维度的旋转和平移可得：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration7.png" alt=""></p>
 <h3 id="4-张正友方法">4.张正友方法</h3><p>由于OpenCV以及matlab所使用的方法都是基于张正友的方法，这里介绍一下，其特点是校正方法的弹性以及校正物件比较容易，为一个平面物件。<br>由于校正物体为平面物体，成像也是一个平面物体，而平面物体上的点Transform到另一个平面上，这在CV领域理称为Planar Homography<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration8.png" alt="Planar Homography"><br>基于如此假设，减少一个Z轴上的旋转向量，得到的映射方程可以简化为如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration9.png" alt=""><br>通过$H=A*[r_1 r_2 t]$代入可得以下解：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration10.png" alt=""></p>
-<h4 id="如此，我们有Homography_Constrain的约束">如此，我们有Homography Constrain的约束</h4><p>$r_1 r_2$为相互垂直的旋转向量，且大小相同,即$r_1^T*r_2=0$以及$||r_1||=||r_2||和r_1^T*r_1=r_2^T*r_2$从而代入上面的式子进行矩阵求解，最终得到如下结果：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration11.png" alt=""><br>其中$B=A^{-T}A^{-1}$，B为对称矩阵，所以只需要知道6个矩阵元素就好。由此推出要求得一个解，至少需要3幅图像的6对已知对应点。（多多益善）<br>此外，由于$r_1 r_2$不一定相互垂直，所以有时需要对R进行奇异值分解。</p>
+<h4 id="如此，我们有Homography_Constrain的约束">如此，我们有Homography Constrain的约束</h4><p>$r_1 r_2$为相互垂直的旋转向量，且大小相同,即$r_1^T*r_2=0$以及$||r_1||=||r_2||和r_1^T*r_1=r_2^T*r_2$从而代入上面的式子进行矩阵求解，最终得到如下结果：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration11.png" alt=""><br>其中$B=A^{-T}A^{-1}$，B为对称矩阵，所以只需要知道6个矩阵元素就好。由此推出要求得一个解，至少需要3幅图像的6对已知对应点。（多多益善）<br>此外，由于$r_1 和 r_2$不一定相互垂直，所以有时需要对R进行奇异值分解。</p>
 <p>有解的前提是2NK&gt;=6K+4,即是(N-3)K&gt;=2</p>
 <h3 id="4-OpenCV的相关函数">4.OpenCV的相关函数</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//寻找棋盘角点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cvfindChessboardCorners</span><span class="params">(</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">void</span>* image,</span><br><span class="line">	CvSize 		pattern_size,</span><br><span class="line">	CvPoint2D32f*	corners,</span><br><span class="line">	<span class="keyword">int</span>*		corner_count = <span class="literal">NULL</span></span><br><span class="line">	<span class="keyword">int</span>		flags = CV_CALIB_V_ADAPTIVE_THRESH</span><br><span class="line">	)</span></span>;</span><br><span class="line"><span class="comment">//画出找到的角点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvDrawChessboardCorner</span><span class="params">(</span><br><span class="line">	CvArr*	image,</span><br><span class="line">	CvSize	pattern_size,</span><br><span class="line">	CvPoint2D32f* corners,</span><br><span class="line">	<span class="keyword">int</span> count,</span><br><span class="line">	<span class="keyword">int</span> pattern_was_found</span><br><span class="line">	)</span></span>;</span><br><span class="line"><span class="comment">//摄像机标定</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvCalibrateCamera2</span><span class="params">(</span><br><span class="line">	CvMat* object_points,</span><br><span class="line">	CvMat* image_points,</span><br><span class="line">	<span class="keyword">int</span>* point_counts,</span><br><span class="line">	CvSize image_size,</span><br><span class="line">	CvMat* intrinsic_matrix,</span><br><span class="line">	CvMat* distortion_coeffs,</span><br><span class="line">	CvMat* rotation_vectors = <span class="literal">NULL</span>,</span><br><span class="line">	CvMat* translation_vectors = <span class="literal">NULL</span>,</span><br><span class="line">	<span class="keyword">int</span> flags = <span class="number">0</span></span><br><span class="line">	)</span></span>;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>计算完内参数后，也由单应性条件计算得到外参数</p>
@@ -190,6 +190,8 @@ var duoshuoQuery = {short_name:"tanrunj"};
 
 
 <nav id="pagination" >
+    
+    <a href="/2015/10/28/paper-reading-20151028/" class="alignleft prev" >上一页</a>
     
     
     <a href="/2015/10/25/paper-reading-20151025/" class="alignright next" >下一页</a>
