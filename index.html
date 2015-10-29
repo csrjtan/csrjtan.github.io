@@ -58,6 +58,8 @@ var _hmt = _hmt || [];
       
         <li><a href="/archives">Archives</a></li>
       
+        <li><a href="/tags">Tags</a></li>
+      
         <li><a href="/about">About</a></li>
       
       
@@ -70,6 +72,48 @@ var _hmt = _hmt || [];
     <div class="content">
 
 
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/10/28/group-talk1/">
+  <time datetime="2015-10-28T15:48:09.000Z">
+    2015-10-28
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/10/28/group-talk1/">小组Talk1</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="理大第一次小组REPORT">理大第一次小组REPORT</h2><p>讲讲进来三个月的工作成果和研究进展，分享一下所学内容<br>这里写下日记，总结之余，也将演讲内容在这里过一遍</p>
+<h3 id="1-Big_Picture">1.Big Picture</h3><p>Target:实现无人机的自动导航以及躲避障碍物<br>使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。<br>避障算法，Bug Algorithm:检测到障碍物，进行闪躲，但依然朝终点靠近<br>这里的起始点和终点乃至地图都可以pre-defined。</p>
+<p>由于这里面核心用到的是环境的三维信息，所以Stereo Matching的精度技术显得尤为重要</p>
+<h3 id="2-Stereo_Vision">2.Stereo Vision</h3><h4 id="2-1_Camera_Calibration">2.1 Camera Calibration</h4><p>这一节可以看之前camera calibration的日志，针孔平面可由相似三角求出，但由于针孔曝光不足，所以一般用透镜，所以引入了透镜畸变误差，建立数学模型解决。然后我们标定的目的主要是为了能求出摄像机的内参数，包括焦距和成像中心点偏移。以及畸变参数，从而对图像进行修正。</p>
+<h3 id="2-2_Stereo_Matching">2.2 Stereo Matching</h3><p>这一节可以参考之前stereo matching的日志，图像的深度Z可以通过简单的三角测量求解所得。所以StereoMatching的主要流程就是图像校正、立体匹配、计算深度。其中主要的步骤在于立体匹配：包括了预处理滤波、代价聚合计算、视差计算以及视差精细等步骤。</p>
+<h3 id="3-DJI_Developer">3.DJI Developer</h3><h4 id="3-1_Matrix_100">3.1 Matrix 100</h4><p>首先介绍一下M100这个可扩展飞行平台，它主要特点的续航时间长，负重好，飞行稳定性强，搭载的N1飞控可扩展接口和开发设备接口十分多，强大的可扩展性。<br>平台主要提供了Android和Onboard SDK，其中Android SDK主要控制摄像机、电池和云台以及飞行参数，但由于N1连接遥控器再用USB与手机连接的，所以数据传输是不稳定且难以做到实时的，所以这一块一般用于做一些监控拍摄，指派任务的非实时任务为佳。</p>
+<p>相对来说OnBoard SDK提供了开放协议从而对飞控进行命令委派，进而对飞行器进行姿态调整以及飞行模式切换等。这需要使用机载设备对采集的环境数据进行实时采集反馈。</p>
+<h4 id="3-2_Guidance">3.2 Guidance</h4><p>Guidance组件是一个强大的信息采集组件，具有5个超声结合双目的数据采集器，然后官方提供了GUIDANCE的数据采集例程，而且它们发了一个paper在CVPR15的WORKSHOP。</p>
+<p>最后，这里提供一下这次GROUP_TALK的PPT。<br><a href="http://pan.baidu.com/s/1i3nRCtJ" target="_blank" rel="external">PPT&amp;数据采集</a><br>密码: d1s4</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
 
 
   
@@ -414,47 +458,6 @@ var _hmt = _hmt || [];
       
         <div class="alignleft">
           <a href="/2015/08/18/paper-reading-20150816/#more" class="more-link">阅读全文</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/16/paper-research-01/">
-  <time datetime="2015-08-16T13:12:12.000Z">
-    2015-08-16
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/16/paper-research-01/">Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517">Paper Link</a></p>
-<h3 id="Author:Paul_Viola,Michael_Jones">Author:Paul Viola,Michael Jones</h3><blockquote>
-<h3 id="Key_Contributions:">Key Contributions:</h3><h3 id="1-Integral_Image">1.Integral Image</h3><h3 id="2-Learning_algorithm_based_on_AdaBoost">2.Learning algorithm based on AdaBoost</h3><h3 id="3-Combine_Classifiers_in_Cascade">3.Combine Classifiers in Cascade</h3></blockquote>
-<h3 id="Methods:">Methods:</h3><ul>
-<li>Represent and classify images based on simple features rather than pixels directly(operates <strong>faster</strong> and easily encode <strong>ad-hoc</strong> domain knowledge)
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2015/08/16/paper-research-01/#more" class="more-link">阅读全文</a>
         </div>
       
       

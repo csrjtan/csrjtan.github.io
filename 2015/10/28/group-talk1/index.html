@@ -4,34 +4,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>Guidance:A Visual Sensing Platform For Robotic Applications | CSRJTAN</title>
+  <title>小组Talk1 | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   
     <meta name="author" content="CsrjTan">
   
   
-    <meta name="description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
-由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。
-1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
+    <meta name="description" content="理大第一次小组REPORT讲讲进来三个月的工作成果和研究进展，分享一下所学内容这里写下日记，总结之余，也将演讲内容在这里过一遍
+1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
   
-  <meta name="description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
-由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。
-1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
+  <meta name="description" content="理大第一次小组REPORT讲讲进来三个月的工作成果和研究进展，分享一下所学内容这里写下日记，总结之余，也将演讲内容在这里过一遍
+1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Guidance:A Visual Sensing Platform For Robotic Applications">
-<meta property="og:url" content="http://yoursite.com/2015/10/28/paper-reading-20151028/index.html">
+<meta property="og:title" content="小组Talk1">
+<meta property="og:url" content="http://yoursite.com/2015/10/28/group-talk1/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
-由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。
-1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/guidance_2.png">
-<meta property="og:updated_time" content="2015-10-28T14:13:30.000Z">
+<meta property="og:description" content="理大第一次小组REPORT讲讲进来三个月的工作成果和研究进展，分享一下所学内容这里写下日记，总结之余，也将演讲内容在这里过一遍
+1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
+<meta property="og:updated_time" content="2015-10-29T08:50:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Guidance:A Visual Sensing Platform For Robotic Applications">
-<meta name="twitter:description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
-由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。
-1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
+<meta name="twitter:title" content="小组Talk1">
+<meta name="twitter:description" content="理大第一次小组REPORT讲讲进来三个月的工作成果和研究进展，分享一下所学内容这里写下日记，总结之余，也将演讲内容在这里过一遍
+1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
   
   
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -86,29 +80,30 @@ var _hmt = _hmt || [];
   <header>
     
       <div class="icon"></div>
-      <a href="/2015/10/28/paper-reading-20151028/">
-  <time datetime="2015-10-28T12:38:38.000Z">
+      <a href="/2015/10/28/group-talk1/">
+  <time datetime="2015-10-28T15:48:09.000Z">
     2015-10-28
   </time>
 </a>
     
     
   
-    <h1 class="title">Guidance:A Visual Sensing Platform For Robotic Applications</h1>
+    <h1 class="title">小组Talk1</h1>
   
 
   </header>
   
   <div class="entry">
     
-      <h3 id="DJI在CVPR15上发的关于GUIDANCE组件的文章">DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
-<p>由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。<br>这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。</p>
-<h3 id="1-Introduction">1.Introduction</h3><p>提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用于机器人定位位置识别。大部分是单目的，这里也有双目的方法[4]。这里GUIDANCE包括了5个方向的双目，可以提供深度图，超声数据，障碍物距离等内容。接下来，故事的展开分为内置函数，SDK接口以及相关应用</p>
-<h3 id="2-内置：Guidance是升级版的[6]">2.内置：Guidance是升级版的[6]</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png" alt="SDK_Build_In"><br><a id="more"></a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_2.png" alt=""><br>对于Matching Refinement用了[7]</p>
-<h3 id="4-可扩展的智能应用：">4.可扩展的智能应用：</h3><p>1.Autonomous Navigation<br>  拥有高精度的GPS定位<br>2.Visual SLAM[8]<br>  依赖高精度的VO结果<br>3.Depth Based Tracking</p>
-<p>为了开发SLAM避障，请阅读下面黑体</p>
-<p>[1]C. Forster, M. Pizzoli, and D. Scaramuzza. SVO: Fast semi- direct monocular visual odometry. In ICRA, 2014.<br><strong>[2]J. Engel, T. Schops, and D. Cremers. LSD-SLAM: Large- scale direct monocular SLAM. In ECCV, 2014.<br>[3]A. Davison. Real-time simultaneous localisation and map- ping with a single camera. In Computer Vision, 2003. Proceedings. Ninth IEEE International Conference on, pages 1403–1410 vol.2, Oct 2003 </strong><br>[4] F. Endres, J. Hess, N. Engelhard, J. Sturm, D. Cremers, and W. Burgard. An evaluation of the RGB-D SLAM system. In Robotics and Automation (ICRA), 2012 IEEE International Conference on, pages 1691–1696, May 2012.<br>[5]D. Honegger, L. Meier, P. Tanskanen, and M. Pollefeys. An open source and open hardware embedded metric optical flow cmos camera for indoor and outdoor applications. In Robotics and Automation (ICRA), IEEE International Con- ference on, pages 1736–1741, May 2013.<br>[6]G. Zhou, A. Liu, K. Yang, T. Wang, and Z. Li. An embedded solution to visual mapping for consumer drones. In Computer Vision and Pattern Recognition Workshops (CVPRW), IEEE Conference on, pages 670–675, 2014.</p>
-<p>[7]B. D. Lucas and T. Kanade. An iterative image registration technique with an application to stereo vision. In Proceed- ings of the 7th International Joint Conference on Artificial<br>Intelligence - Volume 2, pages 674–679, 1981<br><strong>[8]G. Klein and D. Murray. Parallel tracking and mapping for small AR workspaces. In Sixth IEEE and ACM Internation- al Symposium on Mixed and Augmented Reality (ISMAR), 2007.</strong></p>
+      <h2 id="理大第一次小组REPORT">理大第一次小组REPORT</h2><p>讲讲进来三个月的工作成果和研究进展，分享一下所学内容<br>这里写下日记，总结之余，也将演讲内容在这里过一遍</p>
+<h3 id="1-Big_Picture">1.Big Picture</h3><p>Target:实现无人机的自动导航以及躲避障碍物<br>使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。<br>避障算法，Bug Algorithm:检测到障碍物，进行闪躲，但依然朝终点靠近<br>这里的起始点和终点乃至地图都可以pre-defined。</p>
+<p>由于这里面核心用到的是环境的三维信息，所以Stereo Matching的精度技术显得尤为重要</p>
+<h3 id="2-Stereo_Vision">2.Stereo Vision</h3><h4 id="2-1_Camera_Calibration">2.1 Camera Calibration</h4><p>这一节可以看之前camera calibration的日志，针孔平面可由相似三角求出，但由于针孔曝光不足，所以一般用透镜，所以引入了透镜畸变误差，建立数学模型解决。然后我们标定的目的主要是为了能求出摄像机的内参数，包括焦距和成像中心点偏移。以及畸变参数，从而对图像进行修正。</p>
+<h3 id="2-2_Stereo_Matching">2.2 Stereo Matching</h3><p>这一节可以参考之前stereo matching的日志，图像的深度Z可以通过简单的三角测量求解所得。所以StereoMatching的主要流程就是图像校正、立体匹配、计算深度。其中主要的步骤在于立体匹配：包括了预处理滤波、代价聚合计算、视差计算以及视差精细等步骤。</p>
+<h3 id="3-DJI_Developer">3.DJI Developer</h3><h4 id="3-1_Matrix_100">3.1 Matrix 100</h4><p>首先介绍一下M100这个可扩展飞行平台，它主要特点的续航时间长，负重好，飞行稳定性强，搭载的N1飞控可扩展接口和开发设备接口十分多，强大的可扩展性。<br>平台主要提供了Android和Onboard SDK，其中Android SDK主要控制摄像机、电池和云台以及飞行参数，但由于N1连接遥控器再用USB与手机连接的，所以数据传输是不稳定且难以做到实时的，所以这一块一般用于做一些监控拍摄，指派任务的非实时任务为佳。</p>
+<p>相对来说OnBoard SDK提供了开放协议从而对飞控进行命令委派，进而对飞行器进行姿态调整以及飞行模式切换等。这需要使用机载设备对采集的环境数据进行实时采集反馈。</p>
+<h4 id="3-2_Guidance">3.2 Guidance</h4><p>Guidance组件是一个强大的信息采集组件，具有5个超声结合双目的数据采集器，然后官方提供了GUIDANCE的数据采集例程，而且它们发了一个paper在CVPR15的WORKSHOP。</p>
+<p>最后，这里提供一下这次GROUP_TALK的PPT。<br><a href="http://pan.baidu.com/s/1i3nRCtJ" target="_blank" rel="external">PPT&amp;数据采集</a><br>密码: d1s4</p>
 
     
   </div>
@@ -117,7 +112,7 @@ var _hmt = _hmt || [];
       
       
   <div class="tags">
-    <a class="tags-link" href="/tags/paper/">paper</a>
+    <a class="tags-link" href="/tags/group/">group</a>
   </div>
 
     
@@ -128,7 +123,7 @@ var _hmt = _hmt || [];
 
 <section id="comment">
   <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-paper-reading-20151028" data-title="Guidance:A Visual Sensing Platform For Robotic Applications" data-url="http://yoursite.com/2015/10/28/paper-reading-20151028/"></div>
+	<div class="ds-thread" data-thread-key="post-group-talk1" data-title="小组Talk1" data-url="http://yoursite.com/2015/10/28/group-talk1/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -174,10 +169,8 @@ var duoshuoQuery = {short_name:"tanrunj"};
 
 <nav id="pagination" >
     
-    <a href="/2015/10/28/group-talk1/" class="alignleft prev" >上一页</a>
     
-    
-    <a href="/2015/10/27/camera-calibration/" class="alignright next" >下一页</a>
+    <a href="/2015/10/28/paper-reading-20151028/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
