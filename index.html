@@ -79,6 +79,62 @@ var _hmt = _hmt || [];
   <header>
     
       <div class="icon"></div>
+      <a href="/2015/10/31/数据挖掘导论（2）/">
+  <time datetime="2015-10-31T08:41:57.000Z">
+    2015-10-31
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/10/31/数据挖掘导论（2）/">数据挖掘导论（2）</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="这写一下第三第四章的主要内容">这写一下第三第四章的主要内容</h3><h4 id="1-第三章包括汇总统计、可视化和OLAP">1.第三章包括汇总统计、可视化和OLAP</h4><p>统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。</p>
+<p>协方差矩阵：<br>$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline{x_j}) $$</p>
+<p>相关矩阵元素：$ r_{ij} = \frac{covariance(x_i,x_j)}{s_is_j}$</p>
+<h4 id="2-可视化">2.可视化</h4><p>目的：1.快速吸收信息 2.充分调用人的领域知识<br>利用一些图示模型：叶箱图、直方图、相对频率直方图、二维直方图、盒状图、饼图、经验累计分布函数、散布图、可视高维</p>
+<h4 id="3-OLAP">3.OLAP</h4><p>计算聚集量、维归约和转轴、切片和切块、上卷下钻</p>
+<h3 id="第四章：分类、决策树和模型评估">第四章：分类、决策树和模型评估</h3><h4 id="基本概念">基本概念</h4><p>1.建立决策树<br>Hunt算法，采用贪心选择划分数据的属性<br>关键问题：如何分裂训练数据，如何停止分裂<br>首先是选择最佳划分的度量,用纯性度量,信息增益:<br>$$ Entropy(t)= -\sum_{i=0}^{c=1}p(i|t)log_2p(i|t) $$<br>$$ Gini(t)= 1-\sum_{i=0}^{c=1}[p(i|t)]^2 $$<br>$$ Classification_error(t)=1-max_i[p(i|t)] $$<br>归纳算法:</p>
+<pre><code>TreeGrowth(<span class="keyword">E</span>,F)
+<span class="keyword">if</span> stopping_cond(<span class="keyword">E</span>,F)=true then
+    leaf = createNode()
+    leaf.<span class="keyword">label</span> = Classify(<span class="keyword">E</span>)
+    <span class="keyword">return</span> leaf
+<span class="keyword">else</span>
+    root = createNode()
+    root.test_cond = find_best_split(<span class="keyword">E</span>,F)
+    make V = {v|v is <span class="keyword">one</span> of the output <span class="keyword">in</span> root.test_cond}
+    <span class="keyword">for</span> each v <span class="keyword">in</span> V <span class="keyword">do</span>
+    <span class="literal">E</span>(v) = {<span class="keyword">e</span>|root.test_cond(<span class="keyword">e</span>)=v and <span class="keyword">e</span> <span class="keyword">in</span> <span class="keyword">E</span>}
+    child = TreeGrowth(<span class="literal">E</span>(v) ,F)
+    将child作为root派生结点添加到树，将边(root-&gt;child)标记为v
+    end <span class="keyword">for</span> 
+end <span class="keyword">if</span> 
+<span class="keyword">return</span> root
+</code></pre><h4 id="2-奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。">2.奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。</h4><p>针对决策树归纳中的过分拟合，可以使用先剪枝和后剪枝的方法。</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2015/10/30/study-20151030/">
   <time datetime="2015-10-30T09:16:52.000Z">
     2015-10-30
@@ -446,44 +502,6 @@ This is <span class="keyword">where</span> you will write your content. 在这�
       
         <div class="alignleft">
           <a href="/2015/09/03/ppt-learning-Stereo-Vision/#more" class="more-link">阅读全文</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/27/paper-reading-20150826/">
-  <time datetime="2015-08-27T01:57:19.000Z">
-    2015-08-27
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/27/paper-reading-20150826/">Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
-<p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.<br>
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2015/08/27/paper-reading-20150826/#more" class="more-link">阅读全文</a>
         </div>
       
       

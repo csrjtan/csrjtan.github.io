@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>数据挖掘导论（2） | CSRJTAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="CsrjTan">
+  
+  
+    <meta name="description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
+协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
+  
+  <meta name="description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
+协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据挖掘导论（2）">
+<meta property="og:url" content="http://yoursite.com/2015/10/31/数据挖掘导论（2）/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
+协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
+<meta property="og:updated_time" content="2015-11-01T07:01:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据挖掘导论（2）">
+<meta name="twitter:description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
+协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">CSRJTAN</a></h1>
+    <p><a href="/">Keep Moving</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+      
+     
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/10/31/数据挖掘导论（2）/">
+  <time datetime="2015-10-31T08:41:57.000Z">
+    2015-10-31
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">数据挖掘导论（2）</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="这写一下第三第四章的主要内容">这写一下第三第四章的主要内容</h3><h4 id="1-第三章包括汇总统计、可视化和OLAP">1.第三章包括汇总统计、可视化和OLAP</h4><p>统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。</p>
+<p>协方差矩阵：<br>$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline{x_j}) $$</p>
+<p>相关矩阵元素：$ r_{ij} = \frac{covariance(x_i,x_j)}{s_is_j}$</p>
+<h4 id="2-可视化">2.可视化</h4><p>目的：1.快速吸收信息 2.充分调用人的领域知识<br>利用一些图示模型：叶箱图、直方图、相对频率直方图、二维直方图、盒状图、饼图、经验累计分布函数、散布图、可视高维</p>
+<h4 id="3-OLAP">3.OLAP</h4><p>计算聚集量、维归约和转轴、切片和切块、上卷下钻</p>
+<h3 id="第四章：分类、决策树和模型评估">第四章：分类、决策树和模型评估</h3><h4 id="基本概念">基本概念</h4><p>1.建立决策树<br>Hunt算法，采用贪心选择划分数据的属性<br>关键问题：如何分裂训练数据，如何停止分裂<br>首先是选择最佳划分的度量,用纯性度量,信息增益:<br>$$ Entropy(t)= -\sum_{i=0}^{c=1}p(i|t)log_2p(i|t) $$<br>$$ Gini(t)= 1-\sum_{i=0}^{c=1}[p(i|t)]^2 $$<br>$$ Classification_error(t)=1-max_i[p(i|t)] $$<br>归纳算法:</p>
+<pre><code>TreeGrowth(<span class="keyword">E</span>,F)
+<span class="keyword">if</span> stopping_cond(<span class="keyword">E</span>,F)=true then
+    leaf = createNode()
+    leaf.<span class="keyword">label</span> = Classify(<span class="keyword">E</span>)
+    <span class="keyword">return</span> leaf
+<span class="keyword">else</span>
+    root = createNode()
+    root.test_cond = find_best_split(<span class="keyword">E</span>,F)
+    make V = {v|v is <span class="keyword">one</span> of the output <span class="keyword">in</span> root.test_cond}
+    <span class="keyword">for</span> each v <span class="keyword">in</span> V <span class="keyword">do</span>
+    <span class="literal">E</span>(v) = {<span class="keyword">e</span>|root.test_cond(<span class="keyword">e</span>)=v and <span class="keyword">e</span> <span class="keyword">in</span> <span class="keyword">E</span>}
+    child = TreeGrowth(<span class="literal">E</span>(v) ,F)
+    将child作为root派生结点添加到树，将边(root-&gt;child)标记为v
+    end <span class="keyword">for</span> 
+end <span class="keyword">if</span> 
+<span class="keyword">return</span> root
+</code></pre><h4 id="2-奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。">2.奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。</h4><p>针对决策树归纳中的过分拟合，可以使用先剪枝和后剪枝的方法。</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-数据挖掘导论（2）" data-title="数据挖掘导论（2）" data-url="http://yoursite.com/2015/10/31/数据挖掘导论（2）/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tanrunj"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">CsrjTan</a>
+  
+</div>
+
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="https://github.com/csrjtan" target="_blank">tanrunj</a>
+</div>
+
+<div class="clearfix"></div>
+
+
+ <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2015/10/30/study-20151030/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'tanrunj' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+<a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
