@@ -21,7 +21,7 @@
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
 协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
-<meta property="og:updated_time" content="2015-11-02T11:30:35.000Z">
+<meta property="og:updated_time" content="2015-11-02T12:15:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘导论（2）">
 <meta name="twitter:description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
@@ -117,8 +117,10 @@ var _hmt = _hmt || [];
     end <span class="keyword">for</span> 
 end <span class="keyword">if</span> 
 <span class="keyword">return</span> root
-</code></pre><h4 id="2-奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。">2.奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。</h4><p>针对决策树归纳中的过分拟合，可以使用先剪枝和后剪枝的方法。</p>
-
+</code></pre><h4 id="2-奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。">2.奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。</h4><h4 id="总结">总结</h4><p>思想：地柜选择一个属性对对象集合的类标进行分类，如果分类某一属性时发现剩下的对象属于同一类，此时不必再选择属性分类，用一个叶节点代表。否则，继续选择下一属性，知道某一分类结果全在一类或没属性为止。根据选择属性顺序可以分为ID3,C4.5.针对决策树归纳中的过分拟合，可以使用先剪枝和后剪枝的方法。</p>
+<p>特点：* 找到最优决策树是NP-C</p>
+<pre><code><span class="bullet">* </span>采用避免过拟合的方法后，决策树对噪声干扰具有较好鲁棒性。
+</code></pre>
     
   </div>
   <footer>
