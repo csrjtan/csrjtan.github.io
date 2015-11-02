@@ -4,28 +4,36 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>数据挖掘导论（2） | CSRJTAN</title>
+  <title>数据挖掘导论（3） | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   
     <meta name="author" content="CsrjTan">
   
   
-    <meta name="description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
-协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
+    <meta name="description" content="何女神，准备就期中考了，考到第7章，我有空继续看，顺便完善一下读书笔记，做人要有始有终。
+回顾上节提到了决策树的生成，主要是选择合理的分裂属性，并且修正合理的生成树，以获得较少的训练误差和不会过于臃肿的树结构，基于Occam’s Razor Rules，这有利于更强的泛化和预测能力。
+第五章这一章包含的内容多且重要，然而书本没有详细展开，这里我还是得仔细记录每一小节的内容。
+5.1基于规则的分类器">
   
-  <meta name="description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
-协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
+  <meta name="description" content="何女神，准备就期中考了，考到第7章，我有空继续看，顺便完善一下读书笔记，做人要有始有终。
+回顾上节提到了决策树的生成，主要是选择合理的分裂属性，并且修正合理的生成树，以获得较少的训练误差和不会过于臃肿的树结构，基于Occam’s Razor Rules，这有利于更强的泛化和预测能力。
+第五章这一章包含的内容多且重要，然而书本没有详细展开，这里我还是得仔细记录每一小节的内容。
+5.1基于规则的分类器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据挖掘导论（2）">
-<meta property="og:url" content="http://yoursite.com/2015/10/31/数据挖掘导论（2）/index.html">
+<meta property="og:title" content="数据挖掘导论（3）">
+<meta property="og:url" content="http://yoursite.com/2015/11/02/数据挖掘导论（3）/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
-协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
-<meta property="og:updated_time" content="2015-11-02T11:30:35.000Z">
+<meta property="og:description" content="何女神，准备就期中考了，考到第7章，我有空继续看，顺便完善一下读书笔记，做人要有始有终。
+回顾上节提到了决策树的生成，主要是选择合理的分裂属性，并且修正合理的生成树，以获得较少的训练误差和不会过于臃肿的树结构，基于Occam’s Razor Rules，这有利于更强的泛化和预测能力。
+第五章这一章包含的内容多且重要，然而书本没有详细展开，这里我还是得仔细记录每一小节的内容。
+5.1基于规则的分类器">
+<meta property="og:updated_time" content="2015-11-02T12:10:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据挖掘导论（2）">
-<meta name="twitter:description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
-协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
+<meta name="twitter:title" content="数据挖掘导论（3）">
+<meta name="twitter:description" content="何女神，准备就期中考了，考到第7章，我有空继续看，顺便完善一下读书笔记，做人要有始有终。
+回顾上节提到了决策树的生成，主要是选择合理的分裂属性，并且修正合理的生成树，以获得较少的训练误差和不会过于臃肿的树结构，基于Occam’s Razor Rules，这有利于更强的泛化和预测能力。
+第五章这一章包含的内容多且重要，然而书本没有详细展开，这里我还是得仔细记录每一小节的内容。
+5.1基于规则的分类器">
   
   
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -80,44 +88,34 @@ var _hmt = _hmt || [];
   <header>
     
       <div class="icon"></div>
-      <a href="/2015/10/31/数据挖掘导论（2）/">
-  <time datetime="2015-10-31T08:41:57.000Z">
-    2015-10-31
+      <a href="/2015/11/02/数据挖掘导论（3）/">
+  <time datetime="2015-11-02T11:26:19.000Z">
+    2015-11-02
   </time>
 </a>
     
     
   
-    <h1 class="title">数据挖掘导论（2）</h1>
+    <h1 class="title">数据挖掘导论（3）</h1>
   
 
   </header>
   
   <div class="entry">
     
-      <h3 id="这写一下第三第四章的主要内容">这写一下第三第四章的主要内容</h3><h4 id="1-第三章包括汇总统计、可视化和OLAP">1.第三章包括汇总统计、可视化和OLAP</h4><p>统计的<strong>特征数据点</strong>包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。</p>
-<p>协方差矩阵：<br>$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline{x_j}) $$</p>
-<p>相关矩阵元素：$ r_{ij} = \frac{covariance(x_i,x_j)}{s_is_j}$</p>
-<h4 id="2-可视化">2.可视化</h4><p>目的：1.快速吸收信息 2.充分调用人的领域知识<br>利用一些图示模型：叶箱图、直方图、相对频率直方图、二维直方图、盒状图、饼图、经验累计分布函数、散布图、可视高维</p>
-<h4 id="3-OLAP">3.OLAP</h4><p>计算聚集量、维归约和转轴、切片和切块、上卷下钻</p>
-<h3 id="第四章：分类、决策树和模型评估">第四章：分类、决策树和模型评估</h3><h4 id="基本概念">基本概念</h4><p>1.建立决策树<br>Hunt算法，采用贪心选择划分数据的属性<br>关键问题：如何分裂训练数据，如何停止分裂<br>首先是选择最佳划分的度量,用<strong>纯性度量,信息增益</strong>:<br>$$ Entropy(t)= -\sum_{i=0}^{c=1}p(i|t)log_2p(i|t) $$<br>$$ Gini(t)= 1-\sum_{i=0}^{c=1}[p(i|t)]^2 $$<br>$$ Classification_error(t)=1-max_i[p(i|t)] $$<br>归纳算法:</p>
-<pre><code>TreeGrowth(<span class="keyword">E</span>,F)
-<span class="keyword">if</span> stopping_cond(<span class="keyword">E</span>,F)=true then
-    leaf = createNode()
-    leaf.<span class="keyword">label</span> = Classify(<span class="keyword">E</span>)
-    <span class="keyword">return</span> leaf
-<span class="keyword">else</span>
-    root = createNode()
-    root.test_cond = find_best_split(<span class="keyword">E</span>,F)
-    make V = {v|v is <span class="keyword">one</span> of the output <span class="keyword">in</span> root.test_cond}
-    <span class="keyword">for</span> each v <span class="keyword">in</span> V <span class="keyword">do</span>
-    <span class="literal">E</span>(v) = {<span class="keyword">e</span>|root.test_cond(<span class="keyword">e</span>)=v and <span class="keyword">e</span> <span class="keyword">in</span> <span class="keyword">E</span>}
-    child = TreeGrowth(<span class="literal">E</span>(v) ,F)
-    将child作为root派生结点添加到树，将边(root-&gt;child)标记为v
-    end <span class="keyword">for</span> 
-end <span class="keyword">if</span> 
-<span class="keyword">return</span> root
-</code></pre><h4 id="2-奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。">2.奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。</h4><p>针对决策树归纳中的过分拟合，可以使用先剪枝和后剪枝的方法。</p>
+      <p>何女神，准备就期中考了，考到第7章，我有空继续看，顺便完善一下读书笔记，做人要有始有终。</p>
+<h4 id="回顾上节">回顾上节</h4><p>提到了决策树的生成，主要是选择合理的分裂属性，并且修正合理的生成树，以获得较少的训练误差和不会过于臃肿的树结构，基于Occam’s Razor Rules，这有利于更强的泛化和预测能力。</p>
+<h3 id="第五章">第五章</h3><p>这一章包含的内容多且重要，然而书本没有详细展开，这里我还是得仔细记录每一小节的内容。</p>
+<h4 id="5-1基于规则的分类器">5.1基于规则的分类器</h4><p>分类模型用析取范式 $R=(r_1 \bigvee r_2 \bigvee … \bigvee r_k)$<br>这里R成为<strong>规则集</strong><br>这里表示形式：$r_i:(条件_i)-&gt;y_i$<br>这里左边称为规则前提，右边为规则后件，包含预测结果。<br>分类规则的质量用覆盖率和准确率定义,D为数据集，A为规则前件，y为规则后件。<br>$$Converage（r) = \frac{|A|}{|D|}$$<br>$$Accuray(r)=\frac{|A\bigcap y|}{|A|}$$<br>基于定义，我们有<strong>互斥规则、穷举规则、有无序规则</strong></p>
+<p><strong>顺序覆盖算法</strong><br>    令E是训练记录，A是属性-值对的集合{（Aj,Vj）}<br>    令Y0是类的有序集{y1,y2,…,yk}<br>    令R={}是初始规则列表<br>    for 每个类y in Y0-{yk} do<br>        while 终止条件不满足 do<br>            r = Learn-One-Rule(E,A,y)<br>            从E重删除被r覆盖的训练记录<br>            追加r到规则列表尾部:R=R V r<br>        end while<br>    end for<br>    把默认规则{}-&gt;yk插入到规则列表R尾部</p>
+<p>这里是直接方法里的Learn-One-Rule函数，采用贪心原则。因为要找最佳规则是个NP-HARD问题，通过贪心方式近似，先产生一个初始规则r,不断求精，然后满足某种终止条件，修剪规则以改进泛化误差。书中介绍了规则增长的策略，这里不详述。</p>
+<p>对于候选规则的选择，这里使用<strong>似然比</strong>作为统计量：<br>$$R=2\sum_i=1^kf_ilog(\frac{f_i}{e_i})$$<br>或者规则覆盖率的度量Laplace以及<strong>FOIL信息增益</strong><br>(在顺序覆盖算法中，需要删除覆盖到的训练记录，不然会重叠而误选。)可以使用<strong>RIPPER算法</strong>来建立规则集，而选取一个泛化能力较佳的模型。</p>
+<h4 id="与决策树">与决策树</h4><p>可以看到与决策树的相似性，这里我们可以用决策树作为参考，间接产生规则。<br>它们间的比较：</p>
+<ul>
+<li>规则集表达能力与之等价</li>
+<li>基于规则分类器更易于解释，并性能相媲美</li>
+<li>基于类的规则定序非常适应处理类分布不平衡的数据集</li>
+</ul>
 
     
   </div>
@@ -137,7 +135,7 @@ end <span class="keyword">if</span>
 
 <section id="comment">
   <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-数据挖掘导论（2）" data-title="数据挖掘导论（2）" data-url="http://yoursite.com/2015/10/31/数据挖掘导论（2）/"></div>
+	<div class="ds-thread" data-thread-key="post-数据挖掘导论（3）" data-title="数据挖掘导论（3）" data-url="http://yoursite.com/2015/11/02/数据挖掘导论（3）/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -183,10 +181,8 @@ var duoshuoQuery = {short_name:"tanrunj"};
 
 <nav id="pagination" >
     
-    <a href="/2015/11/02/数据挖掘导论（3）/" class="alignleft prev" >上一页</a>
     
-    
-    <a href="/2015/10/30/study-20151030/" class="alignright next" >下一页</a>
+    <a href="/2015/10/31/数据挖掘导论（2）/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
