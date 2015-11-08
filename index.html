@@ -79,6 +79,44 @@ var _hmt = _hmt || [];
   <header>
     
       <div class="icon"></div>
+      <a href="/2015/11/08/SLAM的学习总结/">
+  <time datetime="2015-11-08T09:31:46.000Z">
+    2015-11-08
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/11/08/SLAM的学习总结/">SLAM的学习总结</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h4 id="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了">好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了</h4><h3 id="关于SLAM的学习">关于SLAM的学习</h3><p>首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。</p>
+<h4 id="SLAM是即时定位和地图构建">SLAM是即时定位和地图构建</h4><p>分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，但随着图增大算法会吃不消）</p>
+<h4 id="主要的FrameWork:">主要的FrameWork:</h4><p>1.通过RGB+D，反算三角原理计算得到空间坐标系上的点云<br>2.通过提取特征点和特征点匹配求出转换矩阵，从而将点云合并<br>3.将摄像机位置作为位姿顶点，转换矩阵作为转换边，得到图G(V,E)<br>4.利用位置叠加全局优化图G，这是非线性优化的过程</p>
+<h4 id="优化数学模型：">优化数学模型：</h4><p>模型定义：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/slam_1.png" alt=""><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/slam_2.png" alt=""><br>其中 $$Mothion: x_p^{x+1} = f(x_p^i,u_i)+w_i$$<br>$$Observations: z_{i,j} = h(x_p^i,x_L^j)+v_{i,j}$$<br>求解SLAM前，我们有$u_i,z_{i,j}$分别代表传感器量度以及传感器误差，我们要求$x_p，x_L$<br>继而误差就是等式左右相减，我们目的用最小二乘全局最优化以下式子：<br>$$min \Phi=\sum_i(e_p^i)^2+\sum_{i,j}(e_L^{i,j})^2$$<br>所以这是一个<strong>非线性和非凸</strong>问题,可以通过估计一个起始猜测，然后寻找各个方向上的雅克比和Hessian矩阵进行牛顿迭代等非线性优化方法。由于G的结构是稀疏的，所以可以对SLAM的全局非线性优化进行稀疏求解。（如Sparse Cholesky Decomposition）</p>
+<p>这里可以利用到的一些工具包括：opencv、eigen、<strong>pcl、g2o</strong>等等</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2015/11/02/数据挖掘导论（3）/">
   <time datetime="2015-11-02T11:26:19.000Z">
     2015-11-02
@@ -113,7 +151,7 @@ var _hmt = _hmt || [];
 <span class="keyword">end</span> <span class="keyword">for</span>
 把默认规则{}-&gt;yk插入到规则列表<span class="constant">R尾</span>部
 </code></pre><p>这里是直接方法里的Learn-One-Rule函数，采用贪心原则。因为要找最佳规则是个NP-HARD问题，通过贪心方式近似，先产生一个初始规则r,不断求精，然后满足某种终止条件，修剪规则以改进泛化误差。书中介绍了规则增长的策略，这里不详述。</p>
-<p>对于候选规则的选择，这里使用<strong>似然比</strong>作为统计量：<br>$$R=2\sum_i=1^kf_ilog(\frac{f_i}{e_i})$$<br>或者规则覆盖率的度量Laplace以及<strong>FOIL信息增益</strong><br>(在顺序覆盖算法中，需要删除覆盖到的训练记录，不然会重叠而误选。)可以使用<strong>RIPPER算法</strong>来建立规则集，而选取一个泛化能力较佳的模型。</p>
+<p>对于候选规则的选择，这里使用<strong>似然比</strong>作为统计量：<br>$$R=2\sum_{i=1}^kf_ilog(\frac{f_i}{e_i})$$<br>或者规则覆盖率的度量Laplace以及<strong>FOIL信息增益</strong><br>(在顺序覆盖算法中，需要删除覆盖到的训练记录，不然会重叠而误选。)可以使用<strong>RIPPER算法</strong>来建立规则集，而选取一个泛化能力较佳的模型。</p>
 <h4 id="跟决策树比较">跟决策树比较</h4><p>可以看到与决策树的相似性，这里我们可以用决策树作为参考，间接产生规则。<br>它们间的比较：</p>
 <ul>
 <li>规则集表达能力与之等价</li>
@@ -490,43 +528,6 @@ This is <span class="keyword">where</span> you will write your content. 在这�
   </div>
   <footer class="end-sep">
     
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/10/20/代码大全（读书笔记1）/">
-  <time datetime="2015-10-20T05:25:34.000Z">
-    2015-10-20
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/10/20/代码大全（读书笔记1）/">代码大全（1）</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”">整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”</h3><p>最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2015/10/20/代码大全（读书笔记1）/#more" class="more-link">阅读全文</a>
-        </div>
       
       
     

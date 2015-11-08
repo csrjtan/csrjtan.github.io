@@ -27,7 +27,7 @@
 回顾上节提到了决策树的生成，主要是选择合理的分裂属性，并且修正合理的生成树，以获得较少的训练误差和不会过于臃肿的树结构，基于Occam’s Razor Rules，这有利于更强的泛化和预测能力。
 第五章这一章包含的内容多且重要，然而书本没有详细展开，这里我还是得仔细记录每一小节的内容。
 5.1基于规则的分类器">
-<meta property="og:updated_time" content="2015-11-02T12:22:22.000Z">
+<meta property="og:updated_time" content="2015-11-03T06:46:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘导论（3）">
 <meta name="twitter:description" content="何女神，准备就期中考了，考到第7章，我有空继续看，顺便完善一下读书笔记，做人要有始有终。
@@ -122,7 +122,7 @@ var _hmt = _hmt || [];
 <span class="keyword">end</span> <span class="keyword">for</span>
 把默认规则{}-&gt;yk插入到规则列表<span class="constant">R尾</span>部
 </code></pre><p>这里是直接方法里的Learn-One-Rule函数，采用贪心原则。因为要找最佳规则是个NP-HARD问题，通过贪心方式近似，先产生一个初始规则r,不断求精，然后满足某种终止条件，修剪规则以改进泛化误差。书中介绍了规则增长的策略，这里不详述。</p>
-<p>对于候选规则的选择，这里使用<strong>似然比</strong>作为统计量：<br>$$R=2\sum_i=1^kf_ilog(\frac{f_i}{e_i})$$<br>或者规则覆盖率的度量Laplace以及<strong>FOIL信息增益</strong><br>(在顺序覆盖算法中，需要删除覆盖到的训练记录，不然会重叠而误选。)可以使用<strong>RIPPER算法</strong>来建立规则集，而选取一个泛化能力较佳的模型。</p>
+<p>对于候选规则的选择，这里使用<strong>似然比</strong>作为统计量：<br>$$R=2\sum_{i=1}^kf_ilog(\frac{f_i}{e_i})$$<br>或者规则覆盖率的度量Laplace以及<strong>FOIL信息增益</strong><br>(在顺序覆盖算法中，需要删除覆盖到的训练记录，不然会重叠而误选。)可以使用<strong>RIPPER算法</strong>来建立规则集，而选取一个泛化能力较佳的模型。</p>
 <h4 id="跟决策树比较">跟决策树比较</h4><p>可以看到与决策树的相似性，这里我们可以用决策树作为参考，间接产生规则。<br>它们间的比较：</p>
 <ul>
 <li>规则集表达能力与之等价</li>
@@ -194,6 +194,8 @@ var duoshuoQuery = {short_name:"tanrunj"};
 
 
 <nav id="pagination" >
+    
+    <a href="/2015/11/08/SLAM的学习总结/" class="alignleft prev" >上一页</a>
     
     
     <a href="/2015/10/31/数据挖掘导论（2）/" class="alignright next" >下一页</a>

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>SLAM的学习总结 | CSRJTAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="CsrjTan">
+  
+  
+    <meta name="description" content="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了关于SLAM的学习首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。
+SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，">
+  
+  <meta name="description" content="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了关于SLAM的学习首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。
+SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SLAM的学习总结">
+<meta property="og:url" content="http://yoursite.com/2015/11/08/SLAM的学习总结/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了关于SLAM的学习首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。
+SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/slam_1.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/slam_2.png">
+<meta property="og:updated_time" content="2015-11-08T12:37:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SLAM的学习总结">
+<meta name="twitter:description" content="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了关于SLAM的学习首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。
+SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">CSRJTAN</a></h1>
+    <p><a href="/">Keep Moving</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+      
+     
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/11/08/SLAM的学习总结/">
+  <time datetime="2015-11-08T09:31:46.000Z">
+    2015-11-08
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">SLAM的学习总结</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h4 id="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了">好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了</h4><h3 id="关于SLAM的学习">关于SLAM的学习</h3><p>首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。</p>
+<h4 id="SLAM是即时定位和地图构建">SLAM是即时定位和地图构建</h4><p>分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，但随着图增大算法会吃不消）</p>
+<h4 id="主要的FrameWork:">主要的FrameWork:</h4><p>1.通过RGB+D，反算三角原理计算得到空间坐标系上的点云<br>2.通过提取特征点和特征点匹配求出转换矩阵，从而将点云合并<br>3.将摄像机位置作为位姿顶点，转换矩阵作为转换边，得到图G(V,E)<br>4.利用位置叠加全局优化图G，这是非线性优化的过程</p>
+<h4 id="优化数学模型：">优化数学模型：</h4><p>模型定义：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/slam_1.png" alt=""><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/slam_2.png" alt=""><br>其中 $$Mothion: x_p^{x+1} = f(x_p^i,u_i)+w_i$$<br>$$Observations: z_{i,j} = h(x_p^i,x_L^j)+v_{i,j}$$<br>求解SLAM前，我们有$u_i,z_{i,j}$分别代表传感器量度以及传感器误差，我们要求$x_p，x_L$<br>继而误差就是等式左右相减，我们目的用最小二乘全局最优化以下式子：<br>$$min \Phi=\sum_i(e_p^i)^2+\sum_{i,j}(e_L^{i,j})^2$$<br>所以这是一个<strong>非线性和非凸</strong>问题,可以通过估计一个起始猜测，然后寻找各个方向上的雅克比和Hessian矩阵进行牛顿迭代等非线性优化方法。由于G的结构是稀疏的，所以可以对SLAM的全局非线性优化进行稀疏求解。（如Sparse Cholesky Decomposition）</p>
+<p>这里可以利用到的一些工具包括：opencv、eigen、<strong>pcl、g2o</strong>等等</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-SLAM的学习总结" data-title="SLAM的学习总结" data-url="http://yoursite.com/2015/11/08/SLAM的学习总结/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tanrunj"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">CsrjTan</a>
+  
+</div>
+
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="https://github.com/csrjtan" target="_blank">tanrunj</a>
+</div>
+
+<div class="clearfix"></div>
+
+
+ <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2015/11/02/数据挖掘导论（3）/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'tanrunj' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+<a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
