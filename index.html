@@ -79,6 +79,178 @@ var _hmt = _hmt || [];
   <header>
     
       <div class="icon"></div>
+      <a href="/2015/12/23/《爱的五种语言》/">
+  <time datetime="2015-12-23T06:51:03.000Z">
+    2015-12-23
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>有一段时间没有更新博客了，觉得不写还是会颓，应该积极向上的去写更多东西，关于自己，关于读书，关于学习，每天应该在不断的总结和反省中前进。</p>
+<h3 id="《爱的五种语言》">《爱的五种语言》</h3><p>这里提出使用五种爱语，我们应该抓住伴侣的主要爱语，这样可以有效地提高爱箱，对于人与人之间的相处事半功半，实际可以以此延伸到亲人和友情，这是一种让人感受爱意最直接高效的方法。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/爱的五种语言.png" alt=""></p>
+<h3 id="关于个人管理">关于个人管理</h3><p>坚持每晚11点休息，早上6点半起床吧，早起的一天才能正能量满满，积极向上呢，项目最近整体复杂度已经有点高，希望自己尽快使它们有效完成吧，腾出手来关注一些真正有用的事情。<br>接下来是个人管理的小图<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/每日个人管理.png" alt=""></p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/11/25/paper-reading-20151125/">
+  <time datetime="2015-11-25T06:13:16.000Z">
+    2015-11-25
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/11/25/paper-reading-20151125/">paper-reading-20151125</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
+<h3 id="Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object">Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
+<h4 id="Abstract:Dynamic_Occlusion_avoidance_based_on_the_depth_image-">Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
+<h3 id="1-Introduction">1.Introduction</h3><p>主要问题：通过物体的障碍提示来寻找最优观测方向和位置<br>Next Best View:</p>
+<ul>
+<li>用Octree模型来描述可视物体，然后对于不同观察情况的节点，给定不同的分数。</li>
+<li>用大量周全的Candidate View</li>
+<li>建立一个相似的参数模型，通过depth data和current fitted model来拟合</li>
+<li>用B-spline计算信息增益来构建最佳NEXT VIEW</li>
+<li>结合on-line theory来优化物体的3D重构<br>缺点：没有考虑遮蔽</li>
+</ul>
+<p>引入occlusion方法<br>缺点：受限于摄像机位置、特定的设备和先验信息，以上均不适用于移动的物体</p>
+<h3 id="三个问题：">三个问题：</h3><p>1.如何解决动态遮蔽的避障问题? -&gt; 用一个优化模型，结合运动预测在Best view Model里<br>2.如何通过深度图来预测可视物体的运动? -&gt; 用两个高斯曲率特征矩阵的匹配来求R T,用到SIFT和SVD<br>3.如何有效评估动态遮蔽的影响? -&gt; 用“effective avoidance rate”来评估算法的性能</p>
+<h3 id="2-Method_Overview">2.Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
+<p>2.The overall idea of dynamic occlusion avoidance<br>首先，移动物体相近深度图的像素进行三维坐标恢复（用Anti-projection），则遮蔽暗示可以从第二幅图得到<br>基于上述，用第二张深度图的遮蔽信息来构建Best View Model<br>接着，用三维坐标点的形式，做高斯曲率特征矩阵来匹配两个相近的深度图<br>最后，将运动预测结合到最佳视角模型里。</p>
+<h3 id="3-The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image">3.The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br><img src="" alt=""><br>构建出patch</p>
+<p>2.Constructing the best view model<br>通过构建最大化Occlusion面积</p>
+<h3 id="4-Algorithm">4.Algorithm</h3><p>step1:Calc the 3D pixels and the Gaussian Curvature Feature matrices<br>step2:Detect the Occlusion Boundary and establish the occlusion region in second depth<br>step3:Contruct the best view model<br>step4:Match the key points<br>step5:Solve the Objective formula<br>step6:Plan the next view of camera<br>step7:Acquire a depth image and calc the f(x)<br>step8:If the difference between two adjacent f(x) is less than a given threshold,then terminated,or jump to Step 4.</p>
+<h3 id="Conclusions">Conclusions</h3><p>1.Add emotion estimate in Best Next View to dynamic occlusion avoidance<br>2.Based the depth image to solve the R and T transformation<br>3.Propose the “Effective avoidance rate” to measure the performance of the algorithm.</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/11/25/第一学期总结/">
+  <time datetime="2015-11-25T00:52:01.000Z">
+    2015-11-25
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/11/25/第一学期总结/">第一学期总结</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="DJI无人机避障飞行项目">DJI无人机避障飞行项目</h3><h4 id="研读了CAMERA_CALIBRATION,STEREO_VISION,SLAM">研读了CAMERA CALIBRATION,STEREO VISION,SLAM</h4><p>其中做SLAM的时候基于opencv、pcl、g2o为依赖库的开发</p>
+<h3 id="DJI部件的学习使用">DJI部件的学习使用</h3><p>Guidance的数据订阅和传输接口，M100的GPS线损坏，而且室内校准较难，使用例程进行姿态控制</p>
+<h3 id="课程Advanced_Algorithm">课程Advanced Algorithm</h3><p>学习了多种优化算法以及分析复杂度，课程report使用random algorithm来优化stereo matching的过程</p>
+<h3 id="一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。">一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</h3>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/11/14/OpenClassRobotic1/">
+  <time datetime="2015-11-13T16:04:37.000Z">
+    2015-11-14
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/11/14/OpenClassRobotic1/">斯坦福公开课机器人学</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="1-概述">1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
+<h4 id="2-空间描述，广义的坐标">2.空间描述，广义的坐标</h4><p>在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$<br>在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma,\phi$</p>
+<p>这里描述坐标系的转换可以用一个矩阵，其中旋转矩阵$ R_{AB}=R_{BA}^T $,具有<strong>正交性</strong>，<br>$ R_{AB}^{-1} = R_{BA} = R_{BA}^T $，并且满足:<br>$$ r_X^2 = r_Y^2 = r_Z^2 = 1 $$<br>$$ r_X * r_Y = r_X * r_Z = r_Y * r_Z = 0 $$<br>其中正交矩阵相关的一些矩阵分解有：QR、SVD、谱分解和极分解。</p>
+<p>相对而言，T不会满足旋转矩阵R的这些特性，这里也是基于右手系的约束。<br>为了方便矩阵的运算，我们将R和T矩阵组合并添加一维[0 0 0 1]变成4 * 4的矩阵，形成<strong>齐次</strong>.</p>
+<h4 id="3-讨论欧拉角和旋转">3.讨论欧拉角和旋转</h4><p>介绍了柔性制动器，气压驱动，上节课讲的内容的转换，可以描述坐标系转换，或者点的映射。由于扩展了齐次坐标系，所以末端的坐标系可以直接从基座变换矩阵T相乘解得，但在描述旋转的时候，用3*3的矩阵有9个参数，过于<strong>冗余</strong>，我们考虑更为精炼的表达方式，更高效地表示旋转。</p>
+<p>引入一个，对于刚性物体的坐标表示方式根据坐标系的表达而变化，分为</p>
+<ul>
+<li>Cartesion : $(x,y,z)$</li>
+<li>Cylindrical: $(\rho,\theta,\tau)$</li>
+<li>Spherical: $(r,\theta,\phi)$<br>这是针对应用的场景而变化的，对于某些运动变化，采用适用的坐标系能大大简化问题，适应与问题。</li>
+</ul>
+<p>首先来讨论用<strong>三个角</strong>来表示旋转，分别是yaw,roll,hawl.$$R_{AB} = R_Z(\alpha).R_Y(\beta).r_X(\gamma)$$<br>求解一系列矩阵运算之后，出现cp = 0 的时候，会出现<strong>奇异性</strong>(回头查google)的点，此时无法进一步计算（因为除0出错）,无法进行继续跟踪，而其他以三个参数为旋转的也无法解决这个奇异点的问题。于是尝试进行四个参数的旋转表达，便有了经典的<strong>欧拉角</strong>，Euler Prameters。</p>
+<p>欧拉角指根据x,y,z轴旋转，一共有24种顺规，使用前先确定规则，</p>
+<h4 id="4-DH参数">4.DH参数</h4><p>引入了“蜂鸟”机器人，如何通过连杆和终端执行器控制机械手，建立正运动学。用DH参数描述来表达对连杆的控制，，从而精确定义坐标系，设置不同参数进行变换得到总的变换，从而建立正运动学</p>
+<h4 id="5-仿灵长类机械臂">5.仿灵长类机械臂</h4><p>介绍了如何用欧拉角进行坐标转换，对ROBOT建立数学模型。<br>首先选定较优的坐标原点，尽量方便表达和减少参数，进而根据连杆的变换推导出新的节点的坐标表达，建立坐标表达矩阵，这样的坐标表达就包括（yaw,hawl,roll,Distance)</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2015/11/08/SLAM的学习总结/">
   <time datetime="2015-11-08T09:31:46.000Z">
     2015-11-08
@@ -98,10 +270,12 @@ var _hmt = _hmt || [];
 <h4 id="SLAM是即时定位和地图构建">SLAM是即时定位和地图构建</h4><p>分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，但随着图增大算法会吃不消）</p>
 <h4 id="主要的FrameWork:">主要的FrameWork:</h4><p>1.通过RGB+D，反算三角原理计算得到空间坐标系上的点云<br>2.通过提取特征点和特征点匹配求出转换矩阵，从而将点云合并<br>3.将摄像机位置作为位姿顶点，转换矩阵作为转换边，得到图G(V,E)<br>4.利用位置叠加全局优化图G，这是非线性优化的过程</p>
 <h4 id="优化数学模型：">优化数学模型：</h4><p>模型定义：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/slam_1.png" alt=""><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/slam_2.png" alt=""><br>其中 $$Mothion: x_p^{x+1} = f(x_p^i,u_i)+w_i$$<br>$$Observations: z_{i,j} = h(x_p^i,x_L^j)+v_{i,j}$$<br>求解SLAM前，我们有$u_i,z_{i,j}$分别代表传感器量度以及传感器误差，我们要求$x_p，x_L$<br>继而误差就是等式左右相减，我们目的用最小二乘全局最优化以下式子：<br>$$min \phi=\sum_i(e_p^i)^2+\sum_{i,j}(e_L^{i,j})^2$$<br>所以这是一个<strong>非线性和非凸</strong>问题,可以通过估计一个起始猜测，然后寻找各个方向上的雅克比和Hessian矩阵进行牛顿迭代等非线性优化方法。由于G的结构是稀疏的，所以可以对SLAM的全局非线性优化进行稀疏求解。（如Sparse Cholesky Decomposition）</p>
-<p>这里可以利用到的一些工具包括：opencv、eigen、<strong>pcl、g2o</strong>等等</p>
+<p>这里可以利用到的一些工具包括：ROS、OctoMap、SiftGPU、OpenGL,opencv、eigen、<strong>pcl、g2o</strong>等等</p>
+<p>可以看的书《Multiple View Geometry in CV》和《线性代数该这样读》，还有很多资源，参考下面的LINK，三个阶段：1.基础理论工具学习 2.执行别人的代码和阅读论文 3.阅读并改写改进，突破发论文</p>
 <p>这里放一些有用的网站：<br><a href="http://blog.csdn.net/heyijia0327/article/details/47813405" target="_blank" rel="external">Graph Slam Tutorial:g2o</a></p>
 <p><a href="http://vision.in.tum.de/data/datasets/rgbd-dataset" target="_blank" rel="external">Computer Vision Group RGB-D SLAM</a></p>
 <p><a href="http://www.cnblogs.com/gaoxiang12/p/4633316.html" target="_blank" rel="external">一起做RGB-D SLAM系列</a></p>
+<p><a href="http://www.zhihu.com/question/35186064" target="_blank" rel="external">知乎</a></p>
 
     
   </div>
@@ -371,166 +545,6 @@ This is <span class="keyword">where</span> you will write your content. 在这�
         <div class="alignleft">
           <a href="/2015/10/28/paper-reading-20151028/#more" class="more-link">阅读全文</a>
         </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/10/27/camera-calibration/">
-  <time datetime="2015-10-27T02:29:57.000Z">
-    2015-10-27
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/10/27/camera-calibration/">摄像头校正（Camera Calibration）</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="为了总结一下进入理大以来对于Stereo_Vision的学习，这里分享一下对于Camera_Calibration的学习">为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</h3><p>首先分享一下好的资源<a href="http://wycwang.blogspot.hk/2012/09/camera-calibration-part-1-camera-model.html" target="_blank" rel="external">Richard’s blog</a> 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。</p>
-<h3 id="1-针孔模型(Pinhole_model)">1.针孔模型(Pinhole model)</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png" alt=""></p>
-<p>从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:<br>$$-x=f\frac{X}{Z}$$</p>
-<p>换一个方式，由于人眼看到的并非是倒像，其实可以如下图一样，将成像平面前移到眼睛前方，或者进行一个重新对应成像的过程，从而把倒像恢复，但大小不变的。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration2.png" alt=""><br>$$x=f\frac{X}{Z}$$</p>
-<p>为了使得影像中心没有偏差，加入位移参数$C_x和C_y$，另外成像平面的像素长宽的比例不一样，所以可以加入$s_x和s_y$调整。但这是可以和焦距融合的，所以最终得到公式：<br>$$q=M* Q$$<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration3.png" alt=""><br>$f_x ，f_y ，c_x ，c_y$为摄像机的内参数，一旦标定是固定不变的。</p>
-<h3 id="2-透镜模型">2.透镜模型</h3><p>由于针孔对光线的采集不足，需要长曝光，这是不可取的。所以选用透镜，但这回带来透镜畸变，主要是径向（Radial）和切向(Tangent)畸变<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration4.png" alt=""><br>校正选用的Model如下，其中径向由泰勒展开的前三个偶数项（由于中心对称的偶函数），而切向的恢复拟合模型可以参考详细的数学方法，这里不关注。</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration5.png" alt="校正radial"></p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration6.png" alt="校正tangent"><br>这里k1,k2,p1,p2,k3成为摄像机的形变参数(Distortion parameteres)</p>
-<h3 id="3-Calibration">3.Calibration</h3><p>外部参数是用来将世界坐标系和Camera坐标系之间的坐标系统进行转换。通过3个维度的旋转和平移可得：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration7.png" alt=""></p>
-<h3 id="4-张正友方法">4.张正友方法</h3><p>由于OpenCV以及matlab所使用的方法都是基于张正友的方法，这里介绍一下，其特点是校正方法的弹性以及校正物件比较容易，为一个平面物件。<br>由于校正物体为平面物体，成像也是一个平面物体，而平面物体上的点Transform到另一个平面上，这在CV领域理称为Planar Homography<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration8.png" alt="Planar Homography"><br>基于如此假设，减少一个Z轴上的旋转向量，得到的映射方程可以简化为如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration9.png" alt=""><br>通过$H=A*[r_1 r_2 t]$代入可得以下解：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration10.png" alt=""></p>
-<h4 id="如此，我们有Homography_Constrain的约束">如此，我们有Homography Constrain的约束</h4><p>$r_1 r_2$为相互垂直的旋转向量，且大小相同,即$r_1^T*r_2=0$以及$||r_1||=||r_2||和r_1^T*r_1=r_2^T*r_2$从而代入上面的式子进行矩阵求解，最终得到如下结果：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration11.png" alt=""><br>其中$B=A^{-T}A^{-1}$，B为对称矩阵，所以只需要知道6个矩阵元素就好。由此推出要求得一个解，至少需要3幅图像的6对已知对应点。（多多益善）<br>此外，由于$r_1 和 r_2$不一定相互垂直，所以有时需要对R进行奇异值分解。</p>
-<p>有解的前提是2NK&gt;=6K+4,即是(N-3)K&gt;=2</p>
-<h3 id="4-OpenCV的相关函数">4.OpenCV的相关函数</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//寻找棋盘角点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cvfindChessboardCorners</span><span class="params">(</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">void</span>* image,</span><br><span class="line">	CvSize 		pattern_size,</span><br><span class="line">	CvPoint2D32f*	corners,</span><br><span class="line">	<span class="keyword">int</span>*		corner_count = <span class="literal">NULL</span></span><br><span class="line">	<span class="keyword">int</span>		flags = CV_CALIB_V_ADAPTIVE_THRESH</span><br><span class="line">	)</span></span>;</span><br><span class="line"><span class="comment">//画出找到的角点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvDrawChessboardCorner</span><span class="params">(</span><br><span class="line">	CvArr*	image,</span><br><span class="line">	CvSize	pattern_size,</span><br><span class="line">	CvPoint2D32f* corners,</span><br><span class="line">	<span class="keyword">int</span> count,</span><br><span class="line">	<span class="keyword">int</span> pattern_was_found</span><br><span class="line">	)</span></span>;</span><br><span class="line"><span class="comment">//摄像机标定</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvCalibrateCamera2</span><span class="params">(</span><br><span class="line">	CvMat* object_points,</span><br><span class="line">	CvMat* image_points,</span><br><span class="line">	<span class="keyword">int</span>* point_counts,</span><br><span class="line">	CvSize image_size,</span><br><span class="line">	CvMat* intrinsic_matrix,</span><br><span class="line">	CvMat* distortion_coeffs,</span><br><span class="line">	CvMat* rotation_vectors = <span class="literal">NULL</span>,</span><br><span class="line">	CvMat* translation_vectors = <span class="literal">NULL</span>,</span><br><span class="line">	<span class="keyword">int</span> flags = <span class="number">0</span></span><br><span class="line">	)</span></span>;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>计算完内参数后，也由单应性条件计算得到外参数</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/10/25/paper-reading-20151025/">
-  <time datetime="2015-10-25T12:50:44.000Z">
-    2015-10-25
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/10/25/paper-reading-20151025/">Small Vision Systems :Hardware and Implementation</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
-<h4 id="2-1_Area_Correlation_这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：">2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br>5.Post-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
-<h4 id="2-2_Epipolar_Geometry">2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
-<p>实际应用中，不断计算标定不实际，只能确定内参数后，再根据偏差进行自动标定。</p>
-<h3 id="3-该论文系统的算法">3.该论文系统的算法</h3><p>1.LOG滤波去噪，用L1绝对值比较<br>2.进行深度搜索<br>3.后处理，去除奇异点，使用左右和右左校验<br>4.使用X4的插值</p>
-<p>作者还对比了使用标定照相机内参后，得到的深度图更为清晰稳定。而针对left/right匹配时，寻找对应最优点采用了hill-climbing和遍历周围最小空间，进行贪心选择。最后对比了一系列StereoMatching组合方法的精度、时间、耗能的区别。</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/10/25/数据挖掘导论（1）/">
-  <time datetime="2015-10-25T03:06:29.000Z">
-    2015-10-25
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/10/25/数据挖掘导论（1）/">数据挖掘导论（1）</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="周末和何女神一起读书，她最近学数据挖掘，所以我就陪读，这里记录一下读书心得。">周末和何女神一起读书，她最近学数据挖掘，所以我就陪读，这里记录一下读书心得。</h3><p>首先，这本书应该是数据挖掘领域的经典，可以找到网上的数据挖掘导论PDF<br>作者是Michingan State U的Associate Professor <a href="http://www.cse.msu.edu/~ptan/">Pang-Ning Tan</a>、University of Minnesota的<a href="http://www-users.cs.umn.edu/~kumar/">Vipin Kumar</a></p>
-<p>好，马上开始正题：</p>
-<h4 id="书本内容与组织">书本内容与组织</h4><p>第一章，绪论<br>第二章，讨论数据基本类型、质量、预处理及相似性和相异性度量<br>第三章，关于数据数据探查<br>第四、五章，关于分类<br>第六、七章，讨论关联分析<br>第八、九章，讨论聚类分析<br>第十章，讨论数据挖掘的异常检测<br>
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2015/10/25/数据挖掘导论（1）/#more" class="more-link">阅读全文</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/10/22/论文阅读方法/">
-  <time datetime="2015-10-22T08:58:39.000Z">
-    2015-10-22
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/10/22/论文阅读方法/">论文阅读方法和技巧</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h4 id="关于论文阅读的方法和心得">关于论文阅读的方法和心得</h4><p><a href="https://www.evernote.com/shard/s608/sh/b2f2b9b0-91a5-4abf-81f4-599d3fa52bb9/01af8a34804f5cd1/res/bda4e9d8-e543-4cfd-9bb1-f42e7a626894/%E9%98%85%E8%AF%BB%E8%AE%BA%E6%96%87.pdf" target="_blank" rel="external">PDF</a></p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/论文阅读.png" alt=""></p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
       
       
     

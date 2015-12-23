@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>paper-reading-20151125 | CSRJTAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="CsrjTan">
+  
+  
+    <meta name="description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
+  
+  <meta name="description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
+<meta property="og:type" content="article">
+<meta property="og:title" content="paper-reading-20151125">
+<meta property="og:url" content="http://yoursite.com/2015/11/25/paper-reading-20151125/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
+<meta property="og:updated_time" content="2015-11-26T09:06:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="paper-reading-20151125">
+<meta name="twitter:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">CSRJTAN</a></h1>
+    <p><a href="/">Keep Moving</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+        <li><a href="/about">About</a></li>
+      
+      
+     
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/11/25/paper-reading-20151125/">
+  <time datetime="2015-11-25T06:13:16.000Z">
+    2015-11-25
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">paper-reading-20151125</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
+<h3 id="Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object">Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
+<h4 id="Abstract:Dynamic_Occlusion_avoidance_based_on_the_depth_image-">Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
+<h3 id="1-Introduction">1.Introduction</h3><p>主要问题：通过物体的障碍提示来寻找最优观测方向和位置<br>Next Best View:</p>
+<ul>
+<li>用Octree模型来描述可视物体，然后对于不同观察情况的节点，给定不同的分数。</li>
+<li>用大量周全的Candidate View</li>
+<li>建立一个相似的参数模型，通过depth data和current fitted model来拟合</li>
+<li>用B-spline计算信息增益来构建最佳NEXT VIEW</li>
+<li>结合on-line theory来优化物体的3D重构<br>缺点：没有考虑遮蔽</li>
+</ul>
+<p>引入occlusion方法<br>缺点：受限于摄像机位置、特定的设备和先验信息，以上均不适用于移动的物体</p>
+<h3 id="三个问题：">三个问题：</h3><p>1.如何解决动态遮蔽的避障问题? -&gt; 用一个优化模型，结合运动预测在Best view Model里<br>2.如何通过深度图来预测可视物体的运动? -&gt; 用两个高斯曲率特征矩阵的匹配来求R T,用到SIFT和SVD<br>3.如何有效评估动态遮蔽的影响? -&gt; 用“effective avoidance rate”来评估算法的性能</p>
+<h3 id="2-Method_Overview">2.Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
+<p>2.The overall idea of dynamic occlusion avoidance<br>首先，移动物体相近深度图的像素进行三维坐标恢复（用Anti-projection），则遮蔽暗示可以从第二幅图得到<br>基于上述，用第二张深度图的遮蔽信息来构建Best View Model<br>接着，用三维坐标点的形式，做高斯曲率特征矩阵来匹配两个相近的深度图<br>最后，将运动预测结合到最佳视角模型里。</p>
+<h3 id="3-The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image">3.The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br><img src="" alt=""><br>构建出patch</p>
+<p>2.Constructing the best view model<br>通过构建最大化Occlusion面积</p>
+<h3 id="4-Algorithm">4.Algorithm</h3><p>step1:Calc the 3D pixels and the Gaussian Curvature Feature matrices<br>step2:Detect the Occlusion Boundary and establish the occlusion region in second depth<br>step3:Contruct the best view model<br>step4:Match the key points<br>step5:Solve the Objective formula<br>step6:Plan the next view of camera<br>step7:Acquire a depth image and calc the f(x)<br>step8:If the difference between two adjacent f(x) is less than a given threshold,then terminated,or jump to Step 4.</p>
+<h3 id="Conclusions">Conclusions</h3><p>1.Add emotion estimate in Best Next View to dynamic occlusion avoidance<br>2.Based the depth image to solve the R and T transformation<br>3.Propose the “Effective avoidance rate” to measure the performance of the algorithm.</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/paper/">paper</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-paper-reading-20151125" data-title="paper-reading-20151125" data-url="http://yoursite.com/2015/11/25/paper-reading-20151125/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tanrunj"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">CsrjTan</a>
+  
+</div>
+
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="https://github.com/csrjtan" target="_blank">tanrunj</a>
+</div>
+
+<div class="clearfix"></div>
+
+
+ <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<nav id="pagination" >
+    
+    <a href="/2015/12/23/《爱的五种语言》/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/11/25/第一学期总结/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'tanrunj' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+<a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
