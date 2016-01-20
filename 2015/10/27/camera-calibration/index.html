@@ -12,7 +12,7 @@
 换一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="摄像头校正（Camera Calibration）">
-<meta property="og:url" content="http://yoursite.com/2015/10/27/camera-calibration/index.html">
+<meta property="og:url" content="https://csrjtan.github.io/2015/10/27/camera-calibration/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习首先分享一下好的资源Richard’s blog 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。
 1.针孔模型(Pinhole model)
@@ -84,7 +84,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
+          <input type="hidden" name="si" value="csrjtan.github.io">
         </form>
       </div>
     </div>
@@ -113,6 +113,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60"><span class="toc-number">1.</span> <span class="toc-text">为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_u9488_u5B54_u6A21_u578B_28Pinhole_model_29"><span class="toc-number">2.</span> <span class="toc-text">1.针孔模型(Pinhole model)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_u900F_u955C_u6A21_u578B"><span class="toc-number">3.</span> <span class="toc-text">2.透镜模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Calibration"><span class="toc-number">4.</span> <span class="toc-text">3.Calibration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_u5F20_u6B63_u53CB_u65B9_u6CD5"><span class="toc-number">5.</span> <span class="toc-text">4.张正友方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5982_u6B64_uFF0C_u6211_u4EEC_u6709Homography_Constrain_u7684_u7EA6_u675F"><span class="toc-number">5.1.</span> <span class="toc-text">如此，我们有Homography Constrain的约束</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-OpenCV_u7684_u76F8_u5173_u51FD_u6570"><span class="toc-number">6.</span> <span class="toc-text">4.OpenCV的相关函数</span></a></li></ol>
+          </div>
+        
         <h3 id="u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60"><a href="#u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60" class="headerlink" title="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习"></a>为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</h3><p>首先分享一下好的资源<a href="http://wycwang.blogspot.hk/2012/09/camera-calibration-part-1-camera-model.html" target="_blank" rel="external">Richard’s blog</a> 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。</p>
 <h3 id="1-_u9488_u5B54_u6A21_u578B_28Pinhole_model_29"><a href="#1-_u9488_u5B54_u6A21_u578B_28Pinhole_model_29" class="headerlink" title="1.针孔模型(Pinhole model)"></a>1.针孔模型(Pinhole model)</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png" alt=""></p>
 <p>从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:<br>$$-x=f\frac{X}{Z}$$</p>
@@ -132,11 +137,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/27/camera-calibration/" data-id="cijmek0hr001533q14md6keh0" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cijmf5lur001568q1kxm5mnc4" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/10/27/camera-calibration/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/10/27/camera-calibration/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -170,7 +175,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/27/camera-calibration/" data-title="摄像头校正（Camera Calibration）" data-url="http://yoursite.com/2015/10/27/camera-calibration/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/27/camera-calibration/" data-title="摄像头校正（Camera Calibration）" data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/"></div>
   </section>
 </section>
       

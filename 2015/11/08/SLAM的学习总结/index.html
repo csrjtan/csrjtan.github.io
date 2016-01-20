@@ -10,7 +10,7 @@
 SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SLAM的学习总结">
-<meta property="og:url" content="http://yoursite.com/2015/11/08/SLAM的学习总结/index.html">
+<meta property="og:url" content="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了关于SLAM的学习首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。
 SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，">
@@ -69,7 +69,7 @@ SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构�
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
+          <input type="hidden" name="si" value="csrjtan.github.io">
         </form>
       </div>
     </div>
@@ -98,6 +98,11 @@ SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构�
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#u597D_u4E45_u6CA1_u66F4_u65B0_u4E86_uFF0C_u6700_u8FD1_u786E_u5B9E_u4E1C_u897F_u6709_u70B9_u591A_u6709_u70B9_u4E71_uFF0C_u5FC5_u8981_u7684_u8D76_u7D27_u6765_u603B_u7ED3_u4E00_u4E0B_u4E86"><span class="toc-number">1.</span> <span class="toc-text">好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5173_u4E8ESLAM_u7684_u5B66_u4E60"><span class="toc-number"></span> <span class="toc-text">关于SLAM的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SLAM_u662F_u5373_u65F6_u5B9A_u4F4D_u548C_u5730_u56FE_u6784_u5EFA"><span class="toc-number">1.</span> <span class="toc-text">SLAM是即时定位和地图构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4E3B_u8981_u7684FrameWork_3A"><span class="toc-number">2.</span> <span class="toc-text">主要的FrameWork:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4F18_u5316_u6570_u5B66_u6A21_u578B_uFF1A"><span class="toc-number">3.</span> <span class="toc-text">优化数学模型：</span></a></li></ol>
+          </div>
+        
         <h4 id="u597D_u4E45_u6CA1_u66F4_u65B0_u4E86_uFF0C_u6700_u8FD1_u786E_u5B9E_u4E1C_u897F_u6709_u70B9_u591A_u6709_u70B9_u4E71_uFF0C_u5FC5_u8981_u7684_u8D76_u7D27_u6765_u603B_u7ED3_u4E00_u4E0B_u4E86"><a href="#u597D_u4E45_u6CA1_u66F4_u65B0_u4E86_uFF0C_u6700_u8FD1_u786E_u5B9E_u4E1C_u897F_u6709_u70B9_u591A_u6709_u70B9_u4E71_uFF0C_u5FC5_u8981_u7684_u8D76_u7D27_u6765_u603B_u7ED3_u4E00_u4E0B_u4E86" class="headerlink" title="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了"></a>好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了</h4><h3 id="u5173_u4E8ESLAM_u7684_u5B66_u4E60"><a href="#u5173_u4E8ESLAM_u7684_u5B66_u4E60" class="headerlink" title="关于SLAM的学习"></a>关于SLAM的学习</h3><p>首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。</p>
 <h4 id="SLAM_u662F_u5373_u65F6_u5B9A_u4F4D_u548C_u5730_u56FE_u6784_u5EFA"><a href="#SLAM_u662F_u5373_u65F6_u5B9A_u4F4D_u548C_u5730_u56FE_u6784_u5EFA" class="headerlink" title="SLAM是即时定位和地图构建"></a>SLAM是即时定位和地图构建</h4><p>分为前后端，前端为点云的叠加构建地图，后端为根据位置和移动建图，并用非线性全局优化来修正叠加误差以及进行回环检测。（旧的方法还有涉及EKF的KALMAN滤波，但随着图增大算法会吃不消）</p>
 <h4 id="u4E3B_u8981_u7684FrameWork_3A"><a href="#u4E3B_u8981_u7684FrameWork_3A" class="headerlink" title="主要的FrameWork:"></a>主要的FrameWork:</h4><p>1.通过RGB+D，反算三角原理计算得到空间坐标系上的点云<br>2.通过提取特征点和特征点匹配求出转换矩阵，从而将点云合并<br>3.将摄像机位置作为位姿顶点，转换矩阵作为转换边，得到图G(V,E)<br>4.利用位置叠加全局优化图G，这是非线性优化的过程</p>
@@ -113,11 +118,11 @@ SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构�
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/11/08/SLAM的学习总结/" data-id="cijmek0i2001b33q1gmg6zfl5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cijmf5luw001b68q1b3aby9xs" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/11/08/SLAM的学习总结/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -149,7 +154,7 @@ SLAM是即时定位和地图构建分为前后端，前端为点云的叠加构�
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/11/08/SLAM的学习总结/" data-title="SLAM的学习总结" data-url="http://yoursite.com/2015/11/08/SLAM的学习总结/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/11/08/SLAM的学习总结/" data-title="SLAM的学习总结" data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/"></div>
   </section>
 </section>
       

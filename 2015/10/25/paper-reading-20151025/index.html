@@ -9,7 +9,7 @@
   <meta name="description" content="Author:Kurt Konolige这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的Ster">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Small Vision Systems :Hardware and Implementation">
-<meta property="og:url" content="http://yoursite.com/2015/10/25/paper-reading-20151025/index.html">
+<meta property="og:url" content="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="Author:Kurt Konolige这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的Ster">
 <meta property="og:updated_time" content="2015-10-27T04:32:37.000Z">
@@ -64,7 +64,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
+          <input type="hidden" name="si" value="csrjtan.github.io">
         </form>
       </div>
     </div>
@@ -93,6 +93,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><span class="toc-number">1.</span> <span class="toc-text">2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2_Epipolar_Geometry"><span class="toc-number">2.</span> <span class="toc-text">2.2 Epipolar Geometry</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5"><span class="toc-number"></span> <span class="toc-text">3.该论文系统的算法</span></a>
+          </div>
+        
         <p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
 <h4 id="2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><a href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br>5.Post-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
 <h4 id="2-2_Epipolar_Geometry"><a href="#2-2_Epipolar_Geometry" class="headerlink" title="2.2 Epipolar Geometry"></a>2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
@@ -104,11 +109,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/25/paper-reading-20151025/" data-id="cijmek0he000u33q1pfdk8w05" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cijmf5lui000u68q13qef3ftc" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/10/25/paper-reading-20151025/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -142,7 +147,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/25/paper-reading-20151025/" data-title="Small Vision Systems :Hardware and Implementation" data-url="http://yoursite.com/2015/10/25/paper-reading-20151025/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/25/paper-reading-20151025/" data-title="Small Vision Systems :Hardware and Implementation" data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/"></div>
   </section>
 </section>
       

@@ -10,7 +10,7 @@
 1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小组Talk1">
-<meta property="og:url" content="http://yoursite.com/2015/10/28/group-talk1/index.html">
+<meta property="og:url" content="https://csrjtan.github.io/2015/10/28/group-talk1/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="理大第一次小组REPORT讲讲进来三个月的工作成果和研究进展，分享一下所学内容这里写下日记，总结之余，也将演讲内容在这里过一遍
 1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
@@ -67,7 +67,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
+          <input type="hidden" name="si" value="csrjtan.github.io">
         </form>
       </div>
     </div>
@@ -96,6 +96,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><span class="toc-number">1.</span> <span class="toc-text">理大第一次小组REPORT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Big_Picture"><span class="toc-number">1.1.</span> <span class="toc-text">1.Big Picture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Stereo_Vision"><span class="toc-number">1.2.</span> <span class="toc-text">2.Stereo Vision</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1_Camera_Calibration"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 Camera Calibration</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2_Stereo_Matching"><span class="toc-number">1.3.</span> <span class="toc-text">2.2 Stereo Matching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DJI_Developer"><span class="toc-number">1.4.</span> <span class="toc-text">3.DJI Developer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1_Matrix_100"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 Matrix 100</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2_Guidance"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 Guidance</span></a></li></ol></li></ol></li></ol>
+          </div>
+        
         <h2 id="u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><a href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT" class="headerlink" title="理大第一次小组REPORT"></a>理大第一次小组REPORT</h2><p>讲讲进来三个月的工作成果和研究进展，分享一下所学内容<br>这里写下日记，总结之余，也将演讲内容在这里过一遍</p>
 <h3 id="1-Big_Picture"><a href="#1-Big_Picture" class="headerlink" title="1.Big Picture"></a>1.Big Picture</h3><p>Target:实现无人机的自动导航以及躲避障碍物<br>使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。<br>避障算法，Bug Algorithm:检测到障碍物，进行闪躲，但依然朝终点靠近<br>这里的起始点和终点乃至地图都可以pre-defined。</p>
 <p>由于这里面核心用到的是环境的三维信息，所以Stereo Matching的精度技术显得尤为重要</p>
@@ -110,11 +115,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/28/group-talk1/" data-id="cijmek0hp001233q1k61gsv0i" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cijmf5luq001268q14y52vssj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/10/28/group-talk1/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/10/28/group-talk1/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -148,7 +153,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/28/group-talk1/" data-title="小组Talk1" data-url="http://yoursite.com/2015/10/28/group-talk1/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/28/group-talk1/" data-title="小组Talk1" data-url="https://csrjtan.github.io/2015/10/28/group-talk1/"></div>
   </section>
 </section>
       

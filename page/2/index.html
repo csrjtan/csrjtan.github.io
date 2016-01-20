@@ -9,7 +9,7 @@
   <meta name="description" content="blog csrjtan tanrunj">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CSRJTAN">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:url" content="https://csrjtan.github.io/page/2/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="blog csrjtan tanrunj">
 <meta name="twitter:card" content="summary">
@@ -63,7 +63,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
+          <input type="hidden" name="si" value="csrjtan.github.io">
         </form>
       </div>
     </div>
@@ -94,6 +94,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60"><span class="toc-number">1.</span> <span class="toc-text">为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_u9488_u5B54_u6A21_u578B_28Pinhole_model_29"><span class="toc-number">2.</span> <span class="toc-text">1.针孔模型(Pinhole model)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_u900F_u955C_u6A21_u578B"><span class="toc-number">3.</span> <span class="toc-text">2.透镜模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Calibration"><span class="toc-number">4.</span> <span class="toc-text">3.Calibration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_u5F20_u6B63_u53CB_u65B9_u6CD5"><span class="toc-number">5.</span> <span class="toc-text">4.张正友方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5982_u6B64_uFF0C_u6211_u4EEC_u6709Homography_Constrain_u7684_u7EA6_u675F"><span class="toc-number">5.1.</span> <span class="toc-text">如此，我们有Homography Constrain的约束</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-OpenCV_u7684_u76F8_u5173_u51FD_u6570"><span class="toc-number">6.</span> <span class="toc-text">4.OpenCV的相关函数</span></a></li></ol>
+          </div>
+        
         <h3 id="u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60"><a href="#u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60" class="headerlink" title="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习"></a>为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</h3><p>首先分享一下好的资源<a href="http://wycwang.blogspot.hk/2012/09/camera-calibration-part-1-camera-model.html" target="_blank" rel="external">Richard’s blog</a> 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。</p>
 <h3 id="1-_u9488_u5B54_u6A21_u578B_28Pinhole_model_29"><a href="#1-_u9488_u5B54_u6A21_u578B_28Pinhole_model_29" class="headerlink" title="1.针孔模型(Pinhole model)"></a>1.针孔模型(Pinhole model)</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png" alt=""></p>
 <p>从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:<br>$$-x=f\frac{X}{Z}$$</p>
@@ -113,11 +118,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/27/camera-calibration/" data-id="cijmek0hr001533q14md6keh0" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cijmf5lur001568q1kxm5mnc4" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/10/27/camera-calibration/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/10/27/camera-calibration/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -152,6 +157,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><span class="toc-number">1.</span> <span class="toc-text">2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2_Epipolar_Geometry"><span class="toc-number">2.</span> <span class="toc-text">2.2 Epipolar Geometry</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5"><span class="toc-number"></span> <span class="toc-text">3.该论文系统的算法</span></a>
+          </div>
+        
         <p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
 <h4 id="2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><a href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br>5.Post-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
 <h4 id="2-2_Epipolar_Geometry"><a href="#2-2_Epipolar_Geometry" class="headerlink" title="2.2 Epipolar Geometry"></a>2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
@@ -163,11 +173,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/25/paper-reading-20151025/" data-id="cijmek0he000u33q1pfdk8w05" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cijmf5lui000u68q13qef3ftc" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/10/25/paper-reading-20151025/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -210,15 +220,15 @@
             <a href="/2015/10/25/数据挖掘导论（1）/#more">Read More</a>
           </p>
         
-      
+     
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/25/数据挖掘导论（1）/" data-id="cijmek0gs000e33q1aj640leq" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cijmf5ltv000e68q1t25a98g2" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/10/25/数据挖掘导论（1）/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -253,6 +263,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><span class="toc-number">1.</span> <span class="toc-text">关于论文阅读的方法和心得</span></a></li></ol>
+          </div>
+        
         <h4 id="u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><a href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97" class="headerlink" title="关于论文阅读的方法和心得"></a>关于论文阅读的方法和心得</h4><p><a href="https://www.evernote.com/shard/s608/sh/b2f2b9b0-91a5-4abf-81f4-599d3fa52bb9/01af8a34804f5cd1/res/bda4e9d8-e543-4cfd-9bb1-f42e7a626894/%E9%98%85%E8%AF%BB%E8%AE%BA%E6%96%87.pdf" target="_blank" rel="external">PDF</a></p>
 <p><img src="http://7xl4js.com1.z0.glb.clouddn.com/论文阅读.png" alt=""></p>
 
@@ -260,11 +275,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/22/论文阅读方法/" data-id="cijmek0gc000433q1yo89m3jc" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cijmf5ltg000468q13rv7rfcl" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/10/22/论文阅读方法/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/10/22/论文阅读方法/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -305,15 +320,15 @@
             <a href="/2015/10/20/代码大全（读书笔记1）/#more">Read More</a>
           </p>
         
-      
+     
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/10/20/代码大全（读书笔记1）/" data-id="cijmek0gv000g33q1itcsg0ud" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cijmf5ltz000g68q13e5a9emh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/10/20/代码大全（读书笔记1）/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -355,15 +370,15 @@
             <a href="/2015/09/03/ppt-learning-Stereo-Vision/#more">Read More</a>
           </p>
         
-      
+     
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cijmek0h2000l33q147x52peo" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cijmf5lu6000l68q1zx3n8aos" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -405,15 +420,15 @@
             <a href="/2015/08/27/paper-reading-20150826/#more">Read More</a>
           </p>
         
-      
+     
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/27/paper-reading-20150826/" data-id="cijmek0hg000w33q1a6awqsoh" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cijmf5luk000w68q19pv4sm37" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/08/27/paper-reading-20150826/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -455,15 +470,15 @@
             <a href="/2015/08/18/paper-reading-20150816/#more">Read More</a>
           </p>
         
-      
+     
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/18/paper-reading-20150816/" data-id="cijmek0hj000y33q1cufh0m59" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cijmf5lum000y68q11j4vemmm" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/08/18/paper-reading-20150816/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -508,15 +523,15 @@
             <a href="/2015/08/16/paper-research-01/#more">Read More</a>
           </p>
         
-      
+     
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/16/paper-research-01/" data-id="cijmek0h7000o33q1p62qewmc" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/" data-id="cijmf5lub000o68q1lqs6ygyt" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/08/16/paper-research-01/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/08/16/paper-research-01/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -561,15 +576,15 @@ including dangerous objects/events like fire and heavy smoke
             <a href="/2015/08/16/object-detection-research/#more">Read More</a>
           </p>
         
-      
+     
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/16/object-detection-research/" data-id="cijmek0hm001033q1gs19em0y" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/16/object-detection-research/" data-id="cijmf5lun001068q1jlvvut7c" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/08/16/object-detection-research/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/08/16/object-detection-research/#ds-thread" class="article-comment-link">评论</a>
       
 
       

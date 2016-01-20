@@ -10,7 +10,7 @@
 Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ppt_learning_Stereo_Vision">
-<meta property="og:url" content="http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/index.html">
+<meta property="og:url" content="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="原文链接
 Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用">
@@ -73,7 +73,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
+          <input type="hidden" name="si" value="csrjtan.github.io">
         </form>
       </div>
     </div>
@@ -102,6 +102,11 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stereo_Vision_3AAlgorithms_and_Applications"><span class="toc-number">1.</span> <span class="toc-text">Stereo Vision:Algorithms and Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Author_3AStefano_Mattoccia"><span class="toc-number">1.1.</span> <span class="toc-text">Author:Stefano Mattoccia</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lab_3AUniversity_of_Bologna"><span class="toc-number">1.2.</span> <span class="toc-text">Lab:University of Bologna</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Intro"><span class="toc-number">2.</span> <span class="toc-text">1.Intro</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B9A_u4E49_3AEpipolar_constraint_28_u6781_u51E0_u4F55_u7EA6_u675F_29"><span class="toc-number">2.1.</span> <span class="toc-text">定义:Epipolar constraint(极几何约束)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B9A_u4E49_uFF1A_u89C6_u5DEE_uFF08Disparity_uFF09"><span class="toc-number">2.2.</span> <span class="toc-text">定义：视差（Disparity）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B9A_u4E49_uFF1A_u53CC_u76EE_u89C6_u754C_uFF08Horopter_uFF09"><span class="toc-number">2.3.</span> <span class="toc-text">定义：双目视界（Horopter）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Overview_of_stereo_vision_system"><span class="toc-number">3.</span> <span class="toc-text">2.Overview of stereo vision system</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1_Calibration_28offline_29"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 Calibration(offline)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2_Rectification"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 Rectification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3_Stereo_Correspondence"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 Stereo Correspondence</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4_Triangulation"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 Triangulation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-The_correspondence_problem"><span class="toc-number">4.</span> <span class="toc-text">3.The correspondence problem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1__u9884_u5904_u7406_uFF080_uFF09"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 预处理（0）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2__u5339_u914D_u4EE3_u4EF7_u8BA1_u7B97_281_29"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 匹配代价计算(1)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3__u4EE3_u4EF7_u805A_u5408_282_29"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 代价聚合(2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4__u89C6_u5DEE_u8BA1_u7B97/_u4F18_u5316_283_29"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 视差计算/优化(3)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5__u89C6_u5DEE_u7CBE_u7EC6_284_29"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 视差精细(4)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_u5E94_u7528"><span class="toc-number">5.</span> <span class="toc-text">4.应用</span></a></li></ol>
+          </div>
+        
         <p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf" target="_blank" rel="external">原文链接</a></p>
 <h3 id="Stereo_Vision_3AAlgorithms_and_Applications"><a href="#Stereo_Vision_3AAlgorithms_and_Applications" class="headerlink" title="Stereo Vision:Algorithms and Applications"></a>Stereo Vision:Algorithms and Applications</h3><h4 id="Author_3AStefano_Mattoccia"><a href="#Author_3AStefano_Mattoccia" class="headerlink" title="Author:Stefano Mattoccia"></a>Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html" target="_blank" rel="external">Stefano Mattoccia</a></h4><h4 id="Lab_3AUniversity_of_Bologna"><a href="#Lab_3AUniversity_of_Bologna" class="headerlink" title="Lab:University of Bologna"></a>Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用<br><a id="more"></a></p>
 <h3 id="1-Intro"><a href="#1-Intro" class="headerlink" title="1.Intro"></a>1.Intro</h3><p>Target:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息</p>
@@ -197,11 +202,11 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cijmek0h2000l33q147x52peo" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cijmf5lu6000l68q1zx3n8aos" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -235,7 +240,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/09/03/ppt-learning-Stereo-Vision/" data-title="ppt_learning_Stereo_Vision" data-url="http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/09/03/ppt-learning-Stereo-Vision/" data-title="ppt_learning_Stereo_Vision" data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/"></div>
   </section>
 </section>
       

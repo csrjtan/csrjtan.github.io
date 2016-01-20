@@ -10,7 +10,7 @@
 这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》">
-<meta property="og:url" content="http://yoursite.com/2015/08/18/paper-reading-20150816/index.html">
+<meta property="og:url" content="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="原文：Click作者：Jungong Han,Ling Shao
 这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。">
@@ -68,7 +68,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
+          <input type="hidden" name="si" value="csrjtan.github.io">
         </form>
       </div>
     </div>
@@ -97,6 +97,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u8FD9_u4E2A_u8BBA_u6587_u4E3B_u8981_u7B80_u4ECB_u4E00_u4E9B_u57FA_u4E8EKinect_u7684_u8BA1_u7B97_u673A_u89C6_u89C9_u7B97_u6CD5_u548C_u5E94_u7528_uFF0C_u6DB5_u76D6_u4E86_u5305_u62EC_u6DF1_u5EA6_u4FE1_u606F_u7684_u9884_u5904_u7406_uFF0CKinect_u7684_u7CBE_u786E_u6807_u5B9A_uFF1B_u7269_u4F53_u8DDF_u8E2A_u548C_u8BC6_u522B_uFF1B_u4EBA_u7C7B_u6D3B_u52A8_u5206_u6790_u548C_u624B_u52BF_u5206_u6790_u4EE5_u53CA_u5BA4_u51853D_u5339_u914D_u3002"><span class="toc-number">1.</span> <span class="toc-text">这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-_u5BA4_u51853D_u5339_u914D"><span class="toc-number"></span> <span class="toc-text">5.室内3D匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-_u7A00_u758F_uFF08sparse_uFF09_u7279_u5F81_u5339_u914D"><span class="toc-number">1.</span> <span class="toc-text">A.稀疏（sparse）特征匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-_u5BC6_u96C6_u70B9_u4E91_u5339_u914D_uFF08Dense_points_tracking_between_two_frames_uFF09"><span class="toc-number">2.</span> <span class="toc-text">B.密集点云匹配（Dense points tracking between two frames）</span></a></li></ol>
+          </div>
+        
         <p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194" target="_blank" rel="external">Click</a><br>作者：Jungong Han,Ling Shao</p>
 <h3 id="u8FD9_u4E2A_u8BBA_u6587_u4E3B_u8981_u7B80_u4ECB_u4E00_u4E9B_u57FA_u4E8EKinect_u7684_u8BA1_u7B97_u673A_u89C6_u89C9_u7B97_u6CD5_u548C_u5E94_u7528_uFF0C_u6DB5_u76D6_u4E86_u5305_u62EC_u6DF1_u5EA6_u4FE1_u606F_u7684_u9884_u5904_u7406_uFF0CKinect_u7684_u7CBE_u786E_u6807_u5B9A_uFF1B_u7269_u4F53_u8DDF_u8E2A_u548C_u8BC6_u522B_uFF1B_u4EBA_u7C7B_u6D3B_u52A8_u5206_u6790_u548C_u624B_u52BF_u5206_u6790_u4EE5_u53CA_u5BA4_u51853D_u5339_u914D_u3002"><a href="#u8FD9_u4E2A_u8BBA_u6587_u4E3B_u8981_u7B80_u4ECB_u4E00_u4E9B_u57FA_u4E8EKinect_u7684_u8BA1_u7B97_u673A_u89C6_u89C9_u7B97_u6CD5_u548C_u5E94_u7528_uFF0C_u6DB5_u76D6_u4E86_u5305_u62EC_u6DF1_u5EA6_u4FE1_u606F_u7684_u9884_u5904_u7406_uFF0CKinect_u7684_u7CBE_u786E_u6807_u5B9A_uFF1B_u7269_u4F53_u8DDF_u8E2A_u548C_u8BC6_u522B_uFF1B_u4EBA_u7C7B_u6D3B_u52A8_u5206_u6790_u548C_u624B_u52BF_u5206_u6790_u4EE5_u53CA_u5BA4_u51853D_u5339_u914D_u3002" class="headerlink" title="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。"></a>这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3><a id="more"></a>
 <p>这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。<br>主要用于入门延伸阅读所用。</p>
@@ -134,11 +139,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/08/18/paper-reading-20150816/" data-id="cijmek0hj000y33q1cufh0m59" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cijmf5lum000y68q11j4vemmm" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/08/18/paper-reading-20150816/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -172,7 +177,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/08/18/paper-reading-20150816/" data-title="论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》" data-url="http://yoursite.com/2015/08/18/paper-reading-20150816/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/08/18/paper-reading-20150816/" data-title="论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》" data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/"></div>
   </section>
 </section>
       

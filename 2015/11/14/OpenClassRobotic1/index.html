@@ -10,7 +10,7 @@
 2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="斯坦福公开课机器人学">
-<meta property="og:url" content="http://yoursite.com/2015/11/14/OpenClassRobotic1/index.html">
+<meta property="og:url" content="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
 2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
@@ -67,7 +67,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
+          <input type="hidden" name="si" value="csrjtan.github.io">
         </form>
       </div>
     </div>
@@ -96,6 +96,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_u6982_u8FF0"><span class="toc-number">1.</span> <span class="toc-text">1.概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><span class="toc-number">1.1.</span> <span class="toc-text">2.空间描述，广义的坐标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C"><span class="toc-number">1.2.</span> <span class="toc-text">3.讨论欧拉角和旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-DH_u53C2_u6570"><span class="toc-number">1.3.</span> <span class="toc-text">4.DH参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2"><span class="toc-number">1.4.</span> <span class="toc-text">5.仿灵长类机械臂</span></a></li></ol></li></ol>
+          </div>
+        
         <h3 id="1-_u6982_u8FF0"><a href="#1-_u6982_u8FF0" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
 <h4 id="2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><a href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807" class="headerlink" title="2.空间描述，广义的坐标"></a>2.空间描述，广义的坐标</h4><p>在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$<br>在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma,\phi$</p>
 <p>这里描述坐标系的转换可以用一个矩阵，其中旋转矩阵$ R_{AB}=R_{BA}^T $,具有<strong>正交性</strong>，<br>$ R_{AB}^{-1} = R_{BA} = R_{BA}^T $，并且满足:<br>$$ r_X^2 = r_Y^2 = r_Z^2 = 1 $$<br>$$ r_X * r_Y = r_X * r_Z = r_Y * r_Z = 0 $$<br>其中正交矩阵相关的一些矩阵分解有：QR、SVD、谱分解和极分解。</p>
@@ -116,11 +121,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2015/11/14/OpenClassRobotic1/" data-id="cijmek0i4001c33q13qeh5t3g" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cijmf5luy001c68q1uvqp6ni8" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://yoursite.com/2015/11/14/OpenClassRobotic1/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -154,7 +159,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/11/14/OpenClassRobotic1/" data-title="斯坦福公开课机器人学" data-url="http://yoursite.com/2015/11/14/OpenClassRobotic1/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/11/14/OpenClassRobotic1/" data-title="斯坦福公开课机器人学" data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/"></div>
   </section>
 </section>
       

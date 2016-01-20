@@ -3,9 +3,9 @@
   <title><![CDATA[CSRJTAN]]></title>
   <subtitle><![CDATA[Keep Moving]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
+  <link href="https://csrjtan.github.io/"/>
   <updated>2015-12-23T07:07:37.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://csrjtan.github.io/</id>
   
   <author>
     <name><![CDATA[CsrjTan]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[《爱的五种语言》]]></title>
-    <link href="http://yoursite.com/2015/12/23/%E3%80%8A%E7%88%B1%E7%9A%84%E4%BA%94%E7%A7%8D%E8%AF%AD%E8%A8%80%E3%80%8B/"/>
-    <id>http://yoursite.com/2015/12/23/《爱的五种语言》/</id>
+    <link href="https://csrjtan.github.io/2015/12/23/%E3%80%8A%E7%88%B1%E7%9A%84%E4%BA%94%E7%A7%8D%E8%AF%AD%E8%A8%80%E3%80%8B/"/>
+    <id>https://csrjtan.github.io/2015/12/23/《爱的五种语言》/</id>
     <published>2015-12-23T06:51:03.000Z</published>
     <updated>2015-12-23T07:07:37.000Z</updated>
     <content type="html"><![CDATA[<p>有一段时间没有更新博客了，觉得不写还是会颓，应该积极向上的去写更多东西，关于自己，关于读书，关于学习，每天应该在不断的总结和反省中前进。</p>
@@ -29,20 +29,20 @@
 <h3 id="u300A_u7231_u7684_u4E94_u79CD_u8BED_u8A00_u300B"><a href]]>
     </summary>
     
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[paper-reading-20151125]]></title>
-    <link href="http://yoursite.com/2015/11/25/paper-reading-20151125/"/>
-    <id>http://yoursite.com/2015/11/25/paper-reading-20151125/</id>
+    <link href="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/"/>
+    <id>https://csrjtan.github.io/2015/11/25/paper-reading-20151125/</id>
     <published>2015-11-25T06:13:16.000Z</published>
-    <updated>2015-11-26T09:06:27.000Z</updated>
+    <updated>2016-01-20T06:06:54.000Z</updated>
     <content type="html"><![CDATA[<p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
 <h3 id="Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object"><a href="#Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object" class="headerlink" title="Dynamic occlusion avoidance approach based on the depth image of moving visual object"></a>Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
 <h4 id="Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image"><a href="#Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image" class="headerlink" title="Abstract:Dynamic Occlusion avoidance based on the depth image."></a>Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>主要问题：通过物体的障碍提示来寻找最优观测方向和位置<br>Next Best View:</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>主要问题：通过物体的障碍提示来寻找最优观测方向和位置<br>Next Best View:</p>
 <ul>
 <li>用Octree模型来描述可视物体，然后对于不同观察情况的节点，给定不同的分数。</li>
 <li>用大量周全的Candidate View</li>
@@ -52,25 +52,25 @@
 </ul>
 <p>引入occlusion方法<br>缺点：受限于摄像机位置、特定的设备和先验信息，以上均不适用于移动的物体</p>
 <h3 id="u4E09_u4E2A_u95EE_u9898_uFF1A"><a href="#u4E09_u4E2A_u95EE_u9898_uFF1A" class="headerlink" title="三个问题："></a>三个问题：</h3><p>1.如何解决动态遮蔽的避障问题? -&gt; 用一个优化模型，结合运动预测在Best view Model里<br>2.如何通过深度图来预测可视物体的运动? -&gt; 用两个高斯曲率特征矩阵的匹配来求R T,用到SIFT和SVD<br>3.如何有效评估动态遮蔽的影响? -&gt; 用“effective avoidance rate”来评估算法的性能</p>
-<h3 id="2-Method_Overview"><a href="#2-Method_Overview" class="headerlink" title="2.Method Overview"></a>2.Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
+<h3 id="Method_Overview"><a href="#Method_Overview" class="headerlink" title="Method Overview"></a>Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
 <p>2.The overall idea of dynamic occlusion avoidance<br>首先，移动物体相近深度图的像素进行三维坐标恢复（用Anti-projection），则遮蔽暗示可以从第二幅图得到<br>基于上述，用第二张深度图的遮蔽信息来构建Best View Model<br>接着，用三维坐标点的形式，做高斯曲率特征矩阵来匹配两个相近的深度图<br>最后，将运动预测结合到最佳视角模型里。</p>
-<h3 id="3-The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image"><a href="#3-The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image" class="headerlink" title="3.The Approach to dynamic occlusion avoidance based on depth image"></a>3.The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br><img src="/" alt=""><br>构建出patch</p>
+<h3 id="The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image"><a href="#The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image" class="headerlink" title="The Approach to dynamic occlusion avoidance based on depth image"></a>The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br><img src="/" alt=""><br>构建出patch</p>
 <p>2.Constructing the best view model<br>通过构建最大化Occlusion面积</p>
-<h3 id="4-Algorithm"><a href="#4-Algorithm" class="headerlink" title="4.Algorithm"></a>4.Algorithm</h3><p>step1:Calc the 3D pixels and the Gaussian Curvature Feature matrices<br>step2:Detect the Occlusion Boundary and establish the occlusion region in second depth<br>step3:Contruct the best view model<br>step4:Match the key points<br>step5:Solve the Objective formula<br>step6:Plan the next view of camera<br>step7:Acquire a depth image and calc the f(x)<br>step8:If the difference between two adjacent f(x) is less than a given threshold,then terminated,or jump to Step 4.</p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>step1:Calc the 3D pixels and the Gaussian Curvature Feature matrices<br>step2:Detect the Occlusion Boundary and establish the occlusion region in second depth<br>step3:Contruct the best view model<br>step4:Match the key points<br>step5:Solve the Objective formula<br>step6:Plan the next view of camera<br>step7:Acquire a depth image and calc the f(x)<br>step8:If the difference between two adjacent f(x) is less than a given threshold,then terminated,or jump to Step 4.</p>
 <h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>1.Add emotion estimate in Best Next View to dynamic occlusion avoidance<br>2.Based the depth image to solve the R and T transformation<br>3.Propose the “Effective avoidance rate” to measure the performance of the algorithm.</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next Vie]]>
     </summary>
     
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[第一学期总结]]></title>
-    <link href="http://yoursite.com/2015/11/25/%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2015/11/25/第一学期总结/</id>
+    <link href="https://csrjtan.github.io/2015/11/25/%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E6%80%BB%E7%BB%93/"/>
+    <id>https://csrjtan.github.io/2015/11/25/第一学期总结/</id>
     <published>2015-11-25T00:52:01.000Z</published>
     <updated>2015-11-25T01:17:26.000Z</updated>
     <content type="html"><![CDATA[<h3 id="DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE"><a href="#DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE" class="headerlink" title="DJI无人机避障飞行项目"></a>DJI无人机避障飞行项目</h3><h4 id="u7814_u8BFB_u4E86CAMERA_CALIBRATION_2CSTEREO_VISION_2CSLAM"><a href="#u7814_u8BFB_u4E86CAMERA_CALIBRATION_2CSTEREO_VISION_2CSLAM" class="headerlink" title="研读了CAMERA CALIBRATION,STEREO VISION,SLAM"></a>研读了CAMERA CALIBRATION,STEREO VISION,SLAM</h4><p>其中做SLAM的时候基于opencv、pcl、g2o为依赖库的开发</p>
@@ -81,14 +81,14 @@
     <![CDATA[<h3 id="DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE"><a href="#DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE" clas]]>
     </summary>
     
-      <category term="总结" scheme="http://yoursite.com/tags/%E6%80%BB%E7%BB%93/"/>
+      <category term="总结" scheme="https://csrjtan.github.io/tags/%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[斯坦福公开课机器人学]]></title>
-    <link href="http://yoursite.com/2015/11/14/OpenClassRobotic1/"/>
-    <id>http://yoursite.com/2015/11/14/OpenClassRobotic1/</id>
+    <link href="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/"/>
+    <id>https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/</id>
     <published>2015-11-13T16:04:37.000Z</published>
     <updated>2015-11-14T02:56:19.000Z</updated>
     <content type="html"><![CDATA[<h3 id="1-_u6982_u8FF0"><a href="#1-_u6982_u8FF0" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
@@ -111,14 +111,14 @@
     <![CDATA[<h3 id="1-_u6982_u8FF0"><a href="#1-_u6982_u8FF0" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<]]>
     </summary>
     
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[SLAM的学习总结]]></title>
-    <link href="http://yoursite.com/2015/11/08/SLAM%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2015/11/08/SLAM的学习总结/</id>
+    <link href="https://csrjtan.github.io/2015/11/08/SLAM%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    <id>https://csrjtan.github.io/2015/11/08/SLAM的学习总结/</id>
     <published>2015-11-08T09:31:46.000Z</published>
     <updated>2015-11-09T13:54:49.000Z</updated>
     <content type="html"><![CDATA[<h4 id="u597D_u4E45_u6CA1_u66F4_u65B0_u4E86_uFF0C_u6700_u8FD1_u786E_u5B9E_u4E1C_u897F_u6709_u70B9_u591A_u6709_u70B9_u4E71_uFF0C_u5FC5_u8981_u7684_u8D76_u7D27_u6765_u603B_u7ED3_u4E00_u4E0B_u4E86"><a href="#u597D_u4E45_u6CA1_u66F4_u65B0_u4E86_uFF0C_u6700_u8FD1_u786E_u5B9E_u4E1C_u897F_u6709_u70B9_u591A_u6709_u70B9_u4E71_uFF0C_u5FC5_u8981_u7684_u8D76_u7D27_u6765_u603B_u7ED3_u4E00_u4E0B_u4E86" class="headerlink" title="好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了"></a>好久没更新了，最近确实东西有点多有点乱，必要的赶紧来总结一下了</h4><h3 id="u5173_u4E8ESLAM_u7684_u5B66_u4E60"><a href="#u5173_u4E8ESLAM_u7684_u5B66_u4E60" class="headerlink" title="关于SLAM的学习"></a>关于SLAM的学习</h3><p>首先，参考学习了很多关于SLAM的内容，从理论、研究到开源软件甚至于开源的调用库都知道不少，奈何自己在这方面确实尚浅，走了不少弯路。</p>
@@ -140,8 +140,8 @@
   
   <entry>
     <title><![CDATA[数据挖掘导论（3）]]></title>
-    <link href="http://yoursite.com/2015/11/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%883%EF%BC%89/"/>
-    <id>http://yoursite.com/2015/11/02/数据挖掘导论（3）/</id>
+    <link href="https://csrjtan.github.io/2015/11/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%883%EF%BC%89/"/>
+    <id>https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/</id>
     <published>2015-11-02T11:26:19.000Z</published>
     <updated>2015-11-03T06:46:26.000Z</updated>
     <content type="html"><![CDATA[<p>何女神，准备就期中考了，考到第7章，我有空继续看，顺便完善一下读书笔记，做人要有始有终。</p>
@@ -177,14 +177,14 @@ end for
 <h4 id="u56DE_u987E_u4E0A_u8282"><a href="#u56DE_u987E_u4E0A_u8282" class="headerlink" t]]>
     </summary>
     
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[数据挖掘导论（2）]]></title>
-    <link href="http://yoursite.com/2015/10/31/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%882%EF%BC%89/"/>
-    <id>http://yoursite.com/2015/10/31/数据挖掘导论（2）/</id>
+    <link href="https://csrjtan.github.io/2015/10/31/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%882%EF%BC%89/"/>
+    <id>https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/</id>
     <published>2015-10-31T08:41:57.000Z</published>
     <updated>2015-11-02T12:15:29.000Z</updated>
     <content type="html"><![CDATA[<h3 id="u8FD9_u5199_u4E00_u4E0B_u7B2C_u4E09_u7B2C_u56DB_u7AE0_u7684_u4E3B_u8981_u5185_u5BB9"><a href="#u8FD9_u5199_u4E00_u4E0B_u7B2C_u4E09_u7B2C_u56DB_u7AE0_u7684_u4E3B_u8981_u5185_u5BB9" class="headerlink" title="这写一下第三第四章的主要内容"></a>这写一下第三第四章的主要内容</h3><h4 id="1-_u7B2C_u4E09_u7AE0_u5305_u62EC_u6C47_u603B_u7EDF_u8BA1_u3001_u53EF_u89C6_u5316_u548COLAP"><a href="#1-_u7B2C_u4E09_u7AE0_u5305_u62EC_u6C47_u603B_u7EDF_u8BA1_u3001_u53EF_u89C6_u5316_u548COLAP" class="headerlink" title="1.第三章包括汇总统计、可视化和OLAP"></a>1.第三章包括汇总统计、可视化和OLAP</h4><p>统计的<strong>特征数据点</strong>包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。</p>
@@ -217,14 +217,14 @@ return root
     <![CDATA[<h3 id="u8FD9_u5199_u4E00_u4E0B_u7B2C_u4E09_u7B2C_u56DB_u7AE0_u7684_u4E3B_u8981_u5185_u5BB9"><a href="#u8FD9_u5199_u4E00_u4E0B_u7B2C_u4E09_u]]>
     </summary>
     
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[关于LATEX在MAC上的配置学习]]></title>
-    <link href="http://yoursite.com/2015/10/30/study-20151030/"/>
-    <id>http://yoursite.com/2015/10/30/study-20151030/</id>
+    <link href="https://csrjtan.github.io/2015/10/30/study-20151030/"/>
+    <id>https://csrjtan.github.io/2015/10/30/study-20151030/</id>
     <published>2015-10-30T09:16:52.000Z</published>
     <updated>2015-10-31T01:40:42.000Z</updated>
     <content type="html"><![CDATA[<h3 id="LATEX_u7684_u5B66_u4E60"><a href="#LATEX_u7684_u5B66_u4E60" class="headerlink" title="LATEX的学习"></a>LATEX的学习</h3><p>今天来到了科大找高中同学科长学习，在万圣节的前夕本是玩心重重，但在香港的生活忙碌又充实，他也准备MID-TERM了，所以转了一圈之后我们来到颇负盛名的科大图书馆学习。这里先爆个照！<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/keda.jpg" alt=""></p>
@@ -267,8 +267,8 @@ This is where you will write your content. 在这里写上内容。
   
   <entry>
     <title><![CDATA[小组Talk1]]></title>
-    <link href="http://yoursite.com/2015/10/28/group-talk1/"/>
-    <id>http://yoursite.com/2015/10/28/group-talk1/</id>
+    <link href="https://csrjtan.github.io/2015/10/28/group-talk1/"/>
+    <id>https://csrjtan.github.io/2015/10/28/group-talk1/</id>
     <published>2015-10-28T15:48:09.000Z</published>
     <updated>2015-10-30T02:20:38.000Z</updated>
     <content type="html"><![CDATA[<h2 id="u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><a href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT" class="headerlink" title="理大第一次小组REPORT"></a>理大第一次小组REPORT</h2><p>讲讲进来三个月的工作成果和研究进展，分享一下所学内容<br>这里写下日记，总结之余，也将演讲内容在这里过一遍</p>
@@ -285,14 +285,14 @@ This is where you will write your content. 在这里写上内容。
     <![CDATA[<h2 id="u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><a href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT" class="headerlink" title]]>
     </summary>
     
-      <category term="group" scheme="http://yoursite.com/tags/group/"/>
+      <category term="group" scheme="https://csrjtan.github.io/tags/group/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Guidance:A Visual Sensing Platform For Robotic Applications]]></title>
-    <link href="http://yoursite.com/2015/10/28/paper-reading-20151028/"/>
-    <id>http://yoursite.com/2015/10/28/paper-reading-20151028/</id>
+    <link href="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/"/>
+    <id>https://csrjtan.github.io/2015/10/28/paper-reading-20151028/</id>
     <published>2015-10-28T12:38:38.000Z</published>
     <updated>2015-10-28T14:13:30.000Z</updated>
     <content type="html"><![CDATA[<h3 id="DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0"><a href="#DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0" class="headerlink" title="DJI在CVPR15上发的关于GUIDANCE组件的文章"></a>DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
@@ -312,14 +312,14 @@ This is where you will write your content. 在这里写上内容。
     
     </summary>
     
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[摄像头校正（Camera Calibration）]]></title>
-    <link href="http://yoursite.com/2015/10/27/camera-calibration/"/>
-    <id>http://yoursite.com/2015/10/27/camera-calibration/</id>
+    <link href="https://csrjtan.github.io/2015/10/27/camera-calibration/"/>
+    <id>https://csrjtan.github.io/2015/10/27/camera-calibration/</id>
     <published>2015-10-27T02:29:57.000Z</published>
     <updated>2015-10-27T15:10:26.000Z</updated>
     <content type="html"><![CDATA[<h3 id="u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60"><a href="#u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60" class="headerlink" title="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习"></a>为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</h3><p>首先分享一下好的资源<a href="http://wycwang.blogspot.hk/2012/09/camera-calibration-part-1-camera-model.html" target="_blank" rel="external">Richard’s blog</a> 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。</p>
@@ -341,14 +341,14 @@ This is where you will write your content. 在这里写上内容。
     <![CDATA[<h3 id="u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC]]>
     </summary>
     
-      <category term="Stereo Vision" scheme="http://yoursite.com/tags/Stereo-Vision/"/>
+      <category term="Stereo Vision" scheme="https://csrjtan.github.io/tags/Stereo-Vision/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Small Vision Systems :Hardware and Implementation]]></title>
-    <link href="http://yoursite.com/2015/10/25/paper-reading-20151025/"/>
-    <id>http://yoursite.com/2015/10/25/paper-reading-20151025/</id>
+    <link href="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/"/>
+    <id>https://csrjtan.github.io/2015/10/25/paper-reading-20151025/</id>
     <published>2015-10-25T12:50:44.000Z</published>
     <updated>2015-10-27T04:32:37.000Z</updated>
     <content type="html"><![CDATA[<p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
@@ -362,14 +362,14 @@ This is where you will write your content. 在这里写上内容。
     <![CDATA[<p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当]]>
     </summary>
     
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[数据挖掘导论（1）]]></title>
-    <link href="http://yoursite.com/2015/10/25/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%881%EF%BC%89/"/>
-    <id>http://yoursite.com/2015/10/25/数据挖掘导论（1）/</id>
+    <link href="https://csrjtan.github.io/2015/10/25/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%881%EF%BC%89/"/>
+    <id>https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/</id>
     <published>2015-10-25T03:06:29.000Z</published>
     <updated>2015-10-25T09:17:55.000Z</updated>
     <content type="html"><![CDATA[<h3 id="u5468_u672B_u548C_u4F55_u5973_u795E_u4E00_u8D77_u8BFB_u4E66_uFF0C_u5979_u6700_u8FD1_u5B66_u6570_u636E_u6316_u6398_uFF0C_u6240_u4EE5_u6211_u5C31_u966A_u8BFB_uFF0C_u8FD9_u91CC_u8BB0_u5F55_u4E00_u4E0B_u8BFB_u4E66_u5FC3_u5F97_u3002"><a href="#u5468_u672B_u548C_u4F55_u5973_u795E_u4E00_u8D77_u8BFB_u4E66_uFF0C_u5979_u6700_u8FD1_u5B66_u6570_u636E_u6316_u6398_uFF0C_u6240_u4EE5_u6211_u5C31_u966A_u8BFB_uFF0C_u8FD9_u91CC_u8BB0_u5F55_u4E00_u4E0B_u8BFB_u4E66_u5FC3_u5F97_u3002" class="headerlink" title="周末和何女神一起读书，她最近学数据挖掘，所以我就陪读，这里记录一下读书心得。"></a>周末和何女神一起读书，她最近学数据挖掘，所以我就陪读，这里记录一下读书心得。</h3><p>首先，这本书应该是数据挖掘领域的经典，可以找到网上的数据挖掘导论PDF<br>作者是Michingan State U的Associate Professor <a href="http://www.cse.msu.edu/~ptan/" target="_blank" rel="external">Pang-Ning Tan</a>、University of Minnesota的<a href="http://www-users.cs.umn.edu/~kumar/" target="_blank" rel="external">Vipin Kumar</a></p>
@@ -400,14 +400,14 @@ This is where you will write your content. 在这里写上内容。
     
     </summary>
     
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[论文阅读方法和技巧]]></title>
-    <link href="http://yoursite.com/2015/10/22/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/"/>
-    <id>http://yoursite.com/2015/10/22/论文阅读方法/</id>
+    <link href="https://csrjtan.github.io/2015/10/22/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/"/>
+    <id>https://csrjtan.github.io/2015/10/22/论文阅读方法/</id>
     <published>2015-10-22T08:58:39.000Z</published>
     <updated>2015-10-22T09:01:29.000Z</updated>
     <content type="html"><![CDATA[<h4 id="u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><a href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97" class="headerlink" title="关于论文阅读的方法和心得"></a>关于论文阅读的方法和心得</h4><p><a href="https://www.evernote.com/shard/s608/sh/b2f2b9b0-91a5-4abf-81f4-599d3fa52bb9/01af8a34804f5cd1/res/bda4e9d8-e543-4cfd-9bb1-f42e7a626894/%E9%98%85%E8%AF%BB%E8%AE%BA%E6%96%87.pdf" target="_blank" rel="external">PDF</a></p>
@@ -417,14 +417,14 @@ This is where you will write your content. 在这里写上内容。
     <![CDATA[<h4 id="u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><a href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u]]>
     </summary>
     
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[代码大全（1）]]></title>
-    <link href="http://yoursite.com/2015/10/20/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%88%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01%EF%BC%89/"/>
-    <id>http://yoursite.com/2015/10/20/代码大全（读书笔记1）/</id>
+    <link href="https://csrjtan.github.io/2015/10/20/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%88%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01%EF%BC%89/"/>
+    <id>https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/</id>
     <published>2015-10-20T05:25:34.000Z</published>
     <updated>2015-10-22T05:09:39.000Z</updated>
     <content type="html"><![CDATA[<h3 id="u6574_u7406_u4E00_u4E0B_u6700_u8FD1_u7684_u8BFB_u4E66_u7B14_u8BB0_uFF0C_u9996_u5148_u5E94_u8BE5_u662F_u300A_u4EE3_u7801_u5927_u5168_u300B_u8FD9_u672C_u4E66_uFF0C_u8FD9_u91CC_u5199_u4E00_u4E0B_u7B2C_u4E00_u90E8_u5206_u201C_u6253_u597D_u57FA_u7840_u201D"><a href="#u6574_u7406_u4E00_u4E0B_u6700_u8FD1_u7684_u8BFB_u4E66_u7B14_u8BB0_uFF0C_u9996_u5148_u5E94_u8BE5_u662F_u300A_u4EE3_u7801_u5927_u5168_u300B_u8FD9_u672C_u4E66_uFF0C_u8FD9_u91CC_u5199_u4E00_u4E0B_u7B2C_u4E00_u90E8_u5206_u201C_u6253_u597D_u57FA_u7840_u201D" class="headerlink" title="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”"></a>整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”</h3><p>最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。<a id="more"></a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/构建项目.png" alt=""></p>
@@ -448,14 +448,14 @@ This is where you will write your content. 在这里写上内容。
     
     </summary>
     
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[ppt_learning_Stereo_Vision]]></title>
-    <link href="http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/"/>
-    <id>http://yoursite.com/2015/09/03/ppt-learning-Stereo-Vision/</id>
+    <link href="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/"/>
+    <id>https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/</id>
     <published>2015-09-03T08:11:25.000Z</published>
     <updated>2015-10-28T14:39:55.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf" target="_blank" rel="external">原文链接</a></p>
@@ -555,14 +555,14 @@ This is where you will write your content. 在这里写上内容。
     
     </summary>
     
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications]]></title>
-    <link href="http://yoursite.com/2015/08/27/paper-reading-20150826/"/>
-    <id>http://yoursite.com/2015/08/27/paper-reading-20150826/</id>
+    <link href="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/"/>
+    <id>https://csrjtan.github.io/2015/08/27/paper-reading-20150826/</id>
     <published>2015-08-27T01:57:19.000Z</published>
     <updated>2015-10-28T14:40:00.000Z</updated>
     <content type="html"><![CDATA[<p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
@@ -583,14 +583,14 @@ This is where you will write your content. 在这里写上内容。
     
     </summary>
     
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》]]></title>
-    <link href="http://yoursite.com/2015/08/18/paper-reading-20150816/"/>
-    <id>http://yoursite.com/2015/08/18/paper-reading-20150816/</id>
+    <link href="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/"/>
+    <id>https://csrjtan.github.io/2015/08/18/paper-reading-20150816/</id>
     <published>2015-08-18T07:26:29.000Z</published>
     <updated>2015-10-28T14:40:03.000Z</updated>
     <content type="html"><![CDATA[<p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194" target="_blank" rel="external">Click</a><br>作者：Jungong Han,Ling Shao</p>
@@ -632,14 +632,14 @@ This is where you will write your content. 在这里写上内容。
     
     </summary>
     
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》]]></title>
-    <link href="http://yoursite.com/2015/08/16/paper-research-01/"/>
-    <id>http://yoursite.com/2015/08/16/paper-research-01/</id>
+    <link href="https://csrjtan.github.io/2015/08/16/paper-research-01/"/>
+    <id>https://csrjtan.github.io/2015/08/16/paper-research-01/</id>
     <published>2015-08-16T13:12:12.000Z</published>
     <updated>2015-10-28T14:39:49.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517" target="_blank" rel="external">Paper Link</a></p>
@@ -708,14 +708,14 @@ This is where you will write your content. 在这里写上内容。
     
     </summary>
     
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Research_For_UAVs]]></title>
-    <link href="http://yoursite.com/2015/08/16/object-detection-research/"/>
-    <id>http://yoursite.com/2015/08/16/object-detection-research/</id>
+    <link href="https://csrjtan.github.io/2015/08/16/object-detection-research/"/>
+    <id>https://csrjtan.github.io/2015/08/16/object-detection-research/</id>
     <published>2015-08-16T09:42:10.000Z</published>
     <updated>2015-10-28T14:40:07.000Z</updated>
     <content type="html"><![CDATA[<pre><code>目的：调研无人机网络项目的相关资料。
@@ -789,7 +789,7 @@ including dangerous objects/events like fire and heavy smoke
     
     </summary>
     
-      <category term="paper" scheme="http://yoursite.com/tags/paper/"/>
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
