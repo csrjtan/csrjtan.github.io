@@ -130,7 +130,7 @@ body {
 }
 .outer {
   zoom: 1;
-  max-width: 1220px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 0 10px;
 }
@@ -145,8 +145,8 @@ body {
 .inner {
   display: inline;
   float: left;
-  width: 98.3333333333333%;
-  margin: 0 0.8333333333333%;
+  width: 97.7777777777778%;
+  margin: 0 1.1111111111111%;
 }
 .left,
 .alignleft {
@@ -182,18 +182,9 @@ body {
 .mobile-nav-on #wrap {
   left: 280px;
 }
-@media screen and (min-width: 768px) {
-  #main {
-    display: inline;
-    float: left;
-    width: 73.3333333333333%;
-    margin: 0 0.8333333333333%;
-  }
-}
 .article-date,
 .article-category-link,
-.archive-year,
-.widget-title {
+.archive-year {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -1085,6 +1076,34 @@ a.article-title:hover {
   max-width: 100%;
   margin: 0 auto;
 }
+.toc-article {
+  background: #eee;
+  border: 1px solid #bbb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 1.5em 0 0.3em 1.5em;
+  padding: 1.2em 1em 0 1em;
+  max-width: 28%;
+}
+.toc-title {
+  font-size: 120%;
+}
+#toc {
+  line-height: 1em;
+  font-size: 0.9em;
+  float: right;
+}
+#toc .toc {
+  padding: 0;
+  margin: 1em;
+  line-height: 1.8em;
+}
+#toc .toc li {
+  list-style-type: none;
+}
+#toc .toc-child {
+  margin-left: 1em;
+}
 #comments {
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
@@ -1459,46 +1478,27 @@ pre .javascript .function {
     display: none !important;
   }
 }
+.widget-wrap {
+  margin-bottom: 50px !important;
+}
 @media screen and (min-width: 768px) {
-  #sidebar {
+  .widget-wrap {
     display: inline;
     float: left;
-    width: 23.3333333333333%;
-    margin: 0 0.8333333333333%;
+    width: 31.1111111111111%;
+    margin: 0 1.1111111111111%;
   }
 }
-.widget-wrap {
-  margin: 50px 0;
+.widget-title {
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+  line-height: 1em;
+  font-weight: bold;
 }
 .widget {
-  color: #777;
-  text-shadow: 0 1px #fff;
-  background: #fff;
-  -webkit-box-shadow: 1px 2px 3px #ddd;
-  box-shadow: 1px 2px 3px #ddd;
-  padding: 15px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-.widget a {
   color: #999;
-  text-decoration: none;
-}
-.widget a:hover {
-  text-decoration: underline;
-  color: #e32d40;
-}
-.widget ul ul,
-.widget ol ul,
-.widget dl ul,
-.widget ul ol,
-.widget ol ol,
-.widget dl ol,
-.widget ul dl,
-.widget ol dl,
-.widget dl dl {
-  margin-left: 15px;
-  list-style: disc;
 }
 .widget {
   line-height: 1.6em;
