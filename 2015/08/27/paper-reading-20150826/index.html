@@ -1,18 +1,11 @@
-<!DOCTYPE HTML>
+
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
   <title>Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications | CSRJTAN</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  
-    <meta name="author" content="CsrjTan">
-  
-  
-    <meta name="description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
-Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
 Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.">
 <meta property="og:type" content="article">
@@ -29,75 +22,83 @@ Abstract: Discuss the calibration of Kinect sensor and analysis it based on the 
 <meta name="twitter:description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
 Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+    <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
-
-
-
-<script type="text/javascript">
-
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-
 </head>
-
 <body>
-  <div class="wrapper">
+<div id="container">
+  <div id="wrap">
     <header id="header">
-  <div class="title">
-    <h1><a href="/">CSRJTAN</a></h1>
-    <p><a href="/">Keep Moving</a></p>
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CSRJTAN</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Keep Moving</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
   </div>
-  <nav class="nav">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/tags">Tags</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-      
-     
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
-  <div class="clearfix"></div>
 </header>
-    <div class="content"><article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/27/paper-reading-20150826/">
-  <time datetime="2015-08-27T01:57:19.000Z">
-    2015-08-27
-  </time>
+    <div class="outer">
+      <section id="main"><article id="post-paper-reading-20150826" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/27/paper-reading-20150826/" class="article-date">
+  <time datetime="2015-08-27T01:57:19.000Z" itemprop="datePublished">2015-08-27</time>
 </a>
     
+  </div>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title">Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications</h1>
+    <h1 class="article-title" itemprop="name">
+      Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications
+    </h1>
   
 
-  </header>
-  
-  <div class="entry">
+      </header>
     
-      <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
 <p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.<br><a id="more"></a><br>1.<strong>Introduce</strong><br>   sec 1 介绍全文<br>   sec 2 介绍原理和模型<br>   sec 3 介绍误差影响要素<br>   sec 4 实验结果和分析<br>   sec 5 总结和remark</p>
 <p>2.<strong>深度测量 with triangulation</strong></p>
 <p>Triangulation Methods of Kinect [<a href="https://www.google.com/patents/US8150142" target="_blank" rel="external">1</a>] laser source emits single beam which split into multiple beams by diffraction.</p>
@@ -109,120 +110,238 @@ var _hmt = _hmt || [];
 <p>3.相机标定<br>我们需要求得标定的参数变量如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png" alt=""><br>前三个通过红外照相机标准标定可得<br>由于USB带宽所限，标定use reduced infrared images instead of actual sensor。<br>Disparity measurement 采样为0~2047 11bits，则 d = md’+n。 m, n为线性化参数。<br>代入 公式（1）可得<br>$$Z^{-1}_k = (\frac{m}{fb}d’ +(Z^{-1}_0 + \frac {n}{fb})) $$<br>通过测得(x,y,d’)可以映射到世界坐标系的(X,Y,Z)</p>
 <p>4.加入颜色元素</p>
 
-    
-  </div>
-  <footer>
-    
       
+    </div>
+    <footer class="article-footer">
       
-  <div class="tags">
-    <a class="tags-link" href="/tags/paper/">paper</a>
-  </div>
+        <a data-url="http://yoursite.com/2015/08/27/paper-reading-20150826/" data-id="cijmek0hg000w33q1a6awqsoh" class="article-share-link" data-share="baidu">分享到</a>
+      
 
+      
+        <a href="http://yoursite.com/2015/08/27/paper-reading-20150826/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
+
+    </footer>
+  </div>
+  
     
-    <div class="clearfix"></div>
-  </footer>
+<nav id="article-nav">
+  
+    <a href="/2015/09/03/ppt-learning-Stereo-Vision/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          ppt_learning_Stereo_Vision
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/18/paper-reading-20150816/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-<section id="comment">
-  <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-paper-reading-20150826" data-title="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications" data-url="http://yoursite.com/2015/08/27/paper-reading-20150826/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/08/27/paper-reading-20150826/" data-title="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications" data-url="http://yoursite.com/2015/08/27/paper-reading-20150826/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 15px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/25/paper-reading-20151125/">paper-reading-20151125</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/25/第一学期总结/">第一学期总结</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/14/OpenClassRobotic1/">斯坦福公开课机器人学</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/08/SLAM的学习总结/">SLAM的学习总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 CsrjTan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"tanrunj"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-</section>
-</div>
-  </div>
-  <footer id="footer"><div class="copyright">
-  
-  &copy; 2015 <a href="/">CsrjTan</a>
-  
-</div>
-
-<div class="theme-copyright">
-  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
-   | 
-  Redesign by <a href="https://github.com/csrjtan" target="_blank">tanrunj</a>
-</div>
-
-<div class="clearfix"></div>
-
-
- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-        
-</footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script src="/js/scale.fix.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<nav id="pagination" >
-    
-    <a href="/2015/09/03/ppt-learning-Stereo-Vision/" class="alignleft prev" >上一页</a>
-    
-    
-    <a href="/2015/08/18/paper-reading-20150816/" class="alignright next" >下一页</a>
-    
-    <div class="clearfix"></div>
-</nav>
-<script type="text/javascript">
-  var duoshuoQuery = { short_name: 'tanrunj' };
   (function() {
     var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
     ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
   })();
-</script>
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox();
-  })(jQuery);
-</script>
-
-
+<! -- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    }); 
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
 </script>
+
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
 </script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
 <!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
@@ -255,5 +374,3 @@ var duoshuoQuery = {short_name:"tanrunj"};
 </script>
 </body>
 </html>
-
-<a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>

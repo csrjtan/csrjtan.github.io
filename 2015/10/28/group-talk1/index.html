@@ -1,18 +1,11 @@
-<!DOCTYPE HTML>
+
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
   <title>小组Talk1 | CSRJTAN</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  
-    <meta name="author" content="CsrjTan">
-  
-  
-    <meta name="description" content="理大第一次小组REPORT讲讲进来三个月的工作成果和研究进展，分享一下所学内容这里写下日记，总结之余，也将演讲内容在这里过一遍
-1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="理大第一次小组REPORT讲讲进来三个月的工作成果和研究进展，分享一下所学内容这里写下日记，总结之余，也将演讲内容在这里过一遍
 1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
 <meta property="og:type" content="article">
@@ -27,198 +20,324 @@
 <meta name="twitter:description" content="理大第一次小组REPORT讲讲进来三个月的工作成果和研究进展，分享一下所学内容这里写下日记，总结之余，也将演讲内容在这里过一遍
 1.Big PictureTarget:实现无人机的自动导航以及躲避障碍物使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。避障算法，Bug Algorithm:检测到障碍物，进行闪躲">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+    <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
-
-
-
-<script type="text/javascript">
-
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-
 </head>
-
 <body>
-  <div class="wrapper">
+<div id="container">
+  <div id="wrap">
     <header id="header">
-  <div class="title">
-    <h1><a href="/">CSRJTAN</a></h1>
-    <p><a href="/">Keep Moving</a></p>
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CSRJTAN</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Keep Moving</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
   </div>
-  <nav class="nav">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/tags">Tags</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-      
-     
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
-  <div class="clearfix"></div>
 </header>
-    <div class="content"><article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/10/28/group-talk1/">
-  <time datetime="2015-10-28T15:48:09.000Z">
-    2015-10-28
-  </time>
+    <div class="outer">
+      <section id="main"><article id="post-group-talk1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/28/group-talk1/" class="article-date">
+  <time datetime="2015-10-28T15:48:09.000Z" itemprop="datePublished">2015-10-28</time>
 </a>
     
+  </div>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title">小组Talk1</h1>
+    <h1 class="article-title" itemprop="name">
+      小组Talk1
+    </h1>
   
 
-  </header>
-  
-  <div class="entry">
+      </header>
     
-      <h2 id="理大第一次小组REPORT">理大第一次小组REPORT</h2><p>讲讲进来三个月的工作成果和研究进展，分享一下所学内容<br>这里写下日记，总结之余，也将演讲内容在这里过一遍</p>
-<h3 id="1-Big_Picture">1.Big Picture</h3><p>Target:实现无人机的自动导航以及躲避障碍物<br>使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。<br>避障算法，Bug Algorithm:检测到障碍物，进行闪躲，但依然朝终点靠近<br>这里的起始点和终点乃至地图都可以pre-defined。</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><a href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT" class="headerlink" title="理大第一次小组REPORT"></a>理大第一次小组REPORT</h2><p>讲讲进来三个月的工作成果和研究进展，分享一下所学内容<br>这里写下日记，总结之余，也将演讲内容在这里过一遍</p>
+<h3 id="1-Big_Picture"><a href="#1-Big_Picture" class="headerlink" title="1.Big Picture"></a>1.Big Picture</h3><p>Target:实现无人机的自动导航以及躲避障碍物<br>使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。<br>避障算法，Bug Algorithm:检测到障碍物，进行闪躲，但依然朝终点靠近<br>这里的起始点和终点乃至地图都可以pre-defined。</p>
 <p>由于这里面核心用到的是环境的三维信息，所以Stereo Matching的精度技术显得尤为重要</p>
-<h3 id="2-Stereo_Vision">2.Stereo Vision</h3><h4 id="2-1_Camera_Calibration">2.1 Camera Calibration</h4><p>这一节可以看之前camera calibration的日志，针孔平面可由相似三角求出，但由于针孔曝光不足，所以一般用透镜，所以引入了透镜畸变误差，建立数学模型解决。然后我们标定的目的主要是为了能求出摄像机的内参数，包括焦距和成像中心点偏移。以及畸变参数，从而对图像进行修正。</p>
-<h3 id="2-2_Stereo_Matching">2.2 Stereo Matching</h3><p>这一节可以参考之前stereo matching的日志，图像的深度Z可以通过简单的三角测量求解所得。所以StereoMatching的主要流程就是图像校正、立体匹配、计算深度。其中主要的步骤在于立体匹配：包括了预处理滤波、代价聚合计算、视差计算以及视差精细等步骤。</p>
-<h3 id="3-DJI_Developer">3.DJI Developer</h3><h4 id="3-1_Matrix_100">3.1 Matrix 100</h4><p>首先介绍一下M100这个可扩展飞行平台，它主要特点的续航时间长，负重好，飞行稳定性强，搭载的N1飞控可扩展接口和开发设备接口十分多，强大的可扩展性。<br>平台主要提供了Android和Onboard SDK，其中Android SDK主要控制摄像机、电池和云台以及飞行参数，但由于N1连接遥控器再用USB与手机连接的，所以数据传输是不稳定且难以做到实时的，所以这一块一般用于做一些监控拍摄，指派任务的非实时任务为佳。</p>
+<h3 id="2-Stereo_Vision"><a href="#2-Stereo_Vision" class="headerlink" title="2.Stereo Vision"></a>2.Stereo Vision</h3><h4 id="2-1_Camera_Calibration"><a href="#2-1_Camera_Calibration" class="headerlink" title="2.1 Camera Calibration"></a>2.1 Camera Calibration</h4><p>这一节可以看之前camera calibration的日志，针孔平面可由相似三角求出，但由于针孔曝光不足，所以一般用透镜，所以引入了透镜畸变误差，建立数学模型解决。然后我们标定的目的主要是为了能求出摄像机的内参数，包括焦距和成像中心点偏移。以及畸变参数，从而对图像进行修正。</p>
+<h3 id="2-2_Stereo_Matching"><a href="#2-2_Stereo_Matching" class="headerlink" title="2.2 Stereo Matching"></a>2.2 Stereo Matching</h3><p>这一节可以参考之前stereo matching的日志，图像的深度Z可以通过简单的三角测量求解所得。所以StereoMatching的主要流程就是图像校正、立体匹配、计算深度。其中主要的步骤在于立体匹配：包括了预处理滤波、代价聚合计算、视差计算以及视差精细等步骤。</p>
+<h3 id="3-DJI_Developer"><a href="#3-DJI_Developer" class="headerlink" title="3.DJI Developer"></a>3.DJI Developer</h3><h4 id="3-1_Matrix_100"><a href="#3-1_Matrix_100" class="headerlink" title="3.1 Matrix 100"></a>3.1 Matrix 100</h4><p>首先介绍一下M100这个可扩展飞行平台，它主要特点的续航时间长，负重好，飞行稳定性强，搭载的N1飞控可扩展接口和开发设备接口十分多，强大的可扩展性。<br>平台主要提供了Android和Onboard SDK，其中Android SDK主要控制摄像机、电池和云台以及飞行参数，但由于N1连接遥控器再用USB与手机连接的，所以数据传输是不稳定且难以做到实时的，所以这一块一般用于做一些监控拍摄，指派任务的非实时任务为佳。</p>
 <p>相对来说OnBoard SDK提供了开放协议从而对飞控进行命令委派，进而对飞行器进行姿态调整以及飞行模式切换等。这需要使用机载设备对采集的环境数据进行实时采集反馈。</p>
-<h4 id="3-2_Guidance">3.2 Guidance</h4><p>Guidance组件是一个强大的信息采集组件，具有5个超声结合双目的数据采集器，然后官方提供了GUIDANCE的数据采集例程，而且它们发了一个paper在CVPR15的WORKSHOP。</p>
+<h4 id="3-2_Guidance"><a href="#3-2_Guidance" class="headerlink" title="3.2 Guidance"></a>3.2 Guidance</h4><p>Guidance组件是一个强大的信息采集组件，具有5个超声结合双目的数据采集器，然后官方提供了GUIDANCE的数据采集例程，而且它们发了一个paper在CVPR15的WORKSHOP。</p>
 <p>最后，这里提供一下这次GROUP_TALK的PPT。<br><a href="http://pan.baidu.com/s/1i3nRCtJ" target="_blank" rel="external">PPT&amp;数据采集</a><br>密码: d1s4</p>
 
-    
-  </div>
-  <footer>
-    
       
+    </div>
+    <footer class="article-footer">
       
-  <div class="tags">
-    <a class="tags-link" href="/tags/group/">group</a>
-  </div>
+        <a data-url="http://yoursite.com/2015/10/28/group-talk1/" data-id="cijmek0hp001233q1k61gsv0i" class="article-share-link" data-share="baidu">分享到</a>
+      
 
+      
+        <a href="http://yoursite.com/2015/10/28/group-talk1/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/group/">group</a></li></ul>
+
+    </footer>
+  </div>
+  
     
-    <div class="clearfix"></div>
-  </footer>
+<nav id="article-nav">
+  
+    <a href="/2015/10/30/study-20151030/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          关于LATEX在MAC上的配置学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/28/paper-reading-20151028/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Guidance:A Visual Sensing Platform For Robotic Applications</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-<section id="comment">
-  <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-group-talk1" data-title="小组Talk1" data-url="http://yoursite.com/2015/10/28/group-talk1/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/28/group-talk1/" data-title="小组Talk1" data-url="http://yoursite.com/2015/10/28/group-talk1/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 15px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/25/paper-reading-20151125/">paper-reading-20151125</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/25/第一学期总结/">第一学期总结</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/14/OpenClassRobotic1/">斯坦福公开课机器人学</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/08/SLAM的学习总结/">SLAM的学习总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 CsrjTan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"tanrunj"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-</section>
-</div>
-  </div>
-  <footer id="footer"><div class="copyright">
-  
-  &copy; 2015 <a href="/">CsrjTan</a>
-  
-</div>
-
-<div class="theme-copyright">
-  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
-   | 
-  Redesign by <a href="https://github.com/csrjtan" target="_blank">tanrunj</a>
-</div>
-
-<div class="clearfix"></div>
-
-
- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-        
-</footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script src="/js/scale.fix.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<nav id="pagination" >
-    
-    <a href="/2015/10/30/study-20151030/" class="alignleft prev" >上一页</a>
-    
-    
-    <a href="/2015/10/28/paper-reading-20151028/" class="alignright next" >下一页</a>
-    
-    <div class="clearfix"></div>
-</nav>
-<script type="text/javascript">
-  var duoshuoQuery = { short_name: 'tanrunj' };
   (function() {
     var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
     ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
   })();
-</script>
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox();
-  })(jQuery);
-</script>
-
-
+<! -- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    }); 
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
 </script>
+
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
 </script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
 <!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
@@ -251,5 +370,3 @@ var duoshuoQuery = {short_name:"tanrunj"};
 </script>
 </body>
 </html>
-
-<a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>

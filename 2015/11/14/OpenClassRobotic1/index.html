@@ -1,18 +1,11 @@
-<!DOCTYPE HTML>
+
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
   <title>斯坦福公开课机器人学 | CSRJTAN</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  
-    <meta name="author" content="CsrjTan">
-  
-  
-    <meta name="description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
-2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
 2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
 <meta property="og:type" content="article">
@@ -27,79 +20,87 @@
 <meta name="twitter:description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
 2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+    <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
-
-
-
-<script type="text/javascript">
-
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?52f23db710086a078740fd3208bbdacc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-
 </head>
-
 <body>
-  <div class="wrapper">
+<div id="container">
+  <div id="wrap">
     <header id="header">
-  <div class="title">
-    <h1><a href="/">CSRJTAN</a></h1>
-    <p><a href="/">Keep Moving</a></p>
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CSRJTAN</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Keep Moving</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
   </div>
-  <nav class="nav">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-        <li><a href="/tags">Tags</a></li>
-      
-        <li><a href="/about">About</a></li>
-      
-      
-     
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
-  <div class="clearfix"></div>
 </header>
-    <div class="content"><article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/11/14/OpenClassRobotic1/">
-  <time datetime="2015-11-13T16:04:37.000Z">
-    2015-11-14
-  </time>
+    <div class="outer">
+      <section id="main"><article id="post-OpenClassRobotic1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/14/OpenClassRobotic1/" class="article-date">
+  <time datetime="2015-11-13T16:04:37.000Z" itemprop="datePublished">2015-11-14</time>
 </a>
     
+  </div>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title">斯坦福公开课机器人学</h1>
+    <h1 class="article-title" itemprop="name">
+      斯坦福公开课机器人学
+    </h1>
   
 
-  </header>
-  
-  <div class="entry">
+      </header>
     
-      <h3 id="1-概述">1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
-<h4 id="2-空间描述，广义的坐标">2.空间描述，广义的坐标</h4><p>在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$<br>在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma,\phi$</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_u6982_u8FF0"><a href="#1-_u6982_u8FF0" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
+<h4 id="2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><a href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807" class="headerlink" title="2.空间描述，广义的坐标"></a>2.空间描述，广义的坐标</h4><p>在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$<br>在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma,\phi$</p>
 <p>这里描述坐标系的转换可以用一个矩阵，其中旋转矩阵$ R_{AB}=R_{BA}^T $,具有<strong>正交性</strong>，<br>$ R_{AB}^{-1} = R_{BA} = R_{BA}^T $，并且满足:<br>$$ r_X^2 = r_Y^2 = r_Z^2 = 1 $$<br>$$ r_X * r_Y = r_X * r_Z = r_Y * r_Z = 0 $$<br>其中正交矩阵相关的一些矩阵分解有：QR、SVD、谱分解和极分解。</p>
 <p>相对而言，T不会满足旋转矩阵R的这些特性，这里也是基于右手系的约束。<br>为了方便矩阵的运算，我们将R和T矩阵组合并添加一维[0 0 0 1]变成4 * 4的矩阵，形成<strong>齐次</strong>.</p>
-<h4 id="3-讨论欧拉角和旋转">3.讨论欧拉角和旋转</h4><p>介绍了柔性制动器，气压驱动，上节课讲的内容的转换，可以描述坐标系转换，或者点的映射。由于扩展了齐次坐标系，所以末端的坐标系可以直接从基座变换矩阵T相乘解得，但在描述旋转的时候，用3*3的矩阵有9个参数，过于<strong>冗余</strong>，我们考虑更为精炼的表达方式，更高效地表示旋转。</p>
+<h4 id="3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C"><a href="#3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C" class="headerlink" title="3.讨论欧拉角和旋转"></a>3.讨论欧拉角和旋转</h4><p>介绍了柔性制动器，气压驱动，上节课讲的内容的转换，可以描述坐标系转换，或者点的映射。由于扩展了齐次坐标系，所以末端的坐标系可以直接从基座变换矩阵T相乘解得，但在描述旋转的时候，用3*3的矩阵有9个参数，过于<strong>冗余</strong>，我们考虑更为精炼的表达方式，更高效地表示旋转。</p>
 <p>引入一个，对于刚性物体的坐标表示方式根据坐标系的表达而变化，分为</p>
 <ul>
 <li>Cartesion : $(x,y,z)$</li>
@@ -108,123 +109,241 @@ var _hmt = _hmt || [];
 </ul>
 <p>首先来讨论用<strong>三个角</strong>来表示旋转，分别是yaw,roll,hawl.$$R_{AB} = R_Z(\alpha).R_Y(\beta).r_X(\gamma)$$<br>求解一系列矩阵运算之后，出现cp = 0 的时候，会出现<strong>奇异性</strong>(回头查google)的点，此时无法进一步计算（因为除0出错）,无法进行继续跟踪，而其他以三个参数为旋转的也无法解决这个奇异点的问题。于是尝试进行四个参数的旋转表达，便有了经典的<strong>欧拉角</strong>，Euler Prameters。</p>
 <p>欧拉角指根据x,y,z轴旋转，一共有24种顺规，使用前先确定规则，</p>
-<h4 id="4-DH参数">4.DH参数</h4><p>引入了“蜂鸟”机器人，如何通过连杆和终端执行器控制机械手，建立正运动学。用DH参数描述来表达对连杆的控制，，从而精确定义坐标系，设置不同参数进行变换得到总的变换，从而建立正运动学</p>
-<h4 id="5-仿灵长类机械臂">5.仿灵长类机械臂</h4><p>介绍了如何用欧拉角进行坐标转换，对ROBOT建立数学模型。<br>首先选定较优的坐标原点，尽量方便表达和减少参数，进而根据连杆的变换推导出新的节点的坐标表达，建立坐标表达矩阵，这样的坐标表达就包括（yaw,hawl,roll,Distance)</p>
+<h4 id="4-DH_u53C2_u6570"><a href="#4-DH_u53C2_u6570" class="headerlink" title="4.DH参数"></a>4.DH参数</h4><p>引入了“蜂鸟”机器人，如何通过连杆和终端执行器控制机械手，建立正运动学。用DH参数描述来表达对连杆的控制，，从而精确定义坐标系，设置不同参数进行变换得到总的变换，从而建立正运动学</p>
+<h4 id="5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2"><a href="#5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2" class="headerlink" title="5.仿灵长类机械臂"></a>5.仿灵长类机械臂</h4><p>介绍了如何用欧拉角进行坐标转换，对ROBOT建立数学模型。<br>首先选定较优的坐标原点，尽量方便表达和减少参数，进而根据连杆的变换推导出新的节点的坐标表达，建立坐标表达矩阵，这样的坐标表达就包括（yaw,hawl,roll,Distance)</p>
 
-    
-  </div>
-  <footer>
-    
       
+    </div>
+    <footer class="article-footer">
       
-  <div class="tags">
-    <a class="tags-link" href="/tags/读书笔记/">读书笔记</a>
-  </div>
+        <a data-url="http://yoursite.com/2015/11/14/OpenClassRobotic1/" data-id="cijmek0i4001c33q13qeh5t3g" class="article-share-link" data-share="baidu">分享到</a>
+      
 
+      
+        <a href="http://yoursite.com/2015/11/14/OpenClassRobotic1/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
     
-    <div class="clearfix"></div>
-  </footer>
+<nav id="article-nav">
+  
+    <a href="/2015/11/25/第一学期总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          第一学期总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/08/SLAM的学习总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">SLAM的学习总结</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-<section id="comment">
-  <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-OpenClassRobotic1" data-title="斯坦福公开课机器人学" data-url="http://yoursite.com/2015/11/14/OpenClassRobotic1/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/11/14/OpenClassRobotic1/" data-title="斯坦福公开课机器人学" data-url="http://yoursite.com/2015/11/14/OpenClassRobotic1/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 15px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/25/paper-reading-20151125/">paper-reading-20151125</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/25/第一学期总结/">第一学期总结</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/14/OpenClassRobotic1/">斯坦福公开课机器人学</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/08/SLAM的学习总结/">SLAM的学习总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 CsrjTan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"tanrunj"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-</section>
-</div>
-  </div>
-  <footer id="footer"><div class="copyright">
-  
-  &copy; 2015 <a href="/">CsrjTan</a>
-  
-</div>
-
-<div class="theme-copyright">
-  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
-   | 
-  Redesign by <a href="https://github.com/csrjtan" target="_blank">tanrunj</a>
-</div>
-
-<div class="clearfix"></div>
-
-
- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-        
-</footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script src="/js/scale.fix.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<nav id="pagination" >
-    
-    <a href="/2015/11/25/第一学期总结/" class="alignleft prev" >上一页</a>
-    
-    
-    <a href="/2015/11/08/SLAM的学习总结/" class="alignright next" >下一页</a>
-    
-    <div class="clearfix"></div>
-</nav>
-<script type="text/javascript">
-  var duoshuoQuery = { short_name: 'tanrunj' };
   (function() {
     var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
     ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
   })();
-</script>
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox();
-  })(jQuery);
-</script>
-
-
+<! -- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    }); 
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
 </script>
+
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
 </script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
 <!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
@@ -257,5 +376,3 @@ var duoshuoQuery = {short_name:"tanrunj"};
 </script>
 </body>
 </html>
-
-<a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
