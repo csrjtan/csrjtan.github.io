@@ -4,35 +4,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》 | CSRJTAN</title>
+  <title>paper-reading-20160120 | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Paper Link
-Author:Paul Viola,Michael Jones
-Key Contributions:1.Integral Image2.Learning algorithm based on AdaBoost3.Combine Classifiers in Cascade
-Methods:
-Represent and classify images based on simp">
+  <meta name="description" content="新年好，新年愿工程进展，论文有望。加油！
+马里兰(MaryLand)大学的Larry Davis访问受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》">
-<meta property="og:url" content="https://csrjtan.github.io/2015/08/16/paper-research-01/index.html">
+<meta property="og:title" content="paper-reading-20160120">
+<meta property="og:url" content="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="Paper Link
-Author:Paul Viola,Michael Jones
-Key Contributions:1.Integral Image2.Learning algorithm based on AdaBoost3.Combine Classifiers in Cascade
-Methods:
-Represent and classify images based on simp">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/sceneryfeatures.jpg">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/scenery3.jpg">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/scenery1.jpg">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20pesudo.png">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/scenery4.JPG">
-<meta property="og:updated_time" content="2015-10-28T14:39:49.000Z">
+<meta property="og:description" content="新年好，新年愿工程进展，论文有望。加油！
+马里兰(MaryLand)大学的Larry Davis访问受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_1.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_2.png">
+<meta property="og:updated_time" content="2016-01-22T13:33:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》">
-<meta name="twitter:description" content="Paper Link
-Author:Paul Viola,Michael Jones
-Key Contributions:1.Integral Image2.Learning algorithm based on AdaBoost3.Combine Classifiers in Cascade
-Methods:
-Represent and classify images based on simp">
+<meta name="twitter:title" content="paper-reading-20160120">
+<meta name="twitter:description" content="新年好，新年愿工程进展，论文有望。加油！
+马里兰(MaryLand)大学的Larry Davis访问受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car">
   
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
@@ -88,10 +76,10 @@ Represent and classify images based on simp">
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-paper-research-01" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-paper-reading-20160120" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/08/16/paper-research-01/" class="article-date">
-  <time datetime="2015-08-16T13:12:12.000Z" itemprop="datePublished">2015-08-16</time>
+    <a href="/2016/01/20/paper-reading-20160120/" class="article-date">
+  <time datetime="2016-01-20T06:24:37.000Z" itemprop="datePublished">2016-01-20</time>
 </a>
     
   </div>
@@ -102,7 +90,7 @@ Represent and classify images based on simp">
         
   
     <h1 class="article-title" itemprop="name">
-      Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》
+      paper-reading-20160120
     </h1>
   
 
@@ -112,75 +100,31 @@ Represent and classify images based on simp">
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Author_3APaul_Viola_2CMichael_Jones"><span class="toc-number">1.</span> <span class="toc-text">Author:Paul Viola,Michael Jones</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Key_Contributions_3A"><span class="toc-number">2.</span> <span class="toc-text">Key Contributions:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Integral_Image"><span class="toc-number">3.</span> <span class="toc-text">1.Integral Image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Learning_algorithm_based_on_AdaBoost"><span class="toc-number">4.</span> <span class="toc-text">2.Learning algorithm based on AdaBoost</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Combine_Classifiers_in_Cascade"><span class="toc-number">5.</span> <span class="toc-text">3.Combine Classifiers in Cascade</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Methods_3A"><span class="toc-number">6.</span> <span class="toc-text">Methods:</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE"><span class="toc-number">1.</span> <span class="toc-text">马里兰(MaryLand)大学的Larry Davis访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B"><span class="toc-number">2.</span> <span class="toc-text">林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Introduction_of_human_activity_classification"><span class="toc-number">2.1.</span> <span class="toc-text">Introduction of human activity classification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Related_Work"><span class="toc-number">2.2.</span> <span class="toc-text">Related Work</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Our_work"><span class="toc-number">2.3.</span> <span class="toc-text">Our work</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementation"><span class="toc-number">2.4.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.5.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol>
           </div>
         
-        <p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517" target="_blank" rel="external">Paper Link</a></p>
-<h3 id="Author_3APaul_Viola_2CMichael_Jones"><a href="#Author_3APaul_Viola_2CMichael_Jones" class="headerlink" title="Author:Paul Viola,Michael Jones"></a>Author:Paul Viola,Michael Jones</h3><blockquote>
-<h3 id="Key_Contributions_3A"><a href="#Key_Contributions_3A" class="headerlink" title="Key Contributions:"></a>Key Contributions:</h3><h3 id="1-Integral_Image"><a href="#1-Integral_Image" class="headerlink" title="1.Integral Image"></a>1.Integral Image</h3><h3 id="2-Learning_algorithm_based_on_AdaBoost"><a href="#2-Learning_algorithm_based_on_AdaBoost" class="headerlink" title="2.Learning algorithm based on AdaBoost"></a>2.Learning algorithm based on AdaBoost</h3><h3 id="3-Combine_Classifiers_in_Cascade"><a href="#3-Combine_Classifiers_in_Cascade" class="headerlink" title="3.Combine Classifiers in Cascade"></a>3.Combine Classifiers in Cascade</h3></blockquote>
-<h3 id="Methods_3A"><a href="#Methods_3A" class="headerlink" title="Methods:"></a>Methods:</h3><ul>
-<li>Represent and classify images based on simple features rather than pixels directly(operates <strong>faster</strong> and easily encode <strong>ad-hoc</strong> domain knowledge)<a id="more"></a></li>
-<li><p><strong>Three</strong> kinds of simple features are used in the paper</p>
-<ol>
-<li>Two-Rectangles features (A and B)</li>
-<li>Three-Rectangles features (C)</li>
-<li><p>Four-Rectangles features (D)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/sceneryfeatures.jpg" alt="Three-types-of-Features"></p>
-<p>The feature value calculation:<br>$$\sum{pixel\ values\ in\ white}-\sum{pixel\ values\ in\ gray}$$</p>
-</li>
-</ol>
-</li>
-<li><p><strong>Contributions 1:Integral Image</strong><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery3.jpg" alt=""><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery1.jpg" alt=""></p>
-</li>
-<li><p>Contributions 2:Learning Algorithm based on AdaBoost</p>
-<blockquote>
-<p><strong>The advantages of AdaBoost:</strong><br>1.Used for <strong>feature selection</strong> and <strong>classifier training</strong><br>2.Selecting small set of <strong>good features</strong> from large feature set<br>3.Used a set of <strong>weak learners</strong> to form a strong one<br>4.Guarantees the training error of strong classifier very <strong>low</strong></p>
-</blockquote>
-<p><strong>The Pesudo of Adaboost:</strong><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20pesudo.png" alt="The pesudo"></p>
-</li>
-<li><p>Contributions 3:Combine Classifiers in Cascade</p>
-<ul>
-<li>Building cascade of classifiers(Increase Performance &amp; Reduce computation)</li>
-<li>Simpler classifiers apply early to <strong>reject majority</strong> of sub windows and apply complex classifiers to achieve low false positive</li>
-<li>Subsequent classifiers are trained using examples,which pass through all the previous stages<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/scenery4.JPG" alt="Cascade Model"></li>
-</ul>
-</li>
-<li><p>How to use</p>
-<ol>
-<li>User selects maximun FPR(False Prediction Rate) and minimun acceptable DR(Detection Rate) per each stage</li>
-<li>User selects target</li>
-<li>Each stage is trained by adding features until the target DR and FPRs are met</li>
-<li>Stages are added until the overall target for DR and FPR are met</li>
-</ol>
-</li>
-<li><p>Further optimization</p>
-<ol>
-<li>Number of classifier stages</li>
-<li>Number of features in each stage</li>
-<li>Threshold of each stage</li>
-<li>Minimun number of features that achieved accuracy</li>
-</ol>
-</li>
-<li><p>Conclusion</p>
-<ol>
-<li>Solution achieves the goal of real time object detection</li>
-<li>Conjunction of simple rectangle features and integral image gives a efficient feature representation</li>
-<li>AdaBoost is used for the feature selection and classifier training</li>
-<li>Cascade of classifiers allows to quickly discard background regions and concentrate more on ojbect-like regions</li>
-</ol>
-</li>
-<li><p>Approximately Performance<br> Accuracy:Front-Face around 68.8%,Profile around 33%<br> Time:every picture with 67 millisecond</p>
-</li>
-</ul>
+        <p>新年好，新年愿工程进展，论文有望。加油！</p>
+<h3 id="u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE"><a href="#u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE" class="headerlink" title="马里兰(MaryLand)大学的Larry Davis访问"></a>马里兰(MaryLand)大学的Larry Davis访问</h3><p>受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car parking.</p>
+<p>首先，GCNN是使用multi grid windows的思想，通过RCNN进行迭代的逼近学习，也是用于物体的识别。然后基于一些基本common sense建模，对于传统的activity recognition有一定的解释。讲述最近deep learning, cloud computing, GPU acceleration, Machine Learning等一些方法的推进都在有利于CV的进步，然CV离肉眼视觉识别依然有很大的距离。 最近的科研方向可以有Arichitecture Optimization，Mathematical Optimization and so on。明天将会继续介绍一下以往以及未来cv的相关工作。</p>
+<h3 id="u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B"><a href="#u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B" class="headerlink" title="林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》"></a>林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》</h3><p>摘要：用CNN来做活动识别，1.加入隐临时变量来分解activity成sub activity，自动学习子活动 2.结合radius-margin bound的方法作为约束项。<br>训练模型的过程不断迭代三部曲：</p>
+<pre><code>- 发现优化的隐变量
+- 通过生成的特征，更新分类器
+- 更新网络的参数
+</code></pre><h4 id="Introduction_of_human_activity_classification"><a href="#Introduction_of_human_activity_classification" class="headerlink" title="Introduction of human activity classification"></a>Introduction of human activity classification</h4><p>  主要两个问题：a.the complexity of representing high-level activities<br>                b.the ambiguity in temporal segmentation of sub-activities which constitute an activity</p>
+<h4 id="Related_Work"><a href="#Related_Work" class="headerlink" title="Related Work"></a>Related Work</h4><p>  起初关注于设计健壮和可描述性的features<br>  然后关注表达活动间的变化部分以及上下文的关系<br>  最近And-Or图关系表达可借助大数据变量进一步表达<br>  这里的方法是用deep neutral network to learning human action recognition from 3D videos.</p>
+<h4 id="Our_work"><a href="#Our_work" class="headerlink" title="Our work"></a>Our work</h4><p>Spatio-temporal CNNs<br>Latent Temporal Structure:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_1.png" alt=""><br>Deep Model with Relaxed Radius-Margin Bound:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_2.png" alt=""><br>The Radius-Margin Bound是受到radius-margin SVM的启发，用于增强模型的泛化能力，变成每次迭代的loss function加入了Radius-Margin Ratio $ \frac{1}{2}||w||^2R_\phi^2$,进行non-convex optimization.可以利用网络的softmax层进行部分参数的调解学习。</p>
+<h4 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h4><p>详细工作的实现：<br>Architecture of Deep Neural Networks<br>Dropout trick<br>Learning Algorithm<br>Datasets and Empirical Analysis, Experimental Results</p>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p><strong>贡献点</strong>：<br>1.A deep and latent-structured model<br>         2.引入了raius-margin的正则项<br>         3.有效迭代的优化子活动分解以及基于边缘学习的分类器<br><strong>缺点</strong>：<br> 1.scalability of model inference<br>      2.引入更多的计算量，当活动的类别多了会变慢<br><strong>未来的工作</strong>：<br> 1.将模型泛化成compositinal grammar rules: e.g. And-Or grammars<br>            2.修改模型以适应2D的视频</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/" data-id="cijpq9u21000pg5q101ouw984" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cijpq9u23000rg5q16jdyxnxg" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="https://csrjtan.github.io/2015/08/16/paper-research-01/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -192,19 +136,19 @@ Represent and classify images based on simp">
     
 <nav id="article-nav">
   
-    <a href="/2015/08/18/paper-reading-20150816/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/01/22/c-Primer-Reading1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">
         
-          论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》
+          C++_Primer_Reading1
         
       </div>
     </a>
   
   
-    <a href="/2015/08/16/object-detection-research/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/12/23/《爱的五种语言》/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Research_For_UAVs</div>
+      <div class="article-nav-title">《爱的五种语言》</div>
     </a>
   
 </nav>
@@ -214,7 +158,7 @@ Represent and classify images based on simp">
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/08/16/paper-research-01/" data-title="Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》" data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/01/20/paper-reading-20160120/" data-title="paper-reading-20160120" data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/"></div>
   </section>
 </section>
       

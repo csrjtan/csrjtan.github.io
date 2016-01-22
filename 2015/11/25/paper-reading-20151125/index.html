@@ -12,8 +12,7 @@
 <meta property="og:url" content="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
-<meta property="og:image" content="https://csrjtan.github.io/">
-<meta property="og:updated_time" content="2016-01-20T06:06:54.000Z">
+<meta property="og:updated_time" content="2016-01-21T07:20:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="paper-reading-20151125">
 <meta name="twitter:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
@@ -114,7 +113,7 @@
 <h3 id="u4E09_u4E2A_u95EE_u9898_uFF1A"><a href="#u4E09_u4E2A_u95EE_u9898_uFF1A" class="headerlink" title="三个问题："></a>三个问题：</h3><p>1.如何解决动态遮蔽的避障问题? -&gt; 用一个优化模型，结合运动预测在Best view Model里<br>2.如何通过深度图来预测可视物体的运动? -&gt; 用两个高斯曲率特征矩阵的匹配来求R T,用到SIFT和SVD<br>3.如何有效评估动态遮蔽的影响? -&gt; 用“effective avoidance rate”来评估算法的性能</p>
 <h3 id="Method_Overview"><a href="#Method_Overview" class="headerlink" title="Method Overview"></a>Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
 <p>2.The overall idea of dynamic occlusion avoidance<br>首先，移动物体相近深度图的像素进行三维坐标恢复（用Anti-projection），则遮蔽暗示可以从第二幅图得到<br>基于上述，用第二张深度图的遮蔽信息来构建Best View Model<br>接着，用三维坐标点的形式，做高斯曲率特征矩阵来匹配两个相近的深度图<br>最后，将运动预测结合到最佳视角模型里。</p>
-<h3 id="The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image"><a href="#The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image" class="headerlink" title="The Approach to dynamic occlusion avoidance based on depth image"></a>The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br><img src="/" alt=""><br>构建出patch</p>
+<h3 id="The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image"><a href="#The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image" class="headerlink" title="The Approach to dynamic occlusion avoidance based on depth image"></a>The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br>构建出patch</p>
 <p>2.Constructing the best view model<br>通过构建最大化Occlusion面积</p>
 <h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>step1:Calc the 3D pixels and the Gaussian Curvature Feature matrices<br>step2:Detect the Occlusion Boundary and establish the occlusion region in second depth<br>step3:Contruct the best view model<br>step4:Match the key points<br>step5:Solve the Objective formula<br>step6:Plan the next view of camera<br>step7:Acquire a depth image and calc the f(x)<br>step8:If the difference between two adjacent f(x) is less than a given threshold,then terminated,or jump to Step 4.</p>
 <h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>1.Add emotion estimate in Best Next View to dynamic occlusion avoidance<br>2.Based the depth image to solve the R and T transformation<br>3.Propose the “Effective avoidance rate” to measure the performance of the algorithm.</p>
@@ -123,7 +122,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cijmfyznv000q7mq1uj9l1qwg" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cijpq9u26000tg5q1cwt3l7yq" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -176,7 +175,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">7</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -194,7 +193,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -206,23 +205,23 @@
       <ul>
         
           <li>
+            <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/">跟G++,MAKE和CMAKE奋斗的日子</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/22/c-Primer-Reading1/">C++_Primer_Reading1</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/20/paper-reading-20160120/">paper-reading-20160120</a>
+          </li>
+        
+          <li>
             <a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
           </li>
         
           <li>
             <a href="/2015/11/25/paper-reading-20151125/">paper-reading-20151125</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/25/第一学期总结/">第一学期总结</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/14/OpenClassRobotic1/">斯坦福公开课机器人学</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/08/SLAM的学习总结/">SLAM的学习总结</a>
           </li>
         
       </ul>

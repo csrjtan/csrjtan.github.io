@@ -72,6 +72,194 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-study-20151030" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/30/study-20151030/" class="article-date">
+  <time datetime="2015-10-30T09:16:52.000Z" itemprop="datePublished">2015-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/30/study-20151030/">关于LATEX在MAC上的配置学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#LATEX_u7684_u5B66_u4E60"><span class="toc-number">1.</span> <span class="toc-text">LATEX的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5356_u840C_u5B8C_u76F4_u63A5_u4E0A_u603B_u7ED3_uFF1A"><span class="toc-number">1.1.</span> <span class="toc-text">卖萌完直接上总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u53C2_u8003_u94FE_u63A5_uFF1A"><span class="toc-number">1.2.</span> <span class="toc-text">参考链接：</span></a></li></ol></li></ol>
+          </div>
+        
+        <h3 id="LATEX_u7684_u5B66_u4E60"><a href="#LATEX_u7684_u5B66_u4E60" class="headerlink" title="LATEX的学习"></a>LATEX的学习</h3><p>今天来到了科大找高中同学科长学习，在万圣节的前夕本是玩心重重，但在香港的生活忙碌又充实，他也准备MID-TERM了，所以转了一圈之后我们来到颇负盛名的科大图书馆学习。这里先爆个照！<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/keda.jpg" alt=""></p>
+<h4 id="u5356_u840C_u5B8C_u76F4_u63A5_u4E0A_u603B_u7ED3_uFF1A"><a href="#u5356_u840C_u5B8C_u76F4_u63A5_u4E0A_u603B_u7ED3_uFF1A" class="headerlink" title="卖萌完直接上总结："></a>卖萌完直接上总结：</h4><p>参考了网上挺多的资料，有些是过期失效或者怎么的。<br>步骤：<br>1.安装Sublime Text 2和MacTex</p>
+<p>2.复制<a href="http://wbond.net/sublime_packages/package_control/installation" target="_blank" rel="external">http://wbond.net/sublime_packages/package_control/installation</a>里面的灰框代码到`Conttol+``里面，从而安装package_control</p>
+<p>3.在ST里<code>Command+Shift+P</code>命令窗口输入<code>Install Package</code></p>
+<p>4.装完继续安装<code>LaTeX Tools</code>，重启ST2</p>
+<p>5.修改编译和中文环境（这一步我按照做没有成功，后来用另一个方法完成的，如果有相关的改进请提示我）终端运行</p>
+<pre><code>sudo tlmgr update --self
+sudo tlmgr install latexmk
+</code></pre><p>然后在LaTeXTools.sublime-settings里面在builder-settings新增两个配置:</p>
+<pre><code>&quot;program&quot; : &quot;xelatex&quot;,
+&quot;command&quot; : [&quot;latexmk&quot;, &quot;-cd&quot;, &quot;-e&quot;, &quot;$pdflatex = &apos;xelatex -interaction=nonstopmode -synctex=1 %S %O&apos;&quot;, &quot;-f&quot;, &quot;-pdf&quot;],
+</code></pre><p>最后LaTeXTools–Reconfigure LaTeXTools and migragte setttings来重建配置文件。</p>
+<p>6.调用系统默认的Review来打开PDF，修改<br>    ~/Library/Application\ Support/Sublime\ Text/Packages/LaTeXTools/jumpToPDF.py,<br>将<code>if plat==&#39;darwub&#39;:</code>后的if-else语句注释，换成<code>subprocess.Popen([&#39;open&#39;]+[pdffile])</code></p>
+<p>7.使用以下测试代码，在ST2上新建.tex文件，然后command+B</p>
+<pre><code>\documentclass{article}
+\usepackage{fontspec, xunicode, xltxtra}  
+\setmainfont{Hiragino Sans GB}  
+\title{Title}
+\author{}
+
+\begin{document}
+
+\maketitle{}
+
+\section{Introduction}
+
+This is where you will write your content. 在这里写上内容。
+
+\end{document}
+</code></pre><p>8.最终大功告成！<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/latex1.png" alt=""></p>
+<h4 id="u53C2_u8003_u94FE_u63A5_uFF1A"><a href="#u53C2_u8003_u94FE_u63A5_uFF1A" class="headerlink" title="参考链接："></a>参考链接：</h4><p>部署MAC上的Sublime:<a href="http://www.readern.com/sublime-text-latex-chinese-under-mac.html" target="_blank" rel="external">http://www.readern.com/sublime-text-latex-chinese-under-mac.html</a><br>Economistry（英文）：<a href="http://economistry.com/2013/01/installing-and-using-latex-for-mac/" target="_blank" rel="external">http://economistry.com/2013/01/installing-and-using-latex-for-mac/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cijpq9u1w000lg5q1ex75e9hk" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/10/30/study-20151030/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-group-talk1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/28/group-talk1/" class="article-date">
+  <time datetime="2015-10-28T15:48:09.000Z" itemprop="datePublished">2015-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/28/group-talk1/">小组Talk1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><span class="toc-number">1.</span> <span class="toc-text">理大第一次小组REPORT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Big_Picture"><span class="toc-number">1.1.</span> <span class="toc-text">1.Big Picture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Stereo_Vision"><span class="toc-number">1.2.</span> <span class="toc-text">2.Stereo Vision</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1_Camera_Calibration"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 Camera Calibration</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2_Stereo_Matching"><span class="toc-number">1.3.</span> <span class="toc-text">2.2 Stereo Matching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DJI_Developer"><span class="toc-number">1.4.</span> <span class="toc-text">3.DJI Developer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1_Matrix_100"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 Matrix 100</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2_Guidance"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 Guidance</span></a></li></ol></li></ol></li></ol>
+          </div>
+        
+        <h2 id="u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><a href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT" class="headerlink" title="理大第一次小组REPORT"></a>理大第一次小组REPORT</h2><p>讲讲进来三个月的工作成果和研究进展，分享一下所学内容<br>这里写下日记，总结之余，也将演讲内容在这里过一遍</p>
+<h3 id="1-Big_Picture"><a href="#1-Big_Picture" class="headerlink" title="1.Big Picture"></a>1.Big Picture</h3><p>Target:实现无人机的自动导航以及躲避障碍物<br>使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。<br>避障算法，Bug Algorithm:检测到障碍物，进行闪躲，但依然朝终点靠近<br>这里的起始点和终点乃至地图都可以pre-defined。</p>
+<p>由于这里面核心用到的是环境的三维信息，所以Stereo Matching的精度技术显得尤为重要</p>
+<h3 id="2-Stereo_Vision"><a href="#2-Stereo_Vision" class="headerlink" title="2.Stereo Vision"></a>2.Stereo Vision</h3><h4 id="2-1_Camera_Calibration"><a href="#2-1_Camera_Calibration" class="headerlink" title="2.1 Camera Calibration"></a>2.1 Camera Calibration</h4><p>这一节可以看之前camera calibration的日志，针孔平面可由相似三角求出，但由于针孔曝光不足，所以一般用透镜，所以引入了透镜畸变误差，建立数学模型解决。然后我们标定的目的主要是为了能求出摄像机的内参数，包括焦距和成像中心点偏移。以及畸变参数，从而对图像进行修正。</p>
+<h3 id="2-2_Stereo_Matching"><a href="#2-2_Stereo_Matching" class="headerlink" title="2.2 Stereo Matching"></a>2.2 Stereo Matching</h3><p>这一节可以参考之前stereo matching的日志，图像的深度Z可以通过简单的三角测量求解所得。所以StereoMatching的主要流程就是图像校正、立体匹配、计算深度。其中主要的步骤在于立体匹配：包括了预处理滤波、代价聚合计算、视差计算以及视差精细等步骤。</p>
+<h3 id="3-DJI_Developer"><a href="#3-DJI_Developer" class="headerlink" title="3.DJI Developer"></a>3.DJI Developer</h3><h4 id="3-1_Matrix_100"><a href="#3-1_Matrix_100" class="headerlink" title="3.1 Matrix 100"></a>3.1 Matrix 100</h4><p>首先介绍一下M100这个可扩展飞行平台，它主要特点的续航时间长，负重好，飞行稳定性强，搭载的N1飞控可扩展接口和开发设备接口十分多，强大的可扩展性。<br>平台主要提供了Android和Onboard SDK，其中Android SDK主要控制摄像机、电池和云台以及飞行参数，但由于N1连接遥控器再用USB与手机连接的，所以数据传输是不稳定且难以做到实时的，所以这一块一般用于做一些监控拍摄，指派任务的非实时任务为佳。</p>
+<p>相对来说OnBoard SDK提供了开放协议从而对飞控进行命令委派，进而对飞行器进行姿态调整以及飞行模式切换等。这需要使用机载设备对采集的环境数据进行实时采集反馈。</p>
+<h4 id="3-2_Guidance"><a href="#3-2_Guidance" class="headerlink" title="3.2 Guidance"></a>3.2 Guidance</h4><p>Guidance组件是一个强大的信息采集组件，具有5个超声结合双目的数据采集器，然后官方提供了GUIDANCE的数据采集例程，而且它们发了一个paper在CVPR15的WORKSHOP。</p>
+<p>最后，这里提供一下这次GROUP_TALK的PPT。<br><a href="http://pan.baidu.com/s/1i3nRCtJ" target="_blank" rel="external">PPT&amp;数据采集</a><br>密码: d1s4</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cijpq9u2l0015g5q1uzh9sysu" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/10/28/group-talk1/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/group/">group</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-paper-reading-20151028" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/28/paper-reading-20151028/" class="article-date">
+  <time datetime="2015-10-28T12:38:38.000Z" itemprop="datePublished">2015-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/28/paper-reading-20151028/">Guidance:A Visual Sensing Platform For Robotic Applications</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0"><a href="#DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0" class="headerlink" title="DJI在CVPR15上发的关于GUIDANCE组件的文章"></a>DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
+<p>由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。<br>这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。</p>
+<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用于机器人定位位置识别。大部分是单目的，这里也有双目的方法[4]。这里GUIDANCE包括了5个方向的双目，可以提供深度图，超声数据，障碍物距离等内容。接下来，故事的展开分为内置函数，SDK接口以及相关应用</p>
+<h3 id="2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D"><a href="#2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D" class="headerlink" title="2.内置：Guidance是升级版的[6]"></a>2.内置：Guidance是升级版的[6]</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png" alt="SDK_Build_In"><br>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/28/paper-reading-20151028/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cijpq9u28000vg5q1kxxz9jek" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-camera-calibration" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/27/camera-calibration/" class="article-date">
@@ -118,7 +306,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cijmfyzob00157mq1zjk015y7" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cijpq9u2o0018g5q1abcwvaqg" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -173,7 +361,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cijmfyznz000u7mq1sq2cpdso" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cijpq9u2b000xg5q1xknqkaqp" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -224,7 +412,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cijmfyznd000e7mq1xnp09b6t" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cijpq9u1o000fg5q129q2c1mi" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -275,7 +463,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cijmfyzmy00047mq1dy9apt2c" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cijpq9u1a0005g5q1teez0cgr" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -324,7 +512,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cijmfyzni000g7mq17oa1b95n" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cijpq9u1q000hg5q1wp8il8rq" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -374,7 +562,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cijmfyznp000l7mq1kvm49m8q" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cijpq9u1z000mg5q1208ddi8l" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -424,167 +612,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cijmfyzo2000w7mq1b7osp8da" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cijpq9u2d000zg5q1ddq9bfai" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
         <a href="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-paper-reading-20150816" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/18/paper-reading-20150816/" class="article-date">
-  <time datetime="2015-08-18T07:26:29.000Z" itemprop="datePublished">2015-08-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/18/paper-reading-20150816/">论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194">Click</a><br>作者：Jungong Han,Ling Shao</p>
-<h3 id="u8FD9_u4E2A_u8BBA_u6587_u4E3B_u8981_u7B80_u4ECB_u4E00_u4E9B_u57FA_u4E8EKinect_u7684_u8BA1_u7B97_u673A_u89C6_u89C9_u7B97_u6CD5_u548C_u5E94_u7528_uFF0C_u6DB5_u76D6_u4E86_u5305_u62EC_u6DF1_u5EA6_u4FE1_u606F_u7684_u9884_u5904_u7406_uFF0CKinect_u7684_u7CBE_u786E_u6807_u5B9A_uFF1B_u7269_u4F53_u8DDF_u8E2A_u548C_u8BC6_u522B_uFF1B_u4EBA_u7C7B_u6D3B_u52A8_u5206_u6790_u548C_u624B_u52BF_u5206_u6790_u4EE5_u53CA_u5BA4_u51853D_u5339_u914D_u3002"><a href="#u8FD9_u4E2A_u8BBA_u6587_u4E3B_u8981_u7B80_u4ECB_u4E00_u4E9B_u57FA_u4E8EKinect_u7684_u8BA1_u7B97_u673A_u89C6_u89C9_u7B97_u6CD5_u548C_u5E94_u7528_uFF0C_u6DB5_u76D6_u4E86_u5305_u62EC_u6DF1_u5EA6_u4FE1_u606F_u7684_u9884_u5904_u7406_uFF0CKinect_u7684_u7CBE_u786E_u6807_u5B9A_uFF1B_u7269_u4F53_u8DDF_u8E2A_u548C_u8BC6_u522B_uFF1B_u4EBA_u7C7B_u6D3B_u52A8_u5206_u6790_u548C_u624B_u52BF_u5206_u6790_u4EE5_u53CA_u5BA4_u51853D_u5339_u914D_u3002" class="headerlink" title="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。"></a>这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3>
-        
-          <p class="article-more-link">
-            <a href="/2015/08/18/paper-reading-20150816/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cijmfyzo4000y7mq1kxh2j8k3" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-paper-research-01" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/16/paper-research-01/" class="article-date">
-  <time datetime="2015-08-16T13:12:12.000Z" itemprop="datePublished">2015-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/16/paper-research-01/">Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517">Paper Link</a></p>
-<h3 id="Author_3APaul_Viola_2CMichael_Jones"><a href="#Author_3APaul_Viola_2CMichael_Jones" class="headerlink" title="Author:Paul Viola,Michael Jones"></a>Author:Paul Viola,Michael Jones</h3><blockquote>
-<h3 id="Key_Contributions_3A"><a href="#Key_Contributions_3A" class="headerlink" title="Key Contributions:"></a>Key Contributions:</h3><h3 id="1-Integral_Image"><a href="#1-Integral_Image" class="headerlink" title="1.Integral Image"></a>1.Integral Image</h3><h3 id="2-Learning_algorithm_based_on_AdaBoost"><a href="#2-Learning_algorithm_based_on_AdaBoost" class="headerlink" title="2.Learning algorithm based on AdaBoost"></a>2.Learning algorithm based on AdaBoost</h3><h3 id="3-Combine_Classifiers_in_Cascade"><a href="#3-Combine_Classifiers_in_Cascade" class="headerlink" title="3.Combine Classifiers in Cascade"></a>3.Combine Classifiers in Cascade</h3></blockquote>
-<h3 id="Methods_3A"><a href="#Methods_3A" class="headerlink" title="Methods:"></a>Methods:</h3><ul>
-<li>Represent and classify images based on simple features rather than pixels directly(operates <strong>faster</strong> and easily encode <strong>ad-hoc</strong> domain knowledge)
-        
-          <p class="article-more-link">
-            <a href="/2015/08/16/paper-research-01/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/" data-id="cijmfyznt000o7mq1daniu9fi" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/08/16/paper-research-01/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-object-detection-research" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/16/object-detection-research/" class="article-date">
-  <time datetime="2015-08-16T09:42:10.000Z" itemprop="datePublished">2015-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/16/object-detection-research/">Research_For_UAVs</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>目的：调研无人机网络项目的相关资料。
-TOPICS: Efficient methods for object detection,object recognition and event/scene understanding,
-including dangerous objects/events like fire and heavy smoke
-要求：2015-8-18下午前，英文整理文档，简要文字加上直观图片说明相关领域内代表性的方法以及最好的方法，包含至少15篇参考文献。
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2015/08/16/object-detection-research/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/08/16/object-detection-research/" data-id="cijmfyzo600107mq1qy7mdrf2" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/08/16/object-detection-research/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -615,7 +647,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">7</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -633,7 +665,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -645,23 +677,23 @@ including dangerous objects/events like fire and heavy smoke
       <ul>
         
           <li>
+            <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/">跟G++,MAKE和CMAKE奋斗的日子</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/22/c-Primer-Reading1/">C++_Primer_Reading1</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/20/paper-reading-20160120/">paper-reading-20160120</a>
+          </li>
+        
+          <li>
             <a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
           </li>
         
           <li>
             <a href="/2015/11/25/paper-reading-20151125/">paper-reading-20151125</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/25/第一学期总结/">第一学期总结</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/14/OpenClassRobotic1/">斯坦福公开课机器人学</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/08/SLAM的学习总结/">SLAM的学习总结</a>
           </li>
         
       </ul>
