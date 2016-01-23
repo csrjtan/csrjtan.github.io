@@ -6,16 +6,34 @@
   
   <title>跟G++,MAKE和CMAKE奋斗的日子 | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="blog csrjtan tanrunj">
+  <meta name="description" content="很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢MWB,jacker的《Cmake实践》
+如何安装现在用的是G++-4.9：
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install g++-4.9
+cd /usr/bin/
+sudo ln -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跟G++,MAKE和CMAKE奋斗的日子">
 <meta property="og:url" content="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="blog csrjtan tanrunj">
-<meta property="og:updated_time" content="2016-01-22T13:32:35.000Z">
+<meta property="og:description" content="很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢MWB,jacker的《Cmake实践》
+如何安装现在用的是G++-4.9：
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install g++-4.9
+cd /usr/bin/
+sudo ln -">
+<meta property="og:updated_time" content="2016-01-23T13:12:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跟G++,MAKE和CMAKE奋斗的日子">
-<meta name="twitter:description" content="blog csrjtan tanrunj">
+<meta name="twitter:description" content="很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢MWB,jacker的《Cmake实践》
+如何安装现在用的是G++-4.9：
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install g++-4.9
+cd /usr/bin/
+sudo ln -">
   
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
@@ -94,7 +112,45 @@
     <div class="article-entry" itemprop="articleBody">
       
         
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u5982_u4F55_u5B89_u88C5"><span class="toc-number">1.</span> <span class="toc-text">如何安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GCC/G++"><span class="toc-number">2.</span> <span class="toc-text">GCC/G++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MAKE"><span class="toc-number">3.</span> <span class="toc-text">MAKE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMAKE"><span class="toc-number">4.</span> <span class="toc-text">CMAKE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD"><span class="toc-number">5.</span> <span class="toc-text">孟老师的工作介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Noise_Modeling_Principle"><span class="toc-number">5.1.</span> <span class="toc-text">Noise Modeling Principle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Adaptive_Noise_Learning"><span class="toc-number">5.2.</span> <span class="toc-text">Adaptive Noise Learning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Self-Pace_Learning"><span class="toc-number">5.3.</span> <span class="toc-text">Self-Pace Learning</span></a></li></ol></li></ol>
+          </div>
         
+        <p>很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢<a href="http://blog.atime.me/note/cmake.html" target="_blank" rel="external">MWB</a>,jacker的《Cmake实践》</p>
+<h3 id="u5982_u4F55_u5B89_u88C5"><a href="#u5982_u4F55_u5B89_u88C5" class="headerlink" title="如何安装"></a>如何安装</h3><p>现在用的是G++-4.9：</p>
+<pre><code>sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install g++-4.9
+cd /usr/bin/
+sudo ln -s g++-4.9 g++ -f
+sudo ln -s gcc-4.9 gcc -f
+</code></pre><p>make应该有自带的，cmake就上官网下载包</p>
+<pre><code>sudo make
+sudo make install
+</code></pre><h3 id="GCC/G++"><a href="#GCC/G++" class="headerlink" title="GCC/G++"></a>GCC/G++</h3><p>经过4步：预处理（预处理器cpp），编译(编译器egcs)，汇编(汇编器as)和链接（连接器ld）</p>
+<pre><code>//预处理
+gcc -E test.c -o test.i   //i文件
+//编译
+gcc -S test.i -o test.s   //s文件
+//汇编
+gcc -c test.s -o test.o   //o文件
+//链接
+gcc test.o -o test        //bin文件
+</code></pre><p>优化等级: -O -O2 -O3<br>包含头： -include  -I<br>链接库：  -l  -L<br>警告信息： -Wall 、 -w 和 -v<br>定义环境变量：D<br>(注意，通常手写链接参数很麻烦，很多库提供链接参数的程序，名字叫xxx-config，放在/usr/bin下<br>于是有了  gcc gtktest.c ‘pkg-confg gtk+ –libs –cflags’<br>–libs定义了链接需要的参数，–cflags是生成头文件包含的目录)</p>
+<p>交叉编译：指本地编译其他平台执行的程序，需要另外用-L和-I来连接库和头文件</p>
+<h3 id="MAKE"><a href="#MAKE" class="headerlink" title="MAKE"></a>MAKE</h3><p>基本语法<br>target : prerequisites<br>    command<br>自动推导以及文件依赖关系后面的命令：看到[.o]文件会自动把[.c]文件加入依赖项。</p>
+<p>GNU的MAKE工作方式：<br>1.读入所有Makefile<br>2.读入被Include的其他makefile<br>3.初始化文件中变量<br>4.推导隐晦规则，分析所有规则<br>5.为所有目标文件创建依赖关系链<br>6.根据依赖，决定哪些目标的生成<br>7.执行生成命令</p>
+<h3 id="CMAKE"><a href="#CMAKE" class="headerlink" title="CMAKE"></a>CMAKE</h3><p>(记下一些关键词)<br>CMAKE架构项目学习<br>基本用法<br>PROJECT<br>自动隐定义 PROJECT_BINARY_DIR和PROJECT_SOURCE_DIR<br>SET(NAME VAR)<br>MESSAGE([STATUS | DEBUG] “string” var)<br>ADD_SUBDIRECTORY(folderName)<br>ADD_EXECUTABLE(targets src_lists)</p>
+<p>make install<br>CMAKE有用的变量 CMAKE_INSTALL_PREFIX<br>INSTALL(FILES file_list DESTINATION folderName)<br>INSTALL(PROGRAMS .sh DESTINATION bin)<br>INSTALL(DIRECTORY doc/ DESTINATION doc)</p>
+<p>生成动态和静态库<br>ADD_LIBRARY(libName [SHARED|STATIC] src_lists)<br>注意：要动态和静态库同名，先用别名生成静态库，再改别名<br>如：ADD_LIBRARY(hello_static STATIC ${LIBHELLO_SRC})<br>SET_TARGET_PROPERTIES(hello_static PROPERTYES OUTPUT_NAME “hello”)</p>
+<p>链接头文件和动态库<br>INCLUDE_DIRECTORIES(folderName)<br>LINK_DIRECTORIES(folderName)</p>
+<p>ADD_EXECUTABLE(main ${SRC_LIST})<br>TARGET_LINK_LIBRARIES(main libNames)</p>
+<p>使用CMAKE_INCLUDE_PATH的环境变量，用FIND_PATH可以轻松找到对应的头文件</p>
+<h3 id="u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD"><a href="#u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD" class="headerlink" title="孟老师的工作介绍"></a>孟老师的工作介绍</h3><p>西安交通大学的<a href="http://www.cs.cmu.edu/~deyum/" target="_blank" rel="external">孟老师</a>数学优化和建模很厉害，给了一下内容的讲座</p>
+<h4 id="Noise_Modeling_Principle"><a href="#Noise_Modeling_Principle" class="headerlink" title="Noise Modeling Principle"></a>Noise Modeling Principle</h4><p>一般ML问题$min_wL(x,\phi(w))+R(w)$<br>然后很多工作围绕正则项R(w)展开优化，L主要是$L_0 , L_1 ,L_P$<br>利用贝叶斯模型来解释，可以将噪声模型与损失函数对应起来，然后就是w和loss func迭代求解收敛，提到了使用混合高斯模型建模，有利于分离Low-rank structure数据的噪声</p>
+<h4 id="Adaptive_Noise_Learning"><a href="#Adaptive_Noise_Learning" class="headerlink" title="Adaptive Noise Learning"></a>Adaptive Noise Learning</h4><p>假设数据都是Low-Rank Structure，然后进行噪声提取分离，目前用在的应用有 1.人脸去噪 2.背景提取 3.HSI去噪 接下来做一些雨雪分离，以及CT医学图像的去噪应用。</p>
+<h4 id="Self-Pace_Learning"><a href="#Self-Pace_Learning" class="headerlink" title="Self-Pace Learning"></a>Self-Pace Learning</h4><p>提到了ML，Cognitive Science和Self-pace Learning的概念，主要原理是让模型学习从易到难，从而筛选掉一些难的数据不进行学习，其中很多的参数和变量应该用非监督的方法自动学习，主要围绕机器学习的方法展开，最后论证一下Self Pace Learning的一些有效性证明。</p>
+
       
     </div>
     <footer class="article-footer">
@@ -107,6 +163,8 @@
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+
     </footer>
   </div>
   
@@ -141,7 +199,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">8</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -150,7 +208,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 15px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
