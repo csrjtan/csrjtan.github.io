@@ -72,6 +72,80 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-数据挖掘导论（2）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/31/数据挖掘导论（2）/" class="article-date">
+  <time datetime="2015-10-31T08:41:57.000Z" itemprop="datePublished">2015-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/31/数据挖掘导论（2）/">数据挖掘导论（2）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u8FD9_u5199_u4E00_u4E0B_u7B2C_u4E09_u7B2C_u56DB_u7AE0_u7684_u4E3B_u8981_u5185_u5BB9"><span class="toc-number">1.</span> <span class="toc-text">这写一下第三第四章的主要内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-_u7B2C_u4E09_u7AE0_u5305_u62EC_u6C47_u603B_u7EDF_u8BA1_u3001_u53EF_u89C6_u5316_u548COLAP"><span class="toc-number">1.1.</span> <span class="toc-text">1.第三章包括汇总统计、可视化和OLAP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-_u53EF_u89C6_u5316"><span class="toc-number">1.2.</span> <span class="toc-text">2.可视化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-OLAP"><span class="toc-number">1.3.</span> <span class="toc-text">3.OLAP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u7B2C_u56DB_u7AE0_uFF1A_u5206_u7C7B_u3001_u51B3_u7B56_u6811_u548C_u6A21_u578B_u8BC4_u4F30"><span class="toc-number">2.</span> <span class="toc-text">第四章：分类、决策树和模型评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u57FA_u672C_u6982_u5FF5"><span class="toc-number">2.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-_u5965_u5361_u59C6_u5243_u5200_uFF1A_u7ED9_u5B9A_u4E24_u4E2A_u76F8_u540C_u6CDB_u5316_u8BEF_u5DEE_u7684_u6A21_u578B_uFF0C_u8F83_u7B80_u5355_u7684_u66F4_u53EF_u53D6_u3002"><span class="toc-number">2.2.</span> <span class="toc-text">2.奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-number">2.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+          </div>
+        
+        <h3 id="u8FD9_u5199_u4E00_u4E0B_u7B2C_u4E09_u7B2C_u56DB_u7AE0_u7684_u4E3B_u8981_u5185_u5BB9"><a href="#u8FD9_u5199_u4E00_u4E0B_u7B2C_u4E09_u7B2C_u56DB_u7AE0_u7684_u4E3B_u8981_u5185_u5BB9" class="headerlink" title="这写一下第三第四章的主要内容"></a>这写一下第三第四章的主要内容</h3><h4 id="1-_u7B2C_u4E09_u7AE0_u5305_u62EC_u6C47_u603B_u7EDF_u8BA1_u3001_u53EF_u89C6_u5316_u548COLAP"><a href="#1-_u7B2C_u4E09_u7AE0_u5305_u62EC_u6C47_u603B_u7EDF_u8BA1_u3001_u53EF_u89C6_u5316_u548COLAP" class="headerlink" title="1.第三章包括汇总统计、可视化和OLAP"></a>1.第三章包括汇总统计、可视化和OLAP</h4><p>统计的<strong>特征数据点</strong>包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。</p>
+<p>协方差矩阵：<br>$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline{x_j}) $$</p>
+<p>相关矩阵元素：$ r_{ij} = \frac{covariance(x_i,x_j)}{s_is_j}$</p>
+<h4 id="2-_u53EF_u89C6_u5316"><a href="#2-_u53EF_u89C6_u5316" class="headerlink" title="2.可视化"></a>2.可视化</h4><p>目的：1.快速吸收信息 2.充分调用人的领域知识<br>利用一些图示模型：叶箱图、直方图、相对频率直方图、二维直方图、盒状图、饼图、经验累计分布函数、散布图、可视高维</p>
+<h4 id="3-OLAP"><a href="#3-OLAP" class="headerlink" title="3.OLAP"></a>3.OLAP</h4><p>计算聚集量、维归约和转轴、切片和切块、上卷下钻</p>
+<h3 id="u7B2C_u56DB_u7AE0_uFF1A_u5206_u7C7B_u3001_u51B3_u7B56_u6811_u548C_u6A21_u578B_u8BC4_u4F30"><a href="#u7B2C_u56DB_u7AE0_uFF1A_u5206_u7C7B_u3001_u51B3_u7B56_u6811_u548C_u6A21_u578B_u8BC4_u4F30" class="headerlink" title="第四章：分类、决策树和模型评估"></a>第四章：分类、决策树和模型评估</h3><h4 id="u57FA_u672C_u6982_u5FF5"><a href="#u57FA_u672C_u6982_u5FF5" class="headerlink" title="基本概念"></a>基本概念</h4><p>1.建立决策树<br>Hunt算法，采用贪心选择划分数据的属性<br>关键问题：如何分裂训练数据，如何停止分裂<br>首先是选择最佳划分的度量,用<strong>纯性度量,信息增益</strong>:<br>$$ Entropy(t)= -\sum_{i=0}^{c=1}p(i|t)log_2p(i|t) $$<br>$$ Gini(t)= 1-\sum_{i=0}^{c=1}[p(i|t)]^2 $$<br>$$ Classification_error(t)=1-max_i[p(i|t)] $$<br>归纳算法:</p>
+<pre><code>TreeGrowth(E,F)
+if stopping_cond(E,F)=true then
+    leaf = createNode()
+    leaf.label = Classify(E)
+    return leaf
+else
+    root = createNode()
+    root.test_cond = find_best_split(E,F)
+    make V = {v|v is one of the output in root.test_cond}
+    for each v in V do
+    E(v) = {e|root.test_cond(e)=v and e in E}
+    child = TreeGrowth(E(v) ,F)
+    将child作为root派生结点添加到树，将边(root-&gt;child)标记为v
+    end for 
+end if 
+return root
+</code></pre><h4 id="2-_u5965_u5361_u59C6_u5243_u5200_uFF1A_u7ED9_u5B9A_u4E24_u4E2A_u76F8_u540C_u6CDB_u5316_u8BEF_u5DEE_u7684_u6A21_u578B_uFF0C_u8F83_u7B80_u5355_u7684_u66F4_u53EF_u53D6_u3002"><a href="#2-_u5965_u5361_u59C6_u5243_u5200_uFF1A_u7ED9_u5B9A_u4E24_u4E2A_u76F8_u540C_u6CDB_u5316_u8BEF_u5DEE_u7684_u6A21_u578B_uFF0C_u8F83_u7B80_u5355_u7684_u66F4_u53EF_u53D6_u3002" class="headerlink" title="2.奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。"></a>2.奥卡姆剃刀：给定两个相同泛化误差的模型，较简单的更可取。</h4><h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>思想：地柜选择一个属性对对象集合的类标进行分类，如果分类某一属性时发现剩下的对象属于同一类，此时不必再选择属性分类，用一个叶节点代表。否则，继续选择下一属性，知道某一分类结果全在一类或没属性为止。根据选择属性顺序可以分为ID3,C4.5.针对决策树归纳中的过分拟合，可以使用先剪枝和后剪枝的方法。</p>
+<p>特点：* 找到最优决策树是NP-C</p>
+<pre><code>* 采用避免过拟合的方法后，决策树对噪声干扰具有较好鲁棒性。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/" data-id="cijvgeski000fltq1gb7xig98" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-study-20151030" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/30/study-20151030/" class="article-date">
@@ -135,7 +209,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cijpq9u1w000lg5q1ex75e9hk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cijvgeskv000nltq1smi6jzhu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -191,7 +265,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cijpq9u2l0015g5q1uzh9sysu" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cijvgesll0017ltq1rpfuca4n" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -243,7 +317,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cijpq9u28000vg5q1kxxz9jek" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cijvgesl9000xltq16g3gc1rr" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -306,7 +380,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cijpq9u2o0018g5q1abcwvaqg" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cijvgeslp001altq1vpwbaje9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -361,7 +435,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cijpq9u2b000xg5q1xknqkaqp" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cijvgeslb000zltq1bpy7edoa" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -412,7 +486,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cijpq9u1o000fg5q129q2c1mi" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cijvgeskk000hltq1dfhq3o1w" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -463,7 +537,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cijpq9u1a0005g5q1teez0cgr" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cijvgesk60007ltq1a06gdmpu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -512,7 +586,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cijpq9u1q000hg5q1wp8il8rq" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cijvgesko000jltq1ex6y1trx" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -562,61 +636,11 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cijpq9u1z000mg5q1208ddi8l" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cijvgesky000oltq1o48emxu6" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
         <a href="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-paper-reading-20150826" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/27/paper-reading-20150826/" class="article-date">
-  <time datetime="2015-08-27T01:57:19.000Z" itemprop="datePublished">2015-08-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/27/paper-reading-20150826/">Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
-<p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/08/27/paper-reading-20150826/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cijpq9u2d000zg5q1ddq9bfai" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -665,7 +689,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -675,6 +699,10 @@ This is where you will write your content. 在这里写上内容。
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/01/26/无人机项目/">无人机项目</a>
+          </li>
         
           <li>
             <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/">跟G++,MAKE和CMAKE奋斗的日子</a>
@@ -690,10 +718,6 @@ This is where you will write your content. 在这里写上内容。
         
           <li>
             <a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/25/paper-reading-20151125/">paper-reading-20151125</a>
           </li>
         
       </ul>

@@ -24,7 +24,7 @@ sudo apt-get update
 sudo apt-get install g++-4.9
 cd /usr/bin/
 sudo ln -">
-<meta property="og:updated_time" content="2016-01-23T13:12:17.000Z">
+<meta property="og:updated_time" content="2016-01-23T13:15:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跟G++,MAKE和CMAKE奋斗的日子">
 <meta name="twitter:description" content="很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢MWB,jacker的《Cmake实践》
@@ -149,13 +149,13 @@ gcc test.o -o test        //bin文件
 <h3 id="u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD"><a href="#u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD" class="headerlink" title="孟老师的工作介绍"></a>孟老师的工作介绍</h3><p>西安交通大学的<a href="http://www.cs.cmu.edu/~deyum/" target="_blank" rel="external">孟老师</a>数学优化和建模很厉害，给了一下内容的讲座</p>
 <h4 id="Noise_Modeling_Principle"><a href="#Noise_Modeling_Principle" class="headerlink" title="Noise Modeling Principle"></a>Noise Modeling Principle</h4><p>一般ML问题$min_wL(x,\phi(w))+R(w)$<br>然后很多工作围绕正则项R(w)展开优化，L主要是$L_0 , L_1 ,L_P$<br>利用贝叶斯模型来解释，可以将噪声模型与损失函数对应起来，然后就是w和loss func迭代求解收敛，提到了使用混合高斯模型建模，有利于分离Low-rank structure数据的噪声</p>
 <h4 id="Adaptive_Noise_Learning"><a href="#Adaptive_Noise_Learning" class="headerlink" title="Adaptive Noise Learning"></a>Adaptive Noise Learning</h4><p>假设数据都是Low-Rank Structure，然后进行噪声提取分离，目前用在的应用有 1.人脸去噪 2.背景提取 3.HSI去噪 接下来做一些雨雪分离，以及CT医学图像的去噪应用。</p>
-<h4 id="Self-Pace_Learning"><a href="#Self-Pace_Learning" class="headerlink" title="Self-Pace Learning"></a>Self-Pace Learning</h4><p>提到了ML，Cognitive Science和Self-pace Learning的概念，主要原理是让模型学习从易到难，从而筛选掉一些难的数据不进行学习，其中很多的参数和变量应该用非监督的方法自动学习，主要围绕机器学习的方法展开，最后论证一下Self Pace Learning的一些有效性证明。</p>
+<h4 id="Self-Pace_Learning"><a href="#Self-Pace_Learning" class="headerlink" title="Self-Pace Learning"></a>Self-Pace Learning</h4><p>提到了ML，Cognitive Science和Self-pace Learning的概念，主要原理是让模型学习从易到难，从而筛选掉一些难的数据不进行学习，其中很多的参数和变量应该用非监督的方法自动学习，主要围绕机器学习的方法展开，最后论证一下Self Pace Learning的一些有效性<a href="http://arxiv.org/pdf/1511.06049v1.pdf" target="_blank" rel="external">证明</a>。</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cijpq9u150004g5q1pjcaa3js" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cijvgesjy0004ltq11xl1wt8t" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -170,6 +170,15 @@ gcc test.o -o test        //bin文件
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/01/26/无人机项目/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          无人机项目
+        
+      </div>
+    </a>
   
   
     <a href="/2016/01/22/c-Primer-Reading1/" id="article-nav-older" class="article-nav-link-wrap">
@@ -217,7 +226,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -227,6 +236,10 @@ gcc test.o -o test        //bin文件
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/01/26/无人机项目/">无人机项目</a>
+          </li>
         
           <li>
             <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/">跟G++,MAKE和CMAKE奋斗的日子</a>
@@ -242,10 +255,6 @@ gcc test.o -o test        //bin文件
         
           <li>
             <a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/25/paper-reading-20151125/">paper-reading-20151125</a>
           </li>
         
       </ul>

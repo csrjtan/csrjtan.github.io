@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep Moving]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-01-23T13:12:17.000Z</updated>
+  <updated>2016-01-26T13:43:14.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -15,11 +15,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[无人机项目]]></title>
+    <link href="https://csrjtan.github.io/2016/01/26/%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%A1%B9%E7%9B%AE/"/>
+    <id>https://csrjtan.github.io/2016/01/26/无人机项目/</id>
+    <published>2016-01-26T13:29:44.000Z</published>
+    <updated>2016-01-26T13:43:14.000Z</updated>
+    <content type="html"><![CDATA[<p>苦苦做了几个月的项目，进展好慢，自己抗拒工程的心一直没有减退，还是自己抗拒进步，克服困难的心呢。</p>
+<h3 id="u5173_u4E8E_u9879_u76EE_u7684_u73B0_u72B6"><a href="#u5173_u4E8E_u9879_u76EE_u7684_u73B0_u72B6" class="headerlink" title="关于项目的现状"></a>关于项目的现状</h3><p>不要畏惧麻烦和困难，用工程和代码以及实验来解决问题，问题是常有的。项目现在复杂度和硬件上遇到不少麻烦，应该尽力去克服。<br>遇到的问题：1.旋翼和妙算未到 2.完成一套基本的操作流程 3.如何有效利用guidance的数据 4.优化slam里面的误差 5.避障和跟踪算法 6.飞行器的有效起飞和控制<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV1.jpg" alt="与崇雨讨论的进展图"></p>
+<h3 id="u5BF9_u4E8E_u9879_u76EE_u672A_u6765_u7684_u6784_u60F3"><a href="#u5BF9_u4E8E_u9879_u76EE_u672A_u6765_u7684_u6784_u60F3" class="headerlink" title="对于项目未来的构想"></a>对于项目未来的构想</h3><p>首先还是要热爱项目，对此充满希望，才能完善完成，首先附上现用的工具，列出接下来努力的方向和目标<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV2.jpg" alt="项目现状和使用技术"><br>可以看到，接下来可以对无人机的几个经典库进行有效的学习和利用，进行更强的关于理论性的学习。周四Dr.Li shuai的课程，《代码大全》、《C++ Primer》、《算法导论》、《LINUX私房菜》、《OPENCV Code Book》、《统计学习方法》、《PCL学习使用》、《G2O的使用》以及SLAM相关方向的论文，但是好像有点多，所以我觉得代码和工程的能力是首当其冲，理论知识和英语的恶补也应该并驾齐驱。</p>
+<h3 id="u6682_u65F6_u5BF9_u4E8E_u9879_u76EE_u7684_u67B6_u6784"><a href="#u6682_u65F6_u5BF9_u4E8E_u9879_u76EE_u7684_u67B6_u6784" class="headerlink" title="暂时对于项目的架构"></a>暂时对于项目的架构</h3><p>主要是对于算法层上的组织，这几块高效的智能操作应当如何实施<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV3.jpg" alt="无人机项目的整体架构"><br>是否可以考虑率先完成一个小的demo,进而进行某个点的深入学习研发。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>苦苦做了几个月的项目，进展好慢，自己抗拒工程的心一直没有减退，还是自己抗拒进步，克服困难的心呢。</p>
+<h3 id="u5173_u4E8E_u9879_u76EE_u7684_u73B0_u72B6"><a href="#u5173_u4E8E_u9879_u76EE]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[跟G++,MAKE和CMAKE奋斗的日子]]></title>
     <link href="https://csrjtan.github.io/2016/01/22/%E8%B7%9FG-MAKE%E5%92%8CCMAKE%E5%A5%8B%E6%96%97%E7%9A%84%E6%97%A5%E5%AD%90/"/>
     <id>https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/</id>
     <published>2016-01-22T13:32:29.000Z</published>
-    <updated>2016-01-23T13:12:17.000Z</updated>
+    <updated>2016-01-23T13:15:44.000Z</updated>
     <content type="html"><![CDATA[<p>很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢<a href="http://blog.atime.me/note/cmake.html" target="_blank" rel="external">MWB</a>,jacker的《Cmake实践》</p>
 <h3 id="u5982_u4F55_u5B89_u88C5"><a href="#u5982_u4F55_u5B89_u88C5" class="headerlink" title="如何安装"></a>如何安装</h3><p>现在用的是G++-4.9：</p>
 <pre><code>sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -53,7 +71,7 @@ gcc test.o -o test        //bin文件
 <h3 id="u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD"><a href="#u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD" class="headerlink" title="孟老师的工作介绍"></a>孟老师的工作介绍</h3><p>西安交通大学的<a href="http://www.cs.cmu.edu/~deyum/" target="_blank" rel="external">孟老师</a>数学优化和建模很厉害，给了一下内容的讲座</p>
 <h4 id="Noise_Modeling_Principle"><a href="#Noise_Modeling_Principle" class="headerlink" title="Noise Modeling Principle"></a>Noise Modeling Principle</h4><p>一般ML问题$min_wL(x,\phi(w))+R(w)$<br>然后很多工作围绕正则项R(w)展开优化，L主要是$L_0 , L_1 ,L_P$<br>利用贝叶斯模型来解释，可以将噪声模型与损失函数对应起来，然后就是w和loss func迭代求解收敛，提到了使用混合高斯模型建模，有利于分离Low-rank structure数据的噪声</p>
 <h4 id="Adaptive_Noise_Learning"><a href="#Adaptive_Noise_Learning" class="headerlink" title="Adaptive Noise Learning"></a>Adaptive Noise Learning</h4><p>假设数据都是Low-Rank Structure，然后进行噪声提取分离，目前用在的应用有 1.人脸去噪 2.背景提取 3.HSI去噪 接下来做一些雨雪分离，以及CT医学图像的去噪应用。</p>
-<h4 id="Self-Pace_Learning"><a href="#Self-Pace_Learning" class="headerlink" title="Self-Pace Learning"></a>Self-Pace Learning</h4><p>提到了ML，Cognitive Science和Self-pace Learning的概念，主要原理是让模型学习从易到难，从而筛选掉一些难的数据不进行学习，其中很多的参数和变量应该用非监督的方法自动学习，主要围绕机器学习的方法展开，最后论证一下Self Pace Learning的一些有效性证明。</p>
+<h4 id="Self-Pace_Learning"><a href="#Self-Pace_Learning" class="headerlink" title="Self-Pace Learning"></a>Self-Pace Learning</h4><p>提到了ML，Cognitive Science和Self-pace Learning的概念，主要原理是让模型学习从易到难，从而筛选掉一些难的数据不进行学习，其中很多的参数和变量应该用非监督的方法自动学习，主要围绕机器学习的方法展开，最后论证一下Self Pace Learning的一些有效性<a href="http://arxiv.org/pdf/1511.06049v1.pdf" target="_blank" rel="external">证明</a>。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢<a href="http://blog.atime.me/note/cmake.html" target="_blank" rel="external">MWB</a>,jacker的《Cmake]]>
@@ -653,34 +671,6 @@ This is where you will write your content. 在这里写上内容。
     <summary type="html">
     <![CDATA[<p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf">原文链接</a></p>
 <h3 id="Stereo_Vision_3AAlgorithms_and_Applications"><a href="#Stereo_Vision_3AAlgorithms_and_Applications" class="headerlink" title="Stereo Vision:Algorithms and Applications"></a>Stereo Vision:Algorithms and Applications</h3><h4 id="Author_3AStefano_Mattoccia"><a href="#Author_3AStefano_Mattoccia" class="headerlink" title="Author:Stefano Mattoccia"></a>Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html">Stefano Mattoccia</a></h4><h4 id="Lab_3AUniversity_of_Bologna"><a href="#Lab_3AUniversity_of_Bologna" class="headerlink" title="Lab:University of Bologna"></a>Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用<br>]]>
-    
-    </summary>
-    
-      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications]]></title>
-    <link href="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/"/>
-    <id>https://csrjtan.github.io/2015/08/27/paper-reading-20150826/</id>
-    <published>2015-08-27T01:57:19.000Z</published>
-    <updated>2015-10-28T14:40:00.000Z</updated>
-    <content type="html"><![CDATA[<p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
-<p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.<br><a id="more"></a><br>1.<strong>Introduce</strong><br>   sec 1 介绍全文<br>   sec 2 介绍原理和模型<br>   sec 3 介绍误差影响要素<br>   sec 4 实验结果和分析<br>   sec 5 总结和remark</p>
-<p>2.<strong>深度测量 with triangulation</strong></p>
-<p>Triangulation Methods of Kinect [<a href="https://www.google.com/patents/US8150142" target="_blank" rel="external">1</a>] laser source emits single beam which split into multiple beams by diffraction.</p>
-<p>The <strong>reference pattern</strong> is obtained by capturing a plane at a known distance.</p>
-<p><strong>Disparity</strong>:The shifts are measured for all speckles by a simple image correlation procedure,which yield a disparity image.</p>
-<p>以下图为例，分析<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png" alt=""><br>o为参考平面，k为目标物体位置。由laser projector（不动）发出多个光束，ir camera调整角度使接收到的目标反射光斑落在参考平面上，得到偏移位置d.</p>
-<p>假设完成相机标定后，则 $ Z_0 $, f, b 已知，d也可以获得。<br>根据数学三角原理得到：</p>
-<p>$$ \frac{D}{b}=\frac{Z_0-Z_k}{Z_0} $$<br>$$\frac{d}{f}=\frac{D}{Z_k}$$<br>推导化简得:<br>            $ Z_k = \frac{Z_0}{1+\frac{Z_0}{fb}d} $ （1）<br>假设坐标系正交，得到Z轴坐标距离后，由于f定义了关于点的图像规模（imaging scale）所以得到物体的光点坐标为<br>$$ X_k=-\frac{Z_k}{f}(x_k-x_0+\delta x)$$<br>$$ Y_k=-\frac{Z_k}{f}(y_k-y_0+\delta y)$$<br>其中$x_k$ 和 $y_k$为图像坐标点，$x_0$ 和 $y_0$为坐标原点，$\delta x$ 和$\delta y$ 是镜头扭曲误差校正系数</p>
-<p>3.相机标定<br>我们需要求得标定的参数变量如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png" alt=""><br>前三个通过红外照相机标准标定可得<br>由于USB带宽所限，标定use reduced infrared images instead of actual sensor。<br>Disparity measurement 采样为0~2047 11bits，则 d = md’+n。 m, n为线性化参数。<br>代入 公式（1）可得<br>$$Z^{-1}_k = (\frac{m}{fb}d’ +(Z^{-1}_0 + \frac {n}{fb})) $$<br>通过测得(x,y,d’)可以映射到世界坐标系的(X,Y,Z)</p>
-<p>4.加入颜色元素</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
-<p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.<br>]]>
     
     </summary>
     
