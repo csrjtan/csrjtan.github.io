@@ -72,6 +72,68 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-C-Primer-Reading2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/30/C-Primer-Reading2/" class="article-date">
+  <time datetime="2016-01-30T08:05:37.000Z" itemprop="datePublished">2016-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/30/C-Primer-Reading2/">C++_Primer_Reading2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C++_u7684_u7F16_u7A0B_u6A21_u5757"><span class="toc-number">1.</span> <span class="toc-text">C++的编程模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u51FD_u6570_u63A2_u5E7D"><span class="toc-number">2.</span> <span class="toc-text">函数探幽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4"><span class="toc-number">3.</span> <span class="toc-text">内存模型和名称空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027"><span class="toc-number">3.1.</span> <span class="toc-text">存储持续性，作用域和链接性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5BF9_u8C61_u548C_u7C7B"><span class="toc-number">4.</span> <span class="toc-text">对象和类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4F7F_u7528_u7C7B"><span class="toc-number">5.</span> <span class="toc-text">使用类</span></a></li></ol>
+          </div>
+        
+        <h3 id="C++_u7684_u7F16_u7A0B_u6A21_u5757"><a href="#C++_u7684_u7F16_u7A0B_u6A21_u5757" class="headerlink" title="C++的编程模块"></a>C++的编程模块</h3><p>这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。<br><figure class="highlight aspectj"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">functionName</span><span class="params">(parameterList)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	statement(s)</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异<br>尽可能使用const:1.可以避免无意间修改数据导致的编程错误 2.能够同时处理const和非const的实参<br>按引用传递结构，还有函数指针的知识，C风格字符串：字符数组，字符串常量和字符串指针，以及string类.</p>
+<h3 id="u51FD_u6570_u63A2_u5E7D"><a href="#u51FD_u6570_u63A2_u5E7D" class="headerlink" title="函数探幽"></a>函数探幽</h3><p>内联函数、按引用传递、默认参数值、函数重载以及模板函数<br>C++新增加一种右值引用。返回引用时，避免返回函数终止则不再存在的内存单元引用</p>
+<p>函数模板<br><figure class="highlight nimrod"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typename <span class="type">AnyType</span>&gt;</span><br><span class="line"><span class="type">void</span> <span class="type">Swap</span>(<span class="type">AnyType</span> &amp;a,<span class="type">AnyType</span> &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">AnyType</span> temp;</span><br><span class="line">	temp = a;</span><br><span class="line">	a = b;</span><br><span class="line">	b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模板匹配的过程：1.创建候选函数列表 2.使用候选函数列表创建可行函数列表 3.确定是否有最佳可行函数<br>最佳到最差匹配顺序：1.完全匹配 2.提升转换 3.标准转换 4.用户定义转换</p>
+<h3 id="u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4"><a href="#u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4" class="headerlink" title="内存模型和名称空间"></a>内存模型和名称空间</h3><p>单独编译，将头文件和结构文件以及程序文件分开，头文件使用防护(guarding)方案，避免文件定义结构两次。（不同编译器创建的二进制模块很可能无法正确地链接，可以拿到源码后重新编译连接解决问题）</p>
+<h4 id="u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027"><a href="#u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027" class="headerlink" title="存储持续性，作用域和链接性"></a>存储持续性，作用域和链接性</h4><p>自动存储持续性：自动默认的变量，在块内或者函数生命周期里存在<br>静态存储持续性：static定义变量在程序运行过程中都存在<br>线程存储持续性（c++11):thread_local变量生命周期与线程一样长<br>动态存储持续性：用new分配的内存，直到delete才释放</p>
+<p>静态变量的三种链接性：1.外部链接性（其他文件中访问）extern 关键字表示使用外部变量。  2.内部链接性（当前文件访问） 3.无链接性（函数或块内访问）</p>
+<p>组织项目策略：头文件定义用户类型，为操纵类型的函数提供原型；源代码文件放置对应函数的定义；main和调用这些函数的函数放在第三文件上。</p>
+<p>为了减少命名冲突，引入了命名空间的概念，空间还能嵌套</p>
+<h3 id="u5BF9_u8C61_u548C_u7C7B"><a href="#u5BF9_u8C61_u548C_u7C7B" class="headerlink" title="对象和类"></a>对象和类</h3><p>突出显示OOP特性：抽象；封装和数据隐藏；多态；继承以及代码的可重用性。<br>接口是共享框架，供两个系统交互时使用的。<br>类的构造函数和析构函数，列表初始化参数，this指针，枚举结构体等。</p>
+<h3 id="u4F7F_u7528_u7C7B"><a href="#u4F7F_u7528_u7C7B" class="headerlink" title="使用类"></a>使用类</h3><p>运算符重载，友元函数，重载&lt;&lt;，状态成员，类的自动转换和强制类型转换。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ClassName ClassName::<span class="keyword">operator</span>+ (<span class="keyword">const</span> ClassName &amp; c) <span class="keyword">const</span> &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>重载限制：1.至少一个操作数是用户定义类型 2.使用运算符时不能违反运算符原来的句法规则 3.不能创建新运算符 4.不能重载sizeof . * :: ?: typeid const_cast static_cast 5.= () [] -&gt;只能通过成员函数进行重载 6.一般用友元重载&lt;&lt;<br>对于类的总结：相对于简单C-风格，使用类必须谨慎和小心，作为补偿，它为我们完成更多工作</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cik0ul9m3001likq1q3evghrk" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-无人机项目" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/26/无人机项目/" class="article-date">
@@ -108,7 +170,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cijvgeskb000cltq15lpl3y7n" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cik0ul9k5000cikq1nuapky6b" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -189,7 +251,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cijvgesjy0004ltq11xl1wt8t" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cik0ul9jq0004ikq1go1qkw8q" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -246,7 +308,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cijvgesls001dltq16whzqjj0" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cik0ul9lj001dikq1s5n1yb2l" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -307,7 +369,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cijvgesl3000tltq1cryvcch1" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cik0ul9kw000tikq124alr1ka" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -359,7 +421,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cijvgeskr000lltq1d5ua3o4v" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cik0ul9kl000likq1inxp50qz" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -427,7 +489,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cijvgesl6000vltq1qfn2n8zi" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cik0ul9l0000vikq1n2ya2h7c" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -479,7 +541,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cijvgesk9000altq1wwtvp2yp" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cik0ul9k3000aikq1h0y26t5h" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -543,7 +605,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cijvgesm2001jltq1qy04rri5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cik0ul9m1001jikq1dji0ddug" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -602,7 +664,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cijvgeslz001iltq17t78njyj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cik0ul9lr001iikq14aesaz31" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -610,82 +672,6 @@ gcc test.o -o test        //bin文件
       
 
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数据挖掘导论（3）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/02/数据挖掘导论（3）/" class="article-date">
-  <time datetime="2015-11-02T11:26:19.000Z" itemprop="datePublished">2015-11-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/02/数据挖掘导论（3）/">数据挖掘导论（3）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#u56DE_u987E_u4E0A_u8282"><span class="toc-number">1.</span> <span class="toc-text">回顾上节</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u7B2C_u4E94_u7AE0"><span class="toc-number"></span> <span class="toc-text">第五章</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1_u57FA_u4E8E_u89C4_u5219_u7684_u5206_u7C7B_u5668"><span class="toc-number">1.</span> <span class="toc-text">5.1基于规则的分类器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u8DDF_u51B3_u7B56_u6811_u6BD4_u8F83"><span class="toc-number">2.</span> <span class="toc-text">跟决策树比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
-          </div>
-        
-        <p>何女神，准备就期中考了，考到第7章，我有空继续看，顺便完善一下读书笔记，做人要有始有终。</p>
-<h4 id="u56DE_u987E_u4E0A_u8282"><a href="#u56DE_u987E_u4E0A_u8282" class="headerlink" title="回顾上节"></a>回顾上节</h4><p>提到了决策树的生成，主要是选择合理的分裂属性，并且修正合理的生成树，以获得较少的训练误差和不会过于臃肿的树结构，基于Occam’s Razor Rules，这有利于更强的泛化和预测能力。</p>
-<h3 id="u7B2C_u4E94_u7AE0"><a href="#u7B2C_u4E94_u7AE0" class="headerlink" title="第五章"></a>第五章</h3><p>这一章包含的内容多且重要，然而书本没有详细展开，这里我还是得仔细记录每一小节的内容。</p>
-<h4 id="5-1_u57FA_u4E8E_u89C4_u5219_u7684_u5206_u7C7B_u5668"><a href="#5-1_u57FA_u4E8E_u89C4_u5219_u7684_u5206_u7C7B_u5668" class="headerlink" title="5.1基于规则的分类器"></a>5.1基于规则的分类器</h4><p>分类模型用析取范式 $R=(r_1 \bigvee r_2 \bigvee … \bigvee r_k)$<br>这里R成为<strong>规则集</strong><br>这里表示形式：$r_i:(条件_i)-&gt;y_i$<br>这里左边称为规则前提，右边为规则后件，包含预测结果。<br>分类规则的质量用覆盖率和准确率定义,D为数据集，A为规则前件，y为规则后件。<br>$$Converage（r) = \frac{|A|}{|D|}$$<br>$$Accuray(r)=\frac{|A\bigcap y|}{|A|}$$<br>基于定义，我们有<strong>互斥规则、穷举规则、有无序规则</strong></p>
-<p>由于规则集中的规则不一定是互斥的，所有有可能分类的时候某条记录会属于多个类（也就是说某条记录会同时触发规则集中的超过1条的过则，而被触发的规则的类标号也不一样），这种情况有两种办法解决。<br>(1）有序规则。将规则集中的规则按照优先级降序排列，当一个测试记录出现时，由覆盖记录的最高秩的规则对其进行分类，这就避免由多条分类规则来预测而产生的类冲突问题<br>(2）无序规则。允许一条测试记录触发多条分类规则，把每条被触发规则的后件看作是对相应类的一次投票，然后计票确定测试记录的类标号。通常把记录指派到得票最多的类。</p>
-<p>假设现在有一个记录它不能触发规则集合中的任何一个规则，那么它该如何就行分类呢？解决办法也有两个：<br>（1）穷举规则。如果对属性值的任一组合，R中都存在一条规则加以覆盖，则称规则集R具有穷举覆盖。这个性质确保每一条记录都至少被R中的一条规则覆盖。<br>(2）如果规则不是穷举的，那么必须添加一个默认规则rd：（）-&gt;yd来覆盖那些未被覆盖的记录。默认规则的前件为空，当所有其他规则失效时被触发。yd是默认类，通常被指定为没有被现存规则覆盖的训练记录的多数类.</p>
-<p><strong>顺序覆盖算法</strong></p>
-<pre><code>令E是训练记录，A是属性-值对的集合{（Aj,Vj）}
-令Y0是类的有序集{y1,y2,...,yk}
-令R={}是初始规则列表
-for 每个类y in Y0-{yk} do
-    while 终止条件不满足 do
-        r = Learn-One-Rule(E,A,y)
-        从E重删除被r覆盖的训练记录
-        追加r到规则列表尾部:R=R V r
-    end while
-end for
-把默认规则{}-&gt;yk插入到规则列表R尾部
-</code></pre><p>这里是直接方法里的Learn-One-Rule函数，采用贪心原则。因为要找最佳规则是个NP-HARD问题，通过贪心方式近似，先产生一个初始规则r,不断求精，然后满足某种终止条件，修剪规则以改进泛化误差。书中介绍了规则增长的策略，这里不详述。</p>
-<p>对于候选规则的选择，这里使用<strong>似然比</strong>作为统计量：<br>$$R=2\sum_{i=1}^kf_ilog(\frac{f_i}{e_i})$$<br>或者规则覆盖率的度量Laplace以及<strong>FOIL信息增益</strong><br>(在顺序覆盖算法中，需要删除覆盖到的训练记录，不然会重叠而误选。)可以使用<strong>RIPPER算法</strong>来建立规则集，而选取一个泛化能力较佳的模型。</p>
-<h4 id="u8DDF_u51B3_u7B56_u6811_u6BD4_u8F83"><a href="#u8DDF_u51B3_u7B56_u6811_u6BD4_u8F83" class="headerlink" title="跟决策树比较"></a>跟决策树比较</h4><p>可以看到与决策树的相似性，这里我们可以用决策树作为参考，间接产生规则。<br>它们间的比较：</p>
-<ul>
-<li>规则集表达能力与之等价</li>
-<li>基于规则分类器更易于解释，并性能相媲美</li>
-<li>基于类的规则定序非常适应处理类分布不平衡的数据集</li>
-</ul>
-<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>算法思想：先从训练集生成规则集合，用合取条件表示。对每个待分类的记录和规则集合中的规则进行比较，如果某条规则被触发，则记录被分类。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/" data-id="cijvgeskd000dltq12d6qxapl" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
     </footer>
   </div>
   
@@ -711,7 +697,7 @@ end for
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">8</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -720,7 +706,7 @@ end for
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
     </div>
   </div>
 
@@ -729,7 +715,7 @@ end for
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -739,6 +725,10 @@ end for
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/01/30/C-Primer-Reading2/">C++_Primer_Reading2</a>
+          </li>
         
           <li>
             <a href="/2016/01/26/无人机项目/">无人机项目</a>
@@ -754,10 +744,6 @@ end for
         
           <li>
             <a href="/2016/01/20/paper-reading-20160120/">paper-reading-20160120</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
           </li>
         
       </ul>
