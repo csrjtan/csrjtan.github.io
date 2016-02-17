@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep Moving]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-01-30T12:02:05.000Z</updated>
+  <updated>2016-02-17T06:23:39.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -13,6 +13,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments]]></title>
+    <link href="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/"/>
+    <id>https://csrjtan.github.io/2016/02/17/paper-reading-20160217/</id>
+    <published>2016-02-17T06:04:08.000Z</published>
+    <updated>2016-02-17T06:23:39.000Z</updated>
+    <content type="html"><![CDATA[<p>HKUST<a href="https://sites.google.com/site/eeshaojie/academic-projects" target="_blank" rel="external">沈劭劼</a>的微型无人机避障系统</p>
+<h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>机载避障关键点在于低耗的传感器以及实时避障算法，该系统使用25Hz的鱼眼摄像头和一个低频的第二摄像头，外加IMU传感器fusion进行100Hz的飞行器控制</p>
+<h3 id="u4ECB_u7ECD"><a href="#u4ECB_u7ECD" class="headerlink" title="介绍"></a>介绍</h3><p>这里有一个有趣的软件PTAM（Parallel Tracking and Mapping），是一个基于SLAM的增强现实应用，可以去进行参考了解。论文的主要贡献点在于提供了完整的系统架构，从硬件到软件到算法，完成了机载设备的自动导航</p>
+<h3 id="u65B9_u6CD5"><a href="#u65B9_u6CD5" class="headerlink" title="方法"></a>方法</h3><p>1.相机标定以及特征提取跟踪<br>2.坐标系的正确转换<br>3.基于单目的Local Mapping<br>4.基于低帧率的立体匹配<br>5.误差校正和修复<br>6.UKF-Based的传感器融合（这一点可以需要的时候进行仔细的研究学习）</p>
+<h3 id="u5B9E_u9A8C_u90E8_u5206"><a href="#u5B9E_u9A8C_u90E8_u5206" class="headerlink" title="实验部分"></a>实验部分</h3><p>硬件：公司购买的飞行器，使用ARM7的机载处理器，具有双核1.86GHz和2GB RAM，120GB SSD。传感器为752*480的鱼眼摄像头，以及3.5mm f1.4 1Hz的第二摄像头，MicroStrain 3DM-GX3-25 IMU,用802.11g networking，总重1.983kg.</p>
+<p>软件：C++ using ROS, OpenCV,最大特征数1000，以及一些相关参数的调整，最后算法占用了50%的CPU，以及使用该算法与装有Vicon motion tracking system进行比较。</p>
+<p>测试：1.算法的姿态与GT比较 2.机载定点盘旋 3.复杂环境里的自动导航</p>
+<p>思路：作者主要使用ROS和OpenCV里面的工具进行系统的架构，可以去进行相关研究。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>HKUST<a href="https://sites.google.com/site/eeshaojie/academic-projects" target="_blank" rel="external">沈劭劼</a>的微型无人机避障系统</p>
+<h3 id="u64]]>
+    </summary>
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[C++_Primer_Reading2]]></title>
@@ -134,11 +158,11 @@ gcc test.o -o test        //bin文件
   </entry>
   
   <entry>
-    <title><![CDATA[paper-reading-20160120]]></title>
+    <title><![CDATA[林老师IJCV2015的工作]]></title>
     <link href="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/"/>
     <id>https://csrjtan.github.io/2016/01/20/paper-reading-20160120/</id>
     <published>2016-01-20T06:24:37.000Z</published>
-    <updated>2016-01-22T13:33:08.000Z</updated>
+    <updated>2016-02-17T06:09:12.000Z</updated>
     <content type="html"><![CDATA[<p>新年好，新年愿工程进展，论文有望。加油！</p>
 <h3 id="u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE"><a href="#u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE" class="headerlink" title="马里兰(MaryLand)大学的Larry Davis访问"></a>马里兰(MaryLand)大学的Larry Davis访问</h3><p>受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car parking.</p>
 <p>首先，GCNN是使用multi grid windows的思想，通过RCNN进行迭代的逼近学习，也是用于物体的识别。然后基于一些基本common sense建模，对于传统的activity recognition有一定的解释。讲述最近deep learning, cloud computing, GPU acceleration, Machine Learning等一些方法的推进都在有利于CV的进步，然CV离肉眼视觉识别依然有很大的距离。 最近的科研方向可以有Arichitecture Optimization，Mathematical Optimization and so on。明天将会继续介绍一下以往以及未来cv的相关工作。</p>
@@ -181,11 +205,11 @@ gcc test.o -o test        //bin文件
   </entry>
   
   <entry>
-    <title><![CDATA[paper-reading-20151125]]></title>
+    <title><![CDATA[Dynamic occlusion avoidance approach based on the depth image of moving visual object]]></title>
     <link href="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/"/>
     <id>https://csrjtan.github.io/2015/11/25/paper-reading-20151125/</id>
     <published>2015-11-25T06:13:16.000Z</published>
-    <updated>2016-01-21T07:20:22.000Z</updated>
+    <updated>2016-02-17T06:09:28.000Z</updated>
     <content type="html"><![CDATA[<p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
 <h3 id="Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object"><a href="#Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object" class="headerlink" title="Dynamic occlusion avoidance approach based on the depth image of moving visual object"></a>Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
 <h4 id="Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image"><a href="#Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image" class="headerlink" title="Abstract:Dynamic Occlusion avoidance based on the depth image."></a>Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
@@ -562,37 +586,6 @@ This is where you will write your content. 在这里写上内容。
 ]]></content>
     <summary type="html">
     <![CDATA[<h4 id="u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><a href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u]]>
-    </summary>
-    
-      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[代码大全（1）]]></title>
-    <link href="https://csrjtan.github.io/2015/10/20/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%88%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01%EF%BC%89/"/>
-    <id>https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/</id>
-    <published>2015-10-20T05:25:34.000Z</published>
-    <updated>2015-10-22T05:09:39.000Z</updated>
-    <content type="html"><![CDATA[<h3 id="u6574_u7406_u4E00_u4E0B_u6700_u8FD1_u7684_u8BFB_u4E66_u7B14_u8BB0_uFF0C_u9996_u5148_u5E94_u8BE5_u662F_u300A_u4EE3_u7801_u5927_u5168_u300B_u8FD9_u672C_u4E66_uFF0C_u8FD9_u91CC_u5199_u4E00_u4E0B_u7B2C_u4E00_u90E8_u5206_u201C_u6253_u597D_u57FA_u7840_u201D"><a href="#u6574_u7406_u4E00_u4E0B_u6700_u8FD1_u7684_u8BFB_u4E66_u7B14_u8BB0_uFF0C_u9996_u5148_u5E94_u8BE5_u662F_u300A_u4EE3_u7801_u5927_u5168_u300B_u8FD9_u672C_u4E66_uFF0C_u8FD9_u91CC_u5199_u4E00_u4E0B_u7B2C_u4E00_u90E8_u5206_u201C_u6253_u597D_u57FA_u7840_u201D" class="headerlink" title="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”"></a>整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”</h3><p>最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。<a id="more"></a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/构建项目.png" alt=""></p>
-<h3 id="chap_1-_u8FDB_u5165_u67B6_u6784_u7684_u4E16_u754C"><a href="#chap_1-_u8FDB_u5165_u67B6_u6784_u7684_u4E16_u754C" class="headerlink" title="chap 1.进入架构的世界"></a>chap 1.进入架构的世界</h3><p>软件架构包括：定义问题、需求分析、规划构建、软件架构、<strong>详细设计</strong>、<strong>编码和单元测试</strong>、集成测试、集成、系统测试以及保障维护</p>
-<p>作者强调设计和架构是很重要的，不要一上来就抠码，接下来分析如何设计，这对软件质量有实质性的帮助。</p>
-<h3 id="chap_2-_u7528_u9690_u55BB_u6765_u5145_u5206_u7406_u89E3_u8F6F_u4EF6_u5F00_u53D1"><a href="#chap_2-_u7528_u9690_u55BB_u6765_u5145_u5206_u7406_u89E3_u8F6F_u4EF6_u5F00_u53D1" class="headerlink" title="chap 2.用隐喻来充分理解软件开发"></a>chap 2.用隐喻来充分理解软件开发</h3><p>软件领域有一些共同的隐喻，用于方便交流，更好地理解抽象概念。</p>
-<h3 id="chap_3-_u524D_u671F_u51C6_u5907"><a href="#chap_3-_u524D_u671F_u51C6_u5907" class="headerlink" title="chap 3.前期准备"></a>chap 3.前期准备</h3><p><strong>涉及</strong>：程序组织、主要的类（80/20法则）、数据设计、业务规则、用户界面设计、资源管理、安全性、性能、可伸缩小、互用性、国际化/本地化、输入输出、错误处理、容错性、<br>架构可能性、过度工程、关于“买”还是“造”的决策、关于复用、变更策略、架构总体质量<br>目标：在于降低风险，同时增强系统清晰度可读性</p>
-<h3 id="chap_4-_u5173_u952E_u7684_u201C_u6784_u5EFA_u201D_u51B3_u7B56"><a href="#chap_4-_u5173_u952E_u7684_u201C_u6784_u5EFA_u201D_u51B3_u7B56" class="headerlink" title="chap 4.关键的“构建”决策"></a>chap 4.关键的“构建”决策</h3><p>选择编程语言、编程约定（人为规则）、深入一种语言、<strong>发明自己编码约定标准类库以及其他改进措施</strong></p>
-<h3 id="chap_5-_u8F6F_u4EF6_u6784_u5EFA_u4E2D_u7684_u8BBE_u8BA1"><a href="#chap_5-_u8F6F_u4EF6_u6784_u5EFA_u4E2D_u7684_u8BBE_u8BA1" class="headerlink" title="chap 5.软件构建中的设计"></a>chap 5.软件构建中的设计</h3><p>正确认识设计：险恶、无章法、确定取舍、调整顺序、不确定、启发式过程</p>
-<p>要点：管理复杂度</p>
-<p><strong>目标</strong>：最小复杂度、易于维护、松散耦合、可扩展、可充用、高扇入（大量高层类用同一基础类）、低扇出（减少使用不同底层类的个数）、可移植性、精简性、层次性、用标准技术</p>
-<p>层次：软件系统-&gt;子系统或包（定义通讯规则来分隔）-&gt; 类 -&gt; 子程序 -&gt;内部编程</p>
-<p><em>找出现实世界对象：辩识对象及其方法属性，确定对对象进行的操作，确定各对象对其他对对象的操作，确定对象可见部分，定义接口</em></p>
-<p>最后就是将类形成一致的抽象，继而层次化各个类，尽可能达到信息隐藏：1.隐藏复杂度 2.隐藏变化源</p>
-<p>为此，我们要明确信息隐藏的障碍和难点：信息过渡分散、有循环的依赖、误把类内数据当全局数据、找出容易改变的区域隔离开（包括业务规则、硬件依赖、IO、困难的设计区域、枚举出状态变量）</p>
-<p><strong>保持松散耦合</strong>：常见简单数据参数耦合、简单对象耦合、对象参数耦合、语义耦合（复杂！）</p>
-<h4 id="u5B66_u4E60_u4E00_u4E9B_u5E38_u7528_u7684_u8BBE_u8BA1_u6A21_u5F0F_uFF1A_u9002_u914D_u5668_u3001_u6865_u63A5_u3001_u88C5_u9970_u5668_u3001_u5916_u89C2_u3001_u5DE5_u5382_u65B9_u6CD5_u3001_u89C2_u5BDF_u8005_u3001_u5355_u4EF6_u3001_u7B56_u7565_u548C_u6A21_u677F_u65B9_u6CD5"><a href="#u5B66_u4E60_u4E00_u4E9B_u5E38_u7528_u7684_u8BBE_u8BA1_u6A21_u5F0F_uFF1A_u9002_u914D_u5668_u3001_u6865_u63A5_u3001_u88C5_u9970_u5668_u3001_u5916_u89C2_u3001_u5DE5_u5382_u65B9_u6CD5_u3001_u89C2_u5BDF_u8005_u3001_u5355_u4EF6_u3001_u7B56_u7565_u548C_u6A21_u677F_u65B9_u6CD5" class="headerlink" title="学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法"></a>学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法</h4><p>最后需要明确项目的类型来规划设计到哪一个细节阶段，并记录<strong>设计成果</strong>，保留设计挂图</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="u6574_u7406_u4E00_u4E0B_u6700_u8FD1_u7684_u8BFB_u4E66_u7B14_u8BB0_uFF0C_u9996_u5148_u5E94_u8BE5_u662F_u300A_u4EE3_u7801_u5927_u5168_u300B_u8FD9_u672C_u4E66_uFF0C_u8FD9_u91CC_u5199_u4E00_u4E0B_u7B2C_u4E00_u90E8_u5206_u201C_u6253_u597D_u57FA_u7840_u201D"><a href="#u6574_u7406_u4E00_u4E0B_u6700_u8FD1_u7684_u8BFB_u4E66_u7B14_u8BB0_uFF0C_u9996_u5148_u5E94_u8BE5_u662F_u300A_u4EE3_u7801_u5927_u5168_u300B_u8FD9_u672C_u4E66_uFF0C_u8FD9_u91CC_u5199_u4E00_u4E0B_u7B2C_u4E00_u90E8_u5206_u201C_u6253_u597D_u57FA_u7840_u201D" class="headerlink" title="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”"></a>整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”</h3><p>最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。]]>
-    
     </summary>
     
       <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
