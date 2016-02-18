@@ -72,6 +72,70 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-OpenClassRobotic1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/14/OpenClassRobotic1/" class="article-date">
+  <time datetime="2015-11-13T16:04:37.000Z" itemprop="datePublished">2015-11-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/14/OpenClassRobotic1/">斯坦福公开课机器人学</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_u6982_u8FF0"><span class="toc-number">1.</span> <span class="toc-text">1.概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><span class="toc-number">1.1.</span> <span class="toc-text">2.空间描述，广义的坐标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C"><span class="toc-number">1.2.</span> <span class="toc-text">3.讨论欧拉角和旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-DH_u53C2_u6570"><span class="toc-number">1.3.</span> <span class="toc-text">4.DH参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2"><span class="toc-number">1.4.</span> <span class="toc-text">5.仿灵长类机械臂</span></a></li></ol></li></ol>
+          </div>
+        
+        <h3 id="1-_u6982_u8FF0"><a href="#1-_u6982_u8FF0" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
+<h4 id="2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><a href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807" class="headerlink" title="2.空间描述，广义的坐标"></a>2.空间描述，广义的坐标</h4><p>在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$<br>在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma,\phi$</p>
+<p>这里描述坐标系的转换可以用一个矩阵，其中旋转矩阵$ R_{AB}=R_{BA}^T $,具有<strong>正交性</strong>，<br>$ R_{AB}^{-1} = R_{BA} = R_{BA}^T $，并且满足:<br>$$ r_X^2 = r_Y^2 = r_Z^2 = 1 $$<br>$$ r_X * r_Y = r_X * r_Z = r_Y * r_Z = 0 $$<br>其中正交矩阵相关的一些矩阵分解有：QR、SVD、谱分解和极分解。</p>
+<p>相对而言，T不会满足旋转矩阵R的这些特性，这里也是基于右手系的约束。<br>为了方便矩阵的运算，我们将R和T矩阵组合并添加一维[0 0 0 1]变成4 * 4的矩阵，形成<strong>齐次</strong>.</p>
+<h4 id="3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C"><a href="#3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C" class="headerlink" title="3.讨论欧拉角和旋转"></a>3.讨论欧拉角和旋转</h4><p>介绍了柔性制动器，气压驱动，上节课讲的内容的转换，可以描述坐标系转换，或者点的映射。由于扩展了齐次坐标系，所以末端的坐标系可以直接从基座变换矩阵T相乘解得，但在描述旋转的时候，用3*3的矩阵有9个参数，过于<strong>冗余</strong>，我们考虑更为精炼的表达方式，更高效地表示旋转。</p>
+<p>引入一个，对于刚性物体的坐标表示方式根据坐标系的表达而变化，分为</p>
+<ul>
+<li>Cartesion : $(x,y,z)$</li>
+<li>Cylindrical: $(\rho,\theta,\tau)$</li>
+<li>Spherical: $(r,\theta,\phi)$<br>这是针对应用的场景而变化的，对于某些运动变化，采用适用的坐标系能大大简化问题，适应与问题。</li>
+</ul>
+<p>首先来讨论用<strong>三个角</strong>来表示旋转，分别是yaw,roll,hawl.$$R_{AB} = R_Z(\alpha).R_Y(\beta).r_X(\gamma)$$<br>求解一系列矩阵运算之后，出现cp = 0 的时候，会出现<strong>奇异性</strong>(回头查google)的点，此时无法进一步计算（因为除0出错）,无法进行继续跟踪，而其他以三个参数为旋转的也无法解决这个奇异点的问题。于是尝试进行四个参数的旋转表达，便有了经典的<strong>欧拉角</strong>，Euler Prameters。</p>
+<p>欧拉角指根据x,y,z轴旋转，一共有24种顺规，使用前先确定规则，</p>
+<h4 id="4-DH_u53C2_u6570"><a href="#4-DH_u53C2_u6570" class="headerlink" title="4.DH参数"></a>4.DH参数</h4><p>引入了“蜂鸟”机器人，如何通过连杆和终端执行器控制机械手，建立正运动学。用DH参数描述来表达对连杆的控制，，从而精确定义坐标系，设置不同参数进行变换得到总的变换，从而建立正运动学</p>
+<h4 id="5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2"><a href="#5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2" class="headerlink" title="5.仿灵长类机械臂"></a>5.仿灵长类机械臂</h4><p>介绍了如何用欧拉角进行坐标转换，对ROBOT建立数学模型。<br>首先选定较优的坐标原点，尽量方便表达和减少参数，进而根据连杆的变换推导出新的节点的坐标表达，建立坐标表达矩阵，这样的坐标表达就包括（yaw,hawl,roll,Distance)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="ciksd37o1001lvcq1knzfrkt7" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-SLAM的学习总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/08/SLAM的学习总结/" class="article-date">
@@ -114,7 +178,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cikqgh2op001kl5q1sbrh7fip" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="ciksd37ny001kvcq1jhmbhaec" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -188,7 +252,7 @@ end for
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/" data-id="cikqgh2n7000dl5q1gq0f0jz0" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/" data-id="ciksd37mc000dvcq1a2ztzdu5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -262,7 +326,7 @@ return root
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/" data-id="cikqgh2nb000fl5q16fi61dnk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/" data-id="ciksd37me000fvcq18c0g1if9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -342,7 +406,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cikqgh2nl000nl5q1rctknvln" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="ciksd37mo000nvcq1z4ynfdfz" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -398,7 +462,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cikqgh2od0019l5q1vcuid3yw" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="ciksd37ni0019vcq1p4v67oml" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -450,7 +514,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cikqgh2o1000zl5q1i9plhnc5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="ciksd37n6000zvcq1d7q0lmgn" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -513,7 +577,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cikqgh2og001cl5q13k6e3yj5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="ciksd37nl001cvcq1gnunrsre" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -568,7 +632,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cikqgh2o30011l5q1jhenf2ar" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="ciksd37n90011vcq170w3pj19" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -619,62 +683,11 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cikqgh2ne000hl5q14tbdo87z" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="ciksd37mg000hvcq1zb2wexa8" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
         <a href="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-论文阅读方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/22/论文阅读方法/" class="article-date">
-  <time datetime="2015-10-22T08:58:39.000Z" itemprop="datePublished">2015-10-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/22/论文阅读方法/">论文阅读方法和技巧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><span class="toc-number">1.</span> <span class="toc-text">关于论文阅读的方法和心得</span></a></li></ol>
-          </div>
-        
-        <h4 id="u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><a href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97" class="headerlink" title="关于论文阅读的方法和心得"></a>关于论文阅读的方法和心得</h4><p><a href="https://www.evernote.com/shard/s608/sh/b2f2b9b0-91a5-4abf-81f4-599d3fa52bb9/01af8a34804f5cd1/res/bda4e9d8-e543-4cfd-9bb1-f42e7a626894/%E9%98%85%E8%AF%BB%E8%AE%BA%E6%96%87.pdf" target="_blank" rel="external">PDF</a></p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/论文阅读.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cikqgh2n00007l5q1cafqd1oa" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/10/22/论文阅读方法/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -705,7 +718,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -714,7 +727,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
     </div>
   </div>
 
@@ -723,7 +736,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -733,6 +746,10 @@ This is where you will write your content. 在这里写上内容。
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/02/18/Manual学习/">Vim Manual学习</a>
+          </li>
         
           <li>
             <a href="/2016/02/17/paper-reading-20160217/">Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments</a>
@@ -748,10 +765,6 @@ This is where you will write your content. 在这里写上内容。
         
           <li>
             <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/">跟G++,MAKE和CMAKE奋斗的日子</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/22/c-Primer-Reading1/">C++_Primer_Reading1</a>
           </li>
         
       </ul>

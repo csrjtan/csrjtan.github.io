@@ -72,6 +72,96 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Manual学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/18/Manual学习/" class="article-date">
+  <time datetime="2016-02-18T08:48:13.000Z" itemprop="datePublished">2016-02-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/18/Manual学习/">Vim Manual学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4ECESublime_u8F6C_u7528VIM_u4F5C_u4E3A_u7F16_u8F91_u5668"><span class="toc-number">1.</span> <span class="toc-text">从Sublime转用VIM作为编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VIM_u7684_u5FEB_u6377_u952E_u56FE"><span class="toc-number">2.</span> <span class="toc-text">VIM的快捷键图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u9605_u8BFBManual_u7684_u5FEB_u6377_u952ERemind_u603B_u7ED3"><span class="toc-number">3.</span> <span class="toc-text">阅读Manual的快捷键Remind总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u524D12_u8282"><span class="toc-number">3.1.</span> <span class="toc-text">前12节</span></a></li></ol></li></ol>
+          </div>
+        
+        <p>The meaning of life is challenging yourself constantly.<br>在工具上磨刀耗费了不少的时间，是时候提升个人能力和领域知识，积累和效率同样重要。</p>
+<h3 id="u4ECESublime_u8F6C_u7528VIM_u4F5C_u4E3A_u7F16_u8F91_u5668"><a href="#u4ECESublime_u8F6C_u7528VIM_u4F5C_u4E3A_u7F16_u8F91_u5668" class="headerlink" title="从Sublime转用VIM作为编辑器"></a>从Sublime转用VIM作为编辑器</h3><p>放弃Sublime的原因主要有三：1.最主要的原因，从事无人机开发，在单片机上没有图形界面一说，所以Sublime也无法使用，通常使用ssh进行远端控制和开发，而且使用VIM有助于远距离开发，只从命令行便完成一切控制任务 2.真正解放鼠标，而且具有完备的教程和社区，相信如果一生与编程为伴的我会感谢现在的我所作出的决定 3.真正意义上从习惯以及Linux使用者的角度去理解Linux，可以加深和了解很多关于Shell的用法，以及约定俗成的用户习惯</p>
+<h3 id="VIM_u7684_u5FEB_u6377_u952E_u56FE"><a href="#VIM_u7684_u5FEB_u6377_u952E_u56FE" class="headerlink" title="VIM的快捷键图"></a>VIM的快捷键图</h3><p>这里放上VIM的经典快捷键图，感谢博主原文链接<a href="http://cenalulu.github.io/linux/all-vim-cheatsheat/" target="_blank" rel="external">CENALULU</a><br>附带一个清晰的快捷键链接<a href="http://vim.rtorr.com/" target="_blank" rel="external">站点</a><br>经典版<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/classic.gif" alt="classic"><br>入门版<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/entry.png" alt="freshman"><br>进阶版<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/advanced.png" alt="advance"></p>
+<h3 id="u9605_u8BFBManual_u7684_u5FEB_u6377_u952ERemind_u603B_u7ED3"><a href="#u9605_u8BFBManual_u7684_u5FEB_u6377_u952ERemind_u603B_u7ED3" class="headerlink" title="阅读Manual的快捷键Remind总结"></a>阅读Manual的快捷键Remind总结</h3><h4 id="u524D12_u8282"><a href="#u524D12_u8282" class="headerlink" title="前12节"></a>前12节</h4><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左下上右：hjkl</td>
+<td>删改:x d c D C s S r R</td>
+<td>查找:F f T t / ?</td>
+</tr>
+<tr>
+<td>快速位移：gg G [Num]G [Num]% H M L zz</td>
+<td>复制黏贴：y Y p P</td>
+<td>寄存器复制:”[a-z]Y</td>
+</tr>
+<tr>
+<td>对应补粘：”[A-Z]Y</td>
+<td>模式：i a o q(record)  R(replace) v(visual) ctrl+v(coloum visual)</td>
+<td>范围改动: :[range]s/from/to[gc] \n   :global/place/{cmd}</td>
+</tr>
+<tr>
+<td>排版:gq</td>
+<td>大小写:~ guu gUU g~~</td>
+<td>多文件:vim -o   vsplit ctrl+w :edit :read :write</td>
+</tr>
+<tr>
+<td>标记:m[a-z]</td>
+<td>跳转: ‘[a-z] 和 `.</td>
+<td>单词统计：g CTRL-G</td>
+</tr>
+</tbody>
+</table>
+<p>单词替换: :%s/\&lt;four\&gt;/4/gc<br>多个文件替换单词(记录-回放)：1.vim *.cpp 2.qq :%s/\&lt;GetResp\&gt;/GetAnswer/g 3.:wnext 4.q 5.999@q<br>使用man查询: K  1.:runtime! ftplugin/man.vim  2.:Man csh </p>
+<p>至此，阅读了usr_01 ~ usr_12.txt,下一节继续学习余下部分。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="ciksd37o3001nvcq1t8d8x6qn" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/02/18/Manual学习/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-paper-reading-20160217" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/17/paper-reading-20160217/" class="article-date">
@@ -112,7 +202,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cikqgh2ns000tl5q1ael27q1j" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="ciksd37my000tvcq1pnxf0nrd" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -174,7 +264,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cikqgh2ou001nl5q1i3929m03" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="ciksd37o6001pvcq13lql4g51" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -227,7 +317,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cikqgh2n5000cl5q1fy2h7pet" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="ciksd37m9000cvcq1rsuqm37x" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -308,7 +398,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cikqgh2ms0004l5q1d2kgvbm7" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="ciksd37ly0004vcq1dvwvfmgl" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -365,7 +455,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cikqgh2ok001fl5q1iewolhcj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="ciksd37ns001fvcq1ukmkhxbk" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -426,7 +516,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cikqgh2nw000vl5q1r8ftjbqq" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="ciksd37n1000vvcq1v0uz5uyb" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -478,7 +568,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cikqgh2ni000ll5q18fdhn8kf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="ciksd37ml000lvcq1td2f5ttf" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -546,7 +636,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cikqgh2ny000xl5q1jhsz5pw2" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="ciksd37n4000xvcq1rkr7fzzq" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -598,7 +688,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cikqgh2n3000al5q1yileyyzc" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="ciksd37m7000avcq1jtdh4a4m" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -607,70 +697,6 @@ gcc test.o -o test        //bin文件
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-OpenClassRobotic1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/14/OpenClassRobotic1/" class="article-date">
-  <time datetime="2015-11-13T16:04:37.000Z" itemprop="datePublished">2015-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/14/OpenClassRobotic1/">斯坦福公开课机器人学</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_u6982_u8FF0"><span class="toc-number">1.</span> <span class="toc-text">1.概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><span class="toc-number">1.1.</span> <span class="toc-text">2.空间描述，广义的坐标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C"><span class="toc-number">1.2.</span> <span class="toc-text">3.讨论欧拉角和旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-DH_u53C2_u6570"><span class="toc-number">1.3.</span> <span class="toc-text">4.DH参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2"><span class="toc-number">1.4.</span> <span class="toc-text">5.仿灵长类机械臂</span></a></li></ol></li></ol>
-          </div>
-        
-        <h3 id="1-_u6982_u8FF0"><a href="#1-_u6982_u8FF0" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
-<h4 id="2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><a href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807" class="headerlink" title="2.空间描述，广义的坐标"></a>2.空间描述，广义的坐标</h4><p>在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$<br>在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma,\phi$</p>
-<p>这里描述坐标系的转换可以用一个矩阵，其中旋转矩阵$ R_{AB}=R_{BA}^T $,具有<strong>正交性</strong>，<br>$ R_{AB}^{-1} = R_{BA} = R_{BA}^T $，并且满足:<br>$$ r_X^2 = r_Y^2 = r_Z^2 = 1 $$<br>$$ r_X * r_Y = r_X * r_Z = r_Y * r_Z = 0 $$<br>其中正交矩阵相关的一些矩阵分解有：QR、SVD、谱分解和极分解。</p>
-<p>相对而言，T不会满足旋转矩阵R的这些特性，这里也是基于右手系的约束。<br>为了方便矩阵的运算，我们将R和T矩阵组合并添加一维[0 0 0 1]变成4 * 4的矩阵，形成<strong>齐次</strong>.</p>
-<h4 id="3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C"><a href="#3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C" class="headerlink" title="3.讨论欧拉角和旋转"></a>3.讨论欧拉角和旋转</h4><p>介绍了柔性制动器，气压驱动，上节课讲的内容的转换，可以描述坐标系转换，或者点的映射。由于扩展了齐次坐标系，所以末端的坐标系可以直接从基座变换矩阵T相乘解得，但在描述旋转的时候，用3*3的矩阵有9个参数，过于<strong>冗余</strong>，我们考虑更为精炼的表达方式，更高效地表示旋转。</p>
-<p>引入一个，对于刚性物体的坐标表示方式根据坐标系的表达而变化，分为</p>
-<ul>
-<li>Cartesion : $(x,y,z)$</li>
-<li>Cylindrical: $(\rho,\theta,\tau)$</li>
-<li>Spherical: $(r,\theta,\phi)$<br>这是针对应用的场景而变化的，对于某些运动变化，采用适用的坐标系能大大简化问题，适应与问题。</li>
-</ul>
-<p>首先来讨论用<strong>三个角</strong>来表示旋转，分别是yaw,roll,hawl.$$R_{AB} = R_Z(\alpha).R_Y(\beta).r_X(\gamma)$$<br>求解一系列矩阵运算之后，出现cp = 0 的时候，会出现<strong>奇异性</strong>(回头查google)的点，此时无法进一步计算（因为除0出错）,无法进行继续跟踪，而其他以三个参数为旋转的也无法解决这个奇异点的问题。于是尝试进行四个参数的旋转表达，便有了经典的<strong>欧拉角</strong>，Euler Prameters。</p>
-<p>欧拉角指根据x,y,z轴旋转，一共有24种顺规，使用前先确定规则，</p>
-<h4 id="4-DH_u53C2_u6570"><a href="#4-DH_u53C2_u6570" class="headerlink" title="4.DH参数"></a>4.DH参数</h4><p>引入了“蜂鸟”机器人，如何通过连杆和终端执行器控制机械手，建立正运动学。用DH参数描述来表达对连杆的控制，，从而精确定义坐标系，设置不同参数进行变换得到总的变换，从而建立正运动学</p>
-<h4 id="5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2"><a href="#5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2" class="headerlink" title="5.仿灵长类机械臂"></a>5.仿灵长类机械臂</h4><p>介绍了如何用欧拉角进行坐标转换，对ROBOT建立数学模型。<br>首先选定较优的坐标原点，尽量方便表达和减少参数，进而根据连杆的变换推导出新的节点的坐标表达，建立坐标表达矩阵，这样的坐标表达就包括（yaw,hawl,roll,Distance)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cikqgh2or001ll5q1vb2f2cq9" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
     </footer>
   </div>
@@ -697,7 +723,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -706,7 +732,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
     </div>
   </div>
 
@@ -715,7 +741,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -725,6 +751,10 @@ gcc test.o -o test        //bin文件
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/02/18/Manual学习/">Vim Manual学习</a>
+          </li>
         
           <li>
             <a href="/2016/02/17/paper-reading-20160217/">Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments</a>
@@ -740,10 +770,6 @@ gcc test.o -o test        //bin文件
         
           <li>
             <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/">跟G++,MAKE和CMAKE奋斗的日子</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/22/c-Primer-Reading1/">C++_Primer_Reading1</a>
           </li>
         
       </ul>

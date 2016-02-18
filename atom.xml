@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep Moving]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-02-17T06:23:39.000Z</updated>
+  <updated>2016-02-18T14:27:03.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -13,6 +13,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Vim Manual学习]]></title>
+    <link href="https://csrjtan.github.io/2016/02/18/Manual%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://csrjtan.github.io/2016/02/18/Manual学习/</id>
+    <published>2016-02-18T08:48:13.000Z</published>
+    <updated>2016-02-18T14:27:03.000Z</updated>
+    <content type="html"><![CDATA[<p>The meaning of life is challenging yourself constantly.<br>在工具上磨刀耗费了不少的时间，是时候提升个人能力和领域知识，积累和效率同样重要。</p>
+<h3 id="u4ECESublime_u8F6C_u7528VIM_u4F5C_u4E3A_u7F16_u8F91_u5668"><a href="#u4ECESublime_u8F6C_u7528VIM_u4F5C_u4E3A_u7F16_u8F91_u5668" class="headerlink" title="从Sublime转用VIM作为编辑器"></a>从Sublime转用VIM作为编辑器</h3><p>放弃Sublime的原因主要有三：1.最主要的原因，从事无人机开发，在单片机上没有图形界面一说，所以Sublime也无法使用，通常使用ssh进行远端控制和开发，而且使用VIM有助于远距离开发，只从命令行便完成一切控制任务 2.真正解放鼠标，而且具有完备的教程和社区，相信如果一生与编程为伴的我会感谢现在的我所作出的决定 3.真正意义上从习惯以及Linux使用者的角度去理解Linux，可以加深和了解很多关于Shell的用法，以及约定俗成的用户习惯</p>
+<h3 id="VIM_u7684_u5FEB_u6377_u952E_u56FE"><a href="#VIM_u7684_u5FEB_u6377_u952E_u56FE" class="headerlink" title="VIM的快捷键图"></a>VIM的快捷键图</h3><p>这里放上VIM的经典快捷键图，感谢博主原文链接<a href="http://cenalulu.github.io/linux/all-vim-cheatsheat/" target="_blank" rel="external">CENALULU</a><br>附带一个清晰的快捷键链接<a href="http://vim.rtorr.com/" target="_blank" rel="external">站点</a><br>经典版<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/classic.gif" alt="classic"><br>入门版<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/entry.png" alt="freshman"><br>进阶版<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/advanced.png" alt="advance"></p>
+<h3 id="u9605_u8BFBManual_u7684_u5FEB_u6377_u952ERemind_u603B_u7ED3"><a href="#u9605_u8BFBManual_u7684_u5FEB_u6377_u952ERemind_u603B_u7ED3" class="headerlink" title="阅读Manual的快捷键Remind总结"></a>阅读Manual的快捷键Remind总结</h3><h4 id="u524D12_u8282"><a href="#u524D12_u8282" class="headerlink" title="前12节"></a>前12节</h4><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左下上右：hjkl</td>
+<td>删改:x d c D C s S r R</td>
+<td>查找:F f T t / ?</td>
+</tr>
+<tr>
+<td>快速位移：gg G [Num]G [Num]% H M L zz</td>
+<td>复制黏贴：y Y p P</td>
+<td>寄存器复制:”[a-z]Y</td>
+</tr>
+<tr>
+<td>对应补粘：”[A-Z]Y</td>
+<td>模式：i a o q(record)  R(replace) v(visual) ctrl+v(coloum visual)</td>
+<td>范围改动: :[range]s/from/to[gc] \n   :global/place/{cmd}</td>
+</tr>
+<tr>
+<td>排版:gq</td>
+<td>大小写:~ guu gUU g~~</td>
+<td>多文件:vim -o   vsplit ctrl+w :edit :read :write</td>
+</tr>
+<tr>
+<td>标记:m[a-z]</td>
+<td>跳转: ‘[a-z] 和 `.</td>
+<td>单词统计：g CTRL-G</td>
+</tr>
+</tbody>
+</table>
+<p>单词替换: :%s/\&lt;four\&gt;/4/gc<br>多个文件替换单词(记录-回放)：1.vim *.cpp 2.qq :%s/\&lt;GetResp\&gt;/GetAnswer/g 3.:wnext 4.q 5.999@q<br>使用man查询: K  1.:runtime! ftplugin/man.vim  2.:Man csh </p>
+<p>至此，阅读了usr_01 ~ usr_12.txt,下一节继续学习余下部分。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>The meaning of life is challenging yourself constantly.<br>在工具上磨刀耗费了不少的时间，是时候提升个人能力和领域知识，积累和效率同样重要。</p>
+<h3 id="u4ECESublime_u8F6C_u7528V]]>
+    </summary>
+    
+      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments]]></title>
@@ -569,23 +626,6 @@ This is where you will write your content. 在这里写上内容。
 <p>好，马上开始正题：</p>
 <h4 id="u4E66_u672C_u5185_u5BB9_u4E0E_u7EC4_u7EC7"><a href="#u4E66_u672C_u5185_u5BB9_u4E0E_u7EC4_u7EC7" class="headerlink" title="书本内容与组织"></a>书本内容与组织</h4><p>第一章，绪论<br>第二章，讨论数据基本类型、质量、预处理及相似性和相异性度量<br>第三章，关于数据数据探查<br>第四、五章，关于分类<br>第六、七章，讨论关联分析<br>第八、九章，讨论聚类分析<br>第十章，讨论数据挖掘的异常检测<br>]]>
     
-    </summary>
-    
-      <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[论文阅读方法和技巧]]></title>
-    <link href="https://csrjtan.github.io/2015/10/22/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/"/>
-    <id>https://csrjtan.github.io/2015/10/22/论文阅读方法/</id>
-    <published>2015-10-22T08:58:39.000Z</published>
-    <updated>2015-10-22T09:01:29.000Z</updated>
-    <content type="html"><![CDATA[<h4 id="u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><a href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97" class="headerlink" title="关于论文阅读的方法和心得"></a>关于论文阅读的方法和心得</h4><p><a href="https://www.evernote.com/shard/s608/sh/b2f2b9b0-91a5-4abf-81f4-599d3fa52bb9/01af8a34804f5cd1/res/bda4e9d8-e543-4cfd-9bb1-f42e7a626894/%E9%98%85%E8%AF%BB%E8%AE%BA%E6%96%87.pdf" target="_blank" rel="external">PDF</a></p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/论文阅读.png" alt=""></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h4 id="u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u6CD5_u548C_u5FC3_u5F97"><a href="#u5173_u4E8E_u8BBA_u6587_u9605_u8BFB_u7684_u65B9_u]]>
     </summary>
     
       <category term="读书笔记" scheme="https://csrjtan.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
