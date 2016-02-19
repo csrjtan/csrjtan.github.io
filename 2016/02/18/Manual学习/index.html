@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/classic.gif">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/entry.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/advanced.png">
-<meta property="og:updated_time" content="2016-02-19T02:12:17.000Z">
+<meta property="og:updated_time" content="2016-02-19T11:56:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim Manual学习">
 <meta name="twitter:description" content="The meaning of life is challenging yourself constantly.在工具上磨刀耗费了不少的时间，是时候提升个人能力和领域知识，积累和效率同样重要。
@@ -103,7 +103,7 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4ECESublime_u8F6C_u7528VIM_u4F5C_u4E3A_u7F16_u8F91_u5668"><span class="toc-number">1.</span> <span class="toc-text">从Sublime转用VIM作为编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VIM_u7684_u5FEB_u6377_u952E_u56FE"><span class="toc-number">2.</span> <span class="toc-text">VIM的快捷键图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u9605_u8BFBManual_u7684_u5FEB_u6377_u952ERemind_u603B_u7ED3"><span class="toc-number">3.</span> <span class="toc-text">阅读Manual的快捷键Remind总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u524D12_u8282"><span class="toc-number">3.1.</span> <span class="toc-text">前12节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4F59_u4E0B_u90E8_u5206"><span class="toc-number">3.2.</span> <span class="toc-text">余下部分</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u4ECESublime_u8F6C_u7528VIM_u4F5C_u4E3A_u7F16_u8F91_u5668"><span class="toc-number">1.</span> <span class="toc-text">从Sublime转用VIM作为编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VIM_u7684_u5FEB_u6377_u952E_u56FE"><span class="toc-number">2.</span> <span class="toc-text">VIM的快捷键图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u9605_u8BFBManual_u7684_u5FEB_u6377_u952ERemind_u603B_u7ED3"><span class="toc-number">3.</span> <span class="toc-text">阅读Manual的快捷键Remind总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u524D12_u8282"><span class="toc-number">3.1.</span> <span class="toc-text">前12节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4F59_u4E0B_u90E8_u5206"><span class="toc-number">3.2.</span> <span class="toc-text">余下部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u9898_u5916_u8BDD_uFF0C_u5982_u4F55_u9009_u4E66"><span class="toc-number">3.3.</span> <span class="toc-text">题外话，如何选书</span></a></li></ol></li></ol>
           </div>
         
         <p>The meaning of life is challenging yourself constantly.<br>在工具上磨刀耗费了不少的时间，是时候提升个人能力和领域知识，积累和效率同样重要。</p>
@@ -148,7 +148,12 @@
 <p>单词替换: :%s/\&lt;four\&gt;/4/gc<br>多个文件替换单词(记录-回放)：1.vim *.cpp 2.qq :%s/\&lt;GetResp\&gt;/GetAnswer/g 3.:wnext 4.q 5.999@q<br>使用man查询: K  1.:runtime! ftplugin/man.vim  2.:Man csh </p>
 <p>至此，阅读了usr_01 ~ usr_12.txt,下一节继续学习余下部分。</p>
 <h4 id="u4F59_u4E0B_u90E8_u5206"><a href="#u4F59_u4E0B_u90E8_u5206" class="headerlink" title="余下部分"></a>余下部分</h4><p>usr_20 命令行：<br>命令行状态，左移一个单词：Shift+Left 或 Ctrl+Left ，删除单词:Ctrl-w ,删除全部文字：Ctrl-u.<br>“:”命令通常具有缩写，但对应只有一个命令，可查看帮助以便记忆使用<br>Tab自动补全，Ctrl+p返回补全上一个选项，Ctrl+d可以显示目录候选文件<br>q: 进入命令行窗口，进行修改历史命令并执行;  用:！执行shell命令</p>
-<p>:</p>
+<p>usr_21 记录和会话（没大懂，回头看）：<br>关于viminfo存储状态信息以及重返VIM中断处:oldfilesi<br>关于会话session,主要用于建立自定义窗口布局</p>
+<p>usr_22 编辑指定文件<br>:pwd :cd  查找文件gf 加入头文件目录:set path+=~/proj/include<br>find 缓冲区列表 :hidden :bnext :bfirst :bdelete [Num]</p>
+<p>usr_23 编辑其他文件<br>识别文件类型:set fileformat<br>加密：vim -x filename 撤销密码:set key=<br>读取二进制文件： vim -b filename<br>字节位置: g Ctrl+g</p>
+<p>usr_24 快速插入<br>更正： Ctrl+w  Ctrl+u<br>补全： Ctrl+p  Ctrl+n<br>从下列文件搜索补全词：1.当前文件 2.其他窗口文件 3.其他载入文件（隐藏缓冲区） 4.未载入文件（非激活缓冲区） 5.标签文件 6.被当前文件以#include语句包含的所有头文件<br>可以用’complete’调整搜索顺序，用‘ignorecase’忽略大小写<br>输入上次编辑模式的内容：Ctrl+a<br>逐个重复输入上一行的字符：Ctrl+y  Ctrl+e(下方)<br>插入寄存器内容：Ctrl-r {register}<br>使用abbreviate缩写来简化输入，纠正错误:iabbreviate teh the 和:iabbrev #b /<strong>*</strong> (i表示仅输入模式有效)<br>删除缩写:unabbreviate {name} 和 :abclear<br>避免缩写再映射： :noreabbrev @a adder (防止:imap dd disk-door的干扰)<br>插入特殊字符： Ctrl-v<br>二合字母：Ctrl-k</p>
+<p>usr_26 重复<br>改动多个文件： :args *.c<br>在shell脚本里使用vim， vim写了命令，用shell调用执行<br>usr_27 查找命令及模式（方便快速查找）<br>usr_28 折叠<br>zf 创建折叠  zo 打开折叠 zc 关闭折叠 zr 减少折叠数 zR 打开所有 zM 折叠所有<br>usr_29 代码间移动<br>标签 ctags -R<br>Ctrl+] 跳转   Ctrl+t 返回<br>Ctrl+w ] 切换窗口并跳转</p>
+<h4 id="u9898_u5916_u8BDD_uFF0C_u5982_u4F55_u9009_u4E66"><a href="#u9898_u5916_u8BDD_uFF0C_u5982_u4F55_u9009_u4E66" class="headerlink" title="题外话，如何选书"></a>题外话，如何选书</h4><p>出版社-&gt;作者-&gt;版次-&gt;印次-&gt;印数-&gt;著-&gt;编-&gt;参考引用-&gt;索引-&gt;不看译作-&gt;书评-&gt;牛人在读-&gt;网上内容审核<br>二合字母：Ctrl-k</p>
 
       
     </div>
@@ -268,6 +273,14 @@
         
           <li>
             <a href="http://arxiv.org/" target="_blank">Arxiv</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank">中文编程书籍索引</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/sindresorhus/awesome" target="_blank">国外编程资源总览</a>
           </li>
         
       </ul>
