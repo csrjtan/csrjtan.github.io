@@ -74,6 +74,70 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-leetcode1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/26/leetcode1/" class="article-date">
+  <time datetime="2016-02-26T06:08:03.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/26/leetcode1/">leetcode1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Beyond_Compare"><span class="toc-number">1.</span> <span class="toc-text">Beyond Compare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LeetCode1_Two_Sum"><span class="toc-number">2.</span> <span class="toc-text">LeetCode1 Two Sum</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1_3A_Sort_and_Search"><span class="toc-number">2.1.</span> <span class="toc-text">Solution1: Sort and Search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2_3A__u5229_u7528map-find"><span class="toc-number">2.2.</span> <span class="toc-text">Solution2: 利用map.find</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_Vector_u7528_u6CD5"><span class="toc-number">3.</span> <span class="toc-text">c++ Vector用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_map_u7684_u7528_u6CD5"><span class="toc-number">4.</span> <span class="toc-text">c++ map的用法</span></a></li></ol>
+          </div>
+        
+        <p>In order to practise the c++ coding ability and have a prepare for the<br>work interview for the future.I start to do the leetcode in the<br>leisure time.Before that I introduce a code comparing tools: <strong>Beyond<br>Compare </strong></p>
+<h3 id="Beyond_Compare"><a href="#Beyond_Compare" class="headerlink" title="Beyond Compare"></a>Beyond Compare</h3><p><a href="http://www.scootersoftware.com/index.php" target="_blank" rel="external">Home Page</a><br>It is a tool for folder and file comparing, which useful for coding<br>compare as well. For now, it provides all the OS version including<br>WINDOWS, LINUX and MAC.</p>
+<h3 id="LeetCode1_Two_Sum"><a href="#LeetCode1_Two_Sum" class="headerlink" title="LeetCode1 Two Sum"></a>LeetCode1 Two Sum</h3><p><strong>Ques</strong>:Given an array of integers, return indices of the two numbers such<br>that they add up to a specific target.<br>You may assume that each input would have exactly one solution.<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Example:</span><br><span class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</span><br><span class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</span><br><span class="line"><span class="keyword">return</span> [<span class="number">0</span>, <span class="number">1</span>].</span><br></pre></td></tr></table></figure></p>
+<h4 id="Solution1_3A_Sort_and_Search"><a href="#Solution1_3A_Sort_and_Search" class="headerlink" title="Solution1: Sort and Search"></a>Solution1: Sort and Search</h4><p>先排序，从开头和结尾向中间找，复杂度O(nlogn)<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义Node来重新装数据</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Node&#123;</span><br><span class="line">    <span class="keyword">int</span> id,val;</span><br><span class="line">&#125;Node;</span><br><span class="line"><span class="comment">// 定义Node比较大小的原则，让sort从小到大排序</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">const</span> Node &amp; a,<span class="keyword">const</span> Node &amp; b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.val &lt; b.val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="comment">// 初始化Nodes列表</span></span><br><span class="line">        Node nodes[numbers.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;numbers.size(); i++)&#123;</span><br><span class="line">            nodes[i].id = i+<span class="number">1</span>;</span><br><span class="line">            nodes[i].val = numbers[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 排序后，有序地检索</span></span><br><span class="line">        sort(nodes, nodes+numbers.size(), compare);</span><br><span class="line">        <span class="keyword">int</span> start=<span class="number">0</span>,end=numbers.size()-<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="comment">// 从两端往中间去搜索</span></span><br><span class="line">        <span class="keyword">while</span>(start &lt; end)&#123;</span><br><span class="line">            <span class="comment">// 找到后，按序输出</span></span><br><span class="line">            <span class="keyword">if</span>(nodes[start].val + nodes[end].val == target)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nodes[start].id &gt; nodes[end].id)</span><br><span class="line">                    swap(nodes[start].id , nodes[end].id);</span><br><span class="line">                ans.push_back(nodes[start].id);</span><br><span class="line">                ans.push_back(nodes[end].id);</span><br><span class="line">                <span class="keyword">return</span> ans;</span><br><span class="line">            <span class="comment">// 过小:start++; 过大:end--</span></span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>( nodes[start].val + nodes[end].val &lt; target )&#123;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                end--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Solution2_3A__u5229_u7528map-find"><a href="#Solution2_3A__u5229_u7528map-find" class="headerlink" title="Solution2: 利用map.find"></a>Solution2: 利用map.find</h4><p>将数存入hash_map中，查找target-numbers[i],有即返回。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;numbers, <span class="keyword">int</span> target)&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">    <span class="keyword">int</span> length = numbers.size();</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; mp;</span><br><span class="line">    <span class="keyword">int</span> find;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; length; ++i)&#123;</span><br><span class="line">        find = mp[target-numbers[i]];</span><br><span class="line">        <span class="comment">// 默认没的时候，初始化map,直到新加数据找到以往符合的值</span></span><br><span class="line">        <span class="keyword">if</span>(find)&#123;</span><br><span class="line">            res.push_back(find);</span><br><span class="line">            res.push_back(i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mp[numbers[i]] = i+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>总体而言，第二种方法假定了只有一种结果，先判断找到没，再初始化map。这样可以确保找到的索引值是在前的，在新插的数据索引是在后的。十分的巧妙在一边在检索结果一边初始化map的数据。</p>
+<p>参考链接: <a href="http://www.acmerblog.com/leetcode-two-sum-5223.html" target="_blank" rel="external">acm之家</a></p>
+<h3 id="c++_Vector_u7528_u6CD5"><a href="#c++_Vector_u7528_u6CD5" class="headerlink" title="c++ Vector用法"></a>c++ Vector用法</h3><p>1.头文件 #include <vector><br>2.变量声明 vector<int> a;  二维数组： vector<int*> a2;<br>3.具体用法<br><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="tag">a</span>.<span class="function"><span class="title">push_back</span><span class="params">(int)</span></span>     <span class="function"><span class="title">pop_back</span><span class="params">()</span></span>    <span class="function"><span class="title">begin</span><span class="params">()</span></span>  <span class="function"><span class="title">end</span><span class="params">()</span></span>  <span class="function"><span class="title">max_size</span><span class="params">()</span></span> <span class="function"><span class="title">size</span><span class="params">()</span></span></span><br><span class="line"><span class="tag">a</span>.<span class="function"><span class="title">at</span><span class="params">(<span class="number">5</span>)</span></span> <span class="tag">a</span>[<span class="number">5</span>]  <span class="function"><span class="title">if</span><span class="params">(a.empty()</span></span>)   <span class="function"><span class="title">clear</span><span class="params">()</span></span>  <span class="tag">a</span>.<span class="function"><span class="title">insert</span><span class="params">(pos,elem)</span></span></span><br></pre></td></tr></table></figure></int*></int></vector></p>
+<p>4.自定义排序<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">comp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span>&amp;b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&lt;b;</span><br><span class="line">&#125;</span><br><span class="line">调用sort(vec.begin(),vec.end(),comp);</span><br></pre></td></tr></table></figure></p>
+<p>5.Vector使用分析<br>一般不够大小会自动resize扩大两倍的容量，所以如果装入1000个元素，会自动重新分配10次，2^10.但如果用reserve(1000)的话，可以有效避免重新分配的消耗。<br>另外可以用swap来有效利用vector剩余的空间等。</p>
+<p>参考链接： <a href="http://blog.csdn.net/hancunai0017/article/details/7032383" target="_blank" rel="external">vecotr用法详解</a></p>
+<h3 id="c++_map_u7684_u7528_u6CD5"><a href="#c++_map_u7684_u7528_u6CD5" class="headerlink" title="c++ map的用法"></a>c++ map的用法</h3><p>STL中一对一的数据结构，第一个成为关键字，只能出现一次，第二个是其值。Key-Value<br>其内建组织是一颗红黑树（非严格定义的平衡二叉树），可以对数据自动排序。<br>1.头文件 #include <map><br>2.声明  Map<int,string> mapStudent<br>3.数据插入<br>  3.1 mapStudent.insert(pair<int,string>(1,”stu_1”));<br>  3.2 mapStudent.insert(map<int,string>::value_type(2,”stu_2”));<br>  3.3 mapStudent[3] = “stu_3”;<br>  前两种一样，如果key已存在则插入失败；数组的方式是可以覆盖已有key-value的<br>4.如何检查插入成功<br><figure class="highlight nimrod"><table><tr><td class="code"><pre><span class="line"><span class="type">Map</span>&lt;<span class="type">int</span>,<span class="type">string</span>&gt; mapStudent;</span><br><span class="line"><span class="type">Pair</span>&lt;map&lt;<span class="type">int</span>,<span class="type">string</span>&gt;::<span class="keyword">iterator</span>,<span class="type">bool</span>&gt; <span class="type">Insert_Pair</span>;</span><br><span class="line"><span class="type">Insert_Pair</span> = mapStudent.insert(pair&lt;<span class="type">int</span>,<span class="type">string</span>&gt;(<span class="number">1</span>,<span class="string">"stu_1"</span>));</span><br><span class="line"><span class="keyword">if</span>(<span class="type">Insert_Pair</span>.second==<span class="literal">true</span>)</span><br><span class="line">    cout&lt;&lt;<span class="string">"Insert Suceess!"</span>;</span><br></pre></td></tr></table></figure></int,string></int,string></int,string></map></p>
+<p>所以我们知道map.insert返回的属性是pair(iterator,bool)<br>5.size()，数据遍历<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 演示一下反向迭代器</span></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="built_in">string</span>&gt;::reverse_iterator iter;</span><br><span class="line"><span class="keyword">for</span>(iter=mapStudent.rbegin();iter!=mapStudent.rend();iter++)</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;iter-&gt;first&lt;&lt;<span class="string">" "</span>&lt;&lt;iter-&gt;second&lt;&lt;end;</span><br></pre></td></tr></table></figure></p>
+<p>6.数据查找<br> 6.1 count判断关键字是否出现，是1，否0.<br> 6.2 find,返回一个迭代器，没有则返回end函数迭代器<br> 6.3<br>7.判空empty()和清空clear()<br>以及其他swap,key_comp,value_comp,get_allocator等函数<br>8.数据删除<br>  map.erase(iter) map.erase(key)<br>  map.erase(begin(),end()) //成片删除，前开后闭<br>9.如果key上用自己的结构体，需要重载小于号&lt;,不然无法遍历iterator</p>
+<p>参考链接: <a href="http://blog.csdn.net/bat603/article/details/1456141" target="_blank" rel="external">STL中map的用法详解</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cil3avfyp001985q1z0ro9l6m" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/02/26/leetcode1/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Manual学习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/18/Manual学习/" class="article-date">
@@ -154,7 +218,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="ciktntwxw001nwcq1md1fo6b3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cil3avfzy001q85q1aie5388y" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -211,7 +275,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="ciktntwwo000twcq1emb7qnql" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cil3avfy6000t85q1fkpqy437" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -273,7 +337,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="ciktntwxz001pwcq1mq0pqryz" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cil3avg02001s85q1tv9svqsi" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -326,7 +390,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="ciktntwvx000cwcq1m2fyfx51" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cil3avfxf000c85q19bnmo2dk" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -407,7 +471,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="ciktntwvk0004wcq1awozty5l" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cil3avfx2000485q12zthaxu9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -464,7 +528,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="ciktntwxk001fwcq13tbsbn80" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cil3avfyz001i85q1da62x9jc" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -525,7 +589,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="ciktntwwr000vwcq14c6051jr" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cil3avfy9000v85q1uf91eptj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -577,7 +641,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="ciktntwwd000lwcq1x0mf1tpp" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cil3avfxv000l85q16w177sny" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -645,7 +709,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="ciktntwwu000xwcq13b2msvah" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cil3avfyc000x85q15oqsso4j" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -654,58 +718,6 @@ gcc test.o -o test        //bin文件
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-第一学期总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/25/第一学期总结/" class="article-date">
-  <time datetime="2015-11-25T00:52:01.000Z" itemprop="datePublished">2015-11-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/25/第一学期总结/">第一学期总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE"><span class="toc-number">1.</span> <span class="toc-text">DJI无人机避障飞行项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u7814_u8BFB_u4E86CAMERA_CALIBRATION_2CSTEREO_VISION_2CSLAM"><span class="toc-number">1.1.</span> <span class="toc-text">研读了CAMERA CALIBRATION,STEREO VISION,SLAM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI_u90E8_u4EF6_u7684_u5B66_u4E60_u4F7F_u7528"><span class="toc-number">2.</span> <span class="toc-text">DJI部件的学习使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u8BFE_u7A0BAdvanced_Algorithm"><span class="toc-number">3.</span> <span class="toc-text">课程Advanced Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E00_u4E2A_u5B66_u671F_u8FC7_u53BB_u4E86_uFF0C_u5B66_u5230_u548C_u505A_u51FA_u6765_u7684_u6210_u679C_u4E0D_u591A_uFF0C_u53CD_u601D_u81EA_u5DF1_u7684_u6548_u7387_u4EE5_u53CA_u8FF7_u832B_uFF0C_u5BFC_u81F4_u9006_u98CE_u800C_u884C_uFF0C_u52A0_u6CB9_u5427_uFF0C_u4E0D_u7136_u8FDE_u6BD5_u4E1A_u90FD_u4E0D_u597D_u8BF4_u3002_u4E0D_u80FD_u518D_u4F9D_u8D56_u522B_u4EBA_u4E00_u8D77_u505A_u4E4B_u7C7B_u7684_uFF0C_u81EA_u5DF1_u72EC_u884C_u524D_u5F80_u5427_uFF0C_u95EE_u9898_u603B_u662F_u5B58_u5728_uFF0C_u95EE_u9898_u603B_u662F_u53EF_u4EE5_u89E3_u51B3_u7684_uFF0C_u4E0D_u8981_u9003_u907F_u62D6_u5EF6_u3002"><span class="toc-number">4.</span> <span class="toc-text">一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</span></a></li></ol>
-          </div>
-        
-        <h3 id="DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE"><a href="#DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE" class="headerlink" title="DJI无人机避障飞行项目"></a>DJI无人机避障飞行项目</h3><h4 id="u7814_u8BFB_u4E86CAMERA_CALIBRATION_2CSTEREO_VISION_2CSLAM"><a href="#u7814_u8BFB_u4E86CAMERA_CALIBRATION_2CSTEREO_VISION_2CSLAM" class="headerlink" title="研读了CAMERA CALIBRATION,STEREO VISION,SLAM"></a>研读了CAMERA CALIBRATION,STEREO VISION,SLAM</h4><p>其中做SLAM的时候基于opencv、pcl、g2o为依赖库的开发</p>
-<h3 id="DJI_u90E8_u4EF6_u7684_u5B66_u4E60_u4F7F_u7528"><a href="#DJI_u90E8_u4EF6_u7684_u5B66_u4E60_u4F7F_u7528" class="headerlink" title="DJI部件的学习使用"></a>DJI部件的学习使用</h3><p>Guidance的数据订阅和传输接口，M100的GPS线损坏，而且室内校准较难，使用例程进行姿态控制</p>
-<h3 id="u8BFE_u7A0BAdvanced_Algorithm"><a href="#u8BFE_u7A0BAdvanced_Algorithm" class="headerlink" title="课程Advanced Algorithm"></a>课程Advanced Algorithm</h3><p>学习了多种优化算法以及分析复杂度，课程report使用random algorithm来优化stereo matching的过程</p>
-<h3 id="u4E00_u4E2A_u5B66_u671F_u8FC7_u53BB_u4E86_uFF0C_u5B66_u5230_u548C_u505A_u51FA_u6765_u7684_u6210_u679C_u4E0D_u591A_uFF0C_u53CD_u601D_u81EA_u5DF1_u7684_u6548_u7387_u4EE5_u53CA_u8FF7_u832B_uFF0C_u5BFC_u81F4_u9006_u98CE_u800C_u884C_uFF0C_u52A0_u6CB9_u5427_uFF0C_u4E0D_u7136_u8FDE_u6BD5_u4E1A_u90FD_u4E0D_u597D_u8BF4_u3002_u4E0D_u80FD_u518D_u4F9D_u8D56_u522B_u4EBA_u4E00_u8D77_u505A_u4E4B_u7C7B_u7684_uFF0C_u81EA_u5DF1_u72EC_u884C_u524D_u5F80_u5427_uFF0C_u95EE_u9898_u603B_u662F_u5B58_u5728_uFF0C_u95EE_u9898_u603B_u662F_u53EF_u4EE5_u89E3_u51B3_u7684_uFF0C_u4E0D_u8981_u9003_u907F_u62D6_u5EF6_u3002"><a href="#u4E00_u4E2A_u5B66_u671F_u8FC7_u53BB_u4E86_uFF0C_u5B66_u5230_u548C_u505A_u51FA_u6765_u7684_u6210_u679C_u4E0D_u591A_uFF0C_u53CD_u601D_u81EA_u5DF1_u7684_u6548_u7387_u4EE5_u53CA_u8FF7_u832B_uFF0C_u5BFC_u81F4_u9006_u98CE_u800C_u884C_uFF0C_u52A0_u6CB9_u5427_uFF0C_u4E0D_u7136_u8FDE_u6BD5_u4E1A_u90FD_u4E0D_u597D_u8BF4_u3002_u4E0D_u80FD_u518D_u4F9D_u8D56_u522B_u4EBA_u4E00_u8D77_u505A_u4E4B_u7C7B_u7684_uFF0C_u81EA_u5DF1_u72EC_u884C_u524D_u5F80_u5427_uFF0C_u95EE_u9898_u603B_u662F_u5B58_u5728_uFF0C_u95EE_u9898_u603B_u662F_u53EF_u4EE5_u89E3_u51B3_u7684_uFF0C_u4E0D_u8981_u9003_u907F_u62D6_u5EF6_u3002" class="headerlink" title="一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。"></a>一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</h3>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="ciktntwvu000awcq107u3og60" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/11/25/第一学期总结/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
 
     </footer>
   </div>
@@ -732,7 +744,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -741,7 +753,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
     </div>
   </div>
 
@@ -750,7 +762,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -760,6 +772,10 @@ gcc test.o -o test        //bin文件
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/02/26/leetcode1/">leetcode1</a>
+          </li>
         
           <li>
             <a href="/2016/02/18/Manual学习/">Vim Manual学习</a>
@@ -775,10 +791,6 @@ gcc test.o -o test        //bin文件
         
           <li>
             <a href="/2016/01/26/无人机项目/">无人机项目</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/">跟G++,MAKE和CMAKE奋斗的日子</a>
           </li>
         
       </ul>
