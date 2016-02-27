@@ -74,6 +74,64 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-leetcode26" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/26/leetcode26/" class="article-date">
+  <time datetime="2016-02-26T09:39:19.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/26/leetcode26/">leetcode26 &amp; 242 &amp; String</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode_26"><span class="toc-number">1.</span> <span class="toc-text">leetcode 26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode_242_Valid_Anagram"><span class="toc-number">2.</span> <span class="toc-text">leetcode 242 Valid Anagram</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_string_u7528_u6CD5"><span class="toc-number">3.</span> <span class="toc-text">c++ string用法</span></a></li></ol>
+          </div>
+        
+        <h3 id="leetcode_26"><a href="#leetcode_26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &#123;</span><br><span class="line">               nums[count] = nums[i];</span><br><span class="line">               count++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> count;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>解题：重新填入整个数组，如果是0或者与前一个值不一样，就直接填入覆盖，直到遍历完整个有序数组。</p>
+<p>今天还完成了<a href="http://pan.baidu.com/s/1o7o6xYy" target="_blank" rel="external">Thesis Writting<br>Collacation</a> 密码：8qjh</p>
+<p>以及<a href="http://pan.baidu.com/s/1i4t00SX" target="_blank" rel="external">DJI PPT</a> 密码：awzd</p>
+<h3 id="leetcode_242_Valid_Anagram"><a href="#leetcode_242_Valid_Anagram" class="headerlink" title="leetcode 242 Valid Anagram"></a>leetcode 242 Valid Anagram</h3><p>题目：判断两个字符串是否为同字母异序<br>思路：1.将字符串转成数组，排序然后比对得到结果<br>      2.计算两个字符串里面的字母的Occurence，用一个26大小的counter数组统计字母出现的次数，当第一个串出现就++，第二个出现就–；最后得到的counter如果全为0，则符合；否则不符合。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isAnagram</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()!=t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; counter;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">           counter.push_back(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            counter[s[i] - <span class="string">'a'</span>]++;</span><br><span class="line">            counter[t[i] - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(counter[i]!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.或者先对第一个串加完，然后第二个串减counter,如果其中一个元素小于0，则不符合。不能说一定等于0，因为后面可能会继续减的。</p>
+<h3 id="c++_string_u7528_u6CD5"><a href="#c++_string_u7528_u6CD5" class="headerlink" title="c++ string用法"></a>c++ string用法</h3><p>1.头文件 #include <string><br>2.构造 string(const char <em>s) //c string initialize<br>       string(int n,char c)<br>       string s = “hello”;<br>3.字符操作  const char &amp;operator<a href="/int n"></a> const<br>        int copy(char </em>s,int n, int pos=2) const;<br>4.特性  int length() const;<br>        bool empty() const;<br>       void resize(int len,char c); //不足部分用c填充<br>5.赋值  = , assign(const char <em>c)<br>6.连接  +=, string append(const string&amp;s);<br>7.比较 ==， int compare(const string &amp;s);<br>8.子串  string substr(int pos=0,int n=npos) const;<br>9.交换  void swap(string &amp;s2);<br>10.查找函数 int find(char c,int pos=0) const; //从pos开始找c<br>       int find(const string &amp;s,int pos=0) const; //从pos找s<br>11.替换  string &amp;replace(int p0,int n0,const char
+</em>s);//删除p0开始n0个字符，在p0后插入串s<br>12.插入删除 insert erase</string></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cil4m1xa90019iwq1cy6ctlzr" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/02/26/leetcode26/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/26/leetcode1/" class="article-date">
@@ -88,7 +146,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/26/leetcode1/">leetcode1</a>
+      <a class="article-title" href="/2016/02/26/leetcode1/">leetcode1 with Vecotr and Map</a>
     </h1>
   
 
@@ -121,7 +179,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cil3avfyp001985q1z0ro9l6m" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cil4m1xad001ciwq13kma8ib5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -218,7 +276,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cil3avfzy001q85q1aie5388y" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cil4m1xay001siwq1dy40ltfj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -275,7 +333,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cil3avfy6000t85q1fkpqy437" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cil4m1x9h000tiwq1opj0wnub" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -337,7 +395,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cil3avg02001s85q1tv9svqsi" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cil4m1xb2001uiwq18okf29pp" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -390,7 +448,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cil3avfxf000c85q19bnmo2dk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cil4m1x8p000ciwq1erau2txu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -471,7 +529,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cil3avfx2000485q12zthaxu9" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cil4m1x8c0004iwq1bgdpg1l1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -528,7 +586,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cil3avfyz001i85q1da62x9jc" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cil4m1xal001kiwq1z0uvefu1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -589,7 +647,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cil3avfy9000v85q1uf91eptj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cil4m1x9l000viwq1maa3q0jl" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -641,7 +699,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cil3avfxv000l85q16w177sny" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cil4m1x95000liwq1jwaabwau" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -650,74 +708,6 @@ gcc test.o -o test        //bin文件
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-paper-reading-20151125" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/25/paper-reading-20151125/" class="article-date">
-  <time datetime="2015-11-25T06:13:16.000Z" itemprop="datePublished">2015-11-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/25/paper-reading-20151125/">Dynamic occlusion avoidance approach based on the depth image of moving visual object</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object"><span class="toc-number">1.</span> <span class="toc-text">Dynamic occlusion avoidance approach based on the depth image of moving visual object</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image"><span class="toc-number">1.1.</span> <span class="toc-text">Abstract:Dynamic Occlusion avoidance based on the depth image.</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E09_u4E2A_u95EE_u9898_uFF1A"><span class="toc-number">3.</span> <span class="toc-text">三个问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method_Overview"><span class="toc-number">4.</span> <span class="toc-text">Method Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image"><span class="toc-number">5.</span> <span class="toc-text">The Approach to dynamic occlusion avoidance based on depth image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm"><span class="toc-number">6.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusions"><span class="toc-number">7.</span> <span class="toc-text">Conclusions</span></a></li></ol>
-          </div>
-        
-        <p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
-<h3 id="Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object"><a href="#Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object" class="headerlink" title="Dynamic occlusion avoidance approach based on the depth image of moving visual object"></a>Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
-<h4 id="Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image"><a href="#Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image" class="headerlink" title="Abstract:Dynamic Occlusion avoidance based on the depth image."></a>Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>主要问题：通过物体的障碍提示来寻找最优观测方向和位置<br>Next Best View:</p>
-<ul>
-<li>用Octree模型来描述可视物体，然后对于不同观察情况的节点，给定不同的分数。</li>
-<li>用大量周全的Candidate View</li>
-<li>建立一个相似的参数模型，通过depth data和current fitted model来拟合</li>
-<li>用B-spline计算信息增益来构建最佳NEXT VIEW</li>
-<li>结合on-line theory来优化物体的3D重构<br>缺点：没有考虑遮蔽</li>
-</ul>
-<p>引入occlusion方法<br>缺点：受限于摄像机位置、特定的设备和先验信息，以上均不适用于移动的物体</p>
-<h3 id="u4E09_u4E2A_u95EE_u9898_uFF1A"><a href="#u4E09_u4E2A_u95EE_u9898_uFF1A" class="headerlink" title="三个问题："></a>三个问题：</h3><p>1.如何解决动态遮蔽的避障问题? -&gt; 用一个优化模型，结合运动预测在Best view Model里<br>2.如何通过深度图来预测可视物体的运动? -&gt; 用两个高斯曲率特征矩阵的匹配来求R T,用到SIFT和SVD<br>3.如何有效评估动态遮蔽的影响? -&gt; 用“effective avoidance rate”来评估算法的性能</p>
-<h3 id="Method_Overview"><a href="#Method_Overview" class="headerlink" title="Method Overview"></a>Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
-<p>2.The overall idea of dynamic occlusion avoidance<br>首先，移动物体相近深度图的像素进行三维坐标恢复（用Anti-projection），则遮蔽暗示可以从第二幅图得到<br>基于上述，用第二张深度图的遮蔽信息来构建Best View Model<br>接着，用三维坐标点的形式，做高斯曲率特征矩阵来匹配两个相近的深度图<br>最后，将运动预测结合到最佳视角模型里。</p>
-<h3 id="The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image"><a href="#The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image" class="headerlink" title="The Approach to dynamic occlusion avoidance based on depth image"></a>The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br>构建出patch</p>
-<p>2.Constructing the best view model<br>通过构建最大化Occlusion面积</p>
-<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>step1:Calc the 3D pixels and the Gaussian Curvature Feature matrices<br>step2:Detect the Occlusion Boundary and establish the occlusion region in second depth<br>step3:Contruct the best view model<br>step4:Match the key points<br>step5:Solve the Objective formula<br>step6:Plan the next view of camera<br>step7:Acquire a depth image and calc the f(x)<br>step8:If the difference between two adjacent f(x) is less than a given threshold,then terminated,or jump to Step 4.</p>
-<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>1.Add emotion estimate in Best Next View to dynamic occlusion avoidance<br>2.Based the depth image to solve the R and T transformation<br>3.Propose the “Effective avoidance rate” to measure the performance of the algorithm.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cil3avfyc000x85q15oqsso4j" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
 
     </footer>
   </div>
@@ -744,7 +734,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -753,7 +743,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
     </div>
   </div>
 
@@ -762,7 +752,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -774,7 +764,11 @@ gcc test.o -o test        //bin文件
       <ul>
         
           <li>
-            <a href="/2016/02/26/leetcode1/">leetcode1</a>
+            <a href="/2016/02/26/leetcode26/">leetcode26 &amp; 242 &amp; String</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/26/leetcode1/">leetcode1 with Vecotr and Map</a>
           </li>
         
           <li>
@@ -787,10 +781,6 @@ gcc test.o -o test        //bin文件
         
           <li>
             <a href="/2016/01/30/C-Primer-Reading2/">C++_Primer_Reading2</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/26/无人机项目/">无人机项目</a>
           </li>
         
       </ul>

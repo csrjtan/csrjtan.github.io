@@ -74,6 +74,61 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-paper-reading-20151025" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/25/paper-reading-20151025/" class="article-date">
+  <time datetime="2015-10-25T12:50:44.000Z" itemprop="datePublished">2015-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/25/paper-reading-20151025/">Small Vision Systems :Hardware and Implementation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><span class="toc-number">1.</span> <span class="toc-text">2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2_Epipolar_Geometry"><span class="toc-number">2.</span> <span class="toc-text">2.2 Epipolar Geometry</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5"><span class="toc-number"></span> <span class="toc-text">3.该论文系统的算法</span></a>
+          </div>
+        
+        <p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
+<h4 id="2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><a href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br>5.Post-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
+<h4 id="2-2_Epipolar_Geometry"><a href="#2-2_Epipolar_Geometry" class="headerlink" title="2.2 Epipolar Geometry"></a>2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
+<p>实际应用中，不断计算标定不实际，只能确定内参数后，再根据偏差进行自动标定。</p>
+<h3 id="3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5"><a href="#3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5" class="headerlink" title="3.该论文系统的算法"></a>3.该论文系统的算法</h3><p>1.LOG滤波去噪，用L1绝对值比较<br>2.进行深度搜索<br>3.后处理，去除奇异点，使用左右和右左校验<br>4.使用X4的插值</p>
+<p>作者还对比了使用标定照相机内参后，得到的深度图更为清晰稳定。而针对left/right匹配时，寻找对应最优点采用了hill-climbing和遍历周围最小空间，进行贪心选择。最后对比了一系列StereoMatching组合方法的精度、时间、耗能的区别。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cil4m1x9t0011iwq14yzhfckk" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-数据挖掘导论（1）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/25/数据挖掘导论（1）/" class="article-date">
@@ -108,7 +163,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cil3avfxq000h85q1e6je7748" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cil4m1x8z000hiwq1aweeodaa" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -159,7 +214,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cil3avfxa000785q17gclhax8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cil4m1x8k0007iwq15rm74d4u" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -208,7 +263,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cil3avfxs000j85q1pruo5dqj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cil4m1x92000jiwq1iua1g1zt" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -258,7 +313,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cil3avfy1000o85q1tljnu0hk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cil4m1x9b000oiwq1sc8yt9ws" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -308,7 +363,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cil3avfyi001385q1m8saw4ud" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cil4m1x9v0013iwq149vdh0we" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -358,7 +413,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cil3avfyk001585q1q6h8jm0f" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cil4m1xa30015iwq1hz94z0le" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -411,7 +466,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/" data-id="cil3avfy3000r85q1ag17vfjb" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/" data-id="cil4m1x9d000riwq1jugqiqa7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -464,7 +519,7 @@ including dangerous objects/events like fire and heavy smoke
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/16/object-detection-research/" data-id="cil3avfym001785q1dw9qnpjg" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/16/object-detection-research/" data-id="cil4m1xa60017iwq17dor21t6" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -523,7 +578,7 @@ including dangerous objects/events like fire and heavy smoke
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/12/birth/" data-id="cil3avfz3001k85q1lviqqkky" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/12/birth/" data-id="cil4m1xan001miwq1e0mfxjqt" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -558,7 +613,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -567,7 +622,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
     </div>
   </div>
 
@@ -576,7 +631,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -588,7 +643,11 @@ including dangerous objects/events like fire and heavy smoke
       <ul>
         
           <li>
-            <a href="/2016/02/26/leetcode1/">leetcode1</a>
+            <a href="/2016/02/26/leetcode26/">leetcode26 &amp; 242 &amp; String</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/26/leetcode1/">leetcode1 with Vecotr and Map</a>
           </li>
         
           <li>
@@ -601,10 +660,6 @@ including dangerous objects/events like fire and heavy smoke
         
           <li>
             <a href="/2016/01/30/C-Primer-Reading2/">C++_Primer_Reading2</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/26/无人机项目/">无人机项目</a>
           </li>
         
       </ul>

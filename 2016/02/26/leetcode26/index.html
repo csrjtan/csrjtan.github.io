@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>斯坦福公开课机器人学 | CSRJTAN</title>
+  <title>leetcode26 &amp; 242 &amp; String | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
-2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
+  <meta name="description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
+int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;             int count = 0;       for(int i=0;i&amp;lt;nums">
 <meta property="og:type" content="article">
-<meta property="og:title" content="斯坦福公开课机器人学">
-<meta property="og:url" content="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/index.html">
+<meta property="og:title" content="leetcode26 & 242 & String">
+<meta property="og:url" content="https://csrjtan.github.io/2016/02/26/leetcode26/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
-2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
-<meta property="og:updated_time" content="2015-11-14T02:56:19.000Z">
+<meta property="og:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
+int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;             int count = 0;       for(int i=0;i&amp;lt;nums">
+<meta property="og:updated_time" content="2016-02-27T04:11:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="斯坦福公开课机器人学">
-<meta name="twitter:description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
-2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
+<meta name="twitter:title" content="leetcode26 & 242 & String">
+<meta name="twitter:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
+int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;             int count = 0;       for(int i=0;i&amp;lt;nums">
   
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
@@ -76,10 +76,10 @@
   <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-OpenClassRobotic1" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-leetcode26" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/11/14/OpenClassRobotic1/" class="article-date">
-  <time datetime="2015-11-13T16:04:37.000Z" itemprop="datePublished">2015-11-14</time>
+    <a href="/2016/02/26/leetcode26/" class="article-date">
+  <time datetime="2016-02-26T09:39:19.000Z" itemprop="datePublished">2016-02-26</time>
 </a>
     
   </div>
@@ -90,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      斯坦福公开课机器人学
+      leetcode26 &amp; 242 &amp; String
     </h1>
   
 
@@ -100,38 +100,32 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_u6982_u8FF0"><span class="toc-number">1.</span> <span class="toc-text">1.概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><span class="toc-number">1.1.</span> <span class="toc-text">2.空间描述，广义的坐标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C"><span class="toc-number">1.2.</span> <span class="toc-text">3.讨论欧拉角和旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-DH_u53C2_u6570"><span class="toc-number">1.3.</span> <span class="toc-text">4.DH参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2"><span class="toc-number">1.4.</span> <span class="toc-text">5.仿灵长类机械臂</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode_26"><span class="toc-number">1.</span> <span class="toc-text">leetcode 26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode_242_Valid_Anagram"><span class="toc-number">2.</span> <span class="toc-text">leetcode 242 Valid Anagram</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_string_u7528_u6CD5"><span class="toc-number">3.</span> <span class="toc-text">c++ string用法</span></a></li></ol>
           </div>
         
-        <h3 id="1-_u6982_u8FF0"><a href="#1-_u6982_u8FF0" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
-<h4 id="2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807"><a href="#2-_u7A7A_u95F4_u63CF_u8FF0_uFF0C_u5E7F_u4E49_u7684_u5750_u6807" class="headerlink" title="2.空间描述，广义的坐标"></a>2.空间描述，广义的坐标</h4><p>在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$<br>在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma,\phi$</p>
-<p>这里描述坐标系的转换可以用一个矩阵，其中旋转矩阵$ R_{AB}=R_{BA}^T $,具有<strong>正交性</strong>，<br>$ R_{AB}^{-1} = R_{BA} = R_{BA}^T $，并且满足:<br>$$ r_X^2 = r_Y^2 = r_Z^2 = 1 $$<br>$$ r_X * r_Y = r_X * r_Z = r_Y * r_Z = 0 $$<br>其中正交矩阵相关的一些矩阵分解有：QR、SVD、谱分解和极分解。</p>
-<p>相对而言，T不会满足旋转矩阵R的这些特性，这里也是基于右手系的约束。<br>为了方便矩阵的运算，我们将R和T矩阵组合并添加一维[0 0 0 1]变成4 * 4的矩阵，形成<strong>齐次</strong>.</p>
-<h4 id="3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C"><a href="#3-_u8BA8_u8BBA_u6B27_u62C9_u89D2_u548C_u65CB_u8F6C" class="headerlink" title="3.讨论欧拉角和旋转"></a>3.讨论欧拉角和旋转</h4><p>介绍了柔性制动器，气压驱动，上节课讲的内容的转换，可以描述坐标系转换，或者点的映射。由于扩展了齐次坐标系，所以末端的坐标系可以直接从基座变换矩阵T相乘解得，但在描述旋转的时候，用3*3的矩阵有9个参数，过于<strong>冗余</strong>，我们考虑更为精炼的表达方式，更高效地表示旋转。</p>
-<p>引入一个，对于刚性物体的坐标表示方式根据坐标系的表达而变化，分为</p>
-<ul>
-<li>Cartesion : $(x,y,z)$</li>
-<li>Cylindrical: $(\rho,\theta,\tau)$</li>
-<li>Spherical: $(r,\theta,\phi)$<br>这是针对应用的场景而变化的，对于某些运动变化，采用适用的坐标系能大大简化问题，适应与问题。</li>
-</ul>
-<p>首先来讨论用<strong>三个角</strong>来表示旋转，分别是yaw,roll,hawl.$$R_{AB} = R_Z(\alpha).R_Y(\beta).r_X(\gamma)$$<br>求解一系列矩阵运算之后，出现cp = 0 的时候，会出现<strong>奇异性</strong>(回头查google)的点，此时无法进一步计算（因为除0出错）,无法进行继续跟踪，而其他以三个参数为旋转的也无法解决这个奇异点的问题。于是尝试进行四个参数的旋转表达，便有了经典的<strong>欧拉角</strong>，Euler Prameters。</p>
-<p>欧拉角指根据x,y,z轴旋转，一共有24种顺规，使用前先确定规则，</p>
-<h4 id="4-DH_u53C2_u6570"><a href="#4-DH_u53C2_u6570" class="headerlink" title="4.DH参数"></a>4.DH参数</h4><p>引入了“蜂鸟”机器人，如何通过连杆和终端执行器控制机械手，建立正运动学。用DH参数描述来表达对连杆的控制，，从而精确定义坐标系，设置不同参数进行变换得到总的变换，从而建立正运动学</p>
-<h4 id="5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2"><a href="#5-_u4EFF_u7075_u957F_u7C7B_u673A_u68B0_u81C2" class="headerlink" title="5.仿灵长类机械臂"></a>5.仿灵长类机械臂</h4><p>介绍了如何用欧拉角进行坐标转换，对ROBOT建立数学模型。<br>首先选定较优的坐标原点，尽量方便表达和减少参数，进而根据连杆的变换推导出新的节点的坐标表达，建立坐标表达矩阵，这样的坐标表达就包括（yaw,hawl,roll,Distance)</p>
+        <h3 id="leetcode_26"><a href="#leetcode_26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &#123;</span><br><span class="line">               nums[count] = nums[i];</span><br><span class="line">               count++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> count;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>解题：重新填入整个数组，如果是0或者与前一个值不一样，就直接填入覆盖，直到遍历完整个有序数组。</p>
+<p>今天还完成了<a href="http://pan.baidu.com/s/1o7o6xYy" target="_blank" rel="external">Thesis Writting<br>Collacation</a> 密码：8qjh</p>
+<p>以及<a href="http://pan.baidu.com/s/1i4t00SX" target="_blank" rel="external">DJI PPT</a> 密码：awzd</p>
+<h3 id="leetcode_242_Valid_Anagram"><a href="#leetcode_242_Valid_Anagram" class="headerlink" title="leetcode 242 Valid Anagram"></a>leetcode 242 Valid Anagram</h3><p>题目：判断两个字符串是否为同字母异序<br>思路：1.将字符串转成数组，排序然后比对得到结果<br>      2.计算两个字符串里面的字母的Occurence，用一个26大小的counter数组统计字母出现的次数，当第一个串出现就++，第二个出现就–；最后得到的counter如果全为0，则符合；否则不符合。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isAnagram</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()!=t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; counter;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">           counter.push_back(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            counter[s[i] - <span class="string">'a'</span>]++;</span><br><span class="line">            counter[t[i] - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(counter[i]!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.或者先对第一个串加完，然后第二个串减counter,如果其中一个元素小于0，则不符合。不能说一定等于0，因为后面可能会继续减的。</p>
+<h3 id="c++_string_u7528_u6CD5"><a href="#c++_string_u7528_u6CD5" class="headerlink" title="c++ string用法"></a>c++ string用法</h3><p>1.头文件 #include <string><br>2.构造 string(const char <em>s) //c string initialize<br>       string(int n,char c)<br>       string s = “hello”;<br>3.字符操作  const char &amp;operator<a href="/int n"></a> const<br>        int copy(char </em>s,int n, int pos=2) const;<br>4.特性  int length() const;<br>        bool empty() const;<br>       void resize(int len,char c); //不足部分用c填充<br>5.赋值  = , assign(const char <em>c)<br>6.连接  +=, string append(const string&amp;s);<br>7.比较 ==， int compare(const string &amp;s);<br>8.子串  string substr(int pos=0,int n=npos) const;<br>9.交换  void swap(string &amp;s2);<br>10.查找函数 int find(char c,int pos=0) const; //从pos开始找c<br>       int find(const string &amp;s,int pos=0) const; //从pos找s<br>11.替换  string &amp;replace(int p0,int n0,const char
+</em>s);//删除p0开始n0个字符，在p0后插入串s<br>12.插入删除 insert erase</string></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cil4m1xat001qiwq1rpptcgu3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cil4m1xa90019iwq1cy6ctlzr" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/#ds-thread" class="article-comment-link">评论</a>
+        <a href="https://csrjtan.github.io/2016/02/26/leetcode26/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
     </footer>
   </div>
@@ -139,19 +133,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/25/第一学期总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          第一学期总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/08/SLAM的学习总结/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/02/26/leetcode1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">SLAM的学习总结</div>
+      <div class="article-nav-title">leetcode1 with Vecotr and Map</div>
     </a>
   
 </nav>
@@ -161,7 +146,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/11/14/OpenClassRobotic1/" data-title="斯坦福公开课机器人学" data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/02/26/leetcode26/" data-title="leetcode26 &amp; 242 &amp; String" data-url="https://csrjtan.github.io/2016/02/26/leetcode26/"></div>
   </section>
 </section>
       

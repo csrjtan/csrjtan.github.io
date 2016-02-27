@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep Moving]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-02-26T09:17:44.000Z</updated>
+  <updated>2016-02-27T04:11:21.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -15,11 +15,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[leetcode1]]></title>
+    <title><![CDATA[leetcode26 & 242 & String]]></title>
+    <link href="https://csrjtan.github.io/2016/02/26/leetcode26/"/>
+    <id>https://csrjtan.github.io/2016/02/26/leetcode26/</id>
+    <published>2016-02-26T09:39:19.000Z</published>
+    <updated>2016-02-27T04:11:21.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="leetcode_26"><a href="#leetcode_26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &#123;</span><br><span class="line">               nums[count] = nums[i];</span><br><span class="line">               count++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> count;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>解题：重新填入整个数组，如果是0或者与前一个值不一样，就直接填入覆盖，直到遍历完整个有序数组。</p>
+<p>今天还完成了<a href="http://pan.baidu.com/s/1o7o6xYy" target="_blank" rel="external">Thesis Writting<br>Collacation</a> 密码：8qjh</p>
+<p>以及<a href="http://pan.baidu.com/s/1i4t00SX" target="_blank" rel="external">DJI PPT</a> 密码：awzd</p>
+<h3 id="leetcode_242_Valid_Anagram"><a href="#leetcode_242_Valid_Anagram" class="headerlink" title="leetcode 242 Valid Anagram"></a>leetcode 242 Valid Anagram</h3><p>题目：判断两个字符串是否为同字母异序<br>思路：1.将字符串转成数组，排序然后比对得到结果<br>      2.计算两个字符串里面的字母的Occurence，用一个26大小的counter数组统计字母出现的次数，当第一个串出现就++，第二个出现就–；最后得到的counter如果全为0，则符合；否则不符合。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isAnagram</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()!=t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; counter;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">           counter.push_back(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            counter[s[i] - <span class="string">'a'</span>]++;</span><br><span class="line">            counter[t[i] - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(counter[i]!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.或者先对第一个串加完，然后第二个串减counter,如果其中一个元素小于0，则不符合。不能说一定等于0，因为后面可能会继续减的。</p>
+<h3 id="c++_string_u7528_u6CD5"><a href="#c++_string_u7528_u6CD5" class="headerlink" title="c++ string用法"></a>c++ string用法</h3><p>1.头文件 #include <string><br>2.构造 string(const char <em>s) //c string initialize<br>       string(int n,char c)<br>       string s = “hello”;<br>3.字符操作  const char &amp;operator<a href="/int n"></a> const<br>        int copy(char </em>s,int n, int pos=2) const;<br>4.特性  int length() const;<br>        bool empty() const;<br>       void resize(int len,char c); //不足部分用c填充<br>5.赋值  = , assign(const char <em>c)<br>6.连接  +=, string append(const string&amp;s);<br>7.比较 ==， int compare(const string &amp;s);<br>8.子串  string substr(int pos=0,int n=npos) const;<br>9.交换  void swap(string &amp;s2);<br>10.查找函数 int find(char c,int pos=0) const; //从pos开始找c<br>       int find(const string &amp;s,int pos=0) const; //从pos找s<br>11.替换  string &amp;replace(int p0,int n0,const char
+</em>s);//删除p0开始n0个字符，在p0后插入串s<br>12.插入删除 insert erase</string></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="leetcode_26"><a href="#leetcode_26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Arra]]>
+    </summary>
+    
+      <category term="leetcode" scheme="https://csrjtan.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[leetcode1 with Vecotr and Map]]></title>
     <link href="https://csrjtan.github.io/2016/02/26/leetcode1/"/>
     <id>https://csrjtan.github.io/2016/02/26/leetcode1/</id>
     <published>2016-02-26T06:08:03.000Z</published>
-    <updated>2016-02-26T09:17:44.000Z</updated>
+    <updated>2016-02-26T09:40:33.000Z</updated>
     <content type="html"><![CDATA[<p>In order to practise the c++ coding ability and have a prepare for the<br>work interview for the future.I start to do the leetcode in the<br>leisure time.Before that I introduce a code comparing tools: <strong>Beyond<br>Compare </strong></p>
 <h3 id="Beyond_Compare"><a href="#Beyond_Compare" class="headerlink" title="Beyond Compare"></a>Beyond Compare</h3><p><a href="http://www.scootersoftware.com/index.php" target="_blank" rel="external">Home Page</a><br>It is a tool for folder and file comparing, which useful for coding<br>compare as well. For now, it provides all the OS version including<br>WINDOWS, LINUX and MAC.</p>
 <h3 id="LeetCode1_Two_Sum"><a href="#LeetCode1_Two_Sum" class="headerlink" title="LeetCode1 Two Sum"></a>LeetCode1 Two Sum</h3><p><strong>Ques</strong>:Given an array of integers, return indices of the two numbers such<br>that they add up to a specific target.<br>You may assume that each input would have exactly one solution.<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Example:</span><br><span class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</span><br><span class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</span><br><span class="line"><span class="keyword">return</span> [<span class="number">0</span>, <span class="number">1</span>].</span><br></pre></td></tr></table></figure></p>
@@ -607,27 +631,6 @@ This is where you will write your content. 在这里写上内容。
     </summary>
     
       <category term="Stereo Vision" scheme="https://csrjtan.github.io/tags/Stereo-Vision/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Small Vision Systems :Hardware and Implementation]]></title>
-    <link href="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/"/>
-    <id>https://csrjtan.github.io/2015/10/25/paper-reading-20151025/</id>
-    <published>2015-10-25T12:50:44.000Z</published>
-    <updated>2015-10-27T04:32:37.000Z</updated>
-    <content type="html"><![CDATA[<p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
-<h4 id="2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><a href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br>5.Post-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
-<h4 id="2-2_Epipolar_Geometry"><a href="#2-2_Epipolar_Geometry" class="headerlink" title="2.2 Epipolar Geometry"></a>2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
-<p>实际应用中，不断计算标定不实际，只能确定内参数后，再根据偏差进行自动标定。</p>
-<h3 id="3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5"><a href="#3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5" class="headerlink" title="3.该论文系统的算法"></a>3.该论文系统的算法</h3><p>1.LOG滤波去噪，用L1绝对值比较<br>2.进行深度搜索<br>3.后处理，去除奇异点，使用左右和右左校验<br>4.使用X4的插值</p>
-<p>作者还对比了使用标定照相机内参后，得到的深度图更为清晰稳定。而针对left/right匹配时，寻找对应最优点采用了hill-climbing和遍历周围最小空间，进行贪心选择。最后对比了一系列StereoMatching组合方法的精度、时间、耗能的区别。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当]]>
-    </summary>
-    
-      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
