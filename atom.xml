@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep Moving]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-02-27T04:11:21.000Z</updated>
+  <updated>2016-02-29T03:33:30.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -13,6 +13,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Summary_Of_Half_Year]]></title>
+    <link href="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/"/>
+    <id>https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/</id>
+    <published>2016-02-29T03:10:23.000Z</published>
+    <updated>2016-02-29T03:33:30.000Z</updated>
+    <content type="html"><![CDATA[<p>总结进入理大半年来的学习，以及关于SLAM和无人机室内定位飞行项目的学习</p>
+<p>这个项目比想象中大，里面需要学习和解决的问题都很多，一下子都无从下手，复杂度也高，以下写一下OnBoard<br>AutoNavigation and Obstacle Avoidance的问题和见解</p>
+<h3 id="u5173_u4E8EDJI_u7684_u5F00_u53D1_u5957_u4EF6"><a href="#u5173_u4E8EDJI_u7684_u5F00_u53D1_u5957_u4EF6" class="headerlink" title="关于DJI的开发套件"></a>关于DJI的开发套件</h3><p>首先用的是GUIDACNE和Matrix100以及树莓派pi2，对于完全没有硬件概念的我，接触到单片机真是头疼，硬件和软件是完全的两码事。Guidance是个多源的视觉素材采集设备，多方位的双目超声以及IMU模块，可以提取出大量有用的环境信息，加工进而智能优化使用。而M100是通过对应的命令传输指令进行控制的，这里的信号对于传输频率有一些注意，比如波段这些都是比较基础底层的东西。最头疼的是遇到这些套件的学习使用不方便，M100也不适应室内的飞行，指南针校准。曾经遇到指南针损坏需要焊接电路，遇到IMU侧准不稳导致起飞折断螺旋桨，遇到系统不兼容树莓派的移植问题，遇到SLAM精度不够无法恢复的问题，也在一步一个脚印不断尝试去解决，便知道除了编程，还有很多很多的问题是复杂而难解决的，如何解决或者如何避开问题都是能力的体现</p>
+<h3 id="u5173_u4E8EOnBoard_System"><a href="#u5173_u4E8EOnBoard_System" class="headerlink" title="关于OnBoard System"></a>关于OnBoard System</h3><p>至此，整个system已经很大，感觉需要公司提供解决方案了，已经不是一个人hold住了，所以把Vision<br>System里面的SLAM部分抽出来学习，希望能从中挖出一些点子，看了RGBD<br>SLAM以及里面的一些核心问题，跟很多国内的研究者去讨论，看英文材料，包括那本Multi-View的经典，还有很多工具框架和素材库，POINT<br>CLOUD LIBRARY, OPENCV,<br>ROS.进而发现，每一个点都是很大，都不好挖。结果整个人的心态就不行了，发现自己在做一个不能完成的任务的感觉，应该果断将问题抛出，让大家一起有效来解决。另外还是希望可以有学习的对象，有讨论的人，有相关一起工作的伙伴是一件很值得珍惜的事情。</p>
+<h3 id="u6781_u7B80_u7684_u751F_u6D3B"><a href="#u6781_u7B80_u7684_u751F_u6D3B" class="headerlink" title="极简的生活"></a>极简的生活</h3><p>最后，总结一下失败的经验和收获的东西。很感谢处在一个自由向上的科研环境里，感觉自己值得学习的东西还是很多很多，但希望自己能真正定下心来挖掘。了解和知道自己所想所要的，开启一个极简的生活状态，发现自己很懒，记忆也不好。每天需要提醒自己，鸡汤喝完就忘，只有习惯才是永存的好东西，以及自己的能力和素质。保持良好的工作态度和心态，然后坚持去做值得自己去做的事情，包括锻炼、看书和音乐，想要去做的东西就尽力去做，不要计较得失，不要在乎难度，一点一点安排计划就不是问题了。整理掉不要看到的东西，不然影响自己，了解真正需要的并保留下来，不要再去学习相似而没有意义是事情。接下来就开启新的生活吧，整理关于SLAM的东西，爱CV看多光谱，学习ML,PR！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>总结进入理大半年来的学习，以及关于SLAM和无人机室内定位飞行项目的学习</p>
+<p>这个项目比想象中大，里面需要学习和解决的问题都很多，一下子都无从下手，复杂度也高，以下写一下OnBoard<br>AutoNavigation and Obstacle Avoidanc]]>
+    </summary>
+    
+      <category term="总结" scheme="https://csrjtan.github.io/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[leetcode26 & 242 & String]]></title>
@@ -602,35 +623,6 @@ This is where you will write your content. 在这里写上内容。
     </summary>
     
       <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[摄像头校正（Camera Calibration）]]></title>
-    <link href="https://csrjtan.github.io/2015/10/27/camera-calibration/"/>
-    <id>https://csrjtan.github.io/2015/10/27/camera-calibration/</id>
-    <published>2015-10-27T02:29:57.000Z</published>
-    <updated>2015-10-27T15:10:26.000Z</updated>
-    <content type="html"><![CDATA[<h3 id="u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60"><a href="#u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC_u5206_u4EAB_u4E00_u4E0B_u5BF9_u4E8ECamera_Calibration_u7684_u5B66_u4E60" class="headerlink" title="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习"></a>为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</h3><p>首先分享一下好的资源<a href="http://wycwang.blogspot.hk/2012/09/camera-calibration-part-1-camera-model.html" target="_blank" rel="external">Richard’s blog</a> 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。</p>
-<h3 id="1-_u9488_u5B54_u6A21_u578B_28Pinhole_model_29"><a href="#1-_u9488_u5B54_u6A21_u578B_28Pinhole_model_29" class="headerlink" title="1.针孔模型(Pinhole model)"></a>1.针孔模型(Pinhole model)</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png" alt=""></p>
-<p>从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:<br>$$-x=f\frac{X}{Z}$$</p>
-<p>换一个方式，由于人眼看到的并非是倒像，其实可以如下图一样，将成像平面前移到眼睛前方，或者进行一个重新对应成像的过程，从而把倒像恢复，但大小不变的。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration2.png" alt=""><br>$$x=f\frac{X}{Z}$$</p>
-<p>为了使得影像中心没有偏差，加入位移参数$C_x和C_y$，另外成像平面的像素长宽的比例不一样，所以可以加入$s_x和s_y$调整。但这是可以和焦距融合的，所以最终得到公式：<br>$$q=M* Q$$<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration3.png" alt=""><br>$f_x ，f_y ，c_x ，c_y$为摄像机的内参数，一旦标定是固定不变的。</p>
-<h3 id="2-_u900F_u955C_u6A21_u578B"><a href="#2-_u900F_u955C_u6A21_u578B" class="headerlink" title="2.透镜模型"></a>2.透镜模型</h3><p>由于针孔对光线的采集不足，需要长曝光，这是不可取的。所以选用透镜，但这回带来透镜畸变，主要是径向（Radial）和切向(Tangent)畸变<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration4.png" alt=""><br>校正选用的Model如下，其中径向由泰勒展开的前三个偶数项（由于中心对称的偶函数），而切向的恢复拟合模型可以参考详细的数学方法，这里不关注。</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration5.png" alt="校正radial"></p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration6.png" alt="校正tangent"><br>这里k1,k2,p1,p2,k3成为摄像机的形变参数(Distortion parameteres)</p>
-<h3 id="3-Calibration"><a href="#3-Calibration" class="headerlink" title="3.Calibration"></a>3.Calibration</h3><p>外部参数是用来将世界坐标系和Camera坐标系之间的坐标系统进行转换。通过3个维度的旋转和平移可得：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration7.png" alt=""></p>
-<h3 id="4-_u5F20_u6B63_u53CB_u65B9_u6CD5"><a href="#4-_u5F20_u6B63_u53CB_u65B9_u6CD5" class="headerlink" title="4.张正友方法"></a>4.张正友方法</h3><p>由于OpenCV以及matlab所使用的方法都是基于张正友的方法，这里介绍一下，其特点是校正方法的弹性以及校正物件比较容易，为一个平面物件。<br>由于校正物体为平面物体，成像也是一个平面物体，而平面物体上的点Transform到另一个平面上，这在CV领域理称为Planar Homography<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration8.png" alt="Planar Homography"><br>基于如此假设，减少一个Z轴上的旋转向量，得到的映射方程可以简化为如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration9.png" alt=""><br>通过$H=A*[r_1 r_2 t]$代入可得以下解：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration10.png" alt=""></p>
-<h4 id="u5982_u6B64_uFF0C_u6211_u4EEC_u6709Homography_Constrain_u7684_u7EA6_u675F"><a href="#u5982_u6B64_uFF0C_u6211_u4EEC_u6709Homography_Constrain_u7684_u7EA6_u675F" class="headerlink" title="如此，我们有Homography Constrain的约束"></a>如此，我们有Homography Constrain的约束</h4><p>$r_1 r_2$为相互垂直的旋转向量，且大小相同,即$r_1^T*r_2=0$以及$||r_1||=||r_2||和r_1^T*r_1=r_2^T*r_2$从而代入上面的式子进行矩阵求解，最终得到如下结果：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration11.png" alt=""><br>其中$B=A^{-T}A^{-1}$，B为对称矩阵，所以只需要知道6个矩阵元素就好。由此推出要求得一个解，至少需要3幅图像的6对已知对应点。（多多益善）<br>此外，由于$r_1 和 r_2$不一定相互垂直，所以有时需要对R进行奇异值分解。</p>
-<p>有解的前提是2NK&gt;=6K+4,即是(N-3)K&gt;=2</p>
-<h3 id="4-OpenCV_u7684_u76F8_u5173_u51FD_u6570"><a href="#4-OpenCV_u7684_u76F8_u5173_u51FD_u6570" class="headerlink" title="4.OpenCV的相关函数"></a>4.OpenCV的相关函数</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//寻找棋盘角点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cvfindChessboardCorners</span><span class="params">(</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">void</span>* image,</span><br><span class="line">	CvSize 		pattern_size,</span><br><span class="line">	CvPoint2D32f*	corners,</span><br><span class="line">	<span class="keyword">int</span>*		corner_count = <span class="literal">NULL</span></span><br><span class="line">	<span class="keyword">int</span>		flags = CV_CALIB_V_ADAPTIVE_THRESH</span><br><span class="line">	)</span></span>;</span><br><span class="line"><span class="comment">//画出找到的角点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvDrawChessboardCorner</span><span class="params">(</span><br><span class="line">	CvArr*	image,</span><br><span class="line">	CvSize	pattern_size,</span><br><span class="line">	CvPoint2D32f* corners,</span><br><span class="line">	<span class="keyword">int</span> count,</span><br><span class="line">	<span class="keyword">int</span> pattern_was_found</span><br><span class="line">	)</span></span>;</span><br><span class="line"><span class="comment">//摄像机标定</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvCalibrateCamera2</span><span class="params">(</span><br><span class="line">	CvMat* object_points,</span><br><span class="line">	CvMat* image_points,</span><br><span class="line">	<span class="keyword">int</span>* point_counts,</span><br><span class="line">	CvSize image_size,</span><br><span class="line">	CvMat* intrinsic_matrix,</span><br><span class="line">	CvMat* distortion_coeffs,</span><br><span class="line">	CvMat* rotation_vectors = <span class="literal">NULL</span>,</span><br><span class="line">	CvMat* translation_vectors = <span class="literal">NULL</span>,</span><br><span class="line">	<span class="keyword">int</span> flags = <span class="number">0</span></span><br><span class="line">	)</span></span>;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>计算完内参数后，也由单应性条件计算得到外参数</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="u4E3A_u4E86_u603B_u7ED3_u4E00_u4E0B_u8FDB_u5165_u7406_u5927_u4EE5_u6765_u5BF9_u4E8EStereo_Vision_u7684_u5B66_u4E60_uFF0C_u8FD9_u91CC]]>
-    </summary>
-    
-      <category term="Stereo Vision" scheme="https://csrjtan.github.io/tags/Stereo-Vision/"/>
     
   </entry>
   
