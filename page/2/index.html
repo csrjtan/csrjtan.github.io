@@ -74,6 +74,67 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-paper-reading-20160120" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/20/paper-reading-20160120/" class="article-date">
+  <time datetime="2016-01-20T06:24:37.000Z" itemprop="datePublished">2016-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/20/paper-reading-20160120/">林老师IJCV2015的工作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE"><span class="toc-number">1.</span> <span class="toc-text">马里兰(MaryLand)大学的Larry Davis访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B"><span class="toc-number">2.</span> <span class="toc-text">林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Introduction_of_human_activity_classification"><span class="toc-number">2.1.</span> <span class="toc-text">Introduction of human activity classification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Related_Work"><span class="toc-number">2.2.</span> <span class="toc-text">Related Work</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Our_work"><span class="toc-number">2.3.</span> <span class="toc-text">Our work</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementation"><span class="toc-number">2.4.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.5.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol>
+          </div>
+        
+        <p>新年好，新年愿工程进展，论文有望。加油！</p>
+<h3 id="u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE"><a href="#u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE" class="headerlink" title="马里兰(MaryLand)大学的Larry Davis访问"></a>马里兰(MaryLand)大学的Larry Davis访问</h3><p>受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car parking.</p>
+<p>首先，GCNN是使用multi grid windows的思想，通过RCNN进行迭代的逼近学习，也是用于物体的识别。然后基于一些基本common sense建模，对于传统的activity recognition有一定的解释。讲述最近deep learning, cloud computing, GPU acceleration, Machine Learning等一些方法的推进都在有利于CV的进步，然CV离肉眼视觉识别依然有很大的距离。 最近的科研方向可以有Arichitecture Optimization，Mathematical Optimization and so on。明天将会继续介绍一下以往以及未来cv的相关工作。</p>
+<h3 id="u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B"><a href="#u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B" class="headerlink" title="林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》"></a>林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》</h3><p>摘要：用CNN来做活动识别，1.加入隐临时变量来分解activity成sub activity，自动学习子活动 2.结合radius-margin bound的方法作为约束项。<br>训练模型的过程不断迭代三部曲：</p>
+<pre><code>- 发现优化的隐变量
+- 通过生成的特征，更新分类器
+- 更新网络的参数
+</code></pre><h4 id="Introduction_of_human_activity_classification"><a href="#Introduction_of_human_activity_classification" class="headerlink" title="Introduction of human activity classification"></a>Introduction of human activity classification</h4><p>  主要两个问题：a.the complexity of representing high-level activities<br>                b.the ambiguity in temporal segmentation of sub-activities which constitute an activity</p>
+<h4 id="Related_Work"><a href="#Related_Work" class="headerlink" title="Related Work"></a>Related Work</h4><p>  起初关注于设计健壮和可描述性的features<br>  然后关注表达活动间的变化部分以及上下文的关系<br>  最近And-Or图关系表达可借助大数据变量进一步表达<br>  这里的方法是用deep neutral network to learning human action recognition from 3D videos.</p>
+<h4 id="Our_work"><a href="#Our_work" class="headerlink" title="Our work"></a>Our work</h4><p>Spatio-temporal CNNs<br>Latent Temporal Structure:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_1.png" alt=""><br>Deep Model with Relaxed Radius-Margin Bound:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_2.png" alt=""><br>The Radius-Margin Bound是受到radius-margin SVM的启发，用于增强模型的泛化能力，变成每次迭代的loss function加入了Radius-Margin Ratio $ \frac{1}{2}||w||^2R_\phi^2$,进行non-convex optimization.可以利用网络的softmax层进行部分参数的调解学习。</p>
+<h4 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h4><p>详细工作的实现：<br>Architecture of Deep Neural Networks<br>Dropout trick<br>Learning Algorithm<br>Datasets and Empirical Analysis, Experimental Results</p>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p><strong>贡献点</strong>：<br>1.A deep and latent-structured model<br>         2.引入了raius-margin的正则项<br>         3.有效迭代的优化子活动分解以及基于边缘学习的分类器<br><strong>缺点</strong>：<br> 1.scalability of model inference<br>      2.引入更多的计算量，当活动的类别多了会变慢<br><strong>未来的工作</strong>：<br> 1.将模型泛化成compositinal grammar rules: e.g. And-Or grammars<br>            2.修改模型以适应2D的视频</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cilg4k7ij000wjwq1hlzsuv3l" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-《爱的五种语言》" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/23/《爱的五种语言》/" class="article-date">
@@ -109,7 +170,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cil7hw730000lrdq14t64ie19" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cilg4k7i1000ljwq16mudkjfy" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -177,7 +238,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cil7hw73k000xrdq16o9mifti" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cilg4k7im000yjwq19xajki0h" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -229,7 +290,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cil7hw72d000ardq1p3qifbc5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cilg4k7hk000ajwq1efsnxlfc" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -293,7 +354,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cil7hw74n001srdq1g5vf6s2n" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cilg4k7lp001tjwq15kxn1o80" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -352,7 +413,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cil7hw74k001rrdq1dby69pzd" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cilg4k7lm001sjwq1rcz8pbl8" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -426,7 +487,7 @@ end for
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/" data-id="cil7hw72m000drdq1rov39lc8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/" data-id="cilg4k7hp000djwq1zb8ko0qo" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -500,7 +561,7 @@ return root
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/" data-id="cil7hw72s000frdq15uuzx5wf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/" data-id="cilg4k7hu000fjwq1vf6q9mix" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -580,7 +641,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cil7hw733000nrdq172tbsww4" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cilg4k7i4000njwq1pgdlh35n" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -636,7 +697,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cil7hw744001erdq1spdn308b" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cilg4k7j8001fjwq1p25r1pzj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -645,58 +706,6 @@ This is where you will write your content. 在这里写上内容。
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/group/">group</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-paper-reading-20151028" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/28/paper-reading-20151028/" class="article-date">
-  <time datetime="2015-10-28T12:38:38.000Z" itemprop="datePublished">2015-10-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/28/paper-reading-20151028/">Guidance:A Visual Sensing Platform For Robotic Applications</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0"><a href="#DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0" class="headerlink" title="DJI在CVPR15上发的关于GUIDANCE组件的文章"></a>DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
-<p>由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。<br>这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用于机器人定位位置识别。大部分是单目的，这里也有双目的方法[4]。这里GUIDANCE包括了5个方向的双目，可以提供深度图，超声数据，障碍物距离等内容。接下来，故事的展开分为内置函数，SDK接口以及相关应用</p>
-<h3 id="2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D"><a href="#2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D" class="headerlink" title="2.内置：Guidance是升级版的[6]"></a>2.内置：Guidance是升级版的[6]</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png" alt="SDK_Build_In"><br>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/28/paper-reading-20151028/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cil7hw73m000zrdq1zwqgwjjp" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
 
     </footer>
   </div>
@@ -723,7 +732,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -732,7 +741,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 16.67px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 12.5px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a>
     </div>
   </div>
 
@@ -741,7 +750,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -751,6 +760,10 @@ This is where you will write your content. 在这里写上内容。
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
+          </li>
         
           <li>
             <a href="/2016/02/29/Summary-Of-Half-Year/">Summary_Of_Half_Year</a>
@@ -766,10 +779,6 @@ This is where you will write your content. 在这里写上内容。
         
           <li>
             <a href="/2016/02/18/Manual学习/">Vim Manual学习</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/17/paper-reading-20160217/">Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments</a>
           </li>
         
       </ul>

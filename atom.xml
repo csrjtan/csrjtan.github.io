@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep Moving]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-02-29T03:33:30.000Z</updated>
+  <updated>2016-03-06T06:12:24.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -13,6 +13,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[paper-reading-20160306]]></title>
+    <link href="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/"/>
+    <id>https://csrjtan.github.io/2016/03/06/paper-reading-20160306/</id>
+    <published>2016-03-06T05:34:57.000Z</published>
+    <updated>2016-03-06T06:12:24.000Z</updated>
+    <content type="html"><![CDATA[<p>之前阅读了左老师的两个paper,一直没有给总结，今天来赶紧写一下</p>
+<h3 id="u300AOn_kernel_difference-weighted_k-nearest_neighbor_classification_u300B"><a href="#u300AOn_kernel_difference-weighted_k-nearest_neighbor_classification_u300B" class="headerlink" title="《On kernel difference-weighted k-nearest neighbor classification》"></a>《On kernel difference-weighted k-nearest neighbor classification》</h3><p>KNN的改进方法，利用临近点的差距作为权值的学习策略。将权值的学习转化成约束优化的问题，从优化数学的角度论证了易求解和适应高斯噪声以及扩展为kernel version，实验部分k,n以及theta是prefix然后相互学习下降求解的。<br>Contribution:<br>1.提出difference-weighted,转化成约束优化Model<br>2.证明了理论性以及适应于非线性数据集，kernel<br>3.得到实验结果比一些state-of-art的NN要好</p>
+<h4 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h4><p>NN是一个简单有效的模式识别聚类方法,这个论文提出了Kernel difference-weighted的KDF-KNN方法，用difference-weighted作为计算聚类距离时的权值，将一般的权值求解编程带约束的优化问题，并基于此理论Kernel化，最后验证数学理论和算法复杂度</p>
+<h4 id="u95EE_u9898_u5EFA_u6A21"><a href="#u95EE_u9898_u5EFA_u6A21" class="headerlink" title="问题建模"></a>问题建模</h4><p>将最近邻的权值设置为 $W = argmin\frac{1}{2}||x-w^TX||^2 $ , $s.t. \sum_i^w w_i =1 $ , x为样本与相邻的欧几距离，w为当前权值。w是最终关于该数据集模型的最优权值，所以接下来的DW-KNN就是求解上述方程的约束最优化问题了</p>
+<p>接下来使用凸优化和朗格朗日的方法求解,接下来做了关于高斯噪声的优化以及Kernel提升以适应非线性数据集，还理论分析对比了该方法与其他方法的复杂度</p>
+<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>该方法计算使用x与邻近的不同作为权值来计算，而非简单的距离。将该问题有效转化成约束优化问题，从理论上证明该方法的理论有效性并从实验验证了该算法的有效性。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KDW-KNN.png" alt=""> </p>
+<h3 id="u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B"><a href="#u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B" class="headerlink" title="《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》"></a>《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》</h3><p>左老师在理大生物识别实验室的掌纹识别工作</p>
+<p>1.掌纹识别的背景<br>2.两个问题：低分辨下，feature和distance measure<br>3.提出orientation feature<br>4.提出General angular distance的框架</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>之前阅读了左老师的两个paper,一直没有给总结，今天来赶紧写一下</p>
+<h3 id="u300AOn_kernel_difference-weighted_k-nearest_neighbor_classification_u300B"><a href="#u300A]]>
+    </summary>
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Summary_Of_Half_Year]]></title>
@@ -596,33 +620,6 @@ This is where you will write your content. 在这里写上内容。
     </summary>
     
       <category term="group" scheme="https://csrjtan.github.io/tags/group/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Guidance:A Visual Sensing Platform For Robotic Applications]]></title>
-    <link href="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/"/>
-    <id>https://csrjtan.github.io/2015/10/28/paper-reading-20151028/</id>
-    <published>2015-10-28T12:38:38.000Z</published>
-    <updated>2015-10-28T14:13:30.000Z</updated>
-    <content type="html"><![CDATA[<h3 id="DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0"><a href="#DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0" class="headerlink" title="DJI在CVPR15上发的关于GUIDANCE组件的文章"></a>DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
-<p>由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。<br>这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用于机器人定位位置识别。大部分是单目的，这里也有双目的方法[4]。这里GUIDANCE包括了5个方向的双目，可以提供深度图，超声数据，障碍物距离等内容。接下来，故事的展开分为内置函数，SDK接口以及相关应用</p>
-<h3 id="2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D"><a href="#2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D" class="headerlink" title="2.内置：Guidance是升级版的[6]"></a>2.内置：Guidance是升级版的[6]</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png" alt="SDK_Build_In"><br><a id="more"></a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_2.png" alt=""><br>对于Matching Refinement用了[7]</p>
-<h3 id="4-_u53EF_u6269_u5C55_u7684_u667A_u80FD_u5E94_u7528_uFF1A"><a href="#4-_u53EF_u6269_u5C55_u7684_u667A_u80FD_u5E94_u7528_uFF1A" class="headerlink" title="4.可扩展的智能应用："></a>4.可扩展的智能应用：</h3><p>1.Autonomous Navigation<br>  拥有高精度的GPS定位<br>2.Visual SLAM[8]<br>  依赖高精度的VO结果<br>3.Depth Based Tracking</p>
-<p>为了开发SLAM避障，请阅读下面黑体</p>
-<p>[1]C. Forster, M. Pizzoli, and D. Scaramuzza. SVO: Fast semi- direct monocular visual odometry. In ICRA, 2014.<br><strong>[2]J. Engel, T. Schops, and D. Cremers. LSD-SLAM: Large- scale direct monocular SLAM. In ECCV, 2014.<br>[3]A. Davison. Real-time simultaneous localisation and map- ping with a single camera. In Computer Vision, 2003. Proceedings. Ninth IEEE International Conference on, pages 1403–1410 vol.2, Oct 2003 </strong><br>[4] F. Endres, J. Hess, N. Engelhard, J. Sturm, D. Cremers, and W. Burgard. An evaluation of the RGB-D SLAM system. In Robotics and Automation (ICRA), 2012 IEEE International Conference on, pages 1691–1696, May 2012.<br>[5]D. Honegger, L. Meier, P. Tanskanen, and M. Pollefeys. An open source and open hardware embedded metric optical flow cmos camera for indoor and outdoor applications. In Robotics and Automation (ICRA), IEEE International Con- ference on, pages 1736–1741, May 2013.<br>[6]G. Zhou, A. Liu, K. Yang, T. Wang, and Z. Li. An embedded solution to visual mapping for consumer drones. In Computer Vision and Pattern Recognition Workshops (CVPRW), IEEE Conference on, pages 670–675, 2014.</p>
-<p>[7]B. D. Lucas and T. Kanade. An iterative image registration technique with an application to stereo vision. In Proceed- ings of the 7th International Joint Conference on Artificial<br>Intelligence - Volume 2, pages 674–679, 1981<br><strong>[8]G. Klein and D. Murray. Parallel tracking and mapping for small AR workspaces. In Sixth IEEE and ACM Internation- al Symposium on Mixed and Augmented Reality (ISMAR), 2007.</strong></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0"><a href="#DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0" class="headerlink" title="DJI在CVPR15上发的关于GUIDANCE组件的文章"></a>DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
-<p>由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。<br>这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。</p>
-<h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用于机器人定位位置识别。大部分是单目的，这里也有双目的方法[4]。这里GUIDANCE包括了5个方向的双目，可以提供深度图，超声数据，障碍物距离等内容。接下来，故事的展开分为内置函数，SDK接口以及相关应用</p>
-<h3 id="2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D"><a href="#2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D" class="headerlink" title="2.内置：Guidance是升级版的[6]"></a>2.内置：Guidance是升级版的[6]</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png" alt="SDK_Build_In"><br>]]>
-    
-    </summary>
-    
-      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   

@@ -74,6 +74,63 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-paper-reading-20160306" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/06/paper-reading-20160306/" class="article-date">
+  <time datetime="2016-03-06T05:34:57.000Z" itemprop="datePublished">2016-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u300AOn_kernel_difference-weighted_k-nearest_neighbor_classification_u300B"><span class="toc-number">1.</span> <span class="toc-text">《On kernel difference-weighted k-nearest neighbor classification》</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u6458_u8981"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u95EE_u9898_u5EFA_u6A21"><span class="toc-number">1.2.</span> <span class="toc-text">问题建模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-number">1.3.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B"><span class="toc-number">2.</span> <span class="toc-text">《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》</span></a></li></ol>
+          </div>
+        
+        <p>之前阅读了左老师的两个paper,一直没有给总结，今天来赶紧写一下</p>
+<h3 id="u300AOn_kernel_difference-weighted_k-nearest_neighbor_classification_u300B"><a href="#u300AOn_kernel_difference-weighted_k-nearest_neighbor_classification_u300B" class="headerlink" title="《On kernel difference-weighted k-nearest neighbor classification》"></a>《On kernel difference-weighted k-nearest neighbor classification》</h3><p>KNN的改进方法，利用临近点的差距作为权值的学习策略。将权值的学习转化成约束优化的问题，从优化数学的角度论证了易求解和适应高斯噪声以及扩展为kernel version，实验部分k,n以及theta是prefix然后相互学习下降求解的。<br>Contribution:<br>1.提出difference-weighted,转化成约束优化Model<br>2.证明了理论性以及适应于非线性数据集，kernel<br>3.得到实验结果比一些state-of-art的NN要好</p>
+<h4 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h4><p>NN是一个简单有效的模式识别聚类方法,这个论文提出了Kernel difference-weighted的KDF-KNN方法，用difference-weighted作为计算聚类距离时的权值，将一般的权值求解编程带约束的优化问题，并基于此理论Kernel化，最后验证数学理论和算法复杂度</p>
+<h4 id="u95EE_u9898_u5EFA_u6A21"><a href="#u95EE_u9898_u5EFA_u6A21" class="headerlink" title="问题建模"></a>问题建模</h4><p>将最近邻的权值设置为 $W = argmin\frac{1}{2}||x-w^TX||^2 $ , $s.t. \sum_i^w w_i =1 $ , x为样本与相邻的欧几距离，w为当前权值。w是最终关于该数据集模型的最优权值，所以接下来的DW-KNN就是求解上述方程的约束最优化问题了</p>
+<p>接下来使用凸优化和朗格朗日的方法求解,接下来做了关于高斯噪声的优化以及Kernel提升以适应非线性数据集，还理论分析对比了该方法与其他方法的复杂度</p>
+<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>该方法计算使用x与邻近的不同作为权值来计算，而非简单的距离。将该问题有效转化成约束优化问题，从理论上证明该方法的理论有效性并从实验验证了该算法的有效性。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KDW-KNN.png" alt=""> </p>
+<h3 id="u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B"><a href="#u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B" class="headerlink" title="《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》"></a>《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》</h3><p>左老师在理大生物识别实验室的掌纹识别工作</p>
+<p>1.掌纹识别的背景<br>2.两个问题：低分辨下，feature和distance measure<br>3.提出orientation feature<br>4.提出General angular distance的框架</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/" data-id="cilg4k7ic000tjwq1wmmgu76y" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Summary-Of-Half-Year" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/29/Summary-Of-Half-Year/" class="article-date">
@@ -111,7 +168,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="cil7hw74g001prdq17s7sp9wr" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="cilg4k7le001qjwq1eoafrhed" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -169,7 +226,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cil7hw73w0019rdq1q977qgjx" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cilg4k7j2001ajwq1rb9kfx4m" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -233,7 +290,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cil7hw741001crdq1nl58jy14" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cilg4k7j5001djwq15lxs7owg" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -330,7 +387,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cil7hw74p001urdq1ocox2or8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cilg4k7lw001vjwq1z2t3yfla" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -387,7 +444,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cil7hw73c000trdq18crknd5k" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cilg4k7ig000ujwq15gji6o7n" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -449,7 +506,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cil7hw74r001wrdq1gnbh5ogk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cilg4k7lz001xjwq1ruyi4m9z" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -502,7 +559,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cil7hw72h000crdq1heeq4i6w" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cilg4k7hn000cjwq11lw54bw6" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -583,7 +640,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cil7hw7210004rdq1f4hew9qz" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cilg4k7ha0004jwq1znfnotse" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -640,7 +697,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cil7hw749001krdq1lvjrwxlc" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cilg4k7je001ljwq1ur2k6bgb" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -649,67 +706,6 @@ gcc test.o -o test        //bin文件
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-paper-reading-20160120" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/20/paper-reading-20160120/" class="article-date">
-  <time datetime="2016-01-20T06:24:37.000Z" itemprop="datePublished">2016-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/20/paper-reading-20160120/">林老师IJCV2015的工作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE"><span class="toc-number">1.</span> <span class="toc-text">马里兰(MaryLand)大学的Larry Davis访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B"><span class="toc-number">2.</span> <span class="toc-text">林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Introduction_of_human_activity_classification"><span class="toc-number">2.1.</span> <span class="toc-text">Introduction of human activity classification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Related_Work"><span class="toc-number">2.2.</span> <span class="toc-text">Related Work</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Our_work"><span class="toc-number">2.3.</span> <span class="toc-text">Our work</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementation"><span class="toc-number">2.4.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.5.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol>
-          </div>
-        
-        <p>新年好，新年愿工程进展，论文有望。加油！</p>
-<h3 id="u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE"><a href="#u9A6C_u91CC_u5170_28MaryLand_29_u5927_u5B66_u7684Larry_Davis_u8BBF_u95EE" class="headerlink" title="马里兰(MaryLand)大学的Larry Davis访问"></a>马里兰(MaryLand)大学的Larry Davis访问</h3><p>受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car parking.</p>
-<p>首先，GCNN是使用multi grid windows的思想，通过RCNN进行迭代的逼近学习，也是用于物体的识别。然后基于一些基本common sense建模，对于传统的activity recognition有一定的解释。讲述最近deep learning, cloud computing, GPU acceleration, Machine Learning等一些方法的推进都在有利于CV的进步，然CV离肉眼视觉识别依然有很大的距离。 最近的科研方向可以有Arichitecture Optimization，Mathematical Optimization and so on。明天将会继续介绍一下以往以及未来cv的相关工作。</p>
-<h3 id="u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B"><a href="#u6797_u8001_u5E08_u7684IJCV2015_u8BBA_u6587_u300AA_Deep_Structured_Model_with_Radius-Margin_Bound_for_3D_Human_Activity_Recognition_u300B" class="headerlink" title="林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》"></a>林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》</h3><p>摘要：用CNN来做活动识别，1.加入隐临时变量来分解activity成sub activity，自动学习子活动 2.结合radius-margin bound的方法作为约束项。<br>训练模型的过程不断迭代三部曲：</p>
-<pre><code>- 发现优化的隐变量
-- 通过生成的特征，更新分类器
-- 更新网络的参数
-</code></pre><h4 id="Introduction_of_human_activity_classification"><a href="#Introduction_of_human_activity_classification" class="headerlink" title="Introduction of human activity classification"></a>Introduction of human activity classification</h4><p>  主要两个问题：a.the complexity of representing high-level activities<br>                b.the ambiguity in temporal segmentation of sub-activities which constitute an activity</p>
-<h4 id="Related_Work"><a href="#Related_Work" class="headerlink" title="Related Work"></a>Related Work</h4><p>  起初关注于设计健壮和可描述性的features<br>  然后关注表达活动间的变化部分以及上下文的关系<br>  最近And-Or图关系表达可借助大数据变量进一步表达<br>  这里的方法是用deep neutral network to learning human action recognition from 3D videos.</p>
-<h4 id="Our_work"><a href="#Our_work" class="headerlink" title="Our work"></a>Our work</h4><p>Spatio-temporal CNNs<br>Latent Temporal Structure:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_1.png" alt=""><br>Deep Model with Relaxed Radius-Margin Bound:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_2.png" alt=""><br>The Radius-Margin Bound是受到radius-margin SVM的启发，用于增强模型的泛化能力，变成每次迭代的loss function加入了Radius-Margin Ratio $ \frac{1}{2}||w||^2R_\phi^2$,进行non-convex optimization.可以利用网络的softmax层进行部分参数的调解学习。</p>
-<h4 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h4><p>详细工作的实现：<br>Architecture of Deep Neural Networks<br>Dropout trick<br>Learning Algorithm<br>Datasets and Empirical Analysis, Experimental Results</p>
-<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p><strong>贡献点</strong>：<br>1.A deep and latent-structured model<br>         2.引入了raius-margin的正则项<br>         3.有效迭代的优化子活动分解以及基于边缘学习的分类器<br><strong>缺点</strong>：<br> 1.scalability of model inference<br>      2.引入更多的计算量，当活动的类别多了会变慢<br><strong>未来的工作</strong>：<br> 1.将模型泛化成compositinal grammar rules: e.g. And-Or grammars<br>            2.修改模型以适应2D的视频</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cil7hw73h000vrdq1n19a2eo8" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
 
     </footer>
   </div>
@@ -736,7 +732,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -745,7 +741,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 16.67px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 12.5px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a>
     </div>
   </div>
 
@@ -754,7 +750,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -764,6 +760,10 @@ gcc test.o -o test        //bin文件
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
+          </li>
         
           <li>
             <a href="/2016/02/29/Summary-Of-Half-Year/">Summary_Of_Half_Year</a>
@@ -779,10 +779,6 @@ gcc test.o -o test        //bin文件
         
           <li>
             <a href="/2016/02/18/Manual学习/">Vim Manual学习</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/17/paper-reading-20160217/">Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments</a>
           </li>
         
       </ul>
