@@ -15,7 +15,7 @@
 <meta property="og:description" content="之前阅读了左老师的两个paper,一直没有给总结，今天来赶紧写一下
 《On kernel difference-weighted k-nearest neighbor classification》KNN的改进方法，利用临近点的差距作为权值的学习策略。将权值的学习转化成约束优化的问题，从优化数学的角度论证了易求解和适应高斯噪声以及扩展为kernel version，实验部分k,n以及theta是p">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/KDW-KNN.png">
-<meta property="og:updated_time" content="2016-03-06T06:12:24.000Z">
+<meta property="og:updated_time" content="2016-03-06T06:13:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="paper-reading-20160306">
 <meta name="twitter:description" content="之前阅读了左老师的两个paper,一直没有给总结，今天来赶紧写一下
@@ -109,7 +109,7 @@
 <h4 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h4><p>NN是一个简单有效的模式识别聚类方法,这个论文提出了Kernel difference-weighted的KDF-KNN方法，用difference-weighted作为计算聚类距离时的权值，将一般的权值求解编程带约束的优化问题，并基于此理论Kernel化，最后验证数学理论和算法复杂度</p>
 <h4 id="u95EE_u9898_u5EFA_u6A21"><a href="#u95EE_u9898_u5EFA_u6A21" class="headerlink" title="问题建模"></a>问题建模</h4><p>将最近邻的权值设置为 $W = argmin\frac{1}{2}||x-w^TX||^2 $ , $s.t. \sum_i^w w_i =1 $ , x为样本与相邻的欧几距离，w为当前权值。w是最终关于该数据集模型的最优权值，所以接下来的DW-KNN就是求解上述方程的约束最优化问题了</p>
 <p>接下来使用凸优化和朗格朗日的方法求解,接下来做了关于高斯噪声的优化以及Kernel提升以适应非线性数据集，还理论分析对比了该方法与其他方法的复杂度</p>
-<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>该方法计算使用x与邻近的不同作为权值来计算，而非简单的距离。将该问题有效转化成约束优化问题，从理论上证明该方法的理论有效性并从实验验证了该算法的有效性。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KDW-KNN.png" alt=""> </p>
+<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>该方法计算使用x与邻近的不同作为权值来计算，而非简单的距离。将该问题有效转化成约束优化问题，从理论上证明该方法的理论有效性并从实验验证了该算法的有效性。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KDW-KNN.png" alt="Difference-Weighted"> </p>
 <h3 id="u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B"><a href="#u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B" class="headerlink" title="《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》"></a>《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》</h3><p>左老师在理大生物识别实验室的掌纹识别工作</p>
 <p>1.掌纹识别的背景<br>2.两个问题：低分辨下，feature和distance measure<br>3.提出orientation feature<br>4.提出General angular distance的框架</p>
 
@@ -117,7 +117,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/" data-id="cilg4k7ic000tjwq1wmmgu76y" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/" data-id="cilhm6bfa000t3yq1qvi8ckc5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -132,6 +132,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/03/07/leetcode2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          leetcode2&amp;3
+        
+      </div>
+    </a>
   
   
     <a href="/2016/02/29/Summary-Of-Half-Year/" id="article-nav-older" class="article-nav-link-wrap">
@@ -161,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -170,7 +179,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 12.5px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -179,7 +188,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -189,6 +198,10 @@
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
+          </li>
         
           <li>
             <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
@@ -204,10 +217,6 @@
         
           <li>
             <a href="/2016/02/26/leetcode1/">leetcode1 with Vecotr and Map</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/18/Manual学习/">Vim Manual学习</a>
           </li>
         
       </ul>

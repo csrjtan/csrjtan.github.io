@@ -74,6 +74,61 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-leetcode2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/07/leetcode2/" class="article-date">
+  <time datetime="2016-03-07T05:59:56.000Z" itemprop="datePublished">2016-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode2_3AAdd_Two_Numbers"><span class="toc-number">1.</span> <span class="toc-text">leetcode2:Add Two Numbers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode3_3ALongest_Substring_Without_Repeating_Characters"><span class="toc-number">2.</span> <span class="toc-text">leetcode3:Longest Substring Without Repeating Characters</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std_3A_3Afill_u7528_u6CD5"><span class="toc-number">2.1.</span> <span class="toc-text">std::fill用法</span></a></li></ol></li></ol>
+          </div>
+        
+        <h3 id="leetcode2_3AAdd_Two_Numbers"><a href="#leetcode2_3AAdd_Two_Numbers" class="headerlink" title="leetcode2:Add Two Numbers"></a>leetcode2:Add Two Numbers</h3><p>I:(2-&gt;4-&gt;3)+(5-&gt;6-&gt;4)<br>O:(7-&gt;0-&gt;8)<br>原则：有进位往后增加，无则扩展<br><figure class="highlight ocaml"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.</span><br><span class="line"> * <span class="keyword">struct</span> <span class="type">ListNode</span> &#123;</span><br><span class="line"> *     <span class="built_in">int</span> <span class="keyword">val</span>;</span><br><span class="line"> *     <span class="type">ListNode</span> *next;</span><br><span class="line"> *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">class</span> <span class="type">Solution</span> &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="type">ListNode</span>* addTwoNumbers(<span class="type">ListNode</span>* l1, <span class="type">ListNode</span>* l2) &#123;</span><br><span class="line">        <span class="type">ListNode</span> dummy(<span class="number">0</span>);</span><br><span class="line">        <span class="type">ListNode</span>* p = &amp;dummy;</span><br><span class="line">        <span class="built_in">int</span> cn=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l1||l2)&#123;</span><br><span class="line">            <span class="built_in">int</span> <span class="keyword">val</span> = cn+(l1?l1-&gt;<span class="keyword">val</span>:<span class="number">0</span>)+(l2?l2-&gt;<span class="keyword">val</span>:<span class="number">0</span>);</span><br><span class="line">            cn = <span class="keyword">val</span>/<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">val</span> = <span class="keyword">val</span>%<span class="number">10</span>;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(<span class="keyword">val</span>);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l1)</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l2)</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cn!=<span class="number">0</span>)&#123;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(cn);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="leetcode3_3ALongest_Substring_Without_Repeating_Characters"><a href="#leetcode3_3ALongest_Substring_Without_Repeating_Characters" class="headerlink" title="leetcode3:Longest Substring Without Repeating Characters"></a>leetcode3:Longest Substring Without Repeating Characters</h3><p>问题：寻找最大不重复字母的子串长度<br>解法：1.从每个元素找起始无重复字符串，时间复杂度为O(n^3)<br>      2.将没出现的字母放入set，当重复字母出现时，把已有之前的set的字母移除，并记录最长的子串长度<br>      3.用数组不用Map,直接定义一个变量来保存无重复字符串的第一个字符的下标，碰到重复的就更新下标</p>
+<figure class="highlight nimrod"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> lengthOfLongestSubstring(<span class="type">string</span> s) &#123;</span><br><span class="line">        <span class="type">int</span> tables[<span class="number">256</span>];</span><br><span class="line">        fill(tables,tables+<span class="number">256</span>,-<span class="number">1</span>);</span><br><span class="line">        <span class="type">int</span> <span class="literal">result</span>=<span class="number">0</span>,lastRepeatedPos=-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            //当找到重复元素且lastRepeatedPos小于找到重复元素的下表时，更新lastRepeatedPos</span><br><span class="line">            <span class="keyword">if</span>(tables[s[i]]!=-<span class="number">1</span>&amp;&amp;lastRepeatedPos&lt;tables[s[i]])</span><br><span class="line">                lastRepeatedPos=tables[s[i]];</span><br><span class="line">                </span><br><span class="line">            //更新最大值</span><br><span class="line">            <span class="literal">result</span>=max(<span class="literal">result</span>,i-lastRepeatedPos);</span><br><span class="line">            //元素插入表中</span><br><span class="line">            tables[s[i]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">result</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>总结：对于一个字符串，如果未出现重复，则该值放入数组中，由于ASCII最多有256种符号，则放入一个大小为256的数组里；如果出现重复的字母，即不为默认的-1，且第一个字符下标比这个重复字母下标小，则更新下标以及最长长度，并将该长度放入对应符号的数组值里。</p>
+<h4 id="std_3A_3Afill_u7528_u6CD5"><a href="#std_3A_3Afill_u7528_u6CD5" class="headerlink" title="std::fill用法"></a>std::fill用法</h4><p>void fill(first,last,val);<br>fill(array,array+n,element);</p>
+<p>memset(array,array+n,element);</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/03/07/leetcode2/" data-id="cilhm6bhv001e3yq19h7g1fzk" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/03/07/leetcode2/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-paper-reading-20160306" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/06/paper-reading-20160306/" class="article-date">
@@ -106,7 +161,7 @@
 <h4 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h4><p>NN是一个简单有效的模式识别聚类方法,这个论文提出了Kernel difference-weighted的KDF-KNN方法，用difference-weighted作为计算聚类距离时的权值，将一般的权值求解编程带约束的优化问题，并基于此理论Kernel化，最后验证数学理论和算法复杂度</p>
 <h4 id="u95EE_u9898_u5EFA_u6A21"><a href="#u95EE_u9898_u5EFA_u6A21" class="headerlink" title="问题建模"></a>问题建模</h4><p>将最近邻的权值设置为 $W = argmin\frac{1}{2}||x-w^TX||^2 $ , $s.t. \sum_i^w w_i =1 $ , x为样本与相邻的欧几距离，w为当前权值。w是最终关于该数据集模型的最优权值，所以接下来的DW-KNN就是求解上述方程的约束最优化问题了</p>
 <p>接下来使用凸优化和朗格朗日的方法求解,接下来做了关于高斯噪声的优化以及Kernel提升以适应非线性数据集，还理论分析对比了该方法与其他方法的复杂度</p>
-<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>该方法计算使用x与邻近的不同作为权值来计算，而非简单的距离。将该问题有效转化成约束优化问题，从理论上证明该方法的理论有效性并从实验验证了该算法的有效性。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KDW-KNN.png" alt=""> </p>
+<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p>该方法计算使用x与邻近的不同作为权值来计算，而非简单的距离。将该问题有效转化成约束优化问题，从理论上证明该方法的理论有效性并从实验验证了该算法的有效性。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/KDW-KNN.png" alt="Difference-Weighted"> </p>
 <h3 id="u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B"><a href="#u300AOn_accurate_orientation_extraction_and_appropriate_distance_measure_for_low-resolution_palmprint_recognition_u300B" class="headerlink" title="《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》"></a>《On accurate orientation extraction and appropriate distance measure for low-resolution palmprint recognition》</h3><p>左老师在理大生物识别实验室的掌纹识别工作</p>
 <p>1.掌纹识别的背景<br>2.两个问题：低分辨下，feature和distance measure<br>3.提出orientation feature<br>4.提出General angular distance的框架</p>
 
@@ -114,7 +169,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/" data-id="cilg4k7ic000tjwq1wmmgu76y" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/" data-id="cilhm6bfa000t3yq1qvi8ckc5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -168,7 +223,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="cilg4k7le001qjwq1eoafrhed" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="cilhm6bir001t3yq1e2vtthbj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -226,7 +281,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cilg4k7j2001ajwq1rb9kfx4m" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cilhm6bhr001b3yq148zh1iws" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -290,7 +345,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cilg4k7j5001djwq15lxs7owg" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cilhm6bhz001g3yq18zdugcff" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -387,7 +442,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cilg4k7lw001vjwq1z2t3yfla" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cilhm6bj4001y3yq1zkt3u1s7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -444,7 +499,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cilg4k7ig000ujwq15gji6o7n" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cilhm6bfe000v3yq15rtq60lr" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -506,7 +561,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cilg4k7lz001xjwq1ruyi4m9z" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cilhm6bj900203yq1vspw7jrj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -559,7 +614,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cilg4k7hn000cjwq11lw54bw6" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cilhm6be6000c3yq10ag0a78d" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -640,7 +695,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cilg4k7ha0004jwq1znfnotse" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cilhm6bdj00043yq17rcdmdq7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -649,63 +704,6 @@ gcc test.o -o test        //bin文件
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-c-Primer-Reading1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/22/c-Primer-Reading1/" class="article-date">
-  <time datetime="2016-01-22T01:56:26.000Z" itemprop="datePublished">2016-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/22/c-Primer-Reading1/">C++_Primer_Reading1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u9884_u5907_u77E5_u8BC6"><span class="toc-number">1.</span> <span class="toc-text">预备知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5F00_u59CB_u5B66_u4E60C++"><span class="toc-number">2.</span> <span class="toc-text">开始学习C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u57FA_u672C_u6570_u636E"><span class="toc-number">3.</span> <span class="toc-text">基本数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u590D_u5408_u7C7B_u578B"><span class="toc-number">4.</span> <span class="toc-text">复合类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5FAA_u73AF_u548C_u5173_u7CFB_u8868_u8FBE_u5F0F"><span class="toc-number">5.</span> <span class="toc-text">循环和关系表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5206_u652F_u548C_u903B_u8F91_u8FD0_u7B97_u7B26"><span class="toc-number">6.</span> <span class="toc-text">分支和逻辑运算符</span></a></li></ol>
-          </div>
-        
-        <p>前六章的总结</p>
-<h3 id="u9884_u5907_u77E5_u8BC6"><a href="#u9884_u5907_u77E5_u8BC6" class="headerlink" title="预备知识"></a>预备知识</h3><p>全书将讲述最基本的C++用法，到面向对象编程(OOP)，再介绍对泛型编程的支持。</p>
-<p>1.C++的介绍：继承了C的高效简洁，由70年代贝尔实验室Dennis开发操作系统UNIX使用。<br>2.可移植性和标准：两个障碍，硬件兼容和语言兼容，制订了C++98,现在为C++11标准<br>3.程序的过程：编译、建立、生成、链接、运行和调试</p>
-<h3 id="u5F00_u59CB_u5B66_u4E60C++"><a href="#u5F00_u59CB_u5B66_u4E60C++" class="headerlink" title="开始学习C++"></a>开始学习C++</h3><p>了解C++语法：声明语句、赋值语句、消息语句、函数调用、函数原型和返回语句</p>
-<h3 id="u57FA_u672C_u6570_u636E"><a href="#u57FA_u672C_u6570_u636E" class="headerlink" title="基本数据"></a>基本数据</h3><p>基本类型分为：1.存储为整数的值，2.存储为浮点格式的值。<br>整形由小到大：bool,char,signed cahr,unsigned char,short,unsigned short,int,unsigned int,long,unsigned long 和long long(C++11),unsigned long long.<br>浮点类型:float(32 bits),double(64)和long double。<br>注意：类型转换和AUTO的用法，当发现使用时有一种类型是需要的，会感谢C++提供了该类型。</p>
-<h3 id="u590D_u5408_u7C7B_u578B"><a href="#u590D_u5408_u7C7B_u578B" class="headerlink" title="复合类型"></a>复合类型</h3><p>数组，C-风格字符串，string类,结构structure，共同体union,枚举enum，指针Pointer,动态数组和结构，vector和array类</p>
-<h3 id="u5FAA_u73AF_u548C_u5173_u7CFB_u8868_u8FBE_u5F0F"><a href="#u5FAA_u73AF_u548C_u5173_u7CFB_u8868_u8FBE_u5F0F" class="headerlink" title="循环和关系表达式"></a>循环和关系表达式</h3><p>if,swich case,for循环，while循环,typedef工具以及各项运算符。</p>
-<h3 id="u5206_u652F_u548C_u903B_u8F91_u8FD0_u7B97_u7B26"><a href="#u5206_u652F_u548C_u903B_u8F91_u8FD0_u7B97_u7B26" class="headerlink" title="分支和逻辑运算符"></a>分支和逻辑运算符</h3><p>if语句，&amp;&amp; || ！以及cctype字符函数,?:,基本的文件I/O</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cilg4k7je001ljwq1ur2k6bgb" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
     </footer>
   </div>
@@ -732,7 +730,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -741,7 +739,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 12.5px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -750,7 +748,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -760,6 +758,10 @@ gcc test.o -o test        //bin文件
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
+          </li>
         
           <li>
             <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
@@ -775,10 +777,6 @@ gcc test.o -o test        //bin文件
         
           <li>
             <a href="/2016/02/26/leetcode1/">leetcode1 with Vecotr and Map</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/18/Manual学习/">Vim Manual学习</a>
           </li>
         
       </ul>

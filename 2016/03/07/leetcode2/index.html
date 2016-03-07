@@ -4,17 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: group | CSRJTAN</title>
+  <title>leetcode2&amp;3 | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="blog csrjtan tanrunj">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CSRJTAN">
-<meta property="og:url" content="https://csrjtan.github.io/tags/group/index.html">
+  <meta name="description" content="leetcode2:Add Two NumbersI:(2-&amp;gt;4-&amp;gt;3)+(5-&amp;gt;6-&amp;gt;4)O:(7-&amp;gt;0-&amp;gt;8)原则：有进位往后增加，无则扩展/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     L">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode2&3">
+<meta property="og:url" content="https://csrjtan.github.io/2016/03/07/leetcode2/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="blog csrjtan tanrunj">
+<meta property="og:description" content="leetcode2:Add Two NumbersI:(2-&amp;gt;4-&amp;gt;3)+(5-&amp;gt;6-&amp;gt;4)O:(7-&amp;gt;0-&amp;gt;8)原则：有进位往后增加，无则扩展/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     L">
+<meta property="og:updated_time" content="2016-03-07T06:41:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSRJTAN">
-<meta name="twitter:description" content="blog csrjtan tanrunj">
+<meta name="twitter:title" content="leetcode2&3">
+<meta name="twitter:description" content="leetcode2:Add Two NumbersI:(2-&amp;gt;4-&amp;gt;3)+(5-&amp;gt;6-&amp;gt;4)O:(7-&amp;gt;0-&amp;gt;8)原则：有进位往后增加，无则扩展/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     L">
   
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
@@ -72,39 +73,75 @@
   <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/10/28/group-talk1/" class="archive-article-date">
-  <time datetime="2015-10-28T15:48:09.000Z" itemprop="datePublished">10月 28</time>
+      <section id="main"><article id="post-leetcode2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/07/leetcode2/" class="article-date">
+  <time datetime="2016-03-07T05:59:56.000Z" itemprop="datePublished">2016-03-07</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/28/group-talk1/">小组Talk1</a>
+    <h1 class="article-title" itemprop="name">
+      leetcode2&amp;3
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode2_3AAdd_Two_Numbers"><span class="toc-number">1.</span> <span class="toc-text">leetcode2:Add Two Numbers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode3_3ALongest_Substring_Without_Repeating_Characters"><span class="toc-number">2.</span> <span class="toc-text">leetcode3:Longest Substring Without Repeating Characters</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std_3A_3Afill_u7528_u6CD5"><span class="toc-number">2.1.</span> <span class="toc-text">std::fill用法</span></a></li></ol></li></ol>
+          </div>
+        
+        <h3 id="leetcode2_3AAdd_Two_Numbers"><a href="#leetcode2_3AAdd_Two_Numbers" class="headerlink" title="leetcode2:Add Two Numbers"></a>leetcode2:Add Two Numbers</h3><p>I:(2-&gt;4-&gt;3)+(5-&gt;6-&gt;4)<br>O:(7-&gt;0-&gt;8)<br>原则：有进位往后增加，无则扩展<br><figure class="highlight ocaml"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.</span><br><span class="line"> * <span class="keyword">struct</span> <span class="type">ListNode</span> &#123;</span><br><span class="line"> *     <span class="built_in">int</span> <span class="keyword">val</span>;</span><br><span class="line"> *     <span class="type">ListNode</span> *next;</span><br><span class="line"> *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">class</span> <span class="type">Solution</span> &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="type">ListNode</span>* addTwoNumbers(<span class="type">ListNode</span>* l1, <span class="type">ListNode</span>* l2) &#123;</span><br><span class="line">        <span class="type">ListNode</span> dummy(<span class="number">0</span>);</span><br><span class="line">        <span class="type">ListNode</span>* p = &amp;dummy;</span><br><span class="line">        <span class="built_in">int</span> cn=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l1||l2)&#123;</span><br><span class="line">            <span class="built_in">int</span> <span class="keyword">val</span> = cn+(l1?l1-&gt;<span class="keyword">val</span>:<span class="number">0</span>)+(l2?l2-&gt;<span class="keyword">val</span>:<span class="number">0</span>);</span><br><span class="line">            cn = <span class="keyword">val</span>/<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">val</span> = <span class="keyword">val</span>%<span class="number">10</span>;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(<span class="keyword">val</span>);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l1)</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l2)</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cn!=<span class="number">0</span>)&#123;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(cn);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="leetcode3_3ALongest_Substring_Without_Repeating_Characters"><a href="#leetcode3_3ALongest_Substring_Without_Repeating_Characters" class="headerlink" title="leetcode3:Longest Substring Without Repeating Characters"></a>leetcode3:Longest Substring Without Repeating Characters</h3><p>问题：寻找最大不重复字母的子串长度<br>解法：1.从每个元素找起始无重复字符串，时间复杂度为O(n^3)<br>      2.将没出现的字母放入set，当重复字母出现时，把已有之前的set的字母移除，并记录最长的子串长度<br>      3.用数组不用Map,直接定义一个变量来保存无重复字符串的第一个字符的下标，碰到重复的就更新下标</p>
+<figure class="highlight nimrod"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> lengthOfLongestSubstring(<span class="type">string</span> s) &#123;</span><br><span class="line">        <span class="type">int</span> tables[<span class="number">256</span>];</span><br><span class="line">        fill(tables,tables+<span class="number">256</span>,-<span class="number">1</span>);</span><br><span class="line">        <span class="type">int</span> <span class="literal">result</span>=<span class="number">0</span>,lastRepeatedPos=-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            //当找到重复元素且lastRepeatedPos小于找到重复元素的下表时，更新lastRepeatedPos</span><br><span class="line">            <span class="keyword">if</span>(tables[s[i]]!=-<span class="number">1</span>&amp;&amp;lastRepeatedPos&lt;tables[s[i]])</span><br><span class="line">                lastRepeatedPos=tables[s[i]];</span><br><span class="line">                </span><br><span class="line">            //更新最大值</span><br><span class="line">            <span class="literal">result</span>=max(<span class="literal">result</span>,i-lastRepeatedPos);</span><br><span class="line">            //元素插入表中</span><br><span class="line">            tables[s[i]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">result</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>总结：对于一个字符串，如果未出现重复，则该值放入数组中，由于ASCII最多有256种符号，则放入一个大小为256的数组里；如果出现重复的字母，即不为默认的-1，且第一个字符下标比这个重复字母下标小，则更新下标以及最长长度，并将该长度放入对应符号的数组值里。</p>
+<h4 id="std_3A_3Afill_u7528_u6CD5"><a href="#std_3A_3Afill_u7528_u6CD5" class="headerlink" title="std::fill用法"></a>std::fill用法</h4><p>void fill(first,last,val);<br>fill(array,array+n,element);</p>
+<p>memset(array,array+n,element);</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/03/07/leetcode2/" data-id="cilhm6bhv001e3yq19h7g1fzk" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/03/07/leetcode2/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/06/paper-reading-20160306/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">paper-reading-20160306</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/03/07/leetcode2/" data-title="leetcode2&amp;3" data-url="https://csrjtan.github.io/2016/03/07/leetcode2/"></div>
+  </section>
 </section>
       
     </div>

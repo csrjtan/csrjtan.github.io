@@ -74,6 +74,64 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-group-talk1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/28/group-talk1/" class="article-date">
+  <time datetime="2015-10-28T15:48:09.000Z" itemprop="datePublished">2015-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/28/group-talk1/">小组Talk1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><span class="toc-number">1.</span> <span class="toc-text">理大第一次小组REPORT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Big_Picture"><span class="toc-number">1.1.</span> <span class="toc-text">1.Big Picture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Stereo_Vision"><span class="toc-number">1.2.</span> <span class="toc-text">2.Stereo Vision</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1_Camera_Calibration"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 Camera Calibration</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2_Stereo_Matching"><span class="toc-number">1.3.</span> <span class="toc-text">2.2 Stereo Matching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DJI_Developer"><span class="toc-number">1.4.</span> <span class="toc-text">3.DJI Developer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1_Matrix_100"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 Matrix 100</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2_Guidance"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 Guidance</span></a></li></ol></li></ol></li></ol>
+          </div>
+        
+        <h2 id="u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT"><a href="#u7406_u5927_u7B2C_u4E00_u6B21_u5C0F_u7EC4REPORT" class="headerlink" title="理大第一次小组REPORT"></a>理大第一次小组REPORT</h2><p>讲讲进来三个月的工作成果和研究进展，分享一下所学内容<br>这里写下日记，总结之余，也将演讲内容在这里过一遍</p>
+<h3 id="1-Big_Picture"><a href="#1-Big_Picture" class="headerlink" title="1.Big Picture"></a>1.Big Picture</h3><p>Target:实现无人机的自动导航以及躲避障碍物<br>使用SLAM：机器人从未知地点出发，运动过程中重复观测得到地图特征来定位自身未知和姿态，从而构建增量式地图，达到同时定位和地图构建的目的。<br>避障算法，Bug Algorithm:检测到障碍物，进行闪躲，但依然朝终点靠近<br>这里的起始点和终点乃至地图都可以pre-defined。</p>
+<p>由于这里面核心用到的是环境的三维信息，所以Stereo Matching的精度技术显得尤为重要</p>
+<h3 id="2-Stereo_Vision"><a href="#2-Stereo_Vision" class="headerlink" title="2.Stereo Vision"></a>2.Stereo Vision</h3><h4 id="2-1_Camera_Calibration"><a href="#2-1_Camera_Calibration" class="headerlink" title="2.1 Camera Calibration"></a>2.1 Camera Calibration</h4><p>这一节可以看之前camera calibration的日志，针孔平面可由相似三角求出，但由于针孔曝光不足，所以一般用透镜，所以引入了透镜畸变误差，建立数学模型解决。然后我们标定的目的主要是为了能求出摄像机的内参数，包括焦距和成像中心点偏移。以及畸变参数，从而对图像进行修正。</p>
+<h3 id="2-2_Stereo_Matching"><a href="#2-2_Stereo_Matching" class="headerlink" title="2.2 Stereo Matching"></a>2.2 Stereo Matching</h3><p>这一节可以参考之前stereo matching的日志，图像的深度Z可以通过简单的三角测量求解所得。所以StereoMatching的主要流程就是图像校正、立体匹配、计算深度。其中主要的步骤在于立体匹配：包括了预处理滤波、代价聚合计算、视差计算以及视差精细等步骤。</p>
+<h3 id="3-DJI_Developer"><a href="#3-DJI_Developer" class="headerlink" title="3.DJI Developer"></a>3.DJI Developer</h3><h4 id="3-1_Matrix_100"><a href="#3-1_Matrix_100" class="headerlink" title="3.1 Matrix 100"></a>3.1 Matrix 100</h4><p>首先介绍一下M100这个可扩展飞行平台，它主要特点的续航时间长，负重好，飞行稳定性强，搭载的N1飞控可扩展接口和开发设备接口十分多，强大的可扩展性。<br>平台主要提供了Android和Onboard SDK，其中Android SDK主要控制摄像机、电池和云台以及飞行参数，但由于N1连接遥控器再用USB与手机连接的，所以数据传输是不稳定且难以做到实时的，所以这一块一般用于做一些监控拍摄，指派任务的非实时任务为佳。</p>
+<p>相对来说OnBoard SDK提供了开放协议从而对飞控进行命令委派，进而对飞行器进行姿态调整以及飞行模式切换等。这需要使用机载设备对采集的环境数据进行实时采集反馈。</p>
+<h4 id="3-2_Guidance"><a href="#3-2_Guidance" class="headerlink" title="3.2 Guidance"></a>3.2 Guidance</h4><p>Guidance组件是一个强大的信息采集组件，具有5个超声结合双目的数据采集器，然后官方提供了GUIDANCE的数据采集例程，而且它们发了一个paper在CVPR15的WORKSHOP。</p>
+<p>最后，这里提供一下这次GROUP_TALK的PPT。<br><a href="http://pan.baidu.com/s/1i3nRCtJ" target="_blank" rel="external">PPT&amp;数据采集</a><br>密码: d1s4</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cilhm6bi2001i3yq1ay535eu0" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/10/28/group-talk1/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/group/">group</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-paper-reading-20151028" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/28/paper-reading-20151028/" class="article-date">
@@ -109,7 +167,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cilg4k7io0010jwq1isake0l8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cilhm6bfq00113yq1jgngz8uh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -172,7 +230,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cilg4k7jb001ijwq1z9nclejr" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cilhm6bi8001l3yq1uzl00tn0" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -227,7 +285,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cilg4k7iq0012jwq1jubnilg6" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cilhm6bft00133yq1mrtl33dh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -278,7 +336,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cilg4k7hw000hjwq1c0pe1jcg" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cilhm6bem000h3yq1b3clnzdm" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -329,7 +387,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cilg4k7hh0007jwq1zhhs6uqt" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cilhm6bdz00073yq1blsswqjt" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -378,7 +436,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cilg4k7hz000jjwq14xonbs5o" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cilhm6beq000j3yq1gbyu928u" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -428,7 +486,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cilg4k7i7000ojwq1kjnyzb9c" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cilhm6bf3000o3yq1ka1qa785" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -478,7 +536,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cilg4k7ir0014jwq17e8tyx7f" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cilhm6bh900153yq11xz5n4gx" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -528,64 +586,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cilg4k7iu0016jwq1xdj2u86z" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cilhm6bhg00173yq1psjx5pkk" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
         <a href="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-paper-research-01" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/16/paper-research-01/" class="article-date">
-  <time datetime="2015-08-16T13:12:12.000Z" itemprop="datePublished">2015-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/16/paper-research-01/">Paper_Reading 《Rapid Object Detection using a Boosted Cascade of Simple Features》</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=990517">Paper Link</a></p>
-<h3 id="Author_3APaul_Viola_2CMichael_Jones"><a href="#Author_3APaul_Viola_2CMichael_Jones" class="headerlink" title="Author:Paul Viola,Michael Jones"></a>Author:Paul Viola,Michael Jones</h3><blockquote>
-<h3 id="Key_Contributions_3A"><a href="#Key_Contributions_3A" class="headerlink" title="Key Contributions:"></a>Key Contributions:</h3><h3 id="1-Integral_Image"><a href="#1-Integral_Image" class="headerlink" title="1.Integral Image"></a>1.Integral Image</h3><h3 id="2-Learning_algorithm_based_on_AdaBoost"><a href="#2-Learning_algorithm_based_on_AdaBoost" class="headerlink" title="2.Learning algorithm based on AdaBoost"></a>2.Learning algorithm based on AdaBoost</h3><h3 id="3-Combine_Classifiers_in_Cascade"><a href="#3-Combine_Classifiers_in_Cascade" class="headerlink" title="3.Combine Classifiers in Cascade"></a>3.Combine Classifiers in Cascade</h3></blockquote>
-<h3 id="Methods_3A"><a href="#Methods_3A" class="headerlink" title="Methods:"></a>Methods:</h3><ul>
-<li>Represent and classify images based on simple features rather than pixels directly(operates <strong>faster</strong> and easily encode <strong>ad-hoc</strong> domain knowledge)
-        
-          <p class="article-more-link">
-            <a href="/2015/08/16/paper-research-01/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/" data-id="cilg4k7ia000rjwq16v4cecyh" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/08/16/paper-research-01/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -616,7 +621,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -625,7 +630,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 12.5px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a>
+      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -634,7 +639,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -644,6 +649,10 @@
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
+          </li>
         
           <li>
             <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
@@ -659,10 +668,6 @@
         
           <li>
             <a href="/2016/02/26/leetcode1/">leetcode1 with Vecotr and Map</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/18/Manual学习/">Vim Manual学习</a>
           </li>
         
       </ul>
