@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode7-14 | CSRJTAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="leetcode7问题：逆序输出INTEGER思路：分为正负，然后用模和除来一位位逆序输出
+int reverse(int x) &amp;#123;		//使用long long以方便边界处理       long long i = x%10;       int j = x;       if(j==0)           return i;       while((j/=10)!=0)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode7-14">
+<meta property="og:url" content="https://csrjtan.github.io/2016/04/13/leetcode7-14/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="leetcode7问题：逆序输出INTEGER思路：分为正负，然后用模和除来一位位逆序输出
+int reverse(int x) &amp;#123;		//使用long long以方便边界处理       long long i = x%10;       int j = x;       if(j==0)           return i;       while((j/=10)!=0)">
+<meta property="og:updated_time" content="2016-04-13T08:25:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode7-14">
+<meta name="twitter:description" content="leetcode7问题：逆序输出INTEGER思路：分为正负，然后用模和除来一位位逆序输出
+int reverse(int x) &amp;#123;		//使用long long以方便边界处理       long long i = x%10;       int j = x;       if(j==0)           return i;       while((j/=10)!=0)">
+  
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CSRJTAN</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Keep Moving</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="csrjtan.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-leetcode7-14" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/13/leetcode7-14/" class="article-date">
+  <time datetime="2016-04-13T07:52:37.000Z" itemprop="datePublished">2016-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode7-14
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#leetcode7"><span class="toc-number">1.</span> <span class="toc-text">leetcode7</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#leetcode8"><span class="toc-number">2.</span> <span class="toc-text">leetcode8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#leetcode9"><span class="toc-number">3.</span> <span class="toc-text">leetcode9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#leetcode10"><span class="toc-number">4.</span> <span class="toc-text">leetcode10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#leetcode11"><span class="toc-number">5.</span> <span class="toc-text">leetcode11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#leetcode12"><span class="toc-number">6.</span> <span class="toc-text">leetcode12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#leetcode13"><span class="toc-number">7.</span> <span class="toc-text">leetcode13</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#leetcode14"><span class="toc-number">8.</span> <span class="toc-text">leetcode14</span></a></li></ol>
+          </div>
+        
+        <h4 id="leetcode7"><a href="#leetcode7" class="headerlink" title="leetcode7"></a>leetcode7</h4><p>问题：逆序输出INTEGER<br>思路：分为正负，然后用模和除来一位位逆序输出</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//使用long long以方便边界处理</span></span><br><span class="line">       <span class="keyword">long</span> <span class="keyword">long</span> i = x%<span class="number">10</span>;</span><br><span class="line">       <span class="keyword">int</span> j = x;</span><br><span class="line">       <span class="keyword">if</span>(j==<span class="number">0</span>)</span><br><span class="line">           <span class="keyword">return</span> i;</span><br><span class="line">       <span class="keyword">while</span>((j/=<span class="number">10</span>)!=<span class="number">0</span>)</span><br><span class="line">       &#123;	<span class="comment">//从低位往高位运算结果</span></span><br><span class="line">           i = i*<span class="number">10</span> + j%<span class="number">10</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//边界判断</span></span><br><span class="line">       <span class="keyword">if</span>(i&gt;<span class="number">2147483647</span> || i&lt;-<span class="number">2147483647</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">return</span> i;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="leetcode8"><a href="#leetcode8" class="headerlink" title="leetcode8"></a>leetcode8</h4><p>问题：String to Integer(ATOI)</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//遇到空格跳过</span></span><br><span class="line">        <span class="keyword">while</span>(str[i]==<span class="string">' '</span>)</span><br><span class="line">            i++;</span><br><span class="line">        <span class="comment">//区分正负</span></span><br><span class="line">        <span class="keyword">int</span> flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(str[i]==<span class="string">'+'</span>)</span><br><span class="line">        &#123;    flag = <span class="number">1</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(str[i]==<span class="string">'-'</span>)</span><br><span class="line">        &#123;    flag = -<span class="number">1</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(str[i]&gt;=<span class="string">'0'</span>&amp;&amp;str[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        	<span class="comment">//用long long方便判断溢出</span></span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> res =<span class="number">0</span>;</span><br><span class="line">            res += (str[i]-<span class="string">'0'</span>);</span><br><span class="line">            i++;</span><br><span class="line">            <span class="comment">//string转换成int</span></span><br><span class="line">            <span class="keyword">while</span>(str[i]&gt;=<span class="string">'0'</span> &amp;&amp; str[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                res = res *<span class="number">10</span> +(str[i]-<span class="string">'0'</span>);</span><br><span class="line">                i++;</span><br><span class="line">                <span class="keyword">if</span>(res&gt;INT_MAX)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> flag==<span class="number">1</span>?INT_MAX:INT_MIN;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            res = res * flag;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="leetcode9"><a href="#leetcode9" class="headerlink" title="leetcode9"></a>leetcode9</h4><p>问题：判断integer是否回文<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//不考虑负数</span></span><br><span class="line">        <span class="keyword">if</span> (x&lt;<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> div = <span class="number">1</span>; <span class="comment">//最大除项</span></span><br><span class="line">        <span class="keyword">while</span>((x/div)&gt;=<span class="number">10</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            div*=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(x&gt;<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> l = x /div;</span><br><span class="line">            <span class="keyword">int</span> r = x %<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(l!=r)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="comment">//reduce left and right</span></span><br><span class="line">            <span class="comment">//如果一致，同时左右一起消去</span></span><br><span class="line">            x = x%div / <span class="number">10</span>;</span><br><span class="line">            div/=<span class="number">100</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="leetcode10"><a href="#leetcode10" class="headerlink" title="leetcode10"></a>leetcode10</h4><p>问题：正则匹配,.表示任意字母，*表示任意个数<br><a href="http://articles.leetcode.com/regular-expression-matching" target="_blank" rel="external">作者回答</a><br>这个问题是正则匹配的问题，比较复杂，是一个状态机匹配的问题，可以用递归去求解。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line"> 	<span class="comment">//空串匹配</span></span><br><span class="line">   <span class="keyword">if</span> (p[<span class="number">0</span>] == <span class="string">'\0'</span>)</span><br><span class="line">	<span class="keyword">return</span> s[<span class="number">0</span>] == <span class="string">'\0'</span>;</span><br><span class="line"><span class="comment">//遇到的是非'*'</span></span><br><span class="line"><span class="keyword">if</span> (p[<span class="number">1</span>] != <span class="string">'*'</span>)&#123;</span><br><span class="line">	<span class="comment">//字符匹配或者匹配'.'</span></span><br><span class="line">	<span class="keyword">return</span> ((p[<span class="number">0</span>] == s[<span class="number">0</span>]) || (p[<span class="number">0</span>] == <span class="string">'.'</span> &amp;&amp; s[<span class="number">0</span>] != <span class="string">'\0'</span>)) &amp;&amp; isMatch(s.substr(<span class="number">1</span>, s.length() - <span class="number">1</span>), p.substr(<span class="number">1</span>, p.length() - <span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//遇到'*',使用while去递归尝试搜索每一种可能的情况</span></span><br><span class="line"><span class="keyword">while</span> ((p[<span class="number">0</span>] == s[<span class="number">0</span>]) || (p[<span class="number">0</span>] == <span class="string">'.'</span> &amp;&amp; s[<span class="number">0</span>] != <span class="string">'\0'</span>))&#123;</span><br><span class="line">	<span class="keyword">if</span> (isMatch(s, p.substr(<span class="number">2</span>,p.length()-<span class="number">2</span>)))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	s=s.substr(<span class="number">1</span>,s.length()-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//跨过'*'的字符</span></span><br><span class="line"><span class="keyword">return</span> isMatch(s, p.substr(<span class="number">2</span>,p.length()-<span class="number">2</span>));</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="leetcode11"><a href="#leetcode11" class="headerlink" title="leetcode11"></a>leetcode11</h4><p>问题：给一组正数数组，任意两个数组元素$a_i,a_j$,使得有最大面积$S=min(a_i,a_j)*(j-i)</p>
+<figure class="highlight processing"><table><tr><td class="code"><pre><span class="line"><span class="comment">//求出最大的装水面积</span></span><br><span class="line">  <span class="built_in">int</span> maxArea(vector&lt;<span class="built_in">int</span>&gt;&amp; <span class="variable">height</span>) &#123;</span><br><span class="line">       <span class="built_in">int</span> start = <span class="number">0</span>;</span><br><span class="line">       <span class="built_in">int</span> end = <span class="variable">height</span>.<span class="built_in">size</span>()-<span class="number">1</span>;</span><br><span class="line">       <span class="built_in">int</span> maxV = INT_MIN;</span><br><span class="line">       <span class="comment">//从两边向中间收拢</span></span><br><span class="line">       <span class="keyword">while</span>(start&lt;end)&#123;</span><br><span class="line"></span><br><span class="line">           <span class="built_in">int</span> contains = <span class="built_in">min</span>(<span class="variable">height</span>[end],<span class="variable">height</span>[start]) * (end-start);</span><br><span class="line">           maxV = <span class="built_in">max</span>(maxV,contains);</span><br><span class="line">           <span class="comment">//左比右的板短，移动左边</span></span><br><span class="line">           <span class="keyword">if</span>(<span class="variable">height</span>[start]&lt;<span class="variable">height</span>[end])</span><br><span class="line">               start++;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               end--;</span><br><span class="line">               </span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> maxV;</span><br></pre></td></tr></table></figure>
+<h4 id="leetcode12"><a href="#leetcode12" class="headerlink" title="leetcode12"></a>leetcode12</h4><p>问题：INTEGER TO ROMAN<br>思路：关键在于罗马数制和阿拉伯数制的映射，分为M,D,C,L,V,I。<br>由罗马字母的数值大小取模匹配。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &gt; <span class="number">0</span> &amp;&amp; num &lt; <span class="number">4000</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">string</span> res = <span class="string">""</span>;</span><br><span class="line">		<span class="comment">//建立映射</span></span><br><span class="line">		<span class="built_in">string</span> symbol[] = &#123; <span class="string">"M"</span>,<span class="string">"CM"</span>,<span class="string">"D"</span>,<span class="string">"CD"</span>,<span class="string">"C"</span>,<span class="string">"XC"</span>,<span class="string">"L"</span>,<span class="string">"XL"</span>,<span class="string">"X"</span>,<span class="string">"IX"</span>,<span class="string">"V"</span>,<span class="string">"IV"</span>,<span class="string">"I"</span> &#125;;</span><br><span class="line">		<span class="keyword">int</span> value[] = &#123; <span class="number">1000</span>, <span class="number">900</span>, <span class="number">500</span>, <span class="number">400</span>, <span class="number">100</span>, <span class="number">90</span>, <span class="number">50</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">1</span> &#125;;</span><br><span class="line">		<span class="keyword">while</span> (num&gt;<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">sizeof</span>(value)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>)); i++)</span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="comment">//将integer由罗马字母的大到小匹配，然后输出</span></span><br><span class="line">				<span class="keyword">if</span> (num / value[i]&gt;<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; (num / value[i]); j++)</span><br><span class="line">						res += symbol[i];</span><br><span class="line">					num %= value[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="leetcode13"><a href="#leetcode13" class="headerlink" title="leetcode13"></a>leetcode13</h4><p>问题：ROMAN TO INTEGER<br>最简思路：罗马字母里，左比右小，则为右减左；左比右大，则为右加左。<br><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">//遍历罗马字串，左和右是指罗马字值M,D,C,<span class="keyword">X</span>,V,I</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">left</span>&lt;righ<span class="variable">t:</span></span><br><span class="line">	<span class="keyword">res</span>+= <span class="keyword">res</span>-<span class="number">2</span>*<span class="keyword">left</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="keyword">res</span>+= <span class="keyword">res</span>+<span class="keyword">right</span>;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//我的思路：先匹配两字的，再匹配一字的</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">string</span> symbol[] = &#123; <span class="string">"M"</span>, <span class="string">"CM"</span>, <span class="string">"D"</span>, <span class="string">"CD"</span>, <span class="string">"C"</span>,<span class="string">"XC"</span>, <span class="string">"L"</span>, <span class="string">"XL"</span>, <span class="string">"X"</span>, <span class="string">"IX"</span>, <span class="string">"V"</span>, <span class="string">"IV"</span>, <span class="string">"I"</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> value[] = &#123; <span class="number">1000</span>, <span class="number">900</span>, <span class="number">500</span>, <span class="number">400</span>, <span class="number">100</span>, <span class="number">90</span>,<span class="number">50</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">1</span> &#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">		<span class="function"><span class="built_in">string</span> <span class="title">match</span><span class="params">(s,i,<span class="number">2</span>)</span></span>;</span><br><span class="line">		<span class="comment">//First find the two in advance</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; (<span class="keyword">sizeof</span>(symbol) / <span class="keyword">sizeof</span>(symbol[<span class="number">0</span>])); j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// match symbol</span></span><br><span class="line">			<span class="keyword">if</span> (match.compare(symbol[j]) == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res += value[j];</span><br><span class="line">				i++;</span><br><span class="line">				flag = <span class="literal">true</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (flag == <span class="literal">true</span>)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		<span class="comment">//find the one then</span></span><br><span class="line">		<span class="function"><span class="built_in">string</span> <span class="title">match1</span><span class="params">(s, i, <span class="number">1</span>)</span></span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; (<span class="keyword">sizeof</span>(symbol) / <span class="keyword">sizeof</span>(symbol[<span class="number">0</span>])); j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (match1.compare(symbol[j]) == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res += value[j];</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (res &gt; <span class="number">0</span> &amp;&amp; res &lt; <span class="number">4000</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="leetcode14"><a href="#leetcode14" class="headerlink" title="leetcode14"></a>leetcode14</h4><p>问题：Longest Common Prefix，求字符串组里面，公共有的前缀子串。<br>思路：这个是公共子串的特例，前缀子串，公共子串的学问很深，可以参考<a href="http://www.cnblogs.com/ider/p/longest-common-substring-problem-optimization.html" target="_blank" rel="external">文章</a>，里面使用一个个起始字符暴力匹配O(N^3),和DP的O(N^2)等。<br>这个问题也十分有用，可以判断字符串的相似度等等，经典的面试题。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//判断边界条件</span></span><br><span class="line">   	<span class="keyword">if</span> (strs.size() == <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (strs.size() == <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">string</span> com = <span class="string">""</span>;</span><br><span class="line">	<span class="built_in">string</span> res = <span class="string">""</span>;</span><br><span class="line">	<span class="comment">//先比较两串</span></span><br><span class="line">	<span class="keyword">int</span> len = strs[<span class="number">0</span>].length() &lt; strs[<span class="number">1</span>].length() ? strs[<span class="number">0</span>].length() : strs[<span class="number">1</span>].length();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (strs[<span class="number">0</span>][i] == strs[<span class="number">1</span>][i])</span><br><span class="line">			com += strs[<span class="number">0</span>][i];</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		    <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (strs.size() == <span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> com;</span><br><span class="line">	<span class="comment">//用common串跟之后每一个串比较，common会越来越短</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; (strs.size()); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		res = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">int</span> len = com.length()&lt;strs[i].length() ? com.length() : strs[i].length();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (com[j] == strs[i][j])</span><br><span class="line">				res += com[j];</span><br><span class="line">			<span class="keyword">else</span> </span><br><span class="line">			    <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		com = res;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/04/13/leetcode7-14/" data-id="cimylefdx001cj6q19kceyhti" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/04/13/leetcode7-14/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/13/leetcode3-6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">leetcode3-6</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/04/13/leetcode7-14/" data-title="leetcode7-14" data-url="https://csrjtan.github.io/2016/04/13/leetcode7-14/"></div>
+  </section>
+</section>
+      
+    </div>
+    <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/leetcode/" style="font-size: 12.5px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/04/13/leetcode7-14/">leetcode7-14</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/29/Summary-Of-Half-Year/">Summary_Of_Half_Year</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">不如</a>
+          </li>
+        
+          <li>
+            <a href="https://openslam.org" target="_blank">OpenSLAM</a>
+          </li>
+        
+          <li>
+            <a href="http://arxiv.org/" target="_blank">Arxiv</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank">中文编程书籍索引</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/sindresorhus/awesome" target="_blank">国外编程资源总览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 CsrjTan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+      <br/>
+       <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+    </div>
+  </div>
+ </footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tanrunj"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
