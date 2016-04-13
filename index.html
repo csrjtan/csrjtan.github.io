@@ -74,6 +74,115 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-leetcode3-6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/13/leetcode3-6/" class="article-date">
+  <time datetime="2016-04-13T06:55:42.000Z" itemprop="datePublished">2016-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#LeetCode_3"><span class="toc-number">1.</span> <span class="toc-text">LeetCode 3</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#AP_1"><span class="toc-number">1.1.</span> <span class="toc-text">AP 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AP_2"><span class="toc-number">1.2.</span> <span class="toc-text">AP 2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AP_3"><span class="toc-number">1.3.</span> <span class="toc-text">AP 3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LEETCODE_4"><span class="toc-number">2.</span> <span class="toc-text">LEETCODE 4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LEETCODE_5"><span class="toc-number">3.</span> <span class="toc-text">LEETCODE 5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LEETCODE_6"><span class="toc-number">4.</span> <span class="toc-text">LEETCODE 6</span></a></li></ol>
+          </div>
+        
+        <h4 id="LeetCode_3"><a href="#LeetCode_3" class="headerlink" title="LeetCode 3"></a>LeetCode 3</h4><p>Ques: Find the length of longest substring without repeating characters.</p>
+<p>思路：用table记录出现char字符的次数，256个ASCII字符初始化为-1.如果遇到重复，则记录在table里面，</p>
+<p>我的代码:<br><figure class="highlight nimrod"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> lengthOfLongestSubstring(<span class="type">string</span> s) &#123;</span><br><span class="line">        <span class="type">int</span> tables[<span class="number">256</span>];</span><br><span class="line">        fill(tables,tables+<span class="number">256</span>,-<span class="number">1</span>);</span><br><span class="line">        <span class="type">int</span> <span class="literal">result</span>=<span class="number">0</span>,lastRepeatedPos=-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            //当找到重复元素且lastRepeatedPos小于找到重复元素的下表时，更新lastRepeatedPos</span><br><span class="line">            <span class="keyword">if</span>(tables[s[i]]!=-<span class="number">1</span>&amp;&amp;lastRepeatedPos&lt;tables[s[i]])</span><br><span class="line">                lastRepeatedPos=tables[s[i]];</span><br><span class="line">                </span><br><span class="line">            //更新最大值</span><br><span class="line">            <span class="literal">result</span>=max(<span class="literal">result</span>,i-lastRepeatedPos);</span><br><span class="line">            //元素插入表中</span><br><span class="line">            tables[s[i]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">result</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>官方解题：<br><a href="https://leetcode.com/articles/longest-substring-without-repeating-characters/" target="_blank" rel="external">LeetCode 3 Solution</a></p>
+<h5 id="AP_1"><a href="#AP_1" class="headerlink" title="AP 1"></a>AP 1</h5><p>暴力破解，但超时了,TC = O(N^3),对于字符串中的每个子串都去扫，是否子串为独立的。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JAVA VERSION</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= n; ++j)</span><br><span class="line">                <span class="keyword">if</span> (allUnique(s, i, j)) ans = Math.max(ans, j - i);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> boolean <span class="title">allUnique</span><span class="params">(String s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        Set&lt;Character&gt; <span class="built_in">set</span> = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; end; ++i) &#123;</span><br><span class="line">            Character ch = s.charAt(start);</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">set</span>.contains(ch)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="built_in">set</span>.add(ch);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="AP_2"><a href="#AP_2" class="headerlink" title="AP 2"></a>AP 2</h5><p>基于上述，我们重复扫了很多子串，假设固定开始位置一个个扫的话，可以减少重复扫串的运算。这样可以使TC = O(N^2),LEFT-CLOSED AND RIGHT OPEN</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SLIDING WINDOW </span></span><br><span class="line"><span class="comment">// JAVA VERSION</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        Set&lt;Character&gt; <span class="built_in">set</span> = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>, i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; n &amp;&amp; j &lt; n) &#123;</span><br><span class="line">            <span class="comment">// try to extend the range [i, j]</span></span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">set</span>.contains(s.charAt(j)))&#123;</span><br><span class="line">                <span class="built_in">set</span>.add(s.charAt(j++));</span><br><span class="line">                ans = Math.max(ans, j - i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">set</span>.remove(s.charAt(i++));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="AP_3"><a href="#AP_3" class="headerlink" title="AP 3"></a>AP 3</h5><p>SLDING WINDOW OPTIMIZED, TC=N = O(N)，SC=m=O(1). m为charset大小<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">       Map&lt;Character, Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> HashMap&lt;&gt;(); <span class="comment">// current index of character</span></span><br><span class="line">       <span class="comment">// try to extend the range [i, j]</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">           <span class="keyword">if</span> (<span class="built_in">map</span>.containsKey(s.charAt(j))) &#123;</span><br><span class="line">               i = Math.max(<span class="built_in">map</span>.get(s.charAt(j)), i);</span><br><span class="line">           &#125;</span><br><span class="line">           ans = Math.max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">           <span class="built_in">map</span>.put(s.charAt(j), j + <span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="LEETCODE_4"><a href="#LEETCODE_4" class="headerlink" title="LEETCODE 4"></a>LEETCODE 4</h4><p>QUES: 找两个有序数组中的中位数<br>解法：1.暴力地将两个数组合并然后排序，直接得到中位数<br>     2.求得数组大小，用堆排的合并方法，找到中位数。 复杂度O(log(m+n))</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// My Code</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l1 = nums1.size();</span><br><span class="line">        <span class="keyword">int</span> l2 = nums2.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l1;i++)</span><br><span class="line">            res.push_back(nums1[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l2;i++)</span><br><span class="line">            res.push_back(nums2[i]);</span><br><span class="line">        sort(res.begin(),res.end());</span><br><span class="line">        <span class="keyword">if</span>(res.size()%<span class="number">2</span>==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">double</span>)(res[(l1+l2-<span class="number">1</span>)&gt;&gt;<span class="number">1</span>]+res[(l1+l2 &gt;&gt;<span class="number">1</span>)])/<span class="number">2.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">double</span>)(res[(l1+l2)&gt;&gt;<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="LEETCODE_5"><a href="#LEETCODE_5" class="headerlink" title="LEETCODE 5"></a>LEETCODE 5</h4><p>问题： 给一个串S,找出其中最长的回文子串</p>
+<p>官方使用DP的方法以及EXPAND AROUNG CENTER，其中我的代码就是EXPAND AROUND CENTER。还有一个Manacher’s Algorithm,它通过在字母间加#和以$作为起始符，使得串不再分为奇偶的情况，有效地统一起来，核心思想还是基于中央字母的展开策略。<br><img src="https://leetcode.com/articles/longest-palindromic-substring/" alt="官方解法"></p>
+<p>我的解法：分为奇偶情况判断，遍历串，寻找以该字符为中心，两边的回文串最大长度，把最长的情况的信息保留，然后返回。TC=O(N^2)</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.length();</span><br><span class="line">        <span class="keyword">int</span> i,j;</span><br><span class="line">        <span class="keyword">int</span> subTempLength=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> subMax=<span class="number">0</span>,subMaxIndex=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span> ; i&lt; len;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//Odd</span></span><br><span class="line">            <span class="keyword">for</span>(j=<span class="number">0</span>;(i-j)&gt;=<span class="number">0</span>&amp;&amp;(i+j)&lt;len;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i-j]!=s[i+j])</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                subTempLength = j*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(subTempLength &gt; subMax)</span><br><span class="line">            &#123;</span><br><span class="line">                subMax = subTempLength;</span><br><span class="line">                subMaxIndex = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//Even</span></span><br><span class="line">            <span class="keyword">for</span>(j=<span class="number">0</span>;(i-j)&gt;=<span class="number">0</span>&amp;&amp;(i+j+<span class="number">1</span>)&lt;len;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i-j]!=s[i+j+<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                subTempLength = j*<span class="number">2</span> +<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(subTempLength &gt; subMax)</span><br><span class="line">            &#123;</span><br><span class="line">                subMax = subTempLength;</span><br><span class="line">                subMaxIndex = i;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> startIndex ;</span><br><span class="line">        <span class="keyword">if</span>(subMax % <span class="number">2</span> ==<span class="number">0</span>)</span><br><span class="line">            startIndex= subMaxIndex - subMax/<span class="number">2</span> +<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            startIndex = subMaxIndex - subMax/<span class="number">2</span>;</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">result</span><span class="params">(s,startIndex,subMax)</span></span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="LEETCODE_6"><a href="#LEETCODE_6" class="headerlink" title="LEETCODE 6"></a>LEETCODE 6</h4><p>问题：ZigZag Conversion<br>一开始没看懂，将串转化成蛇形，然后输出，有点点加密的味道<br>思路：关键理解到蛇形转化的过渡的字母是怎么在数组表示即可<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//My Code</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> nRows)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()==<span class="number">0</span>||nRows &lt;=<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span>(nRows ==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="comment">//蛇形过渡的位置和行的关系</span></span><br><span class="line">        <span class="keyword">int</span> size = <span class="number">2</span> * nRows - <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//逐行输出蛇形字符</span></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nRows;i++)</span><br><span class="line">        &#123;</span><br><span class="line">        	<span class="comment">//根据原长转换</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;s.length();j+=size)</span><br><span class="line">            &#123;	<span class="comment">//输出竖直的字符</span></span><br><span class="line">                res+=s[j];</span><br><span class="line">                <span class="comment">//输出斜形的字符</span></span><br><span class="line">                <span class="keyword">if</span>(i!=<span class="number">0</span>&amp;&amp;i!=nRows-<span class="number">1</span>&amp;&amp; j+size-<span class="number">2</span>*i&lt;s.length())</span><br><span class="line">                    res+=s[j+size-<span class="number">2</span>*i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/04/13/leetcode3-6/" data-id="cimyiprew0024clq1xobd2yzh" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/04/13/leetcode3-6/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode3-14" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/13/leetcode3-14/" class="article-date">
+  <time datetime="2016-04-13T06:55:42.000Z" itemprop="datePublished">2016-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/13/leetcode3-14/">leetcode3~14</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>### </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/04/13/leetcode3-14/" data-id="cimyik9v9001cclq127vsc6ru" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/04/13/leetcode3-14/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/07/leetcode2/" class="article-date">
@@ -112,7 +221,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/03/07/leetcode2/" data-id="cilhm6bhv001e3yq19h7g1fzk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/03/07/leetcode2/" data-id="cimyik9vg001hclq18lf3jccf" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -169,7 +278,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/" data-id="cilhm6bfa000t3yq1qvi8ckc5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/03/06/paper-reading-20160306/" data-id="cimyik9ui000uclq1itj81rud" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -223,7 +332,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="cilhm6bir001t3yq1e2vtthbj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="cimyik9vv001uclq1p6er3all" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -269,7 +378,7 @@
         
         <h3 id="leetcode_26"><a href="#leetcode_26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &#123;</span><br><span class="line">               nums[count] = nums[i];</span><br><span class="line">               count++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> count;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>解题：重新填入整个数组，如果是0或者与前一个值不一样，就直接填入覆盖，直到遍历完整个有序数组。</p>
+<p>解题：重新填入整个数组，如果是0或者与前一个值不一样，就直接填入覆盖，直到遍历完整个有序数组。<br>TC = O(n), SC = O(1)</p>
 <p>今天还完成了<a href="http://pan.baidu.com/s/1o7o6xYy" target="_blank" rel="external">Thesis Writting<br>Collacation</a> 密码：8qjh</p>
 <p>以及<a href="http://pan.baidu.com/s/1i4t00SX" target="_blank" rel="external">DJI PPT</a> 密码：awzd</p>
 <h3 id="leetcode_242_Valid_Anagram"><a href="#leetcode_242_Valid_Anagram" class="headerlink" title="leetcode 242 Valid Anagram"></a>leetcode 242 Valid Anagram</h3><p>题目：判断两个字符串是否为同字母异序<br>思路：1.将字符串转成数组，排序然后比对得到结果<br>      2.计算两个字符串里面的字母的Occurence，用一个26大小的counter数组统计字母出现的次数，当第一个串出现就++，第二个出现就–；最后得到的counter如果全为0，则符合；否则不符合。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isAnagram</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()!=t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; counter;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">           counter.push_back(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            counter[s[i] - <span class="string">'a'</span>]++;</span><br><span class="line">            counter[t[i] - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(counter[i]!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
@@ -281,7 +390,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cilhm6bhr001b3yq148zh1iws" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cimyik9vd001fclq19jdtqxjh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -322,7 +431,7 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Beyond_Compare"><span class="toc-number">1.</span> <span class="toc-text">Beyond Compare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LeetCode1_Two_Sum"><span class="toc-number">2.</span> <span class="toc-text">LeetCode1 Two Sum</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1_3A_Sort_and_Search"><span class="toc-number">2.1.</span> <span class="toc-text">Solution1: Sort and Search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2_3A__u5229_u7528map-find"><span class="toc-number">2.2.</span> <span class="toc-text">Solution2: 利用map.find</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_Vector_u7528_u6CD5"><span class="toc-number">3.</span> <span class="toc-text">c++ Vector用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_map_u7684_u7528_u6CD5"><span class="toc-number">4.</span> <span class="toc-text">c++ map的用法</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Beyond_Compare"><span class="toc-number">1.</span> <span class="toc-text">Beyond Compare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LeetCode1_Two_Sum"><span class="toc-number">2.</span> <span class="toc-text">LeetCode1 Two Sum</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1_3A_Sort_and_Search"><span class="toc-number">2.1.</span> <span class="toc-text">Solution1: Sort and Search</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2_3A__u5229_u7528map-find"><span class="toc-number">2.2.</span> <span class="toc-text">Solution2: 利用map.find</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_Vector_u7528_u6CD5"><span class="toc-number">3.</span> <span class="toc-text">c++ Vector用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_map_u7684_u7528_u6CD5"><span class="toc-number">4.</span> <span class="toc-text">c++ map的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B98_u65B9_u7ED9_u51FA_u89E3_u6CD5"><span class="toc-number">5.</span> <span class="toc-text">官方给出解法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AP_1"><span class="toc-number">5.1.</span> <span class="toc-text">AP 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AP_2"><span class="toc-number">5.2.</span> <span class="toc-text">AP 2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AP_3"><span class="toc-number">5.3.</span> <span class="toc-text">AP 3</span></a></li></ol></li></ol>
           </div>
         
         <p>In order to practise the c++ coding ability and have a prepare for the<br>work interview for the future.I start to do the leetcode in the<br>leisure time.Before that I introduce a code comparing tools: <strong>Beyond<br>Compare </strong></p>
@@ -340,12 +449,16 @@
 <p>所以我们知道map.insert返回的属性是pair(iterator,bool)<br>5.size()，数据遍历<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 演示一下反向迭代器</span></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="built_in">string</span>&gt;::reverse_iterator iter;</span><br><span class="line"><span class="keyword">for</span>(iter=mapStudent.rbegin();iter!=mapStudent.rend();iter++)</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;iter-&gt;first&lt;&lt;<span class="string">" "</span>&lt;&lt;iter-&gt;second&lt;&lt;end;</span><br></pre></td></tr></table></figure></p>
 <p>6.数据查找<br> 6.1 count判断关键字是否出现，是1，否0.<br> 6.2 find,返回一个迭代器，没有则返回end函数迭代器<br> 6.3<br>7.判空empty()和清空clear()<br>以及其他swap,key_comp,value_comp,get_allocator等函数<br>8.数据删除<br>  map.erase(iter) map.erase(key)<br>  map.erase(begin(),end()) //成片删除，前开后闭<br>9.如果key上用自己的结构体，需要重载小于号&lt;,不然无法遍历iterator</p>
 <p>参考链接: <a href="http://blog.csdn.net/bat603/article/details/1456141" target="_blank" rel="external">STL中map的用法详解</a></p>
+<h3 id="u5B98_u65B9_u7ED9_u51FA_u89E3_u6CD5"><a href="#u5B98_u65B9_u7ED9_u51FA_u89E3_u6CD5" class="headerlink" title="官方给出解法"></a>官方给出解法</h3><h4 id="AP_1"><a href="#AP_1" class="headerlink" title="AP 1"></a>AP 1</h4><p>Brute Force 暴力破解,复杂度为 TC=O(N^2),SC=O(1)<br><figure class="highlight aspectj"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> <span class="keyword">target</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] == <span class="keyword">target</span> - nums[i]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, j &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="AP_2"><a href="#AP_2" class="headerlink" title="AP 2"></a>AP 2</h4><p>利用Hash Table，遍历两次,复杂度 TC=O(N),SC=O(1)<br>将元素插入hash_map中，直接使用map.containsKey寻找映射值匹配<br><figure class="highlight processing"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">int</span>[] twoSum(<span class="built_in">int</span>[] nums, <span class="built_in">int</span> target) &#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="built_in">map</span>.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="built_in">int</span> complement = target - nums[i];</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">map</span>.containsKey(complement) &amp;&amp; <span class="built_in">map</span>.<span class="built_in">get</span>(complement) != i) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; i, <span class="built_in">map</span>.<span class="built_in">get</span>(complement) &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="AP_3"><a href="#AP_3" class="headerlink" title="AP 3"></a>AP 3</h4><p>用Hash Table进一步优化，一边插入一边求解，达到一次遍历</p>
+<figure class="highlight processing"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">int</span>[] twoSum(<span class="built_in">int</span>[] nums, <span class="built_in">int</span> target) &#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; <span class="built_in">map</span> = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="built_in">int</span> complement = target - nums[i];</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">map</span>.containsKey(complement)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="built_in">map</span>.<span class="built_in">get</span>(complement), i &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">map</span>.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cilhm6bhz001g3yq18zdugcff" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cimyik9vh001jclq1mang0po8" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -442,7 +555,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cilhm6bj4001y3yq1zkt3u1s7" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cimyik9w30020clq10hn5xg9t" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -499,7 +612,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cilhm6bfe000v3yq15rtq60lr" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cimyik9uk000wclq1ji53t0w3" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -561,7 +674,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cilhm6bj900203yq1vspw7jrj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cimyik9xt0022clq1e22k843j" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -570,140 +683,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-无人机项目" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/26/无人机项目/" class="article-date">
-  <time datetime="2016-01-26T13:29:44.000Z" itemprop="datePublished">2016-01-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/26/无人机项目/">无人机项目</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u5173_u4E8E_u9879_u76EE_u7684_u73B0_u72B6"><span class="toc-number">1.</span> <span class="toc-text">关于项目的现状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5BF9_u4E8E_u9879_u76EE_u672A_u6765_u7684_u6784_u60F3"><span class="toc-number">2.</span> <span class="toc-text">对于项目未来的构想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u6682_u65F6_u5BF9_u4E8E_u9879_u76EE_u7684_u67B6_u6784"><span class="toc-number">3.</span> <span class="toc-text">暂时对于项目的架构</span></a></li></ol>
-          </div>
-        
-        <p>苦苦做了几个月的项目，进展好慢，自己抗拒工程的心一直没有减退，还是自己抗拒进步，克服困难的心呢。</p>
-<h3 id="u5173_u4E8E_u9879_u76EE_u7684_u73B0_u72B6"><a href="#u5173_u4E8E_u9879_u76EE_u7684_u73B0_u72B6" class="headerlink" title="关于项目的现状"></a>关于项目的现状</h3><p>不要畏惧麻烦和困难，用工程和代码以及实验来解决问题，问题是常有的。项目现在复杂度和硬件上遇到不少麻烦，应该尽力去克服。<br>遇到的问题：1.旋翼和妙算未到 2.完成一套基本的操作流程 3.如何有效利用guidance的数据 4.优化slam里面的误差 5.避障和跟踪算法 6.飞行器的有效起飞和控制<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV1.jpg" alt="与崇雨讨论的进展图"></p>
-<h3 id="u5BF9_u4E8E_u9879_u76EE_u672A_u6765_u7684_u6784_u60F3"><a href="#u5BF9_u4E8E_u9879_u76EE_u672A_u6765_u7684_u6784_u60F3" class="headerlink" title="对于项目未来的构想"></a>对于项目未来的构想</h3><p>首先还是要热爱项目，对此充满希望，才能完善完成，首先附上现用的工具，列出接下来努力的方向和目标<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV2.png" alt="项目现状和使用技术"><br>可以看到，接下来可以对无人机的几个经典库进行有效的学习和利用，进行更强的关于理论性的学习。周四Dr.Li shuai的课程，《代码大全》、《C++ Primer》、《算法导论》、《LINUX私房菜》、《OPENCV Code Book》、《统计学习方法》、《PCL学习使用》、《G2O的使用》以及SLAM相关方向的论文，但是好像有点多，所以我觉得代码和工程的能力是首当其冲，理论知识和英语的恶补也应该并驾齐驱。</p>
-<h3 id="u6682_u65F6_u5BF9_u4E8E_u9879_u76EE_u7684_u67B6_u6784"><a href="#u6682_u65F6_u5BF9_u4E8E_u9879_u76EE_u7684_u67B6_u6784" class="headerlink" title="暂时对于项目的架构"></a>暂时对于项目的架构</h3><p>主要是对于算法层上的组织，这几块高效的智能操作应当如何实施<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV3.png" alt="无人机项目的整体架构"><br>是否可以考虑率先完成一个小的demo,进而进行某个点的深入学习研发。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cilhm6be6000c3yq10ag0a78d" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2016/01/26/无人机项目/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-跟G-MAKE和CMAKE奋斗的日子" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" class="article-date">
-  <time datetime="2016-01-22T13:32:29.000Z" itemprop="datePublished">2016-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/">跟G++,MAKE和CMAKE奋斗的日子</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u5982_u4F55_u5B89_u88C5"><span class="toc-number">1.</span> <span class="toc-text">如何安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GCC/G++"><span class="toc-number">2.</span> <span class="toc-text">GCC/G++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MAKE"><span class="toc-number">3.</span> <span class="toc-text">MAKE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMAKE"><span class="toc-number">4.</span> <span class="toc-text">CMAKE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD"><span class="toc-number">5.</span> <span class="toc-text">孟老师的工作介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Noise_Modeling_Principle"><span class="toc-number">5.1.</span> <span class="toc-text">Noise Modeling Principle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Adaptive_Noise_Learning"><span class="toc-number">5.2.</span> <span class="toc-text">Adaptive Noise Learning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Self-Pace_Learning"><span class="toc-number">5.3.</span> <span class="toc-text">Self-Pace Learning</span></a></li></ol></li></ol>
-          </div>
-        
-        <p>很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢<a href="http://blog.atime.me/note/cmake.html" target="_blank" rel="external">MWB</a>,jacker的《Cmake实践》</p>
-<h3 id="u5982_u4F55_u5B89_u88C5"><a href="#u5982_u4F55_u5B89_u88C5" class="headerlink" title="如何安装"></a>如何安装</h3><p>现在用的是G++-4.9：</p>
-<pre><code>sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get install g++-4.9
-cd /usr/bin/
-sudo ln -s g++-4.9 g++ -f
-sudo ln -s gcc-4.9 gcc -f
-</code></pre><p>make应该有自带的，cmake就上官网下载包</p>
-<pre><code>sudo make
-sudo make install
-</code></pre><h3 id="GCC/G++"><a href="#GCC/G++" class="headerlink" title="GCC/G++"></a>GCC/G++</h3><p>经过4步：预处理（预处理器cpp），编译(编译器egcs)，汇编(汇编器as)和链接（连接器ld）</p>
-<pre><code>//预处理
-gcc -E test.c -o test.i   //i文件
-//编译
-gcc -S test.i -o test.s   //s文件
-//汇编
-gcc -c test.s -o test.o   //o文件
-//链接
-gcc test.o -o test        //bin文件
-</code></pre><p>优化等级: -O -O2 -O3<br>包含头： -include  -I<br>链接库：  -l  -L<br>警告信息： -Wall 、 -w 和 -v<br>定义环境变量：D<br>(注意，通常手写链接参数很麻烦，很多库提供链接参数的程序，名字叫xxx-config，放在/usr/bin下<br>于是有了  gcc gtktest.c ‘pkg-confg gtk+ –libs –cflags’<br>–libs定义了链接需要的参数，–cflags是生成头文件包含的目录)</p>
-<p>交叉编译：指本地编译其他平台执行的程序，需要另外用-L和-I来连接库和头文件</p>
-<h3 id="MAKE"><a href="#MAKE" class="headerlink" title="MAKE"></a>MAKE</h3><p>基本语法<br>target : prerequisites<br>    command<br>自动推导以及文件依赖关系后面的命令：看到[.o]文件会自动把[.c]文件加入依赖项。</p>
-<p>GNU的MAKE工作方式：<br>1.读入所有Makefile<br>2.读入被Include的其他makefile<br>3.初始化文件中变量<br>4.推导隐晦规则，分析所有规则<br>5.为所有目标文件创建依赖关系链<br>6.根据依赖，决定哪些目标的生成<br>7.执行生成命令</p>
-<h3 id="CMAKE"><a href="#CMAKE" class="headerlink" title="CMAKE"></a>CMAKE</h3><p>(记下一些关键词)<br>CMAKE架构项目学习<br>基本用法<br>PROJECT<br>自动隐定义 PROJECT_BINARY_DIR和PROJECT_SOURCE_DIR<br>SET(NAME VAR)<br>MESSAGE([STATUS | DEBUG] “string” var)<br>ADD_SUBDIRECTORY(folderName)<br>ADD_EXECUTABLE(targets src_lists)</p>
-<p>make install<br>CMAKE有用的变量 CMAKE_INSTALL_PREFIX<br>INSTALL(FILES file_list DESTINATION folderName)<br>INSTALL(PROGRAMS .sh DESTINATION bin)<br>INSTALL(DIRECTORY doc/ DESTINATION doc)</p>
-<p>生成动态和静态库<br>ADD_LIBRARY(libName [SHARED|STATIC] src_lists)<br>注意：要动态和静态库同名，先用别名生成静态库，再改别名<br>如：ADD_LIBRARY(hello_static STATIC ${LIBHELLO_SRC})<br>SET_TARGET_PROPERTIES(hello_static PROPERTYES OUTPUT_NAME “hello”)</p>
-<p>链接头文件和动态库<br>INCLUDE_DIRECTORIES(folderName)<br>LINK_DIRECTORIES(folderName)</p>
-<p>ADD_EXECUTABLE(main ${SRC_LIST})<br>TARGET_LINK_LIBRARIES(main libNames)</p>
-<p>使用CMAKE_INCLUDE_PATH的环境变量，用FIND_PATH可以轻松找到对应的头文件</p>
-<h3 id="u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD"><a href="#u5B5F_u8001_u5E08_u7684_u5DE5_u4F5C_u4ECB_u7ECD" class="headerlink" title="孟老师的工作介绍"></a>孟老师的工作介绍</h3><p>西安交通大学的<a href="http://www.cs.cmu.edu/~deyum/" target="_blank" rel="external">孟老师</a>数学优化和建模很厉害，给了一下内容的讲座</p>
-<h4 id="Noise_Modeling_Principle"><a href="#Noise_Modeling_Principle" class="headerlink" title="Noise Modeling Principle"></a>Noise Modeling Principle</h4><p>一般ML问题$min_wL(x,\phi(w))+R(w)$<br>然后很多工作围绕正则项R(w)展开优化，L主要是$L_0 , L_1 ,L_P$<br>利用贝叶斯模型来解释，可以将噪声模型与损失函数对应起来，然后就是w和loss func迭代求解收敛，提到了使用混合高斯模型建模，有利于分离Low-rank structure数据的噪声</p>
-<h4 id="Adaptive_Noise_Learning"><a href="#Adaptive_Noise_Learning" class="headerlink" title="Adaptive Noise Learning"></a>Adaptive Noise Learning</h4><p>假设数据都是Low-Rank Structure，然后进行噪声提取分离，目前用在的应用有 1.人脸去噪 2.背景提取 3.HSI去噪 接下来做一些雨雪分离，以及CT医学图像的去噪应用。</p>
-<h4 id="Self-Pace_Learning"><a href="#Self-Pace_Learning" class="headerlink" title="Self-Pace Learning"></a>Self-Pace Learning</h4><p>提到了ML，Cognitive Science和Self-pace Learning的概念，主要原理是让模型学习从易到难，从而筛选掉一些难的数据不进行学习，其中很多的参数和变量应该用非监督的方法自动学习，主要围绕机器学习的方法展开，最后论证一下Self Pace Learning的一些有效性<a href="http://arxiv.org/pdf/1511.06049v1.pdf" target="_blank" rel="external">证明</a>。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cilhm6bdj00043yq17rcdmdq7" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
 
     </footer>
   </div>
@@ -730,7 +709,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stereo-Vision/">Stereo Vision</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/group/">group</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -739,7 +718,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Stereo-Vision/" style="font-size: 10px;">Stereo Vision</a> <a href="/tags/group/" style="font-size: 10px;">group</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/leetcode/" style="font-size: 12.5px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a>
     </div>
   </div>
 
@@ -748,7 +727,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -760,6 +739,14 @@ gcc test.o -o test        //bin文件
       <ul>
         
           <li>
+            <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/13/leetcode3-14/">leetcode3~14</a>
+          </li>
+        
+          <li>
             <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
           </li>
         
@@ -769,14 +756,6 @@ gcc test.o -o test        //bin文件
         
           <li>
             <a href="/2016/02/29/Summary-Of-Half-Year/">Summary_Of_Half_Year</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/26/leetcode26/">leetcode26 &amp; 242 &amp; String</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/26/leetcode1/">leetcode1 with Vecotr and Map</a>
           </li>
         
       </ul>
