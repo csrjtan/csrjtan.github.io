@@ -21,7 +21,7 @@
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 </head>
@@ -101,10 +101,10 @@
             <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C++_u7684_u7F16_u7A0B_u6A21_u5757"><span class="toc-number">1.</span> <span class="toc-text">C++的编程模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u51FD_u6570_u63A2_u5E7D"><span class="toc-number">2.</span> <span class="toc-text">函数探幽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4"><span class="toc-number">3.</span> <span class="toc-text">内存模型和名称空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027"><span class="toc-number">3.1.</span> <span class="toc-text">存储持续性，作用域和链接性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5BF9_u8C61_u548C_u7C7B"><span class="toc-number">4.</span> <span class="toc-text">对象和类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4F7F_u7528_u7C7B"><span class="toc-number">5.</span> <span class="toc-text">使用类</span></a></li></ol>
           </div>
         
-        <h3 id="C++_u7684_u7F16_u7A0B_u6A21_u5757"><a href="#C++_u7684_u7F16_u7A0B_u6A21_u5757" class="headerlink" title="C++的编程模块"></a>C++的编程模块</h3><p>这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。<br><figure class="highlight aspectj"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">functionName</span><span class="params">(parameterList)</span></span><br><span class="line"></span>&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">	statement(s)</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure></p>
+        <h3 id="C++_u7684_u7F16_u7A0B_u6A21_u5757"><a href="#C++_u7684_u7F16_u7A0B_u6A21_u5757" class="headerlink" title="C++的编程模块"></a>C++的编程模块</h3><p>这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。<br><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">void</span> <span class="function"><span class="keyword">function</span><span class="title">Name</span>(<span class="params">parameterList</span>)</span><br><span class="line"></span>&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">	statement(s)</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure></p>
 <p>函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异<br>尽可能使用const:1.可以避免无意间修改数据导致的编程错误 2.能够同时处理const和非const的实参<br>按引用传递结构，还有函数指针的知识，C风格字符串：字符数组，字符串常量和字符串指针，以及string类.</p>
 <h3 id="u51FD_u6570_u63A2_u5E7D"><a href="#u51FD_u6570_u63A2_u5E7D" class="headerlink" title="函数探幽"></a>函数探幽</h3><p>内联函数、按引用传递、默认参数值、函数重载以及模板函数<br>C++新增加一种右值引用。返回引用时，避免返回函数终止则不再存在的内存单元引用</p>
-<p>函数模板<br><figure class="highlight nimrod"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;typename <span class="type">AnyType</span>&gt;</span><br><span class="line"><span class="type">void</span> <span class="type">Swap</span>(<span class="type">AnyType</span> &amp;a,<span class="type">AnyType</span> &amp;b)</span><br><span class="line">&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">	<span class="type">AnyType</span> temp;</span><br><span class="line">	temp = a;</span><br><span class="line">	a = b;</span><br><span class="line">	b = temp;</span><br><span class="line">&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure></p>
+<p>函数模板<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">template&lt;typename AnyType&gt;</span><br><span class="line">void <span class="keyword">Swap(AnyType </span>&amp;a,AnyType &amp;<span class="keyword">b)</span><br><span class="line"></span>&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">	AnyType temp<span class="comment">;</span></span><br><span class="line">	temp = a<span class="comment">;</span></span><br><span class="line">	a = <span class="keyword">b;</span><br><span class="line"></span>	<span class="keyword">b </span>= temp<span class="comment">;</span></span><br><span class="line">&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure></p>
 <p>模板匹配的过程：1.创建候选函数列表 2.使用候选函数列表创建可行函数列表 3.确定是否有最佳可行函数<br>最佳到最差匹配顺序：1.完全匹配 2.提升转换 3.标准转换 4.用户定义转换</p>
 <h3 id="u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4"><a href="#u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4" class="headerlink" title="内存模型和名称空间"></a>内存模型和名称空间</h3><p>单独编译，将头文件和结构文件以及程序文件分开，头文件使用防护(guarding)方案，避免文件定义结构两次。（不同编译器创建的二进制模块很可能无法正确地链接，可以拿到源码后重新编译连接解决问题）</p>
 <h4 id="u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027"><a href="#u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027" class="headerlink" title="存储持续性，作用域和链接性"></a>存储持续性，作用域和链接性</h4><p>自动存储持续性：自动默认的变量，在块内或者函数生命周期里存在<br>静态存储持续性：static定义变量在程序运行过程中都存在<br>线程存储持续性（c++11):thread_local变量生命周期与线程一样长<br>动态存储持续性：用new分配的内存，直到delete才释放</p>
@@ -119,7 +119,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cior7huoa0026htq1pao13ezl" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cior7tl1q000az3q1496fkjco" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -172,7 +172,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cior7huld000chtq1qglmf52q" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cior7tl4c0025z3q1bjmi4e5f" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -255,7 +255,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cior7hukz0004htq1nboa0wr9" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cior7tl4a0023z3q1e7jide7z" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -312,7 +312,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cior7hunr001thtq1h2p4p1a2" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cior7tl22000iz3q1ft5uykhu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -373,7 +373,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cior7hum9000yhtq1m2xr7zow" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cior7tl360017z3q16lea6qqy" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -425,7 +425,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cior7huls000mhtq14vrtd78w" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cior7tl460020z3q1ytuqo7r0" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -493,7 +493,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cior7humb0010htq1iifxhbjg" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cior7tl340015z3q1nnbi5j61" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -545,7 +545,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cior7hulb000ahtq1rwn6vkjw" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cior7tl3y001tz3q1f5izphej" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -609,7 +609,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cior7huo40021htq10ibvaw07" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cior7tl190003z3q15w1mkzo1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -668,7 +668,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cior7huo20020htq1hqrueelv" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cior7tl1i0006z3q1o2hv4rgj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -889,7 +889,7 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
 </div>
 <!-- mathjax config similar to math.stackexchange -->
