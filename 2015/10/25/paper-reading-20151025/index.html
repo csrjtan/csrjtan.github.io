@@ -101,7 +101,7 @@
           </div>
         
         <p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
-<h4 id="2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><a href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br>5.Post-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
+<h4 id="2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A"><a href="#2-1_Area_Correlation__u8FD9_u7BC7_u6587_u7AE0_u7684StereoMatching_u4E3B_u8981_u5E94_u7528_u5728_u79FB_u52A8_u673A_u5668_u4EBA_u4E0A_uFF0C_u5B83_u7528_u5230_u7684_u533A_u57DF_u5173_u8054_u6B65_u9AA4_u6709_u4E94_uFF1A" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br><a href="http://5.Post" class="test test-url" target="_blank" rel="noopener noreferrer">5.Post</a>-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
 <h4 id="2-2_Epipolar_Geometry"><a href="#2-2_Epipolar_Geometry" class="headerlink" title="2.2 Epipolar Geometry"></a>2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
 <p>实际应用中，不断计算标定不实际，只能确定内参数后，再根据偏差进行自动标定。</p>
 <h3 id="3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5"><a href="#3-_u8BE5_u8BBA_u6587_u7CFB_u7EDF_u7684_u7B97_u6CD5" class="headerlink" title="3.该论文系统的算法"></a>3.该论文系统的算法</h3><p>1.LOG滤波去噪，用L1绝对值比较<br>2.进行深度搜索<br>3.后处理，去除奇异点，使用左右和右左校验<br>4.使用X4的插值</p>
@@ -111,7 +111,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cin4ek7h800148zq15okidlwk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cior7humf0014htq1d1jde5qb" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -285,7 +285,7 @@ var duoshuoQuery = {short_name:"tanrunj"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
     ds.charset = 'UTF-8';
     (document.getElementsByTagName('head')[0]
      || document.getElementsByTagName('body')[0]).appendChild(ds);
@@ -305,7 +305,7 @@ var duoshuoQuery = {short_name:"tanrunj"};
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
 
 <!-- 百度分享 end -->
 

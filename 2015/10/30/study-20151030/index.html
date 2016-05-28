@@ -120,7 +120,7 @@ sudo tlmgr install latexmk
 <pre><code>&quot;program&quot; : &quot;xelatex&quot;,
 &quot;command&quot; : [&quot;latexmk&quot;, &quot;-cd&quot;, &quot;-e&quot;, &quot;$pdflatex = &apos;xelatex -interaction=nonstopmode -synctex=1 %S %O&apos;&quot;, &quot;-f&quot;, &quot;-pdf&quot;],
 </code></pre><p>最后LaTeXTools–Reconfigure LaTeXTools and migragte setttings来重建配置文件。</p>
-<p>6.调用系统默认的Review来打开PDF，修改<br>    ~/Library/Application\ Support/Sublime\ Text/Packages/LaTeXTools/jumpToPDF.py,<br>将<code>if plat==&#39;darwub&#39;:</code>后的if-else语句注释，换成<code>subprocess.Popen([&#39;open&#39;]+[pdffile])</code></p>
+<p>6.调用系统默认的Review来打开PDF，修改<br>    ~/Library/Application\ Support/Sublime\ Text/Packages/LaTeXTools/<a href="http://jumpToPDF.py" class="test test-url" target="_blank" rel="noopener noreferrer">jumpToPDF.py</a>,<br>将<code>if plat==&#39;darwub&#39;:</code>后的if-else语句注释，换成<code>subprocess.Popen([&#39;open&#39;]+[pdffile])</code></p>
 <p>7.使用以下测试代码，在ST2上新建.tex文件，然后command+B</p>
 <pre><code>\documentclass{article}
 \usepackage{fontspec, xunicode, xltxtra}  
@@ -144,7 +144,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cin4ek7gf000o8zq12er32pbi" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cior7hulw000ohtq1ygfedo2y" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -316,7 +316,7 @@ var duoshuoQuery = {short_name:"tanrunj"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
     ds.charset = 'UTF-8';
     (document.getElementsByTagName('head')[0]
      || document.getElementsByTagName('body')[0]).appendChild(ds);
@@ -336,7 +336,7 @@ var duoshuoQuery = {short_name:"tanrunj"};
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
 
 <!-- 百度分享 end -->
 
