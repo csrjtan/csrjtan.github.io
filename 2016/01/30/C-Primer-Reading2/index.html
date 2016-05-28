@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="C++的编程模块这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。void functionName(parameterList)&amp;#123;	statement(s)	return ;&amp;#125;
 函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异尽可能使用const:1">
-<meta property="og:updated_time" content="2016-01-30T12:02:05.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:26:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++_Primer_Reading2">
 <meta name="twitter:description" content="C++的编程模块这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。void functionName(parameterList)&amp;#123;	statement(s)	return ;&amp;#125;
@@ -23,7 +23,7 @@
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -50,6 +50,12 @@
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -82,6 +88,10 @@
   <time datetime="2016-01-30T08:05:37.000Z" itemprop="datePublished">2016-01-30</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Read/">Read</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -100,28 +110,28 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C++_u7684_u7F16_u7A0B_u6A21_u5757"><span class="toc-number">1.</span> <span class="toc-text">C++的编程模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u51FD_u6570_u63A2_u5E7D"><span class="toc-number">2.</span> <span class="toc-text">函数探幽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4"><span class="toc-number">3.</span> <span class="toc-text">内存模型和名称空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027"><span class="toc-number">3.1.</span> <span class="toc-text">存储持续性，作用域和链接性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5BF9_u8C61_u548C_u7C7B"><span class="toc-number">4.</span> <span class="toc-text">对象和类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4F7F_u7528_u7C7B"><span class="toc-number">5.</span> <span class="toc-text">使用类</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-的编程模块"><span class="toc-number">1.</span> <span class="toc-text">C++的编程模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数探幽"><span class="toc-number">2.</span> <span class="toc-text">函数探幽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存模型和名称空间"><span class="toc-number">3.</span> <span class="toc-text">内存模型和名称空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储持续性，作用域和链接性"><span class="toc-number">3.1.</span> <span class="toc-text">存储持续性，作用域和链接性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象和类"><span class="toc-number">4.</span> <span class="toc-text">对象和类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用类"><span class="toc-number">5.</span> <span class="toc-text">使用类</span></a></li></ol>
           </div>
         
-        <h3 id="C++_u7684_u7F16_u7A0B_u6A21_u5757"><a href="#C++_u7684_u7F16_u7A0B_u6A21_u5757" class="headerlink" title="C++的编程模块"></a>C++的编程模块</h3><p>这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。<br><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">void</span> <span class="function"><span class="keyword">function</span><span class="title">Name</span>(<span class="params">parameterList</span>)</span><br><span class="line"></span>&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">	statement(s)</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure></p>
+        <h3 id="C-的编程模块"><a href="#C-的编程模块" class="headerlink" title="C++的编程模块"></a>C++的编程模块</h3><p>这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。<br><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">void</span> <span class="function"><span class="keyword">function</span><span class="title">Name</span>(<span class="params">parameterList</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	statement(s)</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异<br>尽可能使用const:1.可以避免无意间修改数据导致的编程错误 2.能够同时处理const和非const的实参<br>按引用传递结构，还有函数指针的知识，C风格字符串：字符数组，字符串常量和字符串指针，以及string类.</p>
-<h3 id="u51FD_u6570_u63A2_u5E7D"><a href="#u51FD_u6570_u63A2_u5E7D" class="headerlink" title="函数探幽"></a>函数探幽</h3><p>内联函数、按引用传递、默认参数值、函数重载以及模板函数<br>C++新增加一种右值引用。返回引用时，避免返回函数终止则不再存在的内存单元引用</p>
-<p>函数模板<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">template&lt;typename AnyType&gt;</span><br><span class="line">void <span class="keyword">Swap(AnyType </span>&amp;a,AnyType &amp;<span class="keyword">b)</span><br><span class="line"></span>&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">	AnyType temp<span class="comment">;</span></span><br><span class="line">	temp = a<span class="comment">;</span></span><br><span class="line">	a = <span class="keyword">b;</span><br><span class="line"></span>	<span class="keyword">b </span>= temp<span class="comment">;</span></span><br><span class="line">&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="函数探幽"><a href="#函数探幽" class="headerlink" title="函数探幽"></a>函数探幽</h3><p>内联函数、按引用传递、默认参数值、函数重载以及模板函数<br>C++新增加一种右值引用。返回引用时，避免返回函数终止则不再存在的内存单元引用</p>
+<p>函数模板<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">template&lt;typename AnyType&gt;</span><br><span class="line">void <span class="keyword">Swap(AnyType </span>&amp;a,AnyType &amp;<span class="keyword">b)</span><br><span class="line"></span>&#123;</span><br><span class="line">	AnyType temp<span class="comment">;</span></span><br><span class="line">	temp = a<span class="comment">;</span></span><br><span class="line">	a = <span class="keyword">b;</span><br><span class="line"></span>	<span class="keyword">b </span>= temp<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>模板匹配的过程：1.创建候选函数列表 2.使用候选函数列表创建可行函数列表 3.确定是否有最佳可行函数<br>最佳到最差匹配顺序：1.完全匹配 2.提升转换 3.标准转换 4.用户定义转换</p>
-<h3 id="u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4"><a href="#u5185_u5B58_u6A21_u578B_u548C_u540D_u79F0_u7A7A_u95F4" class="headerlink" title="内存模型和名称空间"></a>内存模型和名称空间</h3><p>单独编译，将头文件和结构文件以及程序文件分开，头文件使用防护(guarding)方案，避免文件定义结构两次。（不同编译器创建的二进制模块很可能无法正确地链接，可以拿到源码后重新编译连接解决问题）</p>
-<h4 id="u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027"><a href="#u5B58_u50A8_u6301_u7EED_u6027_uFF0C_u4F5C_u7528_u57DF_u548C_u94FE_u63A5_u6027" class="headerlink" title="存储持续性，作用域和链接性"></a>存储持续性，作用域和链接性</h4><p>自动存储持续性：自动默认的变量，在块内或者函数生命周期里存在<br>静态存储持续性：static定义变量在程序运行过程中都存在<br>线程存储持续性（c++11):thread_local变量生命周期与线程一样长<br>动态存储持续性：用new分配的内存，直到delete才释放</p>
+<h3 id="内存模型和名称空间"><a href="#内存模型和名称空间" class="headerlink" title="内存模型和名称空间"></a>内存模型和名称空间</h3><p>单独编译，将头文件和结构文件以及程序文件分开，头文件使用防护(guarding)方案，避免文件定义结构两次。（不同编译器创建的二进制模块很可能无法正确地链接，可以拿到源码后重新编译连接解决问题）</p>
+<h4 id="存储持续性，作用域和链接性"><a href="#存储持续性，作用域和链接性" class="headerlink" title="存储持续性，作用域和链接性"></a>存储持续性，作用域和链接性</h4><p>自动存储持续性：自动默认的变量，在块内或者函数生命周期里存在<br>静态存储持续性：static定义变量在程序运行过程中都存在<br>线程存储持续性（c++11):thread_local变量生命周期与线程一样长<br>动态存储持续性：用new分配的内存，直到delete才释放</p>
 <p>静态变量的三种链接性：1.外部链接性（其他文件中访问）extern 关键字表示使用外部变量。  2.内部链接性（当前文件访问） 3.无链接性（函数或块内访问）</p>
 <p>组织项目策略：头文件定义用户类型，为操纵类型的函数提供原型；源代码文件放置对应函数的定义；main和调用这些函数的函数放在第三文件上。</p>
 <p>为了减少命名冲突，引入了命名空间的概念，空间还能嵌套</p>
-<h3 id="u5BF9_u8C61_u548C_u7C7B"><a href="#u5BF9_u8C61_u548C_u7C7B" class="headerlink" title="对象和类"></a>对象和类</h3><p>突出显示OOP特性：抽象；封装和数据隐藏；多态；继承以及代码的可重用性。<br>接口是共享框架，供两个系统交互时使用的。<br>类的构造函数和析构函数，列表初始化参数，this指针，枚举结构体等。</p>
-<h3 id="u4F7F_u7528_u7C7B"><a href="#u4F7F_u7528_u7C7B" class="headerlink" title="使用类"></a>使用类</h3><p>运算符重载，友元函数，重载&lt;&lt;，状态成员，类的自动转换和强制类型转换。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ClassName ClassName::<span class="keyword">operator</span>+ (<span class="keyword">const</span> ClassName &amp; c) <span class="keyword">const</span> &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h3><p>突出显示OOP特性：抽象；封装和数据隐藏；多态；继承以及代码的可重用性。<br>接口是共享框架，供两个系统交互时使用的。<br>类的构造函数和析构函数，列表初始化参数，this指针，枚举结构体等。</p>
+<h3 id="使用类"><a href="#使用类" class="headerlink" title="使用类"></a>使用类</h3><p>运算符重载，友元函数，重载&lt;&lt;，状态成员，类的自动转换和强制类型转换。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ClassName ClassName::<span class="keyword">operator</span>+ (<span class="keyword">const</span> ClassName &amp; c) <span class="keyword">const</span> &#123;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>重载限制：1.至少一个操作数是用户定义类型 2.使用运算符时不能违反运算符原来的句法规则 3.不能创建新运算符 4.不能重载sizeof . * :: ?: typeid const_cast static_cast 5.= () [] -&gt;只能通过成员函数进行重载 6.一般用友元重载&lt;&lt;<br>对于类的总结：相对于简单C-风格，使用类必须谨慎和小心，作为补偿，它为我们完成更多工作</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cior7tl1q000az3q1496fkjco" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cior8xp6r0002gvq1bzrikvyc" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -169,12 +179,19 @@
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -183,7 +200,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -192,7 +209,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -204,6 +221,14 @@
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -213,14 +238,6 @@
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -278,6 +295,12 @@
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

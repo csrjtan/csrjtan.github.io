@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://csrjtan.github.io/2016/03/07/leetcode2/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="leetcode2:Add Two NumbersI:(2-&amp;gt;4-&amp;gt;3)+(5-&amp;gt;6-&amp;gt;4)O:(7-&amp;gt;0-&amp;gt;8)原则：有进位往后增加，无则扩展/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     L">
-<meta property="og:updated_time" content="2016-03-07T06:41:28.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:26:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode2&3">
 <meta name="twitter:description" content="leetcode2:Add Two NumbersI:(2-&amp;gt;4-&amp;gt;3)+(5-&amp;gt;6-&amp;gt;4)O:(7-&amp;gt;0-&amp;gt;8)原则：有进位往后增加，无则扩展/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     L">
@@ -20,7 +20,7 @@
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -47,6 +47,12 @@
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -79,6 +85,10 @@
   <time datetime="2016-03-07T05:59:56.000Z" itemprop="datePublished">2016-03-07</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -97,21 +107,21 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode2_3AAdd_Two_Numbers"><span class="toc-number">1.</span> <span class="toc-text">leetcode2:Add Two Numbers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode3_3ALongest_Substring_Without_Repeating_Characters"><span class="toc-number">2.</span> <span class="toc-text">leetcode3:Longest Substring Without Repeating Characters</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std_3A_3Afill_u7528_u6CD5"><span class="toc-number">2.1.</span> <span class="toc-text">std::fill用法</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode2-Add-Two-Numbers"><span class="toc-number">1.</span> <span class="toc-text">leetcode2:Add Two Numbers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode3-Longest-Substring-Without-Repeating-Characters"><span class="toc-number">2.</span> <span class="toc-text">leetcode3:Longest Substring Without Repeating Characters</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std-fill用法"><span class="toc-number">2.1.</span> <span class="toc-text">std::fill用法</span></a></li></ol></li></ol>
           </div>
         
-        <h3 id="leetcode2_3AAdd_Two_Numbers"><a href="#leetcode2_3AAdd_Two_Numbers" class="headerlink" title="leetcode2:Add Two Numbers"></a>leetcode2:Add Two Numbers</h3><p>I:(2-&gt;4-&gt;3)+(5-&gt;6-&gt;4)<br>O:(7-&gt;0-&gt;8)<br>原则：有进位往后增加，无则扩展<br><figure class="highlight ocaml"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.</span><br><span class="line"> * <span class="keyword">struct</span> <span class="type">ListNode</span> &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line"> *     <span class="built_in">int</span> <span class="keyword">val</span>;</span><br><span class="line"> *     <span class="type">ListNode</span> *next;</span><br><span class="line"> *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line"> * &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;;</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">class</span> <span class="type">Solution</span> &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">public:</span><br><span class="line">    <span class="type">ListNode</span>* addTwoNumbers(<span class="type">ListNode</span>* l1, <span class="type">ListNode</span>* l2) &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">        <span class="type">ListNode</span> dummy(<span class="number">0</span>);</span><br><span class="line">        <span class="type">ListNode</span>* p = &amp;dummy;</span><br><span class="line">        <span class="built_in">int</span> cn=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l1||l2)&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">            <span class="built_in">int</span> <span class="keyword">val</span> = cn+(l1?l1-&gt;<span class="keyword">val</span>:<span class="number">0</span>)+(l2?l2-&gt;<span class="keyword">val</span>:<span class="number">0</span>);</span><br><span class="line">            cn = <span class="keyword">val</span>/<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">val</span> = <span class="keyword">val</span>%<span class="number">10</span>;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(<span class="keyword">val</span>);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l1)</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l2)</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">        <span class="keyword">if</span>(cn!=<span class="number">0</span>)&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(cn);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">        return dummy.next;</span><br><span class="line">    &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">&<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="leetcode3_3ALongest_Substring_Without_Repeating_Characters"><a href="#leetcode3_3ALongest_Substring_Without_Repeating_Characters" class="headerlink" title="leetcode3:Longest Substring Without Repeating Characters"></a>leetcode3:Longest Substring Without Repeating Characters</h3><p>问题：寻找最大不重复字母的子串长度<br>解法：1.从每个元素找起始无重复字符串，时间复杂度为O(n^3)<br>      2.将没出现的字母放入set，当重复字母出现时，把已有之前的set的字母移除，并记录最长的子串长度<br>      3.用数组不用Map,直接定义一个变量来保存无重复字符串的第一个字符的下标，碰到重复的就更新下标</p>
-<figure class="highlight q"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> lengthOfLongestSubstring(<span class="built_in">string</span> s) &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">        <span class="type">int</span> <span class="built_in">tables</span>[<span class="number">256</span>];</span><br><span class="line">        fill(<span class="built_in">tables</span>,<span class="built_in">tables</span>+<span class="number">256</span>,<span class="number">-1</span>);</span><br><span class="line">        <span class="type">int</span> result=<span class="number">0</span>,lastRepeatedPos=<span class="number">-1</span>;</span><br><span class="line">        for(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">            <span class="comment">//当找到重复元素且lastRepeatedPos小于找到重复元素的下表时，更新lastRepeatedPos</span></span><br><span class="line">            if(<span class="built_in">tables</span>[s[i]]!=<span class="number">-1</span>&amp;&amp;lastRepeatedPos&lt;<span class="built_in">tables</span>[s[i]])</span><br><span class="line">                lastRepeatedPos=<span class="built_in">tables</span>[s[i]];</span><br><span class="line">                </span><br><span class="line">            <span class="comment">//更新最大值</span></span><br><span class="line">            result=<span class="built_in">max</span>(result,i-lastRepeatedPos);</span><br><span class="line">            <span class="comment">//元素插入表中</span></span><br><span class="line">            <span class="built_in">tables</span>[s[i]]=i;</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">        return result;</span><br><span class="line">    &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure>
+        <h3 id="leetcode2-Add-Two-Numbers"><a href="#leetcode2-Add-Two-Numbers" class="headerlink" title="leetcode2:Add Two Numbers"></a>leetcode2:Add Two Numbers</h3><p>I:(2-&gt;4-&gt;3)+(5-&gt;6-&gt;4)<br>O:(7-&gt;0-&gt;8)<br>原则：有进位往后增加，无则扩展<br><figure class="highlight ocaml"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.</span><br><span class="line"> * <span class="keyword">struct</span> <span class="type">ListNode</span> &#123;</span><br><span class="line"> *     <span class="built_in">int</span> <span class="keyword">val</span>;</span><br><span class="line"> *     <span class="type">ListNode</span> *next;</span><br><span class="line"> *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">class</span> <span class="type">Solution</span> &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="type">ListNode</span>* addTwoNumbers(<span class="type">ListNode</span>* l1, <span class="type">ListNode</span>* l2) &#123;</span><br><span class="line">        <span class="type">ListNode</span> dummy(<span class="number">0</span>);</span><br><span class="line">        <span class="type">ListNode</span>* p = &amp;dummy;</span><br><span class="line">        <span class="built_in">int</span> cn=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l1||l2)&#123;</span><br><span class="line">            <span class="built_in">int</span> <span class="keyword">val</span> = cn+(l1?l1-&gt;<span class="keyword">val</span>:<span class="number">0</span>)+(l2?l2-&gt;<span class="keyword">val</span>:<span class="number">0</span>);</span><br><span class="line">            cn = <span class="keyword">val</span>/<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">val</span> = <span class="keyword">val</span>%<span class="number">10</span>;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(<span class="keyword">val</span>);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l1)</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l2)</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cn!=<span class="number">0</span>)&#123;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(cn);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="leetcode3-Longest-Substring-Without-Repeating-Characters"><a href="#leetcode3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="leetcode3:Longest Substring Without Repeating Characters"></a>leetcode3:Longest Substring Without Repeating Characters</h3><p>问题：寻找最大不重复字母的子串长度<br>解法：1.从每个元素找起始无重复字符串，时间复杂度为O(n^3)<br>      2.将没出现的字母放入set，当重复字母出现时，把已有之前的set的字母移除，并记录最长的子串长度<br>      3.用数组不用Map,直接定义一个变量来保存无重复字符串的第一个字符的下标，碰到重复的就更新下标</p>
+<figure class="highlight q"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> lengthOfLongestSubstring(<span class="built_in">string</span> s) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="built_in">tables</span>[<span class="number">256</span>];</span><br><span class="line">        fill(<span class="built_in">tables</span>,<span class="built_in">tables</span>+<span class="number">256</span>,<span class="number">-1</span>);</span><br><span class="line">        <span class="type">int</span> result=<span class="number">0</span>,lastRepeatedPos=<span class="number">-1</span>;</span><br><span class="line">        for(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//当找到重复元素且lastRepeatedPos小于找到重复元素的下表时，更新lastRepeatedPos</span></span><br><span class="line">            if(<span class="built_in">tables</span>[s[i]]!=<span class="number">-1</span>&amp;&amp;lastRepeatedPos&lt;<span class="built_in">tables</span>[s[i]])</span><br><span class="line">                lastRepeatedPos=<span class="built_in">tables</span>[s[i]];</span><br><span class="line">                </span><br><span class="line">            <span class="comment">//更新最大值</span></span><br><span class="line">            result=<span class="built_in">max</span>(result,i-lastRepeatedPos);</span><br><span class="line">            <span class="comment">//元素插入表中</span></span><br><span class="line">            <span class="built_in">tables</span>[s[i]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>总结：对于一个字符串，如果未出现重复，则该值放入数组中，由于ASCII最多有256种符号，则放入一个大小为256的数组里；如果出现重复的字母，即不为默认的-1，且第一个字符下标比这个重复字母下标小，则更新下标以及最长长度，并将该长度放入对应符号的数组值里。</p>
-<h4 id="std_3A_3Afill_u7528_u6CD5"><a href="#std_3A_3Afill_u7528_u6CD5" class="headerlink" title="std::fill用法"></a>std::fill用法</h4><p>void fill(first,last,val);<br>fill(array,array+n,element);</p>
+<h4 id="std-fill用法"><a href="#std-fill用法" class="headerlink" title="std::fill用法"></a>std::fill用法</h4><p>void fill(first,last,val);<br>fill(array,array+n,element);</p>
 <p>memset(array,array+n,element);</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/03/07/leetcode2/" data-id="cior7tl2d000kz3q147oae7po" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/03/07/leetcode2/" data-id="cior8xp8b000ogvq1otxv5k1y" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -159,12 +169,19 @@
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -173,7 +190,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -182,7 +199,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -194,6 +211,14 @@
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -203,14 +228,6 @@
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -268,6 +285,12 @@
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

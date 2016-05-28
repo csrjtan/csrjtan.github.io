@@ -15,7 +15,7 @@
 <meta property="og:description" content="原文：Click作者：Jungong Han,Ling Shao
 这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-20activity_recog.png">
-<meta property="og:updated_time" content="2015-10-28T14:40:03.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:27:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》">
 <meta name="twitter:description" content="原文：Click作者：Jungong Han,Ling Shao
@@ -25,7 +25,7 @@
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -52,6 +52,12 @@
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -84,6 +90,10 @@
   <time datetime="2015-08-18T07:26:29.000Z" itemprop="datePublished">2015-08-18</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -102,11 +112,11 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u8FD9_u4E2A_u8BBA_u6587_u4E3B_u8981_u7B80_u4ECB_u4E00_u4E9B_u57FA_u4E8EKinect_u7684_u8BA1_u7B97_u673A_u89C6_u89C9_u7B97_u6CD5_u548C_u5E94_u7528_uFF0C_u6DB5_u76D6_u4E86_u5305_u62EC_u6DF1_u5EA6_u4FE1_u606F_u7684_u9884_u5904_u7406_uFF0CKinect_u7684_u7CBE_u786E_u6807_u5B9A_uFF1B_u7269_u4F53_u8DDF_u8E2A_u548C_u8BC6_u522B_uFF1B_u4EBA_u7C7B_u6D3B_u52A8_u5206_u6790_u548C_u624B_u52BF_u5206_u6790_u4EE5_u53CA_u5BA4_u51853D_u5339_u914D_u3002"><span class="toc-number">1.</span> <span class="toc-text">这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-_u5BA4_u51853D_u5339_u914D"><span class="toc-number"></span> <span class="toc-text">5.室内3D匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-_u7A00_u758F_uFF08sparse_uFF09_u7279_u5F81_u5339_u914D"><span class="toc-number">1.</span> <span class="toc-text">A.稀疏（sparse）特征匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-_u5BC6_u96C6_u70B9_u4E91_u5339_u914D_uFF08Dense_points_tracking_between_two_frames_uFF09"><span class="toc-number">2.</span> <span class="toc-text">B.密集点云匹配（Dense points tracking between two frames）</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。"><span class="toc-number">1.</span> <span class="toc-text">这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-室内3D匹配"><span class="toc-number"></span> <span class="toc-text">5.室内3D匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-稀疏（sparse）特征匹配"><span class="toc-number">1.</span> <span class="toc-text">A.稀疏（sparse）特征匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-密集点云匹配（Dense-points-tracking-between-two-frames）"><span class="toc-number">2.</span> <span class="toc-text">B.密集点云匹配（Dense points tracking between two frames）</span></a></li></ol>
           </div>
         
         <p>原文：<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6547194" target="_blank" rel="external">Click</a><br>作者：Jungong Han,Ling Shao</p>
-<h3 id="u8FD9_u4E2A_u8BBA_u6587_u4E3B_u8981_u7B80_u4ECB_u4E00_u4E9B_u57FA_u4E8EKinect_u7684_u8BA1_u7B97_u673A_u89C6_u89C9_u7B97_u6CD5_u548C_u5E94_u7528_uFF0C_u6DB5_u76D6_u4E86_u5305_u62EC_u6DF1_u5EA6_u4FE1_u606F_u7684_u9884_u5904_u7406_uFF0CKinect_u7684_u7CBE_u786E_u6807_u5B9A_uFF1B_u7269_u4F53_u8DDF_u8E2A_u548C_u8BC6_u522B_uFF1B_u4EBA_u7C7B_u6D3B_u52A8_u5206_u6790_u548C_u624B_u52BF_u5206_u6790_u4EE5_u53CA_u5BA4_u51853D_u5339_u914D_u3002"><a href="#u8FD9_u4E2A_u8BBA_u6587_u4E3B_u8981_u7B80_u4ECB_u4E00_u4E9B_u57FA_u4E8EKinect_u7684_u8BA1_u7B97_u673A_u89C6_u89C9_u7B97_u6CD5_u548C_u5E94_u7528_uFF0C_u6DB5_u76D6_u4E86_u5305_u62EC_u6DF1_u5EA6_u4FE1_u606F_u7684_u9884_u5904_u7406_uFF0CKinect_u7684_u7CBE_u786E_u6807_u5B9A_uFF1B_u7269_u4F53_u8DDF_u8E2A_u548C_u8BC6_u522B_uFF1B_u4EBA_u7C7B_u6D3B_u52A8_u5206_u6790_u548C_u624B_u52BF_u5206_u6790_u4EE5_u53CA_u5BA4_u51853D_u5339_u914D_u3002" class="headerlink" title="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。"></a>这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3><a id="more"></a>
+<h3 id="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。"><a href="#这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。" class="headerlink" title="这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。"></a>这个论文主要简介一些基于Kinect的计算机视觉算法和应用，涵盖了包括深度信息的预处理，Kinect的精确标定；物体跟踪和识别；人类活动分析和手势分析以及室内3D匹配。</h3><a id="more"></a>
 <p>这是一篇全面介绍RGB-D 技术进行CV研究的综述，里面可以挖掘很多可以细抠的论文。<br>主要用于入门延伸阅读所用。</p>
 <p>介绍Kinect实现和技术原理的论文<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6190806" target="_blank" rel="external">《Microsoft Kinect Sensor and Its Effect》</a></p>
 <p>关于深度信息的光线三维成像原理查看论文<a href="https://www.osapublishing.org/aop/fulltext.cfm?uri=aop-3-2-128&amp;id=211561" target="_blank" rel="external">《Structured-Light 3D Surface Imaging: A Tutorial, Advances in Optics and Photonics》</a></p>
@@ -127,9 +137,9 @@
 <li>场景识别  《RGB-(D) Scene Labeling: Features and Algorithms》使用加入深度信息的FEATURE有利于提高COMPACITY，抵挡灯光影响和杂乱影响。然而，计算量加大难以实时Real-time</li>
 </ul>
 <p>3.手势识别和分析 4.手势动作（然而这个我并不关心，谢谢）</p>
-<h2 id="5-_u5BA4_u51853D_u5339_u914D"><a href="#5-_u5BA4_u51853D_u5339_u914D" class="headerlink" title="5.室内3D匹配"></a><strong>5.室内3D匹配</strong></h2><p>  AIM：对室内环境的数字化表达，室内三维重建<br>  研究包含两部分：1.数据和特征的抽取 2.循环检测并全局优化</p>
-<h3 id="A-_u7A00_u758F_uFF08sparse_uFF09_u7279_u5F81_u5339_u914D"><a href="#A-_u7A00_u758F_uFF08sparse_uFF09_u7279_u5F81_u5339_u914D" class="headerlink" title="A.稀疏（sparse）特征匹配"></a>A.稀疏（sparse）特征匹配</h3><p>  典型《RGB-D Mapping: Using Depth Cameras for Dense 3D Modeling of Indoor Environments》 优化结合appearance and shape（依赖深度图所得） 通过Iterative Closest Point(ICP)算法。</p>
-<h3 id="B-_u5BC6_u96C6_u70B9_u4E91_u5339_u914D_uFF08Dense_points_tracking_between_two_frames_uFF09"><a href="#B-_u5BC6_u96C6_u70B9_u4E91_u5339_u914D_uFF08Dense_points_tracking_between_two_frames_uFF09" class="headerlink" title="B.密集点云匹配（Dense points tracking between two frames）"></a>B.密集点云匹配（Dense points tracking between two frames）</h3><p>  计算量大，不易实时，但有成功的论文《KinectFusion: Real-Time Dense Surface Mapping and Tracking》</p>
+<h2 id="5-室内3D匹配"><a href="#5-室内3D匹配" class="headerlink" title="5.室内3D匹配"></a><strong>5.室内3D匹配</strong></h2><p>  AIM：对室内环境的数字化表达，室内三维重建<br>  研究包含两部分：1.数据和特征的抽取 2.循环检测并全局优化</p>
+<h3 id="A-稀疏（sparse）特征匹配"><a href="#A-稀疏（sparse）特征匹配" class="headerlink" title="A.稀疏（sparse）特征匹配"></a>A.稀疏（sparse）特征匹配</h3><p>  典型《RGB-D Mapping: Using Depth Cameras for Dense 3D Modeling of Indoor Environments》 优化结合appearance and shape（依赖深度图所得） 通过Iterative Closest Point(ICP)算法。</p>
+<h3 id="B-密集点云匹配（Dense-points-tracking-between-two-frames）"><a href="#B-密集点云匹配（Dense-points-tracking-between-two-frames）" class="headerlink" title="B.密集点云匹配（Dense points tracking between two frames）"></a>B.密集点云匹配（Dense points tracking between two frames）</h3><p>  计算量大，不易实时，但有成功的论文《KinectFusion: Real-Time Dense Surface Mapping and Tracking》</p>
 <p>  针对特定问题下的论文：<br>  LARGE LIGHTING VARIATIONS《Dense RGB-D Mapping for Real-Time Localisation and Navigation》<br>  CAMERA ROAM FREE《Moving Volume KinectFusion》<br>  室内基准实验数据集 《A Benchmark for the Evaluation of RGB-D SLAM Systems》</p>
 <p>6.问题&amp;展望&amp;总结</p>
 <ul>
@@ -142,7 +152,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cior7tl2s000tz3q1qw6x05sc" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cior8xp8m000ygvq19w5ymxsz" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -190,12 +200,19 @@
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -204,7 +221,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -213,7 +230,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -225,6 +242,14 @@
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -234,14 +259,6 @@
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -299,6 +316,12 @@
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

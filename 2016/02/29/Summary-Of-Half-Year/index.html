@@ -16,7 +16,7 @@
 <meta property="og:description" content="总结进入理大半年来的学习，以及关于SLAM和无人机室内定位飞行项目的学习
 这个项目比想象中大，里面需要学习和解决的问题都很多，一下子都无从下手，复杂度也高，以下写一下OnBoardAutoNavigation and Obstacle Avoidance的问题和见解
 关于DJI的开发套件首先用的是GUIDACNE和Matrix100以及树莓派pi2，对于完全没有硬件概念的我，接触到单片机真是头疼，">
-<meta property="og:updated_time" content="2016-02-29T03:33:30.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:28:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary_Of_Half_Year">
 <meta name="twitter:description" content="总结进入理大半年来的学习，以及关于SLAM和无人机室内定位飞行项目的学习
@@ -26,7 +26,7 @@
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -53,6 +53,12 @@
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -85,6 +91,10 @@
   <time datetime="2016-02-29T03:10:23.000Z" itemprop="datePublished">2016-02-29</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -103,20 +113,20 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u5173_u4E8EDJI_u7684_u5F00_u53D1_u5957_u4EF6"><span class="toc-number">1.</span> <span class="toc-text">关于DJI的开发套件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5173_u4E8EOnBoard_System"><span class="toc-number">2.</span> <span class="toc-text">关于OnBoard System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u6781_u7B80_u7684_u751F_u6D3B"><span class="toc-number">3.</span> <span class="toc-text">极简的生活</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于DJI的开发套件"><span class="toc-number">1.</span> <span class="toc-text">关于DJI的开发套件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于OnBoard-System"><span class="toc-number">2.</span> <span class="toc-text">关于OnBoard System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#极简的生活"><span class="toc-number">3.</span> <span class="toc-text">极简的生活</span></a></li></ol>
           </div>
         
         <p>总结进入理大半年来的学习，以及关于SLAM和无人机室内定位飞行项目的学习</p>
 <p>这个项目比想象中大，里面需要学习和解决的问题都很多，一下子都无从下手，复杂度也高，以下写一下OnBoard<br>AutoNavigation and Obstacle Avoidance的问题和见解</p>
-<h3 id="u5173_u4E8EDJI_u7684_u5F00_u53D1_u5957_u4EF6"><a href="#u5173_u4E8EDJI_u7684_u5F00_u53D1_u5957_u4EF6" class="headerlink" title="关于DJI的开发套件"></a>关于DJI的开发套件</h3><p>首先用的是GUIDACNE和Matrix100以及树莓派pi2，对于完全没有硬件概念的我，接触到单片机真是头疼，硬件和软件是完全的两码事。Guidance是个多源的视觉素材采集设备，多方位的双目超声以及IMU模块，可以提取出大量有用的环境信息，加工进而智能优化使用。而M100是通过对应的命令传输指令进行控制的，这里的信号对于传输频率有一些注意，比如波段这些都是比较基础底层的东西。最头疼的是遇到这些套件的学习使用不方便，M100也不适应室内的飞行，指南针校准。曾经遇到指南针损坏需要焊接电路，遇到IMU侧准不稳导致起飞折断螺旋桨，遇到系统不兼容树莓派的移植问题，遇到SLAM精度不够无法恢复的问题，也在一步一个脚印不断尝试去解决，便知道除了编程，还有很多很多的问题是复杂而难解决的，如何解决或者如何避开问题都是能力的体现</p>
-<h3 id="u5173_u4E8EOnBoard_System"><a href="#u5173_u4E8EOnBoard_System" class="headerlink" title="关于OnBoard System"></a>关于OnBoard System</h3><p>至此，整个system已经很大，感觉需要公司提供解决方案了，已经不是一个人hold住了，所以把Vision<br>System里面的SLAM部分抽出来学习，希望能从中挖出一些点子，看了RGBD<br>SLAM以及里面的一些核心问题，跟很多国内的研究者去讨论，看英文材料，包括那本Multi-View的经典，还有很多工具框架和素材库，POINT<br>CLOUD LIBRARY, OPENCV,<br>ROS.进而发现，每一个点都是很大，都不好挖。结果整个人的心态就不行了，发现自己在做一个不能完成的任务的感觉，应该果断将问题抛出，让大家一起有效来解决。另外还是希望可以有学习的对象，有讨论的人，有相关一起工作的伙伴是一件很值得珍惜的事情。</p>
-<h3 id="u6781_u7B80_u7684_u751F_u6D3B"><a href="#u6781_u7B80_u7684_u751F_u6D3B" class="headerlink" title="极简的生活"></a>极简的生活</h3><p>最后，总结一下失败的经验和收获的东西。很感谢处在一个自由向上的科研环境里，感觉自己值得学习的东西还是很多很多，但希望自己能真正定下心来挖掘。了解和知道自己所想所要的，开启一个极简的生活状态，发现自己很懒，记忆也不好。每天需要提醒自己，鸡汤喝完就忘，只有习惯才是永存的好东西，以及自己的能力和素质。保持良好的工作态度和心态，然后坚持去做值得自己去做的事情，包括锻炼、看书和音乐，想要去做的东西就尽力去做，不要计较得失，不要在乎难度，一点一点安排计划就不是问题了。整理掉不要看到的东西，不然影响自己，了解真正需要的并保留下来，不要再去学习相似而没有意义是事情。接下来就开启新的生活吧，整理关于SLAM的东西，爱CV看多光谱，学习ML,PR！</p>
+<h3 id="关于DJI的开发套件"><a href="#关于DJI的开发套件" class="headerlink" title="关于DJI的开发套件"></a>关于DJI的开发套件</h3><p>首先用的是GUIDACNE和Matrix100以及树莓派pi2，对于完全没有硬件概念的我，接触到单片机真是头疼，硬件和软件是完全的两码事。Guidance是个多源的视觉素材采集设备，多方位的双目超声以及IMU模块，可以提取出大量有用的环境信息，加工进而智能优化使用。而M100是通过对应的命令传输指令进行控制的，这里的信号对于传输频率有一些注意，比如波段这些都是比较基础底层的东西。最头疼的是遇到这些套件的学习使用不方便，M100也不适应室内的飞行，指南针校准。曾经遇到指南针损坏需要焊接电路，遇到IMU侧准不稳导致起飞折断螺旋桨，遇到系统不兼容树莓派的移植问题，遇到SLAM精度不够无法恢复的问题，也在一步一个脚印不断尝试去解决，便知道除了编程，还有很多很多的问题是复杂而难解决的，如何解决或者如何避开问题都是能力的体现</p>
+<h3 id="关于OnBoard-System"><a href="#关于OnBoard-System" class="headerlink" title="关于OnBoard System"></a>关于OnBoard System</h3><p>至此，整个system已经很大，感觉需要公司提供解决方案了，已经不是一个人hold住了，所以把Vision<br>System里面的SLAM部分抽出来学习，希望能从中挖出一些点子，看了RGBD<br>SLAM以及里面的一些核心问题，跟很多国内的研究者去讨论，看英文材料，包括那本Multi-View的经典，还有很多工具框架和素材库，POINT<br>CLOUD LIBRARY, OPENCV,<br>ROS.进而发现，每一个点都是很大，都不好挖。结果整个人的心态就不行了，发现自己在做一个不能完成的任务的感觉，应该果断将问题抛出，让大家一起有效来解决。另外还是希望可以有学习的对象，有讨论的人，有相关一起工作的伙伴是一件很值得珍惜的事情。</p>
+<h3 id="极简的生活"><a href="#极简的生活" class="headerlink" title="极简的生活"></a>极简的生活</h3><p>最后，总结一下失败的经验和收获的东西。很感谢处在一个自由向上的科研环境里，感觉自己值得学习的东西还是很多很多，但希望自己能真正定下心来挖掘。了解和知道自己所想所要的，开启一个极简的生活状态，发现自己很懒，记忆也不好。每天需要提醒自己，鸡汤喝完就忘，只有习惯才是永存的好东西，以及自己的能力和素质。保持良好的工作态度和心态，然后坚持去做值得自己去做的事情，包括锻炼、看书和音乐，想要去做的东西就尽力去做，不要计较得失，不要在乎难度，一点一点安排计划就不是问题了。整理掉不要看到的东西，不然影响自己，了解真正需要的并保留下来，不要再去学习相似而没有意义是事情。接下来就开启新的生活吧，整理关于SLAM的东西，爱CV看多光谱，学习ML,PR！</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="cior7tl1l0008z3q11jhulwfz" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="cior8xp7f000agvq1fl1ifmc1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -164,12 +174,19 @@
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -178,7 +195,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -187,7 +204,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -199,6 +216,14 @@
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -208,14 +233,6 @@
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -273,6 +290,12 @@
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

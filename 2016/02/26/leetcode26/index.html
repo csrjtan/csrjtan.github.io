@@ -14,7 +14,7 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
 int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;             int count = 0;       for(int i=0;i&amp;lt;nums">
-<meta property="og:updated_time" content="2016-04-13T07:10:06.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:26:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode26 & 242 & String">
 <meta name="twitter:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
@@ -23,7 +23,7 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -50,6 +50,12 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -82,6 +88,10 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
   <time datetime="2016-02-26T09:39:19.000Z" itemprop="datePublished">2016-02-26</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -100,24 +110,24 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode_26"><span class="toc-number">1.</span> <span class="toc-text">leetcode 26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode_242_Valid_Anagram"><span class="toc-number">2.</span> <span class="toc-text">leetcode 242 Valid Anagram</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c++_string_u7528_u6CD5"><span class="toc-number">3.</span> <span class="toc-text">c++ string用法</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode-26"><span class="toc-number">1.</span> <span class="toc-text">leetcode 26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode-242-Valid-Anagram"><span class="toc-number">2.</span> <span class="toc-text">leetcode 242 Valid Anagram</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-string用法"><span class="toc-number">3.</span> <span class="toc-text">c++ string用法</span></a></li></ol>
           </div>
         
-        <h3 id="leetcode_26"><a href="#leetcode_26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> removeDuplicates(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="keyword">size</span>();i++)</span><br><span class="line">       &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">               nums[<span class="keyword">count</span>] = nums[i];</span><br><span class="line">               <span class="keyword">count</span>++;</span><br><span class="line">           &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">       &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">count</span>;</span><br><span class="line">   &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure>
+        <h3 id="leetcode-26"><a href="#leetcode-26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> removeDuplicates(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="keyword">size</span>();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &#123;</span><br><span class="line">               nums[<span class="keyword">count</span>] = nums[i];</span><br><span class="line">               <span class="keyword">count</span>++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">count</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>解题：重新填入整个数组，如果是0或者与前一个值不一样，就直接填入覆盖，直到遍历完整个有序数组。<br>TC = O(n), SC = O(1)</p>
 <p>今天还完成了<a href="http://pan.baidu.com/s/1o7o6xYy" target="_blank" rel="external">Thesis Writting<br>Collacation</a> 密码：8qjh</p>
 <p>以及<a href="http://pan.baidu.com/s/1i4t00SX" target="_blank" rel="external">DJI PPT</a> 密码：awzd</p>
-<h3 id="leetcode_242_Valid_Anagram"><a href="#leetcode_242_Valid_Anagram" class="headerlink" title="leetcode 242 Valid Anagram"></a>leetcode 242 Valid Anagram</h3><p>题目：判断两个字符串是否为同字母异序<br>思路：1.将字符串转成数组，排序然后比对得到结果<br>      2.计算两个字符串里面的字母的Occurence，用一个26大小的counter数组统计字母出现的次数，当第一个串出现就++，第二个出现就–；最后得到的counter如果全为0，则符合；否则不符合。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isAnagram</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">        <span class="keyword">if</span>(s.length()!=t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; counter;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">           counter.push_back(<span class="number">0</span>);</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">            counter[s[i] - <span class="string">'a'</span>]++;</span><br><span class="line">            counter[t[i] - <span class="string">'a'</span>]--;</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/123" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;</span><br><span class="line">            <span class="keyword">if</span>(counter[i]!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &<a href="https://instagram.com/explore/tags/125" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="leetcode-242-Valid-Anagram"><a href="#leetcode-242-Valid-Anagram" class="headerlink" title="leetcode 242 Valid Anagram"></a>leetcode 242 Valid Anagram</h3><p>题目：判断两个字符串是否为同字母异序<br>思路：1.将字符串转成数组，排序然后比对得到结果<br>      2.计算两个字符串里面的字母的Occurence，用一个26大小的counter数组统计字母出现的次数，当第一个串出现就++，第二个出现就–；最后得到的counter如果全为0，则符合；否则不符合。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isAnagram</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()!=t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; counter;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">           counter.push_back(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            counter[s[i] - <span class="string">'a'</span>]++;</span><br><span class="line">            counter[t[i] - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(counter[i]!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>3.或者先对第一个串加完，然后第二个串减counter,如果其中一个元素小于0，则不符合。不能说一定等于0，因为后面可能会继续减的。</p>
-<h3 id="c++_string_u7528_u6CD5"><a href="#c++_string_u7528_u6CD5" class="headerlink" title="c++ string用法"></a>c++ string用法</h3><p>1.头文件 <a href="https://instagram.com/explore/tags/include" class="test test-hashtag" target="_blank" rel="noopener noreferrer">#include</a> <string><br>2.构造 string(const char <em>s) //c string initialize<br>       string(int n,char c)<br>       string s = “hello”;<br>3.字符操作  const char &amp;operator<a href="/int n"></a> const<br>        int copy(char </em>s,int n, int pos=2) const;<br>4.特性  int length() const;<br>        bool empty() const;<br>       void resize(int len,char c); //不足部分用c填充<br>5.赋值  = , assign(const char <em>c)<br>6.连接  +=, string append(const string&amp;s);<br>7.比较 ==， int compare(const string &amp;s);<br>8.子串  string substr(int pos=0,int n=npos) const;<br>9.交换  void swap(string &amp;s2);<br>10.查找函数 int find(char c,int pos=0) const; //从pos开始找c<br>       int find(const string &amp;s,int pos=0) const; //从pos找s<br>11.替换  string &amp;replace(int p0,int n0,const char
+<h3 id="c-string用法"><a href="#c-string用法" class="headerlink" title="c++ string用法"></a>c++ string用法</h3><p>1.头文件 #include <string><br>2.构造 string(const char <em>s) //c string initialize<br>       string(int n,char c)<br>       string s = “hello”;<br>3.字符操作  const char &amp;operator<a href="int n"></a> const<br>        int copy(char </em>s,int n, int pos=2) const;<br>4.特性  int length() const;<br>        bool empty() const;<br>       void resize(int len,char c); //不足部分用c填充<br>5.赋值  = , assign(const char <em>c)<br>6.连接  +=, string append(const string&amp;s);<br>7.比较 ==， int compare(const string &amp;s);<br>8.子串  string substr(int pos=0,int n=npos) const;<br>9.交换  void swap(string &amp;s2);<br>10.查找函数 int find(char c,int pos=0) const; //从pos开始找c<br>       int find(const string &amp;s,int pos=0) const; //从pos找s<br>11.替换  string &amp;replace(int p0,int n0,const char
 </em>s);//删除p0开始n0个字符，在p0后插入串s<br>12.插入删除 insert erase</string></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cior7tl44001yz3q1b48o6x6x" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cior8xp8d000qgvq1gll5r47i" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -165,12 +175,19 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -179,7 +196,7 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -188,7 +205,7 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -200,6 +217,14 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -209,14 +234,6 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -274,6 +291,12 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

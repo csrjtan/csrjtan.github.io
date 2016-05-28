@@ -18,7 +18,7 @@
 1.Introduction提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/guidance_2.png">
-<meta property="og:updated_time" content="2015-10-28T14:13:30.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:27:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Guidance:A Visual Sensing Platform For Robotic Applications">
 <meta name="twitter:description" content="DJI在CVPR15上发的关于GUIDANCE组件的文章入手了GUIDANCE一周，这里对这篇文章细细品味一下。
@@ -29,7 +29,7 @@
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -56,6 +56,12 @@
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -88,6 +94,10 @@
   <time datetime="2015-10-28T12:38:38.000Z" itemprop="datePublished">2015-10-28</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -106,14 +116,14 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0"><span class="toc-number">1.</span> <span class="toc-text">DJI在CVPR15上发的关于GUIDANCE组件的文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Introduction"><span class="toc-number">2.</span> <span class="toc-text">1.Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D"><span class="toc-number">3.</span> <span class="toc-text">2.内置：Guidance是升级版的[6]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_u53EF_u6269_u5C55_u7684_u667A_u80FD_u5E94_u7528_uFF1A"><span class="toc-number">4.</span> <span class="toc-text">4.可扩展的智能应用：</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI在CVPR15上发的关于GUIDANCE组件的文章"><span class="toc-number">1.</span> <span class="toc-text">DJI在CVPR15上发的关于GUIDANCE组件的文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Introduction"><span class="toc-number">2.</span> <span class="toc-text">1.Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-内置：Guidance是升级版的-6"><span class="toc-number">3.</span> <span class="toc-text">2.内置：Guidance是升级版的[6]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-可扩展的智能应用："><span class="toc-number">4.</span> <span class="toc-text">4.可扩展的智能应用：</span></a></li></ol>
           </div>
         
-        <h3 id="DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0"><a href="#DJI_u5728CVPR15_u4E0A_u53D1_u7684_u5173_u4E8EGUIDANCE_u7EC4_u4EF6_u7684_u6587_u7AE0" class="headerlink" title="DJI在CVPR15上发的关于GUIDANCE组件的文章"></a>DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
+        <h3 id="DJI在CVPR15上发的关于GUIDANCE组件的文章"><a href="#DJI在CVPR15上发的关于GUIDANCE组件的文章" class="headerlink" title="DJI在CVPR15上发的关于GUIDANCE组件的文章"></a>DJI在CVPR15上发的关于GUIDANCE组件的文章</h3><p>入手了GUIDANCE一周，这里对这篇文章细细品味一下。</p>
 <p>由于缺乏一个强大的视觉感知平台，开发了一个易于扩展的数据采集平台。<br>这个论文可以主要参考一下DJI人员开发GUIDANCE时候，内置了什么样的算法。</p>
 <h3 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h3><p>提到了VO（Visual Odometry）的概念，SLAM是VO[1]的扩展。关于SLAM[2][3]，是用于机器人定位位置识别。大部分是单目的，这里也有双目的方法[4]。这里GUIDANCE包括了5个方向的双目，可以提供深度图，超声数据，障碍物距离等内容。接下来，故事的展开分为内置函数，SDK接口以及相关应用</p>
-<h3 id="2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D"><a href="#2-_u5185_u7F6E_uFF1AGuidance_u662F_u5347_u7EA7_u7248_u7684_5B6_5D" class="headerlink" title="2.内置：Guidance是升级版的[6]"></a>2.内置：Guidance是升级版的[6]</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png" alt="SDK_Build_In"><br><a id="more"></a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_2.png" alt=""><br>对于Matching Refinement用了[7]</p>
-<h3 id="4-_u53EF_u6269_u5C55_u7684_u667A_u80FD_u5E94_u7528_uFF1A"><a href="#4-_u53EF_u6269_u5C55_u7684_u667A_u80FD_u5E94_u7528_uFF1A" class="headerlink" title="4.可扩展的智能应用："></a>4.可扩展的智能应用：</h3><p>1.Autonomous Navigation<br>  拥有高精度的GPS定位<br>2.Visual SLAM[8]<br>  依赖高精度的VO结果<br>3.Depth Based Tracking</p>
+<h3 id="2-内置：Guidance是升级版的-6"><a href="#2-内置：Guidance是升级版的-6" class="headerlink" title="2.内置：Guidance是升级版的[6]"></a>2.内置：Guidance是升级版的[6]</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_1.png" alt="SDK_Build_In"><br><a id="more"></a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/guidance_2.png" alt=""><br>对于Matching Refinement用了[7]</p>
+<h3 id="4-可扩展的智能应用："><a href="#4-可扩展的智能应用：" class="headerlink" title="4.可扩展的智能应用："></a>4.可扩展的智能应用：</h3><p>1.Autonomous Navigation<br>  拥有高精度的GPS定位<br>2.Visual SLAM[8]<br>  依赖高精度的VO结果<br>3.Depth Based Tracking</p>
 <p>为了开发SLAM避障，请阅读下面黑体</p>
 <p>[1]C. Forster, M. Pizzoli, and D. Scaramuzza. SVO: Fast semi- direct monocular visual odometry. In ICRA, 2014.<br><strong>[2]J. Engel, T. Schops, and D. Cremers. LSD-SLAM: Large- scale direct monocular SLAM. In ECCV, 2014.<br>[3]A. Davison. Real-time simultaneous localisation and map- ping with a single camera. In Computer Vision, 2003. Proceedings. Ninth IEEE International Conference on, pages 1403–1410 vol.2, Oct 2003 </strong><br>[4] F. Endres, J. Hess, N. Engelhard, J. Sturm, D. Cremers, and W. Burgard. An evaluation of the RGB-D SLAM system. In Robotics and Automation (ICRA), 2012 IEEE International Conference on, pages 1691–1696, May 2012.<br>[5]D. Honegger, L. Meier, P. Tanskanen, and M. Pollefeys. An open source and open hardware embedded metric optical flow cmos camera for indoor and outdoor applications. In Robotics and Automation (ICRA), IEEE International Con- ference on, pages 1736–1741, May 2013.<br>[6]G. Zhou, A. Liu, K. Yang, T. Wang, and Z. Li. An embedded solution to visual mapping for consumer drones. In Computer Vision and Pattern Recognition Workshops (CVPRW), IEEE Conference on, pages 670–675, 2014.</p>
 <p>[7]B. D. Lucas and T. Kanade. An iterative image registration technique with an application to stereo vision. In Proceed- ings of the 7th International Joint Conference on Artificial<br>Intelligence - Volume 2, pages 674–679, 1981<br><strong>[8]G. Klein and D. Murray. Parallel tracking and mapping for small AR workspaces. In Sixth IEEE and ACM Internation- al Symposium on Mixed and Augmented Reality (ISMAR), 2007.</strong></p>
@@ -122,7 +132,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cior7tl320013z3q1jgvz3y89" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cior8xp8r0014gvq1qpfxxxs5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -170,12 +180,19 @@
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -184,7 +201,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -193,7 +210,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -205,6 +222,14 @@
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -214,14 +239,6 @@
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -279,6 +296,12 @@
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

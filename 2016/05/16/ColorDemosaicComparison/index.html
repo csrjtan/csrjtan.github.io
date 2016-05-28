@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Demosaic Comparison | CSRJTAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Demosaic Comparison  进入公司2个月多了，对于ISP和Demosaic才刚起步，赶紧把CNN掌握好，做出点工作来吧！
+总体来说， nnr和sht直接插值，锯齿感太强，Lu和NAT的方法效率不行，然后感觉AP和SA的PSNR虚高，实际效果不行。可以考虑测一下CPSNR和CIE Lab或者锯齿等其它指标。  下面比较一下AP[1], SA,LCC1和DLMMSE[2], RI[3]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Demosaic Comparison">
+<meta property="og:url" content="https://csrjtan.github.io/2016/05/16/ColorDemosaicComparison/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="Demosaic Comparison  进入公司2个月多了，对于ISP和Demosaic才刚起步，赶紧把CNN掌握好，做出点工作来吧！
+总体来说， nnr和sht直接插值，锯齿感太强，Lu和NAT的方法效率不行，然后感觉AP和SA的PSNR虚高，实际效果不行。可以考虑测一下CPSNR和CIE Lab或者锯齿等其它指标。  下面比较一下AP[1], SA,LCC1和DLMMSE[2], RI[3]">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/CDC-5281.jpg">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/CDC-5282.jpg">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/CDC-5283.jpg">
+<meta property="og:updated_time" content="2016-05-28T15:10:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Demosaic Comparison">
+<meta name="twitter:description" content="Demosaic Comparison  进入公司2个月多了，对于ISP和Demosaic才刚起步，赶紧把CNN掌握好，做出点工作来吧！
+总体来说， nnr和sht直接插值，锯齿感太强，Lu和NAT的方法效率不行，然后感觉AP和SA的PSNR虚高，实际效果不行。可以考虑测一下CPSNR和CIE Lab或者锯齿等其它指标。  下面比较一下AP[1], SA,LCC1和DLMMSE[2], RI[3]">
+<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/CDC-5281.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">CSRJTAN</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Keep Moving</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="csrjtan.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-ColorDemosaicComparison" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/16/ColorDemosaicComparison/" class="article-date">
+  <time datetime="2016-05-16T13:12:12.000Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Demosaic Comparison
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demosaic-Comparison"><span class="toc-number">1.</span> <span class="toc-text">Demosaic Comparison</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果总结"><span class="toc-number">2.</span> <span class="toc-text">结果总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ImageJ"><span class="toc-number">3.</span> <span class="toc-text">ImageJ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISP"><span class="toc-number">4.</span> <span class="toc-text">ISP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demosaic"><span class="toc-number">5.</span> <span class="toc-text">Demosaic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CNN"><span class="toc-number">6.</span> <span class="toc-text">CNN</span></a></li></ol>
+          </div>
+        
+        <h3 id="Demosaic-Comparison"><a href="#Demosaic-Comparison" class="headerlink" title="Demosaic Comparison"></a>Demosaic Comparison</h3><p>  进入公司2个月多了，对于ISP和Demosaic才刚起步，赶紧把CNN掌握好，做出点工作来吧！</p>
+<p>总体来说， nnr和sht直接插值，锯齿感太强，Lu和NAT的方法效率不行，然后感觉AP和SA的PSNR虚高，实际效果不行。可以考虑测一下CPSNR和CIE L<em>a</em>b或者锯齿等其它指标。<br>  下面比较一下AP[1], SA,LCC1和DLMMSE[2], RI[3]的结果。</p>
+<p>[1] SA, <a href="http://www.csee.wvu.edu/~xinl/demo/demosaic.html" target="_blank" rel="external">http://www.csee.wvu.edu/~xinl/demo/demosaic.html</a><br>[2] DLMMSE, Zhang L, Wu X. Color demosaicking via directional linear minimum mean square-error estimation[J]. Image Processing, IEEE Transactions on, 2005, 14(12): 2167-2178.<br>[3] RI, <a href="http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html" target="_blank" rel="external">http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html</a></p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/CDC-5281.jpg" alt=""></p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/CDC-5282.jpg" alt=""></p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/CDC-5283.jpg" alt=""></p>
+<h3 id="结果总结"><a href="#结果总结" class="headerlink" title="结果总结"></a>结果总结</h3><p>总体来说，这些方法都在大部分地方插值准确，肉眼不容易区分，都没有发现有锯齿等明显不和谐区域的出现。主要是在变化剧烈的边缘和光亮变化强的区域出现Artifacts。时间上以SA、AP、LCC1、RI占优，效果上以DLMMSE和RI最优。<br>从实现来说LCC1是简单高效的，AP做了一个映射也是可以的，DLMMSE主要做了PCA的分解，SA是有迭代的求解，RI有待进一步学习。</p>
+<h3 id="ImageJ"><a href="#ImageJ" class="headerlink" title="ImageJ"></a>ImageJ</h3><p>看了不少的论文和代码了，及时地来总结一下吧，马上又要开展对于DL的学习了。先来ImageJ的吧？把JAva各个类和用例都看了，然而并没有派上用场，所以应该吸取教训，先学足够的，马上就用。不然看完也没有机会用，看完也用不上，看完也还是不会用，对于CODING这样的事情来说就是实用至上，不断使用行动，付出并成为一种习惯，从而变成一种轻松的反射或者习惯，最后培养成为爱好。ImageJ主要是一个科学图像的小插件，由JAVA框架开发，可以不依赖系统，自带JRE。一般分为MARCRO,SCRIPTS等，做些命令脚本批量处理之类的。系统自带功能包括图像基本操作、处理和分析，强大之处在于用户可以开发插件Plugin快速量身定做图像处理工具。</p>
+<p>Plugin分为普通plugin，图片filter plugin以及堆 stack plugin。先setup了，获得指定图片类型后，然后用run()方法对读入的图片进行处理。总体还是看一下一本图像处理ImageJ实战和ImageJ手册吧，要用就回头去看一下。现在先放一放ImageJ吧，主力还是在Matlab和MatConv,高层的调用可以帮助开发者在思维和方法层面上更专注，不然用c和c++这样的还是需要花费力气在数据结构和指针，语言组织上，确实吃力不讨好的事情。</p>
+<h3 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h3><p>   再者说一下关于ISP的流程吧，进来后发现组里是做相机的，包括从硬到软的各个层面，硬件-&gt;FPGA-&gt;嵌入式-&gt;图像算法-&gt;IQ等等。这里说一下相机出图的ISP流程，从RAW到用户看到的JPEG： RAW-&gt;BLC-&gt;LSC-&gt;AWB-&gt;DEMOSAIC-&gt;DENOISE-&gt;CC-&gt;GAMMA-&gt;JPEG，里面每个算法和相机原理都是进来才学习了解到的。希望对以后有用。</p>
+<h3 id="Demosaic"><a href="#Demosaic" class="headerlink" title="Demosaic"></a>Demosaic</h3><p>   然后回到今天要记录的重点，Demosaic的papers和学习总结：首先看了Comparison和Survey这两篇关于去马赛克发展的重要文章，科普了不少要点：比如说如何用空间相关信息和谱间相关信息来恢复Downsample后的信息，讲述了主要包括空域和谱域的方法，color ratio and color difference的基本假设。空域上利用插值，bilinear以及梯度适应的adaptive gradient interpolation，还有转到其他频域如傅里叶和小波上面去做滤波的，根据不同频段的相关性来进行近似恢复。这里着重说一下影响力比较高的文章，首先是Alternating Projection：将谱间的强相关性信息映射到一个POCS(Project onto convex set）里面，然后求解convex问题得到一个较优的像素解来作为插值。然后是Succesive Approximate是将谱间差值的difference变成一个由局部迭代成局部最优的过程，先从简单的插值后，然后迭代更新color difference从而到达局部较优的位置。SSD是利用增强自相关性，还没仔细了解。还有利用非局部相似块的方法，如定义Non-local Similarity，如果它表达的相关性（梯度小）比当前块强，则用该块作为当前块的插值结果。然后我老板的两个比较突破性的论文：DLMMSE提出了去马赛克噪声，然后引入去噪模型，转换成求解最优color difference的方法，里面有些数学证明还待细看，该工作直接把PSNR提高了5db。后来的LDI_NAT也是经过LDI的梯度插值后，然后使用PCA的方法分解构造出sparse模型，从而去掉artifacts. 再后来的方法就包括一些sparse模型，dictionary learning，tv等，还有Tokyo Insitute 的RI方法，利用残差的方法，快速有效进行去马赛克。</p>
+<h3 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h3><p>   后面用凯爷的网络跑了一下CNN的结果，目测要比Tokyo Institute的RI要好，这里用的是5层卷积神经网络，使用柯德IQA的库中500多张图片作为TrainingSets,Kodak的24张图作为TestSets，使用的是MatconvNet的框架。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/05/16/ColorDemosaicComparison/" data-id="ciora1cqw0000w8q1xehol9ty" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/05/16/ColorDemosaicComparison/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/21/ted-glories-and-dream/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Ted《光荣与梦想》</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/05/16/ColorDemosaicComparison/" data-title="Demosaic Comparison" data-url="https://csrjtan.github.io/2016/05/16/ColorDemosaicComparison/"></div>
+  </section>
+</section>
+      
+    </div>
+    <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/17/leetcode15/">leetcode15</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/13/leetcode7-14/">leetcode7-14</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">不如</a>
+          </li>
+        
+          <li>
+            <a href="https://openslam.org" target="_blank">OpenSLAM</a>
+          </li>
+        
+          <li>
+            <a href="http://arxiv.org/" target="_blank">Arxiv</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank">中文编程书籍索引</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/sindresorhus/awesome" target="_blank">国外编程资源总览</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 CsrjTan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+      <br/>
+       <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+    </div>
+  </div>
+ </footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tanrunj"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>

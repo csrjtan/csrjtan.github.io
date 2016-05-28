@@ -16,7 +16,7 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
 <meta property="og:description" content="DJI无人机避障飞行项目研读了CAMERA CALIBRATION,STEREO VISION,SLAM其中做SLAM的时候基于opencv、pcl、g2o为依赖库的开发
 DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线损坏，而且室内校准较难，使用例程进行姿态控制
 课程Advanced Algorithm学习了多种优化算法以及分析复杂度，课程report使用random">
-<meta property="og:updated_time" content="2015-11-25T01:17:26.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:20:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一学期总结">
 <meta name="twitter:description" content="DJI无人机避障飞行项目研读了CAMERA CALIBRATION,STEREO VISION,SLAM其中做SLAM的时候基于opencv、pcl、g2o为依赖库的开发
@@ -26,7 +26,7 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -53,6 +53,12 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -85,6 +91,10 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
   <time datetime="2015-11-25T00:52:01.000Z" itemprop="datePublished">2015-11-25</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Life/">Life</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -103,18 +113,18 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE"><span class="toc-number">1.</span> <span class="toc-text">DJI无人机避障飞行项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u7814_u8BFB_u4E86CAMERA_CALIBRATION_2CSTEREO_VISION_2CSLAM"><span class="toc-number">1.1.</span> <span class="toc-text">研读了CAMERA CALIBRATION,STEREO VISION,SLAM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI_u90E8_u4EF6_u7684_u5B66_u4E60_u4F7F_u7528"><span class="toc-number">2.</span> <span class="toc-text">DJI部件的学习使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u8BFE_u7A0BAdvanced_Algorithm"><span class="toc-number">3.</span> <span class="toc-text">课程Advanced Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E00_u4E2A_u5B66_u671F_u8FC7_u53BB_u4E86_uFF0C_u5B66_u5230_u548C_u505A_u51FA_u6765_u7684_u6210_u679C_u4E0D_u591A_uFF0C_u53CD_u601D_u81EA_u5DF1_u7684_u6548_u7387_u4EE5_u53CA_u8FF7_u832B_uFF0C_u5BFC_u81F4_u9006_u98CE_u800C_u884C_uFF0C_u52A0_u6CB9_u5427_uFF0C_u4E0D_u7136_u8FDE_u6BD5_u4E1A_u90FD_u4E0D_u597D_u8BF4_u3002_u4E0D_u80FD_u518D_u4F9D_u8D56_u522B_u4EBA_u4E00_u8D77_u505A_u4E4B_u7C7B_u7684_uFF0C_u81EA_u5DF1_u72EC_u884C_u524D_u5F80_u5427_uFF0C_u95EE_u9898_u603B_u662F_u5B58_u5728_uFF0C_u95EE_u9898_u603B_u662F_u53EF_u4EE5_u89E3_u51B3_u7684_uFF0C_u4E0D_u8981_u9003_u907F_u62D6_u5EF6_u3002"><span class="toc-number">4.</span> <span class="toc-text">一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI无人机避障飞行项目"><span class="toc-number">1.</span> <span class="toc-text">DJI无人机避障飞行项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#研读了CAMERA-CALIBRATION-STEREO-VISION-SLAM"><span class="toc-number">1.1.</span> <span class="toc-text">研读了CAMERA CALIBRATION,STEREO VISION,SLAM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI部件的学习使用"><span class="toc-number">2.</span> <span class="toc-text">DJI部件的学习使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#课程Advanced-Algorithm"><span class="toc-number">3.</span> <span class="toc-text">课程Advanced Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。"><span class="toc-number">4.</span> <span class="toc-text">一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</span></a></li></ol>
           </div>
         
-        <h3 id="DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE"><a href="#DJI_u65E0_u4EBA_u673A_u907F_u969C_u98DE_u884C_u9879_u76EE" class="headerlink" title="DJI无人机避障飞行项目"></a>DJI无人机避障飞行项目</h3><h4 id="u7814_u8BFB_u4E86CAMERA_CALIBRATION_2CSTEREO_VISION_2CSLAM"><a href="#u7814_u8BFB_u4E86CAMERA_CALIBRATION_2CSTEREO_VISION_2CSLAM" class="headerlink" title="研读了CAMERA CALIBRATION,STEREO VISION,SLAM"></a>研读了CAMERA CALIBRATION,STEREO VISION,SLAM</h4><p>其中做SLAM的时候基于opencv、pcl、g2o为依赖库的开发</p>
-<h3 id="DJI_u90E8_u4EF6_u7684_u5B66_u4E60_u4F7F_u7528"><a href="#DJI_u90E8_u4EF6_u7684_u5B66_u4E60_u4F7F_u7528" class="headerlink" title="DJI部件的学习使用"></a>DJI部件的学习使用</h3><p>Guidance的数据订阅和传输接口，M100的GPS线损坏，而且室内校准较难，使用例程进行姿态控制</p>
-<h3 id="u8BFE_u7A0BAdvanced_Algorithm"><a href="#u8BFE_u7A0BAdvanced_Algorithm" class="headerlink" title="课程Advanced Algorithm"></a>课程Advanced Algorithm</h3><p>学习了多种优化算法以及分析复杂度，课程report使用random algorithm来优化stereo matching的过程</p>
-<h3 id="u4E00_u4E2A_u5B66_u671F_u8FC7_u53BB_u4E86_uFF0C_u5B66_u5230_u548C_u505A_u51FA_u6765_u7684_u6210_u679C_u4E0D_u591A_uFF0C_u53CD_u601D_u81EA_u5DF1_u7684_u6548_u7387_u4EE5_u53CA_u8FF7_u832B_uFF0C_u5BFC_u81F4_u9006_u98CE_u800C_u884C_uFF0C_u52A0_u6CB9_u5427_uFF0C_u4E0D_u7136_u8FDE_u6BD5_u4E1A_u90FD_u4E0D_u597D_u8BF4_u3002_u4E0D_u80FD_u518D_u4F9D_u8D56_u522B_u4EBA_u4E00_u8D77_u505A_u4E4B_u7C7B_u7684_uFF0C_u81EA_u5DF1_u72EC_u884C_u524D_u5F80_u5427_uFF0C_u95EE_u9898_u603B_u662F_u5B58_u5728_uFF0C_u95EE_u9898_u603B_u662F_u53EF_u4EE5_u89E3_u51B3_u7684_uFF0C_u4E0D_u8981_u9003_u907F_u62D6_u5EF6_u3002"><a href="#u4E00_u4E2A_u5B66_u671F_u8FC7_u53BB_u4E86_uFF0C_u5B66_u5230_u548C_u505A_u51FA_u6765_u7684_u6210_u679C_u4E0D_u591A_uFF0C_u53CD_u601D_u81EA_u5DF1_u7684_u6548_u7387_u4EE5_u53CA_u8FF7_u832B_uFF0C_u5BFC_u81F4_u9006_u98CE_u800C_u884C_uFF0C_u52A0_u6CB9_u5427_uFF0C_u4E0D_u7136_u8FDE_u6BD5_u4E1A_u90FD_u4E0D_u597D_u8BF4_u3002_u4E0D_u80FD_u518D_u4F9D_u8D56_u522B_u4EBA_u4E00_u8D77_u505A_u4E4B_u7C7B_u7684_uFF0C_u81EA_u5DF1_u72EC_u884C_u524D_u5F80_u5427_uFF0C_u95EE_u9898_u603B_u662F_u5B58_u5728_uFF0C_u95EE_u9898_u603B_u662F_u53EF_u4EE5_u89E3_u51B3_u7684_uFF0C_u4E0D_u8981_u9003_u907F_u62D6_u5EF6_u3002" class="headerlink" title="一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。"></a>一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</h3>
+        <h3 id="DJI无人机避障飞行项目"><a href="#DJI无人机避障飞行项目" class="headerlink" title="DJI无人机避障飞行项目"></a>DJI无人机避障飞行项目</h3><h4 id="研读了CAMERA-CALIBRATION-STEREO-VISION-SLAM"><a href="#研读了CAMERA-CALIBRATION-STEREO-VISION-SLAM" class="headerlink" title="研读了CAMERA CALIBRATION,STEREO VISION,SLAM"></a>研读了CAMERA CALIBRATION,STEREO VISION,SLAM</h4><p>其中做SLAM的时候基于opencv、pcl、g2o为依赖库的开发</p>
+<h3 id="DJI部件的学习使用"><a href="#DJI部件的学习使用" class="headerlink" title="DJI部件的学习使用"></a>DJI部件的学习使用</h3><p>Guidance的数据订阅和传输接口，M100的GPS线损坏，而且室内校准较难，使用例程进行姿态控制</p>
+<h3 id="课程Advanced-Algorithm"><a href="#课程Advanced-Algorithm" class="headerlink" title="课程Advanced Algorithm"></a>课程Advanced Algorithm</h3><p>学习了多种优化算法以及分析复杂度，课程report使用random algorithm来优化stereo matching的过程</p>
+<h3 id="一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。"><a href="#一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。" class="headerlink" title="一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。"></a>一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</h3>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cior7tl3y001tz3q1f5izphej" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cior8xp9y0020gvq11ty4n6kg" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -162,12 +172,19 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -176,7 +193,7 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -185,7 +202,7 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -197,6 +214,14 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -206,14 +231,6 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -271,6 +288,12 @@ DJI部件的学习使用Guidance的数据订阅和传输接口，M100的GPS线�
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

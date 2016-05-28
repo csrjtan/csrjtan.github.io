@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
-<meta property="og:updated_time" content="2016-02-17T06:09:28.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:27:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamic occlusion avoidance approach based on the depth image of moving visual object">
 <meta name="twitter:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
@@ -20,7 +20,7 @@
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -47,6 +47,12 @@
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -79,6 +85,10 @@
   <time datetime="2015-11-25T06:13:16.000Z" itemprop="datePublished">2015-11-25</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -97,12 +107,12 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object"><span class="toc-number">1.</span> <span class="toc-text">Dynamic occlusion avoidance approach based on the depth image of moving visual object</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image"><span class="toc-number">1.1.</span> <span class="toc-text">Abstract:Dynamic Occlusion avoidance based on the depth image.</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E09_u4E2A_u95EE_u9898_uFF1A"><span class="toc-number">3.</span> <span class="toc-text">三个问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method_Overview"><span class="toc-number">4.</span> <span class="toc-text">Method Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image"><span class="toc-number">5.</span> <span class="toc-text">The Approach to dynamic occlusion avoidance based on depth image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm"><span class="toc-number">6.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusions"><span class="toc-number">7.</span> <span class="toc-text">Conclusions</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object"><span class="toc-number">1.</span> <span class="toc-text">Dynamic occlusion avoidance approach based on the depth image of moving visual object</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image"><span class="toc-number">1.1.</span> <span class="toc-text">Abstract:Dynamic Occlusion avoidance based on the depth image.</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三个问题："><span class="toc-number">3.</span> <span class="toc-text">三个问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-Overview"><span class="toc-number">4.</span> <span class="toc-text">Method Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Approach-to-dynamic-occlusion-avoidance-based-on-depth-image"><span class="toc-number">5.</span> <span class="toc-text">The Approach to dynamic occlusion avoidance based on depth image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm"><span class="toc-number">6.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusions"><span class="toc-number">7.</span> <span class="toc-text">Conclusions</span></a></li></ol>
           </div>
         
         <p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
-<h3 id="Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object"><a href="#Dynamic_occlusion_avoidance_approach_based_on_the_depth_image_of_moving_visual_object" class="headerlink" title="Dynamic occlusion avoidance approach based on the depth image of moving visual object"></a>Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
-<h4 id="Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image"><a href="#Abstract_3ADynamic_Occlusion_avoidance_based_on_the_depth_image" class="headerlink" title="Abstract:Dynamic Occlusion avoidance based on the depth image."></a>Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
+<h3 id="Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object"><a href="#Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object" class="headerlink" title="Dynamic occlusion avoidance approach based on the depth image of moving visual object"></a>Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
+<h4 id="Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image"><a href="#Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image" class="headerlink" title="Abstract:Dynamic Occlusion avoidance based on the depth image."></a>Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>主要问题：通过物体的障碍提示来寻找最优观测方向和位置<br>Next Best View:</p>
 <ul>
 <li>用Octree模型来描述可视物体，然后对于不同观察情况的节点，给定不同的分数。</li>
@@ -112,10 +122,10 @@
 <li>结合on-line theory来优化物体的3D重构<br>缺点：没有考虑遮蔽</li>
 </ul>
 <p>引入occlusion方法<br>缺点：受限于摄像机位置、特定的设备和先验信息，以上均不适用于移动的物体</p>
-<h3 id="u4E09_u4E2A_u95EE_u9898_uFF1A"><a href="#u4E09_u4E2A_u95EE_u9898_uFF1A" class="headerlink" title="三个问题："></a>三个问题：</h3><p>1.如何解决动态遮蔽的避障问题? -&gt; 用一个优化模型，结合运动预测在Best view Model里<br>2.如何通过深度图来预测可视物体的运动? -&gt; 用两个高斯曲率特征矩阵的匹配来求R T,用到SIFT和SVD<br>3.如何有效评估动态遮蔽的影响? -&gt; 用“effective avoidance rate”来评估算法的性能</p>
-<h3 id="Method_Overview"><a href="#Method_Overview" class="headerlink" title="Method Overview"></a>Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
+<h3 id="三个问题："><a href="#三个问题：" class="headerlink" title="三个问题："></a>三个问题：</h3><p>1.如何解决动态遮蔽的避障问题? -&gt; 用一个优化模型，结合运动预测在Best view Model里<br>2.如何通过深度图来预测可视物体的运动? -&gt; 用两个高斯曲率特征矩阵的匹配来求R T,用到SIFT和SVD<br>3.如何有效评估动态遮蔽的影响? -&gt; 用“effective avoidance rate”来评估算法的性能</p>
+<h3 id="Method-Overview"><a href="#Method-Overview" class="headerlink" title="Method Overview"></a>Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
 <p>2.The overall idea of dynamic occlusion avoidance<br>首先，移动物体相近深度图的像素进行三维坐标恢复（用Anti-projection），则遮蔽暗示可以从第二幅图得到<br>基于上述，用第二张深度图的遮蔽信息来构建Best View Model<br>接着，用三维坐标点的形式，做高斯曲率特征矩阵来匹配两个相近的深度图<br>最后，将运动预测结合到最佳视角模型里。</p>
-<h3 id="The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image"><a href="#The_Approach_to_dynamic_occlusion_avoidance_based_on_depth_image" class="headerlink" title="The Approach to dynamic occlusion avoidance based on depth image"></a>The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br>构建出patch</p>
+<h3 id="The-Approach-to-dynamic-occlusion-avoidance-based-on-depth-image"><a href="#The-Approach-to-dynamic-occlusion-avoidance-based-on-depth-image" class="headerlink" title="The Approach to dynamic occlusion avoidance based on depth image"></a>The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br>构建出patch</p>
 <p>2.Constructing the best view model<br>通过构建最大化Occlusion面积</p>
 <h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>step1:Calc the 3D pixels and the Gaussian Curvature Feature matrices<br>step2:Detect the Occlusion Boundary and establish the occlusion region in second depth<br>step3:Contruct the best view model<br>step4:Match the key points<br>step5:Solve the Objective formula<br>step6:Plan the next view of camera<br>step7:Acquire a depth image and calc the f(x)<br>step8:If the difference between two adjacent f(x) is less than a given threshold,then terminated,or jump to Step 4.</p>
 <h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>1.Add emotion estimate in Best Next View to dynamic occlusion avoidance<br>2.Based the depth image to solve the R and T transformation<br>3.Propose the “Effective avoidance rate” to measure the performance of the algorithm.</p>
@@ -124,7 +134,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cior7tl340015z3q1nnbi5j61" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cior8xp8t0016gvq1kjxu0q8j" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -172,12 +182,19 @@
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -186,7 +203,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -195,7 +212,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -207,6 +224,14 @@
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -216,14 +241,6 @@
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -281,6 +298,12 @@
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

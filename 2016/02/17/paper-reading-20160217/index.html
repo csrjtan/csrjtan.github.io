@@ -16,7 +16,7 @@
 <meta property="og:description" content="HKUST沈劭劼的微型无人机避障系统
 摘要机载避障关键点在于低耗的传感器以及实时避障算法，该系统使用25Hz的鱼眼摄像头和一个低频的第二摄像头，外加IMU传感器fusion进行100Hz的飞行器控制
 介绍这里有一个有趣的软件PTAM（Parallel Tracking and Mapping），是一个基于SLAM的增强现实应用，可以去进行参考了解。论文的主要贡献点在于提供了完整的系统架构，从硬件到">
-<meta property="og:updated_time" content="2016-02-17T06:23:39.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:27:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments">
 <meta name="twitter:description" content="HKUST沈劭劼的微型无人机避障系统
@@ -26,7 +26,7 @@
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -53,6 +53,12 @@
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -85,6 +91,10 @@
   <time datetime="2016-02-17T06:04:08.000Z" itemprop="datePublished">2016-02-17</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -103,14 +113,14 @@
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u6458_u8981"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4ECB_u7ECD"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u65B9_u6CD5"><span class="toc-number">3.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B9E_u9A8C_u90E8_u5206"><span class="toc-number">4.</span> <span class="toc-text">实验部分</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-number">3.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验部分"><span class="toc-number">4.</span> <span class="toc-text">实验部分</span></a></li></ol>
           </div>
         
         <p>HKUST<a href="https://sites.google.com/site/eeshaojie/academic-projects" target="_blank" rel="external">沈劭劼</a>的微型无人机避障系统</p>
-<h3 id="u6458_u8981"><a href="#u6458_u8981" class="headerlink" title="摘要"></a>摘要</h3><p>机载避障关键点在于低耗的传感器以及实时避障算法，该系统使用25Hz的鱼眼摄像头和一个低频的第二摄像头，外加IMU传感器fusion进行100Hz的飞行器控制</p>
-<h3 id="u4ECB_u7ECD"><a href="#u4ECB_u7ECD" class="headerlink" title="介绍"></a>介绍</h3><p>这里有一个有趣的软件PTAM（Parallel Tracking and Mapping），是一个基于SLAM的增强现实应用，可以去进行参考了解。论文的主要贡献点在于提供了完整的系统架构，从硬件到软件到算法，完成了机载设备的自动导航</p>
-<h3 id="u65B9_u6CD5"><a href="#u65B9_u6CD5" class="headerlink" title="方法"></a>方法</h3><p>1.相机标定以及特征提取跟踪<br>2.坐标系的正确转换<br>3.基于单目的Local Mapping<br>4.基于低帧率的立体匹配<br>5.误差校正和修复<br>6.UKF-Based的传感器融合（这一点可以需要的时候进行仔细的研究学习）</p>
-<h3 id="u5B9E_u9A8C_u90E8_u5206"><a href="#u5B9E_u9A8C_u90E8_u5206" class="headerlink" title="实验部分"></a>实验部分</h3><p>硬件：公司购买的飞行器，使用ARM7的机载处理器，具有双核1.86GHz和2GB RAM，120GB SSD。传感器为752*480的鱼眼摄像头，以及3.5mm f1.4 1Hz的第二摄像头，MicroStrain 3DM-GX3-25 IMU,用802.11g networking，总重1.983kg.</p>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>机载避障关键点在于低耗的传感器以及实时避障算法，该系统使用25Hz的鱼眼摄像头和一个低频的第二摄像头，外加IMU传感器fusion进行100Hz的飞行器控制</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>这里有一个有趣的软件PTAM（Parallel Tracking and Mapping），是一个基于SLAM的增强现实应用，可以去进行参考了解。论文的主要贡献点在于提供了完整的系统架构，从硬件到软件到算法，完成了机载设备的自动导航</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>1.相机标定以及特征提取跟踪<br>2.坐标系的正确转换<br>3.基于单目的Local Mapping<br>4.基于低帧率的立体匹配<br>5.误差校正和修复<br>6.UKF-Based的传感器融合（这一点可以需要的时候进行仔细的研究学习）</p>
+<h3 id="实验部分"><a href="#实验部分" class="headerlink" title="实验部分"></a>实验部分</h3><p>硬件：公司购买的飞行器，使用ARM7的机载处理器，具有双核1.86GHz和2GB RAM，120GB SSD。传感器为752*480的鱼眼摄像头，以及3.5mm f1.4 1Hz的第二摄像头，MicroStrain 3DM-GX3-25 IMU,用802.11g networking，总重1.983kg.</p>
 <p>软件：C++ using ROS, OpenCV,最大特征数1000，以及一些相关参数的调整，最后算法占用了50%的CPU，以及使用该算法与装有Vicon motion tracking system进行比较。</p>
 <p>测试：1.算法的姿态与GT比较 2.机载定点盘旋 3.复杂环境里的自动导航</p>
 <p>思路：作者主要使用ROS和OpenCV里面的工具进行系统的架构，可以去进行相关研究。</p>
@@ -119,7 +129,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cior7tl390019z3q1pboi3gsj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cior8xp90001agvq1oqmtj6eh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -167,12 +177,19 @@
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -181,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -190,7 +207,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -202,6 +219,14 @@
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -211,14 +236,6 @@
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -276,6 +293,12 @@
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   

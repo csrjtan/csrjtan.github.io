@@ -20,7 +20,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/overview_stereo.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/BF1.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/BF2.png">
-<meta property="og:updated_time" content="2016-01-20T06:07:44.000Z">
+<meta property="og:updated_time" content="2016-05-28T14:28:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ppt_learning_Stereo_Vision">
 <meta name="twitter:description" content="原文链接
@@ -30,7 +30,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
     <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
@@ -57,6 +57,12 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
         <a id="main-nav-toggle" class="nav-icon"></a>
         
           <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/Tech">Tech</a>
+        
+          <a class="main-nav-link" href="/categories/Read">Read</a>
+        
+          <a class="main-nav-link" href="/categories/Life">Life</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
@@ -89,6 +95,10 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
   <time datetime="2015-09-03T08:11:25.000Z" itemprop="datePublished">2015-09-03</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -107,29 +117,29 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
       
         
           <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stereo_Vision_3AAlgorithms_and_Applications"><span class="toc-number">1.</span> <span class="toc-text">Stereo Vision:Algorithms and Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Author_3AStefano_Mattoccia"><span class="toc-number">1.1.</span> <span class="toc-text">Author:Stefano Mattoccia</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lab_3AUniversity_of_Bologna"><span class="toc-number">1.2.</span> <span class="toc-text">Lab:University of Bologna</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Intro"><span class="toc-number">2.</span> <span class="toc-text">1.Intro</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B9A_u4E49_3AEpipolar_constraint_28_u6781_u51E0_u4F55_u7EA6_u675F_29"><span class="toc-number">2.1.</span> <span class="toc-text">定义:Epipolar constraint(极几何约束)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B9A_u4E49_uFF1A_u89C6_u5DEE_uFF08Disparity_uFF09"><span class="toc-number">2.2.</span> <span class="toc-text">定义：视差（Disparity）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5B9A_u4E49_uFF1A_u53CC_u76EE_u89C6_u754C_uFF08Horopter_uFF09"><span class="toc-number">2.3.</span> <span class="toc-text">定义：双目视界（Horopter）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Overview_of_stereo_vision_system"><span class="toc-number">3.</span> <span class="toc-text">2.Overview of stereo vision system</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1_Calibration_28offline_29"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 Calibration(offline)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2_Rectification"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 Rectification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3_Stereo_Correspondence"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 Stereo Correspondence</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4_Triangulation"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 Triangulation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-The_correspondence_problem"><span class="toc-number">4.</span> <span class="toc-text">3.The correspondence problem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1__u9884_u5904_u7406_uFF080_uFF09"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 预处理（0）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2__u5339_u914D_u4EE3_u4EF7_u8BA1_u7B97_281_29"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 匹配代价计算(1)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3__u4EE3_u4EF7_u805A_u5408_282_29"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 代价聚合(2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4__u89C6_u5DEE_u8BA1_u7B97/_u4F18_u5316_283_29"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 视差计算/优化(3)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5__u89C6_u5DEE_u7CBE_u7EC6_284_29"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 视差精细(4)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-_u5E94_u7528"><span class="toc-number">5.</span> <span class="toc-text">4.应用</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stereo-Vision-Algorithms-and-Applications"><span class="toc-number">1.</span> <span class="toc-text">Stereo Vision:Algorithms and Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Author-Stefano-Mattoccia"><span class="toc-number">1.1.</span> <span class="toc-text">Author:Stefano Mattoccia</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lab-University-of-Bologna"><span class="toc-number">1.2.</span> <span class="toc-text">Lab:University of Bologna</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Intro"><span class="toc-number">2.</span> <span class="toc-text">1.Intro</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义-Epipolar-constraint-极几何约束"><span class="toc-number">2.1.</span> <span class="toc-text">定义:Epipolar constraint(极几何约束)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义：视差（Disparity）"><span class="toc-number">2.2.</span> <span class="toc-text">定义：视差（Disparity）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义：双目视界（Horopter）"><span class="toc-number">2.3.</span> <span class="toc-text">定义：双目视界（Horopter）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Overview-of-stereo-vision-system"><span class="toc-number">3.</span> <span class="toc-text">2.Overview of stereo vision system</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Calibration-offline"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 Calibration(offline)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Rectification"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 Rectification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Stereo-Correspondence"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 Stereo Correspondence</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Triangulation"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 Triangulation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-The-correspondence-problem"><span class="toc-number">4.</span> <span class="toc-text">3.The correspondence problem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-预处理（0）"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 预处理（0）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-匹配代价计算-1"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 匹配代价计算(1)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-代价聚合-2"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 代价聚合(2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-视差计算-优化-3"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 视差计算/优化(3)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-视差精细-4"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 视差精细(4)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-应用"><span class="toc-number">5.</span> <span class="toc-text">4.应用</span></a></li></ol>
           </div>
         
         <p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf" target="_blank" rel="external">原文链接</a></p>
-<h3 id="Stereo_Vision_3AAlgorithms_and_Applications"><a href="#Stereo_Vision_3AAlgorithms_and_Applications" class="headerlink" title="Stereo Vision:Algorithms and Applications"></a>Stereo Vision:Algorithms and Applications</h3><h4 id="Author_3AStefano_Mattoccia"><a href="#Author_3AStefano_Mattoccia" class="headerlink" title="Author:Stefano Mattoccia"></a>Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html" target="_blank" rel="external">Stefano Mattoccia</a></h4><h4 id="Lab_3AUniversity_of_Bologna"><a href="#Lab_3AUniversity_of_Bologna" class="headerlink" title="Lab:University of Bologna"></a>Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用<br><a id="more"></a></p>
+<h3 id="Stereo-Vision-Algorithms-and-Applications"><a href="#Stereo-Vision-Algorithms-and-Applications" class="headerlink" title="Stereo Vision:Algorithms and Applications"></a>Stereo Vision:Algorithms and Applications</h3><h4 id="Author-Stefano-Mattoccia"><a href="#Author-Stefano-Mattoccia" class="headerlink" title="Author:Stefano Mattoccia"></a>Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html" target="_blank" rel="external">Stefano Mattoccia</a></h4><h4 id="Lab-University-of-Bologna"><a href="#Lab-University-of-Bologna" class="headerlink" title="Lab:University of Bologna"></a>Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用<br><a id="more"></a></p>
 <h3 id="1-Intro"><a href="#1-Intro" class="headerlink" title="1.Intro"></a>1.Intro</h3><p>Target:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息</p>
 <ul>
 <li>双目视觉系统</li>
 <li>密度立体算法</li>
 <li>立体视觉应用</li>
 </ul>
-<h4 id="u5B9A_u4E49_3AEpipolar_constraint_28_u6781_u51E0_u4F55_u7EA6_u675F_29"><a href="#u5B9A_u4E49_3AEpipolar_constraint_28_u6781_u51E0_u4F55_u7EA6_u675F_29" class="headerlink" title="定义:Epipolar constraint(极几何约束)"></a>定义:Epipolar constraint(极几何约束)</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/epipolar_constraint.png" alt=""><br>对于图像R，P和Q在同一点上，近的掩盖远的<br>对于图像T，P和Q映在p和q上，红线 $PO_R$ 落在绿线pq的同一平面 $\Pi_T$上，这个称为极约束</p>
-<h4 id="u5B9A_u4E49_uFF1A_u89C6_u5DEE_uFF08Disparity_uFF09"><a href="#u5B9A_u4E49_uFF1A_u89C6_u5DEE_uFF08Disparity_uFF09" class="headerlink" title="定义：视差（Disparity）"></a>定义：视差（Disparity）</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/disparity.png" alt=""><br>经过三角形相似性原理可以推导得到<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/dis_res.png" alt=""></p>
-<h4 id="u5B9A_u4E49_uFF1A_u53CC_u76EE_u89C6_u754C_uFF08Horopter_uFF09"><a href="#u5B9A_u4E49_uFF1A_u53CC_u76EE_u89C6_u754C_uFF08Horopter_uFF09" class="headerlink" title="定义：双目视界（Horopter）"></a>定义：双目视界（Horopter）</h4><p>The range field of system is constrained by disparity range $[d_{min},d_{max}]$<br>一般可以离散化视差值，较好的离散化是通过subpixel方法可得<br>若用5个离散化的值，则可设置 $[d_{min},d_{min}+4]$</p>
-<h3 id="2-Overview_of_stereo_vision_system"><a href="#2-Overview_of_stereo_vision_system" class="headerlink" title="2.Overview of stereo vision system"></a>2.Overview of stereo vision system</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/overview_stereo.png" alt=""></p>
-<h4 id="2-1_Calibration_28offline_29"><a href="#2-1_Calibration_28offline_29" class="headerlink" title="2.1 Calibration(offline)"></a>2.1 Calibration(offline)</h4><p>  target:finding parameters of the camera system</p>
+<h4 id="定义-Epipolar-constraint-极几何约束"><a href="#定义-Epipolar-constraint-极几何约束" class="headerlink" title="定义:Epipolar constraint(极几何约束)"></a>定义:Epipolar constraint(极几何约束)</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/epipolar_constraint.png" alt=""><br>对于图像R，P和Q在同一点上，近的掩盖远的<br>对于图像T，P和Q映在p和q上，红线 $PO_R$ 落在绿线pq的同一平面 $\Pi_T$上，这个称为极约束</p>
+<h4 id="定义：视差（Disparity）"><a href="#定义：视差（Disparity）" class="headerlink" title="定义：视差（Disparity）"></a>定义：视差（Disparity）</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/disparity.png" alt=""><br>经过三角形相似性原理可以推导得到<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/dis_res.png" alt=""></p>
+<h4 id="定义：双目视界（Horopter）"><a href="#定义：双目视界（Horopter）" class="headerlink" title="定义：双目视界（Horopter）"></a>定义：双目视界（Horopter）</h4><p>The range field of system is constrained by disparity range $[d_{min},d_{max}]$<br>一般可以离散化视差值，较好的离散化是通过subpixel方法可得<br>若用5个离散化的值，则可设置 $[d_{min},d_{min}+4]$</p>
+<h3 id="2-Overview-of-stereo-vision-system"><a href="#2-Overview-of-stereo-vision-system" class="headerlink" title="2.Overview of stereo vision system"></a>2.Overview of stereo vision system</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/overview_stereo.png" alt=""></p>
+<h4 id="2-1-Calibration-offline"><a href="#2-1-Calibration-offline" class="headerlink" title="2.1 Calibration(offline)"></a>2.1 Calibration(offline)</h4><p>  target:finding parameters of the camera system</p>
 <ul>
 <li>Intrinsic parameters of two cameras:Focal length,image center,lenses distortion</li>
 <li>Extrinsic parameters R and T aligns of two cameras<br>Methods:用10+对已知的立体点匹配，最典型用checkerboard<br>可用Opencv,Matlab<a href="http://www.vision.caltech.edu/bouguetj/calib_doc/" target="_blank" rel="external">[1]</a>,详细的标定方法可参考资料[2,3,4]</li>
 </ul>
-<h4 id="2-2_Rectification"><a href="#2-2_Rectification" class="headerlink" title="2.2 Rectification"></a>2.2 Rectification</h4><p>  target: Adjust stereo camera in standard form<br>  steps: a) removes lens distortions<br>             b) turns the stereo pair in standard form</p>
-<h4 id="2-3_Stereo_Correspondence"><a href="#2-3_Stereo_Correspondence" class="headerlink" title="2.3 Stereo Correspondence"></a>2.3 Stereo Correspondence</h4><p>  target: finding homologous points in stereo pair, generate disparity map</p>
-<h4 id="2-4_Triangulation"><a href="#2-4_Triangulation" class="headerlink" title="2.4 Triangulation"></a>2.4 Triangulation</h4><p>  target: Calculate the position of the correspondence in the 3D</p>
+<h4 id="2-2-Rectification"><a href="#2-2-Rectification" class="headerlink" title="2.2 Rectification"></a>2.2 Rectification</h4><p>  target: Adjust stereo camera in standard form<br>  steps: a) removes lens distortions<br>             b) turns the stereo pair in standard form</p>
+<h4 id="2-3-Stereo-Correspondence"><a href="#2-3-Stereo-Correspondence" class="headerlink" title="2.3 Stereo Correspondence"></a>2.3 Stereo Correspondence</h4><p>  target: finding homologous points in stereo pair, generate disparity map</p>
+<h4 id="2-4-Triangulation"><a href="#2-4-Triangulation" class="headerlink" title="2.4 Triangulation"></a>2.4 Triangulation</h4><p>  target: Calculate the position of the correspondence in the 3D</p>
 <p>  $Z=\frac{b*f}{d}$        $X=Z\frac{x_R}{f}$      $Y=Z\frac{y_R}{f}$</p>
 <p>Relevant:</p>
 <ul>
@@ -145,21 +155,21 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
 <li><a href="http://vision.middlebury.edu/stereo/eval/" target="_blank" rel="external">Middlebury stereo evaluation</a><br>提供了一个框架和一个数据集来测试新颖方法的性能和效果基线</li>
 </ul>
 <p>待克服的难点：The common pitfalls make the stereo correspondence so challenging: Photometric distortions and noise, Specular surfaces, Foreshortening, Perspective distortions, Uniform/Ambiguous regions, Repetitive patterns, Transparent objects, Occlusions and discontinuities</p>
-<h3 id="3-The_correspondence_problem"><a href="#3-The_correspondence_problem" class="headerlink" title="3.The correspondence problem"></a>3.The correspondence problem</h3><p>  由于[5]，大部分立体算法基于一下步骤：</p>
+<h3 id="3-The-correspondence-problem"><a href="#3-The-correspondence-problem" class="headerlink" title="3.The correspondence problem"></a>3.The correspondence problem</h3><p>  由于[5]，大部分立体算法基于一下步骤：</p>
 <ul>
 <li>1.匹配代价计算（Matching cost computation）</li>
 <li>2.代价聚合(Cost Aggregation)</li>
 <li>3.视差计算/优化(Disparity computation/Optimization)</li>
 <li>4.视差精细(Disparity refinement)<br>Local:1-&gt;2-&gt;3    (用WTA策略)<br>Global:1(-&gt;2)-&gt;3   semi-global</li>
 </ul>
-<h4 id="3-1__u9884_u5904_u7406_uFF080_uFF09"><a href="#3-1__u9884_u5904_u7406_uFF080_uFF09" class="headerlink" title="3.1 预处理（0）"></a>3.1 预处理（0）</h4><p>  典型方法：Laplacian of Gaussian(LoG)滤波[6],邻域均值去除[7],Bilateral Filtering[8]</p>
+<h4 id="3-1-预处理（0）"><a href="#3-1-预处理（0）" class="headerlink" title="3.1 预处理（0）"></a>3.1 预处理（0）</h4><p>  典型方法：Laplacian of Gaussian(LoG)滤波[6],邻域均值去除[7],Bilateral Filtering[8]</p>
 <p>  <strong>优化</strong>简单的像素比对方法:</p>
 <ul>
 <li>Local 用窗口像素代价聚合减小 Signal to noise ratio(SNR)</li>
 <li>Global 最小化代价函数，优化Pixel-based的代价匹配</li>
 </ul>
 <p>$$E(d)=E_{data}(d) + E_{smooth}(d)$$</p>
-<h4 id="3-2__u5339_u914D_u4EE3_u4EF7_u8BA1_u7B97_281_29"><a href="#3-2__u5339_u914D_u4EE3_u4EF7_u8BA1_u7B97_281_29" class="headerlink" title="3.2 匹配代价计算(1)"></a>3.2 匹配代价计算(1)</h4><p>  3.2.1 单值匹配</p>
+<h4 id="3-2-匹配代价计算-1"><a href="#3-2-匹配代价计算-1" class="headerlink" title="3.2 匹配代价计算(1)"></a>3.2 匹配代价计算(1)</h4><p>  3.2.1 单值匹配</p>
 <ul>
 <li>绝对值差<br>$e(x,y,d) = |I_R(x,y)-I_T(x+d,y)|$</li>
 <li>平方差<br>$e(x,y,d) = (I_R(x,y)-I_T(x+d,y))^2$</li>
@@ -168,7 +178,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
 <li>平方差和 （SSD）<br>$C(x,y,d) = \sum_{x\in S}(I_R(x,y)-I_T(x+d,y))^2$</li>
 <li>截断绝对差和（STAD)<br>$C(x,y,d) = \sum_{x\in S}\{|I_R(x,y)-I_T(x+d,y)|,T\}$<br>其他一些方法：Normalized Cross Correlation[9], Zero mean Normalized Cross Correlation[10], Gradient based MF[11], Non parametric[12,13], Mutual Information[14]</li>
 </ul>
-<h4 id="3-3__u4EE3_u4EF7_u805A_u5408_282_29"><a href="#3-3__u4EE3_u4EF7_u805A_u5408_282_29" class="headerlink" title="3.3 代价聚合(2)"></a>3.3 代价聚合(2)</h4><p>  固定窗口(FW):<br>  弊端：1.假设图像正面平行 2.忽略深度不连续性 3.不能解决均匀区域 4.无法解决重复区域<br>  优势：简单，使用，实时，不占内存空间，硬件耗电小<br>  优化方法：1.积分图Integral Images（II 1984） 2.箱过滤Box-Filtering(BF 1981) 3.Single Instruction Multiple Data(SIMD)<br>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/BF1.png" alt=""><br>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/BF2.png" alt=""><br>  两者比较：每个点都需要四次运算，II可以处理不通形状的窗口，但需要更多内存，容易溢出，因为若果图片大小为S，则需要$S^2$。不同的BF可以参看[15]</p>
+<h4 id="3-3-代价聚合-2"><a href="#3-3-代价聚合-2" class="headerlink" title="3.3 代价聚合(2)"></a>3.3 代价聚合(2)</h4><p>  固定窗口(FW):<br>  弊端：1.假设图像正面平行 2.忽略深度不连续性 3.不能解决均匀区域 4.无法解决重复区域<br>  优势：简单，使用，实时，不占内存空间，硬件耗电小<br>  优化方法：1.积分图Integral Images（II 1984） 2.箱过滤Box-Filtering(BF 1981) 3.Single Instruction Multiple Data(SIMD)<br>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/BF1.png" alt=""><br>  <img src="http://7xl4js.com1.z0.glb.clouddn.com/BF2.png" alt=""><br>  两者比较：每个点都需要四次运算，II可以处理不通形状的窗口，但需要更多内存，容易溢出，因为若果图片大小为S，则需要$S^2$。不同的BF可以参看[15]</p>
 <p>  3.3.1 一个具体的示例（LIVE DEMO）[16][17]</p>
 <pre><code>- 灰度图
   - 预处理：均值提取
@@ -181,7 +191,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
   - 像素插值1/16对于每个像素
   - 实时运行在普通PC上
 </code></pre><p>  3.3.2 一些好的方法<br>   Shiftable Windows[18], Multiple Window[19], Variable Window [20], Segmentation based(Assume each segment smoothly)[21], Bilateral Filtering[22], Adaptive Weights[23], Segment Supoort[24], Fast Aggregation[25], Fast Bilateral Stereo(FBS)[26], Locally Consistent(LC) stereo[27]</p>
-<h4 id="3-4__u89C6_u5DEE_u8BA1_u7B97/_u4F18_u5316_283_29"><a href="#3-4__u89C6_u5DEE_u8BA1_u7B97/_u4F18_u5316_283_29" class="headerlink" title="3.4 视差计算/优化(3)"></a>3.4 视差计算/优化(3)</h4><p>  目的：寻找最佳的视差点，最小化代价函数<br>  由于是NP-Hard问题，可以用近似的方法求解</p>
+<h4 id="3-4-视差计算-优化-3"><a href="#3-4-视差计算-优化-3" class="headerlink" title="3.4 视差计算/优化(3)"></a>3.4 视差计算/优化(3)</h4><p>  目的：寻找最佳的视差点，最小化代价函数<br>  由于是NP-Hard问题，可以用近似的方法求解</p>
 <ul>
 <li>Graph Cuts[28]</li>
 <li>Belief Propagation[29]</li>
@@ -192,11 +202,11 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
 <li>SO + Support Aggregation [33]</li>
 <li>Enforcing Local Consistency of disparity in SO/DP [34]</li>
 </ul>
-<h4 id="3-5__u89C6_u5DEE_u7CBE_u7EC6_284_29"><a href="#3-5__u89C6_u5DEE_u7CBE_u7EC6_284_29" class="headerlink" title="3.5 视差精细(4)"></a>3.5 视差精细(4)</h4><ul>
+<h4 id="3-5-视差精细-4"><a href="#3-5-视差精细-4" class="headerlink" title="3.5 视差精细(4)"></a>3.5 视差精细(4)</h4><ul>
 <li>匹配算法包括一些outliers，必须识别并纠正</li>
 <li>由于细化了像素级别，需要优化视差的精确性<br>3.5.1 Sub-pixel插值<br>计算临近插值最小的值，[35]提出了floating-point free方法<br>3.5.2 图像滤波<br>中值滤波，形态操作，BF<br>3.5.3 双向匹配（Bidirection Matching,BM）<br>用于检测outliers[36],左右匹配差异小于T，一般T为1<br>$$|d_{LR}(x,y) - d_{RL}(x+d_{LR}(x,y),y)|&lt;T$$<br>3.5.4 单向匹配步骤(Single Matching Phase,SMP)[37]<br>3.5.5 分割方法<br>Segmentation based outliers identification and replacement<br>基于两个假设:1.每段分割片的视差变化平滑 2.每个分割面近似在同一平面<br>对于每个切割面都在3D平面,满足 $d(x,y)=ax+by+\gamma$<br>对于这样鲁棒的平面，可以使用方法：RANSAC[38]和Histogram Voting[30]<br>3.5.6 Accurate Localization of borders and occlusions[39]</li>
 </ul>
-<h3 id="4-_u5E94_u7528"><a href="#4-_u5E94_u7528" class="headerlink" title="4.应用"></a>4.应用</h3><p>  3D跟踪：物体计数、监控轨迹、安保<br>  扫描，2D和3D转化，增强现实 </p>
+<h3 id="4-应用"><a href="#4-应用" class="headerlink" title="4.应用"></a>4.应用</h3><p>  3D跟踪：物体计数、监控轨迹、安保<br>  扫描，2D和3D转化，增强现实 </p>
 <p>  列出的下列Reference请耐心仔细阅读，可参考原PPT的概括进行参考阅读。由于PPT是2012更新的，一些2010后的前沿方法请另外查询，从CVPR、PAMI等会议或MiddleBury的测评网站上查询阅读。</p>
 <hr>
 <p>[1] Jean-Yves Bouguet , Camera Calibration Toolbox for Matlab<br>[2] E. Trucco, A. Verri, Introductory Techniques for 3-D Computer Vision, Prentice Hall, 1998<br>[3] R.I.Hartley, A. Zisserman, Multiple View Geometry in Computer Vision, Cambridge University Press, 2000<br>[4] G. Bradsky, A. Kaehler, Learning Opencv, O’Reilly, 2008<br>[5] D. Scharstein and R. Szeliski, A taxonomy and evaluation of dense two-frame stereo correspondence algorithms<br>Int. Jour. Computer Vision, 47(1/2/3):7–42, 2002<br>[6] T. Kanade, H. Kato, S. Kimura, A. Yoshida, and K. Oda, Development of a Video-Rate Stereo Machine<br>International Robotics and Systems Conference (IROS ‘95), Human Robot Interaction and Cooperative Robots, 1995<br>[7] O. Faugeras, B. Hotz, H. Mathieu, T. Viville, Z. Zhang, P. Fua, E. Thron, L. Moll, G. Berry,<br>Real-time correlation-based stereo: Algorithm. Implementation and Applications, INRIA TR n. 2013, 1993<br>[8] A. Ansar, A. Castano, L. Matthies, Enhanced real-time stereo using bilateral filtering<br>IEEE Conference on Computer Vision and Pattern Recognition 2004<br>[9] S. Mattoccia, F. Tombari, L. Di Stefano, Fast full-search equivalent template matching by Enhanced Bounded<br>Correlation, IEEE Transactions on Image Processing, 17(4), pp 528-538, April 2008<br>[10] L. Di Stefano, S. Mattoccia, F. Tombari, ZNCC-based template matching using Bounded Partial Correlation<br>Pattern Recognition Letters, 16(14), pp 2129-2134, October 2005<br>[11] F. Tombari, L. Di Stefano, S. Mattoccia, A. Galanti, Performance evaluation of robust matching measures<br>3rd International Conference on Computer Vision Theory and Applications (VISAPP 2008)<br>[12] R. Zabih, J John Woodll Non-parametric Local Transforms for Computing Visual Correspondence, ECCV 1994<br>[13] D. N. Bhat, S. K. Nayar, Ordinal measures for visual correspondence, CVPR 1996<br>[14] H. Hirschmüller. Stereo vision in structured environments by consistent semi-global matching.<br>CVPR 2006, PAMI 30(2):328-341, 2008<br>[15] Changming Sun, Recursive Algorithms for Diamond, Hexagon and General Polygonal Shaped Window Operations<br>Pattern Recognition Letters, 27(6):556-566, April 2006<br>[16] L. Di Stefano, M. Marchionni, S. Mattoccia, A fast area-based stereo matching algorithm, Image and Vision Computing,<br>22(12), pp 983-1005, October 2004<br>[17] L. Di Stefano, M. Marchionni, S. Mattoccia, A PC-based real-time stereo vision system, Machine Graphics &amp; Vision,<br>13(3), pp. 197-220, January 2004<br>[18] D. Scharstein and R. Szeliski, A taxonomy and evaluation of dense two-frame stereo correspondence algorithms<br>Int. Jour. Computer Vision, 47(1/2/3):7–42, 2002<br>[19] H. Hirschmuller, P. Innocent, and J. Garibaldi, Real-time correlation-based stereo vision with reduced border errors<br>Int. Journ. of Computer Vision, 47:1–3, 2002<br>[20]  O. Veksler. Fast variable window for stereo correspondence using integral images, In Proc. Conf. on Computer Vision<br>and Pattern Recognition (CVPR 2003), pages 556–561, 2003<br>[21]  M. Gerrits and P. Bekaert. Local Stereo Matching with Segmentation-based Outlier Rejection<br>In Proc. Canadian Conf. on Computer and Robot Vision (CRV 2006), pages 66-66, 2006<br>[22] C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images. In ICCV98, pages 839–846, 1998<br>[23] K. Yoon and I. Kweon. Adaptive support-weight approach for correspondence search IEEE PAMI, 28(4):650–656, 2006<br>[24] F. Tombari, S. Mattoccia, L. Di Stefano, Segmentation-based adaptive support for accurate stereo correspondence IEEE Pacific-Rim Symposium on Image and Video Technology (PSIVT 2007)<br>[25] F. Tombari, S. Mattoccia, L. Di Stefano, E. Addimanda, Near real-time stereo based on effective cost aggregation International Conference on Pattern Recognition (ICPR 2008)<br>[26] S. Mattoccia, S. Giardino,A. Gambini, Accurate and efficient cost aggregation strategy for stereo correspondence<br>based on approximated joint bilateral filtering, Asian Conference on Computer Vision (ACCV2009)<br>[27] S. Mattoccia, A locally global approach to stereo correspondence, 3D Digital Imaging and Modeling (3DIM2009)<br>[28] V. Kolmogorov and R. Zabih, Computing visual correspondence with occlusions using graph cuts, ICCV 2001<br>[29] A. Klaus, M. Sormann and K. Karner, Segment-based stereo matching using belief propagation and a self-adapting<br>dissimilarity measure, ICPR 2006<br>[30] Z. Wang and Z. Zheng, A region based stereo matching algorithm using cooperative optimization, CVPR 2008<br>[31] R.Szeliski, R. Zabih, D. Scharstein, O. Veksler, V. Kolmogorov, A. Agarwala, M. Tappen, C. Rother, A Comparative<br>Study of Energy Minimization Methods for Markov Random Fields with Smoothness-Based Priors, IEEE Transactions on<br>Pattern Analysis and Machine Intelligence, 30, 6, June 2008, pp 1068-1080<br>[32] H. Hirschmüller. Stereo vision in structured environments by consistent semi-global matching.<br>CVPR 2006, PAMI 30(2):328-341, 2008<br>[33] S. Mattoccia, F. Tombari, and L. Di Stefano, Stereo vision enabling precise border localization within a scanline<br>optimization framework, ACCV 2007<br>[34] S. Mattoccia, Improving the accuracy of fast dense stereo correspondence algorithms by enforcing local consistency of disparity fields, 3DPVT2010<br>[35] L. Di Stefano, S. Mattoccia, Real-time stereo within the VIDET project Real-Time Imaging, 8(5), pp. 439-453, Oct. 2002<br>[36] P. Fua, Combining stereo and monocular information to compute dense depth maps that preserve depth discontinuities 12th. Int. Joint Conf. on Artificial Intelligence, pp 1292–1298, 1993<br>[37] L. Di Stefano, M. Marchionni, S. Mattoccia, A fast area-based stereo matching algorithm, Image and Vision Computing,<br>22(12), pp 983-1005, October 2004<br>[38] M. A. Fischler and R. C. Bolles, Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image<br>Analysis and Automated Cartography, Comm. of the ACM 24: 381–395, June 1981<br>[39] S. Mattoccia, F. Tombari, and L. Di Stefano, Stereo vision enabling precise border localization within a scanline optimization framework, ACCV 2007</p>
@@ -205,7 +215,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cior7tl3n001jz3q1ljwp37yl" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cior8xp9j001mgvq1gyrdbwo7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -253,12 +263,19 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
     <aside id="sidebar" class="outer">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -267,7 +284,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -276,7 +293,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -288,6 +305,14 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
       <ul>
         
           <li>
+            <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/ted-glories-and-dream/">Ted《光荣与梦想》</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/leetcode15/">leetcode15</a>
           </li>
         
@@ -297,14 +322,6 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
         
           <li>
             <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/07/leetcode2/">leetcode2&amp;3</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/06/paper-reading-20160306/">paper-reading-20160306</a>
           </li>
         
       </ul>
@@ -362,6 +379,12 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
   <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/Tech" class="mobile-nav-link">Tech</a>
+  
+    <a href="/categories/Read" class="mobile-nav-link">Read</a>
+  
+    <a href="/categories/Life" class="mobile-nav-link">Life</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
