@@ -4,24 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments | CSRJTAN</title>
+  <title>Tag: 感想 | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HKUST沈劭劼的微型无人机避障系统
-摘要机载避障关键点在于低耗的传感器以及实时避障算法，该系统使用25Hz的鱼眼摄像头和一个低频的第二摄像头，外加IMU传感器fusion进行100Hz的飞行器控制
-介绍这里有一个有趣的软件PTAM（Parallel Tracking and Mapping），是一个基于SLAM的增强现实应用，可以去进行参考了解。论文的主要贡献点在于提供了完整的系统架构，从硬件到">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments">
-<meta property="og:url" content="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/index.html">
+  <meta name="description" content="blog csrjtan tanrunj">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CSRJTAN">
+<meta property="og:url" content="https://csrjtan.github.io/tags/感想/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="HKUST沈劭劼的微型无人机避障系统
-摘要机载避障关键点在于低耗的传感器以及实时避障算法，该系统使用25Hz的鱼眼摄像头和一个低频的第二摄像头，外加IMU传感器fusion进行100Hz的飞行器控制
-介绍这里有一个有趣的软件PTAM（Parallel Tracking and Mapping），是一个基于SLAM的增强现实应用，可以去进行参考了解。论文的主要贡献点在于提供了完整的系统架构，从硬件到">
-<meta property="og:updated_time" content="2016-05-28T14:27:42.000Z">
+<meta property="og:description" content="blog csrjtan tanrunj">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments">
-<meta name="twitter:description" content="HKUST沈劭劼的微型无人机避障系统
-摘要机载避障关键点在于低耗的传感器以及实时避障算法，该系统使用25Hz的鱼眼摄像头和一个低频的第二摄像头，外加IMU传感器fusion进行100Hz的飞行器控制
-介绍这里有一个有趣的软件PTAM（Parallel Tracking and Mapping），是一个基于SLAM的增强现实应用，可以去进行参考了解。论文的主要贡献点在于提供了完整的系统架构，从硬件到">
+<meta name="twitter:title" content="CSRJTAN">
+<meta name="twitter:description" content="blog csrjtan tanrunj">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -81,90 +74,40 @@
   <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-paper-reading-20160217" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/02/17/paper-reading-20160217/" class="article-date">
-  <time datetime="2016-02-17T06:04:08.000Z" itemprop="datePublished">2016-02-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tech/">Tech</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/05/29/重回理大/" class="archive-article-date">
+  <time datetime="2016-05-29T05:18:43.000Z" itemprop="datePublished">5月 29</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/05/29/重回理大/">重回理大</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-number">3.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验部分"><span class="toc-number">4.</span> <span class="toc-text">实验部分</span></a></li></ol>
-          </div>
-        
-        <p>HKUST<a href="https://sites.google.com/site/eeshaojie/academic-projects" target="_blank" rel="external">沈劭劼</a>的微型无人机避障系统</p>
-<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>机载避障关键点在于低耗的传感器以及实时避障算法，该系统使用25Hz的鱼眼摄像头和一个低频的第二摄像头，外加IMU传感器fusion进行100Hz的飞行器控制</p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>这里有一个有趣的软件PTAM（Parallel Tracking and Mapping），是一个基于SLAM的增强现实应用，可以去进行参考了解。论文的主要贡献点在于提供了完整的系统架构，从硬件到软件到算法，完成了机载设备的自动导航</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>1.相机标定以及特征提取跟踪<br>2.坐标系的正确转换<br>3.基于单目的Local Mapping<br>4.基于低帧率的立体匹配<br>5.误差校正和修复<br>6.UKF-Based的传感器融合（这一点可以需要的时候进行仔细的研究学习）</p>
-<h3 id="实验部分"><a href="#实验部分" class="headerlink" title="实验部分"></a>实验部分</h3><p>硬件：公司购买的飞行器，使用ARM7的机载处理器，具有双核1.86GHz和2GB RAM，120GB SSD。传感器为752*480的鱼眼摄像头，以及3.5mm f1.4 1Hz的第二摄像头，MicroStrain 3DM-GX3-25 IMU,用802.11g networking，总重1.983kg.</p>
-<p>软件：C++ using ROS, OpenCV,最大特征数1000，以及一些相关参数的调整，最后算法占用了50%的CPU，以及使用该算法与装有Vicon motion tracking system进行比较。</p>
-<p>测试：1.算法的姿态与GT比较 2.机载定点盘旋 3.复杂环境里的自动导航</p>
-<p>思路：作者主要使用ROS和OpenCV里面的工具进行系统的架构，可以去进行相关研究。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cios6s1zv001th7q17cp3372a" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/02/18/Manual学习/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          Vim Manual学习
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/01/30/C-Primer-Reading2/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">C++_Primer_Reading2</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/02/17/paper-reading-20160217/" data-title="Vision-Based State Estimation for Autonomous Rotorcraft MAVs in Complex Environments" data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/"></div>
-  </section>
+  
+  
+    </div></section>
+  
+  <span class="page-number current">1</span>
 </section>
       
     </div>

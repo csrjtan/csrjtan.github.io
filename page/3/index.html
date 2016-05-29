@@ -16,8 +16,6 @@
 <meta name="twitter:title" content="CSRJTAN">
 <meta name="twitter:description" content="blog csrjtan tanrunj">
   
-    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
-  
   
     <link rel="icon" href="/favicon.ico">
   
@@ -58,8 +56,6 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
@@ -79,6 +75,134 @@
 </header>
     <div class="outer">
       <section id="main">
+  
+    <article id="post-paper-reading-20151125" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/25/paper-reading-20151125/" class="article-date">
+  <time datetime="2015-11-25T06:13:16.000Z" itemprop="datePublished">2015-11-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/25/paper-reading-20151125/">Dynamic occlusion avoidance approach based on the depth image of moving visual object</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object"><span class="toc-number">1.</span> <span class="toc-text">Dynamic occlusion avoidance approach based on the depth image of moving visual object</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image"><span class="toc-number">1.1.</span> <span class="toc-text">Abstract:Dynamic Occlusion avoidance based on the depth image.</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三个问题："><span class="toc-number">3.</span> <span class="toc-text">三个问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-Overview"><span class="toc-number">4.</span> <span class="toc-text">Method Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Approach-to-dynamic-occlusion-avoidance-based-on-depth-image"><span class="toc-number">5.</span> <span class="toc-text">The Approach to dynamic occlusion avoidance based on depth image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm"><span class="toc-number">6.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusions"><span class="toc-number">7.</span> <span class="toc-text">Conclusions</span></a></li></ol>
+          </div>
+        
+        <p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
+<h3 id="Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object"><a href="#Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object" class="headerlink" title="Dynamic occlusion avoidance approach based on the depth image of moving visual object"></a>Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
+<h4 id="Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image"><a href="#Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image" class="headerlink" title="Abstract:Dynamic Occlusion avoidance based on the depth image."></a>Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>主要问题：通过物体的障碍提示来寻找最优观测方向和位置<br>Next Best View:</p>
+<ul>
+<li>用Octree模型来描述可视物体，然后对于不同观察情况的节点，给定不同的分数。</li>
+<li>用大量周全的Candidate View</li>
+<li>建立一个相似的参数模型，通过depth data和current fitted model来拟合</li>
+<li>用B-spline计算信息增益来构建最佳NEXT VIEW</li>
+<li>结合on-line theory来优化物体的3D重构<br>缺点：没有考虑遮蔽</li>
+</ul>
+<p>引入occlusion方法<br>缺点：受限于摄像机位置、特定的设备和先验信息，以上均不适用于移动的物体</p>
+<h3 id="三个问题："><a href="#三个问题：" class="headerlink" title="三个问题："></a>三个问题：</h3><p>1.如何解决动态遮蔽的避障问题? -&gt; 用一个优化模型，结合运动预测在Best view Model里<br>2.如何通过深度图来预测可视物体的运动? -&gt; 用两个高斯曲率特征矩阵的匹配来求R T,用到SIFT和SVD<br>3.如何有效评估动态遮蔽的影响? -&gt; 用“effective avoidance rate”来评估算法的性能</p>
+<h3 id="Method-Overview"><a href="#Method-Overview" class="headerlink" title="Method Overview"></a>Method Overview</h3><p>1.The analysis of dynamic occlusion avoidance<br>获得遮蔽的最大区域</p>
+<p>2.The overall idea of dynamic occlusion avoidance<br>首先，移动物体相近深度图的像素进行三维坐标恢复（用Anti-projection），则遮蔽暗示可以从第二幅图得到<br>基于上述，用第二张深度图的遮蔽信息来构建Best View Model<br>接着，用三维坐标点的形式，做高斯曲率特征矩阵来匹配两个相近的深度图<br>最后，将运动预测结合到最佳视角模型里。</p>
+<h3 id="The-Approach-to-dynamic-occlusion-avoidance-based-on-depth-image"><a href="#The-Approach-to-dynamic-occlusion-avoidance-based-on-depth-image" class="headerlink" title="The Approach to dynamic occlusion avoidance based on depth image"></a>The Approach to dynamic occlusion avoidance based on depth image</h3><p>1.Constructing the occlusion region to be avoided<br>构建出patch</p>
+<p>2.Constructing the best view model<br>通过构建最大化Occlusion面积</p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>step1:Calc the 3D pixels and the Gaussian Curvature Feature matrices<br>step2:Detect the Occlusion Boundary and establish the occlusion region in second depth<br>step3:Contruct the best view model<br>step4:Match the key points<br>step5:Solve the Objective formula<br>step6:Plan the next view of camera<br>step7:Acquire a depth image and calc the f(x)<br>step8:If the difference between two adjacent f(x) is less than a given threshold,then terminated,or jump to Step 4.</p>
+<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>1.Add emotion estimate in Best Next View to dynamic occlusion avoidance<br>2.Based the depth image to solve the R and T transformation<br>3.Propose the “Effective avoidance rate” to measure the performance of the algorithm.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="cios6s1zy001vh7q1lp14ax7p" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-第一学期总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/25/第一学期总结/" class="article-date">
+  <time datetime="2015-11-25T00:52:01.000Z" itemprop="datePublished">2015-11-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Life/">Life</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/25/第一学期总结/">第一学期总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI无人机避障飞行项目"><span class="toc-number">1.</span> <span class="toc-text">DJI无人机避障飞行项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#研读了CAMERA-CALIBRATION-STEREO-VISION-SLAM"><span class="toc-number">1.1.</span> <span class="toc-text">研读了CAMERA CALIBRATION,STEREO VISION,SLAM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DJI部件的学习使用"><span class="toc-number">2.</span> <span class="toc-text">DJI部件的学习使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#课程Advanced-Algorithm"><span class="toc-number">3.</span> <span class="toc-text">课程Advanced Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。"><span class="toc-number">4.</span> <span class="toc-text">一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</span></a></li></ol>
+          </div>
+        
+        <h3 id="DJI无人机避障飞行项目"><a href="#DJI无人机避障飞行项目" class="headerlink" title="DJI无人机避障飞行项目"></a>DJI无人机避障飞行项目</h3><h4 id="研读了CAMERA-CALIBRATION-STEREO-VISION-SLAM"><a href="#研读了CAMERA-CALIBRATION-STEREO-VISION-SLAM" class="headerlink" title="研读了CAMERA CALIBRATION,STEREO VISION,SLAM"></a>研读了CAMERA CALIBRATION,STEREO VISION,SLAM</h4><p>其中做SLAM的时候基于opencv、pcl、g2o为依赖库的开发</p>
+<h3 id="DJI部件的学习使用"><a href="#DJI部件的学习使用" class="headerlink" title="DJI部件的学习使用"></a>DJI部件的学习使用</h3><p>Guidance的数据订阅和传输接口，M100的GPS线损坏，而且室内校准较难，使用例程进行姿态控制</p>
+<h3 id="课程Advanced-Algorithm"><a href="#课程Advanced-Algorithm" class="headerlink" title="课程Advanced Algorithm"></a>课程Advanced Algorithm</h3><p>学习了多种优化算法以及分析复杂度，课程report使用random algorithm来优化stereo matching的过程</p>
+<h3 id="一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。"><a href="#一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。" class="headerlink" title="一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。"></a>一个学期过去了，学到和做出来的成果不多，反思自己的效率以及迷茫，导致逆风而行，加油吧，不然连毕业都不好说。不能再依赖别人一起做之类的，自己独行前往吧，问题总是存在，问题总是可以解决的，不要逃避拖延。</h3>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/11/25/第一学期总结/" data-id="cios6s20w002sh7q10yhyejzn" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/11/25/第一学期总结/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-OpenClassRobotic1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -131,7 +255,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cior8xp770007gvq1etb3ggji" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/" data-id="cios6s1xe0003h7q1lhxt7mbu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -194,7 +318,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cior8xp7b0008gvq1ihxc8phw" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/08/SLAM的学习总结/" data-id="cios6s1xp0006h7q1e0aqir2k" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -272,7 +396,7 @@ end for
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/" data-id="cior8xp9x001ygvq1mj4qo5cm" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/02/数据挖掘导论（3）/" data-id="cios6s20r002ph7q1rd5jc3s3" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -352,7 +476,7 @@ return root
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/" data-id="cior8xp9r001tgvq12kgtj79z" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/31/数据挖掘导论（2）/" data-id="cios6s20b002bh7q1osp4n6vm" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -436,7 +560,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cior8xp9f001jgvq1qkvloqf5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/30/study-20151030/" data-id="cios6s2030021h7q1ukcmk8va" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -498,7 +622,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cior8xp83000igvq1knfow5e3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/group-talk1/" data-id="cios6s1xz000ch7q1vdxphdfs" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -554,7 +678,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cior8xp8r0014gvq1qpfxxxs5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/28/paper-reading-20151028/" data-id="cios6s1zk001jh7q1w6rd0nut" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -621,7 +745,7 @@ This is where you will write your content. 在这里写上内容。
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cior8xp7x000ggvq1xy5aonlb" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="cios6s1yd000ih7q1nefkye2k" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -630,120 +754,6 @@ This is where you will write your content. 在这里写上内容。
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-paper-reading-20151025" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/25/paper-reading-20151025/" class="article-date">
-  <time datetime="2015-10-25T12:50:44.000Z" itemprop="datePublished">2015-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tech/">Tech</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/25/paper-reading-20151025/">Small Vision Systems :Hardware and Implementation</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Area-Correlation-这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："><span class="toc-number">1.</span> <span class="toc-text">2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Epipolar-Geometry"><span class="toc-number">2.</span> <span class="toc-text">2.2 Epipolar Geometry</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-该论文系统的算法"><span class="toc-number"></span> <span class="toc-text">3.该论文系统的算法</span></a>
-          </div>
-        
-        <p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
-<h4 id="2-1-Area-Correlation-这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："><a href="#2-1-Area-Correlation-这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br><a href="http://5.Post" class="test test-url" target="_blank" rel="noopener noreferrer">5.Post</a>-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
-<h4 id="2-2-Epipolar-Geometry"><a href="#2-2-Epipolar-Geometry" class="headerlink" title="2.2 Epipolar Geometry"></a>2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
-<p>实际应用中，不断计算标定不实际，只能确定内参数后，再根据偏差进行自动标定。</p>
-<h3 id="3-该论文系统的算法"><a href="#3-该论文系统的算法" class="headerlink" title="3.该论文系统的算法"></a>3.该论文系统的算法</h3><p>1.LOG滤波去噪，用L1绝对值比较<br>2.进行深度搜索<br>3.后处理，去除奇异点，使用左右和右左校验<br>4.使用X4的插值</p>
-<p>作者还对比了使用标定照相机内参后，得到的深度图更为清晰稳定。而针对left/right匹配时，寻找对应最优点采用了hill-climbing和遍历周围最小空间，进行贪心选择。最后对比了一系列StereoMatching组合方法的精度、时间、耗能的区别。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cior8xp8q0012gvq13juheoa6" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数据挖掘导论（1）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/25/数据挖掘导论（1）/" class="article-date">
-  <time datetime="2015-10-25T03:06:29.000Z" itemprop="datePublished">2015-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Read/">Read</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/25/数据挖掘导论（1）/">数据挖掘导论（1）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="周末和何女神一起读书，她最近学数据挖掘，所以我就陪读，这里记录一下读书心得。"><a href="#周末和何女神一起读书，她最近学数据挖掘，所以我就陪读，这里记录一下读书心得。" class="headerlink" title="周末和何女神一起读书，她最近学数据挖掘，所以我就陪读，这里记录一下读书心得。"></a>周末和何女神一起读书，她最近学数据挖掘，所以我就陪读，这里记录一下读书心得。</h3><p>首先，这本书应该是数据挖掘领域的经典，可以找到网上的数据挖掘导论PDF<br>作者是Michingan State U的Associate Professor <a href="http://www.cse.msu.edu/~ptan/">Pang-Ning Tan</a>、University of Minnesota的<a href="http://www-users.cs.umn.edu/~kumar/">Vipin Kumar</a></p>
-<p>好，马上开始正题：</p>
-<h4 id="书本内容与组织"><a href="#书本内容与组织" class="headerlink" title="书本内容与组织"></a>书本内容与组织</h4><p>第一章，绪论<br>第二章，讨论数据基本类型、质量、预处理及相似性和相异性度量<br>第三章，关于数据数据探查<br>第四、五章，关于分类<br>第六、七章，讨论关联分析<br>第八、九章，讨论聚类分析<br>第十章，讨论数据挖掘的异常检测<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/25/数据挖掘导论（1）/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cior8xp9p001qgvq1975ixey0" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
     </footer>
   </div>
@@ -768,7 +778,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
     </div>
   </div>
 
@@ -777,7 +787,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感想/">感想</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅游-台湾/">旅游 台湾</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -786,7 +796,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/感想/" style="font-size: 10px;">感想</a> <a href="/tags/旅游-台湾/" style="font-size: 10px;">旅游 台湾</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -795,7 +805,7 @@ This is where you will write your content. 在这里写上内容。
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -805,6 +815,10 @@ This is where you will write your content. 在这里写上内容。
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/05/29/重回理大/">重回理大</a>
+          </li>
         
           <li>
             <a href="/2016/05/16/ColorDemosaicComparison/">Demosaic Comparison</a>
@@ -820,10 +834,6 @@ This is where you will write your content. 在这里写上内容。
         
           <li>
             <a href="/2016/04/13/leetcode7-14/">leetcode7-14</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/13/leetcode3-6/">leetcode3-6</a>
           </li>
         
       </ul>
