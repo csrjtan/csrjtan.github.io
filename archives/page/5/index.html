@@ -4,24 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications | CSRJTAN</title>
+  <title>Archives | CSRJTAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
-Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications">
-<meta property="og:url" content="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/index.html">
+  <meta name="description" content="blog csrjtan tanrunj">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CSRJTAN">
+<meta property="og:url" content="https://csrjtan.github.io/archives/page/5/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
-Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png">
-<meta property="og:updated_time" content="2016-05-28T14:27:25.000Z">
+<meta property="og:description" content="blog csrjtan tanrunj">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications">
-<meta name="twitter:description" content="Author:Kourosh Khoshelham and Sander Oude Elberink
-Abstract: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.">
-<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png">
+<meta name="twitter:title" content="CSRJTAN">
+<meta name="twitter:description" content="blog csrjtan tanrunj">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -81,89 +74,40 @@ Abstract: Discuss the calibration of Kinect sensor and analysis it based on the 
   <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-paper-reading-20150826" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/27/paper-reading-20150826/" class="article-date">
-  <time datetime="2015-08-27T01:57:19.000Z" itemprop="datePublished">2015-08-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tech/">Tech</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year">2015</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2015/08/12/birth/" class="archive-article-date">
+  <time datetime="2015-08-12T12:15:30.000Z" itemprop="datePublished">8月 12</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2015/08/12/birth/">写在23岁生日前夕</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <p><strong>Author</strong>:Kourosh Khoshelham and Sander Oude Elberink</p>
-<p><strong>Abstract</strong>: Discuss the calibration of Kinect sensor and analysis it based on the mathematical model of depth measurement from disparity.<br><a id="more"></a><br>1.<strong>Introduce</strong><br>   sec 1 介绍全文<br>   sec 2 介绍原理和模型<br>   sec 3 介绍误差影响要素<br>   sec 4 实验结果和分析<br>   sec 5 总结和remark</p>
-<p>2.<strong>深度测量 with triangulation</strong></p>
-<p>Triangulation Methods of Kinect [<a href="https://www.google.com/patents/US8150142" target="_blank" rel="external">1</a>] laser source emits single beam which split into multiple beams by diffraction.</p>
-<p>The <strong>reference pattern</strong> is obtained by capturing a plane at a known distance.</p>
-<p><strong>Disparity</strong>:The shifts are measured for all speckles by a simple image correlation procedure,which yield a disparity image.</p>
-<p>以下图为例，分析<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/triangulation.png" alt=""><br>o为参考平面，k为目标物体位置。由laser projector（不动）发出多个光束，ir camera调整角度使接收到的目标反射光斑落在参考平面上，得到偏移位置d.</p>
-<p>假设完成相机标定后，则 $ Z_0 $, f, b 已知，d也可以获得。<br>根据数学三角原理得到：</p>
-<p>$$ \frac{D}{b}=\frac{Z_0-Z_k}{Z_0} $$<br>$$\frac{d}{f}=\frac{D}{Z_k}$$<br>推导化简得:<br>            $ Z_k = \frac{Z_0}{1+\frac{Z_0}{fb}d} $ （1）<br>假设坐标系正交，得到Z轴坐标距离后，由于f定义了关于点的图像规模（imaging scale）所以得到物体的光点坐标为<br>$$ X_k=-\frac{Z_k}{f}(x_k-x_0+\delta x)$$<br>$$ Y_k=-\frac{Z_k}{f}(y_k-y_0+\delta y)$$<br>其中$x_k$ 和 $y_k$为图像坐标点，$x_0$ 和 $y_0$为坐标原点，$\delta x$ 和$\delta y$ 是镜头扭曲误差校正系数</p>
-<p>3.相机标定<br>我们需要求得标定的参数变量如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/parameters.png" alt=""><br>前三个通过红外照相机标准标定可得<br>由于USB带宽所限，标定use reduced infrared images instead of actual sensor。<br>Disparity measurement 采样为0~2047 11bits，则 d = md’+n。 m, n为线性化参数。<br>代入 公式（1）可得<br>$$Z^{-1}_k = (\frac{m}{fb}d’ +(Z^{-1}_0 + \frac {n}{fb})) $$<br>通过测得(x,y,d’)可以映射到世界坐标系的(X,Y,Z)</p>
-<p>4.加入颜色元素</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="ciotmul05001pt8q1tjo5cc1e" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/">paper</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2015/09/03/ppt-learning-Stereo-Vision/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          ppt_learning_Stereo_Vision
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/08/18/paper-reading-20150816/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">论文阅读《Enhanced Computer Vision with Microsoft Kinect Sensor:A Review》</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/08/27/paper-reading-20150826/" data-title="Accuracy and Resolution of Kinect Depth Data for Indoor Mapping Applications" data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/"></div>
-  </section>
+  
+  
+    </div></section>
+  
+  <a class="extend prev" rel="prev" href="/archives/page/4/"> << Prev   </a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span>
 </section>
       
     </div>

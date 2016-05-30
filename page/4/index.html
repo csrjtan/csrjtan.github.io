@@ -76,6 +76,73 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-camera-calibration" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/27/camera-calibration/" class="article-date">
+  <time datetime="2015-10-27T02:29:57.000Z" itemprop="datePublished">2015-10-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/27/camera-calibration/">摄像头校正（Camera Calibration）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#为了总结一下进入理大以来对于Stereo-Vision的学习，这里分享一下对于Camera-Calibration的学习"><span class="toc-number">1.</span> <span class="toc-text">为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-针孔模型-Pinhole-model"><span class="toc-number">2.</span> <span class="toc-text">1.针孔模型(Pinhole model)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-透镜模型"><span class="toc-number">3.</span> <span class="toc-text">2.透镜模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Calibration"><span class="toc-number">4.</span> <span class="toc-text">3.Calibration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-张正友方法"><span class="toc-number">5.</span> <span class="toc-text">4.张正友方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如此，我们有Homography-Constrain的约束"><span class="toc-number">5.1.</span> <span class="toc-text">如此，我们有Homography Constrain的约束</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-OpenCV的相关函数"><span class="toc-number">6.</span> <span class="toc-text">4.OpenCV的相关函数</span></a></li></ol>
+          </div>
+        
+        <h3 id="为了总结一下进入理大以来对于Stereo-Vision的学习，这里分享一下对于Camera-Calibration的学习"><a href="#为了总结一下进入理大以来对于Stereo-Vision的学习，这里分享一下对于Camera-Calibration的学习" class="headerlink" title="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习"></a>为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</h3><p>首先分享一下好的资源<a href="http://wycwang.blogspot.hk/2012/09/camera-calibration-part-1-camera-model.html" target="_blank" rel="external">Richard’s blog</a> 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。</p>
+<h3 id="1-针孔模型-Pinhole-model"><a href="#1-针孔模型-Pinhole-model" class="headerlink" title="1.针孔模型(Pinhole model)"></a>1.针孔模型(Pinhole model)</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png" alt=""></p>
+<p>从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:<br>$$-x=f\frac{X}{Z}$$</p>
+<p>换一个方式，由于人眼看到的并非是倒像，其实可以如下图一样，将成像平面前移到眼睛前方，或者进行一个重新对应成像的过程，从而把倒像恢复，但大小不变的。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration2.png" alt=""><br>$$x=f\frac{X}{Z}$$</p>
+<p>为了使得影像中心没有偏差，加入位移参数$C_x和C_y$，另外成像平面的像素长宽的比例不一样，所以可以加入$s_x和s_y$调整。但这是可以和焦距融合的，所以最终得到公式：<br>$$q=M* Q$$<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration3.png" alt=""><br>$f_x ，f_y ，c_x ，c_y$为摄像机的内参数，一旦标定是固定不变的。</p>
+<h3 id="2-透镜模型"><a href="#2-透镜模型" class="headerlink" title="2.透镜模型"></a>2.透镜模型</h3><p>由于针孔对光线的采集不足，需要长曝光，这是不可取的。所以选用透镜，但这回带来透镜畸变，主要是径向（Radial）和切向(Tangent)畸变<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration4.png" alt=""><br>校正选用的Model如下，其中径向由泰勒展开的前三个偶数项（由于中心对称的偶函数），而切向的恢复拟合模型可以参考详细的数学方法，这里不关注。</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration5.png" alt="校正radial"></p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration6.png" alt="校正tangent"><br>这里k1,k2,p1,p2,k3成为摄像机的形变参数(Distortion parameteres)</p>
+<h3 id="3-Calibration"><a href="#3-Calibration" class="headerlink" title="3.Calibration"></a>3.Calibration</h3><p>外部参数是用来将世界坐标系和Camera坐标系之间的坐标系统进行转换。通过3个维度的旋转和平移可得：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration7.png" alt=""></p>
+<h3 id="4-张正友方法"><a href="#4-张正友方法" class="headerlink" title="4.张正友方法"></a>4.张正友方法</h3><p>由于OpenCV以及matlab所使用的方法都是基于张正友的方法，这里介绍一下，其特点是校正方法的弹性以及校正物件比较容易，为一个平面物件。<br>由于校正物体为平面物体，成像也是一个平面物体，而平面物体上的点Transform到另一个平面上，这在CV领域理称为Planar Homography<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration8.png" alt="Planar Homography"><br>基于如此假设，减少一个Z轴上的旋转向量，得到的映射方程可以简化为如下：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration9.png" alt=""><br>通过$H=A*[r_1 r_2 t]$代入可得以下解：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration10.png" alt=""></p>
+<h4 id="如此，我们有Homography-Constrain的约束"><a href="#如此，我们有Homography-Constrain的约束" class="headerlink" title="如此，我们有Homography Constrain的约束"></a>如此，我们有Homography Constrain的约束</h4><p>$r_1 r_2$为相互垂直的旋转向量，且大小相同,即$r_1^T*r_2=0$以及$||r_1||=||r_2||和r_1^T*r_1=r_2^T*r_2$从而代入上面的式子进行矩阵求解，最终得到如下结果：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration11.png" alt=""><br>其中$B=A^{-T}A^{-1}$，B为对称矩阵，所以只需要知道6个矩阵元素就好。由此推出要求得一个解，至少需要3幅图像的6对已知对应点。（多多益善）<br>此外，由于$r_1 和 r_2$不一定相互垂直，所以有时需要对R进行奇异值分解。</p>
+<p>有解的前提是2NK&gt;=6K+4,即是(N-3)K&gt;=2</p>
+<h3 id="4-OpenCV的相关函数"><a href="#4-OpenCV的相关函数" class="headerlink" title="4.OpenCV的相关函数"></a>4.OpenCV的相关函数</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//寻找棋盘角点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cvfindChessboardCorners</span><span class="params">(</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">void</span>* image,</span><br><span class="line">	CvSize 		pattern_size,</span><br><span class="line">	CvPoint2D32f*	corners,</span><br><span class="line">	<span class="keyword">int</span>*		corner_count = <span class="literal">NULL</span></span><br><span class="line">	<span class="keyword">int</span>		flags = CV_CALIB_V_ADAPTIVE_THRESH</span><br><span class="line">	)</span></span>;</span><br><span class="line"><span class="comment">//画出找到的角点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvDrawChessboardCorner</span><span class="params">(</span><br><span class="line">	CvArr*	image,</span><br><span class="line">	CvSize	pattern_size,</span><br><span class="line">	CvPoint2D32f* corners,</span><br><span class="line">	<span class="keyword">int</span> count,</span><br><span class="line">	<span class="keyword">int</span> pattern_was_found</span><br><span class="line">	)</span></span>;</span><br><span class="line"><span class="comment">//摄像机标定</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cvCalibrateCamera2</span><span class="params">(</span><br><span class="line">	CvMat* object_points,</span><br><span class="line">	CvMat* image_points,</span><br><span class="line">	<span class="keyword">int</span>* point_counts,</span><br><span class="line">	CvSize image_size,</span><br><span class="line">	CvMat* intrinsic_matrix,</span><br><span class="line">	CvMat* distortion_coeffs,</span><br><span class="line">	CvMat* rotation_vectors = <span class="literal">NULL</span>,</span><br><span class="line">	CvMat* translation_vectors = <span class="literal">NULL</span>,</span><br><span class="line">	<span class="keyword">int</span> flags = <span class="number">0</span></span><br><span class="line">	)</span></span>;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>计算完内参数后，也由单应性条件计算得到外参数</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2015/10/27/camera-calibration/" data-id="ciotmukzj000zt8q1n1dknfih" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2015/10/27/camera-calibration/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-paper-reading-20151025" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/25/paper-reading-20151025/" class="article-date">
@@ -118,7 +185,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="cios6s1zi001hh7q1z94evhlk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="ciotmukzw001it8q1iv6sa0qc" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -173,7 +240,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="cios6s20o002lh7q1kn5k52qy" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/数据挖掘导论（1）/" data-id="ciotmul1f0033t8q1gtpe5uwf" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -228,7 +295,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="cios6s211002wh7q1ekfm9ezr" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/22/论文阅读方法/" data-id="ciotmul21003nt8q1fuhbphiu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -281,7 +348,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="cios6s20e002eh7q19gsz6yzv" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/" data-id="ciotmul19002wt8q1omj9wnb2" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -335,7 +402,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="cios6s201001zh7q1b4rngdkt" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="ciotmul17002st8q1r64g2ybc" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -389,7 +456,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="cios6s1zb001bh7q1giz2xpk9" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/27/paper-reading-20150826/" data-id="ciotmul05001pt8q1tjo5cc1e" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -443,7 +510,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="cios6s1z80018h7q11mdx99ui" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/18/paper-reading-20150816/" data-id="ciotmul08001tt8q14kjk35qg" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -500,7 +567,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/" data-id="cios6s20k002ih7q16wdkxznx" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/16/paper-research-01/" data-id="ciotmul0o002bt8q1q9cvzxgl" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -557,7 +624,7 @@ including dangerous objects/events like fire and heavy smoke
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/08/16/object-detection-research/" data-id="cios6s1ze001eh7q1fgzsf0uq" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/08/16/object-detection-research/" data-id="ciotmul0b001wt8q169rf4wc5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -574,72 +641,9 @@ including dangerous objects/events like fire and heavy smoke
 
 
   
-    <article id="post-birth" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/12/birth/" class="article-date">
-  <time datetime="2015-08-12T12:15:30.000Z" itemprop="datePublished">2015-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Life/">Life</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/12/birth/">写在23岁生日前夕</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#nbsp-nbsp-nbsp-nbsp-成长一岁，对自己要有新的要求，不想公众写太多生活，建立这个博客希望可以帮助自己总结学习，在工作和学习的路上踏踏实实。"><span class="toc-number">1.</span> <span class="toc-text">    成长一岁，对自己要有新的要求，不想公众写太多生活，建立这个博客希望可以帮助自己总结学习，在工作和学习的路上踏踏实实。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新的一岁，新的要求："><span class="toc-number"></span> <span class="toc-text">新的一岁，新的要求：</span></a>
-          </div>
-        
-        <blockquote>
-<p>祝渐行渐远的自己，生日安好</p>
-</blockquote>
-<h3 id="nbsp-nbsp-nbsp-nbsp-成长一岁，对自己要有新的要求，不想公众写太多生活，建立这个博客希望可以帮助自己总结学习，在工作和学习的路上踏踏实实。"><a href="#nbsp-nbsp-nbsp-nbsp-成长一岁，对自己要有新的要求，不想公众写太多生活，建立这个博客希望可以帮助自己总结学习，在工作和学习的路上踏踏实实。" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;成长一岁，对自己要有新的要求，不想公众写太多生活，建立这个博客希望可以帮助自己总结学习，在工作和学习的路上踏踏实实。"></a>&nbsp;&nbsp;&nbsp;&nbsp;成长一岁，对自己要有新的要求，不想公众写太多生活，建立这个博客希望可以帮助自己总结学习，在工作和学习的路上踏踏实实。</h3><h2 id="新的一岁，新的要求："><a href="#新的一岁，新的要求：" class="headerlink" title="新的一岁，新的要求："></a>新的一岁，新的要求：</h2><ul>
-<li>工作上，学术和编程能力的提升</li>
-<li>生活上，爱家人，爱生活，爱伴侣</li>
-<li>坚持读，坚持学，坚持写，坚持</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  《成长的天空》</span><br><span class="line">我沉浸在自己的世界里</span><br><span class="line">写着无关是非的歌谣</span><br><span class="line">点蓝的笔触</span><br><span class="line">划过了年轻的天空</span><br><span class="line">一只飞鸟带走我的青春</span><br><span class="line">还我，岁月沉淀的帽子</span><br><span class="line">轻声说道</span><br><span class="line">年轻总不是永远的借口</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/2015-08-21-birth_cake.png" alt="cake"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/08/12/birth/" data-id="cios6s1xw0009h7q11wg64tp0" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/08/12/birth/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -653,7 +657,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
     </div>
   </div>
 
@@ -662,7 +666,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感想/">感想</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅游-台湾/">旅游 台湾</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感想/">感想</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅游-台湾/">旅游 台湾</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -671,7 +675,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/感想/" style="font-size: 10px;">感想</a> <a href="/tags/旅游-台湾/" style="font-size: 10px;">旅游 台湾</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/回忆/" style="font-size: 10px;">回忆</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/感想/" style="font-size: 10px;">感想</a> <a href="/tags/旅游-台湾/" style="font-size: 10px;">旅游 台湾</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -680,7 +684,7 @@ including dangerous objects/events like fire and heavy smoke
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 

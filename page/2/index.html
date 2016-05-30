@@ -76,6 +76,64 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Summary-Of-Half-Year" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/29/Summary-Of-Half-Year/" class="article-date">
+  <time datetime="2016-02-29T03:10:23.000Z" itemprop="datePublished">2016-02-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tech/">Tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/29/Summary-Of-Half-Year/">Summary_Of_Half_Year</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于DJI的开发套件"><span class="toc-number">1.</span> <span class="toc-text">关于DJI的开发套件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于OnBoard-System"><span class="toc-number">2.</span> <span class="toc-text">关于OnBoard System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#极简的生活"><span class="toc-number">3.</span> <span class="toc-text">极简的生活</span></a></li></ol>
+          </div>
+        
+        <p>总结进入理大半年来的学习，以及关于SLAM和无人机室内定位飞行项目的学习</p>
+<p>这个项目比想象中大，里面需要学习和解决的问题都很多，一下子都无从下手，复杂度也高，以下写一下OnBoard<br>AutoNavigation and Obstacle Avoidance的问题和见解</p>
+<h3 id="关于DJI的开发套件"><a href="#关于DJI的开发套件" class="headerlink" title="关于DJI的开发套件"></a>关于DJI的开发套件</h3><p>首先用的是GUIDACNE和Matrix100以及树莓派pi2，对于完全没有硬件概念的我，接触到单片机真是头疼，硬件和软件是完全的两码事。Guidance是个多源的视觉素材采集设备，多方位的双目超声以及IMU模块，可以提取出大量有用的环境信息，加工进而智能优化使用。而M100是通过对应的命令传输指令进行控制的，这里的信号对于传输频率有一些注意，比如波段这些都是比较基础底层的东西。最头疼的是遇到这些套件的学习使用不方便，M100也不适应室内的飞行，指南针校准。曾经遇到指南针损坏需要焊接电路，遇到IMU侧准不稳导致起飞折断螺旋桨，遇到系统不兼容树莓派的移植问题，遇到SLAM精度不够无法恢复的问题，也在一步一个脚印不断尝试去解决，便知道除了编程，还有很多很多的问题是复杂而难解决的，如何解决或者如何避开问题都是能力的体现</p>
+<h3 id="关于OnBoard-System"><a href="#关于OnBoard-System" class="headerlink" title="关于OnBoard System"></a>关于OnBoard System</h3><p>至此，整个system已经很大，感觉需要公司提供解决方案了，已经不是一个人hold住了，所以把Vision<br>System里面的SLAM部分抽出来学习，希望能从中挖出一些点子，看了RGBD<br>SLAM以及里面的一些核心问题，跟很多国内的研究者去讨论，看英文材料，包括那本Multi-View的经典，还有很多工具框架和素材库，POINT<br>CLOUD LIBRARY, OPENCV,<br>ROS.进而发现，每一个点都是很大，都不好挖。结果整个人的心态就不行了，发现自己在做一个不能完成的任务的感觉，应该果断将问题抛出，让大家一起有效来解决。另外还是希望可以有学习的对象，有讨论的人，有相关一起工作的伙伴是一件很值得珍惜的事情。</p>
+<h3 id="极简的生活"><a href="#极简的生活" class="headerlink" title="极简的生活"></a>极简的生活</h3><p>最后，总结一下失败的经验和收获的东西。很感谢处在一个自由向上的科研环境里，感觉自己值得学习的东西还是很多很多，但希望自己能真正定下心来挖掘。了解和知道自己所想所要的，开启一个极简的生活状态，发现自己很懒，记忆也不好。每天需要提醒自己，鸡汤喝完就忘，只有习惯才是永存的好东西，以及自己的能力和素质。保持良好的工作态度和心态，然后坚持去做值得自己去做的事情，包括锻炼、看书和音乐，想要去做的东西就尽力去做，不要计较得失，不要在乎难度，一点一点安排计划就不是问题了。整理掉不要看到的东西，不然影响自己，了解真正需要的并保留下来，不要再去学习相似而没有意义是事情。接下来就开启新的生活吧，整理关于SLAM的东西，爱CV看多光谱，学习ML,PR！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/" data-id="ciotmukz6000pt8q1ytqbvnml" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode26" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/26/leetcode26/" class="article-date">
@@ -121,7 +179,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="cios6s1yz0012h7q1uctkcs8v" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="ciotmukzq0019t8q1eh25gyul" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -193,7 +251,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="cios6s1yw000xh7q1xj6noat5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode1/" data-id="ciotmukzg000wt8q1bhd9hmhk" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -294,7 +352,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="cios6s21i003ah7q1y6bavt9z" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/18/Manual学习/" data-id="ciotmukyr000gt8q1vb8yrbys" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -355,7 +413,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="cios6s1zv001th7q17cp3372a" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/17/paper-reading-20160217/" data-id="ciotmul0m0028t8q1grq885bw" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -421,7 +479,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="cios6s1x80001h7q1b4cnoq8o" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/" data-id="ciotmukxj0002t8q1hef65kvk" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -478,7 +536,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="cios6s21a0033h7q1rebvsfdp" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/26/无人机项目/" data-id="ciotmul1i0036t8q1j3q2j9jb" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -565,7 +623,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="cios6s21d0036h7q1lchb3ron" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" data-id="ciotmul25003rt8q1am63dcj5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -626,7 +684,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="cios6s1yq000qh7q1kfbuvrjf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/" data-id="ciotmukyw000it8q18zypoz2m" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -691,7 +749,7 @@ gcc test.o -o test        //bin文件
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="cios6s1zn001nh7q1xpq7y35j" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="ciotmul0k0025t8q1ka3b0xh7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -708,65 +766,9 @@ gcc test.o -o test        //bin文件
 
 
   
-    <article id="post-《爱的五种语言》" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/23/《爱的五种语言》/" class="article-date">
-  <time datetime="2015-12-23T06:51:03.000Z" itemprop="datePublished">2015-12-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Read/">Read</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/《爱的五种语言》/">《爱的五种语言》</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#《爱的五种语言》"><span class="toc-number">1.</span> <span class="toc-text">《爱的五种语言》</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于个人管理"><span class="toc-number">2.</span> <span class="toc-text">关于个人管理</span></a></li></ol>
-          </div>
-        
-        <p>有一段时间没有更新博客了，觉得不写还是会颓，应该积极向上的去写更多东西，关于自己，关于读书，关于学习，每天应该在不断的总结和反省中前进。</p>
-<h3 id="《爱的五种语言》"><a href="#《爱的五种语言》" class="headerlink" title="《爱的五种语言》"></a>《爱的五种语言》</h3><p>这里提出使用五种爱语，我们应该抓住伴侣的主要爱语，这样可以有效地提高爱箱，对于人与人之间的相处事半功半，实际可以以此延伸到亲人和友情，这是一种让人感受爱意最直接高效的方法。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/爱的五种语言.png" alt=""></p>
-<h3 id="关于个人管理"><a href="#关于个人管理" class="headerlink" title="关于个人管理"></a>关于个人管理</h3><p>坚持每晚11点休息，早上6点半起床吧，早起的一天才能正能量满满，积极向上呢，项目最近整体复杂度已经有点高，希望自己尽快使它们有效完成吧，腾出手来关注一些真正有用的事情。<br>接下来是个人管理的小图<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/每日个人管理.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/" data-id="cios6s2050025h7q197ky42i6" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="https://csrjtan.github.io/2015/12/23/《爱的五种语言》/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -780,7 +782,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">25</span></li></ul>
     </div>
   </div>
 
@@ -789,7 +791,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感想/">感想</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅游-台湾/">旅游 台湾</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/">Latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ted/">Ted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/">paper</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper-Demosaic/">paper Demosaic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公开课/">公开课</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感想/">感想</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅游-台湾/">旅游 台湾</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -798,7 +800,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/感想/" style="font-size: 10px;">感想</a> <a href="/tags/旅游-台湾/" style="font-size: 10px;">旅游 台湾</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
+      <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Ted/" style="font-size: 10px;">Ted</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/paper/" style="font-size: 20px;">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 10px;">paper Demosaic</a> <a href="/tags/公开课/" style="font-size: 10px;">公开课</a> <a href="/tags/回忆/" style="font-size: 10px;">回忆</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/感想/" style="font-size: 10px;">感想</a> <a href="/tags/旅游-台湾/" style="font-size: 10px;">旅游 台湾</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a>
     </div>
   </div>
 
@@ -807,7 +809,7 @@ gcc test.o -o test        //bin文件
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
