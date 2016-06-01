@@ -23,10 +23,13 @@
 马里兰(MaryLand)大学的Larry Davis访问受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car">
 <meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/KeZe_ICCV2015_1.png">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
+  
   
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 </head>
@@ -65,6 +68,8 @@
       </nav>
       <nav id="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
@@ -79,8 +84,6 @@
       </div>
     </div>
   </div>
-
-  <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
       <section id="main"><article id="post-paper-reading-20160120" class="article article-type-post" itemscope itemprop="blogPost">
@@ -109,11 +112,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#马里兰-MaryLand-大学的Larry-Davis访问"><span class="toc-number">1.</span> <span class="toc-text">马里兰(MaryLand)大学的Larry Davis访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#林老师的IJCV2015论文《A-Deep-Structured-Model-with-Radius-Margin-Bound-for-3D-Human-Activity-Recognition》"><span class="toc-number">2.</span> <span class="toc-text">林老师的IJCV2015论文《A Deep Structured Model with Radius-Margin Bound for 3D Human Activity Recognition》</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Introduction-of-human-activity-classification"><span class="toc-number">2.1.</span> <span class="toc-text">Introduction of human activity classification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Related-Work"><span class="toc-number">2.2.</span> <span class="toc-text">Related Work</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Our-work"><span class="toc-number">2.3.</span> <span class="toc-text">Our work</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementation"><span class="toc-number">2.4.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.5.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol>
-          </div>
-        
         <p>新年好，新年愿工程进展，论文有望。加油！</p>
 <h3 id="马里兰-MaryLand-大学的Larry-Davis访问"><a href="#马里兰-MaryLand-大学的Larry-Davis访问" class="headerlink" title="马里兰(MaryLand)大学的Larry Davis访问"></a>马里兰(MaryLand)大学的Larry Davis访问</h3><p>受到张老师的邀请，过来进行group-talk,讲解一下最近CV的进展，他们最近的GCNN（Grid）的工作，以及基于common sense knowledge进行modeling解决一些视频识别的问题，包括one-on-one basketball game和survillence of car parking.</p>
 <p>首先，GCNN是使用multi grid windows的思想，通过RCNN进行迭代的逼近学习，也是用于物体的识别。然后基于一些基本common sense建模，对于传统的activity recognition有一定的解释。讲述最近deep learning, cloud computing, GPU acceleration, Machine Learning等一些方法的推进都在有利于CV的进步，然CV离肉眼视觉识别依然有很大的距离。 最近的科研方向可以有Arichitecture Optimization，Mathematical Optimization and so on。明天将会继续介绍一下以往以及未来cv的相关工作。</p>
@@ -131,7 +129,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="ciowshraf001z5mq1ydj0lwk1" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/" data-id="ciowshraf001z5mq1ydj0lwk1" class="article-share-link" data-share="baidu" data-title="林老师IJCV2015的工作">分享到</a>
       
 
       
@@ -166,12 +164,26 @@
 
   
 </article>
-
-
+  
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/01/20/paper-reading-20160120/" data-title="林老师IJCV2015的工作" data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/"></div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-paper-reading-20160120" data-title="林老师IJCV2015的工作" data-url="https://csrjtan.github.io/2016/01/20/paper-reading-20160120/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'csrjtan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
   </section>
-</section>
+  </section>
       
     </div>
     <footer id="footer">
@@ -284,13 +296,9 @@
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-      <br/>
-       <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-
     </div>
   </div>
- </footer>
+</footer>
   </div>
   <nav id="mobile-nav">
   
@@ -316,7 +324,7 @@
 
 <!-- 多说公共js代码 start -->
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"tanrunj"};
+var duoshuoQuery = {short_name:"csrjtan"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -340,7 +348,20 @@ var duoshuoQuery = {short_name:"tanrunj"};
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];
+</script>
 
 <!-- 百度分享 end -->
 
@@ -383,7 +404,7 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 

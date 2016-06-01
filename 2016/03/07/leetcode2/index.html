@@ -17,10 +17,13 @@
 <meta name="twitter:title" content="leetcode2&3">
 <meta name="twitter:description" content="leetcode2:Add Two NumbersI:(2-&amp;gt;4-&amp;gt;3)+(5-&amp;gt;6-&amp;gt;4)O:(7-&amp;gt;0-&amp;gt;8)原则：有进位往后增加，无则扩展/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     L">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
+  
   
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 </head>
@@ -59,6 +62,8 @@
       </nav>
       <nav id="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
@@ -73,8 +78,6 @@
       </div>
     </div>
   </div>
-
-  <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
       <section id="main"><article id="post-leetcode2" class="article article-type-post" itemscope itemprop="blogPost">
@@ -103,11 +106,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode2-Add-Two-Numbers"><span class="toc-number">1.</span> <span class="toc-text">leetcode2:Add Two Numbers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode3-Longest-Substring-Without-Repeating-Characters"><span class="toc-number">2.</span> <span class="toc-text">leetcode3:Longest Substring Without Repeating Characters</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#std-fill用法"><span class="toc-number">2.1.</span> <span class="toc-text">std::fill用法</span></a></li></ol></li></ol>
-          </div>
-        
         <h3 id="leetcode2-Add-Two-Numbers"><a href="#leetcode2-Add-Two-Numbers" class="headerlink" title="leetcode2:Add Two Numbers"></a>leetcode2:Add Two Numbers</h3><p>I:(2-&gt;4-&gt;3)+(5-&gt;6-&gt;4)<br>O:(7-&gt;0-&gt;8)<br>原则：有进位往后增加，无则扩展<br><figure class="highlight ocaml"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.</span><br><span class="line"> * <span class="keyword">struct</span> <span class="type">ListNode</span> &#123;</span><br><span class="line"> *     <span class="built_in">int</span> <span class="keyword">val</span>;</span><br><span class="line"> *     <span class="type">ListNode</span> *next;</span><br><span class="line"> *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">class</span> <span class="type">Solution</span> &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="type">ListNode</span>* addTwoNumbers(<span class="type">ListNode</span>* l1, <span class="type">ListNode</span>* l2) &#123;</span><br><span class="line">        <span class="type">ListNode</span> dummy(<span class="number">0</span>);</span><br><span class="line">        <span class="type">ListNode</span>* p = &amp;dummy;</span><br><span class="line">        <span class="built_in">int</span> cn=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l1||l2)&#123;</span><br><span class="line">            <span class="built_in">int</span> <span class="keyword">val</span> = cn+(l1?l1-&gt;<span class="keyword">val</span>:<span class="number">0</span>)+(l2?l2-&gt;<span class="keyword">val</span>:<span class="number">0</span>);</span><br><span class="line">            cn = <span class="keyword">val</span>/<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">val</span> = <span class="keyword">val</span>%<span class="number">10</span>;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(<span class="keyword">val</span>);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l1)</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l2)</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cn!=<span class="number">0</span>)&#123;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(cn);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="leetcode3-Longest-Substring-Without-Repeating-Characters"><a href="#leetcode3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="leetcode3:Longest Substring Without Repeating Characters"></a>leetcode3:Longest Substring Without Repeating Characters</h3><p>问题：寻找最大不重复字母的子串长度<br>解法：1.从每个元素找起始无重复字符串，时间复杂度为O(n^3)<br>      2.将没出现的字母放入set，当重复字母出现时，把已有之前的set的字母移除，并记录最长的子串长度<br>      3.用数组不用Map,直接定义一个变量来保存无重复字符串的第一个字符的下标，碰到重复的就更新下标</p>
 <figure class="highlight q"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> lengthOfLongestSubstring(<span class="built_in">string</span> s) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="built_in">tables</span>[<span class="number">256</span>];</span><br><span class="line">        fill(<span class="built_in">tables</span>,<span class="built_in">tables</span>+<span class="number">256</span>,<span class="number">-1</span>);</span><br><span class="line">        <span class="type">int</span> result=<span class="number">0</span>,lastRepeatedPos=<span class="number">-1</span>;</span><br><span class="line">        for(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//当找到重复元素且lastRepeatedPos小于找到重复元素的下表时，更新lastRepeatedPos</span></span><br><span class="line">            if(<span class="built_in">tables</span>[s[i]]!=<span class="number">-1</span>&amp;&amp;lastRepeatedPos&lt;<span class="built_in">tables</span>[s[i]])</span><br><span class="line">                lastRepeatedPos=<span class="built_in">tables</span>[s[i]];</span><br><span class="line">                </span><br><span class="line">            <span class="comment">//更新最大值</span></span><br><span class="line">            result=<span class="built_in">max</span>(result,i-lastRepeatedPos);</span><br><span class="line">            <span class="comment">//元素插入表中</span></span><br><span class="line">            <span class="built_in">tables</span>[s[i]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -119,7 +117,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/03/07/leetcode2/" data-id="ciowshr9u00175mq1qrh0f31a" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/03/07/leetcode2/" data-id="ciowshr9u00175mq1qrh0f31a" class="article-share-link" data-share="baidu" data-title="leetcode2&amp;3">分享到</a>
       
 
       
@@ -154,12 +152,26 @@
 
   
 </article>
-
-
+  
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/03/07/leetcode2/" data-title="leetcode2&amp;3" data-url="https://csrjtan.github.io/2016/03/07/leetcode2/"></div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-leetcode2" data-title="leetcode2&amp;3" data-url="https://csrjtan.github.io/2016/03/07/leetcode2/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'csrjtan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
   </section>
-</section>
+  </section>
       
     </div>
     <footer id="footer">
@@ -272,13 +284,9 @@
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-      <br/>
-       <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-
     </div>
   </div>
- </footer>
+</footer>
   </div>
   <nav id="mobile-nav">
   
@@ -304,7 +312,7 @@
 
 <!-- 多说公共js代码 start -->
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"tanrunj"};
+var duoshuoQuery = {short_name:"csrjtan"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -328,7 +336,20 @@ var duoshuoQuery = {short_name:"tanrunj"};
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];
+</script>
 
 <!-- 百度分享 end -->
 
@@ -371,7 +392,7 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 

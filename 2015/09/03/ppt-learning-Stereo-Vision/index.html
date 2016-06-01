@@ -27,10 +27,13 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
 Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University of Bologna包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用">
 <meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/epipolar_constraint.png">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
+  
   
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 </head>
@@ -69,6 +72,8 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
       </nav>
       <nav id="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
@@ -83,8 +88,6 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
       </div>
     </div>
   </div>
-
-  <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
       <section id="main"><article id="post-ppt-learning-Stereo-Vision" class="article article-type-post" itemscope itemprop="blogPost">
@@ -113,11 +116,6 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stereo-Vision-Algorithms-and-Applications"><span class="toc-number">1.</span> <span class="toc-text">Stereo Vision:Algorithms and Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Author-Stefano-Mattoccia"><span class="toc-number">1.1.</span> <span class="toc-text">Author:Stefano Mattoccia</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lab-University-of-Bologna"><span class="toc-number">1.2.</span> <span class="toc-text">Lab:University of Bologna</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Intro"><span class="toc-number">2.</span> <span class="toc-text">1.Intro</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义-Epipolar-constraint-极几何约束"><span class="toc-number">2.1.</span> <span class="toc-text">定义:Epipolar constraint(极几何约束)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义：视差（Disparity）"><span class="toc-number">2.2.</span> <span class="toc-text">定义：视差（Disparity）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义：双目视界（Horopter）"><span class="toc-number">2.3.</span> <span class="toc-text">定义：双目视界（Horopter）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Overview-of-stereo-vision-system"><span class="toc-number">3.</span> <span class="toc-text">2.Overview of stereo vision system</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Calibration-offline"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 Calibration(offline)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Rectification"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 Rectification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Stereo-Correspondence"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 Stereo Correspondence</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Triangulation"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 Triangulation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-The-correspondence-problem"><span class="toc-number">4.</span> <span class="toc-text">3.The correspondence problem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-预处理（0）"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 预处理（0）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-匹配代价计算-1"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 匹配代价计算(1)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-代价聚合-2"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 代价聚合(2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-视差计算-优化-3"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 视差计算/优化(3)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-视差精细-4"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 视差精细(4)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-应用"><span class="toc-number">5.</span> <span class="toc-text">4.应用</span></a></li></ol>
-          </div>
-        
         <p><a href="http://vision.deis.unibo.it/~smatt/Seminars/StereoVision.pdf" target="_blank" rel="external">原文链接</a></p>
 <h3 id="Stereo-Vision-Algorithms-and-Applications"><a href="#Stereo-Vision-Algorithms-and-Applications" class="headerlink" title="Stereo Vision:Algorithms and Applications"></a>Stereo Vision:Algorithms and Applications</h3><h4 id="Author-Stefano-Mattoccia"><a href="#Author-Stefano-Mattoccia" class="headerlink" title="Author:Stefano Mattoccia"></a>Author:<a href="http://vision.deis.unibo.it/~smatt/Site/Home.html" target="_blank" rel="external">Stefano Mattoccia</a></h4><h4 id="Lab-University-of-Bologna"><a href="#Lab-University-of-Bologna" class="headerlink" title="Lab:University of Bologna"></a>Lab:University of Bologna</h4><p>包括：1.介绍 2.综述 3.匹配算法 4.计算优化 5.硬件实现 6.应用<br><a id="more"></a></p>
 <h3 id="1-Intro"><a href="#1-Intro" class="headerlink" title="1.Intro"></a>1.Intro</h3><p>Target:Stereo Vision的目的在于从两个或以上的摄像机获取深度信息</p>
@@ -213,7 +211,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="ciowshrb4002h5mq1v0ckza0k" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/" data-id="ciowshrb4002h5mq1v0ckza0k" class="article-share-link" data-share="baidu" data-title="ppt_learning_Stereo_Vision">分享到</a>
       
 
       
@@ -248,12 +246,26 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
 
   
 </article>
-
-
+  
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/09/03/ppt-learning-Stereo-Vision/" data-title="ppt_learning_Stereo_Vision" data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/"></div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-ppt-learning-Stereo-Vision" data-title="ppt_learning_Stereo_Vision" data-url="https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'csrjtan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
   </section>
-</section>
+  </section>
       
     </div>
     <footer id="footer">
@@ -366,13 +378,9 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-      <br/>
-       <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-
     </div>
   </div>
- </footer>
+</footer>
   </div>
   <nav id="mobile-nav">
   
@@ -398,7 +406,7 @@ Stereo Vision:Algorithms and ApplicationsAuthor:Stefano MattocciaLab:University 
 
 <!-- 多说公共js代码 start -->
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"tanrunj"};
+var duoshuoQuery = {short_name:"csrjtan"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -422,7 +430,20 @@ var duoshuoQuery = {short_name:"tanrunj"};
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];
+</script>
 
 <!-- 百度分享 end -->
 
@@ -465,7 +486,7 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 

@@ -17,10 +17,13 @@
 <meta name="twitter:title" content="Small Vision Systems :Hardware and Implementation">
 <meta name="twitter:description" content="Author:Kurt Konolige这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的Ster">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
+  
   
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 </head>
@@ -59,6 +62,8 @@
       </nav>
       <nav id="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
@@ -73,8 +78,6 @@
       </div>
     </div>
   </div>
-
-  <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
       <section id="main"><article id="post-paper-reading-20151025" class="article article-type-post" itemscope itemprop="blogPost">
@@ -103,11 +106,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Area-Correlation-这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："><span class="toc-number">1.</span> <span class="toc-text">2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Epipolar-Geometry"><span class="toc-number">2.</span> <span class="toc-text">2.2 Epipolar Geometry</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-该论文系统的算法"><span class="toc-number"></span> <span class="toc-text">3.该论文系统的算法</span></a>
-          </div>
-        
         <p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
 <h4 id="2-1-Area-Correlation-这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："><a href="#2-1-Area-Correlation-这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br><a href="http://5.Post" class="test test-url" target="_blank" rel="noopener noreferrer">5.Post</a>-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
 <h4 id="2-2-Epipolar-Geometry"><a href="#2-2-Epipolar-Geometry" class="headerlink" title="2.2 Epipolar Geometry"></a>2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
@@ -119,7 +117,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="ciowshra4001m5mq12l6p1aih" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/" data-id="ciowshra4001m5mq12l6p1aih" class="article-share-link" data-share="baidu" data-title="Small Vision Systems :Hardware and Implementation">分享到</a>
       
 
       
@@ -154,12 +152,26 @@
 
   
 </article>
-
-
+  
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/10/25/paper-reading-20151025/" data-title="Small Vision Systems :Hardware and Implementation" data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/"></div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-paper-reading-20151025" data-title="Small Vision Systems :Hardware and Implementation" data-url="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'csrjtan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
   </section>
-</section>
+  </section>
       
     </div>
     <footer id="footer">
@@ -272,13 +284,9 @@
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-      <br/>
-       <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-
     </div>
   </div>
- </footer>
+</footer>
   </div>
   <nav id="mobile-nav">
   
@@ -304,7 +312,7 @@
 
 <!-- 多说公共js代码 start -->
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"tanrunj"};
+var duoshuoQuery = {short_name:"csrjtan"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -328,7 +336,20 @@ var duoshuoQuery = {short_name:"tanrunj"};
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];
+</script>
 
 <!-- 百度分享 end -->
 
@@ -371,7 +392,7 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 

@@ -17,10 +17,13 @@
 <meta name="twitter:title" content="Dynamic occlusion avoidance approach based on the depth image of moving visual object">
 <meta name="twitter:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
+  
   
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 </head>
@@ -59,6 +62,8 @@
       </nav>
       <nav id="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
@@ -73,8 +78,6 @@
       </div>
     </div>
   </div>
-
-  <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
       <section id="main"><article id="post-paper-reading-20151125" class="article article-type-post" itemscope itemprop="blogPost">
@@ -103,11 +106,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object"><span class="toc-number">1.</span> <span class="toc-text">Dynamic occlusion avoidance approach based on the depth image of moving visual object</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image"><span class="toc-number">1.1.</span> <span class="toc-text">Abstract:Dynamic Occlusion avoidance based on the depth image.</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三个问题："><span class="toc-number">3.</span> <span class="toc-text">三个问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-Overview"><span class="toc-number">4.</span> <span class="toc-text">Method Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Approach-to-dynamic-occlusion-avoidance-based-on-depth-image"><span class="toc-number">5.</span> <span class="toc-text">The Approach to dynamic occlusion avoidance based on depth image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm"><span class="toc-number">6.</span> <span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusions"><span class="toc-number">7.</span> <span class="toc-text">Conclusions</span></a></li></ol>
-          </div>
-        
         <p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
 <h3 id="Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object"><a href="#Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object" class="headerlink" title="Dynamic occlusion avoidance approach based on the depth image of moving visual object"></a>Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
 <h4 id="Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image"><a href="#Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image" class="headerlink" title="Abstract:Dynamic Occlusion avoidance based on the depth image."></a>Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
@@ -132,7 +130,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="ciowshram00255mq1quwutwb8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/" data-id="ciowshram00255mq1quwutwb8" class="article-share-link" data-share="baidu" data-title="Dynamic occlusion avoidance approach based on the depth image of moving visual object">分享到</a>
       
 
       
@@ -167,12 +165,26 @@
 
   
 </article>
-
-
+  
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2015/11/25/paper-reading-20151125/" data-title="Dynamic occlusion avoidance approach based on the depth image of moving visual object" data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/"></div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-paper-reading-20151125" data-title="Dynamic occlusion avoidance approach based on the depth image of moving visual object" data-url="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'csrjtan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
   </section>
-</section>
+  </section>
       
     </div>
     <footer id="footer">
@@ -285,13 +297,9 @@
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-      <br/>
-       <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-
     </div>
   </div>
- </footer>
+</footer>
   </div>
   <nav id="mobile-nav">
   
@@ -317,7 +325,7 @@
 
 <!-- 多说公共js代码 start -->
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"tanrunj"};
+var duoshuoQuery = {short_name:"csrjtan"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -341,7 +349,20 @@ var duoshuoQuery = {short_name:"tanrunj"};
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];
+</script>
 
 <!-- 百度分享 end -->
 
@@ -384,7 +405,7 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 

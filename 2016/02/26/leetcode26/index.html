@@ -20,10 +20,13 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
 <meta name="twitter:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
 int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;             int count = 0;       for(int i=0;i&amp;lt;nums">
   
+    <link rel="alternative" href="/atom.xml" title="CSRJTAN" type="application/atom+xml">
+  
   
     <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 </head>
@@ -62,6 +65,8 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
       </nav>
       <nav id="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
@@ -76,8 +81,6 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
       </div>
     </div>
   </div>
-
-  <a href="https://github.com/csrjtan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 </header>
     <div class="outer">
       <section id="main"><article id="post-leetcode26" class="article article-type-post" itemscope itemprop="blogPost">
@@ -106,11 +109,6 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode-26"><span class="toc-number">1.</span> <span class="toc-text">leetcode 26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leetcode-242-Valid-Anagram"><span class="toc-number">2.</span> <span class="toc-text">leetcode 242 Valid Anagram</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-string用法"><span class="toc-number">3.</span> <span class="toc-text">c++ string用法</span></a></li></ol>
-          </div>
-        
         <h3 id="leetcode-26"><a href="#leetcode-26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间</p>
 <figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> removeDuplicates(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="keyword">size</span>();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &#123;</span><br><span class="line">               nums[<span class="keyword">count</span>] = nums[i];</span><br><span class="line">               <span class="keyword">count</span>++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">count</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>解题：重新填入整个数组，如果是0或者与前一个值不一样，就直接填入覆盖，直到遍历完整个有序数组。<br>TC = O(n), SC = O(1)</p>
@@ -125,7 +123,7 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="ciowshra1001f5mq1zblo2w30" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="https://csrjtan.github.io/2016/02/26/leetcode26/" data-id="ciowshra1001f5mq1zblo2w30" class="article-share-link" data-share="baidu" data-title="leetcode26 &amp; 242 &amp; String">分享到</a>
       
 
       
@@ -160,12 +158,26 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
 
   
 </article>
-
-
+  
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/02/26/leetcode26/" data-title="leetcode26 &amp; 242 &amp; String" data-url="https://csrjtan.github.io/2016/02/26/leetcode26/"></div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-leetcode26" data-title="leetcode26 &amp; 242 &amp; String" data-url="https://csrjtan.github.io/2016/02/26/leetcode26/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'csrjtan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '<a href="//static.duoshuo.com/embed.js'" class="test test-url" target="_blank" rel="noopener noreferrer">static.duoshuo.com/embed.js'</a>;
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
   </section>
-</section>
+  </section>
       
     </div>
     <footer id="footer">
@@ -278,13 +290,9 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-      <br/>
-       <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-
     </div>
   </div>
- </footer>
+</footer>
   </div>
   <nav id="mobile-nav">
   
@@ -310,7 +318,7 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
 
 <!-- 多说公共js代码 start -->
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"tanrunj"};
+var duoshuoQuery = {short_name:"csrjtan"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -334,7 +342,20 @@ var duoshuoQuery = {short_name:"tanrunj"};
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];</script>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='<a href="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new" class="test test-url" target="_blank" rel="noopener noreferrer">http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new</a> Date()/36e5)];
+</script>
 
 <!-- 百度分享 end -->
 
@@ -377,7 +398,7 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
