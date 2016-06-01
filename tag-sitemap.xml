@@ -65,13 +65,6 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/tags/%E6%84%9F%E6%83%B3/</loc>
-        <lastmod>2016-05-29T06:57:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/tags/%E6%97%85%E6%B8%B8-%E5%8F%B0%E6%B9%BE/</loc>
         <lastmod>2016-05-29T10:06:46.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -88,6 +81,13 @@
     <url>
         <loc>https://csrjtan.github.io/tags/%E6%97%85%E6%B8%B8-%E7%BE%8E%E9%A3%9F/</loc>
         <lastmod>2016-05-30T07:33:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/tags/%E6%84%9F%E6%83%B3/</loc>
+        <lastmod>2016-06-01T14:27:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
