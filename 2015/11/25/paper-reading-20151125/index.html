@@ -108,7 +108,7 @@
 <meta property="og:url" content="https://csrjtan.github.io/2015/11/25/paper-reading-20151125/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
-<meta property="og:updated_time" content="2016-05-28T14:27:34.000Z">
+<meta property="og:updated_time" content="2016-06-01T14:51:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamic occlusion avoidance approach based on the depth image of moving visual object">
 <meta name="twitter:description" content="这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优">
@@ -360,7 +360,7 @@
       
 
       
-        <p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。</p>
+        <p>这周回来帮崇雨审一个文章，燕大的关于动态物体避障的方案，总体来说写得比较自我，而且没有系统和实用的示例，只是从理论上写的一个方案，自己提出了很多新的东西，然而没办法去很好验证。整个流程是提取曲面特征，通过下一帧的Depth变化为依据，最大化The best Next View来求出摄像机的移动策略，这里将运动评估作为一个term加入到the best next view model里面，通过迭代优化的过程来求出摄像机的位置和方向(x,v).用观测到障碍物体的最大面积来作为调整相机的依据，从一定假设上可以实现避障。<br><a id="more"></a></p>
 <h3 id="Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object"><a href="#Dynamic-occlusion-avoidance-approach-based-on-the-depth-image-of-moving-visual-object" class="headerlink" title="Dynamic occlusion avoidance approach based on the depth image of moving visual object"></a>Dynamic occlusion avoidance approach based on the depth image of moving visual object</h3><p>KeyWords:Moving Object,Depth Image,Dynamic Occlusion Avoidance,Best View Model</p>
 <h4 id="Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image"><a href="#Abstract-Dynamic-Occlusion-avoidance-based-on-the-depth-image" class="headerlink" title="Abstract:Dynamic Occlusion avoidance based on the depth image."></a>Abstract:Dynamic Occlusion avoidance based on the depth image.</h4><p>首先，用Anti-projection Transformation来获得移动物体的每个像素的三维坐标<br>然后，用第二张深度图来构建The Best View Model<br>第三，高斯曲率的特征是平面变换的本质计量，所以运动评估比较两个高斯曲率特征矩阵来实现<br>(Gaussian Curvature:The product of the maximum and minimum curvatures of the sectionsIt is the intrinsic measure of curvature.)<br>最后，结合Best View Model和运动检测结果，最优化目的是使摄像机行为满足移动物体的避障过程。</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>主要问题：通过物体的障碍提示来寻找最优观测方向和位置<br>Next Best View:</p>

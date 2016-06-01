@@ -7,6 +7,238 @@
     </url>
 
     <url>
+        <loc>https://csrjtan.github.io/2016/02/26/leetcode26/</loc>
+        <lastmod>2016-06-01T14:52:15.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/04/21/ted-glories-and-dream/</loc>
+        <lastmod>2016-06-01T14:52:06.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/</loc>
+        <lastmod>2016-06-01T14:52:01.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/10/30/study-20151030/</loc>
+        <lastmod>2016-06-01T14:51:56.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/11/08/SLAM%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
+        <lastmod>2016-06-01T14:51:51.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/08/16/paper-research-01/</loc>
+        <lastmod>2016-06-01T14:51:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/03/06/paper-reading-20160306/</loc>
+        <lastmod>2016-06-01T14:51:43.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/02/17/paper-reading-20160217/</loc>
+        <lastmod>2016-06-01T14:51:40.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/01/20/paper-reading-20160120/</loc>
+        <lastmod>2016-06-01T14:51:36.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/11/25/paper-reading-20151125/</loc>
+        <lastmod>2016-06-01T14:51:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/10/25/paper-reading-20151025/</loc>
+        <lastmod>2016-06-01T14:51:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/</loc>
+        <lastmod>2016-06-01T14:51:20.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/02/18/Manual%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2016-06-01T14:51:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/04/13/leetcode7-14/</loc>
+        <lastmod>2016-06-01T14:51:09.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/04/13/leetcode3-6/</loc>
+        <lastmod>2016-06-01T14:51:06.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/03/07/leetcode2/</loc>
+        <lastmod>2016-06-01T14:50:58.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/04/17/leetcode15/</loc>
+        <lastmod>2016-06-01T14:50:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/02/26/leetcode1/</loc>
+        <lastmod>2016-06-01T14:50:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/10/28/group-talk1/</loc>
+        <lastmod>2016-06-01T14:50:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/05/16/ColorDemosaicComparison/</loc>
+        <lastmod>2016-06-01T14:50:34.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/10/27/camera-calibration/</loc>
+        <lastmod>2016-06-01T14:50:26.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/</loc>
+        <lastmod>2016-06-01T14:50:21.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/03/01/16%E5%B9%B4%E4%BA%8C%E6%9C%88%E4%B9%8B%E6%97%85/</loc>
+        <lastmod>2016-06-01T14:50:09.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/01/22/%E8%B7%9FG-MAKE%E5%92%8CCMAKE%E5%A5%8B%E6%96%97%E7%9A%84%E6%97%A5%E5%AD%90/</loc>
+        <lastmod>2016-06-01T14:50:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/05/30/%E6%BD%AE%E6%B1%95%E4%B9%8B%E6%97%85/</loc>
+        <lastmod>2016-06-01T14:49:47.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/11/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%883%EF%BC%89/</loc>
+        <lastmod>2016-06-01T14:49:39.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/10/31/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%882%EF%BC%89/</loc>
+        <lastmod>2016-06-01T14:49:34.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/02/29/%E5%8F%B0%E6%B9%BE%E4%B9%8B%E6%97%85/</loc>
+        <lastmod>2016-06-01T14:49:23.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2015/10/30/%E4%B8%AD%E7%A7%8B%E8%87%AA%E7%9C%81/</loc>
+        <lastmod>2016-06-01T14:49:09.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://csrjtan.github.io/2016/05/29/%E9%87%8D%E5%9B%9E%E7%90%86%E5%A4%A7/</loc>
         <lastmod>2016-06-01T14:27:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,54 +255,6 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/2016/05/30/%E6%BD%AE%E6%B1%95%E4%B9%8B%E6%97%85/</loc>
-        <lastmod>2016-05-30T07:33:52.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/10/30/%E4%B8%AD%E7%A7%8B%E8%87%AA%E7%9C%81/</loc>
-        <lastmod>2016-05-30T06:42:27.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/03/01/16%E5%B9%B4%E4%BA%8C%E6%9C%88%E4%B9%8B%E6%97%85/</loc>
-        <lastmod>2016-05-30T06:27:34.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/02/29/%E5%8F%B0%E6%B9%BE%E4%B9%8B%E6%97%85/</loc>
-        <lastmod>2016-05-29T10:06:46.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/05/16/ColorDemosaicComparison/</loc>
-        <lastmod>2016-05-28T15:10:55.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/04/21/ted-glories-and-dream/</loc>
-        <lastmod>2016-05-28T15:09:27.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/2015/09/03/ppt-learning-Stereo-Vision/</loc>
         <lastmod>2016-05-28T14:28:35.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -79,80 +263,8 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/2016/02/29/Summary-Of-Half-Year/</loc>
-        <lastmod>2016-05-28T14:28:29.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/10/30/study-20151030/</loc>
-        <lastmod>2016-05-28T14:28:19.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/11/08/SLAM%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
-        <lastmod>2016-05-28T14:27:57.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/08/16/paper-research-01/</loc>
-        <lastmod>2016-05-28T14:27:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/03/06/paper-reading-20160306/</loc>
-        <lastmod>2016-05-28T14:27:46.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/02/17/paper-reading-20160217/</loc>
-        <lastmod>2016-05-28T14:27:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/01/20/paper-reading-20160120/</loc>
-        <lastmod>2016-05-28T14:27:39.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/11/25/paper-reading-20151125/</loc>
-        <lastmod>2016-05-28T14:27:34.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/2015/10/28/paper-reading-20151028/</loc>
         <lastmod>2016-05-28T14:27:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/10/25/paper-reading-20151025/</loc>
-        <lastmod>2016-05-28T14:27:29.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -175,96 +287,8 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/</loc>
-        <lastmod>2016-05-28T14:27:15.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/2015/08/16/object-detection-research/</loc>
         <lastmod>2016-05-28T14:27:07.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/02/18/Manual%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2016-05-28T14:27:03.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/04/13/leetcode7-14/</loc>
-        <lastmod>2016-05-28T14:26:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/04/13/leetcode3-6/</loc>
-        <lastmod>2016-05-28T14:26:46.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/02/26/leetcode26/</loc>
-        <lastmod>2016-05-28T14:26:43.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/03/07/leetcode2/</loc>
-        <lastmod>2016-05-28T14:26:40.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/04/17/leetcode15/</loc>
-        <lastmod>2016-05-28T14:26:32.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/02/26/leetcode1/</loc>
-        <lastmod>2016-05-28T14:26:27.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/10/28/group-talk1/</loc>
-        <lastmod>2016-05-28T14:26:22.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/10/27/camera-calibration/</loc>
-        <lastmod>2016-05-28T14:26:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/</loc>
-        <lastmod>2016-05-28T14:26:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -287,14 +311,6 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/2016/01/22/%E8%B7%9FG-MAKE%E5%92%8CCMAKE%E5%A5%8B%E6%96%97%E7%9A%84%E6%97%A5%E5%AD%90/</loc>
-        <lastmod>2016-05-28T14:25:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/2015/10/22/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95/</loc>
         <lastmod>2016-05-28T14:25:30.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -305,22 +321,6 @@
     <url>
         <loc>https://csrjtan.github.io/2016/01/26/%E6%97%A0%E4%BA%BA%E6%9C%BA%E9%A1%B9%E7%9B%AE/</loc>
         <lastmod>2016-05-28T14:25:25.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/11/02/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%883%EF%BC%89/</loc>
-        <lastmod>2016-05-28T14:25:19.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/10/31/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%882%EF%BC%89/</loc>
-        <lastmod>2016-05-28T14:25:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -102,19 +102,16 @@
 
 
 
-<meta name="description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
-2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
+<meta name="description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="斯坦福公开课机器人学">
 <meta property="og:url" content="https://csrjtan.github.io/2015/11/14/OpenClassRobotic1/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
-2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
-<meta property="og:updated_time" content="2016-05-28T14:27:15.000Z">
+<meta property="og:description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。">
+<meta property="og:updated_time" content="2016-06-01T14:51:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="斯坦福公开课机器人学">
-<meta name="twitter:description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。
-2.空间描述，广义的坐标在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma">
+<meta name="twitter:description" content="1.概述这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。">
 
 
 
@@ -363,7 +360,7 @@
       
 
       
-        <h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。</p>
+        <h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h3><p>这门课程主要讲述机器人的一些基本知识，包括运动学，动力学，机臂控制，一些前沿研究。<br>由于最近做定位地图，涉及较多robotic的知识，在这里直接看一下入门，之后希望可以对ROS、PCL、G2O等重要工具展开学习。<br><a id="more"></a></p>
 <h4 id="2-空间描述，广义的坐标"><a href="#2-空间描述，广义的坐标" class="headerlink" title="2.空间描述，广义的坐标"></a>2.空间描述，广义的坐标</h4><p>在二维空间，一个刚性物体的姿态只有3个自由度，$x,y,\theta$<br>在三维空间，一个刚性物体的姿态会有6个自由度，$x,y,z,\theta,\gamma,\phi$</p>
 <p>这里描述坐标系的转换可以用一个矩阵，其中旋转矩阵$ R_{AB}=R_{BA}^T $,具有<strong>正交性</strong>，<br>$ R_{AB}^{-1} = R_{BA} = R_{BA}^T $，并且满足:<br>$$ r_X^2 = r_Y^2 = r_Z^2 = 1 $$<br>$$ r_X * r_Y = r_X * r_Z = r_Y * r_Z = 0 $$<br>其中正交矩阵相关的一些矩阵分解有：QR、SVD、谱分解和极分解。</p>
 <p>相对而言，T不会满足旋转矩阵R的这些特性，这里也是基于右手系的约束。<br>为了方便矩阵的运算，我们将R和T矩阵组合并添加一维[0 0 0 1]变成4 * 4的矩阵，形成<strong>齐次</strong>.</p>

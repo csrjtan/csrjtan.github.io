@@ -102,19 +102,16 @@
 
 
 
-<meta name="description" content="C++的编程模块这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。void functionName(parameterList)&amp;#123;	statement(s)	return ;&amp;#125;
-函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异尽可能使用const:1">
+<meta name="description" content="C++的编程模块这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。void functionName(parameterList)&amp;#123;	statement(s)	return ;&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++_Primer_Reading2">
 <meta property="og:url" content="https://csrjtan.github.io/2016/01/30/C-Primer-Reading2/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="C++的编程模块这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。void functionName(parameterList)&amp;#123;	statement(s)	return ;&amp;#125;
-函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异尽可能使用const:1">
-<meta property="og:updated_time" content="2016-05-28T14:26:05.000Z">
+<meta property="og:description" content="C++的编程模块这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。void functionName(parameterList)&amp;#123;	statement(s)	return ;&amp;#125;">
+<meta property="og:updated_time" content="2016-06-01T14:50:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++_Primer_Reading2">
-<meta name="twitter:description" content="C++的编程模块这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。void functionName(parameterList)&amp;#123;	statement(s)	return ;&amp;#125;
-函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异尽可能使用const:1">
+<meta name="twitter:description" content="C++的编程模块这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。void functionName(parameterList)&amp;#123;	statement(s)	return ;&amp;#125;">
 
 
 
@@ -364,9 +361,7 @@
 
       
         <h3 id="C-的编程模块"><a href="#C-的编程模块" class="headerlink" title="C++的编程模块"></a>C++的编程模块</h3><p>这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。<br><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">void</span> <span class="function"><span class="keyword">function</span><span class="title">Name</span>(<span class="params">parameterList</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	statement(s)</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异<br>尽可能使用const:1.可以避免无意间修改数据导致的编程错误 2.能够同时处理const和非const的实参<br>按引用传递结构，还有函数指针的知识，C风格字符串：字符数组，字符串常量和字符串指针，以及string类.</p>
-<h3 id="函数探幽"><a href="#函数探幽" class="headerlink" title="函数探幽"></a>函数探幽</h3><p>内联函数、按引用传递、默认参数值、函数重载以及模板函数<br>C++新增加一种右值引用。返回引用时，避免返回函数终止则不再存在的内存单元引用</p>
-<p>函数模板<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">template&lt;typename AnyType&gt;</span><br><span class="line">void <span class="keyword">Swap(AnyType </span>&amp;a,AnyType &amp;<span class="keyword">b)</span><br><span class="line"></span>&#123;</span><br><span class="line">	AnyType temp<span class="comment">;</span></span><br><span class="line">	temp = a<span class="comment">;</span></span><br><span class="line">	a = <span class="keyword">b;</span><br><span class="line"></span>	<span class="keyword">b </span>= temp<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>函数中将数组地址作为参数可以节省复制数组所需的时间和内存，地址值和数组长度随系统而异<br>尽可能使用const:1.可以避免无意间修改数据导致的编程错误 2.能够同时处理const和非const的实参<br>按引用传递结构，还有函数指针的知识，C风格字符串：字符数组，字符串常量和字符串指针，以及string类.<br><br>### 函数探幽<br>内联函数、按引用传递、默认参数值、函数重载以及模板函数<br>C++新增加一种右值引用。返回引用时，避免返回函数终止则不再存在的内存单元引用<br><br>函数模板<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">template&lt;typename AnyType&gt;</span><br><span class="line">void <span class="keyword">Swap(AnyType </span>&amp;a,AnyType &amp;<span class="keyword">b)</span><br><span class="line"></span>&#123;</span><br><span class="line">	AnyType temp<span class="comment">;</span></span><br><span class="line">	temp = a<span class="comment">;</span></span><br><span class="line">	a = <span class="keyword">b;</span><br><span class="line"></span>	<span class="keyword">b </span>= temp<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>模板匹配的过程：1.创建候选函数列表 2.使用候选函数列表创建可行函数列表 3.确定是否有最佳可行函数<br>最佳到最差匹配顺序：1.完全匹配 2.提升转换 3.标准转换 4.用户定义转换</p>
 <h3 id="内存模型和名称空间"><a href="#内存模型和名称空间" class="headerlink" title="内存模型和名称空间"></a>内存模型和名称空间</h3><p>单独编译，将头文件和结构文件以及程序文件分开，头文件使用防护(guarding)方案，避免文件定义结构两次。（不同编译器创建的二进制模块很可能无法正确地链接，可以拿到源码后重新编译连接解决问题）</p>
 <h4 id="存储持续性，作用域和链接性"><a href="#存储持续性，作用域和链接性" class="headerlink" title="存储持续性，作用域和链接性"></a>存储持续性，作用域和链接性</h4><p>自动存储持续性：自动默认的变量，在块内或者函数生命周期里存在<br>静态存储持续性：static定义变量在程序运行过程中都存在<br>线程存储持续性（c++11):thread_local变量生命周期与线程一样长<br>动态存储持续性：用new分配的内存，直到delete才释放</p>
@@ -564,7 +559,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-的编程模块"><span class="nav-number">1.</span> <span class="nav-text">C++的编程模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数探幽"><span class="nav-number">2.</span> <span class="nav-text">函数探幽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存模型和名称空间"><span class="nav-number">3.</span> <span class="nav-text">内存模型和名称空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储持续性，作用域和链接性"><span class="nav-number">3.1.</span> <span class="nav-text">存储持续性，作用域和链接性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象和类"><span class="nav-number">4.</span> <span class="nav-text">对象和类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用类"><span class="nav-number">5.</span> <span class="nav-text">使用类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-的编程模块"><span class="nav-number">1.</span> <span class="nav-text">C++的编程模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存模型和名称空间"><span class="nav-number">2.</span> <span class="nav-text">内存模型和名称空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储持续性，作用域和链接性"><span class="nav-number">2.1.</span> <span class="nav-text">存储持续性，作用域和链接性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象和类"><span class="nav-number">3.</span> <span class="nav-text">对象和类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用类"><span class="nav-number">4.</span> <span class="nav-text">使用类</span></a></li></ol></div>
             
           </div>
         </section>

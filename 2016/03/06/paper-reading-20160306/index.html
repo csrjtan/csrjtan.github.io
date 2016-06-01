@@ -111,7 +111,7 @@
 <meta property="og:description" content="之前阅读了左老师的两个paper,一直没有给总结，今天来赶紧写一下
 《On kernel difference-weighted k-nearest neighbor classification》KNN的改进方法，利用临近点的差距作为权值的学习策略。将权值的学习转化成约束优化的问题，从优化数学的角度论证了易求解和适应高斯噪声以及扩展为kernel version，实验部分k,n以及theta是p">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/KDW-KNN.png">
-<meta property="og:updated_time" content="2016-05-28T14:27:46.000Z">
+<meta property="og:updated_time" content="2016-06-01T14:51:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="paper-reading-20160306">
 <meta name="twitter:description" content="之前阅读了左老师的两个paper,一直没有给总结，今天来赶紧写一下
@@ -366,7 +366,7 @@
 
       
         <p>之前阅读了左老师的两个paper,一直没有给总结，今天来赶紧写一下</p>
-<h3 id="《On-kernel-difference-weighted-k-nearest-neighbor-classification》"><a href="#《On-kernel-difference-weighted-k-nearest-neighbor-classification》" class="headerlink" title="《On kernel difference-weighted k-nearest neighbor classification》"></a>《On kernel difference-weighted k-nearest neighbor classification》</h3><p>KNN的改进方法，利用临近点的差距作为权值的学习策略。将权值的学习转化成约束优化的问题，从优化数学的角度论证了易求解和适应高斯噪声以及扩展为kernel version，实验部分k,n以及theta是prefix然后相互学习下降求解的。<br>Contribution:<br>1.提出difference-weighted,转化成约束优化Model<br>2.证明了理论性以及适应于非线性数据集，kernel<br>3.得到实验结果比一些state-of-art的NN要好</p>
+<h3 id="《On-kernel-difference-weighted-k-nearest-neighbor-classification》"><a href="#《On-kernel-difference-weighted-k-nearest-neighbor-classification》" class="headerlink" title="《On kernel difference-weighted k-nearest neighbor classification》"></a>《On kernel difference-weighted k-nearest neighbor classification》</h3><p>KNN的改进方法，利用临近点的差距作为权值的学习策略。将权值的学习转化成约束优化的问题，从优化数学的角度论证了易求解和适应高斯噪声以及扩展为kernel version，实验部分k,n以及theta是prefix然后相互学习下降求解的。<br>Contribution:<br>1.提出difference-weighted,转化成约束优化Model<br>2.证明了理论性以及适应于非线性数据集，kernel<br>3.得到实验结果比一些state-of-art的NN要好<br><a id="more"></a></p>
 <h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><p>NN是一个简单有效的模式识别聚类方法,这个论文提出了Kernel difference-weighted的KDF-KNN方法，用difference-weighted作为计算聚类距离时的权值，将一般的权值求解编程带约束的优化问题，并基于此理论Kernel化，最后验证数学理论和算法复杂度</p>
 <h4 id="问题建模"><a href="#问题建模" class="headerlink" title="问题建模"></a>问题建模</h4><p>将最近邻的权值设置为 $W = argmin\frac{1}{2}||x-w^TX||^2 $ , $s.t. \sum_i^w w_i =1 $ , x为样本与相邻的欧几距离，w为当前权值。w是最终关于该数据集模型的最优权值，所以接下来的DW-KNN就是求解上述方程的约束最优化问题了</p>
 <p>接下来使用凸优化和朗格朗日的方法求解,接下来做了关于高斯噪声的优化以及Kernel提升以适应非线性数据集，还理论分析对比了该方法与其他方法的复杂度</p>

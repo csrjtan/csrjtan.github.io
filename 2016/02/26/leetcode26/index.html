@@ -102,19 +102,16 @@
 
 
 
-<meta name="description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
-int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;             int count = 0;       for(int i=0;i&amp;lt;nums">
+<meta name="description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode26 & 242 & String">
 <meta property="og:url" content="https://csrjtan.github.io/2016/02/26/leetcode26/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
-int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;             int count = 0;       for(int i=0;i&amp;lt;nums">
-<meta property="og:updated_time" content="2016-05-28T14:26:43.000Z">
+<meta property="og:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间">
+<meta property="og:updated_time" content="2016-06-01T14:52:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode26 & 242 & String">
-<meta name="twitter:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间
-int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;             int count = 0;       for(int i=0;i&amp;lt;nums">
+<meta name="twitter:description" content="leetcode 26Remove Duplicates from Sorted Array思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间">
 
 
 
@@ -363,8 +360,7 @@ int removeDuplicates(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        
       
 
       
-        <h3 id="leetcode-26"><a href="#leetcode-26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> removeDuplicates(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="keyword">size</span>();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &#123;</span><br><span class="line">               nums[<span class="keyword">count</span>] = nums[i];</span><br><span class="line">               <span class="keyword">count</span>++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">count</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="leetcode-26"><a href="#leetcode-26" class="headerlink" title="leetcode 26"></a>leetcode 26</h3><p>Remove Duplicates from Sorted Array<br>思路：去除有序数组中的重复点，返回新数组长度，前n个就是新数组。难点是不能用额外空间<br><a id="more"></a><br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> removeDuplicates(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">      </span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="keyword">size</span>();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">0</span>||nums[i]!=nums[i-<span class="number">1</span>])</span><br><span class="line">           &#123;</span><br><span class="line">               nums[<span class="keyword">count</span>] = nums[i];</span><br><span class="line">               <span class="keyword">count</span>++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">count</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 <p>解题：重新填入整个数组，如果是0或者与前一个值不一样，就直接填入覆盖，直到遍历完整个有序数组。<br>TC = O(n), SC = O(1)</p>
 <p>今天还完成了<a href="http://pan.baidu.com/s/1o7o6xYy" target="_blank" rel="external">Thesis Writting<br>Collacation</a> 密码：8qjh</p>
 <p>以及<a href="http://pan.baidu.com/s/1i4t00SX" target="_blank" rel="external">DJI PPT</a> 密码：awzd</p>

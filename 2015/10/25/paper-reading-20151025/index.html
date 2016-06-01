@@ -108,7 +108,7 @@
 <meta property="og:url" content="https://csrjtan.github.io/2015/10/25/paper-reading-20151025/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="Author:Kurt Konolige这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的Ster">
-<meta property="og:updated_time" content="2016-05-28T14:27:29.000Z">
+<meta property="og:updated_time" content="2016-06-01T14:51:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Small Vision Systems :Hardware and Implementation">
 <meta name="twitter:description" content="Author:Kurt Konolige这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的Ster">
@@ -361,6 +361,7 @@
 
       
         <p><strong>Author</strong>:Kurt Konolige<br>这篇文章是opencv里面的StereoMatchingBM算法的参考算法，所以特意找出来研读一番，虽然是1998的产物，但还是值得一看的，它实际有效地用于移动机器人。它的特点是快，实时。但当参数不Tuned的时候，效果不佳。所以需要进行良好的标定和参数的调整。对于一张480*320的32位深度图计算只需要30~40毫秒的时间。这与opencv里面的StereoMatchingGC算法形成对比，GC算法耗时长，以上图则需要几秒但恢复精度高。</p>
+<a id="more"></a>
 <h4 id="2-1-Area-Correlation-这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："><a href="#2-1-Area-Correlation-这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：" class="headerlink" title="2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五："></a>2.1 Area Correlation 这篇文章的StereoMatching主要应用在移动机器人上，它用到的区域关联步骤有五：</h4><p>1.Geometry correction:图像的几何和扭曲的恢复调整<br>2.Image Transform:灰度图像素值的去误差调整<br>3.Area Correlation:通过Searching Window区域关联匹配<br>4.Exrema Extraction:最佳点提取，用于生成深度图<br><a href="http://5.Post" class="test test-url" target="_blank" rel="noopener noreferrer">5.Post</a>-filtering:深度图后处理，去噪滤波等,去除误匹配点，如重复和平滑区域的无匹配等</p>
 <h4 id="2-2-Epipolar-Geometry"><a href="#2-2-Epipolar-Geometry" class="headerlink" title="2.2 Epipolar Geometry"></a>2.2 Epipolar Geometry</h4><p>极平面约束导致，p从参照图映射到匹配图，肯定在极曲线(epipolar curves)上。假若图片是理想映射，则该epipolar curves是一条直线。为了达到这样的理想条件，为此，确保图像在同一平面，扫描线和图像中心水平对齐，共同拥有相同的焦距，最好还需要知道内外参数。所以照相机的标定起到重要作用。</p>
 <p>实际应用中，不断计算标定不实际，只能确定内参数后，再根据偏差进行自动标定。</p>

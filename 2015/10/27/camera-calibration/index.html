@@ -104,16 +104,14 @@
 
 <meta name="description" content="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习首先分享一下好的资源Richard’s blog 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。
 1.针孔模型(Pinhole model)
-从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:$$-x=f\frac{X}{Z}$$
-换一">
+从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:$$-x=f\frac{X}{Z}$$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="摄像头校正（Camera Calibration）">
 <meta property="og:url" content="https://csrjtan.github.io/2015/10/27/camera-calibration/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习首先分享一下好的资源Richard’s blog 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。
 1.针孔模型(Pinhole model)
-从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:$$-x=f\frac{X}{Z}$$
-换一">
+从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:$$-x=f\frac{X}{Z}$$">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration2.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration3.png">
@@ -125,13 +123,12 @@
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration9.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration10.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration11.png">
-<meta property="og:updated_time" content="2016-05-28T14:26:12.000Z">
+<meta property="og:updated_time" content="2016-06-01T14:50:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="摄像头校正（Camera Calibration）">
 <meta name="twitter:description" content="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习首先分享一下好的资源Richard’s blog 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。
 1.针孔模型(Pinhole model)
-从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:$$-x=f\frac{X}{Z}$$
-换一">
+从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:$$-x=f\frac{X}{Z}$$">
 <meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png">
 
 
@@ -383,8 +380,7 @@
       
         <h3 id="为了总结一下进入理大以来对于Stereo-Vision的学习，这里分享一下对于Camera-Calibration的学习"><a href="#为了总结一下进入理大以来对于Stereo-Vision的学习，这里分享一下对于Camera-Calibration的学习" class="headerlink" title="为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习"></a>为了总结一下进入理大以来对于Stereo Vision的学习，这里分享一下对于Camera Calibration的学习</h3><p>首先分享一下好的资源<a href="http://wycwang.blogspot.hk/2012/09/camera-calibration-part-1-camera-model.html" target="_blank" rel="external">Richard’s blog</a> 《学习opencv》的第十一章，照相机匹配，还有张正友的经典论文。</p>
 <h3 id="1-针孔模型-Pinhole-model"><a href="#1-针孔模型-Pinhole-model" class="headerlink" title="1.针孔模型(Pinhole model)"></a>1.针孔模型(Pinhole model)</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration1.png" alt=""></p>
-<p>从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:<br>$$-x=f\frac{X}{Z}$$</p>
-<p>换一个方式，由于人眼看到的并非是倒像，其实可以如下图一样，将成像平面前移到眼睛前方，或者进行一个重新对应成像的过程，从而把倒像恢复，但大小不变的。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration2.png" alt=""><br>$$x=f\frac{X}{Z}$$</p>
+<p>从高中物理的针孔成像定理以及相似三角形定义可得,Z为到针孔距离，f为焦距:<br>$$-x=f\frac{X}{Z}$$<br><a id="more"></a><br>换一个方式，由于人眼看到的并非是倒像，其实可以如下图一样，将成像平面前移到眼睛前方，或者进行一个重新对应成像的过程，从而把倒像恢复，但大小不变的。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration2.png" alt=""><br>$$x=f\frac{X}{Z}$$</p>
 <p>为了使得影像中心没有偏差，加入位移参数$C_x和C_y$，另外成像平面的像素长宽的比例不一样，所以可以加入$s_x和s_y$调整。但这是可以和焦距融合的，所以最终得到公式：<br>$$q=M* Q$$<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration3.png" alt=""><br>$f_x ，f_y ，c_x ，c_y$为摄像机的内参数，一旦标定是固定不变的。</p>
 <h3 id="2-透镜模型"><a href="#2-透镜模型" class="headerlink" title="2.透镜模型"></a>2.透镜模型</h3><p>由于针孔对光线的采集不足，需要长曝光，这是不可取的。所以选用透镜，但这回带来透镜畸变，主要是径向（Radial）和切向(Tangent)畸变<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration4.png" alt=""><br>校正选用的Model如下，其中径向由泰勒展开的前三个偶数项（由于中心对称的偶函数），而切向的恢复拟合模型可以参考详细的数学方法，这里不关注。</p>
 <p><img src="http://7xl4js.com1.z0.glb.clouddn.com/calibration5.png" alt="校正radial"></p>

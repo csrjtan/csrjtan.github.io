@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
 协方差矩阵：$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline">
-<meta property="og:updated_time" content="2016-05-28T14:25:16.000Z">
+<meta property="og:updated_time" content="2016-06-01T14:49:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘导论（2）">
 <meta name="twitter:description" content="这写一下第三第四章的主要内容1.第三章包括汇总统计、可视化和OLAP统计的特征数据点包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。
@@ -366,7 +366,7 @@
         <h3 id="这写一下第三第四章的主要内容"><a href="#这写一下第三第四章的主要内容" class="headerlink" title="这写一下第三第四章的主要内容"></a>这写一下第三第四章的主要内容</h3><h4 id="1-第三章包括汇总统计、可视化和OLAP"><a href="#1-第三章包括汇总统计、可视化和OLAP" class="headerlink" title="1.第三章包括汇总统计、可视化和OLAP"></a>1.第三章包括汇总统计、可视化和OLAP</h4><p>统计的<strong>特征数据点</strong>包括：频数,众数,百分位数,位置度量:均值和中位数,散布度量：极差和方差，绝对平均偏差、中卫偏差，多元统计包括协方差矩阵。</p>
 <p>协方差矩阵：<br>$$ covariance(x_i,x_j)=\frac{1}{m-1}\sum_{k=1}^m(x_{ki} - \overline{x_i})(x_{kj}-\overline{x_j}) $$</p>
 <p>相关矩阵元素：$ r_{ij} = \frac{covariance(x_i,x_j)}{s_is_j}$</p>
-<h4 id="2-可视化"><a href="#2-可视化" class="headerlink" title="2.可视化"></a>2.可视化</h4><p>目的：1.快速吸收信息 2.充分调用人的领域知识<br>利用一些图示模型：叶箱图、直方图、相对频率直方图、二维直方图、盒状图、饼图、经验累计分布函数、散布图、可视高维</p>
+<h4 id="2-可视化"><a href="#2-可视化" class="headerlink" title="2.可视化"></a>2.可视化</h4><p>目的：1.快速吸收信息 2.充分调用人的领域知识<br>利用一些图示模型：叶箱图、直方图、相对频率直方图、二维直方图、盒状图、饼图、经验累计分布函数、散布图、可视高维<br><a id="more"></a></p>
 <h4 id="3-OLAP"><a href="#3-OLAP" class="headerlink" title="3.OLAP"></a>3.OLAP</h4><p>计算聚集量、维归约和转轴、切片和切块、上卷下钻</p>
 <h3 id="第四章：分类、决策树和模型评估"><a href="#第四章：分类、决策树和模型评估" class="headerlink" title="第四章：分类、决策树和模型评估"></a>第四章：分类、决策树和模型评估</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>1.建立决策树<br>Hunt算法，采用贪心选择划分数据的属性<br>关键问题：如何分裂训练数据，如何停止分裂<br>首先是选择最佳划分的度量,用<strong>纯性度量,信息增益</strong>:<br>$$ Entropy(t)= -\sum_{i=0}^{c=1}p(i|t)log_2p(i|t) $$<br>$$ Gini(t)= 1-\sum_{i=0}^{c=1}[p(i|t)]^2 $$<br>$$ Classification_error(t)=1-max_i[p(i|t)] $$<br>归纳算法:</p>
 <pre><code>TreeGrowth(E,F)
