@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="读书笔记," />
+  <meta name="keywords" content="公开课 CNN," />
 
 
 
@@ -102,18 +102,23 @@
 
 
 
-<meta name="description" content="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。">
+<meta name="description" content="回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，Youtube视频课程主页
+第一课 Introduction首先不出意外地第一节课是Introduction,飞飞对CV的研究发展历史给出了一个比较中肯的conclusio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代码大全（1）">
-<meta property="og:url" content="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/index.html">
+<meta property="og:title" content="CS231n_1 and 2">
+<meta property="og:url" content="https://csrjtan.github.io/2016/06/03/CS231n-1/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。">
-<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/构建项目.png">
-<meta property="og:updated_time" content="2016-05-28T14:25:00.000Z">
+<meta property="og:description" content="回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，Youtube视频课程主页
+第一课 Introduction首先不出意外地第一节课是Introduction,飞飞对CV的研究发展历史给出了一个比较中肯的conclusio">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060301.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060303.jpg">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060302.png">
+<meta property="og:updated_time" content="2016-06-03T09:02:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代码大全（1）">
-<meta name="twitter:description" content="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。">
-<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/构建项目.png">
+<meta name="twitter:title" content="CS231n_1 and 2">
+<meta name="twitter:description" content="回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，Youtube视频课程主页
+第一课 Introduction首先不出意外地第一节课是Introduction,飞飞对CV的研究发展历史给出了一个比较中肯的conclusio">
+<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060301.png">
 
 
 
@@ -131,7 +136,7 @@
   };
 </script>
 
-  <title> 代码大全（1） | CSRJTAN </title>
+  <title> CS231n_1 and 2 | CSRJTAN </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +296,7 @@
             
             
               
-                代码大全（1）
+                CS231n_1 and 2
               
             
           </h1>
@@ -303,8 +308,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-20T13:25:34+08:00" content="2015-10-20">
-              2015-10-20
+            <time itemprop="dateCreated" datetime="2016-06-03T12:53:24+08:00" content="2016-06-03">
+              2016-06-03
             </time>
           </span>
 
@@ -317,8 +322,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
                   </a>
                 </span>
 
@@ -333,8 +338,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/20/代码大全（读书笔记1）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/20/代码大全（读书笔记1）/" itemprop="commentsCount"></span>
+                <a href="/2016/06/03/CS231n-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/03/CS231n-1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -362,21 +367,40 @@
       
 
       
-        <h3 id="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”"><a href="#整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”" class="headerlink" title="整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”"></a>整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”</h3><p>最近的工作重心，由CV的识别和3D重建转移了，所以paper读得少了，但不能停。在理大的学习需要自觉，意识到自己在专注上的缺乏，所以需要继续更新博客，完善这个博客来希望自己有所提高。废话少说，直接来读书心得了。<a id="more"></a><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/构建项目.png" alt=""></p>
-<h3 id="chap-1-进入架构的世界"><a href="#chap-1-进入架构的世界" class="headerlink" title="chap 1.进入架构的世界"></a>chap 1.进入架构的世界</h3><p>软件架构包括：定义问题、需求分析、规划构建、软件架构、<strong>详细设计</strong>、<strong>编码和单元测试</strong>、集成测试、集成、系统测试以及保障维护</p>
-<p>作者强调设计和架构是很重要的，不要一上来就抠码，接下来分析如何设计，这对软件质量有实质性的帮助。</p>
-<h3 id="chap-2-用隐喻来充分理解软件开发"><a href="#chap-2-用隐喻来充分理解软件开发" class="headerlink" title="chap 2.用隐喻来充分理解软件开发"></a>chap 2.用隐喻来充分理解软件开发</h3><p>软件领域有一些共同的隐喻，用于方便交流，更好地理解抽象概念。</p>
-<h3 id="chap-3-前期准备"><a href="#chap-3-前期准备" class="headerlink" title="chap 3.前期准备"></a>chap 3.前期准备</h3><p><strong>涉及</strong>：程序组织、主要的类（80/20法则）、数据设计、业务规则、用户界面设计、资源管理、安全性、性能、可伸缩小、互用性、国际化/本地化、输入输出、错误处理、容错性、<br>架构可能性、过度工程、关于“买”还是“造”的决策、关于复用、变更策略、架构总体质量<br>目标：在于降低风险，同时增强系统清晰度可读性</p>
-<h3 id="chap-4-关键的“构建”决策"><a href="#chap-4-关键的“构建”决策" class="headerlink" title="chap 4.关键的“构建”决策"></a>chap 4.关键的“构建”决策</h3><p>选择编程语言、编程约定（人为规则）、深入一种语言、<strong>发明自己编码约定标准类库以及其他改进措施</strong></p>
-<h3 id="chap-5-软件构建中的设计"><a href="#chap-5-软件构建中的设计" class="headerlink" title="chap 5.软件构建中的设计"></a>chap 5.软件构建中的设计</h3><p>正确认识设计：险恶、无章法、确定取舍、调整顺序、不确定、启发式过程</p>
-<p>要点：管理复杂度</p>
-<p><strong>目标</strong>：最小复杂度、易于维护、松散耦合、可扩展、可充用、高扇入（大量高层类用同一基础类）、低扇出（减少使用不同底层类的个数）、可移植性、精简性、层次性、用标准技术</p>
-<p>层次：软件系统-&gt;子系统或包（定义通讯规则来分隔）-&gt; 类 -&gt; 子程序 -&gt;内部编程</p>
-<p><em>找出现实世界对象：辩识对象及其方法属性，确定对对象进行的操作，确定各对象对其他对对象的操作，确定对象可见部分，定义接口</em></p>
-<p>最后就是将类形成一致的抽象，继而层次化各个类，尽可能达到信息隐藏：1.隐藏复杂度 2.隐藏变化源</p>
-<p>为此，我们要明确信息隐藏的障碍和难点：信息过渡分散、有循环的依赖、误把类内数据当全局数据、找出容易改变的区域隔离开（包括业务规则、硬件依赖、IO、困难的设计区域、枚举出状态变量）</p>
-<p><strong>保持松散耦合</strong>：常见简单数据参数耦合、简单对象耦合、对象参数耦合、语义耦合（复杂！）</p>
-<h4 id="学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法"><a href="#学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法" class="headerlink" title="学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法"></a>学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法</h4><p>最后需要明确项目的类型来规划设计到哪一个细节阶段，并记录<strong>设计成果</strong>，保留设计挂图</p>
+        <p>回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，<br><a href="https://www.youtube.com/watch?v=ngXbD21b4qk&amp;index=2&amp;list=PLrZmhn8sSgye6ijhLzIIXiU9GNaIwbF8B" target="_blank" rel="external">Youtube视频</a><br><a href="http://cs231n.stanford.edu/syllabus.html" target="_blank" rel="external">课程主页</a></p>
+<h3 id="第一课-Introduction"><a href="#第一课-Introduction" class="headerlink" title="第一课 Introduction"></a>第一课 Introduction</h3><p>首先不出意外地第一节课是Introduction,飞飞对CV的研究发展历史给出了一个比较中肯的conclusion,从生物视觉的起源到Da Vinci的摄影技术以及第一篇CV phd Thesis. 主要提到了计算机视觉围绕主要的问题，有一个宏观意义上的认识。物体是识别、分类、切割、定位等，还能延伸出许多的子问题。</p>
+<h4 id="经典工作"><a href="#经典工作" class="headerlink" title="经典工作"></a>经典工作</h4><p>这里关键读一下CV历史上影响巨大的几篇文章：<br>一.AdaBoost Face Detection:使得人脸的识别可以实时应用，主要Contribution:1.Harr特征的边缘提取 2.积分图的快速计算 3.AdaBoost的学习分类器<br>二.SIFT：Lowe大神经典之作，每个CV人都知道的图片经典特征点,具有shift、rotate、scale不变性：1.构建高斯图像金字塔 2.提取特征点 3.特征描述子的建立<br>三.金字塔匹配：CVPR06工作，将图片分块成多个空间金字塔，从而结合BoW等技术进行有效的匹配和分类</p>
+<p>ImageNet主要关注在CV核心问题，图像识别和分类定位等问题。起初使用的模型一般是提取特征点-&gt;建立字典和模型-&gt;学习分类算法(SVM)-&gt;预测结果；如今DL的火热，使得CNN成为研究CV的主工具。</p>
+<h4 id="关于CNN的工作"><a href="#关于CNN的工作" class="headerlink" title="关于CNN的工作"></a>关于CNN的工作</h4><p>1.LeCun大神的MNIST文字识别库，文章比较了多种ML方法在库上的表现，当年使用的CNN达到了非常好的效果，但具有训练速度慢、收敛难等问题<br>2.ImageNet12上，AlexNet这篇经典的CNN文章引爆了潮流，主要使用ReLU、GPU加速、LRN、Data Augument等技术使得CNN避免Overfitting，方便梯度传递，加速训练、解决DL收敛困难的主要问题，在比赛上获得惊人的效果。</p>
+<h4 id="课程的Pre-Requisite"><a href="#课程的Pre-Requisite" class="headerlink" title="课程的Pre-Requisite"></a>课程的Pre-Requisite</h4><ul>
+<li>high proficiency in python和c++</li>
+<li>Linear Algebra</li>
+<li>Machine Learning</li>
+</ul>
+<h3 id="第二课-Classification"><a href="#第二课-Classification" class="headerlink" title="第二课 Classification"></a>第二课 Classification</h3><h4 id="Image-Classification"><a href="#Image-Classification" class="headerlink" title="Image Classification"></a>Image Classification</h4><p><a href="http://cs231n.github.io/classification/" target="_blank" rel="external">ImageClassification Tutorial</a><br>Challenges:Viewpoint Variation, Scale Variation, Deformation, Occlusion, Iluumnation conditions, Background Clutter, Intra-class Variation.（图像识别的经典难点）</p>
+<p>Data-Driven Approach: Input-&gt;Learning-&gt;Evaluation<br>根据训练样本的学习出来模型，从而对新来的样本进行分类识别的方法</p>
+<p>Nearest Neighbor Classifier,具体为KNN: 1.Distance Metric的选择 2.k值的选择（根据Cross Validation,e.g. 5-fold cross-validation）,从训练集中切成5份，轮着用一份训练，剩余四份Evaluate,从而调整hyperParameters<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060301.png" alt="k-fold分析图">，对于一般性的数据集，K在4-7取得更加的效果，K越大越smooth,expensive也越大</p>
+<p>[tips:Evaluate on the test set only a single time, at the very end.确保最后才使用testSets,避免overfit for testSets,保证了模型的generlzation]</p>
+<p>Ads: Easy to understand and implement<br>Draws: Pay computational cost at test time(因此提出了ANN的近似加速，还有FLANN的库)<br>Pixel-based distances on high-dimensional data can be very unintuitive.(不适用，就像图片平移或者出现Artifacts等情况，但pixel-based distance是不适应人眼的;这里karpathy用了t-SNE对CIFAR-10的图片作了一个分布排列，相似的放在一起，可以看到背景相似但内容不一的东西反而靠在一起了)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060303.jpg" alt="t-SNE对CIFAR-10的分布"><br>cons: suit for the low-dimensional data</p>
+<p>Summary: 1.Introduce the problem of image classification, image mapping label<br>2.introduce the NN classifier</p>
+<ol>
+<li>Using validation set for tuning the hyperparameters, split training data into two: a training set and a fake test set. Try different hyperparameter values</li>
+<li>Once the parameter found, we fixed and use actual test set to evaluation</li>
+<li>the NN only get about 40% accuracy on CIFAR-10, while human achieve 94% and CNN achieve already 95%!</li>
+<li>the L1 or L2 distances on raw pixel is not adequate since more strongly relative with backgrounds and color distributions rather than semantic content</li>
+</ol>
+<h4 id="Practice-with-kNN"><a href="#Practice-with-kNN" class="headerlink" title="Practice with kNN:"></a>Practice with kNN:</h4><ol>
+<li>Preprocessing: Normalize the data in zero mean and unit variance</li>
+<li>If the data is high dimensional, using dimensionality reduction technique such as PCA or even Random Projections</li>
+<li>Split your traiing data randomly into train/val splits. About 70%~90% of data usually goes to the train split. It depens on how many hyperparameters you have and how much influence you expect them to have. (Cross-validation with the more folds the better, but more expensive)</li>
+<li>Train and evaluate kNN on validation data for many choices of k and across different distance types(暴力人为去尝试，加上自己实验的理解)</li>
+<li>If kNN running too long, consider using ANN library(FLANN, cost of some accuracy)</li>
+<li>Normaly do not use the validation set into the training data, we burned it for unestimated influence. Then evaluate with the test set and report the result as the performance of the kNN models.</li>
+</ol>
+<h4 id="Linear-Claissification"><a href="#Linear-Claissification" class="headerlink" title="Linear Claissification"></a>Linear Claissification</h4><p>kNN disadvantages: 1.需要存储training data for comparison<br>                   2.与数据库comparison十分耗时</p>
+<p>Using a score function and loss function to build a powerful model rather than the kNN<br>$f(x_i,W,b) = Wx_i+b$</p>
+<p>这里主要把W,b的参数学习，x为图片输入，将像素和通道展开成一维超长向量，假设有10类，则b为【10*1】为，得到一个10维的向量，分别表示对应类别的得分。如此一来，新来样本分类只要计算一个矩阵乘法和向量加法就得到结果了，比原先kNN不知道快到哪里去。</p>
+<p>思考：这里Linear Classification相当于做了什么，怎么去理解？1.学习了对应类别的一个模板匹配 2.在高维度空间对数据样本做线性分类学习（有点像SVM)<br>这里将学习得到的Linear Classification再重新可视化之后，得到以下的结果<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060302.png" alt="类别模板可视化"></p>
 
       
     </div>
@@ -414,7 +438,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+            <a href="/tags/公开课-CNN/" rel="tag">#公开课 CNN</a>
           
         </div>
       
@@ -423,17 +447,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/03/ppt-learning-Stereo-Vision/" rel="next" title="ppt_learning_Stereo_Vision">
-                <i class="fa fa-chevron-left"></i> ppt_learning_Stereo_Vision
+              <a href="/2016/06/01/books/" rel="next" title="书单">
+                <i class="fa fa-chevron-left"></i> 书单
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/10/22/论文阅读方法/" rel="prev" title="论文阅读方法和技巧">
-                论文阅读方法和技巧 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -459,8 +479,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/20/代码大全（读书笔记1）/"
-           data-title="代码大全（1）" data-url="https://csrjtan.github.io/2015/10/20/代码大全（读书笔记1）/">
+      <div class="ds-thread" data-thread-key="2016/06/03/CS231n-1/"
+           data-title="CS231n_1 and 2" data-url="https://csrjtan.github.io/2016/06/03/CS231n-1/">
       </div>
     
   </div>
@@ -565,7 +585,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”"><span class="nav-number">1.</span> <span class="nav-text">整理一下最近的读书笔记，首先应该是《代码大全》这本书，这里写一下第一部分“打好基础”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chap-1-进入架构的世界"><span class="nav-number">2.</span> <span class="nav-text">chap 1.进入架构的世界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chap-2-用隐喻来充分理解软件开发"><span class="nav-number">3.</span> <span class="nav-text">chap 2.用隐喻来充分理解软件开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chap-3-前期准备"><span class="nav-number">4.</span> <span class="nav-text">chap 3.前期准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chap-4-关键的“构建”决策"><span class="nav-number">5.</span> <span class="nav-text">chap 4.关键的“构建”决策</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chap-5-软件构建中的设计"><span class="nav-number">6.</span> <span class="nav-text">chap 5.软件构建中的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法"><span class="nav-number">6.1.</span> <span class="nav-text">学习一些常用的设计模式：适配器、桥接、装饰器、外观、工厂方法、观察者、单件、策略和模板方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一课-Introduction"><span class="nav-number">1.</span> <span class="nav-text">第一课 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#经典工作"><span class="nav-number">1.1.</span> <span class="nav-text">经典工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于CNN的工作"><span class="nav-number">1.2.</span> <span class="nav-text">关于CNN的工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#课程的Pre-Requisite"><span class="nav-number">1.3.</span> <span class="nav-text">课程的Pre-Requisite</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二课-Classification"><span class="nav-number">2.</span> <span class="nav-text">第二课 Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Image-Classification"><span class="nav-number">2.1.</span> <span class="nav-text">Image Classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Practice-with-kNN"><span class="nav-number">2.2.</span> <span class="nav-text">Practice with kNN:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-Claissification"><span class="nav-number">2.3.</span> <span class="nav-text">Linear Claissification</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

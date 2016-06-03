@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep Moving]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-06-01T11:40:29.000Z</updated>
+  <updated>2016-06-03T09:02:34.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -15,23 +15,74 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[CS231n_1 and 2]]></title>
+    <link href="https://csrjtan.github.io/2016/06/03/CS231n-1/"/>
+    <id>https://csrjtan.github.io/2016/06/03/CS231n-1/</id>
+    <published>2016-06-03T04:53:24.000Z</published>
+    <updated>2016-06-03T09:02:34.000Z</updated>
+    <content type="html"><![CDATA[<p>回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，<br><a href="https://www.youtube.com/watch?v=ngXbD21b4qk&amp;index=2&amp;list=PLrZmhn8sSgye6ijhLzIIXiU9GNaIwbF8B" target="_blank" rel="external">Youtube视频</a><br><a href="http://cs231n.stanford.edu/syllabus.html" target="_blank" rel="external">课程主页</a></p>
+<h3 id="第一课-Introduction"><a href="#第一课-Introduction" class="headerlink" title="第一课 Introduction"></a>第一课 Introduction</h3><p>首先不出意外地第一节课是Introduction,飞飞对CV的研究发展历史给出了一个比较中肯的conclusion,从生物视觉的起源到Da Vinci的摄影技术以及第一篇CV phd Thesis. 主要提到了计算机视觉围绕主要的问题，有一个宏观意义上的认识。物体是识别、分类、切割、定位等，还能延伸出许多的子问题。</p>
+<h4 id="经典工作"><a href="#经典工作" class="headerlink" title="经典工作"></a>经典工作</h4><p>这里关键读一下CV历史上影响巨大的几篇文章：<br>一.AdaBoost Face Detection:使得人脸的识别可以实时应用，主要Contribution:1.Harr特征的边缘提取 2.积分图的快速计算 3.AdaBoost的学习分类器<br>二.SIFT：Lowe大神经典之作，每个CV人都知道的图片经典特征点,具有shift、rotate、scale不变性：1.构建高斯图像金字塔 2.提取特征点 3.特征描述子的建立<br>三.金字塔匹配：CVPR06工作，将图片分块成多个空间金字塔，从而结合BoW等技术进行有效的匹配和分类</p>
+<p>ImageNet主要关注在CV核心问题，图像识别和分类定位等问题。起初使用的模型一般是提取特征点-&gt;建立字典和模型-&gt;学习分类算法(SVM)-&gt;预测结果；如今DL的火热，使得CNN成为研究CV的主工具。</p>
+<h4 id="关于CNN的工作"><a href="#关于CNN的工作" class="headerlink" title="关于CNN的工作"></a>关于CNN的工作</h4><p>1.LeCun大神的MNIST文字识别库，文章比较了多种ML方法在库上的表现，当年使用的CNN达到了非常好的效果，但具有训练速度慢、收敛难等问题<br>2.ImageNet12上，AlexNet这篇经典的CNN文章引爆了潮流，主要使用ReLU、GPU加速、LRN、Data Augument等技术使得CNN避免Overfitting，方便梯度传递，加速训练、解决DL收敛困难的主要问题，在比赛上获得惊人的效果。</p>
+<h4 id="课程的Pre-Requisite"><a href="#课程的Pre-Requisite" class="headerlink" title="课程的Pre-Requisite"></a>课程的Pre-Requisite</h4><ul>
+<li>high proficiency in python和c++</li>
+<li>Linear Algebra</li>
+<li>Machine Learning</li>
+</ul>
+<h3 id="第二课-Classification"><a href="#第二课-Classification" class="headerlink" title="第二课 Classification"></a>第二课 Classification</h3><h4 id="Image-Classification"><a href="#Image-Classification" class="headerlink" title="Image Classification"></a>Image Classification</h4><p><a href="http://cs231n.github.io/classification/" target="_blank" rel="external">ImageClassification Tutorial</a><br>Challenges:Viewpoint Variation, Scale Variation, Deformation, Occlusion, Iluumnation conditions, Background Clutter, Intra-class Variation.（图像识别的经典难点）</p>
+<p>Data-Driven Approach: Input-&gt;Learning-&gt;Evaluation<br>根据训练样本的学习出来模型，从而对新来的样本进行分类识别的方法</p>
+<p>Nearest Neighbor Classifier,具体为KNN: 1.Distance Metric的选择 2.k值的选择（根据Cross Validation,e.g. 5-fold cross-validation）,从训练集中切成5份，轮着用一份训练，剩余四份Evaluate,从而调整hyperParameters<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060301.png" alt="k-fold分析图">，对于一般性的数据集，K在4-7取得更加的效果，K越大越smooth,expensive也越大</p>
+<p>[tips:Evaluate on the test set only a single time, at the very end.确保最后才使用testSets,避免overfit for testSets,保证了模型的generlzation]</p>
+<p>Ads: Easy to understand and implement<br>Draws: Pay computational cost at test time(因此提出了ANN的近似加速，还有FLANN的库)<br>Pixel-based distances on high-dimensional data can be very unintuitive.(不适用，就像图片平移或者出现Artifacts等情况，但pixel-based distance是不适应人眼的;这里karpathy用了t-SNE对CIFAR-10的图片作了一个分布排列，相似的放在一起，可以看到背景相似但内容不一的东西反而靠在一起了)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060303.jpg" alt="t-SNE对CIFAR-10的分布"><br>cons: suit for the low-dimensional data</p>
+<p>Summary: 1.Introduce the problem of image classification, image mapping label<br>2.introduce the NN classifier</p>
+<ol>
+<li>Using validation set for tuning the hyperparameters, split training data into two: a training set and a fake test set. Try different hyperparameter values</li>
+<li>Once the parameter found, we fixed and use actual test set to evaluation</li>
+<li>the NN only get about 40% accuracy on CIFAR-10, while human achieve 94% and CNN achieve already 95%!</li>
+<li>the L1 or L2 distances on raw pixel is not adequate since more strongly relative with backgrounds and color distributions rather than semantic content</li>
+</ol>
+<h4 id="Practice-with-kNN"><a href="#Practice-with-kNN" class="headerlink" title="Practice with kNN:"></a>Practice with kNN:</h4><ol>
+<li>Preprocessing: Normalize the data in zero mean and unit variance</li>
+<li>If the data is high dimensional, using dimensionality reduction technique such as PCA or even Random Projections</li>
+<li>Split your traiing data randomly into train/val splits. About 70%~90% of data usually goes to the train split. It depens on how many hyperparameters you have and how much influence you expect them to have. (Cross-validation with the more folds the better, but more expensive)</li>
+<li>Train and evaluate kNN on validation data for many choices of k and across different distance types(暴力人为去尝试，加上自己实验的理解)</li>
+<li>If kNN running too long, consider using ANN library(FLANN, cost of some accuracy)</li>
+<li>Normaly do not use the validation set into the training data, we burned it for unestimated influence. Then evaluate with the test set and report the result as the performance of the kNN models.</li>
+</ol>
+<h4 id="Linear-Claissification"><a href="#Linear-Claissification" class="headerlink" title="Linear Claissification"></a>Linear Claissification</h4><p>kNN disadvantages: 1.需要存储training data for comparison<br>                   2.与数据库comparison十分耗时</p>
+<p>Using a score function and loss function to build a powerful model rather than the kNN<br>$f(x_i,W,b) = Wx_i+b$</p>
+<p>这里主要把W,b的参数学习，x为图片输入，将像素和通道展开成一维超长向量，假设有10类，则b为【10*1】为，得到一个10维的向量，分别表示对应类别的得分。如此一来，新来样本分类只要计算一个矩阵乘法和向量加法就得到结果了，比原先kNN不知道快到哪里去。</p>
+<p>思考：这里Linear Classification相当于做了什么，怎么去理解？1.学习了对应类别的一个模板匹配 2.在高维度空间对数据样本做线性分类学习（有点像SVM)<br>这里将学习得到的Linear Classification再重新可视化之后，得到以下的结果<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060302.png" alt="类别模板可视化"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，<br><a href="https://ww]]>
+    </summary>
+    
+      <category term="公开课 CNN" scheme="https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/"/>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[书单]]></title>
     <link href="https://csrjtan.github.io/2016/06/01/books/"/>
     <id>https://csrjtan.github.io/2016/06/01/books/</id>
     <published>2016-06-01T11:28:07.000Z</published>
-    <updated>2016-06-01T11:40:29.000Z</updated>
+    <updated>2016-06-02T15:12:13.000Z</updated>
     <content type="html"><![CDATA[<p>这里记录一下书单，包括在读的、想读的、他人推荐读的。后面可以写一下正在进展的项目和工作，最后记录已读的。</p>
-<h2 id="在读："><a href="#在读：" class="headerlink" title="在读："></a>在读：</h2><p>《影响力》、《MATLAB从入门到精通》</p>
+<h2 id="在读："><a href="#在读：" class="headerlink" title="在读："></a>在读：</h2><p>《情人》、《时间简史》、《MATLAB从入门到精通》</p>
 <h2 id="想读："><a href="#想读：" class="headerlink" title="想读："></a>想读：</h2><h3 id="面试微软之前的十本书"><a href="#面试微软之前的十本书" class="headerlink" title="面试微软之前的十本书"></a>面试微软之前的十本书</h3><p>Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）<br>Computer System: A Programmer’s Perspective （《深入理解计算机系统》） / Windows via C/C++ （《Windows核心编程》 / 《程序员的自我修养》<br>Code Complete 2（《代码大全》）/ The Pragmatic Programmer （《程序员修炼之道》，我也把这本书称为《代码小全》）<br>Programming Pearls （《编程珠玑》） / Algorithms / Algorithm Design / 《编程之美》<br>The C Programming Language<br>The C++ Programming Language / Programming: Principles and Practice Using C++ / Accelerated C++<br>The Structure and Interpretation of Computer Programs （《计算机程序的构造和解释》）<br>Clean Code / Implementation Patterns<br>Design Patterns （《设计模式》） / Agile Software Development, Principles, Patterns, and Practices<br>Refactoring （《重构》）</p>
 <h3 id="云风推荐"><a href="#云风推荐" class="headerlink" title="云风推荐"></a>云风推荐</h3><p>C++编程思想<br>Effective C++<br>深度探索C++对象模型<br>C++语言的设计和演化<br>C专家编程<br>C陷阱与缺陷<br>C语言接口与实现<br>Lua程序设计<br>Linkers and Loaders<br>COM本质论<br>Windows核心编程<br>深入解析Windows操作系统<br>程序员修炼之道<br>代码大全<br>UNIX编程艺术<br>设计模式<br>代码优化：有效使用内存<br>深入理解计算机系统<br>深入理解LINUX内核<br>TCP/IP 详解</p>
 <h3 id="冯大辉"><a href="#冯大辉" class="headerlink" title="冯大辉"></a>冯大辉</h3><p>软件随想录<br>黑客与画家<br>重来<br>UNIX编程艺术<br>编程人生</p>
 <h3 id="豆瓣CTO"><a href="#豆瓣CTO" class="headerlink" title="豆瓣CTO"></a>豆瓣CTO</h3><p>Code Complete 2<br>The Mythical Man-Month （《人月神话》）<br>Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）<br>TAOCP （不解释）<br>The Pragmatic Programmer （《程序员修炼之道》）<br>Design Patterns （《设计模式》）<br>The Structure and Interpretation of Computer Programs （《计算机程序的构造和解释》）<br>Refactoring （《重构》）<br>The C Programming Language<br>Introduction to Algorithms （《算法导论》）</p>
 <h2 id="已读："><a href="#已读：" class="headerlink" title="已读："></a>已读：</h2><h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><p>《统计学习方法》、《这就是搜索引擎》、《浪潮之巅》、《数学之美》</p>
-<h3 id="非技术"><a href="#非技术" class="headerlink" title="非技术"></a>非技术</h3><p>《苏菲的世界》、《如何阅读一本书》、《黑客与画家》、《解忧杂货铺》、《当我在跑步，我在谈论什么》、《白夜行》、《一个人的朝圣》、《人性的弱点》、《从0到1》、《35岁前要做的33件事》、《站在两个世界的边缘》、《极简欧洲史》、《未来在现实的第几层》、《再穷也要去旅游》、《活着》、《小王子》</p>
+<h3 id="非技术"><a href="#非技术" class="headerlink" title="非技术"></a>非技术</h3><p>《苏菲的世界》、《如何阅读一本书》、《黑客与画家》、《解忧杂货铺》、《当我在跑步，我在谈论什么》、《白夜行》、《一个人的朝圣》、《人性的弱点》、《从0到1》、《35岁前要做的33件事》、《站在两个世界的边缘》、《极简欧洲史》、《未来在现实的第几层》、《再穷也要去旅游》、《活着》、《小王子》、《自控力》</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>这里记录一下书单，包括在读的、想读的、他人推荐读的。后面可以写一下正在进展的项目和工作，最后记录已读的。</p>
-<h2 id="在读："><a href="#在读：" class="headerlink" title="在读："></a>在读：</h2><p>《影响力》、]]>
+<h2 id="在读："><a href="#在读：" class="headerlink" title="在读："></a>在读：</h2><p>《情人》、《]]>
     </summary>
     
       <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
@@ -604,70 +655,6 @@
       <category term="总结" scheme="https://csrjtan.github.io/tags/%E6%80%BB%E7%BB%93/"/>
     
       <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[跟G++,MAKE和CMAKE奋斗的日子]]></title>
-    <link href="https://csrjtan.github.io/2016/01/22/%E8%B7%9FG-MAKE%E5%92%8CCMAKE%E5%A5%8B%E6%96%97%E7%9A%84%E6%97%A5%E5%AD%90/"/>
-    <id>https://csrjtan.github.io/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/</id>
-    <published>2016-01-22T13:32:29.000Z</published>
-    <updated>2016-06-01T14:50:00.000Z</updated>
-    <content type="html"><![CDATA[<p>很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢<a href="http://blog.atime.me/note/cmake.html" target="_blank" rel="external">MWB</a>,jacker的《Cmake实践》</p>
-<h3 id="如何安装"><a href="#如何安装" class="headerlink" title="如何安装"></a>如何安装</h3><p>现在用的是G++-4.9：</p>
-<pre><code>sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get install g++-4.9
-cd /usr/bin/
-sudo ln -s g++-4.9 g++ -f
-sudo ln -s gcc-4.9 gcc -f
-</code></pre><p>make应该有自带的，cmake就上官网下载包</p>
-<pre><code>sudo make
-sudo make install
-</code></pre><a id="more"></a>
-<h3 id="GCC-G"><a href="#GCC-G" class="headerlink" title="GCC/G++"></a>GCC/G++</h3><p>经过4步：预处理（预处理器cpp），编译(编译器egcs)，汇编(汇编器as)和链接（连接器ld）</p>
-<pre><code>//预处理
-gcc -E test.c -o test.i   //i文件
-//编译
-gcc -S test.i -o test.s   //s文件
-//汇编
-gcc -c test.s -o test.o   //o文件
-//链接
-gcc test.o -o test        //bin文件
-</code></pre><p>优化等级: -O -O2 -O3<br>包含头： -include  -I<br>链接库：  -l  -L<br>警告信息： -Wall 、 -w 和 -v<br>定义环境变量：D<br>(注意，通常手写链接参数很麻烦，很多库提供链接参数的程序，名字叫xxx-config，放在/usr/bin下<br>于是有了  gcc gtktest.c ‘pkg-confg gtk+ –libs –cflags’<br>–libs定义了链接需要的参数，–cflags是生成头文件包含的目录)</p>
-<p>交叉编译：指本地编译其他平台执行的程序，需要另外用-L和-I来连接库和头文件</p>
-<h3 id="MAKE"><a href="#MAKE" class="headerlink" title="MAKE"></a>MAKE</h3><p>基本语法<br>target : prerequisites<br>    command<br>自动推导以及文件依赖关系后面的命令：看到[.o]文件会自动把[.c]文件加入依赖项。</p>
-<p>GNU的MAKE工作方式：<br>1.读入所有Makefile<br>2.读入被Include的其他makefile<br>3.初始化文件中变量<br>4.推导隐晦规则，分析所有规则<br>5.为所有目标文件创建依赖关系链<br>6.根据依赖，决定哪些目标的生成<br>7.执行生成命令</p>
-<h3 id="CMAKE"><a href="#CMAKE" class="headerlink" title="CMAKE"></a>CMAKE</h3><p>(记下一些关键词)<br>CMAKE架构项目学习<br>基本用法<br>PROJECT<br>自动隐定义 PROJECT_BINARY_DIR和PROJECT_SOURCE_DIR<br>SET(NAME VAR)<br>MESSAGE([STATUS | DEBUG] “string” var)<br>ADD_SUBDIRECTORY(folderName)<br>ADD_EXECUTABLE(targets src_lists)</p>
-<p>make install<br>CMAKE有用的变量 CMAKE_INSTALL_PREFIX<br>INSTALL(FILES file_list DESTINATION folderName)<br>INSTALL(PROGRAMS .sh DESTINATION bin)<br>INSTALL(DIRECTORY doc/ DESTINATION doc)</p>
-<p>生成动态和静态库<br>ADD_LIBRARY(libName [SHARED|STATIC] src_lists)<br>注意：要动态和静态库同名，先用别名生成静态库，再改别名<br>如：ADD_LIBRARY(hello_static STATIC ${LIBHELLO_SRC})<br>SET_TARGET_PROPERTIES(hello_static PROPERTYES OUTPUT_NAME “hello”)</p>
-<p>链接头文件和动态库<br>INCLUDE_DIRECTORIES(folderName)<br>LINK_DIRECTORIES(folderName)</p>
-<p>ADD_EXECUTABLE(main ${SRC_LIST})<br>TARGET_LINK_LIBRARIES(main libNames)</p>
-<p>使用CMAKE_INCLUDE_PATH的环境变量，用FIND_PATH可以轻松找到对应的头文件</p>
-<h3 id="孟老师的工作介绍"><a href="#孟老师的工作介绍" class="headerlink" title="孟老师的工作介绍"></a>孟老师的工作介绍</h3><p>西安交通大学的<a href="http://www.cs.cmu.edu/~deyum/" target="_blank" rel="external">孟老师</a>数学优化和建模很厉害，给了一下内容的讲座</p>
-<h4 id="Noise-Modeling-Principle"><a href="#Noise-Modeling-Principle" class="headerlink" title="Noise Modeling Principle"></a>Noise Modeling Principle</h4><p>一般ML问题$min_wL(x,\phi(w))+R(w)$<br>然后很多工作围绕正则项R(w)展开优化，L主要是$L_0 , L_1 ,L_P$<br>利用贝叶斯模型来解释，可以将噪声模型与损失函数对应起来，然后就是w和loss func迭代求解收敛，提到了使用混合高斯模型建模，有利于分离Low-rank structure数据的噪声</p>
-<h4 id="Adaptive-Noise-Learning"><a href="#Adaptive-Noise-Learning" class="headerlink" title="Adaptive Noise Learning"></a>Adaptive Noise Learning</h4><p>假设数据都是Low-Rank Structure，然后进行噪声提取分离，目前用在的应用有 1.人脸去噪 2.背景提取 3.HSI去噪 接下来做一些雨雪分离，以及CT医学图像的去噪应用。</p>
-<h4 id="Self-Pace-Learning"><a href="#Self-Pace-Learning" class="headerlink" title="Self-Pace Learning"></a>Self-Pace Learning</h4><p>提到了ML，Cognitive Science和Self-pace Learning的概念，主要原理是让模型学习从易到难，从而筛选掉一些难的数据不进行学习，其中很多的参数和变量应该用非监督的方法自动学习，主要围绕机器学习的方法展开，最后论证一下Self Pace Learning的一些有效性<a href="http://arxiv.org/pdf/1511.06049v1.pdf" target="_blank" rel="external">证明</a>。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>很有必要认真地总结一下这三个小朋友的关系，但我可是被他们仨虐了好久，首先感谢<a href="http://blog.atime.me/note/cmake.html">MWB</a>,jacker的《Cmake实践》</p>
-<h3 id="如何安装"><a href="#如何安装" class="headerlink" title="如何安装"></a>如何安装</h3><p>现在用的是G++-4.9：</p>
-<pre><code>sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get install g++-4.9
-cd /usr/bin/
-sudo ln -s g++-4.9 g++ -f
-sudo ln -s gcc-4.9 gcc -f
-</code></pre><p>make应该有自带的，cmake就上官网下载包</p>
-<pre><code>sudo make
-sudo make install
-</code></pre>]]>
-    
-    </summary>
-    
-      <category term="总结" scheme="https://csrjtan.github.io/tags/%E6%80%BB%E7%BB%93/"/>
-    
-      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
     
   </entry>
   

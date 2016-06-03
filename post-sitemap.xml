@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>https://csrjtan.github.io/2016/06/03/CS231n-1/</loc>
+        <lastmod>2016-06-03T09:02:34.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/06/01/books/</loc>
+        <lastmod>2016-06-02T15:12:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://csrjtan.github.io/2016/02/26/leetcode26/</loc>
         <lastmod>2016-06-01T14:52:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -241,14 +257,6 @@
     <url>
         <loc>https://csrjtan.github.io/2016/05/29/%E9%87%8D%E5%9B%9E%E7%90%86%E5%A4%A7/</loc>
         <lastmod>2016-06-01T14:27:44.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/06/01/books/</loc>
-        <lastmod>2016-06-01T11:40:29.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
