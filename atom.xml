@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-06-07T03:13:36.000Z</updated>
+  <updated>2016-06-07T03:17:52.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="https://csrjtan.github.io/2016/06/06/paper-reading-20160606/"/>
     <id>https://csrjtan.github.io/2016/06/06/paper-reading-20160606/</id>
     <published>2016-06-06T12:19:45.000Z</published>
-    <updated>2016-06-07T03:13:36.000Z</updated>
+    <updated>2016-06-07T03:17:52.000Z</updated>
     
     <content type="html">&lt;p&gt;首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference&lt;br&gt;&lt;a href=&quot;http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;网站&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;idea&quot;&gt;&lt;a href=&quot;#idea&quot; class=&quot;headerlink&quot; title=&quot;idea&quot;&gt;&lt;/a&gt;idea&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png&quot; alt=&quot;主要流程&quot;&gt;&lt;br&gt;左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到delta,在插值过程中得到R图再把delta加上的过程。&lt;br&gt;现在RI提出直接使用G图做差值插值由于变换太过剧烈的地方会造成Artifact,如今用一些处理使得这个G变成G尖，这个G尖的图像满足平滑和准确的特性。如此利用这个谱间相关性的时候误差会更小，出来的效果更好。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;具体内容&quot;&gt;&lt;a href=&quot;#具体内容&quot; class=&quot;headerlink&quot; title=&quot;具体内容&quot;&gt;&lt;/a&gt;具体内容&lt;/h3&gt;&lt;p&gt;提出了Residual Interpolation基于GBTF的Demosaick初始化,这里用的是GBTF做G通道的初始化插值，然后Guided Filter得到G尖。我们来看看这两个论文。&lt;/p&gt;
-&lt;h4 id=&quot;GBTF&quot;&gt;&lt;a href=&quot;#GBTF&quot; class=&quot;headerlink&quot; title=&quot;GBTF&quot;&gt;&lt;/a&gt;GBTF&lt;/h4&gt;&lt;p&gt;喔，这篇文章是基于我老板的DLMMSE文章优化，简要说一下老板的思路：先求出G-R和G-B图像在横竖方向上的differences，然后建立一个噪声估计模型，结合了线性最小误差均值的方法，用PCA的方法降为直接将performance比以前提高了5个dp。（我老板就说那些人全都是瞎搞的。）这里GBTF提了DLMMSE两点缺陷：1.只利用了4-Neighbor的像素 2.将原来的两个方向解耦成四个方法&lt;br&gt;实验的结论比LPA好0.14dB，比DLMMSE好0.64dB.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606sp.png&quot; alt=&quot;Sparse Adaptive&quot;&gt;&lt;br&gt;在DLMMSE基础上，对G的插值使用了Gradient Weighted Based的方法，对R和B的通道使用了[3]的sparse adaptive interpolation(一定程度可以通道稀疏来抑制噪声)。&lt;/p&gt;
-&lt;h4 id=&quot;MMSE&quot;&gt;&lt;a href=&quot;#MMSE&quot; class=&quot;headerlink&quot; title=&quot;MMSE&quot;&gt;&lt;/a&gt;MMSE&lt;/h4&gt;&lt;p&gt;首先说一下这个优化方法，MMSE指Minimum Mean Square Error。这是统计贝叶斯关于二次代价函数产生的，问了一下师兄，懂了不少。&lt;br&gt;这个是一个基于贝叶斯统计变量的模型，y为Ground Truth,$\hat x(y)$ of x is any function of y. Model一个$MSE=tr{E{(\hat x-x)(\hat x=x)^T}}$ 则有$$\hat x_{MMSE}(y) = arg min_{\hat x}MSE$$&lt;br&gt;这个模型假定你知道了x与y的函数形式，用最小化MSE的方法求解函数的具体参数。&lt;/p&gt;
+&lt;h4 id=&quot;GBTF&quot;&gt;&lt;a href=&quot;#GBTF&quot; class=&quot;headerlink&quot; title=&quot;GBTF&quot;&gt;&lt;/a&gt;GBTF&lt;/h4&gt;&lt;p&gt;喔，这篇文章是基于我老板的DLMMSE文章优化，简要说一下老板的思路：先求出G-R和G-B图像在横竖方向上的differences，然后建立一个噪声估计模型，结合了optimal LMMSE的方法，直接将performance比以前提高了5个dp。（我老板就说那些人全都是瞎搞的。）这里GBTF提了DLMMSE两点缺陷：1.只利用了4-Neighbor的像素 2.将原来的两个方向解耦成四个方向 3.利用了较好的sparse adaptive初始化方法&lt;br&gt;实验的结论比LPA好0.14dB，比DLMMSE好0.64dB（基本上小打小闹的trick）.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606sp.png&quot; alt=&quot;Sparse Adaptive&quot;&gt;&lt;br&gt;在DLMMSE基础上，对G的插值使用了Gradient Weighted Based的方法，对R和B的通道使用了[3]的sparse adaptive interpolation(一定程度可以通道稀疏来抑制噪声，有空看看这篇什么鬼)。&lt;/p&gt;
+&lt;h4 id=&quot;MMSE&quot;&gt;&lt;a href=&quot;#MMSE&quot; class=&quot;headerlink&quot; title=&quot;MMSE&quot;&gt;&lt;/a&gt;MMSE&lt;/h4&gt;&lt;p&gt;首先说一下这个优化方法，MMSE指Minimum Mean Square Error。问了一下师兄，懂了不少。&lt;br&gt;这个是一个知道函数形式，拟合参数的模型，y为Ground Truth,$\hat x(y)$ of x is any function of y. Model一个$MSE=tr{E{(\hat x-x)(\hat x=x)^T}}$ 则有$$\hat x_{MMSE}(y) = arg min_{\hat x}MSE$$&lt;br&gt;这个模型假定你知道了x与y的函数形式，用最小化MSE的方法求解函数的具体参数。&lt;/p&gt;
 &lt;p&gt;传统的做法是假设函数形式，然后用Monte Carlo或者Gradient Descent去寻找最优解，但这样仍然需要评价指标。所以简单来说，一般用线性的模型可以变成Optimal LMMSE的问题。 $$min_{W,b}MSE \ \  s.t. \hat x = Wy+b$$&lt;br&gt;Optimal b and W is given by: $b = \overline x - W \overline y, W = C_{XY}C_Y^{-1}$ 然后用样本集的统计值来求解。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Minimum_mean_square_error&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;具体查看Wiki&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;DLMMSE&quot;&gt;&lt;a href=&quot;#DLMMSE&quot; class=&quot;headerlink&quot; title=&quot;DLMMSE&quot;&gt;&lt;/a&gt;DLMMSE&lt;/h4&gt;&lt;p&gt;这里老板借鉴了LMMSE即Linear MMSE的方法，来拟合PSD(pirmer signal difference)和LCC1初始化后的Vertical和Horizontal的噪声。这里有点复杂：首先理解了Demosaicking里面的Color Difference原理是利用了局部区域谱间差值为常量，这个协同性原理。然而这个差值为常量的假设并不准确，所以很多人在这个问题上面做文章。我们发现，有时候出现Artifact是因为变化过于剧烈，这里面已经超过了信号的采样原理，所以信息是丢失无法恢复的。我们只能加入一些约束和先验知识来弥补（后面扩展的工作）。所以这个PSD就是Color Difference并不准确，我们来拟合它。这里直接使用一个LCC1作为G通道插值的初始化，然后简单计算V和H方向上的梯度，与PSD相减得到误差$\epsilon$ 。&lt;br&gt;到这里，我们可以建模了，n代表位置，将x代表PSD,y代表我们拟合真正的结果，$\epsilon$就是初始化方法的误差。$$y(n) = x(n) + v(n)$$&lt;/p&gt;

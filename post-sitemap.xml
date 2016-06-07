@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://csrjtan.github.io/2016/06/06/paper-reading-20160606/</loc>
+        <lastmod>2016-06-07T03:17:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://csrjtan.github.io/2016/06/03/CS231n-1/</loc>
         <lastmod>2016-06-07T03:14:03.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,14 +33,6 @@
     <url>
         <loc>https://csrjtan.github.io/2016/06/06/CS231n-4/</loc>
         <lastmod>2016-06-07T03:13:47.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/06/06/paper-reading-20160606/</loc>
-        <lastmod>2016-06-07T03:13:36.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
