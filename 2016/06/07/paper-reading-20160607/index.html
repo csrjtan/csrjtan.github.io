@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="读书笔记," />
+  <meta name="keywords" content="Paper Demosaick," />
 
 
 
@@ -104,25 +104,25 @@
 
 
 
-<meta name="description" content="前六章的总结
-预备知识全书将讲述最基本的C++用法，到面向对象编程(OOP)，再介绍对泛型编程的支持。
-1.C++的介绍：继承了C的高效简洁，由70年代贝尔实验室Dennis开发操作系统UNIX使用。2.可移植性和标准：两个障碍，硬件兼容和语言兼容，制订了C++98,现在为C++11标准3.程序的过程：编译、建立、生成、链接、运行和调试
-开始学习C++了解C++语法：声明语句、赋值语句、消息语句、">
+<meta name="description" content="IDEA这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）
+这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++_Primer_Reading1">
-<meta property="og:url" content="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/index.html">
+<meta property="og:title" content="LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》">
+<meta property="og:url" content="https://csrjtan.github.io/2016/06/07/paper-reading-20160607/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="前六章的总结
-预备知识全书将讲述最基本的C++用法，到面向对象编程(OOP)，再介绍对泛型编程的支持。
-1.C++的介绍：继承了C的高效简洁，由70年代贝尔实验室Dennis开发操作系统UNIX使用。2.可移植性和标准：两个障碍，硬件兼容和语言兼容，制订了C++98,现在为C++11标准3.程序的过程：编译、建立、生成、链接、运行和调试
-开始学习C++了解C++语法：声明语句、赋值语句、消息语句、">
-<meta property="og:updated_time" content="2016-05-28T14:26:01.000Z">
+<meta property="og:description" content="IDEA这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）
+这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0607LDI3.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0607LDI1.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0607LDI2.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0607NLM.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0607NAT.png">
+<meta property="og:updated_time" content="2016-06-07T08:29:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++_Primer_Reading1">
-<meta name="twitter:description" content="前六章的总结
-预备知识全书将讲述最基本的C++用法，到面向对象编程(OOP)，再介绍对泛型编程的支持。
-1.C++的介绍：继承了C的高效简洁，由70年代贝尔实验室Dennis开发操作系统UNIX使用。2.可移植性和标准：两个障碍，硬件兼容和语言兼容，制订了C++98,现在为C++11标准3.程序的过程：编译、建立、生成、链接、运行和调试
-开始学习C++了解C++语法：声明语句、赋值语句、消息语句、">
+<meta name="twitter:title" content="LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》">
+<meta name="twitter:description" content="IDEA这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）
+这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(">
+<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0607LDI3.png">
 
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title> C++_Primer_Reading1 | CSRJTAN </title>
+  <title> LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》 | CSRJTAN </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -300,7 +300,7 @@
             
             
               
-                C++_Primer_Reading1
+                LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》
               
             
           </h1>
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-22T09:56:26+08:00" content="2016-01-22">
-              2016-01-22
+            <time itemprop="dateCreated" datetime="2016-06-07T15:51:31+08:00" content="2016-06-07">
+              2016-06-07
             </time>
           </span>
 
@@ -326,8 +326,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
                   </a>
                 </span>
 
@@ -342,8 +342,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/22/c-Primer-Reading1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/c-Primer-Reading1/" itemprop="commentsCount"></span>
+                <a href="/2016/06/07/paper-reading-20160607/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/07/paper-reading-20160607/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -371,14 +371,14 @@
       
 
       
-        <p>前六章的总结</p>
-<h3 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h3><p>全书将讲述最基本的C++用法，到面向对象编程(OOP)，再介绍对泛型编程的支持。</p>
-<p>1.C++的介绍：继承了C的高效简洁，由70年代贝尔实验室Dennis开发操作系统UNIX使用。<br>2.可移植性和标准：两个障碍，硬件兼容和语言兼容，制订了C++98,现在为C++11标准<br>3.程序的过程：编译、建立、生成、链接、运行和调试</p>
-<h3 id="开始学习C"><a href="#开始学习C" class="headerlink" title="开始学习C++"></a>开始学习C++</h3><p>了解C++语法：声明语句、赋值语句、消息语句、函数调用、函数原型和返回语句</p>
-<h3 id="基本数据"><a href="#基本数据" class="headerlink" title="基本数据"></a>基本数据</h3><p>基本类型分为：1.存储为整数的值，2.存储为浮点格式的值。<br>整形由小到大：bool,char,signed cahr,unsigned char,short,unsigned short,int,unsigned int,long,unsigned long 和long long(C++11),unsigned long long.<br>浮点类型:float(32 bits),double(64)和long double。<br>注意：类型转换和AUTO的用法，当发现使用时有一种类型是需要的，会感谢C++提供了该类型。</p>
-<h3 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h3><p>数组，C-风格字符串，string类,结构structure，共同体union,枚举enum，指针Pointer,动态数组和结构，vector和array类</p>
-<h3 id="循环和关系表达式"><a href="#循环和关系表达式" class="headerlink" title="循环和关系表达式"></a>循环和关系表达式</h3><p>if,swich case,for循环，while循环,typedef工具以及各项运算符。</p>
-<h3 id="分支和逻辑运算符"><a href="#分支和逻辑运算符" class="headerlink" title="分支和逻辑运算符"></a>分支和逻辑运算符</h3><p>if语句，&amp;&amp; || ！以及cctype字符函数,?:,基本的文件I/O</p>
+        <h4 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h4><p>这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）</p>
+<p>这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(NLM)的方法和Non-local Adaptive Thresholding（NAT）的方法。这里NLM是指扫描附近满足相似度的Patch，对这些patch进行distance weighted的使用；而NAT基于找到Non-local Similar Patch之后，用这些作为观测样本，在噪声模型里结合SVD、PCA的方法（假定满足Sparse），来进行分解，由于噪声v与x较少相关性，通过设定Adaptive Threshold来提取v的主成分，从而保证拟合的值更准确。<br><a id="more"></a></p>
+<h4 id="LDI"><a href="#LDI" class="headerlink" title="LDI"></a>LDI</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0607LDI3.png" alt="LDI"><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/0607LDI1.png" alt="LDI"><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/0607LDI2.png" alt="LDI"><br>中间还有个$d_gr$的梯度影响因子，这种梯度的插值方法还是比较常见的。如上图，假设插值$R_0$，我们可以利用整块的CFA信息，通过和其它频段的信息如G的差来求出变化的梯度，如$\Delta_n$为$R_0$在北方向的梯度，距离远的影响少的原则，然后得到各个方向的梯度；根据梯度的大小作为权值来加权四方的color difference插值。</p>
+<p>这种方法在Color Demosaicking很常见，早期简单的方法是同一频段下的线性、双线性插值，然后利用其它频段的color difference或者color ratio来有效利用局部空间的信息，一般平滑的区域这个假设更有效，而对于变换剧烈的地方往往处理不好出现artifacts或者超过了采样原理。出现梯度变化最小的插值方法、多方向加权的插值方法等，复杂的空域插值方法、sparse adaptive的抑制噪声的插值方法等等</p>
+<h4 id="NLM-Non-local-Minimum"><a href="#NLM-Non-local-Minimum" class="headerlink" title="NLM(Non-local Minimum)"></a>NLM(Non-local Minimum)</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0607NLM.png" alt="NLM"><br>这个方法是要挖掘更多的Non-local信息，所以去寻找一些局部相似的Patch，因为CDM和DNS、SR等图像研究具有相似性，denoise BM3D的成功说明了图像上的Patch往往会具有相似性或者重复出现的，所以用简单的Minimum比较获得Similar Patch,再利用这些信息恢复当前Patch的信息。如这个方法里的distance weighted；也有看过一篇是直接correlated比当前patch高，且梯度更平滑，则直接用Non-local Patch恢复的pixel代替当前pixel等；</p>
+<p>上图就是用L1的patch distance确定similar patch,然后将这些恢复的值进行distance weighted加权。</p>
+<h4 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0607NAT.png" alt="NLM"><br>这个在获得Non-local Similar patch之后，利用这些patch作为可靠的观测样本，进行CDM噪声模型的建立，从而采用PCA的方法获得optimal solution。</p>
+<p>这里的矩阵F范数是指矩阵的值绝对值相加再开平方，也就是观测和PCA值的误差尽可能少，而且主成分的个数也尽可能小；（满足sparse的假设）</p>
 
       
     </div>
@@ -416,7 +416,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+            <a href="/tags/Paper-Demosaick/" rel="tag">#Paper Demosaick</a>
           
         </div>
       
@@ -425,17 +425,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/20/paper-reading-20160120/" rel="next" title="林老师IJCV2015的工作">
-                <i class="fa fa-chevron-left"></i> 林老师IJCV2015的工作
+              <a href="/2016/06/06/paper-reading-20160606/" rel="next" title="论文阅读《Residual Interpolation for color image demosaicking》">
+                <i class="fa fa-chevron-left"></i> 论文阅读《Residual Interpolation for color image demosaicking》
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/22/跟G-MAKE和CMAKE奋斗的日子/" rel="prev" title="跟G++,MAKE和CMAKE奋斗的日子">
-                跟G++,MAKE和CMAKE奋斗的日子 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -461,8 +457,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/22/c-Primer-Reading1/"
-           data-title="C++_Primer_Reading1" data-url="https://csrjtan.github.io/2016/01/22/c-Primer-Reading1/">
+      <div class="ds-thread" data-thread-key="2016/06/07/paper-reading-20160607/"
+           data-title="LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》" data-url="https://csrjtan.github.io/2016/06/07/paper-reading-20160607/">
       </div>
     
   </div>
@@ -574,7 +570,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始学习C"><span class="nav-number">2.</span> <span class="nav-text">开始学习C++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据"><span class="nav-number">3.</span> <span class="nav-text">基本数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复合类型"><span class="nav-number">4.</span> <span class="nav-text">复合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环和关系表达式"><span class="nav-number">5.</span> <span class="nav-text">循环和关系表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支和逻辑运算符"><span class="nav-number">6.</span> <span class="nav-text">分支和逻辑运算符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#IDEA"><span class="nav-number">1.</span> <span class="nav-text">IDEA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LDI"><span class="nav-number">2.</span> <span class="nav-text">LDI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NLM-Non-local-Minimum"><span class="nav-number">3.</span> <span class="nav-text">NLM(Non-local Minimum)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAT"><span class="nav-number">4.</span> <span class="nav-text">NAT</span></a></li></ol></div>
             
           </div>
         </section>

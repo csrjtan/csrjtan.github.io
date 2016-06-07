@@ -114,7 +114,7 @@ idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值
 idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到d">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0606sp.png">
-<meta property="og:updated_time" content="2016-06-07T03:17:52.000Z">
+<meta property="og:updated_time" content="2016-06-07T08:29:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读《Residual Interpolation for color image demosaicking》">
 <meta name="twitter:description" content="首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference网站
@@ -378,6 +378,8 @@ idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值
 <p><a href="https://en.wikipedia.org/wiki/Minimum_mean_square_error" target="_blank" rel="external">具体查看Wiki</a></p>
 <h4 id="DLMMSE"><a href="#DLMMSE" class="headerlink" title="DLMMSE"></a>DLMMSE</h4><p>这里老板借鉴了LMMSE即Linear MMSE的方法，来拟合PSD(pirmer signal difference)和LCC1初始化后的Vertical和Horizontal的噪声。这里有点复杂：首先理解了Demosaicking里面的Color Difference原理是利用了局部区域谱间差值为常量，这个协同性原理。然而这个差值为常量的假设并不准确，所以很多人在这个问题上面做文章。我们发现，有时候出现Artifact是因为变化过于剧烈，这里面已经超过了信号的采样原理，所以信息是丢失无法恢复的。我们只能加入一些约束和先验知识来弥补（后面扩展的工作）。所以这个PSD就是Color Difference并不准确，我们来拟合它。这里直接使用一个LCC1作为G通道插值的初始化，然后简单计算V和H方向上的梯度，与PSD相减得到误差$\epsilon$ 。<br>到这里，我们可以建模了，n代表位置，将x代表PSD,y代表我们拟合真正的结果，$\epsilon$就是初始化方法的误差。$$y(n) = x(n) + v(n)$$</p>
 <p>引入MMSE模型来求解拟合真正的x，y为数据观测值，传统MMSE未定形式不好求解，所以使用LMMSE,得到$\hat x = E[x] + \frac{Conv(x,y)}{Var(y)(y-E[y])}$,自然地假设x和v是为locally Gaussian processes,而且经验性地发现demosaicking noise $\epsilon_{g,r}^h$ 和 $\epsilon_{g,r}^v$为zero-mean random process,且uncorrelated with $\Delta_{g,r}$ (经过实验测出的，数值在0~0.08之间)所以可以简化式子为$$\hat x = \mu_x + \frac{\sigma_x^2}{(\sigma_x^2+\sigma_v^2)}(y-\mu_x)$$ 这里不用计算x的后验和真正样本的均值，因为基于上述假设，可以用x的期望代替了。Cov(x,y)用Cov(x)替代了。这样，我们就拟合预测出优化的PSD $\hat x$，用这个来拟合通道之间的信息更有效！</p>
+<p><strong>总结:</strong> LMMSE就是提出y和x的线性关系，然后根据最小MSE去根据观测样本的分布来拟合出符合分布的观测值$\hat x$，关键是用数据样本拟合出线性模型的参数，然后新来的样本经过模型得到拟合的值，会比原来观测的值更符合样本分布。（假设观测样本和预测样本是同分布的）</p>
+<p><strong>看了源码</strong>：可以看到在实现里面，先对图像做了横向和纵向的滤波，然后在8*8的patch里面进行LMMSE的求解拟合的。</p>
 <h4 id="RI"><a href="#RI" class="headerlink" title="RI"></a>RI</h4><p>回到RI，想法也是拟合一个better PSD，只是这里的做法是用一个比较好的初始化方法，GBTF，在这个之上用了何大神的Guided Filter做平滑上采样（文中这么说），然后得到一个比较好的tentative estimate,用这个来拟合channel difference,取得了更好的效果，接下来就看一下这个guided filter和RI延伸出来的Improvement工作。</p>
 <p>RI在IMAX和Kodak的30张Images取得CPSNR 37.92dB</p>
 <p>参考：<br>[1]I. Pekkucuksen and Y. Altunbasak, “Gradient based threshold free color filter array interpolation,” Proc. of IEEE Int. Conf. on Image Processing (ICIP), pp. 137– 140, 2010.</p>
@@ -436,6 +438,10 @@ idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/07/paper-reading-20160607/" rel="prev" title="LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》">
+                LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -507,7 +513,7 @@ idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -524,7 +530,7 @@ idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

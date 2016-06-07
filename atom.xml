@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-06-07T03:17:52.000Z</updated>
+  <updated>2016-06-07T08:29:38.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -16,11 +16,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》</title>
+    <link href="https://csrjtan.github.io/2016/06/07/paper-reading-20160607/"/>
+    <id>https://csrjtan.github.io/2016/06/07/paper-reading-20160607/</id>
+    <published>2016-06-07T07:51:31.000Z</published>
+    <updated>2016-06-07T08:29:38.000Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;IDEA&quot;&gt;&lt;a href=&quot;#IDEA&quot; class=&quot;headerlink&quot; title=&quot;IDEA&quot;&gt;&lt;/a&gt;IDEA&lt;/h4&gt;&lt;p&gt;这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）&lt;/p&gt;
+&lt;p&gt;这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(NLM)的方法和Non-local Adaptive Thresholding（NAT）的方法。这里NLM是指扫描附近满足相似度的Patch，对这些patch进行distance weighted的使用；而NAT基于找到Non-local Similar Patch之后，用这些作为观测样本，在噪声模型里结合SVD、PCA的方法（假定满足Sparse），来进行分解，由于噪声v与x较少相关性，通过设定Adaptive Threshold来提取v的主成分，从而保证拟合的值更准确。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;LDI&quot;&gt;&lt;a href=&quot;#LDI&quot; class=&quot;headerlink&quot; title=&quot;LDI&quot;&gt;&lt;/a&gt;LDI&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI3.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI1.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI2.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;中间还有个$d_gr$的梯度影响因子，这种梯度的插值方法还是比较常见的。如上图，假设插值$R_0$，我们可以利用整块的CFA信息，通过和其它频段的信息如G的差来求出变化的梯度，如$\Delta_n$为$R_0$在北方向的梯度，距离远的影响少的原则，然后得到各个方向的梯度；根据梯度的大小作为权值来加权四方的color difference插值。&lt;/p&gt;
+&lt;p&gt;这种方法在Color Demosaicking很常见，早期简单的方法是同一频段下的线性、双线性插值，然后利用其它频段的color difference或者color ratio来有效利用局部空间的信息，一般平滑的区域这个假设更有效，而对于变换剧烈的地方往往处理不好出现artifacts或者超过了采样原理。出现梯度变化最小的插值方法、多方向加权的插值方法等，复杂的空域插值方法、sparse adaptive的抑制噪声的插值方法等等&lt;/p&gt;
+&lt;h4 id=&quot;NLM-Non-local-Minimum&quot;&gt;&lt;a href=&quot;#NLM-Non-local-Minimum&quot; class=&quot;headerlink&quot; title=&quot;NLM(Non-local Minimum)&quot;&gt;&lt;/a&gt;NLM(Non-local Minimum)&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607NLM.png&quot; alt=&quot;NLM&quot;&gt;&lt;br&gt;这个方法是要挖掘更多的Non-local信息，所以去寻找一些局部相似的Patch，因为CDM和DNS、SR等图像研究具有相似性，denoise BM3D的成功说明了图像上的Patch往往会具有相似性或者重复出现的，所以用简单的Minimum比较获得Similar Patch,再利用这些信息恢复当前Patch的信息。如这个方法里的distance weighted；也有看过一篇是直接correlated比当前patch高，且梯度更平滑，则直接用Non-local Patch恢复的pixel代替当前pixel等；&lt;/p&gt;
+&lt;p&gt;上图就是用L1的patch distance确定similar patch,然后将这些恢复的值进行distance weighted加权。&lt;/p&gt;
+&lt;h4 id=&quot;NAT&quot;&gt;&lt;a href=&quot;#NAT&quot; class=&quot;headerlink&quot; title=&quot;NAT&quot;&gt;&lt;/a&gt;NAT&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607NAT.png&quot; alt=&quot;NLM&quot;&gt;&lt;br&gt;这个在获得Non-local Similar patch之后，利用这些patch作为可靠的观测样本，进行CDM噪声模型的建立，从而采用PCA的方法获得optimal solution。&lt;/p&gt;
+&lt;p&gt;这里的矩阵F范数是指矩阵的值绝对值相加再开平方，也就是观测和PCA值的误差尽可能少，而且主成分的个数也尽可能小；（满足sparse的假设）&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;IDEA&quot;&gt;&lt;a href=&quot;#IDEA&quot; class=&quot;headerlink&quot; title=&quot;IDEA&quot;&gt;&lt;/a&gt;IDEA&lt;/h4&gt;&lt;p&gt;这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）&lt;/p&gt;
+&lt;p&gt;这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(NLM)的方法和Non-local Adaptive Thresholding（NAT）的方法。这里NLM是指扫描附近满足相似度的Patch，对这些patch进行distance weighted的使用；而NAT基于找到Non-local Similar Patch之后，用这些作为观测样本，在噪声模型里结合SVD、PCA的方法（假定满足Sparse），来进行分解，由于噪声v与x较少相关性，通过设定Adaptive Threshold来提取v的主成分，从而保证拟合的值更准确。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="Paper Demosaick" scheme="https://csrjtan.github.io/tags/Paper-Demosaick/"/>
+    
+  </entry>
+  
+  <entry>
     <title>论文阅读《Residual Interpolation for color image demosaicking》</title>
     <link href="https://csrjtan.github.io/2016/06/06/paper-reading-20160606/"/>
     <id>https://csrjtan.github.io/2016/06/06/paper-reading-20160606/</id>
     <published>2016-06-06T12:19:45.000Z</published>
-    <updated>2016-06-07T03:17:52.000Z</updated>
+    <updated>2016-06-07T08:29:40.000Z</updated>
     
     <content type="html">&lt;p&gt;首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference&lt;br&gt;&lt;a href=&quot;http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;网站&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;idea&quot;&gt;&lt;a href=&quot;#idea&quot; class=&quot;headerlink&quot; title=&quot;idea&quot;&gt;&lt;/a&gt;idea&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png&quot; alt=&quot;主要流程&quot;&gt;&lt;br&gt;左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到delta,在插值过程中得到R图再把delta加上的过程。&lt;br&gt;现在RI提出直接使用G图做差值插值由于变换太过剧烈的地方会造成Artifact,如今用一些处理使得这个G变成G尖，这个G尖的图像满足平滑和准确的特性。如此利用这个谱间相关性的时候误差会更小，出来的效果更好。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -32,6 +63,8 @@
 &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Minimum_mean_square_error&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;具体查看Wiki&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;DLMMSE&quot;&gt;&lt;a href=&quot;#DLMMSE&quot; class=&quot;headerlink&quot; title=&quot;DLMMSE&quot;&gt;&lt;/a&gt;DLMMSE&lt;/h4&gt;&lt;p&gt;这里老板借鉴了LMMSE即Linear MMSE的方法，来拟合PSD(pirmer signal difference)和LCC1初始化后的Vertical和Horizontal的噪声。这里有点复杂：首先理解了Demosaicking里面的Color Difference原理是利用了局部区域谱间差值为常量，这个协同性原理。然而这个差值为常量的假设并不准确，所以很多人在这个问题上面做文章。我们发现，有时候出现Artifact是因为变化过于剧烈，这里面已经超过了信号的采样原理，所以信息是丢失无法恢复的。我们只能加入一些约束和先验知识来弥补（后面扩展的工作）。所以这个PSD就是Color Difference并不准确，我们来拟合它。这里直接使用一个LCC1作为G通道插值的初始化，然后简单计算V和H方向上的梯度，与PSD相减得到误差$\epsilon$ 。&lt;br&gt;到这里，我们可以建模了，n代表位置，将x代表PSD,y代表我们拟合真正的结果，$\epsilon$就是初始化方法的误差。$$y(n) = x(n) + v(n)$$&lt;/p&gt;
 &lt;p&gt;引入MMSE模型来求解拟合真正的x，y为数据观测值，传统MMSE未定形式不好求解，所以使用LMMSE,得到$\hat x = E[x] + \frac{Conv(x,y)}{Var(y)(y-E[y])}$,自然地假设x和v是为locally Gaussian processes,而且经验性地发现demosaicking noise $\epsilon_{g,r}^h$ 和 $\epsilon_{g,r}^v$为zero-mean random process,且uncorrelated with $\Delta_{g,r}$ (经过实验测出的，数值在0~0.08之间)所以可以简化式子为$$\hat x = \mu_x + \frac{\sigma_x^2}{(\sigma_x^2+\sigma_v^2)}(y-\mu_x)$$ 这里不用计算x的后验和真正样本的均值，因为基于上述假设，可以用x的期望代替了。Cov(x,y)用Cov(x)替代了。这样，我们就拟合预测出优化的PSD $\hat x$，用这个来拟合通道之间的信息更有效！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结:&lt;/strong&gt; LMMSE就是提出y和x的线性关系，然后根据最小MSE去根据观测样本的分布来拟合出符合分布的观测值$\hat x$，关键是用数据样本拟合出线性模型的参数，然后新来的样本经过模型得到拟合的值，会比原来观测的值更符合样本分布。（假设观测样本和预测样本是同分布的）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;看了源码&lt;/strong&gt;：可以看到在实现里面，先对图像做了横向和纵向的滤波，然后在8*8的patch里面进行LMMSE的求解拟合的。&lt;/p&gt;
 &lt;h4 id=&quot;RI&quot;&gt;&lt;a href=&quot;#RI&quot; class=&quot;headerlink&quot; title=&quot;RI&quot;&gt;&lt;/a&gt;RI&lt;/h4&gt;&lt;p&gt;回到RI，想法也是拟合一个better PSD，只是这里的做法是用一个比较好的初始化方法，GBTF，在这个之上用了何大神的Guided Filter做平滑上采样（文中这么说），然后得到一个比较好的tentative estimate,用这个来拟合channel difference,取得了更好的效果，接下来就看一下这个guided filter和RI延伸出来的Improvement工作。&lt;/p&gt;
 &lt;p&gt;RI在IMAX和Kodak的30张Images取得CPSNR 37.92dB&lt;/p&gt;
 &lt;p&gt;参考：&lt;br&gt;[1]I. Pekkucuksen and Y. Altunbasak, “Gradient based threshold free color filter array interpolation,” Proc. of IEEE Int. Conf. on Image Processing (ICIP), pp. 137– 140, 2010.&lt;/p&gt;
@@ -366,72 +399,6 @@
     
     
       <category term="Ted" scheme="https://csrjtan.github.io/tags/Ted/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode15</title>
-    <link href="https://csrjtan.github.io/2016/04/17/leetcode15/"/>
-    <id>https://csrjtan.github.io/2016/04/17/leetcode15/</id>
-    <published>2016-04-17T09:20:41.000Z</published>
-    <updated>2016-06-01T14:50:50.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;3Sum&quot;&gt;&lt;a href=&quot;#3Sum&quot; class=&quot;headerlink&quot; title=&quot;3Sum&quot;&gt;&lt;/a&gt;3Sum&lt;/h3&gt;&lt;p&gt;问题：给出一个数组S，找出里面三个数组成a+b+c = 0,且a&amp;lt;b&amp;lt;c,并且是唯一triplets&lt;/p&gt;
-&lt;p&gt;思路：先排序，从两边逼近中间求解twoSum。最开始是从前往后匹配，发现超时了。现在复杂度在O(n^2)&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;figure class=&quot;highlight dart&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vector&amp;lt;vector&amp;lt;&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt;&amp;gt;&amp;gt; threeSum(vector&amp;lt;&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt;&amp;gt;&amp;amp; &lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//排序&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;std::sort(&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;.begin(),&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;.end());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;vector&amp;lt;vector&amp;lt;&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt;&amp;gt;&amp;gt; result;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; len = &lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;.size();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;len;i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; target = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;- &lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; start = i+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, end = len - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//twoSum求解&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(start&amp;lt;end)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[start]+&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[end]==target)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            vector&amp;lt;&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt;&amp;gt; solution;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            solution.push_back(&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            solution.push_back(&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[start]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            solution.push_back(&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[end]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            result.push_back(solution);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            start++,end--;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//当前一位和后一位是一样的时候，直接跳过这一层的判断&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(start&amp;lt;end&amp;amp;&amp;amp;&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[start]==&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[start&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;]) start++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(start&amp;lt;end&amp;amp;&amp;amp;&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[end] ==&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[end+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]) end--;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//两边判断逼近&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[start]+&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[end]&amp;lt;target)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            start++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            end--;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//时刻判断第一位a是否重复&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(i&amp;lt;len&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[i]==&lt;span class=&quot;built_in&quot;&gt;num&lt;/span&gt;[i+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            i++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; result;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3ClosestSum&quot;&gt;&lt;a href=&quot;#3ClosestSum&quot; class=&quot;headerlink&quot; title=&quot;3ClosestSum&quot;&gt;&lt;/a&gt;3ClosestSum&lt;/h3&gt;&lt;p&gt;问题：求三个和的最相近近似解&lt;br&gt;思路：转化成求两个和离target的最相近似解&lt;/p&gt;
-&lt;figure class=&quot;highlight aspectj&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// return the twoSumClosest sum&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;twoSumClosest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(vector&amp;lt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&amp;gt; &amp;amp;sortedNum,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; start,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; head = start , tail = sortedNum.size()&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; res = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,dis = INT_MAX;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//依据最近距离返回res&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(head &amp;lt; tail)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; tmp = sortedNum[head]+ sortedNum[tail];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(tmp&amp;lt;&lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;-tmp&amp;lt;dis)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                res = tmp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                dis = &lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;-tmp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            head++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(tmp &amp;gt; &lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(tmp-&lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;&amp;lt;dis)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                res = tmp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                dis = tmp-&lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            tail--;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; res;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;threeSumClosest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(vector&amp;lt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&amp;gt; &amp;amp;num,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; n = num.size();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sort(num.begin(),num.end());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; res,dis = INT_MAX;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;n&lt;span class=&quot;number&quot;&gt;-2&lt;/span&gt;;i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; target2 = &lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;-num[i],tmpdis;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; tmpres = twoSumClosest(num,i+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,target2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 若有更近解，更新res&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;((tmpdis = abs(tmpres-target2))&amp;lt;dis)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            res = tmpres + num[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            dis = tmpdis;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// 有一样解即刻返回&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(res==&lt;span class=&quot;keyword&quot;&gt;target&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; res;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; res;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;4Sum&quot;&gt;&lt;a href=&quot;#4Sum&quot; class=&quot;headerlink&quot; title=&quot;4Sum&quot;&gt;&lt;/a&gt;4Sum&lt;/h3&gt;&lt;p&gt;问题： 4个和为target&lt;br&gt;思路：2+2的方法，遍历前两个，然后求解twoSum问题&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; fourSum(vector&amp;lt;int&amp;gt; &amp;amp;num, int target) {
-    int n = num.size();
-    vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; res;
-    sort(num.begin(), num.end());
-    for(int i = 0; i &amp;lt; n-3; i++)
-    {
-        if(i &amp;gt; 0 &amp;amp;&amp;amp; num[i] == num[i-1])continue;//防止第一个元素重复
-        for(int j = i+1; j &amp;lt; n-2; j++)
-        {
-            if(j &amp;gt; i+1 &amp;amp;&amp;amp; num[j] == num[j-1])continue;//防止第二个元素重复
-            int target2 = target - num[i] - num[j];
-            int head = j+1, tail = n-1;
-            //Two Sum Problem
-            while(head &amp;lt; tail)
-            {
-                int tmp = num[head] + num[tail];
-                if(tmp &amp;gt; target2)
-                    tail--;
-                else if(tmp &amp;lt; target2)
-                    head++;
-                else
-                {
-                    res.push_back(vector&amp;lt;int&amp;gt;{num[i], num[j], num[head], num[tail]});
-                    //为了防止出现重复的二元组，使结果等于target2
-                    int k = head+1;
-                    while(k &amp;lt; tail &amp;amp;&amp;amp; num[k] == num[head])k++;
-                    head = k;
-
-                    k = tail-1;
-                    while(k &amp;gt; head &amp;amp;&amp;amp; num[k] == num[tail])k--;
-                    tail = k;
-                }
-            }
-        }
-    }
-    return res;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;```&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;3Sum&quot;&gt;&lt;a href=&quot;#3Sum&quot; class=&quot;headerlink&quot; title=&quot;3Sum&quot;&gt;&lt;/a&gt;3Sum&lt;/h3&gt;&lt;p&gt;问题：给出一个数组S，找出里面三个数组成a+b+c = 0,且a&amp;lt;b&amp;lt;c,并且是唯一triplets&lt;/p&gt;
-&lt;p&gt;思路：先排序，从两边逼近中间求解twoSum。最开始是从前往后匹配，发现超时了。现在复杂度在O(n^2)&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
-    
-    
-      <category term="leetcode" scheme="https://csrjtan.github.io/tags/leetcode/"/>
     
   </entry>
   
