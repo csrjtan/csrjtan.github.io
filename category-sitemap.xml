@@ -7,13 +7,6 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/categories/Read/</loc>
-        <lastmod>2016-06-01T14:50:21.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/categories/Life/</loc>
         <lastmod>2016-06-03T09:41:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -22,7 +15,14 @@
 
     <url>
         <loc>https://csrjtan.github.io/categories/Tech/</loc>
-        <lastmod>2016-06-04T14:18:15.000Z</lastmod>
+        <lastmod>2016-06-07T03:13:36.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/categories/Read/</loc>
+        <lastmod>2016-06-07T03:14:03.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

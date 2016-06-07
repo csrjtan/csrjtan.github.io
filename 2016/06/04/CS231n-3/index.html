@@ -104,21 +104,21 @@
 
 
 
-<meta name="description" content="Lienar ClassificationLoss Function定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分
-Full Training Loss为取平均,$L=\">
+<meta name="description" content="一.Loss Function定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分
+Full Training Loss为取平均,$L=\frac{1}{N}\sum_{i=1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231n_3">
 <meta property="og:url" content="https://csrjtan.github.io/2016/06/04/CS231n-3/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="Lienar ClassificationLoss Function定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分
-Full Training Loss为取平均,$L=\">
+<meta property="og:description" content="一.Loss Function定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分
+Full Training Loss为取平均,$L=\frac{1}{N}\sum_{i=1">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060401.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060402.png">
-<meta property="og:updated_time" content="2016-06-04T14:18:15.000Z">
+<meta property="og:updated_time" content="2016-06-07T03:13:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS231n_3">
-<meta name="twitter:description" content="Lienar ClassificationLoss Function定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分
-Full Training Loss为取平均,$L=\">
+<meta name="twitter:description" content="一.Loss Function定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分
+Full Training Loss为取平均,$L=\frac{1}{N}\sum_{i=1">
 <meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060401.png">
 
 
@@ -323,8 +323,8 @@ Full Training Loss为取平均,$L=\">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
                   </a>
                 </span>
 
@@ -368,11 +368,10 @@ Full Training Loss为取平均,$L=\">
       
 
       
-        <h3 id="Lienar-Classification"><a href="#Lienar-Classification" class="headerlink" title="Lienar Classification"></a>Lienar Classification</h3><h4 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h4><p>定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$<br>这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060401.png" alt="SVM loss"><br>Full Training Loss为取平均,$L=\frac{1}{N}\sum_{i=1}^N L_i$ ,则L=（2.9+0+10.9）/3= 4.6</p>
-<p>SoftMax function: $\frac{e^{s_k}}{\sum_j e^{s_j}}$<br>这里的SVM loss存在一个问题，w可能不是唯一存在满足L最小的，比如w=w*2,L依然为0，但w已经放大了两倍，如图；这里我们加入正则项$\alpha R(w)$,其中$\alpha$为训练误差和模型复杂度的调整系数<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060402.png" alt="SVM loss Bug"></p>
+        <h4 id="一-Loss-Function"><a href="#一-Loss-Function" class="headerlink" title="一.Loss Function"></a>一.Loss Function</h4><p>定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$<br>这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060401.png" alt="SVM loss"><br>Full Training Loss为取平均,$L=\frac{1}{N}\sum_{i=1}^N L_i$ ,则L=（2.9+0+10.9）/3= 4.6<br><a id="more"></a><br>SoftMax function: $\frac{e^{s_k}}{\sum_j e^{s_j}}$<br>这里的SVM loss存在一个问题，w可能不是唯一存在满足L最小的，比如w=w*2,L依然为0，但w已经放大了两倍，如图；这里我们加入正则项$\alpha R(w)$,其中$\alpha$为训练误差和模型复杂度的调整系数<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060402.png" alt="SVM loss Bug"></p>
 <p>这里提到了loss function的选择：对于loss function的值全体做shift和scale是不会影响梯度的，而max/min则导致最后收敛时候梯度无限小。</p>
-<p>关于正则项的使用，如SVM Loss： $L = \frac{1}{N}\sum_{i=1}^N\sum_{j\neq y_i}max(0,f(x_i;W)_j-f(x_i;W)_{y_i}+1)+\lambda R(W)$ ,called <strong>hinge loss</strong>,而L2-SVM则$max(0,-)^2$则放大惩罚误差。这里的1是$\delta$，指正确样本到非正确样本的Margin</p>
+<p>关于正则项的使用，如SVM Loss： $L = \frac{1}{N}\sum_{i=1}^N\sum_{j\neq y_i}max(0,f(x_i;W)_j-f(x_i;W)_{y_i}+1)+\lambda R(W)$ ,called <strong>hinge loss</strong>,而L2-SVM则$max(0,-)^2$则放大惩罚误差。这里的1是$\Delta$，指正确样本到非正确样本的Margin<br>常用的正则向</p>
 <ul>
 <li>L2: $R(W) = \sum_k\sum_l W_{k,l}^2$</li>
 <li>L1: $R(W) = \sum_k\sum_l |W_{k,l}|$</li>
@@ -382,8 +381,8 @@ Full Training Loss为取平均,$L=\">
 </ul>
 <p><strong>Softmax Classifier(Multinomial Logistic Regression)</strong>: $$ L_i = -log(\frac{e^{s_{y_i}}}{\sum_j e^{s_j}})$$ ,这里Softmax是满足Minimizing the cross-entropy between estimated class probabilities and “true” distribution,从信息学的角度来说，是一个好的loss function.<a href="http://cs231n.github.io/linear-classify/" target="_blank" rel="external">Loss Function Noetes</a></p>
 <p>Practical Tips: $\delta$和$\lambda$ 的trade off是相关的，所以可以fix one and only tuned another one</p>
-<h4 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h4><p>得到合适的Loss Function后，如何最小化呢？使用到Optimization的方法了.<br>1.Random Search(Stupid)：瞎走<br>2.Random Local Search(这里还有很多AI的Search算法)<br>3.Gradient Descent（都在用的）: 沿着梯度下降，如果Loss是Convex Function,有Global Minimize;否则可能只能到达Local Minimize；如何走，也有很多学问，下一节课说。</p>
-<p>对权值求导，得到最大梯度的相反方向走：1.逐点weights,添加步长更新，Numerical Gradient: Approximate,Slow but easy  2.矩阵求导更新，Analytic Gradient: Exact, Fast but error-prone. （有时候陷入病态，无法求导或者导数太小）<br>[Practical Tips：用Analytic gradient but check the implementation compared with numerical gradient, called “<strong>Gradient Check</strong>“</p>
+<h4 id="二-Optimization"><a href="#二-Optimization" class="headerlink" title="二.Optimization"></a>二.Optimization</h4><p>得到合适的Loss Function后，如何最小化呢？使用到Optimization的方法了.<br>1.Random Search(Stupid)：瞎走<br>2.Random Local Search(这里还有很多AI的Search算法)<br>3.Gradient Descent（都在用的）: 沿着梯度下降，如果Loss是Convex Function,有Global Minimize;否则可能只能到达Local Minimize；如何走，也有很多学问，下一节课说。</p>
+<p><strong>Gradient Descent</strong>: 1.逐点weights,添加步长更新，Numerical Gradient: Approximate,Slow but easy  2.矩阵求导更新，Analytic Gradient: Exact, Fast but error-prone. （有时候陷入病态，无法求导或者导数太小）<br>[Practical Tips：用Analytic gradient but check the implementation compared with numerical gradient, called “<strong>Gradient Check</strong>“</p>
 <p>Mini-Batch Gradient Descent: 对样本批量做，求平均更新；一般size为32/64/126，ALEX NET用了256；这里Batch过小，导致收敛漂移，陷入病态；Batch过大，则权值更新缓慢，优化过程长。</p>
 <p>调参：Suitable Learning Rate, BatchSize, Regularization</p>
 <p>题外话：回顾了一下CV上的Image Feature, Hue Histogram: 区块直方图统计，缺乏结构信息； HoG/Sift: Artifact Feature; BoW:对Feature学一个字典重新有效表示Image.</p>
@@ -435,13 +434,17 @@ Full Training Loss为取平均,$L=\">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/03/CS231n-1/" rel="next" title="CS231n_1 and 2">
-                <i class="fa fa-chevron-left"></i> CS231n_1 and 2
+              <a href="/2016/06/03/CS231n-1/" rel="next" title="CS231n_1 & 2">
+                <i class="fa fa-chevron-left"></i> CS231n_1 & 2
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/06/CS231n-4/" rel="prev" title="CS231n-4 & 5">
+                CS231n-4 & 5 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -513,7 +516,7 @@ Full Training Loss为取平均,$L=\">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -521,7 +524,7 @@ Full Training Loss为取平均,$L=\">
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -530,7 +533,7 @@ Full Training Loss为取平均,$L=\">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -580,7 +583,7 @@ Full Training Loss为取平均,$L=\">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lienar-Classification"><span class="nav-number">1.</span> <span class="nav-text">Lienar Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loss-Function"><span class="nav-number">1.1.</span> <span class="nav-text">Loss Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optimization"><span class="nav-number">1.2.</span> <span class="nav-text">Optimization</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-Loss-Function"><span class="nav-number">1.</span> <span class="nav-text">一.Loss Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-Optimization"><span class="nav-number">2.</span> <span class="nav-text">二.Optimization</span></a></li></ol></div>
             
           </div>
         </section>

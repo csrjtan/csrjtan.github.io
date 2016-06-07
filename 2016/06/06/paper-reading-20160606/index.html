@@ -1,0 +1,762 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="paper demosaick," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CSRJTAN" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference网站
+idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读《Residual Interpolation for color image demosaicking》">
+<meta property="og:url" content="https://csrjtan.github.io/2016/06/06/paper-reading-20160606/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference网站
+idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到d">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0606sp.png">
+<meta property="og:updated_time" content="2016-06-07T03:13:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文阅读《Residual Interpolation for color image demosaicking》">
+<meta name="twitter:description" content="首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference网站
+idea左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到d">
+<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '我是博主'
+    }
+  };
+</script>
+
+  <title> 论文阅读《Residual Interpolation for color image demosaicking》 | CSRJTAN </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CSRJTAN</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Keep Moving</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tech">
+          <a href="/categories/Tech" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gavel"></i> <br />
+            
+            技术
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/categories/Read" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/Life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/2016/06/01/books/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            书单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                论文阅读《Residual Interpolation for color image demosaicking》
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-06T20:19:45+08:00" content="2016-06-06">
+              2016-06-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/06/paper-reading-20160606/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/paper-reading-20160606/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference<br><a href="http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html" target="_blank" rel="external">网站</a></p>
+<h3 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png" alt="主要流程"><br>左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到delta,在插值过程中得到R图再把delta加上的过程。<br>现在RI提出直接使用G图做差值插值由于变换太过剧烈的地方会造成Artifact,如今用一些处理使得这个G变成G尖，这个G尖的图像满足平滑和准确的特性。如此利用这个谱间相关性的时候误差会更小，出来的效果更好。<br><a id="more"></a></p>
+<h3 id="具体内容"><a href="#具体内容" class="headerlink" title="具体内容"></a>具体内容</h3><p>提出了Residual Interpolation基于GBTF的Demosaick初始化,这里用的是GBTF做G通道的初始化插值，然后Guided Filter得到G尖。我们来看看这两个论文。</p>
+<h4 id="GBTF"><a href="#GBTF" class="headerlink" title="GBTF"></a>GBTF</h4><p>喔，这篇文章是基于我老板的DLMMSE文章优化，简要说一下老板的思路：先求出G-R和G-B图像在横竖方向上的differences，然后建立一个噪声估计模型，结合了线性最小误差均值的方法，用PCA的方法降为直接将performance比以前提高了5个dp。（我老板就说那些人全都是瞎搞的。）这里GBTF提了DLMMSE两点缺陷：1.只利用了4-Neighbor的像素 2.将原来的两个方向解耦成四个方法<br>实验的结论比LPA好0.14dB，比DLMMSE好0.64dB.</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0606sp.png" alt="Sparse Adaptive"><br>在DLMMSE基础上，对G的插值使用了Gradient Weighted Based的方法，对R和B的通道使用了[3]的sparse adaptive interpolation(一定程度可以通道稀疏来抑制噪声)。</p>
+<h4 id="MMSE"><a href="#MMSE" class="headerlink" title="MMSE"></a>MMSE</h4><p>首先说一下这个优化方法，MMSE指Minimum Mean Square Error。这是统计贝叶斯关于二次代价函数产生的，问了一下师兄，懂了不少。<br>这个是一个基于贝叶斯统计变量的模型，y为Ground Truth,$\hat x(y)$ of x is any function of y. Model一个$MSE=tr{E{(\hat x-x)(\hat x=x)^T}}$ 则有$$\hat x_{MMSE}(y) = arg min_{\hat x}MSE$$<br>这个模型假定你知道了x与y的函数形式，用最小化MSE的方法求解函数的具体参数。</p>
+<p>传统的做法是假设函数形式，然后用Monte Carlo或者Gradient Descent去寻找最优解，但这样仍然需要评价指标。所以简单来说，一般用线性的模型可以变成Optimal LMMSE的问题。 $$min_{W,b}MSE \ \  s.t. \hat x = Wy+b$$<br>Optimal b and W is given by: $b = \overline x - W \overline y, W = C_{XY}C_Y^{-1}$ 然后用样本集的统计值来求解。</p>
+<p><a href="https://en.wikipedia.org/wiki/Minimum_mean_square_error" target="_blank" rel="external">具体查看Wiki</a></p>
+<h4 id="DLMMSE"><a href="#DLMMSE" class="headerlink" title="DLMMSE"></a>DLMMSE</h4><p>这里老板借鉴了LMMSE即Linear MMSE的方法，来拟合PSD(pirmer signal difference)和LCC1初始化后的Vertical和Horizontal的噪声。这里有点复杂：首先理解了Demosaicking里面的Color Difference原理是利用了局部区域谱间差值为常量，这个协同性原理。然而这个差值为常量的假设并不准确，所以很多人在这个问题上面做文章。我们发现，有时候出现Artifact是因为变化过于剧烈，这里面已经超过了信号的采样原理，所以信息是丢失无法恢复的。我们只能加入一些约束和先验知识来弥补（后面扩展的工作）。所以这个PSD就是Color Difference并不准确，我们来拟合它。这里直接使用一个LCC1作为G通道插值的初始化，然后简单计算V和H方向上的梯度，与PSD相减得到误差$\epsilon$ 。<br>到这里，我们可以建模了，n代表位置，将x代表PSD,y代表我们拟合真正的结果，$\epsilon$就是初始化方法的误差。$$y(n) = x(n) + v(n)$$</p>
+<p>引入MMSE模型来求解拟合真正的x，y为数据观测值，传统MMSE未定形式不好求解，所以使用LMMSE,得到$\hat x = E[x] + \frac{Conv(x,y)}{Var(y)(y-E[y])}$,自然地假设x和v是为locally Gaussian processes,而且经验性地发现demosaicking noise $\epsilon_{g,r}^h$ 和 $\epsilon_{g,r}^v$为zero-mean random process,且uncorrelated with $\Delta_{g,r}$ (经过实验测出的，数值在0~0.08之间)所以可以简化式子为$$\hat x = \mu_x + \frac{\sigma_x^2}{(\sigma_x^2+\sigma_v^2)}(y-\mu_x)$$ 这里不用计算x的后验和真正样本的均值，因为基于上述假设，可以用x的期望代替了。Cov(x,y)用Cov(x)替代了。这样，我们就拟合预测出优化的PSD $\hat x$，用这个来拟合通道之间的信息更有效！</p>
+<h4 id="RI"><a href="#RI" class="headerlink" title="RI"></a>RI</h4><p>回到RI，想法也是拟合一个better PSD，只是这里的做法是用一个比较好的初始化方法，GBTF，在这个之上用了何大神的Guided Filter做平滑上采样（文中这么说），然后得到一个比较好的tentative estimate,用这个来拟合channel difference,取得了更好的效果，接下来就看一下这个guided filter和RI延伸出来的Improvement工作。</p>
+<p>RI在IMAX和Kodak的30张Images取得CPSNR 37.92dB</p>
+<p>参考：<br>[1]I. Pekkucuksen and Y. Altunbasak, “Gradient based threshold free color filter array interpolation,” Proc. of IEEE Int. Conf. on Image Processing (ICIP), pp. 137– 140, 2010.</p>
+<p>[2]Zhang, L. and X. Wu (2005). “Color demosaicking via directional linear minimum mean square-error estimation.” Image Processing, IEEE Transactions on 14(12): 2167-2178.</p>
+<p>[3] D. Paliy, V. Katkovnik, R. Bilcu, S. Alenius, and K. Egiazarian, “Spatially adaptive color filter array interpo- lation for noiseless and noisy data,” International Journal of Imaging Systems and Technology, vol. 17, no. 3, pp. 105-122, 2007.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持分享，支持原创</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xl4js.com1.z0.glb.clouddn.com/wechatPayment.jpg" alt="CsrjTan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/paper-demosaick/" rel="tag">#paper demosaick</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/06/CS231n-4/" rel="next" title="CS231n-4 & 5">
+                <i class="fa fa-chevron-left"></i> CS231n-4 & 5
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/06/paper-reading-20160606/"
+           data-title="论文阅读《Residual Interpolation for color image demosaicking》" data-url="https://csrjtan.github.io/2016/06/06/paper-reading-20160606/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4js.com1.z0.glb.clouddn.com/avatar.jpg"
+               alt="CsrjTan" />
+          <p class="site-author-name" itemprop="name">CsrjTan</p>
+          <p class="site-description motion-element" itemprop="description">blog csrjtan tanrunj</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://arxiv.org/" title="arXiv" target="_blank">arXiv</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#idea"><span class="nav-number">1.</span> <span class="nav-text">idea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体内容"><span class="nav-number">2.</span> <span class="nav-text">具体内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GBTF"><span class="nav-number">2.1.</span> <span class="nav-text">GBTF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MMSE"><span class="nav-number">2.2.</span> <span class="nav-text">MMSE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DLMMSE"><span class="nav-number">2.3.</span> <span class="nav-text">DLMMSE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RI"><span class="nav-number">2.4.</span> <span class="nav-text">RI</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CsrjTan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"csrjtan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>

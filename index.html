@@ -293,6 +293,252 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/06/paper-reading-20160606/" itemprop="url">
+                  论文阅读《Residual Interpolation for color image demosaicking》
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-06T20:19:45+08:00" content="2016-06-06">
+              2016-06-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/06/paper-reading-20160606/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/paper-reading-20160606/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference<br><a href="http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html">网站</a></p>
+<h3 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png" alt="主要流程"><br>左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到delta,在插值过程中得到R图再把delta加上的过程。<br>现在RI提出直接使用G图做差值插值由于变换太过剧烈的地方会造成Artifact,如今用一些处理使得这个G变成G尖，这个G尖的图像满足平滑和准确的特性。如此利用这个谱间相关性的时候误差会更小，出来的效果更好。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/06/paper-reading-20160606/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/06/CS231n-4/" itemprop="url">
+                  CS231n-4 & 5
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-06T14:05:56+08:00" content="2016-06-06">
+              2016-06-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/06/CS231n-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/CS231n-4/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这节课主要讲述一下BP怎么做的</p>
+<h3 id="BackProbagation"><a href="#BackProbagation" class="headerlink" title="BackProbagation"></a>BackProbagation</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0606bp.png" alt="简单BP"><br>这里根据Chain Rule:$\frac{df}{dx} = \frac{df}{dq} \frac{dq}{dx}$<br>所以推算$\frac{df}{df} =1$, $\frac{df}{dz} = \frac{df}{df} \frac{df}{dz} = 1 <em> q = 3$, 同理得后面的梯度（求导中函数的x为当前neuron的值）<br>Add gate: Gradient Distributor<br>Max gate: Gradient Router(只有max的值获得梯度传递)<br>Mul gate: Gradient “Switcher”(Neuron交换了梯度)<br>BP Gradient = [Last Gradient] </em> [Local Gradient]<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/06/CS231n-4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/04/CS231n-3/" itemprop="url">
                   CS231n_3
                 </a>
@@ -321,8 +567,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
                   </a>
                 </span>
 
@@ -362,30 +608,13 @@
 
       
         
-          
-            <h3 id="Lienar-Classification"><a href="#Lienar-Classification" class="headerlink" title="Lienar Classification"></a>Lienar Classification</h3><h4 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h4><p>定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$<br>这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060401.png" alt="SVM loss"><br>Full Training Loss为取平均,$L=\frac{1}{N}\sum_{i=1}^N L_i$ ,则L=（2.9+0+10.9）/3= 4.6</p>
-<p>SoftMax function: $\frac{e^{s_k}}{\sum_j e^{s_j}}$<br>这里的SVM loss存在一个问题，w可能不是唯一存在满足L最小的，比如w=w*2,L依然为0，但w已经放大了两倍，如图；这里我们加入正则项$\alpha R(w)$,其中$\alpha$为训练误差和模型复杂度的调整系数<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060402.png" alt="SVM loss Bug"></p>
-<p>这里提到了loss function的选择：对于loss function的值全体做shift和scale是不会影响梯度的，而max/min则导致最后收敛时候梯度无限小。</p>
-<p>关于正则项的使用，如SVM Loss： $L = \frac{1}{N}\sum_{i=1}^N\sum_{j\neq y_i}max(0,f(x_i;W)_j-f(x_i;W)_{y_i}+1)+\lambda R(W)$ ,called <strong>hinge loss</strong>,而L2-SVM则$max(0,-)^2$则放大惩罚误差。这里的1是$\delta$，指正确样本到非正确样本的Margin</p>
-<ul>
-<li>L2: $R(W) = \sum_k\sum_l W_{k,l}^2$</li>
-<li>L1: $R(W) = \sum_k\sum_l |W_{k,l}|$</li>
-<li>Elastic Net (L1+L2): $R(W)=\sum_k\sum_l \beta W_{k,l}^2 + |W_{k,l}|$</li>
-<li>Max Norm Regularization</li>
-<li>Dropout</li>
-</ul>
-<p><strong>Softmax Classifier(Multinomial Logistic Regression)</strong>: $$ L_i = -log(\frac{e^{s_{y_i}}}{\sum_j e^{s_j}})$$ ,这里Softmax是满足Minimizing the cross-entropy between estimated class probabilities and “true” distribution,从信息学的角度来说，是一个好的loss function.<a href="http://cs231n.github.io/linear-classify/" target="_blank" rel="external">Loss Function Noetes</a></p>
-<p>Practical Tips: $\delta$和$\lambda$ 的trade off是相关的，所以可以fix one and only tuned another one</p>
-<h4 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h4><p>得到合适的Loss Function后，如何最小化呢？使用到Optimization的方法了.<br>1.Random Search(Stupid)：瞎走<br>2.Random Local Search(这里还有很多AI的Search算法)<br>3.Gradient Descent（都在用的）: 沿着梯度下降，如果Loss是Convex Function,有Global Minimize;否则可能只能到达Local Minimize；如何走，也有很多学问，下一节课说。</p>
-<p>对权值求导，得到最大梯度的相反方向走：1.逐点weights,添加步长更新，Numerical Gradient: Approximate,Slow but easy  2.矩阵求导更新，Analytic Gradient: Exact, Fast but error-prone. （有时候陷入病态，无法求导或者导数太小）<br>[Practical Tips：用Analytic gradient but check the implementation compared with numerical gradient, called “<strong>Gradient Check</strong>“</p>
-<p>Mini-Batch Gradient Descent: 对样本批量做，求平均更新；一般size为32/64/126，ALEX NET用了256；这里Batch过小，导致收敛漂移，陷入病态；Batch过大，则权值更新缓慢，优化过程长。</p>
-<p>调参：Suitable Learning Rate, BatchSize, Regularization</p>
-<p>题外话：回顾了一下CV上的Image Feature, Hue Histogram: 区块直方图统计，缺乏结构信息； HoG/Sift: Artifact Feature; BoW:对Feature学一个字典重新有效表示Image.</p>
-<p>SVM是一个凸优化问题，但CNN不是，所以注意凸优化里面的方法不一定适用于CNN。</p>
-<p>关于Gradient Descent的Practical considerations: 1.使用左右两端的导数值会更优,$[f(x+h)-f(x-h)]/2h$; 2.注意是往梯度的反方向更新，因为是下降 3.有效的更新步长（重要的学习参数）</p>
-
-          
+          <h4 id="一-Loss-Function"><a href="#一-Loss-Function" class="headerlink" title="一.Loss Function"></a>一.Loss Function</h4><p>定义Multiclass SVM loss: $L_i = \sum_{j\neq y_i} max(0,s_j-s_{y_i}+1)$<br>这里，$L_i$为针对类别i的Loss值，$s_j$是除了i的其他类别得分,$y_i$为当前目标类别，$s_{y_i}$ 为当前目标类别得分</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060401.png" alt="SVM loss"><br>Full Training Loss为取平均,$L=\frac{1}{N}\sum_{i=1}^N L_i$ ,则L=（2.9+0+10.9）/3= 4.6<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/04/CS231n-3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -434,7 +663,7 @@
               
                 
                 <a class="post-title-link" href="/2016/06/03/CS231n-1/" itemprop="url">
-                  CS231n_1 and 2
+                  CS231n_1 & 2
                 </a>
               
             
@@ -461,8 +690,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
                   </a>
                 </span>
 
@@ -502,43 +731,12 @@
 
       
         
-          
-            <p>回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，<br><a href="https://www.youtube.com/watch?v=ngXbD21b4qk&amp;index=2&amp;list=PLrZmhn8sSgye6ijhLzIIXiU9GNaIwbF8B" target="_blank" rel="external">Youtube视频</a><br><a href="http://cs231n.stanford.edu/syllabus.html" target="_blank" rel="external">课程主页</a></p>
-<h3 id="第一课-Introduction"><a href="#第一课-Introduction" class="headerlink" title="第一课 Introduction"></a>第一课 Introduction</h3><p>首先不出意外地第一节课是Introduction,飞飞对CV的研究发展历史给出了一个比较中肯的conclusion,从生物视觉的起源到Da Vinci的摄影技术以及第一篇CV phd Thesis. 主要提到了计算机视觉围绕主要的问题，有一个宏观意义上的认识。物体是识别、分类、切割、定位等，还能延伸出许多的子问题。</p>
-<h4 id="经典工作"><a href="#经典工作" class="headerlink" title="经典工作"></a>经典工作</h4><p>这里关键读一下CV历史上影响巨大的几篇文章：<br>一.AdaBoost Face Detection:使得人脸的识别可以实时应用，主要Contribution:1.Harr特征的边缘提取 2.积分图的快速计算 3.AdaBoost的学习分类器<br>二.SIFT：Lowe大神经典之作，每个CV人都知道的图片经典特征点,具有shift、rotate、scale不变性：1.构建高斯图像金字塔 2.提取特征点 3.特征描述子的建立<br>三.金字塔匹配：CVPR06工作，将图片分块成多个空间金字塔，从而结合BoW等技术进行有效的匹配和分类</p>
-<p>ImageNet主要关注在CV核心问题，图像识别和分类定位等问题。起初使用的模型一般是提取特征点-&gt;建立字典和模型-&gt;学习分类算法(SVM)-&gt;预测结果；如今DL的火热，使得CNN成为研究CV的主工具。</p>
-<h4 id="关于CNN的工作"><a href="#关于CNN的工作" class="headerlink" title="关于CNN的工作"></a>关于CNN的工作</h4><p>1.LeCun大神的MNIST文字识别库，文章比较了多种ML方法在库上的表现，当年使用的CNN达到了非常好的效果，但具有训练速度慢、收敛难等问题<br>2.ImageNet12上，AlexNet这篇经典的CNN文章引爆了潮流，主要使用ReLU、GPU加速、LRN、Data Augument等技术使得CNN避免Overfitting，方便梯度传递，加速训练、解决DL收敛困难的主要问题，在比赛上获得惊人的效果。</p>
-<h4 id="课程的Pre-Requisite"><a href="#课程的Pre-Requisite" class="headerlink" title="课程的Pre-Requisite"></a>课程的Pre-Requisite</h4><ul>
-<li>high proficiency in python和c++</li>
-<li>Linear Algebra</li>
-<li>Machine Learning</li>
-</ul>
-<h3 id="第二课-Classification"><a href="#第二课-Classification" class="headerlink" title="第二课 Classification"></a>第二课 Classification</h3><h4 id="Image-Classification"><a href="#Image-Classification" class="headerlink" title="Image Classification"></a>Image Classification</h4><p><a href="http://cs231n.github.io/classification/" target="_blank" rel="external">ImageClassification Tutorial</a><br>Challenges:Viewpoint Variation, Scale Variation, Deformation, Occlusion, Iluumnation conditions, Background Clutter, Intra-class Variation.（图像识别的经典难点）</p>
-<p>Data-Driven Approach: Input-&gt;Learning-&gt;Evaluation<br>根据训练样本的学习出来模型，从而对新来的样本进行分类识别的方法</p>
-<p>Nearest Neighbor Classifier,具体为KNN: 1.Distance Metric的选择 2.k值的选择（根据Cross Validation,e.g. 5-fold cross-validation）,从训练集中切成5份，轮着用一份训练，剩余四份Evaluate,从而调整hyperParameters<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060301.png" alt="k-fold分析图">，对于一般性的数据集，K在4-7取得更加的效果，K越大越smooth,expensive也越大</p>
-<p>[tips:Evaluate on the test set only a single time, at the very end.确保最后才使用testSets,避免overfit for testSets,保证了模型的generlzation]</p>
-<p>Ads: Easy to understand and implement<br>Draws: Pay computational cost at test time(因此提出了ANN的近似加速，还有FLANN的库)<br>Pixel-based distances on high-dimensional data can be very unintuitive.(不适用，就像图片平移或者出现Artifacts等情况，但pixel-based distance是不适应人眼的;这里karpathy用了t-SNE对CIFAR-10的图片作了一个分布排列，相似的放在一起，可以看到背景相似但内容不一的东西反而靠在一起了)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060303.jpg" alt="t-SNE对CIFAR-10的分布"><br>cons: suit for the low-dimensional data</p>
-<p>Summary: 1.Introduce the problem of image classification, image mapping label<br>2.introduce the NN classifier</p>
-<ol>
-<li>Using validation set for tuning the hyperparameters, split training data into two: a training set and a fake test set. Try different hyperparameter values</li>
-<li>Once the parameter found, we fixed and use actual test set to evaluation</li>
-<li>the NN only get about 40% accuracy on CIFAR-10, while human achieve 94% and CNN achieve already 95%!</li>
-<li>the L1 or L2 distances on raw pixel is not adequate since more strongly relative with backgrounds and color distributions rather than semantic content</li>
-</ol>
-<h4 id="Practice-with-kNN"><a href="#Practice-with-kNN" class="headerlink" title="Practice with kNN:"></a>Practice with kNN:</h4><ol>
-<li>Preprocessing: Normalize the data in zero mean and unit variance</li>
-<li>If the data is high dimensional, using dimensionality reduction technique such as PCA or even Random Projections</li>
-<li>Split your traiing data randomly into train/val splits. About 70%~90% of data usually goes to the train split. It depens on how many hyperparameters you have and how much influence you expect them to have. (Cross-validation with the more folds the better, but more expensive)</li>
-<li>Train and evaluate kNN on validation data for many choices of k and across different distance types(暴力人为去尝试，加上自己实验的理解)</li>
-<li>If kNN running too long, consider using ANN library(FLANN, cost of some accuracy)</li>
-<li>Normaly do not use the validation set into the training data, we burned it for unestimated influence. Then evaluate with the test set and report the result as the performance of the kNN models.</li>
-</ol>
-<h4 id="Linear-Claissification"><a href="#Linear-Claissification" class="headerlink" title="Linear Claissification"></a>Linear Claissification</h4><p>kNN disadvantages: 1.需要存储training data for comparison<br>                   2.与数据库comparison十分耗时</p>
-<p>Using a score function and loss function to build a powerful model rather than the kNN<br>$f(x_i,W,b) = Wx_i+b$</p>
-<p>这里主要把W,b的参数学习，x为图片输入，将像素和通道展开成一维超长向量，假设有10类，则b为【10*1】为，得到一个10维的向量，分别表示对应类别的得分。如此一来，新来样本分类只要计算一个矩阵乘法和向量加法就得到结果了，比原先kNN不知道快到哪里去。</p>
-<p>思考：这里Linear Classification相当于做了什么，怎么去理解？1.学习了对应类别的一个模板匹配 2.在高维度空间对数据样本做线性分类学习（有点像SVM)<br>这里将学习得到的Linear Classification再重新可视化之后，得到以下的结果<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/cs231n060302.png" alt="类别模板可视化"></p>
-
-          
+          <p>回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，<br><a href="https://www.youtube.com/watch?v=ngXbD21b4qk&amp;index=2&amp;list=PLrZmhn8sSgye6ijhLzIIXiU9GNaIwbF8B">Youtube视频</a><br><a href="http://cs231n.stanford.edu/syllabus.html">课程主页</a><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/03/CS231n-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1307,251 +1505,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/13/leetcode7-14/" itemprop="url">
-                  leetcode7-14
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-13T15:52:37+08:00" content="2016-04-13">
-              2016-04-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/13/leetcode7-14/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/leetcode7-14/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="leetcode7"><a href="#leetcode7" class="headerlink" title="leetcode7"></a>leetcode7</h4><p>问题：逆序输出INTEGER<br>思路：分为正负，然后用模和除来一位位逆序输出<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/13/leetcode7-14/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/13/leetcode3-6/" itemprop="url">
-                  leetcode3-6
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-13T14:55:42+08:00" content="2016-04-13">
-              2016-04-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/13/leetcode3-6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/leetcode3-6/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="LeetCode-3"><a href="#LeetCode-3" class="headerlink" title="LeetCode 3"></a>LeetCode 3</h4><p>Ques: Find the length of longest substring without repeating characters.</p>
-<p>思路：用table记录出现char字符的次数，256个ASCII字符初始化为-1.如果遇到重复，则记录在table里面，<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/13/leetcode3-6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1597,7 +1550,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1605,7 +1558,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1614,7 +1567,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
