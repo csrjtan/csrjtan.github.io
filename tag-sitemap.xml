@@ -93,13 +93,6 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/</loc>
-        <lastmod>2016-06-07T03:14:03.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/tags/Paper-Demosaick/</loc>
         <lastmod>2016-06-07T08:29:38.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -109,6 +102,13 @@
     <url>
         <loc>https://csrjtan.github.io/tags/paper-demosaick/</loc>
         <lastmod>2016-06-07T08:29:40.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/</loc>
+        <lastmod>2016-06-09T13:33:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

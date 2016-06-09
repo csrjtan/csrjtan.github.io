@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-06-07T08:29:38.000Z</updated>
+  <updated>2016-06-09T13:33:20.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -14,6 +14,113 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CS231n-7</title>
+    <link href="https://csrjtan.github.io/2016/06/09/CS231n-7/"/>
+    <id>https://csrjtan.github.io/2016/06/09/CS231n-7/</id>
+    <published>2016-06-09T06:33:36.000Z</published>
+    <updated>2016-06-09T13:33:20.000Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;CNN&quot;&gt;&lt;a href=&quot;#CNN&quot; class=&quot;headerlink&quot; title=&quot;CNN&quot;&gt;&lt;/a&gt;CNN&lt;/h4&gt;&lt;p&gt;终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。&lt;/p&gt;
+&lt;p&gt;回顾一下，Mini-batch SGD&lt;br&gt;Loop: 1. &lt;strong&gt;Sample&lt;/strong&gt; a batch of data&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Forward&lt;/strong&gt; prop it through the graph, get loss&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backprop&lt;/strong&gt; to calculate the gradients&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Update&lt;/strong&gt; the parameters using the gradient&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0609CNN.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;卷积操作过程的参数计算公式图，趋向于用数量更多的小Filter,更深的网络。&lt;br&gt;ConV的卷积核深度总是和输入的立方Feature Map的深度一致，而Kernel的个数就是新的FeatureMap的Depth.&lt;/p&gt;
+&lt;p&gt;一般来说：Max Pool with 2*2 filters and stride 2&lt;/p&gt;
+&lt;p&gt;FC： Containes Neurons connect to the entire input volume&lt;/p&gt;
+&lt;p&gt;ConV的参数取决于Filter,例如227&lt;em&gt;227&lt;/em&gt;3通道的Feature Map,用Stride为4的96个Kernel 11&lt;em&gt;11 Filters,则有(11&lt;/em&gt;11&lt;em&gt;3)&lt;/em&gt;96=35K， Output Volum [((227-11)/4+1)&lt;em&gt;55&lt;/em&gt;96]&lt;/p&gt;
+&lt;p&gt;Pool的参数为0，FC的参数最多.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0609ALEX.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;2012的ALEXNET的网络架构&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0609VGG.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;2014的VGGNET网络架构和参数，主要占显存的是头几层的FeatureMap,而主要占用参数是FC层，VGG是初始化效果最佳的网络之一。&lt;br&gt;TOTAL MEMORY: 24M&lt;em&gt;4bytes ~= 93MB/image (Only forward!~&lt;/em&gt;2 for bwd)&lt;br&gt;TOTAL params: 138M parameters&lt;/p&gt;
+&lt;p&gt;之后是GoogleNET(2014),6.7% for top5 error,12X less params than ALEXNET&lt;br&gt;然后是MSRA的RESNET（2015）， 3.6% top5 error, at runtime: faster than VGGNet&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0609RES.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;特点：BN after every CONV, Xavier/2 for initialization, SGD+Momentum(0.9), Learning rate,0.1 and dived by 10 when validation error plateaus. Mini-batch size 256, Weight decay of 1e-5, No dropout&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;CNN&quot;&gt;&lt;a href=&quot;#CNN&quot; class=&quot;headerlink&quot; title=&quot;CNN&quot;&gt;&lt;/a&gt;CNN&lt;/h4&gt;&lt;p&gt;终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。&lt;/p&gt;
+&lt;p&gt;回顾一下，Mini-b
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="公开课 CNN" scheme="https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CS231n_6</title>
+    <link href="https://csrjtan.github.io/2016/06/09/CS231n-6/"/>
+    <id>https://csrjtan.github.io/2016/06/09/CS231n-6/</id>
+    <published>2016-06-09T04:34:02.000Z</published>
+    <updated>2016-06-09T06:33:55.000Z</updated>
+    
+    <content type="html">&lt;p&gt;开始新一课之前，先来把上一节的相关阅读材料的知识补充上来。&lt;/p&gt;
+&lt;h3 id=&quot;Lecture-5-Notes2-amp-3&quot;&gt;&lt;a href=&quot;#Lecture-5-Notes2-amp-3&quot; class=&quot;headerlink&quot; title=&quot;Lecture 5 Notes2&amp;amp;3&quot;&gt;&lt;/a&gt;Lecture 5 Notes2&amp;amp;3&lt;/h3&gt;&lt;h4 id=&quot;Regularization&quot;&gt;&lt;a href=&quot;#Regularization&quot; class=&quot;headerlink&quot; title=&quot;Regularization&quot;&gt;&lt;/a&gt;Regularization&lt;/h4&gt;&lt;p&gt;L1,L2的Loss function 还有Max Norm constraints: 对于系数向量w,有$w^2 &amp;lt; c$ ，C一般为3或4.&lt;br&gt;Dropout的技术：一般采用P=0.5,每个神经元的激活概率为0.5，然后每个样本对应一个新的Mask之后的子网络进行训练，最后测试的时候开启全部神经元但得到的结果需要乘上P=0.5这个系数。这种技术直观的好处是：1.迫使网络学习冗余的表达能力  2.实现了大型的学习模型，具有共享参数特性 &lt;/p&gt;
+&lt;p&gt;Practice: 使用single,global L2 Regularization(cross-validated)+ Dropout(p=0.5)&lt;/p&gt;
+&lt;h4 id=&quot;Loss-Functions&quot;&gt;&lt;a href=&quot;#Loss-Functions&quot; class=&quot;headerlink&quot; title=&quot;Loss Functions&quot;&gt;&lt;/a&gt;Loss Functions&lt;/h4&gt;&lt;p&gt;针对classification的任务，使用Softmax或者SVM Loss. 针对类别多的情况，可以使用Hierarchical Softmax. &lt;/p&gt;
+&lt;p&gt;Attribute Classification可以用Logistic regression classifier with two classes(0,1)&lt;/p&gt;
+&lt;p&gt;Regression任务，一般使用L2或者L1。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;br&gt;When faced with a regression task, first consider if it is absolutely necessary. Instead, have a strong preference to discretizing your outputs to bins and perform classification over them whenever possible.
+&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Gradient-Checks&quot;&gt;&lt;a href=&quot;#Gradient-Checks&quot; class=&quot;headerlink&quot; title=&quot;Gradient Checks&quot;&gt;&lt;/a&gt;Gradient Checks&lt;/h4&gt;&lt;p&gt;Use centered formula,求梯度用左右方向的平均。$$\frac{df(x)}{dx} = \frac{f(x+h)-f(x-h)}{2h}$$&lt;/p&gt;
+&lt;p&gt;Use relative error for the comparison, relative error&lt;br&gt;$$ \frac{ |f_a - f_n | }{max(f_a,f_n)} $$  . $f_a$ 为analytic gradient  , $f_n$ 为numberic gradient &lt;/p&gt;
+&lt;p&gt;In practice:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;relative error &amp;gt; 1e-2 usually means the gradient is probably wrong&lt;/li&gt;
+&lt;li&gt;1e-2&amp;gt;relative error&amp;gt;1e-4 should make you feel uncomfortable&lt;/li&gt;
+&lt;li&gt;1e-4&amp;gt;relative error is usually okay for objectives with kinks, but if there are no kinks(such tanh nonlinearities and softmax) , then 1e-4 is too high.&lt;/li&gt;
+&lt;li&gt;1e-7 and less you should be happy&lt;/li&gt;
+&lt;li&gt;if too small like or than 1e-10, absolute value is worrying&lt;br&gt;越深的网络，relative errors越大，如果10层，则1e-2是可以接受的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Summary: Careful with step size h, Gradcheck important, Don’t let regularization overwhelm the data, turn off the dropout/augmentations when gradient check, check only few dimensions.&lt;/p&gt;
+&lt;h3 id=&quot;Lecture-6&quot;&gt;&lt;a href=&quot;#Lecture-6&quot; class=&quot;headerlink&quot; title=&quot;Lecture 6&quot;&gt;&lt;/a&gt;Lecture 6&lt;/h3&gt;&lt;h4 id=&quot;How-to-do-parameter-Updates&quot;&gt;&lt;a href=&quot;#How-to-do-parameter-Updates&quot; class=&quot;headerlink&quot; title=&quot;How to do parameter Updates&quot;&gt;&lt;/a&gt;How to do parameter Updates&lt;/h4&gt;&lt;p&gt;1.SGD: $x+= -learning rate *dx$&lt;br&gt;2.Momentum:  allow velocity build up, velocity damped in steep due to changing sign&lt;/p&gt;
+&lt;p&gt;v = mu &lt;em&gt; v - learning_rate &lt;/em&gt; dx&lt;br&gt;x += v&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Nestreov Momentum:&lt;br&gt;$v_t = \mu v_{t-1} - \epsilon \Delta f(\theta_{t-1} + \mu V_{t-1})$&lt;br&gt;$\theta_t = \theta_{t-1} + V_t$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;4.Adagrad: Equalization the steep and shallow direction&lt;br&gt;cache + = dx &lt;em&gt;*2&lt;br&gt;x += - learn_rate &lt;/em&gt; dx / (sqrt(cache)+1e-7)&lt;/p&gt;
+&lt;p&gt;5.Adam: Great enough with bias correct&lt;br&gt;m = beta1 &lt;em&gt; m + (1-beta1)&lt;/em&gt;dx&lt;br&gt;v = beta2 &lt;em&gt; v + (1-beta2)&lt;/em&gt;(dx &lt;em&gt;*2)&lt;br&gt;x += -learn_rate &lt;/em&gt; m/(sqrt(v)+1e-7)&lt;br&gt;一般beta1和beta2可以设置为0.9和0.995&lt;/p&gt;
+&lt;h4 id=&quot;Second-Order-Optimization&quot;&gt;&lt;a href=&quot;#Second-Order-Optimization&quot; class=&quot;headerlink&quot; title=&quot;Second Order Optimization&quot;&gt;&lt;/a&gt;Second Order Optimization&lt;/h4&gt;&lt;p&gt;1.泰勒展开&lt;br&gt;2.Newton Gradient: Jacobian H is too large with O(n^3),n is million&lt;br&gt;3.Quasi-Newton O(n^2)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;L-BFGS(Limited Memory BFGS):work well in full patch,but can not transfoer well to mini-batch search.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Practice: 1.Train Multiple Indeoendent model&lt;br&gt;&lt;a href=&quot;http://2.At&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2.At&lt;/a&gt; test time average the results &lt;/p&gt;
+&lt;p&gt;Fun tricks: get small boost from average multiple initilization model, keep track running average parametre vector.&lt;/p&gt;
+&lt;h4 id=&quot;Annealing-learning-rate&quot;&gt;&lt;a href=&quot;#Annealing-learning-rate&quot; class=&quot;headerlink&quot; title=&quot;Annealing learning rate&quot;&gt;&lt;/a&gt;Annealing learning rate&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;step dcay: learning rate by half every t epochs&lt;/li&gt;
+&lt;li&gt;Exponential decay $\alpha = \alpha_0 e^{-kt}$&lt;/li&gt;
+&lt;li&gt;1/t decay: $\alpha = \alpha_0 /(1+kt)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Hyperparameter-optimzation&quot;&gt;&lt;a href=&quot;#Hyperparameter-optimzation&quot; class=&quot;headerlink&quot; title=&quot;Hyperparameter optimzation&quot;&gt;&lt;/a&gt;Hyperparameter optimzation&lt;/h4&gt;&lt;p&gt;stage search from coarse to fine&lt;br&gt;bayesian hyperparameter optimization&lt;br&gt;Model ensemble, improve the performance of NN a few percent:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Same Model, Different Initializations&lt;/li&gt;
+&lt;li&gt;Top models discovered during cross-validation&lt;/li&gt;
+&lt;li&gt;Different Checkpoints of a single model: Training is very expensive, taking the different checkpoints of single network and using those to form an ensemble.(Cheap and practice，选取一些好的epoch模型)&lt;/li&gt;
+&lt;li&gt;Running averatge of parameters during training(用训练过程模型中的均值，直观来看在碗状徘徊，均值更有利于接近底部)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h4&gt;&lt;p&gt;1.针对少量的样本，gradient check很重要，并注意正确的初始化&lt;br&gt;2.the magnitude of updates should be ~1e-3 in first-layer&lt;br&gt;3.推荐用SGD+Nesterov Momentum or Adam&lt;br&gt;4.Decay learning rate over the period of training&lt;br&gt;5.Search good hyperparameters with random search(not grid), stage coarse to fine&lt;br&gt;6.Form model ensembles for extra performance&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开始新一课之前，先来把上一节的相关阅读材料的知识补充上来。&lt;/p&gt;
+&lt;h3 id=&quot;Lecture-5-Notes2-amp-3&quot;&gt;&lt;a href=&quot;#Lecture-5-Notes2-amp-3&quot; class=&quot;headerlink&quot; title=&quot;Lecture 5 N
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="公开课 CNN" scheme="https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/"/>
+    
+  </entry>
   
   <entry>
     <title>LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》</title>
@@ -91,7 +198,7 @@
     <link href="https://csrjtan.github.io/2016/06/06/CS231n-4/"/>
     <id>https://csrjtan.github.io/2016/06/06/CS231n-4/</id>
     <published>2016-06-06T06:05:56.000Z</published>
-    <updated>2016-06-07T03:13:47.000Z</updated>
+    <updated>2016-06-09T04:46:38.000Z</updated>
     
     <content type="html">&lt;p&gt;这节课主要讲述一下BP怎么做的&lt;/p&gt;
 &lt;h3 id=&quot;BackProbagation&quot;&gt;&lt;a href=&quot;#BackProbagation&quot; class=&quot;headerlink&quot; title=&quot;BackProbagation&quot;&gt;&lt;/a&gt;BackProbagation&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606bp.png&quot; alt=&quot;简单BP&quot;&gt;&lt;br&gt;这里根据Chain Rule:$\frac{df}{dx} = \frac{df}{dq} \frac{dq}{dx}$&lt;br&gt;所以推算$\frac{df}{df} =1$, $\frac{df}{dz} = \frac{df}{df} \frac{df}{dz} = 1 &lt;em&gt; q = 3$, 同理得后面的梯度（求导中函数的x为当前neuron的值）&lt;br&gt;Add gate: Gradient Distributor&lt;br&gt;Max gate: Gradient Router(只有max的值获得梯度传递)&lt;br&gt;Mul gate: Gradient “Switcher”(Neuron交换了梯度)&lt;br&gt;BP Gradient = [Last Gradient] &lt;/em&gt; [Local Gradient]&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606bp1.png&quot; alt=&quot;Sigmoid BP&quot;&gt;&lt;br&gt;这里是用了Sigmoid作为Activation Function,可以看到梯度按照一层一层递推和直接对sigmoid function求导得到的值是一致的。$d\sigma (x)=\frac{1}{1+e^(-x)}$&lt;br&gt;$$\frac{d\sigma (x)}{dx} = \frac{e^{-x}}{(1+e^{-x})^2} = (1-\sigma (x))\sigma(x)$$&lt;/p&gt;
@@ -137,6 +244,13 @@
 &lt;p&gt;5.Track the ratio of weight updates/weight magnitudes(Ratio 0.01 is okay)&lt;/p&gt;
 &lt;h4 id=&quot;Side-Talks&quot;&gt;&lt;a href=&quot;#Side-Talks&quot; class=&quot;headerlink&quot; title=&quot;Side Talks&quot;&gt;&lt;/a&gt;Side Talks&lt;/h4&gt;&lt;p&gt;如何计算网络：神经元个数=逐层个数相加；W个数=累加（当层神经元个数*下层神经元个数），B个数=神经元个数&lt;/p&gt;
 &lt;h4 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h4&gt;&lt;p&gt;推荐一个网络走的流程：&lt;br&gt;1.Activation Functions(Use ReLU)&lt;br&gt;2.Data Preprocessing(Subtract Mean)&lt;br&gt;3.Weight Initialization(Xavier (/2) init)&lt;br&gt;4.Batch Normalization(Use)&lt;br&gt;5.Hyperparameter Optimization(random sample hyperparams, In log space when proper)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将数据预处理为[-1,1],mean 0, val 1&lt;/li&gt;
+&lt;li&gt;高斯初始化参数w, standaard deviation 为 $\sqrt{2/n}$, n为上层输入的神经元&lt;/li&gt;
+&lt;li&gt;用L2和Dropout作正则化（记得用p调整回test output）&lt;/li&gt;
+&lt;li&gt;使用Batch Normalization&lt;/li&gt;
+&lt;li&gt;参考任务使用loss function&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;疑问点：&lt;br&gt;1.初始化方差为1/(sqrt(in)/2): 详细看何大神的&lt;a href=&quot;https://arxiv.org/abs/1502.01852&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文章&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://arxiv.org/abs/1502.03167&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;BN&lt;/a&gt;和&lt;a href=&quot;http://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dropout&lt;/a&gt;都是近两年的工作，可以看看.Alex和Lecun还是CNN的先锋者，记得大师兄说，要多看Alex的文章。&lt;br&gt;3.&lt;a href=&quot;http://arxiv.org/pdf/1310.4546.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hiearachical Softmax&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;参考阅读:&lt;br&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-2/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NN notes2&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-3/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NN notes3&lt;/a&gt;&lt;/p&gt;
 </content>
@@ -338,67 +452,6 @@
     
     
       <category term="感想" scheme="https://csrjtan.github.io/tags/%E6%84%9F%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Demosaic Comparison</title>
-    <link href="https://csrjtan.github.io/2016/05/16/ColorDemosaicComparison/"/>
-    <id>https://csrjtan.github.io/2016/05/16/ColorDemosaicComparison/</id>
-    <published>2016-05-16T13:12:12.000Z</published>
-    <updated>2016-06-01T14:50:34.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;Demosaic-Comparison&quot;&gt;&lt;a href=&quot;#Demosaic-Comparison&quot; class=&quot;headerlink&quot; title=&quot;Demosaic Comparison&quot;&gt;&lt;/a&gt;Demosaic Comparison&lt;/h3&gt;&lt;p&gt;  进入公司2个月多了，对于ISP和Demosaic才刚起步，赶紧把CNN掌握好，做出点工作来吧！&lt;/p&gt;
-&lt;p&gt;总体来说， nnr和sht直接插值，锯齿感太强，Lu和NAT的方法效率不行，然后感觉AP和SA的PSNR虚高，实际效果不行。可以考虑测一下CPSNR和CIE L&lt;em&gt;a&lt;/em&gt;b或者锯齿等其它指标。&lt;br&gt;  下面比较一下AP[1], SA,LCC1和DLMMSE[2], RI[3]的结果。&lt;/p&gt;
-&lt;p&gt;[1] SA, &lt;a href=&quot;http://www.csee.wvu.edu/~xinl/demo/demosaic.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.csee.wvu.edu/~xinl/demo/demosaic.html&lt;/a&gt;&lt;br&gt;[2] DLMMSE, Zhang L, Wu X. Color demosaicking via directional linear minimum mean square-error estimation[J]. Image Processing, IEEE Transactions on, 2005, 14(12): 2167-2178.&lt;br&gt;[3] RI, &lt;a href=&quot;http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html&lt;/a&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/CDC-5281.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/CDC-5282.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/CDC-5283.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;结果总结&quot;&gt;&lt;a href=&quot;#结果总结&quot; class=&quot;headerlink&quot; title=&quot;结果总结&quot;&gt;&lt;/a&gt;结果总结&lt;/h3&gt;&lt;p&gt;总体来说，这些方法都在大部分地方插值准确，肉眼不容易区分，都没有发现有锯齿等明显不和谐区域的出现。主要是在变化剧烈的边缘和光亮变化强的区域出现Artifacts。时间上以SA、AP、LCC1、RI占优，效果上以DLMMSE和RI最优。&lt;br&gt;从实现来说LCC1是简单高效的，AP做了一个映射也是可以的，DLMMSE主要做了PCA的分解，SA是有迭代的求解，RI有待进一步学习。&lt;/p&gt;
-&lt;h3 id=&quot;ImageJ&quot;&gt;&lt;a href=&quot;#ImageJ&quot; class=&quot;headerlink&quot; title=&quot;ImageJ&quot;&gt;&lt;/a&gt;ImageJ&lt;/h3&gt;&lt;p&gt;看了不少的论文和代码了，及时地来总结一下吧，马上又要开展对于DL的学习了。先来ImageJ的吧？把JAva各个类和用例都看了，然而并没有派上用场，所以应该吸取教训，先学足够的，马上就用。不然看完也没有机会用，看完也用不上，看完也还是不会用，对于CODING这样的事情来说就是实用至上，不断使用行动，付出并成为一种习惯，从而变成一种轻松的反射或者习惯，最后培养成为爱好。ImageJ主要是一个科学图像的小插件，由JAVA框架开发，可以不依赖系统，自带JRE。一般分为MARCRO,SCRIPTS等，做些命令脚本批量处理之类的。系统自带功能包括图像基本操作、处理和分析，强大之处在于用户可以开发插件Plugin快速量身定做图像处理工具。&lt;/p&gt;
-&lt;p&gt;Plugin分为普通plugin，图片filter plugin以及堆 stack plugin。先setup了，获得指定图片类型后，然后用run()方法对读入的图片进行处理。总体还是看一下一本图像处理ImageJ实战和ImageJ手册吧，要用就回头去看一下。现在先放一放ImageJ吧，主力还是在Matlab和MatConv,高层的调用可以帮助开发者在思维和方法层面上更专注，不然用c和c++这样的还是需要花费力气在数据结构和指针，语言组织上，确实吃力不讨好的事情。&lt;/p&gt;
-&lt;h3 id=&quot;ISP&quot;&gt;&lt;a href=&quot;#ISP&quot; class=&quot;headerlink&quot; title=&quot;ISP&quot;&gt;&lt;/a&gt;ISP&lt;/h3&gt;&lt;p&gt;   再者说一下关于ISP的流程吧，进来后发现组里是做相机的，包括从硬到软的各个层面，硬件-&amp;gt;FPGA-&amp;gt;嵌入式-&amp;gt;图像算法-&amp;gt;IQ等等。这里说一下相机出图的ISP流程，从RAW到用户看到的JPEG： RAW-&amp;gt;BLC-&amp;gt;LSC-&amp;gt;AWB-&amp;gt;DEMOSAIC-&amp;gt;DENOISE-&amp;gt;CC-&amp;gt;GAMMA-&amp;gt;JPEG，里面每个算法和相机原理都是进来才学习了解到的。希望对以后有用。&lt;/p&gt;
-&lt;h3 id=&quot;Demosaic&quot;&gt;&lt;a href=&quot;#Demosaic&quot; class=&quot;headerlink&quot; title=&quot;Demosaic&quot;&gt;&lt;/a&gt;Demosaic&lt;/h3&gt;&lt;p&gt;   然后回到今天要记录的重点，Demosaic的papers和学习总结：首先看了Comparison和Survey这两篇关于去马赛克发展的重要文章，科普了不少要点：比如说如何用空间相关信息和谱间相关信息来恢复Downsample后的信息，讲述了主要包括空域和谱域的方法，color ratio and color difference的基本假设。空域上利用插值，bilinear以及梯度适应的adaptive gradient interpolation，还有转到其他频域如傅里叶和小波上面去做滤波的，根据不同频段的相关性来进行近似恢复。这里着重说一下影响力比较高的文章，首先是Alternating Projection：将谱间的强相关性信息映射到一个POCS(Project onto convex set）里面，然后求解convex问题得到一个较优的像素解来作为插值。然后是Succesive Approximate是将谱间差值的difference变成一个由局部迭代成局部最优的过程，先从简单的插值后，然后迭代更新color difference从而到达局部较优的位置。SSD是利用增强自相关性，还没仔细了解。还有利用非局部相似块的方法，如定义Non-local Similarity，如果它表达的相关性（梯度小）比当前块强，则用该块作为当前块的插值结果。然后我老板的两个比较突破性的论文：DLMMSE提出了去马赛克噪声，然后引入去噪模型，转换成求解最优color difference的方法，里面有些数学证明还待细看，该工作直接把PSNR提高了5db。后来的LDI_NAT也是经过LDI的梯度插值后，然后使用PCA的方法分解构造出sparse模型，从而去掉artifacts. 再后来的方法就包括一些sparse模型，dictionary learning，tv等，还有Tokyo Insitute 的RI方法，利用残差的方法，快速有效进行去马赛克。&lt;/p&gt;
-&lt;h3 id=&quot;CNN&quot;&gt;&lt;a href=&quot;#CNN&quot; class=&quot;headerlink&quot; title=&quot;CNN&quot;&gt;&lt;/a&gt;CNN&lt;/h3&gt;&lt;p&gt;   后面用凯爷的网络跑了一下CNN的结果，目测要比Tokyo Institute的RI要好，这里用的是5层卷积神经网络，使用柯德IQA的库中500多张图片作为TrainingSets,Kodak的24张图作为TestSets，使用的是MatconvNet的框架。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Demosaic-Comparison&quot;&gt;&lt;a href=&quot;#Demosaic-Comparison&quot; class=&quot;headerlink&quot; title=&quot;Demosaic Comparison&quot;&gt;&lt;/a&gt;Demosaic Comparison&lt;/h3&gt;&lt;p&gt;  进入公司2个月多了，对于ISP和Demosaic才刚起步，赶紧把CNN掌握好，做出点工作来吧！&lt;/p&gt;
-&lt;p&gt;总体来说， nnr和sht直接插值，锯齿感太强，Lu和NAT的方法效率不行，然后感觉AP和SA的PSNR虚高，实际效果不行。可以考虑测一下CPSNR和CIE L&lt;em&gt;a&lt;/em&gt;b或者锯齿等其它指标。&lt;br&gt;  下面比较一下AP[1], SA,LCC1和DLMMSE[2], RI[3]的结果。&lt;/p&gt;
-&lt;p&gt;[1] SA, &lt;a href=&quot;http://www.csee.wvu.edu/~xinl/demo/demosaic.html&quot;&gt;http://www.csee.wvu.edu/~xinl/demo/demosaic.html&lt;/a&gt;&lt;br&gt;[2] DLMMSE, Zhang L, Wu X. Color demosaicking via directional linear minimum mean square-error estimation[J]. Image Processing, IEEE Transactions on, 2005, 14(12): 2167-2178.&lt;br&gt;[3] RI, &lt;a href=&quot;http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html&quot;&gt;http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
-    
-    
-      <category term="paper Demosaic" scheme="https://csrjtan.github.io/tags/paper-Demosaic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ted《光荣与梦想》</title>
-    <link href="https://csrjtan.github.io/2016/04/21/ted-glories-and-dream/"/>
-    <id>https://csrjtan.github.io/2016/04/21/ted-glories-and-dream/</id>
-    <published>2016-04-21T08:48:13.000Z</published>
-    <updated>2016-06-01T14:52:06.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;特奥会冠军讲解智障人士生活&quot;&gt;&lt;a href=&quot;#特奥会冠军讲解智障人士生活&quot; class=&quot;headerlink&quot; title=&quot;特奥会冠军讲解智障人士生活&quot;&gt;&lt;/a&gt;特奥会冠军讲解智障人士生活&lt;/h3&gt;&lt;p&gt;首先看完一个感动的TED TALK，关于社会对智障人士的看法，一位特奥会的冠军以身作则提及他们的生活，受歧视，然特奥会提供了一个平台，展示属于他们生命的价值，他们的梦想和他们的尊严。相比于我们，诚然他们的舞台太小，但我们应该看到他们所作的努力。对于自己，四肢健全，家庭幸福安康，应该有更多的理由去追逐幸福，有时候不要一直想着缺少的，应该惦记自己所拥有的，记得感恩。并去勇敢自信的追逐自己所想所求，不要害怕失败，不要害怕别人的目光，勇敢的be yourself.虽然那可能不容易，但人生只有一次，时间是宝贵的&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;，追逐自己所看重的东西吧。成长在于做减法，在于专注，努力。奉献，寻找自己的价值，承担应有的价值。看到了不丹的视频，信仰让他们满足，与自然的好好相处让他们轻松。自己看得多可能欲望也多，但有时候压抑一下自己的欲望，追逐真正渴求的，也是一种成熟，我不知道是否经历过才算真的看透，但有些事情觉得经历了也不一定幸福，所以还是应该保有自己，一直是不断地思考迷茫，殊不知其实自己静不下来，无法专注于自己的学业。我认为应当认真一丝不苟地完成自己的任务，才是最大的意义，多去看有用实用的书，做有价值的事情，珍惜自己有的机会。完成好课程，做好实习的任务，要有一个研究生的觉悟。&lt;/p&gt;
-&lt;p&gt;另外，追逐幸福的要素：&lt;br&gt;1.找到喜欢的工作，高收入，受到社会的尊重&lt;br&gt;2.减少上下班耗费的时间，有充足的社交时间&lt;br&gt;3.对国家和社会有政治热情，参与度。&lt;/p&gt;
-&lt;h3 id=&quot;笔记本里的诗&quot;&gt;&lt;a href=&quot;#笔记本里的诗&quot; class=&quot;headerlink&quot; title=&quot;笔记本里的诗&quot;&gt;&lt;/a&gt;笔记本里的诗&lt;/h3&gt;&lt;p&gt;不论曾经的彼此多么幼稚，多么可笑&lt;br&gt;终有一天我们都变得成熟；&lt;br&gt;也终有一天，我们都会老去；&lt;br&gt;可是，却没有人可以永远不长大，&lt;br&gt;却没有人可以永远年轻，&lt;br&gt;成熟，有时候会让人心痛、很无奈。&lt;br&gt;那个时候才会懂得–&lt;br&gt;爱情本不是件该执着的事情。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/poem5291.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;特奥会冠军讲解智障人士生活&quot;&gt;&lt;a href=&quot;#特奥会冠军讲解智障人士生活&quot; class=&quot;headerlink&quot; title=&quot;特奥会冠军讲解智障人士生活&quot;&gt;&lt;/a&gt;特奥会冠军讲解智障人士生活&lt;/h3&gt;&lt;p&gt;首先看完一个感动的TED TALK，关于社会对智障人士的看法，一位特奥会的冠军以身作则提及他们的生活，受歧视，然特奥会提供了一个平台，展示属于他们生命的价值，他们的梦想和他们的尊严。相比于我们，诚然他们的舞台太小，但我们应该看到他们所作的努力。对于自己，四肢健全，家庭幸福安康，应该有更多的理由去追逐幸福，有时候不要一直想着缺少的，应该惦记自己所拥有的，记得感恩。并去勇敢自信的追逐自己所想所求，不要害怕失败，不要害怕别人的目光，勇敢的be yourself.虽然那可能不容易，但人生只有一次，时间是宝贵的
-    
-    </summary>
-    
-      <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
-    
-    
-      <category term="Ted" scheme="https://csrjtan.github.io/tags/Ted/"/>
     
   </entry>
   

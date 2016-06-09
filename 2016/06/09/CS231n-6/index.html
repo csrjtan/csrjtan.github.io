@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="公开课 CNN," />
 
 
 
@@ -104,22 +104,19 @@
 
 
 
-<meta name="description" content="这里记录一下书单，包括在读的、想读的、他人推荐读的。后面可以写一下正在进展的项目和工作，最后记录已读的。
-在读：《情人》、《时间简史》、《MATLAB从入门到精通》
-想读：面试微软之前的十本书Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）Computer System: A Programmer’s Per">
+<meta name="description" content="开始新一课之前，先来把上一节的相关阅读材料的知识补充上来。
+Lecture 5 Notes2&amp;amp;3RegularizationL1,L2的Loss function 还有Max Norm constraints: 对于系数向量w,有$w^2 &amp;lt; c$ ，C一般为3或4.Dropout的技术：一般采用P=0.5,每个神经元的激活概率为0.5，然后每个样本对应一个新的Mask之后的子网络进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="书单">
-<meta property="og:url" content="https://csrjtan.github.io/2016/06/01/books/index.html">
+<meta property="og:title" content="CS231n_6">
+<meta property="og:url" content="https://csrjtan.github.io/2016/06/09/CS231n-6/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="这里记录一下书单，包括在读的、想读的、他人推荐读的。后面可以写一下正在进展的项目和工作，最后记录已读的。
-在读：《情人》、《时间简史》、《MATLAB从入门到精通》
-想读：面试微软之前的十本书Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）Computer System: A Programmer’s Per">
-<meta property="og:updated_time" content="2016-06-02T15:12:13.000Z">
+<meta property="og:description" content="开始新一课之前，先来把上一节的相关阅读材料的知识补充上来。
+Lecture 5 Notes2&amp;amp;3RegularizationL1,L2的Loss function 还有Max Norm constraints: 对于系数向量w,有$w^2 &amp;lt; c$ ，C一般为3或4.Dropout的技术：一般采用P=0.5,每个神经元的激活概率为0.5，然后每个样本对应一个新的Mask之后的子网络进">
+<meta property="og:updated_time" content="2016-06-09T06:33:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="书单">
-<meta name="twitter:description" content="这里记录一下书单，包括在读的、想读的、他人推荐读的。后面可以写一下正在进展的项目和工作，最后记录已读的。
-在读：《情人》、《时间简史》、《MATLAB从入门到精通》
-想读：面试微软之前的十本书Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）Computer System: A Programmer’s Per">
+<meta name="twitter:title" content="CS231n_6">
+<meta name="twitter:description" content="开始新一课之前，先来把上一节的相关阅读材料的知识补充上来。
+Lecture 5 Notes2&amp;amp;3RegularizationL1,L2的Loss function 还有Max Norm constraints: 对于系数向量w,有$w^2 &amp;lt; c$ ，C一般为3或4.Dropout的技术：一般采用P=0.5,每个神经元的激活概率为0.5，然后每个样本对应一个新的Mask之后的子网络进">
 
 
 
@@ -137,7 +134,7 @@
   };
 </script>
 
-  <title> 书单 | CSRJTAN </title>
+  <title> CS231n_6 | CSRJTAN </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -297,7 +294,7 @@
             
             
               
-                书单
+                CS231n_6
               
             
           </h1>
@@ -309,8 +306,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T19:28:07+08:00" content="2016-06-01">
-              2016-06-01
+            <time itemprop="dateCreated" datetime="2016-06-09T12:34:02+08:00" content="2016-06-09">
+              2016-06-09
             </time>
           </span>
 
@@ -323,8 +320,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
                   </a>
                 </span>
 
@@ -339,8 +336,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/01/books/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/books/" itemprop="commentsCount"></span>
+                <a href="/2016/06/09/CS231n-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/CS231n-6/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -368,14 +365,51 @@
       
 
       
-        <p>这里记录一下书单，包括在读的、想读的、他人推荐读的。后面可以写一下正在进展的项目和工作，最后记录已读的。</p>
-<h2 id="在读："><a href="#在读：" class="headerlink" title="在读："></a>在读：</h2><p>《情人》、《时间简史》、《MATLAB从入门到精通》</p>
-<h2 id="想读："><a href="#想读：" class="headerlink" title="想读："></a>想读：</h2><h3 id="面试微软之前的十本书"><a href="#面试微软之前的十本书" class="headerlink" title="面试微软之前的十本书"></a>面试微软之前的十本书</h3><p>Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）<br>Computer System: A Programmer’s Perspective （《深入理解计算机系统》） / Windows via C/C++ （《Windows核心编程》 / 《程序员的自我修养》<br>Code Complete 2（《代码大全》）/ The Pragmatic Programmer （《程序员修炼之道》，我也把这本书称为《代码小全》）<br>Programming Pearls （《编程珠玑》） / Algorithms / Algorithm Design / 《编程之美》<br>The C Programming Language<br>The C++ Programming Language / Programming: Principles and Practice Using C++ / Accelerated C++<br>The Structure and Interpretation of Computer Programs （《计算机程序的构造和解释》）<br>Clean Code / Implementation Patterns<br>Design Patterns （《设计模式》） / Agile Software Development, Principles, Patterns, and Practices<br>Refactoring （《重构》）</p>
-<h3 id="云风推荐"><a href="#云风推荐" class="headerlink" title="云风推荐"></a>云风推荐</h3><p>C++编程思想<br>Effective C++<br>深度探索C++对象模型<br>C++语言的设计和演化<br>C专家编程<br>C陷阱与缺陷<br>C语言接口与实现<br>Lua程序设计<br>Linkers and Loaders<br>COM本质论<br>Windows核心编程<br>深入解析Windows操作系统<br>程序员修炼之道<br>代码大全<br>UNIX编程艺术<br>设计模式<br>代码优化：有效使用内存<br>深入理解计算机系统<br>深入理解LINUX内核<br>TCP/IP 详解</p>
-<h3 id="冯大辉"><a href="#冯大辉" class="headerlink" title="冯大辉"></a>冯大辉</h3><p>软件随想录<br>黑客与画家<br>重来<br>UNIX编程艺术<br>编程人生</p>
-<h3 id="豆瓣CTO"><a href="#豆瓣CTO" class="headerlink" title="豆瓣CTO"></a>豆瓣CTO</h3><p>Code Complete 2<br>The Mythical Man-Month （《人月神话》）<br>Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）<br>TAOCP （不解释）<br>The Pragmatic Programmer （《程序员修炼之道》）<br>Design Patterns （《设计模式》）<br>The Structure and Interpretation of Computer Programs （《计算机程序的构造和解释》）<br>Refactoring （《重构》）<br>The C Programming Language<br>Introduction to Algorithms （《算法导论》）</p>
-<h2 id="已读："><a href="#已读：" class="headerlink" title="已读："></a>已读：</h2><h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><p>《统计学习方法》、《这就是搜索引擎》、《浪潮之巅》、《数学之美》</p>
-<h3 id="非技术"><a href="#非技术" class="headerlink" title="非技术"></a>非技术</h3><p>《苏菲的世界》、《如何阅读一本书》、《黑客与画家》、《解忧杂货铺》、《当我在跑步，我在谈论什么》、《白夜行》、《一个人的朝圣》、《人性的弱点》、《从0到1》、《35岁前要做的33件事》、《站在两个世界的边缘》、《极简欧洲史》、《未来在现实的第几层》、《再穷也要去旅游》、《活着》、《小王子》、《自控力》</p>
+        <p>开始新一课之前，先来把上一节的相关阅读材料的知识补充上来。</p>
+<h3 id="Lecture-5-Notes2-amp-3"><a href="#Lecture-5-Notes2-amp-3" class="headerlink" title="Lecture 5 Notes2&amp;3"></a>Lecture 5 Notes2&amp;3</h3><h4 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h4><p>L1,L2的Loss function 还有Max Norm constraints: 对于系数向量w,有$w^2 &lt; c$ ，C一般为3或4.<br>Dropout的技术：一般采用P=0.5,每个神经元的激活概率为0.5，然后每个样本对应一个新的Mask之后的子网络进行训练，最后测试的时候开启全部神经元但得到的结果需要乘上P=0.5这个系数。这种技术直观的好处是：1.迫使网络学习冗余的表达能力  2.实现了大型的学习模型，具有共享参数特性 </p>
+<p>Practice: 使用single,global L2 Regularization(cross-validated)+ Dropout(p=0.5)</p>
+<h4 id="Loss-Functions"><a href="#Loss-Functions" class="headerlink" title="Loss Functions"></a>Loss Functions</h4><p>针对classification的任务，使用Softmax或者SVM Loss. 针对类别多的情况，可以使用Hierarchical Softmax. </p>
+<p>Attribute Classification可以用Logistic regression classifier with two classes(0,1)</p>
+<p>Regression任务，一般使用L2或者L1。</p>
+<p><strong><br>When faced with a regression task, first consider if it is absolutely necessary. Instead, have a strong preference to discretizing your outputs to bins and perform classification over them whenever possible.
+</strong></p>
+<h4 id="Gradient-Checks"><a href="#Gradient-Checks" class="headerlink" title="Gradient Checks"></a>Gradient Checks</h4><p>Use centered formula,求梯度用左右方向的平均。$$\frac{df(x)}{dx} = \frac{f(x+h)-f(x-h)}{2h}$$</p>
+<p>Use relative error for the comparison, relative error<br>$$ \frac{ |f_a - f_n | }{max(f_a,f_n)} $$  . $f_a$ 为analytic gradient  , $f_n$ 为numberic gradient </p>
+<p>In practice:</p>
+<ul>
+<li>relative error &gt; 1e-2 usually means the gradient is probably wrong</li>
+<li>1e-2&gt;relative error&gt;1e-4 should make you feel uncomfortable</li>
+<li>1e-4&gt;relative error is usually okay for objectives with kinks, but if there are no kinks(such tanh nonlinearities and softmax) , then 1e-4 is too high.</li>
+<li>1e-7 and less you should be happy</li>
+<li>if too small like or than 1e-10, absolute value is worrying<br>越深的网络，relative errors越大，如果10层，则1e-2是可以接受的。</li>
+</ul>
+<p>Summary: Careful with step size h, Gradcheck important, Don’t let regularization overwhelm the data, turn off the dropout/augmentations when gradient check, check only few dimensions.</p>
+<h3 id="Lecture-6"><a href="#Lecture-6" class="headerlink" title="Lecture 6"></a>Lecture 6</h3><h4 id="How-to-do-parameter-Updates"><a href="#How-to-do-parameter-Updates" class="headerlink" title="How to do parameter Updates"></a>How to do parameter Updates</h4><p>1.SGD: $x+= -learning rate *dx$<br>2.Momentum:  allow velocity build up, velocity damped in steep due to changing sign</p>
+<p>v = mu <em> v - learning_rate </em> dx<br>x += v</p>
+<ol>
+<li>Nestreov Momentum:<br>$v_t = \mu v_{t-1} - \epsilon \Delta f(\theta_{t-1} + \mu V_{t-1})$<br>$\theta_t = \theta_{t-1} + V_t$</li>
+</ol>
+<p>4.Adagrad: Equalization the steep and shallow direction<br>cache + = dx <em>*2<br>x += - learn_rate </em> dx / (sqrt(cache)+1e-7)</p>
+<p>5.Adam: Great enough with bias correct<br>m = beta1 <em> m + (1-beta1)</em>dx<br>v = beta2 <em> v + (1-beta2)</em>(dx <em>*2)<br>x += -learn_rate </em> m/(sqrt(v)+1e-7)<br>一般beta1和beta2可以设置为0.9和0.995</p>
+<h4 id="Second-Order-Optimization"><a href="#Second-Order-Optimization" class="headerlink" title="Second Order Optimization"></a>Second Order Optimization</h4><p>1.泰勒展开<br>2.Newton Gradient: Jacobian H is too large with O(n^3),n is million<br>3.Quasi-Newton O(n^2)</p>
+<ol>
+<li>L-BFGS(Limited Memory BFGS):work well in full patch,but can not transfoer well to mini-batch search.</li>
+</ol>
+<p>Practice: 1.Train Multiple Indeoendent model<br><a href="http://2.At" class="test test-url" target="_blank" rel="noopener noreferrer">2.At</a> test time average the results </p>
+<p>Fun tricks: get small boost from average multiple initilization model, keep track running average parametre vector.</p>
+<h4 id="Annealing-learning-rate"><a href="#Annealing-learning-rate" class="headerlink" title="Annealing learning rate"></a>Annealing learning rate</h4><ul>
+<li>step dcay: learning rate by half every t epochs</li>
+<li>Exponential decay $\alpha = \alpha_0 e^{-kt}$</li>
+<li>1/t decay: $\alpha = \alpha_0 /(1+kt)$</li>
+</ul>
+<h4 id="Hyperparameter-optimzation"><a href="#Hyperparameter-optimzation" class="headerlink" title="Hyperparameter optimzation"></a>Hyperparameter optimzation</h4><p>stage search from coarse to fine<br>bayesian hyperparameter optimization<br>Model ensemble, improve the performance of NN a few percent:</p>
+<ol>
+<li>Same Model, Different Initializations</li>
+<li>Top models discovered during cross-validation</li>
+<li>Different Checkpoints of a single model: Training is very expensive, taking the different checkpoints of single network and using those to form an ensemble.(Cheap and practice，选取一些好的epoch模型)</li>
+<li>Running averatge of parameters during training(用训练过程模型中的均值，直观来看在碗状徘徊，均值更有利于接近底部)</li>
+</ol>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>1.针对少量的样本，gradient check很重要，并注意正确的初始化<br>2.the magnitude of updates should be ~1e-3 in first-layer<br>3.推荐用SGD+Nesterov Momentum or Adam<br>4.Decay learning rate over the period of training<br>5.Search good hyperparameters with random search(not grid), stage coarse to fine<br>6.Form model ensembles for extra performance</p>
 
       
     </div>
@@ -411,21 +445,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/公开课-CNN/" rel="tag">#公开课 CNN</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/30/潮汕之旅/" rel="next" title="潮汕之旅&拼图合照">
-                <i class="fa fa-chevron-left"></i> 潮汕之旅&拼图合照
+              <a href="/2016/06/07/paper-reading-20160607/" rel="next" title="LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》">
+                <i class="fa fa-chevron-left"></i> LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/03/CS231n-1/" rel="prev" title="CS231n_1 & 2">
-                CS231n_1 & 2 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/09/CS231n-7/" rel="prev" title="CS231n-7">
+                CS231n-7 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -452,8 +492,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/01/books/"
-           data-title="书单" data-url="https://csrjtan.github.io/2016/06/01/books/">
+      <div class="ds-thread" data-thread-key="2016/06/09/CS231n-6/"
+           data-title="CS231n_6" data-url="https://csrjtan.github.io/2016/06/09/CS231n-6/">
       </div>
     
   </div>
@@ -565,7 +605,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在读："><span class="nav-number">1.</span> <span class="nav-text">在读：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#想读："><span class="nav-number">2.</span> <span class="nav-text">想读：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面试微软之前的十本书"><span class="nav-number">2.1.</span> <span class="nav-text">面试微软之前的十本书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#云风推荐"><span class="nav-number">2.2.</span> <span class="nav-text">云风推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冯大辉"><span class="nav-number">2.3.</span> <span class="nav-text">冯大辉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#豆瓣CTO"><span class="nav-number">2.4.</span> <span class="nav-text">豆瓣CTO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#已读："><span class="nav-number">3.</span> <span class="nav-text">已读：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#技术"><span class="nav-number">3.1.</span> <span class="nav-text">技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非技术"><span class="nav-number">3.2.</span> <span class="nav-text">非技术</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-5-Notes2-amp-3"><span class="nav-number">1.</span> <span class="nav-text">Lecture 5 Notes2&3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularization"><span class="nav-number">1.1.</span> <span class="nav-text">Regularization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Loss-Functions"><span class="nav-number">1.2.</span> <span class="nav-text">Loss Functions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Checks"><span class="nav-number">1.3.</span> <span class="nav-text">Gradient Checks</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-6"><span class="nav-number">2.</span> <span class="nav-text">Lecture 6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-do-parameter-Updates"><span class="nav-number">2.1.</span> <span class="nav-text">How to do parameter Updates</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Second-Order-Optimization"><span class="nav-number">2.2.</span> <span class="nav-text">Second Order Optimization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Annealing-learning-rate"><span class="nav-number">2.3.</span> <span class="nav-text">Annealing learning rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameter-optimzation"><span class="nav-number">2.4.</span> <span class="nav-text">Hyperparameter optimzation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary"><span class="nav-number">2.5.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

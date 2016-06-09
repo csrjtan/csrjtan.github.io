@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="公开课 CNN," />
 
 
 
@@ -104,16 +104,36 @@
 
 
 
-<meta name="description" content="blog csrjtan tanrunj">
-<meta property="og:type" content="website">
-<meta property="og:title" content="All tags">
-<meta property="og:url" content="https://csrjtan.github.io/tags/index.html">
+<meta name="description" content="CNN终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。
+回顾一下，Mini-batch SGDLoop: 1. Sample a batch of data
+
+Forward prop it through the graph, get loss
+Backprop to calculate the gradients
+Update the parame">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS231n-7">
+<meta property="og:url" content="https://csrjtan.github.io/2016/06/09/CS231n-7/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="blog csrjtan tanrunj">
-<meta property="og:updated_time" content="2015-10-28T14:20:56.000Z">
+<meta property="og:description" content="CNN终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。
+回顾一下，Mini-batch SGDLoop: 1. Sample a batch of data
+
+Forward prop it through the graph, get loss
+Backprop to calculate the gradients
+Update the parame">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0609CNN.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0609ALEX.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0609VGG.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0609RES.png">
+<meta property="og:updated_time" content="2016-06-09T13:33:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="All tags">
-<meta name="twitter:description" content="blog csrjtan tanrunj">
+<meta name="twitter:title" content="CS231n-7">
+<meta name="twitter:description" content="CNN终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。
+回顾一下，Mini-batch SGDLoop: 1. Sample a batch of data
+
+Forward prop it through the graph, get loss
+Backprop to calculate the gradients
+Update the parame">
+<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0609CNN.png">
 
 
 
@@ -131,13 +151,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    标签 | CSRJTAN
-  
-</title>
+  <title> CS231n-7 | CSRJTAN </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -158,7 +172,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,16 +292,180 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 16 个标签
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CS231n-7
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-09T14:33:36+08:00" content="2016-06-09">
+              2016-06-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/09/CS231n-7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/CS231n-7/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
         </div>
-        <div class="tag-cloud-tags">
-          <a href="/tags/Latex/" style="font-size: 12px; color: #ccc">Latex</a> <a href="/tags/Paper-Demosaick/" style="font-size: 12px; color: #ccc">Paper Demosaick</a> <a href="/tags/Ted/" style="font-size: 12px; color: #ccc">Ted</a> <a href="/tags/leetcode/" style="font-size: 21px; color: #6f6f6f">leetcode</a> <a href="/tags/paper/" style="font-size: 30px; color: #111">paper</a> <a href="/tags/paper-Demosaic/" style="font-size: 12px; color: #ccc">paper Demosaic</a> <a href="/tags/paper-demosaick/" style="font-size: 12px; color: #ccc">paper demosaick</a> <a href="/tags/公开课/" style="font-size: 12px; color: #ccc">公开课</a> <a href="/tags/公开课-CNN/" style="font-size: 16.5px; color: #9d9d9d">公开课 CNN</a> <a href="/tags/回忆/" style="font-size: 12px; color: #ccc">回忆</a> <a href="/tags/总结/" style="font-size: 21px; color: #6f6f6f">总结</a> <a href="/tags/感想/" style="font-size: 12px; color: #ccc">感想</a> <a href="/tags/旅游-台湾/" style="font-size: 12px; color: #ccc">旅游 台湾</a> <a href="/tags/旅游-美食/" style="font-size: 12px; color: #ccc">旅游 美食</a> <a href="/tags/生活/" style="font-size: 12px; color: #ccc">生活</a> <a href="/tags/读书笔记/" style="font-size: 25.5px; color: #404040">读书笔记</a>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h4><p>终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。</p>
+<p>回顾一下，Mini-batch SGD<br>Loop: 1. <strong>Sample</strong> a batch of data</p>
+<ol>
+<li><strong>Forward</strong> prop it through the graph, get loss</li>
+<li><strong>Backprop</strong> to calculate the gradients</li>
+<li><strong>Update</strong> the parameters using the gradient</li>
+</ol>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609CNN.png" alt=""><br>卷积操作过程的参数计算公式图，趋向于用数量更多的小Filter,更深的网络。<br>ConV的卷积核深度总是和输入的立方Feature Map的深度一致，而Kernel的个数就是新的FeatureMap的Depth.</p>
+<p>一般来说：Max Pool with 2*2 filters and stride 2</p>
+<p>FC： Containes Neurons connect to the entire input volume</p>
+<p>ConV的参数取决于Filter,例如227<em>227</em>3通道的Feature Map,用Stride为4的96个Kernel 11<em>11 Filters,则有(11</em>11<em>3)</em>96=35K， Output Volum [((227-11)/4+1)<em>55</em>96]</p>
+<p>Pool的参数为0，FC的参数最多.</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609ALEX.png" alt=""><br>2012的ALEXNET的网络架构</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609VGG.png" alt=""><br>2014的VGGNET网络架构和参数，主要占显存的是头几层的FeatureMap,而主要占用参数是FC层，VGG是初始化效果最佳的网络之一。<br>TOTAL MEMORY: 24M<em>4bytes ~= 93MB/image (Only forward!~</em>2 for bwd)<br>TOTAL params: 138M parameters</p>
+<p>之后是GoogleNET(2014),6.7% for top5 error,12X less params than ALEXNET<br>然后是MSRA的RESNET（2015）， 3.6% top5 error, at runtime: faster than VGGNet</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609RES.png" alt=""><br>特点：BN after every CONV, Xavier/2 for initialization, SGD+Momentum(0.9), Learning rate,0.1 and dived by 10 when validation error plateaus. Mini-batch size 256, Weight decay of 1e-5, No dropout</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持分享，支持原创</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xl4js.com1.z0.glb.clouddn.com/wechatPayment.jpg" alt="CsrjTan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/公开课-CNN/" rel="tag">#公开课 CNN</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/09/CS231n-6/" rel="next" title="CS231n_6">
+                <i class="fa fa-chevron-left"></i> CS231n_6
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -298,8 +476,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="tags/index.html"
-           data-title="All tags" data-url="https://csrjtan.github.io/tags/index.html">
+      <div class="ds-thread" data-thread-key="2016/06/09/CS231n-7/"
+           data-title="CS231n-7" data-url="https://csrjtan.github.io/2016/06/09/CS231n-7/">
       </div>
     
   </div>
@@ -323,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xl4js.com1.z0.glb.clouddn.com/avatar.jpg"
@@ -395,6 +582,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CNN"><span class="nav-number">1.</span> <span class="nav-text">CNN</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -507,6 +705,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

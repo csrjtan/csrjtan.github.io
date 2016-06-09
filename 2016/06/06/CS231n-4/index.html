@@ -115,7 +115,7 @@ BackProbagation这里根据Chain Rule:$\frac{df}{dx} = \frac{df}{dq} \frac{dq}{d
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0606bp.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0606bp1.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0606BN.png">
-<meta property="og:updated_time" content="2016-06-07T03:13:47.000Z">
+<meta property="og:updated_time" content="2016-06-09T04:46:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS231n-4 & 5">
 <meta name="twitter:description" content="这节课主要讲述一下BP怎么做的
@@ -413,6 +413,13 @@ BackProbagation这里根据Chain Rule:$\frac{df}{dx} = \frac{df}{dq} \frac{dq}{d
 <p>5.Track the ratio of weight updates/weight magnitudes(Ratio 0.01 is okay)</p>
 <h4 id="Side-Talks"><a href="#Side-Talks" class="headerlink" title="Side Talks"></a>Side Talks</h4><p>如何计算网络：神经元个数=逐层个数相加；W个数=累加（当层神经元个数*下层神经元个数），B个数=神经元个数</p>
 <h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>推荐一个网络走的流程：<br>1.Activation Functions(Use ReLU)<br>2.Data Preprocessing(Subtract Mean)<br>3.Weight Initialization(Xavier (/2) init)<br>4.Batch Normalization(Use)<br>5.Hyperparameter Optimization(random sample hyperparams, In log space when proper)</p>
+<ul>
+<li>将数据预处理为[-1,1],mean 0, val 1</li>
+<li>高斯初始化参数w, standaard deviation 为 $\sqrt{2/n}$, n为上层输入的神经元</li>
+<li>用L2和Dropout作正则化（记得用p调整回test output）</li>
+<li>使用Batch Normalization</li>
+<li>参考任务使用loss function</li>
+</ul>
 <p>疑问点：<br>1.初始化方差为1/(sqrt(in)/2): 详细看何大神的<a href="https://arxiv.org/abs/1502.01852" target="_blank" rel="external">文章</a><br>2.<a href="http://arxiv.org/abs/1502.03167" target="_blank" rel="external">BN</a>和<a href="http://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf" target="_blank" rel="external">Dropout</a>都是近两年的工作，可以看看.Alex和Lecun还是CNN的先锋者，记得大师兄说，要多看Alex的文章。<br>3.<a href="http://arxiv.org/pdf/1310.4546.pdf" target="_blank" rel="external">Hiearachical Softmax</a></p>
 <p>参考阅读:<br><a href="http://cs231n.github.io/neural-networks-2/" target="_blank" rel="external">NN notes2</a><br><a href="http://cs231n.github.io/neural-networks-3/" target="_blank" rel="external">NN notes3</a></p>
 
@@ -543,7 +550,7 @@ BackProbagation这里根据Chain Rule:$\frac{df}{dx} = \frac{df}{dq} \frac{dq}{d
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
