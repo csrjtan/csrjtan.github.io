@@ -1,0 +1,789 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CNN 公开课," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CSRJTAN" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Lec8Spatial Localization and Detection
+TasksClassification, Classificatin+Localization, Object Detection, Instance Segmentation.
+Localization, I:Image O:Box in the image(x,y,w,h) E:Intersection over U">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS231n_8_9">
+<meta property="og:url" content="https://csrjtan.github.io/2016/06/21/CS231n-8/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="Lec8Spatial Localization and Detection
+TasksClassification, Classificatin+Localization, Object Detection, Instance Segmentation.
+Localization, I:Image O:Box in the image(x,y,w,h) E:Intersection over U">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0621classification.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0621deconv.png">
+<meta property="og:updated_time" content="2016-06-21T12:47:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS231n_8_9">
+<meta name="twitter:description" content="Lec8Spatial Localization and Detection
+TasksClassification, Classificatin+Localization, Object Detection, Instance Segmentation.
+Localization, I:Image O:Box in the image(x,y,w,h) E:Intersection over U">
+<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/0621classification.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '我是博主'
+    }
+  };
+</script>
+
+  <title> CS231n_8_9 | CSRJTAN </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CSRJTAN</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Keep Moving</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tech">
+          <a href="/categories/Tech" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gavel"></i> <br />
+            
+            技术
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/categories/Read" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/Life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/2016/06/01/books/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            书单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CS231n_8_9
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-21T19:16:47+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/21/CS231n-8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/CS231n-8/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Lec8"><a href="#Lec8" class="headerlink" title="Lec8"></a>Lec8</h3><p>Spatial Localization and Detection</p>
+<h4 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h4><p>Classification, Classificatin+Localization, Object Detection, Instance Segmentation.</p>
+<p>Localization, I:Image O:Box in the image(x,y,w,h) E:Intersection over Union.(IoU)</p>
+<h4 id="Claissification-Localization"><a href="#Claissification-Localization" class="headerlink" title="Claissification+Localization"></a>Claissification+Localization</h4><p>Output: Single Label and Bounding Box</p>
+<p><strong>Idea one</strong>: Two task head<br>1.Train a CNN<br>2.Attach new fully-connected “regression head” to the network(FC)<br>  2.1 Classification Head<br>  2.2 Regression Head<br>3.Train the regression head only with SGD and L2 loss<br><a href="http://4.At" class="test test-url" target="_blank" rel="noopener noreferrer">4.At</a> test time use both heads</p>
+<p><strong>Idea two</strong>: Sliding Window<br>Input: Bounding Box<br>Iteratively refine the BB into a optimal size and place.</p>
+<h4 id="Objects-Detection"><a href="#Objects-Detection" class="headerlink" title="Objects Detection"></a>Objects Detection</h4><p>Output: all the exist labels and BBs</p>
+<p>Problem: Need to test many positions and scales, use computationally demanding classifier</p>
+<p>Solution: Only look at a tiny subset of possible positions</p>
+<p><strong>Region Proposal</strong>:Bottom-up segmentation.</p>
+<p>RCNN: 1. Train a classification model on ImageNet</p>
+<ol>
+<li>Fine-tune model for detection(Throw finaly FC rathter than 20 Objects and one background, that is 4096*21 for the last layer.)</li>
+<li>Extract Features: Extract region proposals for all images, save the pool5 features to disk.</li>
+<li>Train one binary SVM per class to claissify region features.</li>
+<li>Bbox regression: Train a linear model to fine-grain the bbox</li>
+</ol>
+<p>Fast-RCNN: Build an end-to-end framework, much faster than RCNN.</p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0621classification.png" alt=""></p>
+<h3 id="Lec9-Understanding-and-Visualizing"><a href="#Lec9-Understanding-and-Visualizing" class="headerlink" title="Lec9 Understanding and Visualizing"></a>Lec9 Understanding and Visualizing</h3><p>Visualizing the weights, t-SNE visualization</p>
+<p>Deconv Approaches:<br>1.Feed image into net<br>2.pick a layer, set gradients of the score vector to [0 0 1 .. 0], then bp to image<br><a href="http://3.Do" class="test test-url" target="_blank" rel="noopener noreferrer">3.Do</a> a small “Image Update”<br>4.Forward the Image</p>
+<ol>
+<li>Go to step 2</li>
+</ol>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0621deconv.png" alt=""></p>
+<h4 id="Deconv"><a href="#Deconv" class="headerlink" title="Deconv"></a>Deconv</h4><p>Learn to visualize the weights, also deconv to reconstruct an larger size output.</p>
+<p>Deconv: reverse the convolution filter<br>DePool: record the position and set other be zero.<br>DeReLU: The same as the ReLU.</p>
+<h4 id="Neural-Style"><a href="#Neural-Style" class="headerlink" title="Neural Style"></a>Neural Style</h4><ol>
+<li>extract content targets</li>
+<li>extract style targets</li>
+<li>Optimize over image </li>
+</ol>
+<h4 id="BackPropping-is-powerful"><a href="#BackPropping-is-powerful" class="headerlink" title="BackPropping is powerful"></a>BackPropping is powerful</h4><ul>
+<li>Understanding</li>
+<li>Segmenting Objects in the Image</li>
+<li>Inverting codes and introducing privacy concerns</li>
+<li>Fun(NeuralStyle/DeepDream)</li>
+<li>Confusion and chaos(Adversarial Examples)</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持分享，支持原创</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xl4js.com1.z0.glb.clouddn.com/wechatPayment.jpg" alt="CsrjTan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN-公开课/" rel="tag">#CNN 公开课</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/13/Bilateral-Guided-Filter/" rel="next" title="Bilateral_Guided_Filter">
+                <i class="fa fa-chevron-left"></i> Bilateral_Guided_Filter
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/21/CS231n-8/"
+           data-title="CS231n_8_9" data-url="https://csrjtan.github.io/2016/06/21/CS231n-8/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4js.com1.z0.glb.clouddn.com/avatar.jpg"
+               alt="CsrjTan" />
+          <p class="site-author-name" itemprop="name">CsrjTan</p>
+          <p class="site-description motion-element" itemprop="description">blog csrjtan tanrunj</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://arxiv.org/" title="arXiv" target="_blank">arXiv</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lec8"><span class="nav-number">1.</span> <span class="nav-text">Lec8</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tasks"><span class="nav-number">1.1.</span> <span class="nav-text">Tasks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Claissification-Localization"><span class="nav-number">1.2.</span> <span class="nav-text">Claissification+Localization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Objects-Detection"><span class="nav-number">1.3.</span> <span class="nav-text">Objects Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary"><span class="nav-number">1.4.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lec9-Understanding-and-Visualizing"><span class="nav-number">2.</span> <span class="nav-text">Lec9 Understanding and Visualizing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deconv"><span class="nav-number">2.1.</span> <span class="nav-text">Deconv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-Style"><span class="nav-number">2.2.</span> <span class="nav-text">Neural Style</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BackPropping-is-powerful"><span class="nav-number">2.3.</span> <span class="nav-text">BackPropping is powerful</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CsrjTan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"csrjtan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>
