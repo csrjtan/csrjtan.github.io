@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-07-28T09:25:07.000Z</updated>
+  <updated>2016-08-30T06:00:46.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CS231n_总结</title>
+    <link href="https://csrjtan.github.io/2016/08/30/CS231n-%E6%80%BB%E7%BB%93/"/>
+    <id>https://csrjtan.github.io/2016/08/30/CS231n-总结/</id>
+    <published>2016-08-30T05:42:05.000Z</published>
+    <updated>2016-08-30T06:00:46.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;结束CS231N课程笔记&quot;&gt;&lt;a href=&quot;#结束CS231N课程笔记&quot; class=&quot;headerlink&quot; title=&quot;结束CS231N课程笔记&quot;&gt;&lt;/a&gt;结束CS231N课程笔记&lt;/h3&gt;&lt;p&gt;CS231N课程的总结，到了后面关于RNN的用法以及detection和sequential学习都是新颖领域。&lt;/p&gt;
+&lt;p&gt;(知乎专栏的翻译版)[&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit&lt;/a&gt;]&lt;/p&gt;
+&lt;p&gt;1.首先是PYTHON的教学，NUMPY使用。&lt;br&gt;2.图像分类方法：线性分类，SOFTMAX,SVM&lt;br&gt;3.优化方法：梯度下降、最优化方法&lt;br&gt;4.BP的具体原理和实现细节&lt;br&gt;5.CNN的学习&lt;br&gt;6.如何设置参数以及学习率&lt;br&gt;7.现在RNN发展和DETECTION&lt;/p&gt;
+&lt;h3 id=&quot;回到香港，最后一年的准备和学习&quot;&gt;&lt;a href=&quot;#回到香港，最后一年的准备和学习&quot; class=&quot;headerlink&quot; title=&quot;回到香港，最后一年的准备和学习&quot;&gt;&lt;/a&gt;回到香港，最后一年的准备和学习&lt;/h3&gt;&lt;p&gt;经过了一年的放养，每天度假似的过得战战兢兢，如履薄冰。遗憾于自己不抓紧，没有自学到很多东西之余，拖延着使得任务也一点一点的搁浅，让自己和周围的朋友都失望，实在是愧对自己。如何展现自己的能力和让自己得到价值的证明是首要思考的。&lt;/p&gt;
+&lt;p&gt;保持看书、锻炼的习惯，养成早起，日子过得很滋润，也得让自己抓紧有所贡献。就像王健林所说的，先划一个一个小目标，比如说先赚他一个亿。只是内心对于走科研的路子和决心越来越不能肯定了，还是只是希望自己混点小日子就过活，虽然明明知道自己过小日子也不会幸福快活，奈何对自己没有充足的信任。找到自己的才华和发力点，兴趣点是关键。热爱音乐，艺术，游戏的我，能在年轻的路上走得多远，我们拭目以待。当然英语我也是不排斥的，趁着年轻，可以逼着自己做些不喜欢的事情，考验自己的能力和内心承受。&lt;/p&gt;
+&lt;p&gt;这里设立五年的目标：1.经济上：能负起首付，买上小车，自给自足，一步一步过上满意的生活。&lt;br&gt;2.事业上：拿到PHD学位或者获得良好的工作岗位并得到升职的空间 3.家庭上：帮爸妈过上小康的生活，与另一半稳定温暖的生活 4.兴趣上：吉他和健身的造诣得到提升，还可以培养更多的兴趣，可以研发一下游戏周边有意义的活动 5.身心上：身体要锻炼，心灵要熏陶，眼界要开阔，精力要丰富，做成更多有意义的事情，建立自信。&lt;/p&gt;
+&lt;p&gt;一步一步的小目标：1.坚持早睡早起 2.坚持跑步和健身 3.坚持背单词和写代码 4.坚持看论文和看书&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;结束CS231N课程笔记&quot;&gt;&lt;a href=&quot;#结束CS231N课程笔记&quot; class=&quot;headerlink&quot; title=&quot;结束CS231N课程笔记&quot;&gt;&lt;/a&gt;结束CS231N课程笔记&lt;/h3&gt;&lt;p&gt;CS231N课程的总结，到了后面关于RNN的用法以及dete
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>GoodMood</title>
@@ -370,82 +397,6 @@
     
     
       <category term="paper demosaick" scheme="https://csrjtan.github.io/tags/paper-demosaick/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CS231n-4 &amp; 5</title>
-    <link href="https://csrjtan.github.io/2016/06/06/CS231n-4/"/>
-    <id>https://csrjtan.github.io/2016/06/06/CS231n-4/</id>
-    <published>2016-06-06T06:05:56.000Z</published>
-    <updated>2016-06-09T04:46:38.000Z</updated>
-    
-    <content type="html">&lt;p&gt;这节课主要讲述一下BP怎么做的&lt;/p&gt;
-&lt;h3 id=&quot;BackProbagation&quot;&gt;&lt;a href=&quot;#BackProbagation&quot; class=&quot;headerlink&quot; title=&quot;BackProbagation&quot;&gt;&lt;/a&gt;BackProbagation&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606bp.png&quot; alt=&quot;简单BP&quot;&gt;&lt;br&gt;这里根据Chain Rule:$\frac{df}{dx} = \frac{df}{dq} \frac{dq}{dx}$&lt;br&gt;所以推算$\frac{df}{df} =1$, $\frac{df}{dz} = \frac{df}{df} \frac{df}{dz} = 1 &lt;em&gt; q = 3$, 同理得后面的梯度（求导中函数的x为当前neuron的值）&lt;br&gt;Add gate: Gradient Distributor&lt;br&gt;Max gate: Gradient Router(只有max的值获得梯度传递)&lt;br&gt;Mul gate: Gradient “Switcher”(Neuron交换了梯度)&lt;br&gt;BP Gradient = [Last Gradient] &lt;/em&gt; [Local Gradient]&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606bp1.png&quot; alt=&quot;Sigmoid BP&quot;&gt;&lt;br&gt;这里是用了Sigmoid作为Activation Function,可以看到梯度按照一层一层递推和直接对sigmoid function求导得到的值是一致的。$d\sigma (x)=\frac{1}{1+e^(-x)}$&lt;br&gt;$$\frac{d\sigma (x)}{dx} = \frac{e^{-x}}{(1+e^{-x})^2} = (1-\sigma (x))\sigma(x)$$&lt;/p&gt;
-&lt;p&gt;[hints: 每个循环包括：更新BP和更新FP，因为每次BP是受当前FP的结果影响的]&lt;/p&gt;
-&lt;p&gt;(Before) Linear: $ f= Wx $&lt;br&gt;(Now) 2-Layer NN: $f = W_2 max(0,W_1x) $&lt;/p&gt;
-&lt;p&gt;Vectorized: 向量化后，W是一层高维的参数可能4096，若果输出层也为4096。Jacobian矩阵的大小将为4096 &lt;em&gt; 4096,而且一般按批量处理图片，如果Batch为100，则为100&lt;/em&gt; Size of Jacobian。&lt;/p&gt;
-&lt;p&gt;参考阅读 &lt;a href=&quot;http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Efficient BP by Lecun&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Lecture-5&quot;&gt;&lt;a href=&quot;#Lecture-5&quot; class=&quot;headerlink&quot; title=&quot;Lecture 5&quot;&gt;&lt;/a&gt;Lecture 5&lt;/h3&gt;&lt;h4 id=&quot;A-bit-History&quot;&gt;&lt;a href=&quot;#A-bit-History&quot; class=&quot;headerlink&quot; title=&quot;A bit History&quot;&gt;&lt;/a&gt;A bit History&lt;/h4&gt;&lt;p&gt;86年提出的BP算法如今大热，以往DEEP LEARNING主要网络复杂，无法收敛等问题，运算速度和数据也是考量的重要因素，导致停滞不前。如今随着实验对CNN等的认识，提出了很多有效训练和防止过拟合的方法。&lt;/p&gt;
-&lt;p&gt;06年Hinton提出了RBM，先逐层做一个预训练，然后再整合成网络BP Fine-tuning，结果效果不错。&lt;/p&gt;
-&lt;p&gt;10年的微软组增加了HMM在网络结构中，12年ALEX NET在IMAGE NET的成功引爆了潮流。&lt;/p&gt;
-&lt;p&gt;如何做CNN：&lt;br&gt;&lt;a href=&quot;http://1.One&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;1.One&lt;/a&gt; time setup: activation functions, preprocessing, weight initialization, regularization, gradient checking&lt;br&gt;2.Traning Dynamics: babysitting the learning process, parameter updates, hyperparameter optimization&lt;br&gt;3.Evaluation: model ensembles&lt;/p&gt;
-&lt;h4 id=&quot;Activation-Function&quot;&gt;&lt;a href=&quot;#Activation-Function&quot; class=&quot;headerlink&quot; title=&quot;Activation Function&quot;&gt;&lt;/a&gt;Activation Function&lt;/h4&gt;&lt;p&gt;研究对比激活函数：&lt;br&gt;Sigmoid: 1.Squashes range [0,1] 2.nice interpretation “firing rate”&lt;br&gt;三个重大问题：1.Saturated Neurons “Kill” the gradient&lt;br&gt;2.Sigmoid ouputs are not zero-centered(使得生成下层的输入x全部同号，这会导致Optimization的过程锯齿状)&lt;br&gt;3.exp computation is high&lt;/p&gt;
-&lt;p&gt;tanh: 1.sqash among[-1,1]&lt;br&gt;      &lt;a href=&quot;http://2.zero&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2.zero&lt;/a&gt; centered (nice)&lt;br&gt;      3.kills the gradient when saturated&lt;/p&gt;
-&lt;p&gt;ReLU: 1.Does not saturate(in +region)&lt;br&gt;      2.computationally efficient&lt;br&gt;      3.converges mush faster&lt;br&gt;     but 1. Not zero-centered&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;2. An annoyance: the gradient of &amp;lt;0 is killed
-3. Some time will &amp;quot;dead&amp;quot;(大概为负值后，无法继续更新，注意学习步长不能过大)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Leaky ReLU:  $f(x) = max(\alpha x,x)$ some times $\alpha $ is 0.01&lt;br&gt;      will not die&lt;/p&gt;
-&lt;p&gt;Exponential Linear Units(ELU):&lt;br&gt;      当 x &amp;lt; 0时, $f(x) = \alpha (exp(x)-1)$&lt;br&gt;     All benefit of ReLU, Closer to zero mean outputs, but requires exp()&lt;/p&gt;
-&lt;p&gt;Maxout “Neuron”:&lt;br&gt;   $$max(w_1^Tx+b_1,w_2^Tx+b_2)$$&lt;br&gt;   Linear Regime, Generalizes ReLU and Leaky ReLU,但参数变成原来的两倍了&lt;/p&gt;
-&lt;p&gt;总结： 一般用ReLU,可以尝试Leaky ReLU/Maxout/ELU,不要用sigmoid；tanh的性能也不行&lt;/p&gt;
-&lt;h4 id=&quot;Data-Preprocessing&quot;&gt;&lt;a href=&quot;#Data-Preprocessing&quot; class=&quot;headerlink&quot; title=&quot;Data Preprocessing&quot;&gt;&lt;/a&gt;Data Preprocessing&lt;/h4&gt;&lt;p&gt;归一： Subtract Mean and Normalization, 一般图片会subtract mean 或subtract channel mean&lt;br&gt;降为： 用PCA和Whitening或者Leveraging的方法对高维数据做降为处理，但对于图像不常用&lt;/p&gt;
-&lt;h4 id=&quot;Weight-Initalization-Important&quot;&gt;&lt;a href=&quot;#Weight-Initalization-Important&quot; class=&quot;headerlink&quot; title=&quot;Weight Initalization(Important)&quot;&gt;&lt;/a&gt;Weight Initalization(Important)&lt;/h4&gt;&lt;p&gt;这是过去被忽视，但十分重要的部分。&lt;br&gt;1.All zero: Neuron的结果、误差和更新是一致的，失败&lt;br&gt;2.Small Random Numbers(以0为mean,0.01variance的高斯分布)：Work okay but lead to non-homogeneous distributions of activations across the layers of network.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Variance=1, all the neurons completely saturated, either -1 or 1,Gradients will be all zero.&lt;/li&gt;
-&lt;li&gt;Xavier Initialization(suitable so far): Variance = 1/sqrt(in_layer),Reasonable initialization assumes the linear activations.&lt;/li&gt;
-&lt;li&gt;Note additional /2: Variance = 1/sqrt(in_layer/2)&lt;br&gt;这里的in_layer是指上层输入的个数，通过这样可以使得上层的分布和当层的分布趋同，经验性地提高收敛的比率&lt;br&gt;soon… Propoer Initialization is an active area of research&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&quot;Batch-Normalization&quot;&gt;&lt;a href=&quot;#Batch-Normalization&quot; class=&quot;headerlink&quot; title=&quot;Batch Normalization&quot;&gt;&lt;/a&gt;Batch Normalization&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606BN.png&quot; alt=&quot;BN&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Improves gradient flow through the network&lt;/li&gt;
-&lt;li&gt;Allows higher learning rates&lt;/li&gt;
-&lt;li&gt;Reduces the strong dependence on initialization&lt;/li&gt;
-&lt;li&gt;Acts as a form of regularization and slightly reduces the need for dropout(Maybe)&lt;br&gt;里面的scale和shift参数是通过Network自己学习的，归一化后重新根据学习需求调整数据分布的scale和shift.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Notice&lt;/strong&gt;: At test time the BN layer differently: the mean/std are not computed based on the batch. Instead, a single fixed empirical mean of activations during training is used.&lt;/p&gt;
-&lt;h4 id=&quot;Babysitting-the-Learning-Process&quot;&gt;&lt;a href=&quot;#Babysitting-the-Learning-Process&quot; class=&quot;headerlink&quot; title=&quot;Babysitting the Learning Process&quot;&gt;&lt;/a&gt;Babysitting the Learning Process&lt;/h4&gt;&lt;p&gt;一个课堂模拟的小CNN，做完预处理后，选择了50个hidden neurons，10个output neurons.用CIFAR-10,使用SGD梯度下降。关键是拟合小的数据集，举了实际遇到情况的判断和处理：1.small loss train accuracy 1.00（nice) 2.Loss barely changing(Learning Rating too small) 3.loss exploding to NaN or Inf(Learning Rating too high)&lt;/p&gt;
-&lt;h4 id=&quot;Hyperparameter-Optimization&quot;&gt;&lt;a href=&quot;#Hyperparameter-Optimization&quot; class=&quot;headerlink&quot; title=&quot;Hyperparameter Optimization&quot;&gt;&lt;/a&gt;Hyperparameter Optimization&lt;/h4&gt;&lt;p&gt;1.Cross-Validation: Coarse-&amp;gt;fine&lt;br&gt;First Stage: only few epochs get a rough idea of what params work&lt;br&gt;Second Stage: Longer running time , finer search(Repeat as Necessary)&lt;br&gt;(Cost ever &amp;gt; 3*original cost, break out early)&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;It is best to optimize in log space&lt;br&gt;Grid Search Vs Random Search: (random is better 2012)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;3.Hyperparameter play with: network architecture, learning rate, its decay schedule, update type, regularization(L2/Dropout strength)&lt;/p&gt;
-&lt;p&gt;4.Monitor and Visualize the Loss curve(Big gap= Overfitting)&lt;/p&gt;
-&lt;p&gt;5.Track the ratio of weight updates/weight magnitudes(Ratio 0.01 is okay)&lt;/p&gt;
-&lt;h4 id=&quot;Side-Talks&quot;&gt;&lt;a href=&quot;#Side-Talks&quot; class=&quot;headerlink&quot; title=&quot;Side Talks&quot;&gt;&lt;/a&gt;Side Talks&lt;/h4&gt;&lt;p&gt;如何计算网络：神经元个数=逐层个数相加；W个数=累加（当层神经元个数*下层神经元个数），B个数=神经元个数&lt;/p&gt;
-&lt;h4 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h4&gt;&lt;p&gt;推荐一个网络走的流程：&lt;br&gt;1.Activation Functions(Use ReLU)&lt;br&gt;2.Data Preprocessing(Subtract Mean)&lt;br&gt;3.Weight Initialization(Xavier (/2) init)&lt;br&gt;4.Batch Normalization(Use)&lt;br&gt;5.Hyperparameter Optimization(random sample hyperparams, In log space when proper)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;将数据预处理为[-1,1],mean 0, val 1&lt;/li&gt;
-&lt;li&gt;高斯初始化参数w, standaard deviation 为 $\sqrt{2/n}$, n为上层输入的神经元&lt;/li&gt;
-&lt;li&gt;用L2和Dropout作正则化（记得用p调整回test output）&lt;/li&gt;
-&lt;li&gt;使用Batch Normalization&lt;/li&gt;
-&lt;li&gt;参考任务使用loss function&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;疑问点：&lt;br&gt;1.初始化方差为1/(sqrt(in)/2): 详细看何大神的&lt;a href=&quot;https://arxiv.org/abs/1502.01852&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文章&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://arxiv.org/abs/1502.03167&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;BN&lt;/a&gt;和&lt;a href=&quot;http://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dropout&lt;/a&gt;都是近两年的工作，可以看看.Alex和Lecun还是CNN的先锋者，记得大师兄说，要多看Alex的文章。&lt;br&gt;3.&lt;a href=&quot;http://arxiv.org/pdf/1310.4546.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hiearachical Softmax&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;参考阅读:&lt;br&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-2/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NN notes2&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-3/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NN notes3&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这节课主要讲述一下BP怎么做的&lt;/p&gt;
-&lt;h3 id=&quot;BackProbagation&quot;&gt;&lt;a href=&quot;#BackProbagation&quot; class=&quot;headerlink&quot; title=&quot;BackProbagation&quot;&gt;&lt;/a&gt;BackProbagation&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606bp.png&quot; alt=&quot;简单BP&quot;&gt;&lt;br&gt;这里根据Chain Rule:$\frac{df}{dx} = \frac{df}{dq} \frac{dq}{dx}$&lt;br&gt;所以推算$\frac{df}{df} =1$, $\frac{df}{dz} = \frac{df}{df} \frac{df}{dz} = 1 &lt;em&gt; q = 3$, 同理得后面的梯度（求导中函数的x为当前neuron的值）&lt;br&gt;Add gate: Gradient Distributor&lt;br&gt;Max gate: Gradient Router(只有max的值获得梯度传递)&lt;br&gt;Mul gate: Gradient “Switcher”(Neuron交换了梯度)&lt;br&gt;BP Gradient = [Last Gradient] &lt;/em&gt; [Local Gradient]&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
-    
-    
-      <category term="公开课 CNN" scheme="https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/"/>
     
   </entry>
   
