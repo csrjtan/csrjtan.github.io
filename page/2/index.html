@@ -293,6 +293,129 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/06/paper-reading-20160606/" itemprop="url">
+                  论文阅读《Residual Interpolation for color image demosaicking》
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-06T20:19:45+08:00" content="2016-06-06">
+              2016-06-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/06/paper-reading-20160606/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/paper-reading-20160606/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference<br><a href="http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html">网站</a></p>
+<h3 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png" alt="主要流程"><br>左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到delta,在插值过程中得到R图再把delta加上的过程。<br>现在RI提出直接使用G图做差值插值由于变换太过剧烈的地方会造成Artifact,如今用一些处理使得这个G变成G尖，这个G尖的图像满足平滑和准确的特性。如此利用这个谱间相关性的时候误差会更小，出来的效果更好。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/06/paper-reading-20160606/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/06/CS231n-4/" itemprop="url">
                   CS231n-4 & 5
                 </a>
@@ -732,13 +855,13 @@
         
           
             <p>这里记录一下书单，包括在读的、想读的、他人推荐读的。后面可以写一下正在进展的项目和工作，最后记录已读的。</p>
-<h2 id="在读："><a href="#在读：" class="headerlink" title="在读："></a>在读：</h2><p>《情人》、《时间简史》、《MATLAB从入门到精通》</p>
+<h2 id="在读："><a href="#在读：" class="headerlink" title="在读："></a>在读：</h2><p>《当下的力量》，《机器学习》</p>
 <h2 id="想读："><a href="#想读：" class="headerlink" title="想读："></a>想读：</h2><h3 id="面试微软之前的十本书"><a href="#面试微软之前的十本书" class="headerlink" title="面试微软之前的十本书"></a>面试微软之前的十本书</h3><p>Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）<br>Computer System: A Programmer’s Perspective （《深入理解计算机系统》） / Windows via C/C++ （《Windows核心编程》 / 《程序员的自我修养》<br>Code Complete 2（《代码大全》）/ The Pragmatic Programmer （《程序员修炼之道》，我也把这本书称为《代码小全》）<br>Programming Pearls （《编程珠玑》） / Algorithms / Algorithm Design / 《编程之美》<br>The C Programming Language<br>The C++ Programming Language / Programming: Principles and Practice Using C++ / Accelerated C++<br>The Structure and Interpretation of Computer Programs （《计算机程序的构造和解释》）<br>Clean Code / Implementation Patterns<br>Design Patterns （《设计模式》） / Agile Software Development, Principles, Patterns, and Practices<br>Refactoring （《重构》）</p>
 <h3 id="云风推荐"><a href="#云风推荐" class="headerlink" title="云风推荐"></a>云风推荐</h3><p>C++编程思想<br>Effective C++<br>深度探索C++对象模型<br>C++语言的设计和演化<br>C专家编程<br>C陷阱与缺陷<br>C语言接口与实现<br>Lua程序设计<br>Linkers and Loaders<br>COM本质论<br>Windows核心编程<br>深入解析Windows操作系统<br>程序员修炼之道<br>代码大全<br>UNIX编程艺术<br>设计模式<br>代码优化：有效使用内存<br>深入理解计算机系统<br>深入理解LINUX内核<br>TCP/IP 详解</p>
 <h3 id="冯大辉"><a href="#冯大辉" class="headerlink" title="冯大辉"></a>冯大辉</h3><p>软件随想录<br>黑客与画家<br>重来<br>UNIX编程艺术<br>编程人生</p>
 <h3 id="豆瓣CTO"><a href="#豆瓣CTO" class="headerlink" title="豆瓣CTO"></a>豆瓣CTO</h3><p>Code Complete 2<br>The Mythical Man-Month （《人月神话》）<br>Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）<br>TAOCP （不解释）<br>The Pragmatic Programmer （《程序员修炼之道》）<br>Design Patterns （《设计模式》）<br>The Structure and Interpretation of Computer Programs （《计算机程序的构造和解释》）<br>Refactoring （《重构》）<br>The C Programming Language<br>Introduction to Algorithms （《算法导论》）</p>
 <h2 id="已读："><a href="#已读：" class="headerlink" title="已读："></a>已读：</h2><h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><p>《统计学习方法》、《这就是搜索引擎》、《浪潮之巅》、《数学之美》</p>
-<h3 id="非技术"><a href="#非技术" class="headerlink" title="非技术"></a>非技术</h3><p>《苏菲的世界》、《如何阅读一本书》、《黑客与画家》、《解忧杂货铺》、《当我在跑步，我在谈论什么》、《白夜行》、《一个人的朝圣》、《人性的弱点》、《从0到1》、《35岁前要做的33件事》、《站在两个世界的边缘》、《极简欧洲史》、《未来在现实的第几层》、《再穷也要去旅游》、《活着》、《小王子》、《自控力》</p>
+<h3 id="非技术"><a href="#非技术" class="headerlink" title="非技术"></a>非技术</h3><p>《苏菲的世界》、《如何阅读一本书》、《黑客与画家》、《解忧杂货铺》、《当我在跑步，我在谈论什么》、《白夜行》、《一个人的朝圣》、《人性的弱点》、《从0到1》、《35岁前要做的33件事》、《站在两个世界的边缘》、《极简欧洲史》、《未来在现实的第几层》、《再穷也要去旅游》、《活着》、《小王子》、《自控力》、《围城》、《此生未完成》、《黄金时代》、《拆掉思维里的墙》、《facebook效应》、《别为小事抓狂》、</p>
 
           
         
@@ -1382,128 +1505,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/13/leetcode7-14/" itemprop="url">
-                  leetcode7-14
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-13T15:52:37+08:00" content="2016-04-13">
-              2016-04-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/13/leetcode7-14/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/leetcode7-14/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="leetcode7"><a href="#leetcode7" class="headerlink" title="leetcode7"></a>leetcode7</h4><p>问题：逆序输出INTEGER<br>思路：分为正负，然后用模和除来一位位逆序输出<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/13/leetcode7-14/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1549,7 +1550,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
