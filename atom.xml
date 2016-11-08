@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-11-08T12:07:07.000Z</updated>
+  <updated>2016-11-08T12:41:48.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -16,11 +16,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>认识教会的朋友</title>
+    <link href="https://csrjtan.github.io/2016/11/08/%E8%AE%A4%E8%AF%86%E6%95%99%E4%BC%9A%E7%9A%84%E6%9C%8B%E5%8F%8B/"/>
+    <id>https://csrjtan.github.io/2016/11/08/认识教会的朋友/</id>
+    <published>2016-11-08T12:21:20.000Z</published>
+    <updated>2016-11-08T12:41:48.000Z</updated>
+    
+    <content type="html">&lt;p&gt;这一段时间生活确实比较枯燥，感觉自己把自己给困住了，总结一下最近三个月的生活日常。&lt;/p&gt;
+&lt;p&gt;首先今年宪源小朋友来科大读Msc了，也是学习机器学习内容，可以充实忙碌地学习工作了。来了之后组织女朋友和他情侣俩一块来到城门水塘，由于起床比较晚，中间不大会路，去到大概已经3点多了。从西铁线去到荃湾站，然后坐82号巴士到公园。&lt;/p&gt;
+&lt;p&gt;城门水塘整个是一个麦理浩径的一段，所以十分的长，要走完感觉一天也勉强，一般就直接进去看看猴子，到了水塘附近找个美景拍拍照。这里确实风景优美，空气清新，是在香港这个钢铁森林里一个极好的郊野公园，以后有机会还要再来拍风景和人物美照。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/2016110801.png&quot; alt=&quot;离开水塘前的合照&quot;&gt;&lt;/p&gt;
+&lt;p&gt;之后，珊珊突然周末希望去教会参加崇拜。受到了Windy的邀请，我们来到了九龙维景酒店对面的窝福堂，认识了普通话团契的伙伴们，大家都热切殷勤地欢迎了我俩。第一次参加他们的团契活动就是Outing了，我们先坐尖沙咀的邮轮来到中环，然后步行去到中环的一个比较文艺的旅游景点，有情侣石阶，壁画街，还参观了香港旧警署宿舍改造的设计工坊。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/2016110802.png&quot; alt=&quot;一起坐邮轮&quot;&gt;&lt;/p&gt;
+&lt;p&gt;结果，我们渐渐地周末从没有活动而去一起学习，变成了参加团契的活动，虽然有时候开支比较大，但也很珍惜和热心的朋友在一起的光阴。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/2016110803.png&quot; alt=&quot;壁画街的幸福照&quot;&gt;&lt;/p&gt;
+&lt;p&gt;后来的一周参加桌游活动，在观塘附近找到一家很赞的酒楼，性价比也是很好的。只是感概在香港开个桌游房都人均100，确实略贵，广州同类甚至娱乐性更强的才人均25~。~，玩完之后大家去了一个那边超级大的商场对面的草坪，参加了跳蚤市场。我俩在商场里的一家书局买了好久的手账，不过看到珊爷满载而归，还是十分值得的。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/2016110804.png&quot; alt=&quot;桌游活动&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这一段时间生活确实比较枯燥，感觉自己把自己给困住了，总结一下最近三个月的生活日常。&lt;/p&gt;
+&lt;p&gt;首先今年宪源小朋友来科大读Msc了，也是学习机器学习内容，可以充实忙碌地学习工作了。来了之后组织女朋友和他情侣俩一块来到城门水塘，由于起床比较晚，中间不大会路，去到大概已经3点
+    
+    </summary>
+    
+      <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
+    
+    
+      <category term="教会 朋友" scheme="https://csrjtan.github.io/tags/%E6%95%99%E4%BC%9A-%E6%9C%8B%E5%8F%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CDM using inter-channel correlation and NSS</title>
     <link href="https://csrjtan.github.io/2016/11/08/paper-reading-20161108/"/>
     <id>https://csrjtan.github.io/2016/11/08/paper-reading-20161108/</id>
     <published>2016-11-08T09:14:05.000Z</published>
-    <updated>2016-11-08T12:07:07.000Z</updated>
+    <updated>2016-11-08T12:20:16.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://ac.els-cdn.com/S092359651500168X/1-s2.0-S092359651500168X-main.pdf?_tid=1a82a922-a596-11e6-b1c6-00000aab0f02&amp;amp;acdnat=1478597659_28a15da42ec23144e3bfab16a0639039&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Title-CDM-with-ICC-and-NSS-nonlocal-self-similarity&quot;&gt;&lt;a href=&quot;#Title-CDM-with-ICC-and-NSS-nonlocal-self-similarity&quot; class=&quot;headerlink&quot; title=&quot;Title: CDM with ICC and NSS(nonlocal self-similarity)&quot;&gt;&lt;/a&gt;Title: CDM with ICC and NSS(nonlocal self-similarity)&lt;/h3&gt;&lt;p&gt;摘要：提出了novel modeling strategy and efficient algorithm. 在梯度上，使用inter-channel correlation。在约束项上，利用了Nonlocal self-similarity. 在提出了joint-model之后，将minimize problem分解成两个子问题，并迭代求解（凸优化里面的问题）。&lt;/p&gt;
@@ -28,7 +59,7 @@
 &lt;p&gt;二.locally estiamte a better gradient direction:&lt;br&gt;1.Hamilton and Adams使用了二阶梯度&lt;br&gt;2.Hirakwa采用了local homogenity&lt;br&gt;3.Zhang优化了directional filter of G-R and G-B by LMMSE&lt;/p&gt;
 &lt;p&gt;三.Nonlocal Self-simialrity&lt;br&gt;1.Buades验证使用NSS可以reduce artfacts&lt;br&gt;2.Zhang使用LDI-NAT，用nonlocal adaptive thresholding来suppress artifact&lt;/p&gt;
 &lt;p&gt;四.用prior knowledge来解决Ill-posed problem&lt;br&gt;1.Compress sensing with sparse coding&lt;br&gt;&lt;a href=&quot;http://2.Total&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2.Total&lt;/a&gt; variation regularization: the smaller TV energy function gets a better PSNR in denoise&lt;br&gt;3.Gao提出了约束项，使用拉普拉斯操作后，图像的color difference are sparse.变得稀疏了，这篇论文的建模也用到了这个理论&lt;br&gt;4.基于字典学习（dictionary learning),Mairal认为natrual image服从sparse representation.&lt;/p&gt;
-&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;1.先用初始化方法得到init_demosaicked images.&lt;br&gt;2.加入Inter-channel correlation的约束项：&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;3.根据l2-distance来查找similar patch，组成matrix. 由于patches都是相似的，所以matrix应该是sparse的，但由于噪声或者纹理丰富的原因，这里文章采用一个近似的方法，更好地满足稀疏特点&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_02.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;$$L+S = M $$&lt;br&gt;这里D指水平和垂直的finite difference operators,M是patches组成的矩阵，S表示outliers,假设Frobenius norm(二范数) of S is small,L是满足稀疏的矩阵。从而得到construct L如上式所示。&lt;br&gt;4.得到最后的求解模型&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_03.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;5.求解过程是分解成两个子问题，分别迭代最优化求解X和L。&lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;1.先用初始化方法得到init_demosaicked images.&lt;br&gt;2.加入Inter-channel correlation的约束项：&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;3.根据l2-distance来查找similar patch，组成matrix. 由于patches都是相似的，所以matrix应该是sparse的，但由于噪声或者纹理丰富的原因，这里文章采用一个近似的方法，更好地满足稀疏特点&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_02.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;$$ L+S = M $$&lt;br&gt;这里D指水平和垂直的finite difference operators,M是patches组成的矩阵，S表示outliers,假设Frobenius norm(二范数) of S is small,L是满足稀疏的矩阵。从而得到construct L如上式所示。&lt;br&gt;4.得到最后的求解模型&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_03.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;5.求解过程是分解成两个子问题，分别迭代最优化求解X和L。&lt;/p&gt;
 &lt;h4 id=&quot;Experiment&quot;&gt;&lt;a href=&quot;#Experiment&quot; class=&quot;headerlink&quot; title=&quot;Experiment&quot;&gt;&lt;/a&gt;Experiment&lt;/h4&gt;&lt;p&gt;1.采用MLRI作为初始化方法&lt;br&gt;2.分为全图和Block-based NSS&lt;br&gt;3.包含窗口大小，patch大小，以及trade off hyperparameters的设置&lt;br&gt;4.在Kodak有41.06,McMaster有37.55，效果还不错&lt;/p&gt;
 </content>
     
@@ -358,37 +389,6 @@
     
     
       <category term="公开课 CNN" scheme="https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》</title>
-    <link href="https://csrjtan.github.io/2016/06/07/paper-reading-20160607/"/>
-    <id>https://csrjtan.github.io/2016/06/07/paper-reading-20160607/</id>
-    <published>2016-06-07T07:51:31.000Z</published>
-    <updated>2016-06-07T08:29:38.000Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;IDEA&quot;&gt;&lt;a href=&quot;#IDEA&quot; class=&quot;headerlink&quot; title=&quot;IDEA&quot;&gt;&lt;/a&gt;IDEA&lt;/h4&gt;&lt;p&gt;这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）&lt;/p&gt;
-&lt;p&gt;这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(NLM)的方法和Non-local Adaptive Thresholding（NAT）的方法。这里NLM是指扫描附近满足相似度的Patch，对这些patch进行distance weighted的使用；而NAT基于找到Non-local Similar Patch之后，用这些作为观测样本，在噪声模型里结合SVD、PCA的方法（假定满足Sparse），来进行分解，由于噪声v与x较少相关性，通过设定Adaptive Threshold来提取v的主成分，从而保证拟合的值更准确。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;LDI&quot;&gt;&lt;a href=&quot;#LDI&quot; class=&quot;headerlink&quot; title=&quot;LDI&quot;&gt;&lt;/a&gt;LDI&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI3.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI1.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI2.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;中间还有个$d_gr$的梯度影响因子，这种梯度的插值方法还是比较常见的。如上图，假设插值$R_0$，我们可以利用整块的CFA信息，通过和其它频段的信息如G的差来求出变化的梯度，如$\Delta_n$为$R_0$在北方向的梯度，距离远的影响少的原则，然后得到各个方向的梯度；根据梯度的大小作为权值来加权四方的color difference插值。&lt;/p&gt;
-&lt;p&gt;这种方法在Color Demosaicking很常见，早期简单的方法是同一频段下的线性、双线性插值，然后利用其它频段的color difference或者color ratio来有效利用局部空间的信息，一般平滑的区域这个假设更有效，而对于变换剧烈的地方往往处理不好出现artifacts或者超过了采样原理。出现梯度变化最小的插值方法、多方向加权的插值方法等，复杂的空域插值方法、sparse adaptive的抑制噪声的插值方法等等&lt;/p&gt;
-&lt;h4 id=&quot;NLM-Non-local-Minimum&quot;&gt;&lt;a href=&quot;#NLM-Non-local-Minimum&quot; class=&quot;headerlink&quot; title=&quot;NLM(Non-local Minimum)&quot;&gt;&lt;/a&gt;NLM(Non-local Minimum)&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607NLM.png&quot; alt=&quot;NLM&quot;&gt;&lt;br&gt;这个方法是要挖掘更多的Non-local信息，所以去寻找一些局部相似的Patch，因为CDM和DNS、SR等图像研究具有相似性，denoise BM3D的成功说明了图像上的Patch往往会具有相似性或者重复出现的，所以用简单的Minimum比较获得Similar Patch,再利用这些信息恢复当前Patch的信息。如这个方法里的distance weighted；也有看过一篇是直接correlated比当前patch高，且梯度更平滑，则直接用Non-local Patch恢复的pixel代替当前pixel等；&lt;/p&gt;
-&lt;p&gt;上图就是用L1的patch distance确定similar patch,然后将这些恢复的值进行distance weighted加权。&lt;/p&gt;
-&lt;h4 id=&quot;NAT&quot;&gt;&lt;a href=&quot;#NAT&quot; class=&quot;headerlink&quot; title=&quot;NAT&quot;&gt;&lt;/a&gt;NAT&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607NAT.png&quot; alt=&quot;NLM&quot;&gt;&lt;br&gt;这个在获得Non-local Similar patch之后，利用这些patch作为可靠的观测样本，进行CDM噪声模型的建立，从而采用PCA的方法获得optimal solution。&lt;/p&gt;
-&lt;p&gt;这里的矩阵F范数是指矩阵的值绝对值相加再开平方，也就是观测和PCA值的误差尽可能少，而且主成分的个数也尽可能小；（满足sparse的假设）&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;IDEA&quot;&gt;&lt;a href=&quot;#IDEA&quot; class=&quot;headerlink&quot; title=&quot;IDEA&quot;&gt;&lt;/a&gt;IDEA&lt;/h4&gt;&lt;p&gt;这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）&lt;/p&gt;
-&lt;p&gt;这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(NLM)的方法和Non-local Adaptive Thresholding（NAT）的方法。这里NLM是指扫描附近满足相似度的Patch，对这些patch进行distance weighted的使用；而NAT基于找到Non-local Similar Patch之后，用这些作为观测样本，在噪声模型里结合SVD、PCA的方法（假定满足Sparse），来进行分解，由于噪声v与x较少相关性，通过设定Adaptive Threshold来提取v的主成分，从而保证拟合的值更准确。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
-    
-    
-      <category term="Paper Demosaick" scheme="https://csrjtan.github.io/tags/Paper-Demosaick/"/>
     
   </entry>
   

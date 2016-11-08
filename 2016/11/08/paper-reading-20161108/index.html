@@ -115,7 +115,7 @@ Title: CDM with ICC and NSS(nonlocal self-similarity)摘要：提出了novel mod
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/20161108_01.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/20161108_02.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/20161108_03.png">
-<meta property="og:updated_time" content="2016-11-08T12:07:07.000Z">
+<meta property="og:updated_time" content="2016-11-08T12:20:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDM using inter-channel correlation and NSS">
 <meta name="twitter:description" content="原文链接
@@ -375,7 +375,7 @@ Title: CDM with ICC and NSS(nonlocal self-similarity)摘要：提出了novel mod
 <p>二.locally estiamte a better gradient direction:<br>1.Hamilton and Adams使用了二阶梯度<br>2.Hirakwa采用了local homogenity<br>3.Zhang优化了directional filter of G-R and G-B by LMMSE</p>
 <p>三.Nonlocal Self-simialrity<br>1.Buades验证使用NSS可以reduce artfacts<br>2.Zhang使用LDI-NAT，用nonlocal adaptive thresholding来suppress artifact</p>
 <p>四.用prior knowledge来解决Ill-posed problem<br>1.Compress sensing with sparse coding<br><a href="http://2.Total" class="test test-url" target="_blank" rel="noopener noreferrer">2.Total</a> variation regularization: the smaller TV energy function gets a better PSNR in denoise<br>3.Gao提出了约束项，使用拉普拉斯操作后，图像的color difference are sparse.变得稀疏了，这篇论文的建模也用到了这个理论<br>4.基于字典学习（dictionary learning),Mairal认为natrual image服从sparse representation.</p>
-<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p>1.先用初始化方法得到init_demosaicked images.<br>2.加入Inter-channel correlation的约束项：<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_01.png" alt=""><br>3.根据l2-distance来查找similar patch，组成matrix. 由于patches都是相似的，所以matrix应该是sparse的，但由于噪声或者纹理丰富的原因，这里文章采用一个近似的方法，更好地满足稀疏特点<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_02.png" alt=""><br>$$L+S = M $$<br>这里D指水平和垂直的finite difference operators,M是patches组成的矩阵，S表示outliers,假设Frobenius norm(二范数) of S is small,L是满足稀疏的矩阵。从而得到construct L如上式所示。<br>4.得到最后的求解模型<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_03.png" alt=""><br>5.求解过程是分解成两个子问题，分别迭代最优化求解X和L。</p>
+<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p>1.先用初始化方法得到init_demosaicked images.<br>2.加入Inter-channel correlation的约束项：<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_01.png" alt=""><br>3.根据l2-distance来查找similar patch，组成matrix. 由于patches都是相似的，所以matrix应该是sparse的，但由于噪声或者纹理丰富的原因，这里文章采用一个近似的方法，更好地满足稀疏特点<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_02.png" alt=""><br>$$ L+S = M $$<br>这里D指水平和垂直的finite difference operators,M是patches组成的矩阵，S表示outliers,假设Frobenius norm(二范数) of S is small,L是满足稀疏的矩阵。从而得到construct L如上式所示。<br>4.得到最后的求解模型<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_03.png" alt=""><br>5.求解过程是分解成两个子问题，分别迭代最优化求解X和L。</p>
 <h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><p>1.采用MLRI作为初始化方法<br>2.分为全图和Block-based NSS<br>3.包含窗口大小，patch大小，以及trade off hyperparameters的设置<br>4.在Kodak有41.06,McMaster有37.55，效果还不错</p>
 
       
@@ -430,6 +430,10 @@ Title: CDM with ICC and NSS(nonlocal self-similarity)摘要：提出了novel mod
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/08/认识教会的朋友/" rel="prev" title="认识教会的朋友">
+                认识教会的朋友 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -501,7 +505,7 @@ Title: CDM with ICC and NSS(nonlocal self-similarity)摘要：提出了novel mod
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -518,7 +522,7 @@ Title: CDM with ICC and NSS(nonlocal self-similarity)摘要：提出了novel mod
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
