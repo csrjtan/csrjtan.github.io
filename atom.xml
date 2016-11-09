@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-08-30T06:11:50.000Z</updated>
+  <updated>2016-11-08T12:41:48.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>认识教会的朋友</title>
+    <link href="https://csrjtan.github.io/2016/11/08/%E8%AE%A4%E8%AF%86%E6%95%99%E4%BC%9A%E7%9A%84%E6%9C%8B%E5%8F%8B/"/>
+    <id>https://csrjtan.github.io/2016/11/08/认识教会的朋友/</id>
+    <published>2016-11-08T12:21:20.000Z</published>
+    <updated>2016-11-08T12:41:48.000Z</updated>
+    
+    <content type="html">&lt;p&gt;这一段时间生活确实比较枯燥，感觉自己把自己给困住了，总结一下最近三个月的生活日常。&lt;/p&gt;
+&lt;p&gt;首先今年宪源小朋友来科大读Msc了，也是学习机器学习内容，可以充实忙碌地学习工作了。来了之后组织女朋友和他情侣俩一块来到城门水塘，由于起床比较晚，中间不大会路，去到大概已经3点多了。从西铁线去到荃湾站，然后坐82号巴士到公园。&lt;/p&gt;
+&lt;p&gt;城门水塘整个是一个麦理浩径的一段，所以十分的长，要走完感觉一天也勉强，一般就直接进去看看猴子，到了水塘附近找个美景拍拍照。这里确实风景优美，空气清新，是在香港这个钢铁森林里一个极好的郊野公园，以后有机会还要再来拍风景和人物美照。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/2016110801.png&quot; alt=&quot;离开水塘前的合照&quot;&gt;&lt;/p&gt;
+&lt;p&gt;之后，珊珊突然周末希望去教会参加崇拜。受到了Windy的邀请，我们来到了九龙维景酒店对面的窝福堂，认识了普通话团契的伙伴们，大家都热切殷勤地欢迎了我俩。第一次参加他们的团契活动就是Outing了，我们先坐尖沙咀的邮轮来到中环，然后步行去到中环的一个比较文艺的旅游景点，有情侣石阶，壁画街，还参观了香港旧警署宿舍改造的设计工坊。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/2016110802.png&quot; alt=&quot;一起坐邮轮&quot;&gt;&lt;/p&gt;
+&lt;p&gt;结果，我们渐渐地周末从没有活动而去一起学习，变成了参加团契的活动，虽然有时候开支比较大，但也很珍惜和热心的朋友在一起的光阴。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/2016110803.png&quot; alt=&quot;壁画街的幸福照&quot;&gt;&lt;/p&gt;
+&lt;p&gt;后来的一周参加桌游活动，在观塘附近找到一家很赞的酒楼，性价比也是很好的。只是感概在香港开个桌游房都人均100，确实略贵，广州同类甚至娱乐性更强的才人均25~。~，玩完之后大家去了一个那边超级大的商场对面的草坪，参加了跳蚤市场。我俩在商场里的一家书局买了好久的手账，不过看到珊爷满载而归，还是十分值得的。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/2016110804.png&quot; alt=&quot;桌游活动&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这一段时间生活确实比较枯燥，感觉自己把自己给困住了，总结一下最近三个月的生活日常。&lt;/p&gt;
+&lt;p&gt;首先今年宪源小朋友来科大读Msc了，也是学习机器学习内容，可以充实忙碌地学习工作了。来了之后组织女朋友和他情侣俩一块来到城门水塘，由于起床比较晚，中间不大会路，去到大概已经3点
+    
+    </summary>
+    
+      <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
+    
+    
+      <category term="教会 朋友" scheme="https://csrjtan.github.io/tags/%E6%95%99%E4%BC%9A-%E6%9C%8B%E5%8F%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CDM using inter-channel correlation and NSS</title>
+    <link href="https://csrjtan.github.io/2016/11/08/paper-reading-20161108/"/>
+    <id>https://csrjtan.github.io/2016/11/08/paper-reading-20161108/</id>
+    <published>2016-11-08T09:14:05.000Z</published>
+    <updated>2016-11-08T12:54:19.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;a href=&quot;http://ac.els-cdn.com/S092359651500168X/1-s2.0-S092359651500168X-main.pdf?_tid=1a82a922-a596-11e6-b1c6-00000aab0f02&amp;amp;acdnat=1478597659_28a15da42ec23144e3bfab16a0639039&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Title-CDM-with-ICC-and-NSS-nonlocal-self-similarity&quot;&gt;&lt;a href=&quot;#Title-CDM-with-ICC-and-NSS-nonlocal-self-similarity&quot; class=&quot;headerlink&quot; title=&quot;Title: CDM with ICC and NSS(nonlocal self-similarity)&quot;&gt;&lt;/a&gt;Title: CDM with ICC and NSS(nonlocal self-similarity)&lt;/h3&gt;&lt;p&gt;摘要：提出了novel modeling strategy and efficient algorithm. 在梯度上，使用inter-channel correlation。在约束项上，利用了Nonlocal self-similarity. 在提出了joint-model之后，将minimize problem分解成两个子问题，并迭代求解（凸优化里面的问题）。&lt;/p&gt;
+&lt;h4 id=&quot;Introduction-将CDM分成了四类&quot;&gt;&lt;a href=&quot;#Introduction-将CDM分成了四类&quot; class=&quot;headerlink&quot; title=&quot;Introduction:将CDM分成了四类&quot;&gt;&lt;/a&gt;Introduction:将CDM分成了四类&lt;/h4&gt;&lt;p&gt;一.inter-channel correlation: 1.最早的color difference方法，2.Gunturk AP使用了wavelet basis假定图像在high-frequency subbands are high correlated &lt;a href=&quot;http://3.Li&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;3.Li&lt;/a&gt;认为图像经过gamma correction之后，再使用color difference is better 4.Jaiswal提出low-pass filter(LPF)结合（color difference）CD的方法 5.Kiku使用temtative residual interpolation rather than the color difference maps.&lt;/p&gt;
+&lt;p&gt;二.locally estiamte a better gradient direction:&lt;br&gt;1.Hamilton and Adams使用了二阶梯度&lt;br&gt;2.Hirakwa采用了local homogenity&lt;br&gt;3.Zhang优化了directional filter of G-R and G-B by LMMSE&lt;/p&gt;
+&lt;p&gt;三.Nonlocal Self-simialrity&lt;br&gt;1.Buades验证使用NSS可以reduce artfacts&lt;br&gt;2.Zhang使用LDI-NAT，用nonlocal adaptive thresholding来suppress artifact&lt;/p&gt;
+&lt;p&gt;四.用prior knowledge来解决Ill-posed problem&lt;br&gt;1.Compress sensing with sparse coding&lt;br&gt;&lt;a href=&quot;http://2.Total&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2.Total&lt;/a&gt; variation regularization: the smaller TV energy function gets a better PSNR in denoise&lt;br&gt;3.Gao提出了约束项，使用拉普拉斯操作后，图像的color difference are sparse.变得稀疏了，这篇论文的建模也用到了这个理论&lt;br&gt;4.基于字典学习（dictionary learning),Mairal认为natrual image服从sparse representation.&lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;1.先用初始化方法得到init_demosaicked images.&lt;br&gt;2.加入Inter-channel correlation的约束项：&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;3.根据l2-distance来查找similar patch，组成matrix. 由于patches都是相似的，所以matrix应该是sparse的，但由于噪声或者纹理丰富的原因，这里文章采用一个近似的方法，更好地满足稀疏特点&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_02.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;$$L+S = M $$&lt;br&gt;这里D指水平和垂直的finite difference operators,M是patches组成的矩阵，S表示outliers,假设Frobenius norm(二范数) of S is small,L是满足稀疏的矩阵。从而得到construct L如上式所示。&lt;br&gt;4.得到最后的求解模型&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_03.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;5.求解过程是分解成两个子问题，分别迭代最优化求解X和L。&lt;/p&gt;
+&lt;h4 id=&quot;Experiment&quot;&gt;&lt;a href=&quot;#Experiment&quot; class=&quot;headerlink&quot; title=&quot;Experiment&quot;&gt;&lt;/a&gt;Experiment&lt;/h4&gt;&lt;p&gt;1.采用MLRI作为初始化方法&lt;br&gt;2.分为全图和Block-based NSS&lt;br&gt;3.包含窗口大小，patch大小，以及trade off hyperparameters的设置&lt;br&gt;4.在Kodak有41.06,McMaster有37.55，效果还不错&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://ac.els-cdn.com/S092359651500168X/1-s2.0-S092359651500168X-main.pdf?_tid=1a82a922-a596-11e6-b1c6-00000aab0f02&amp;amp;acdnat=1
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
   
   <entry>
     <title>CS231n_总结</title>
@@ -328,77 +389,6 @@
     
     
       <category term="公开课 CNN" scheme="https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》</title>
-    <link href="https://csrjtan.github.io/2016/06/07/paper-reading-20160607/"/>
-    <id>https://csrjtan.github.io/2016/06/07/paper-reading-20160607/</id>
-    <published>2016-06-07T07:51:31.000Z</published>
-    <updated>2016-06-07T08:29:38.000Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;IDEA&quot;&gt;&lt;a href=&quot;#IDEA&quot; class=&quot;headerlink&quot; title=&quot;IDEA&quot;&gt;&lt;/a&gt;IDEA&lt;/h4&gt;&lt;p&gt;这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）&lt;/p&gt;
-&lt;p&gt;这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(NLM)的方法和Non-local Adaptive Thresholding（NAT）的方法。这里NLM是指扫描附近满足相似度的Patch，对这些patch进行distance weighted的使用；而NAT基于找到Non-local Similar Patch之后，用这些作为观测样本，在噪声模型里结合SVD、PCA的方法（假定满足Sparse），来进行分解，由于噪声v与x较少相关性，通过设定Adaptive Threshold来提取v的主成分，从而保证拟合的值更准确。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;LDI&quot;&gt;&lt;a href=&quot;#LDI&quot; class=&quot;headerlink&quot; title=&quot;LDI&quot;&gt;&lt;/a&gt;LDI&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI3.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI1.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607LDI2.png&quot; alt=&quot;LDI&quot;&gt;&lt;br&gt;中间还有个$d_gr$的梯度影响因子，这种梯度的插值方法还是比较常见的。如上图，假设插值$R_0$，我们可以利用整块的CFA信息，通过和其它频段的信息如G的差来求出变化的梯度，如$\Delta_n$为$R_0$在北方向的梯度，距离远的影响少的原则，然后得到各个方向的梯度；根据梯度的大小作为权值来加权四方的color difference插值。&lt;/p&gt;
-&lt;p&gt;这种方法在Color Demosaicking很常见，早期简单的方法是同一频段下的线性、双线性插值，然后利用其它频段的color difference或者color ratio来有效利用局部空间的信息，一般平滑的区域这个假设更有效，而对于变换剧烈的地方往往处理不好出现artifacts或者超过了采样原理。出现梯度变化最小的插值方法、多方向加权的插值方法等，复杂的空域插值方法、sparse adaptive的抑制噪声的插值方法等等&lt;/p&gt;
-&lt;h4 id=&quot;NLM-Non-local-Minimum&quot;&gt;&lt;a href=&quot;#NLM-Non-local-Minimum&quot; class=&quot;headerlink&quot; title=&quot;NLM(Non-local Minimum)&quot;&gt;&lt;/a&gt;NLM(Non-local Minimum)&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607NLM.png&quot; alt=&quot;NLM&quot;&gt;&lt;br&gt;这个方法是要挖掘更多的Non-local信息，所以去寻找一些局部相似的Patch，因为CDM和DNS、SR等图像研究具有相似性，denoise BM3D的成功说明了图像上的Patch往往会具有相似性或者重复出现的，所以用简单的Minimum比较获得Similar Patch,再利用这些信息恢复当前Patch的信息。如这个方法里的distance weighted；也有看过一篇是直接correlated比当前patch高，且梯度更平滑，则直接用Non-local Patch恢复的pixel代替当前pixel等；&lt;/p&gt;
-&lt;p&gt;上图就是用L1的patch distance确定similar patch,然后将这些恢复的值进行distance weighted加权。&lt;/p&gt;
-&lt;h4 id=&quot;NAT&quot;&gt;&lt;a href=&quot;#NAT&quot; class=&quot;headerlink&quot; title=&quot;NAT&quot;&gt;&lt;/a&gt;NAT&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0607NAT.png&quot; alt=&quot;NLM&quot;&gt;&lt;br&gt;这个在获得Non-local Similar patch之后，利用这些patch作为可靠的观测样本，进行CDM噪声模型的建立，从而采用PCA的方法获得optimal solution。&lt;/p&gt;
-&lt;p&gt;这里的矩阵F范数是指矩阵的值绝对值相加再开平方，也就是观测和PCA值的误差尽可能少，而且主成分的个数也尽可能小；（满足sparse的假设）&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;IDEA&quot;&gt;&lt;a href=&quot;#IDEA&quot; class=&quot;headerlink&quot; title=&quot;IDEA&quot;&gt;&lt;/a&gt;IDEA&lt;/h4&gt;&lt;p&gt;这是张老师11年的文章，效果也是很好的，至今依然不断拿来对比实验。Demosaick的做法还是初始化，然后建立CDM噪声模型，然后根据样本统计拟合出符合样本的实际值。（这个建模思路很耐用，其实还是为了更好的挖掘空域和频域信息的相关性）&lt;/p&gt;
-&lt;p&gt;这里用Local Directional Interpolation(LDI)的方法进行复杂的梯度插值初始化，然后比较Non-local Minimize(NLM)的方法和Non-local Adaptive Thresholding（NAT）的方法。这里NLM是指扫描附近满足相似度的Patch，对这些patch进行distance weighted的使用；而NAT基于找到Non-local Similar Patch之后，用这些作为观测样本，在噪声模型里结合SVD、PCA的方法（假定满足Sparse），来进行分解，由于噪声v与x较少相关性，通过设定Adaptive Threshold来提取v的主成分，从而保证拟合的值更准确。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
-    
-    
-      <category term="Paper Demosaick" scheme="https://csrjtan.github.io/tags/Paper-Demosaick/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>论文阅读《Residual Interpolation for color image demosaicking》</title>
-    <link href="https://csrjtan.github.io/2016/06/06/paper-reading-20160606/"/>
-    <id>https://csrjtan.github.io/2016/06/06/paper-reading-20160606/</id>
-    <published>2016-06-06T12:19:45.000Z</published>
-    <updated>2016-06-07T08:29:40.000Z</updated>
-    
-    <content type="html">&lt;p&gt;首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference&lt;br&gt;&lt;a href=&quot;http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;网站&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;idea&quot;&gt;&lt;a href=&quot;#idea&quot; class=&quot;headerlink&quot; title=&quot;idea&quot;&gt;&lt;/a&gt;idea&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png&quot; alt=&quot;主要流程&quot;&gt;&lt;br&gt;左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到delta,在插值过程中得到R图再把delta加上的过程。&lt;br&gt;现在RI提出直接使用G图做差值插值由于变换太过剧烈的地方会造成Artifact,如今用一些处理使得这个G变成G尖，这个G尖的图像满足平滑和准确的特性。如此利用这个谱间相关性的时候误差会更小，出来的效果更好。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;具体内容&quot;&gt;&lt;a href=&quot;#具体内容&quot; class=&quot;headerlink&quot; title=&quot;具体内容&quot;&gt;&lt;/a&gt;具体内容&lt;/h3&gt;&lt;p&gt;提出了Residual Interpolation基于GBTF的Demosaick初始化,这里用的是GBTF做G通道的初始化插值，然后Guided Filter得到G尖。我们来看看这两个论文。&lt;/p&gt;
-&lt;h4 id=&quot;GBTF&quot;&gt;&lt;a href=&quot;#GBTF&quot; class=&quot;headerlink&quot; title=&quot;GBTF&quot;&gt;&lt;/a&gt;GBTF&lt;/h4&gt;&lt;p&gt;喔，这篇文章是基于我老板的DLMMSE文章优化，简要说一下老板的思路：先求出G-R和G-B图像在横竖方向上的differences，然后建立一个噪声估计模型，结合了optimal LMMSE的方法，直接将performance比以前提高了5个dp。（我老板就说那些人全都是瞎搞的。）这里GBTF提了DLMMSE两点缺陷：1.只利用了4-Neighbor的像素 2.将原来的两个方向解耦成四个方向 3.利用了较好的sparse adaptive初始化方法&lt;br&gt;实验的结论比LPA好0.14dB，比DLMMSE好0.64dB（基本上小打小闹的trick）.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606sp.png&quot; alt=&quot;Sparse Adaptive&quot;&gt;&lt;br&gt;在DLMMSE基础上，对G的插值使用了Gradient Weighted Based的方法，对R和B的通道使用了[3]的sparse adaptive interpolation(一定程度可以通道稀疏来抑制噪声，有空看看这篇什么鬼)。&lt;/p&gt;
-&lt;h4 id=&quot;MMSE&quot;&gt;&lt;a href=&quot;#MMSE&quot; class=&quot;headerlink&quot; title=&quot;MMSE&quot;&gt;&lt;/a&gt;MMSE&lt;/h4&gt;&lt;p&gt;首先说一下这个优化方法，MMSE指Minimum Mean Square Error。问了一下师兄，懂了不少。&lt;br&gt;这个是一个知道函数形式，拟合参数的模型，y为Ground Truth,$\hat x(y)$ of x is any function of y. Model一个$MSE=tr{E{(\hat x-x)(\hat x=x)^T}}$ 则有$$\hat x_{MMSE}(y) = arg min_{\hat x}MSE$$&lt;br&gt;这个模型假定你知道了x与y的函数形式，用最小化MSE的方法求解函数的具体参数。&lt;/p&gt;
-&lt;p&gt;传统的做法是假设函数形式，然后用Monte Carlo或者Gradient Descent去寻找最优解，但这样仍然需要评价指标。所以简单来说，一般用线性的模型可以变成Optimal LMMSE的问题。 $$min_{W,b}MSE \ \  s.t. \hat x = Wy+b$$&lt;br&gt;Optimal b and W is given by: $b = \overline x - W \overline y, W = C_{XY}C_Y^{-1}$ 然后用样本集的统计值来求解。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Minimum_mean_square_error&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;具体查看Wiki&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;DLMMSE&quot;&gt;&lt;a href=&quot;#DLMMSE&quot; class=&quot;headerlink&quot; title=&quot;DLMMSE&quot;&gt;&lt;/a&gt;DLMMSE&lt;/h4&gt;&lt;p&gt;这里老板借鉴了LMMSE即Linear MMSE的方法，来拟合PSD(pirmer signal difference)和LCC1初始化后的Vertical和Horizontal的噪声。这里有点复杂：首先理解了Demosaicking里面的Color Difference原理是利用了局部区域谱间差值为常量，这个协同性原理。然而这个差值为常量的假设并不准确，所以很多人在这个问题上面做文章。我们发现，有时候出现Artifact是因为变化过于剧烈，这里面已经超过了信号的采样原理，所以信息是丢失无法恢复的。我们只能加入一些约束和先验知识来弥补（后面扩展的工作）。所以这个PSD就是Color Difference并不准确，我们来拟合它。这里直接使用一个LCC1作为G通道插值的初始化，然后简单计算V和H方向上的梯度，与PSD相减得到误差$\epsilon$ 。&lt;br&gt;到这里，我们可以建模了，n代表位置，将x代表PSD,y代表我们拟合真正的结果，$\epsilon$就是初始化方法的误差。$$y(n) = x(n) + v(n)$$&lt;/p&gt;
-&lt;p&gt;引入MMSE模型来求解拟合真正的x，y为数据观测值，传统MMSE未定形式不好求解，所以使用LMMSE,得到$\hat x = E[x] + \frac{Conv(x,y)}{Var(y)(y-E[y])}$,自然地假设x和v是为locally Gaussian processes,而且经验性地发现demosaicking noise $\epsilon_{g,r}^h$ 和 $\epsilon_{g,r}^v$为zero-mean random process,且uncorrelated with $\Delta_{g,r}$ (经过实验测出的，数值在0~0.08之间)所以可以简化式子为$$\hat x = \mu_x + \frac{\sigma_x^2}{(\sigma_x^2+\sigma_v^2)}(y-\mu_x)$$ 这里不用计算x的后验和真正样本的均值，因为基于上述假设，可以用x的期望代替了。Cov(x,y)用Cov(x)替代了。这样，我们就拟合预测出优化的PSD $\hat x$，用这个来拟合通道之间的信息更有效！&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;总结:&lt;/strong&gt; LMMSE就是提出y和x的线性关系，然后根据最小MSE去根据观测样本的分布来拟合出符合分布的观测值$\hat x$，关键是用数据样本拟合出线性模型的参数，然后新来的样本经过模型得到拟合的值，会比原来观测的值更符合样本分布。（假设观测样本和预测样本是同分布的）&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;看了源码&lt;/strong&gt;：可以看到在实现里面，先对图像做了横向和纵向的滤波，然后在8*8的patch里面进行LMMSE的求解拟合的。&lt;/p&gt;
-&lt;h4 id=&quot;RI&quot;&gt;&lt;a href=&quot;#RI&quot; class=&quot;headerlink&quot; title=&quot;RI&quot;&gt;&lt;/a&gt;RI&lt;/h4&gt;&lt;p&gt;回到RI，想法也是拟合一个better PSD，只是这里的做法是用一个比较好的初始化方法，GBTF，在这个之上用了何大神的Guided Filter做平滑上采样（文中这么说），然后得到一个比较好的tentative estimate,用这个来拟合channel difference,取得了更好的效果，接下来就看一下这个guided filter和RI延伸出来的Improvement工作。&lt;/p&gt;
-&lt;p&gt;RI在IMAX和Kodak的30张Images取得CPSNR 37.92dB&lt;/p&gt;
-&lt;p&gt;参考：&lt;br&gt;[1]I. Pekkucuksen and Y. Altunbasak, “Gradient based threshold free color filter array interpolation,” Proc. of IEEE Int. Conf. on Image Processing (ICIP), pp. 137– 140, 2010.&lt;/p&gt;
-&lt;p&gt;[2]Zhang, L. and X. Wu (2005). “Color demosaicking via directional linear minimum mean square-error estimation.” Image Processing, IEEE Transactions on 14(12): 2167-2178.&lt;/p&gt;
-&lt;p&gt;[3] D. Paliy, V. Katkovnik, R. Bilcu, S. Alenius, and K. Egiazarian, “Spatially adaptive color filter array interpo- lation for noiseless and noisy data,” International Journal of Imaging Systems and Technology, vol. 17, no. 3, pp. 105-122, 2007.&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先将东京工业大学新提出的基于Residual difference interpolation的几篇文章扫一遍，这是第一篇，提出residual difference rather than color difference&lt;br&gt;&lt;a href=&quot;http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html&quot;&gt;网站&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;idea&quot;&gt;&lt;a href=&quot;#idea&quot; class=&quot;headerlink&quot; title=&quot;idea&quot;&gt;&lt;/a&gt;idea&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0606ri.png&quot; alt=&quot;主要流程&quot;&gt;&lt;br&gt;左边为正常的Demosaicking流程是：先fine-grained地对G通道插值，然后对R通道插值的时候，是根据R-G的谱间具有相似差异性的原理进行，得到delta,在插值过程中得到R图再把delta加上的过程。&lt;br&gt;现在RI提出直接使用G图做差值插值由于变换太过剧烈的地方会造成Artifact,如今用一些处理使得这个G变成G尖，这个G尖的图像满足平滑和准确的特性。如此利用这个谱间相关性的时候误差会更小，出来的效果更好。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
-    
-    
-      <category term="paper demosaick" scheme="https://csrjtan.github.io/tags/paper-demosaick/"/>
     
   </entry>
   
