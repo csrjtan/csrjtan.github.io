@@ -293,6 +293,170 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/09/CS231n-6/" itemprop="url">
+                  CS231n_6
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-09T12:34:02+08:00" content="2016-06-09">
+              2016-06-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/09/CS231n-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/CS231n-6/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>开始新一课之前，先来把上一节的相关阅读材料的知识补充上来。</p>
+<h3 id="Lecture-5-Notes2-amp-3"><a href="#Lecture-5-Notes2-amp-3" class="headerlink" title="Lecture 5 Notes2&amp;3"></a>Lecture 5 Notes2&amp;3</h3><h4 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h4><p>L1,L2的Loss function 还有Max Norm constraints: 对于系数向量w,有$w^2 &lt; c$ ，C一般为3或4.<br>Dropout的技术：一般采用P=0.5,每个神经元的激活概率为0.5，然后每个样本对应一个新的Mask之后的子网络进行训练，最后测试的时候开启全部神经元但得到的结果需要乘上P=0.5这个系数。这种技术直观的好处是：1.迫使网络学习冗余的表达能力  2.实现了大型的学习模型，具有共享参数特性 </p>
+<p>Practice: 使用single,global L2 Regularization(cross-validated)+ Dropout(p=0.5)</p>
+<h4 id="Loss-Functions"><a href="#Loss-Functions" class="headerlink" title="Loss Functions"></a>Loss Functions</h4><p>针对classification的任务，使用Softmax或者SVM Loss. 针对类别多的情况，可以使用Hierarchical Softmax. </p>
+<p>Attribute Classification可以用Logistic regression classifier with two classes(0,1)</p>
+<p>Regression任务，一般使用L2或者L1。</p>
+<p><strong><br>When faced with a regression task, first consider if it is absolutely necessary. Instead, have a strong preference to discretizing your outputs to bins and perform classification over them whenever possible.
+</strong></p>
+<h4 id="Gradient-Checks"><a href="#Gradient-Checks" class="headerlink" title="Gradient Checks"></a>Gradient Checks</h4><p>Use centered formula,求梯度用左右方向的平均。$$\frac{df(x)}{dx} = \frac{f(x+h)-f(x-h)}{2h}$$</p>
+<p>Use relative error for the comparison, relative error<br>$$ \frac{ |f_a - f_n | }{max(f_a,f_n)} $$  . $f_a$ 为analytic gradient  , $f_n$ 为numberic gradient </p>
+<p>In practice:</p>
+<ul>
+<li>relative error &gt; 1e-2 usually means the gradient is probably wrong</li>
+<li>1e-2&gt;relative error&gt;1e-4 should make you feel uncomfortable</li>
+<li>1e-4&gt;relative error is usually okay for objectives with kinks, but if there are no kinks(such tanh nonlinearities and softmax) , then 1e-4 is too high.</li>
+<li>1e-7 and less you should be happy</li>
+<li>if too small like or than 1e-10, absolute value is worrying<br>越深的网络，relative errors越大，如果10层，则1e-2是可以接受的。</li>
+</ul>
+<p>Summary: Careful with step size h, Gradcheck important, Don’t let regularization overwhelm the data, turn off the dropout/augmentations when gradient check, check only few dimensions.</p>
+<h3 id="Lecture-6"><a href="#Lecture-6" class="headerlink" title="Lecture 6"></a>Lecture 6</h3><h4 id="How-to-do-parameter-Updates"><a href="#How-to-do-parameter-Updates" class="headerlink" title="How to do parameter Updates"></a>How to do parameter Updates</h4><p>1.SGD: $x+= -learning rate *dx$<br>2.Momentum:  allow velocity build up, velocity damped in steep due to changing sign</p>
+<p>v = mu <em> v - learning_rate </em> dx<br>x += v</p>
+<ol>
+<li>Nestreov Momentum:<br>$v_t = \mu v_{t-1} - \epsilon \Delta f(\theta_{t-1} + \mu V_{t-1})$<br>$\theta_t = \theta_{t-1} + V_t$</li>
+</ol>
+<p>4.Adagrad: Equalization the steep and shallow direction<br>cache + = dx <em>*2<br>x += - learn_rate </em> dx / (sqrt(cache)+1e-7)</p>
+<p>5.Adam: Great enough with bias correct<br>m = beta1 <em> m + (1-beta1)</em>dx<br>v = beta2 <em> v + (1-beta2)</em>(dx <em>*2)<br>x += -learn_rate </em> m/(sqrt(v)+1e-7)<br>一般beta1和beta2可以设置为0.9和0.995</p>
+<h4 id="Second-Order-Optimization"><a href="#Second-Order-Optimization" class="headerlink" title="Second Order Optimization"></a>Second Order Optimization</h4><p>1.泰勒展开<br>2.Newton Gradient: Jacobian H is too large with O(n^3),n is million<br>3.Quasi-Newton O(n^2)</p>
+<ol>
+<li>L-BFGS(Limited Memory BFGS):work well in full patch,but can not transfoer well to mini-batch search.</li>
+</ol>
+<p>Practice: 1.Train Multiple Indeoendent model<br><a href="http://2.At" class="test test-url" target="_blank" rel="noopener noreferrer">2.At</a> test time average the results </p>
+<p>Fun tricks: get small boost from average multiple initilization model, keep track running average parametre vector.</p>
+<h4 id="Annealing-learning-rate"><a href="#Annealing-learning-rate" class="headerlink" title="Annealing learning rate"></a>Annealing learning rate</h4><ul>
+<li>step dcay: learning rate by half every t epochs</li>
+<li>Exponential decay $\alpha = \alpha_0 e^{-kt}$</li>
+<li>1/t decay: $\alpha = \alpha_0 /(1+kt)$</li>
+</ul>
+<h4 id="Hyperparameter-optimzation"><a href="#Hyperparameter-optimzation" class="headerlink" title="Hyperparameter optimzation"></a>Hyperparameter optimzation</h4><p>stage search from coarse to fine<br>bayesian hyperparameter optimization<br>Model ensemble, improve the performance of NN a few percent:</p>
+<ol>
+<li>Same Model, Different Initializations</li>
+<li>Top models discovered during cross-validation</li>
+<li>Different Checkpoints of a single model: Training is very expensive, taking the different checkpoints of single network and using those to form an ensemble.(Cheap and practice，选取一些好的epoch模型)</li>
+<li>Running averatge of parameters during training(用训练过程模型中的均值，直观来看在碗状徘徊，均值更有利于接近底部)</li>
+</ol>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>1.针对少量的样本，gradient check很重要，并注意正确的初始化<br>2.the magnitude of updates should be ~1e-3 in first-layer<br>3.推荐用SGD+Nesterov Momentum or Adam<br>4.Decay learning rate over the period of training<br>5.Search good hyperparameters with random search(not grid), stage coarse to fine<br>6.Form model ensembles for extra performance</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/07/paper-reading-20160607/" itemprop="url">
                   LDI-NAT《Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding》
                 </a>
@@ -1383,128 +1547,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/21/ted-glories-and-dream/" itemprop="url">
-                  Ted《光荣与梦想》
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-21T16:48:13+08:00" content="2016-04-21">
-              2016-04-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/21/ted-glories-and-dream/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/ted-glories-and-dream/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="特奥会冠军讲解智障人士生活"><a href="#特奥会冠军讲解智障人士生活" class="headerlink" title="特奥会冠军讲解智障人士生活"></a>特奥会冠军讲解智障人士生活</h3><p>首先看完一个感动的TED TALK，关于社会对智障人士的看法，一位特奥会的冠军以身作则提及他们的生活，受歧视，然特奥会提供了一个平台，展示属于他们生命的价值，他们的梦想和他们的尊严。相比于我们，诚然他们的舞台太小，但我们应该看到他们所作的努力。对于自己，四肢健全，家庭幸福安康，应该有更多的理由去追逐幸福，有时候不要一直想着缺少的，应该惦记自己所拥有的，记得感恩。并去勇敢自信的追逐自己所想所求，不要害怕失败，不要害怕别人的目光，勇敢的be yourself.虽然那可能不容易，但人生只有一次，时间是宝贵的
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/21/ted-glories-and-dream/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1550,7 +1592,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1567,7 +1609,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
