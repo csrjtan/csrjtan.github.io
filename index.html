@@ -293,6 +293,133 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/08/deep-compress/" itemprop="url">
+                  deep_compress ICLR2016 BEST PAPER
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-08T11:14:28+08:00" content="2017-03-08">
+              2017-03-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/08/deep-compress/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/08/deep-compress/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近中了ICME2017的会议，抽空扫了一下有趣的论文。这篇是ICLR2016的best paper,作者是standford的song han。看了在微软的讲座，主要讲了Deep compress和Dense Sparse Dense training，最后是efficient inference engine的设计。</p>
+<h3 id="Deep-Compress"><a href="#Deep-Compress" class="headerlink" title="Deep Compress"></a>Deep Compress</h3><p>摘要：该文章的压缩思路很清晰也简单，实验做得很充分。主要用了三个技巧：1.weights pruning,对网络的系数进行thresholding的截断，导致接近0的系数为0，从而增加网络的稀疏性，减少网络的连接和系数。(reduce ~10X) 2.Quantization,用更少的bits（32bits to 5bits)来表示系数，这里面用到了聚类方法来建立code book的技巧。  3.对code book进行哈夫曼编码，进一步压缩存储空间。<br>  VGG从5MB 到11.3MB。</p>
+<h4 id="整个pipeline"><a href="#整个pipeline" class="headerlink" title="整个pipeline"></a>整个pipeline</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/deep_compress_1.png" alt="Three stage compression"><br>关于<strong>weights pruning</strong>:这是网络压缩的常用技巧，对于原始网络首先正常训练得到最终weights，然后将少于某个阈值的weights从网络移除，最后再retrain稀疏网络的参数</p>
+<p>关于<strong>Quantization</strong>:在上一步pruning之后，用compressed sparse row &amp; compressed sparse column的数据结构来存储网络，然后用code bokk 压缩8bits来存conv参数，5bits代表FC参数。以下用inNeurons=4,outNeurons=4的一层作为例子，而对于网络是针对整个网络做的。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/deep_compress_2.png" alt="training codebooks"><br>首先对参数聚类，得到k个聚类中心（k根据压缩的比特来选择，比如5bits就是2^5=32),然后在每次更新的gradients中做group by and reduce操作得到code gradient,用当前网络的学习率更新code book.<br>最后再用huffman对code book编码。</p>
+<p>在用了以上strategy以后，不损失精度情况下，AlexNet from 240MB to 6.9MB</p>
+<h3 id="Dense-Sparse-Dense-Training"><a href="#Dense-Sparse-Dense-Training" class="headerlink" title="Dense Sparse Dense Training"></a>Dense Sparse Dense Training</h3><p>思想跟dropout有点像，也是需要保持网络结构的稀疏性，但是这篇文章的正则项在training procedure上起作用，可以看做training regularization. 只是简单地在中间添加sparse connection（将较少的weights直接移除）的training，然后交替做training，而不是整个training procedure都用dropout来做，在不调整网络结构的基础下，DSD的训练模式使得效果提升。（但没有正面跟dropout比较）。但可以与dropout technique一起使用<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/dense_sparse_dense_train.png" alt="DSD Training"></p>
+<p>最后分析了一下DSD过程中的weights的变化，retrain会令pruning的weigths恢复，获得一种dense的weights分布。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/dsd_weights.png" alt="training codebooks"></p>
+<h4 id="总结展望"><a href="#总结展望" class="headerlink" title="总结展望"></a>总结展望</h4><p>ICLR2016 BEST PAPER介绍了一种通用的压缩技巧：1.weights pruning 2.quantization 3.huffman coding. 而Dense sparse dense training则对训练过程加入regularizer使用更robusted.<br>Pruning和DSD的成功，主要还是sparse(L1)结构在起作用，在描述图像先验的时候，sparse prior确实是一种通用而且有效的先验。针对CDM或者JDD甚至V-CDM来说，这样的sparse tricks其实也是可用的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/13/diary20161112/" itemprop="url">
                   2016读书总结
                 </a>
@@ -1444,146 +1571,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/09/CS231n-7/" itemprop="url">
-                  CS231n-7
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-09T14:33:36+08:00" content="2016-06-09">
-              2016-06-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/09/CS231n-7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/CS231n-7/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h4><p>终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。</p>
-<p>回顾一下，Mini-batch SGD<br>Loop: 1. <strong>Sample</strong> a batch of data</p>
-<ol>
-<li><strong>Forward</strong> prop it through the graph, get loss</li>
-<li><strong>Backprop</strong> to calculate the gradients</li>
-<li><strong>Update</strong> the parameters using the gradient</li>
-</ol>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609CNN.png" alt=""><br>卷积操作过程的参数计算公式图，趋向于用数量更多的小Filter,更深的网络。<br>ConV的卷积核深度总是和输入的立方Feature Map的深度一致，而Kernel的个数就是新的FeatureMap的Depth.</p>
-<p>一般来说：Max Pool with 2*2 filters and stride 2</p>
-<p>FC： Containes Neurons connect to the entire input volume</p>
-<p>ConV的参数取决于Filter,例如227<em>227</em>3通道的Feature Map,用Stride为4的96个Kernel 11<em>11 Filters,则有(11</em>11<em>3)</em>96=35K， Output Volum [((227-11)/4+1)<em>55</em>96]</p>
-<p>Pool的参数为0，FC的参数最多.</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609ALEX.png" alt=""><br>2012的ALEXNET的网络架构</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609VGG.png" alt=""><br>2014的VGGNET网络架构和参数，主要占显存的是头几层的FeatureMap,而主要占用参数是FC层，VGG是初始化效果最佳的网络之一。<br>TOTAL MEMORY: 24M<em>4bytes ~= 93MB/image (Only forward!~</em>2 for bwd)<br>TOTAL params: 138M parameters</p>
-<p>之后是GoogleNET(2014),6.7% for top5 error,12X less params than ALEXNET<br>然后是MSRA的RESNET（2015）， 3.6% top5 error, at runtime: faster than VGGNet</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609RES.png" alt=""><br>特点：BN after every CONV, Xavier/2 for initialization, SGD+Momentum(0.9), Learning rate,0.1 and dived by 10 when validation error plateaus. Mini-batch size 256, Weight decay of 1e-5, No dropout</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1624,7 +1616,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1641,7 +1633,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1699,7 +1691,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

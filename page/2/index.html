@@ -293,6 +293,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/09/CS231n-7/" itemprop="url">
+                  CS231n-7
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-09T14:33:36+08:00" content="2016-06-09">
+              2016-06-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/09/CS231n-7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/CS231n-7/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h4><p>终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。</p>
+<p>回顾一下，Mini-batch SGD<br>Loop: 1. <strong>Sample</strong> a batch of data</p>
+<ol>
+<li><strong>Forward</strong> prop it through the graph, get loss</li>
+<li><strong>Backprop</strong> to calculate the gradients</li>
+<li><strong>Update</strong> the parameters using the gradient</li>
+</ol>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609CNN.png" alt=""><br>卷积操作过程的参数计算公式图，趋向于用数量更多的小Filter,更深的网络。<br>ConV的卷积核深度总是和输入的立方Feature Map的深度一致，而Kernel的个数就是新的FeatureMap的Depth.</p>
+<p>一般来说：Max Pool with 2*2 filters and stride 2</p>
+<p>FC： Containes Neurons connect to the entire input volume</p>
+<p>ConV的参数取决于Filter,例如227<em>227</em>3通道的Feature Map,用Stride为4的96个Kernel 11<em>11 Filters,则有(11</em>11<em>3)</em>96=35K， Output Volum [((227-11)/4+1)<em>55</em>96]</p>
+<p>Pool的参数为0，FC的参数最多.</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609ALEX.png" alt=""><br>2012的ALEXNET的网络架构</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609VGG.png" alt=""><br>2014的VGGNET网络架构和参数，主要占显存的是头几层的FeatureMap,而主要占用参数是FC层，VGG是初始化效果最佳的网络之一。<br>TOTAL MEMORY: 24M<em>4bytes ~= 93MB/image (Only forward!~</em>2 for bwd)<br>TOTAL params: 138M parameters</p>
+<p>之后是GoogleNET(2014),6.7% for top5 error,12X less params than ALEXNET<br>然后是MSRA的RESNET（2015）， 3.6% top5 error, at runtime: faster than VGGNet</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0609RES.png" alt=""><br>特点：BN after every CONV, Xavier/2 for initialization, SGD+Momentum(0.9), Learning rate,0.1 and dived by 10 when validation error plateaus. Mini-batch size 256, Weight decay of 1e-5, No dropout</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/09/CS231n-6/" itemprop="url">
                   CS231n_6
                 </a>
@@ -1423,135 +1558,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/16/ColorDemosaicComparison/" itemprop="url">
-                  Demosaic Comparison
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-16T21:12:12+08:00" content="2016-05-16">
-              2016-05-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/16/ColorDemosaicComparison/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/16/ColorDemosaicComparison/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Demosaic-Comparison"><a href="#Demosaic-Comparison" class="headerlink" title="Demosaic Comparison"></a>Demosaic Comparison</h3><p>  进入公司2个月多了，对于ISP和Demosaic才刚起步，赶紧把CNN掌握好，做出点工作来吧！</p>
-<p>总体来说， nnr和sht直接插值，锯齿感太强，Lu和NAT的方法效率不行，然后感觉AP和SA的PSNR虚高，实际效果不行。可以考虑测一下CPSNR和CIE L<em>a</em>b或者锯齿等其它指标。<br>  下面比较一下AP[1], SA,LCC1和DLMMSE[2], RI[3]的结果。</p>
-<p>[1] SA, <a href="http://www.csee.wvu.edu/~xinl/demo/demosaic.html">http://www.csee.wvu.edu/~xinl/demo/demosaic.html</a><br>[2] DLMMSE, Zhang L, Wu X. Color demosaicking via directional linear minimum mean square-error estimation[J]. Image Processing, IEEE Transactions on, 2005, 14(12): 2167-2178.<br>[3] RI, <a href="http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html">http://www.ok.ctrl.titech.ac.jp/res/DM/RI.html</a><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/16/ColorDemosaicComparison/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1592,7 +1603,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1609,7 +1620,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1667,7 +1678,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

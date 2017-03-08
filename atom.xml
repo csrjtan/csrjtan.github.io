@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2016-11-12T18:35:37.000Z</updated>
+  <updated>2017-03-08T04:57:53.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>deep_compress ICLR2016 BEST PAPER</title>
+    <link href="https://csrjtan.github.io/2017/03/08/deep-compress/"/>
+    <id>https://csrjtan.github.io/2017/03/08/deep-compress/</id>
+    <published>2017-03-08T03:14:28.000Z</published>
+    <updated>2017-03-08T04:57:53.000Z</updated>
+    
+    <content type="html">&lt;p&gt;最近中了ICME2017的会议，抽空扫了一下有趣的论文。这篇是ICLR2016的best paper,作者是standford的song han。看了在微软的讲座，主要讲了Deep compress和Dense Sparse Dense training，最后是efficient inference engine的设计。&lt;/p&gt;
+&lt;h3 id=&quot;Deep-Compress&quot;&gt;&lt;a href=&quot;#Deep-Compress&quot; class=&quot;headerlink&quot; title=&quot;Deep Compress&quot;&gt;&lt;/a&gt;Deep Compress&lt;/h3&gt;&lt;p&gt;摘要：该文章的压缩思路很清晰也简单，实验做得很充分。主要用了三个技巧：1.weights pruning,对网络的系数进行thresholding的截断，导致接近0的系数为0，从而增加网络的稀疏性，减少网络的连接和系数。(reduce ~10X) 2.Quantization,用更少的bits（32bits to 5bits)来表示系数，这里面用到了聚类方法来建立code book的技巧。  3.对code book进行哈夫曼编码，进一步压缩存储空间。&lt;br&gt;  VGG从5MB 到11.3MB。&lt;/p&gt;
+&lt;h4 id=&quot;整个pipeline&quot;&gt;&lt;a href=&quot;#整个pipeline&quot; class=&quot;headerlink&quot; title=&quot;整个pipeline&quot;&gt;&lt;/a&gt;整个pipeline&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/deep_compress_1.png&quot; alt=&quot;Three stage compression&quot;&gt;&lt;br&gt;关于&lt;strong&gt;weights pruning&lt;/strong&gt;:这是网络压缩的常用技巧，对于原始网络首先正常训练得到最终weights，然后将少于某个阈值的weights从网络移除，最后再retrain稀疏网络的参数&lt;/p&gt;
+&lt;p&gt;关于&lt;strong&gt;Quantization&lt;/strong&gt;:在上一步pruning之后，用compressed sparse row &amp;amp; compressed sparse column的数据结构来存储网络，然后用code bokk 压缩8bits来存conv参数，5bits代表FC参数。以下用inNeurons=4,outNeurons=4的一层作为例子，而对于网络是针对整个网络做的。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/deep_compress_2.png&quot; alt=&quot;training codebooks&quot;&gt;&lt;br&gt;首先对参数聚类，得到k个聚类中心（k根据压缩的比特来选择，比如5bits就是2^5=32),然后在每次更新的gradients中做group by and reduce操作得到code gradient,用当前网络的学习率更新code book.&lt;br&gt;最后再用huffman对code book编码。&lt;/p&gt;
+&lt;p&gt;在用了以上strategy以后，不损失精度情况下，AlexNet from 240MB to 6.9MB&lt;/p&gt;
+&lt;h3 id=&quot;Dense-Sparse-Dense-Training&quot;&gt;&lt;a href=&quot;#Dense-Sparse-Dense-Training&quot; class=&quot;headerlink&quot; title=&quot;Dense Sparse Dense Training&quot;&gt;&lt;/a&gt;Dense Sparse Dense Training&lt;/h3&gt;&lt;p&gt;思想跟dropout有点像，也是需要保持网络结构的稀疏性，但是这篇文章的正则项在training procedure上起作用，可以看做training regularization. 只是简单地在中间添加sparse connection（将较少的weights直接移除）的training，然后交替做training，而不是整个training procedure都用dropout来做，在不调整网络结构的基础下，DSD的训练模式使得效果提升。（但没有正面跟dropout比较）。但可以与dropout technique一起使用&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/dense_sparse_dense_train.png&quot; alt=&quot;DSD Training&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最后分析了一下DSD过程中的weights的变化，retrain会令pruning的weigths恢复，获得一种dense的weights分布。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/dsd_weights.png&quot; alt=&quot;training codebooks&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;总结展望&quot;&gt;&lt;a href=&quot;#总结展望&quot; class=&quot;headerlink&quot; title=&quot;总结展望&quot;&gt;&lt;/a&gt;总结展望&lt;/h4&gt;&lt;p&gt;ICLR2016 BEST PAPER介绍了一种通用的压缩技巧：1.weights pruning 2.quantization 3.huffman coding. 而Dense sparse dense training则对训练过程加入regularizer使用更robusted.&lt;br&gt;Pruning和DSD的成功，主要还是sparse(L1)结构在起作用，在描述图像先验的时候，sparse prior确实是一种通用而且有效的先验。针对CDM或者JDD甚至V-CDM来说，这样的sparse tricks其实也是可用的。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近中了ICME2017的会议，抽空扫了一下有趣的论文。这篇是ICLR2016的best paper,作者是standford的song han。看了在微软的讲座，主要讲了Deep compress和Dense Sparse Dense training，最后是effici
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="papers" scheme="https://csrjtan.github.io/tags/papers/"/>
+    
+  </entry>
   
   <entry>
     <title>2016读书总结</title>
@@ -311,45 +341,6 @@
     
     
       <category term="Read" scheme="https://csrjtan.github.io/tags/Read/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CS231n-7</title>
-    <link href="https://csrjtan.github.io/2016/06/09/CS231n-7/"/>
-    <id>https://csrjtan.github.io/2016/06/09/CS231n-7/</id>
-    <published>2016-06-09T06:33:36.000Z</published>
-    <updated>2016-06-09T13:33:20.000Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;CNN&quot;&gt;&lt;a href=&quot;#CNN&quot; class=&quot;headerlink&quot; title=&quot;CNN&quot;&gt;&lt;/a&gt;CNN&lt;/h4&gt;&lt;p&gt;终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。&lt;/p&gt;
-&lt;p&gt;回顾一下，Mini-batch SGD&lt;br&gt;Loop: 1. &lt;strong&gt;Sample&lt;/strong&gt; a batch of data&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Forward&lt;/strong&gt; prop it through the graph, get loss&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Backprop&lt;/strong&gt; to calculate the gradients&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Update&lt;/strong&gt; the parameters using the gradient&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0609CNN.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;卷积操作过程的参数计算公式图，趋向于用数量更多的小Filter,更深的网络。&lt;br&gt;ConV的卷积核深度总是和输入的立方Feature Map的深度一致，而Kernel的个数就是新的FeatureMap的Depth.&lt;/p&gt;
-&lt;p&gt;一般来说：Max Pool with 2*2 filters and stride 2&lt;/p&gt;
-&lt;p&gt;FC： Containes Neurons connect to the entire input volume&lt;/p&gt;
-&lt;p&gt;ConV的参数取决于Filter,例如227&lt;em&gt;227&lt;/em&gt;3通道的Feature Map,用Stride为4的96个Kernel 11&lt;em&gt;11 Filters,则有(11&lt;/em&gt;11&lt;em&gt;3)&lt;/em&gt;96=35K， Output Volum [((227-11)/4+1)&lt;em&gt;55&lt;/em&gt;96]&lt;/p&gt;
-&lt;p&gt;Pool的参数为0，FC的参数最多.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0609ALEX.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;2012的ALEXNET的网络架构&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0609VGG.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;2014的VGGNET网络架构和参数，主要占显存的是头几层的FeatureMap,而主要占用参数是FC层，VGG是初始化效果最佳的网络之一。&lt;br&gt;TOTAL MEMORY: 24M&lt;em&gt;4bytes ~= 93MB/image (Only forward!~&lt;/em&gt;2 for bwd)&lt;br&gt;TOTAL params: 138M parameters&lt;/p&gt;
-&lt;p&gt;之后是GoogleNET(2014),6.7% for top5 error,12X less params than ALEXNET&lt;br&gt;然后是MSRA的RESNET（2015）， 3.6% top5 error, at runtime: faster than VGGNet&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0609RES.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;特点：BN after every CONV, Xavier/2 for initialization, SGD+Momentum(0.9), Learning rate,0.1 and dived by 10 when validation error plateaus. Mini-batch size 256, Weight decay of 1e-5, No dropout&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;CNN&quot;&gt;&lt;a href=&quot;#CNN&quot; class=&quot;headerlink&quot; title=&quot;CNN&quot;&gt;&lt;/a&gt;CNN&lt;/h4&gt;&lt;p&gt;终于进入CNN的话题了，介绍一下CONV,POOL,FC层的做法，具体的结构、参数、运算量等。&lt;/p&gt;
-&lt;p&gt;回顾一下，Mini-b
-    
-    </summary>
-    
-      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
-    
-    
-      <category term="公开课 CNN" scheme="https://csrjtan.github.io/tags/%E5%85%AC%E5%BC%80%E8%AF%BE-CNN/"/>
     
   </entry>
   
