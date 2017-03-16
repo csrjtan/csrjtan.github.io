@@ -104,23 +104,20 @@
 
 
 
-<meta name="description" content="研究生期间，一直都在使用MatConvNet这个框架，感觉需要来个小总结以及小教学。
-关于部署从官网下载最新版，当前是1.0-beta-23，matlab中用到mex,所以部署一下VS环境即可，按照官网来，先CPU模式vl_nncomplie()一下，然后再根据GPU命令编译一道。注意的是：1.cuda tool kit的目录，默认在c:program/toolkit…/cuda/v7.5/之类的">
+<meta name="description" content="研究生期间，一直都在使用MatConvNet这个框架，感觉需要来个小总结以及小教学。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="matconvnet使用教学">
 <meta property="og:url" content="https://csrjtan.github.io/2017/03/08/matconvnet使用教学/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="研究生期间，一直都在使用MatConvNet这个框架，感觉需要来个小总结以及小教学。
-关于部署从官网下载最新版，当前是1.0-beta-23，matlab中用到mex,所以部署一下VS环境即可，按照官网来，先CPU模式vl_nncomplie()一下，然后再根据GPU命令编译一道。注意的是：1.cuda tool kit的目录，默认在c:program/toolkit…/cuda/v7.5/之类的">
+<meta property="og:description" content="研究生期间，一直都在使用MatConvNet这个框架，感觉需要来个小总结以及小教学。">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/matconvnet_1.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/matconvnet_2.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/matconvnet_3.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/matconvnet_4.png">
-<meta property="og:updated_time" content="2017-03-09T06:54:49.000Z">
+<meta property="og:updated_time" content="2017-03-16T03:53:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="matconvnet使用教学">
-<meta name="twitter:description" content="研究生期间，一直都在使用MatConvNet这个框架，感觉需要来个小总结以及小教学。
-关于部署从官网下载最新版，当前是1.0-beta-23，matlab中用到mex,所以部署一下VS环境即可，按照官网来，先CPU模式vl_nncomplie()一下，然后再根据GPU命令编译一道。注意的是：1.cuda tool kit的目录，默认在c:program/toolkit…/cuda/v7.5/之类的">
+<meta name="twitter:description" content="研究生期间，一直都在使用MatConvNet这个框架，感觉需要来个小总结以及小教学。">
 <meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/matconvnet_1.png">
 
 
@@ -371,6 +368,7 @@
 
       
         <p>研究生期间，一直都在使用MatConvNet这个框架，感觉需要来个小总结以及小教学。</p>
+<a id="more"></a>
 <h3 id="关于部署"><a href="#关于部署" class="headerlink" title="关于部署"></a>关于部署</h3><p>从官网下载最新版，当前是1.0-beta-23，matlab中用到mex,所以部署一下VS环境即可，按照官网来，先CPU模式vl_nncomplie()一下，然后再根据GPU命令编译一道。注意的是：1.cuda tool kit的目录，默认在c:program/toolkit…/cuda/v7.5/之类的，然后cudnn用cudnn5，放在matconvnet的matlab下，新建local的文件夹。还需要把cudnn5/bin/cudnn5.dll放到mex文件夹下面。如果遇到round function的问题，可以根据网上教的，把round function写在matconvnet的cuda源代码里面。</p>
 <h3 id="关于matconvnet使用"><a href="#关于matconvnet使用" class="headerlink" title="关于matconvnet使用"></a>关于matconvnet使用</h3><p>大部分可以参照官方网站还有一个Manuel pdf,剩下的主要阅读项目的matlab代码，cuda代码暂时不需要涉及。主要分为simplenn net and DAG net， simple的是单向线性网，而DAG是多向图，从而方便设计更复杂的网络框架结构。当然暂时来说，matconvnet对于RNN的支持不太够，但在拟合deep learning来说还是很有用的。</p>
 <p>设计一个深度学习的程序包括：1.生成训练集 2.设置程序的默认参数 3.初始化网络的结构以及参数 4.训练数据导入和预处理 5.训练部署和优化过程 6.网络测试实验</p>
@@ -435,6 +433,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/16/关于学习/" rel="prev" title="关于学习方法">
+                关于学习方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -506,7 +508,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -523,7 +525,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

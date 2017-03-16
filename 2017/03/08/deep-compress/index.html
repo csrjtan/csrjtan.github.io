@@ -116,7 +116,7 @@ Deep Compress摘要：该文章的压缩思路很清晰也简单，实验做得�
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/deep_compress_2.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/dense_sparse_dense_train.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/dsd_weights.png">
-<meta property="og:updated_time" content="2017-03-08T04:57:53.000Z">
+<meta property="og:updated_time" content="2017-03-16T03:53:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="deep_compress ICLR2016 BEST PAPER">
 <meta name="twitter:description" content="最近中了ICME2017的会议，抽空扫了一下有趣的论文。这篇是ICLR2016的best paper,作者是standford的song han。看了在微软的讲座，主要讲了Deep compress和Dense Sparse Dense training，最后是efficient inference engine的设计。
@@ -373,6 +373,7 @@ Deep Compress摘要：该文章的压缩思路很清晰也简单，实验做得�
         <p>最近中了ICME2017的会议，抽空扫了一下有趣的论文。这篇是ICLR2016的best paper,作者是standford的song han。看了在微软的讲座，主要讲了Deep compress和Dense Sparse Dense training，最后是efficient inference engine的设计。</p>
 <h3 id="Deep-Compress"><a href="#Deep-Compress" class="headerlink" title="Deep Compress"></a>Deep Compress</h3><p>摘要：该文章的压缩思路很清晰也简单，实验做得很充分。主要用了三个技巧：1.weights pruning,对网络的系数进行thresholding的截断，导致接近0的系数为0，从而增加网络的稀疏性，减少网络的连接和系数。(reduce ~10X) 2.Quantization,用更少的bits（32bits to 5bits)来表示系数，这里面用到了聚类方法来建立code book的技巧。  3.对code book进行哈夫曼编码，进一步压缩存储空间。<br>  VGG从5MB 到11.3MB。</p>
 <h4 id="整个pipeline"><a href="#整个pipeline" class="headerlink" title="整个pipeline"></a>整个pipeline</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/deep_compress_1.png" alt="Three stage compression"><br>关于<strong>weights pruning</strong>:这是网络压缩的常用技巧，对于原始网络首先正常训练得到最终weights，然后将少于某个阈值的weights从网络移除，最后再retrain稀疏网络的参数</p>
+<a id="more"></a>
 <p>关于<strong>Quantization</strong>:在上一步pruning之后，用compressed sparse row &amp; compressed sparse column的数据结构来存储网络，然后用code bokk 压缩8bits来存conv参数，5bits代表FC参数。以下用inNeurons=4,outNeurons=4的一层作为例子，而对于网络是针对整个网络做的。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/deep_compress_2.png" alt="training codebooks"><br>首先对参数聚类，得到k个聚类中心（k根据压缩的比特来选择，比如5bits就是2^5=32),然后在每次更新的gradients中做group by and reduce操作得到code gradient,用当前网络的学习率更新code book.<br>最后再用huffman对code book编码。</p>
 <p>在用了以上strategy以后，不损失精度情况下，AlexNet from 240MB to 6.9MB</p>
 <h3 id="Dense-Sparse-Dense-Training"><a href="#Dense-Sparse-Dense-Training" class="headerlink" title="Dense Sparse Dense Training"></a>Dense Sparse Dense Training</h3><p>思想跟dropout有点像，也是需要保持网络结构的稀疏性，但是这篇文章的正则项在training procedure上起作用，可以看做training regularization. 只是简单地在中间添加sparse connection（将较少的weights直接移除）的training，然后交替做training，而不是整个training procedure都用dropout来做，在不调整网络结构的基础下，DSD的训练模式使得效果提升。（但没有正面跟dropout比较）。但可以与dropout technique一起使用<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/dense_sparse_dense_train.png" alt="DSD Training"></p>
@@ -506,7 +507,7 @@ Deep Compress摘要：该文章的压缩思路很清晰也简单，实验做得�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -523,7 +524,7 @@ Deep Compress摘要：该文章的压缩思路很清晰也简单，实验做得�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

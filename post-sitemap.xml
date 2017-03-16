@@ -7,16 +7,8 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/2017/03/08/matconvnet%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/</loc>
-        <lastmod>2017-03-09T06:54:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2017/03/08/deep-compress/</loc>
-        <lastmod>2017-03-08T04:57:53.000Z</lastmod>
+        <loc>https://csrjtan.github.io/2017/03/16/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2017-03-16T05:03:21.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,7 +16,39 @@
 
     <url>
         <loc>https://csrjtan.github.io/2016/11/13/diary20161112/</loc>
-        <lastmod>2016-11-12T18:35:37.000Z</lastmod>
+        <lastmod>2017-03-16T03:56:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/08/30/CS231n-%E6%80%BB%E7%BB%93/</loc>
+        <lastmod>2017-03-16T03:55:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/11/08/%E8%AE%A4%E8%AF%86%E6%95%99%E4%BC%9A%E7%9A%84%E6%9C%8B%E5%8F%8B/</loc>
+        <lastmod>2017-03-16T03:55:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2017/03/08/deep-compress/</loc>
+        <lastmod>2017-03-16T03:53:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2017/03/08/matconvnet%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/</loc>
+        <lastmod>2017-03-16T03:53:25.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -39,24 +63,8 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/2016/11/08/%E8%AE%A4%E8%AF%86%E6%95%99%E4%BC%9A%E7%9A%84%E6%9C%8B%E5%8F%8B/</loc>
-        <lastmod>2016-11-08T12:41:48.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/2016/06/01/books/</loc>
         <lastmod>2016-10-26T13:55:18.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/08/30/CS231n-%E6%80%BB%E7%BB%93/</loc>
-        <lastmod>2016-08-30T06:11:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

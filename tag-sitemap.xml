@@ -135,13 +135,6 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/tags/%E6%95%99%E4%BC%9A-%E6%9C%8B%E5%8F%8B/</loc>
-        <lastmod>2016-11-08T12:41:48.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://csrjtan.github.io/tags/paper/</loc>
         <lastmod>2016-11-08T12:54:19.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -149,22 +142,36 @@
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
-        <lastmod>2016-11-12T18:35:37.000Z</lastmod>
+        <loc>https://csrjtan.github.io/tags/matconvnet/</loc>
+        <lastmod>2017-03-16T03:53:25.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://csrjtan.github.io/tags/papers/</loc>
-        <lastmod>2017-03-08T04:57:53.000Z</lastmod>
+        <lastmod>2017-03-16T03:53:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://csrjtan.github.io/tags/matconvnet/</loc>
-        <lastmod>2017-03-09T06:54:49.000Z</lastmod>
+        <loc>https://csrjtan.github.io/tags/%E6%95%99%E4%BC%9A-%E6%9C%8B%E5%8F%8B/</loc>
+        <lastmod>2017-03-16T03:55:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
+        <lastmod>2017-03-16T03:56:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/tags/%E9%AB%98%E6%95%88-%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2017-03-16T05:03:21.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
