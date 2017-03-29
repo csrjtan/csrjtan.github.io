@@ -293,6 +293,291 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/26/matconvnet配置/" itemprop="url">
+                  matconvnet配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-26T16:12:44+08:00" content="2016-06-26">
+              2016-06-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/26/matconvnet配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/26/matconvnet配置/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://www.vlfeat.org/matconvnet/" target="_blank" rel="external">matconvnet</a>,使用CNN做Image Demosaicking，由于组内的师兄主要使用这个框架，率先对这个框架进行快速上手使用和学习，CS231N也不能落下，之后可以考虑对CAFFE进行学习。</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>首选由于选择软件的版本上也做了点无用功，亲测之下使用一下组合是有效的。<strong>win8.1+VS2013+MatlabR2014a+CUDA7.5+Cudnn-rc5</strong>.</p>
+<p>由于系统和Matlab的兼容性问题，感觉如此的组合是最为高效可靠的。<br>首先是mex -setup的问题，MatlabR2014a尚不支持VS2015的，为此我还体验了一会儿WIN10和VS2015.但考虑到后期开发和兼容性的问题，使用稳定版本是最为可靠的！对于下载后的源码，mex -setup设置成功后，直接跑vl_compilenn，则通过编译CPU的版本。这里着重说一下GPU版本，因为编译执行了很多次，不是编译就是运行代码时候遇到问题了，这里说一下自己的理解和亲测的过程。</p>
+<p><a href="http://www.voidcn.com/blog/Hungryof/article/p-5047632.html" target="_blank" rel="external">matconvnet gpu的方法</a></p>
+<p>首先使用了CUDA5.5的版本，但由于在编译时遇到了点问题，意识到应该使用7.5版本，而且无论caffe还是最近来说，7.5版本是比较稳定，而且适应我当前使用的TITAN X的显卡设备。然后使用vl_complinn(‘enableGpu’,true)则可实现普通GPU的版本。然而一直卡在使用cuDnn包的时候编译或者运行就出错。后来发现是用的rc-4的包不正确，应当使用官方的包，直接下了rc-5的版本。[建议任何的框架和库都使用官方版本！]最后终于成功了，跑cifar的example,1500Hz for gpu; cuDnn成功后，达到6700Hz!</p>
+<h4 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h4><p>这俩天认真的学习了一下MatconvNet,主要看官网的所有资料，以及example例子，然后就是VGG的<a href="http://www.robots.ox.ac.uk/~vgg/practicals/cnn/" target="_blank" rel="external">tutorial</a></p>
+<p>顺带有空把后面每一个函数的注释看一下，学会用法；针对于使用CNN，可以参考一下过程：<br><strong><br>1.Prepare Data<br>2.Set up Training parameters<br><a href="http://3.Training" class="test test-url" target="_blank" rel="noopener noreferrer">3.Training</a> Process:<br>    for num = 1:nEpoch<br>        train model on training set<br>        test on validation set<br>    end<br>4.Test on fianl test data
+</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/21/CS231n-8/" itemprop="url">
+                  CS231n_8_9
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-21T19:16:47+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/21/CS231n-8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/CS231n-8/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Lec8"><a href="#Lec8" class="headerlink" title="Lec8"></a>Lec8</h3><p>Spatial Localization and Detection</p>
+<h4 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h4><p>Classification, Classificatin+Localization, Object Detection, Instance Segmentation.</p>
+<p>Localization, I:Image O:Box in the image(x,y,w,h) E:Intersection over Union.(IoU)</p>
+<h4 id="Claissification-Localization"><a href="#Claissification-Localization" class="headerlink" title="Claissification+Localization"></a>Claissification+Localization</h4><p>Output: Single Label and Bounding Box</p>
+<p><strong>Idea one</strong>: Two task head<br>1.Train a CNN<br>2.Attach new fully-connected “regression head” to the network(FC)<br>  2.1 Classification Head<br>  2.2 Regression Head<br>3.Train the regression head only with SGD and L2 loss<br><a href="http://4.At" class="test test-url" target="_blank" rel="noopener noreferrer">4.At</a> test time use both heads</p>
+<p><strong>Idea two</strong>: Sliding Window<br>Input: Bounding Box<br>Iteratively refine the BB into a optimal size and place.</p>
+<h4 id="Objects-Detection"><a href="#Objects-Detection" class="headerlink" title="Objects Detection"></a>Objects Detection</h4><p>Output: all the exist labels and BBs</p>
+<p>Problem: Need to test many positions and scales, use computationally demanding classifier</p>
+<p>Solution: Only look at a tiny subset of possible positions</p>
+<p><strong>Region Proposal</strong>:Bottom-up segmentation.</p>
+<p>RCNN: 1. Train a classification model on ImageNet</p>
+<ol>
+<li>Fine-tune model for detection(Throw finaly FC rathter than 20 Objects and one background, that is 4096*21 for the last layer.)</li>
+<li>Extract Features: Extract region proposals for all images, save the pool5 features to disk.</li>
+<li>Train one binary SVM per class to claissify region features.</li>
+<li>Bbox regression: Train a linear model to fine-grain the bbox</li>
+</ol>
+<p>Fast-RCNN: Build an end-to-end framework, much faster than RCNN.</p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0621classification.png" alt=""></p>
+<h3 id="Lec9-Understanding-and-Visualizing"><a href="#Lec9-Understanding-and-Visualizing" class="headerlink" title="Lec9 Understanding and Visualizing"></a>Lec9 Understanding and Visualizing</h3><p>Visualizing the weights, t-SNE visualization</p>
+<p>Deconv Approaches:<br>1.Feed image into net<br>2.pick a layer, set gradients of the score vector to [0 0 1 .. 0], then bp to image<br><a href="http://3.Do" class="test test-url" target="_blank" rel="noopener noreferrer">3.Do</a> a small “Image Update”<br>4.Forward the Image</p>
+<ol>
+<li>Go to step 2</li>
+</ol>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0621deconv.png" alt=""></p>
+<h4 id="Deconv"><a href="#Deconv" class="headerlink" title="Deconv"></a>Deconv</h4><p>Learn to visualize the weights, also deconv to reconstruct an larger size output.</p>
+<p>Deconv: reverse the convolution filter<br>DePool: record the position and set other be zero.<br>DeReLU: The same as the ReLU.</p>
+<h4 id="Neural-Style"><a href="#Neural-Style" class="headerlink" title="Neural Style"></a>Neural Style</h4><ol>
+<li>extract content targets</li>
+<li>extract style targets</li>
+<li>Optimize over image </li>
+</ol>
+<h4 id="BackPropping-is-powerful"><a href="#BackPropping-is-powerful" class="headerlink" title="BackPropping is powerful"></a>BackPropping is powerful</h4><ul>
+<li>Understanding</li>
+<li>Segmenting Objects in the Image</li>
+<li>Inverting codes and introducing privacy concerns</li>
+<li>Fun(NeuralStyle/DeepDream)</li>
+<li>Confusion and chaos(Adversarial Examples)</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/13/Bilateral-Guided-Filter/" itemprop="url">
                   Bilateral_Guided_Filter
                 </a>
@@ -1318,255 +1603,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/03/CS231n-1/" itemprop="url">
-                  CS231n_1 & 2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-03T12:53:24+08:00" content="2016-06-03">
-              2016-06-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/03/CS231n-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/03/CS231n-1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>回来积极投身CNN的学习和研究中，受到博后哥哥宪标的推荐，毅然决然去学习standford CS231n关于CNN的公开课CNN for Visual Recognition，主要由飞飞姐和Karpathy、Johnson主讲，<br><a href="https://www.youtube.com/watch?v=ngXbD21b4qk&amp;index=2&amp;list=PLrZmhn8sSgye6ijhLzIIXiU9GNaIwbF8B">Youtube视频</a><br><a href="http://cs231n.stanford.edu/syllabus.html">课程主页</a><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/03/CS231n-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/01/books/" itemprop="url">
-                  书单
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-01T19:28:07+08:00" content="2016-06-01">
-              2016-06-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/01/books/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/books/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这里记录一下书单，包括在读的、想读的、他人推荐读的。后面可以写一下正在进展的项目和工作，最后记录已读的。</p>
-<h2 id="在读："><a href="#在读：" class="headerlink" title="在读："></a>在读：</h2><p>《当下的力量》，《机器学习》</p>
-<h2 id="想读："><a href="#想读：" class="headerlink" title="想读："></a>想读：</h2><h3 id="面试微软之前的十本书"><a href="#面试微软之前的十本书" class="headerlink" title="面试微软之前的十本书"></a>面试微软之前的十本书</h3><p>Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）<br>Computer System: A Programmer’s Perspective （《深入理解计算机系统》） / Windows via C/C++ （《Windows核心编程》 / 《程序员的自我修养》<br>Code Complete 2（《代码大全》）/ The Pragmatic Programmer （《程序员修炼之道》，我也把这本书称为《代码小全》）<br>Programming Pearls （《编程珠玑》） / Algorithms / Algorithm Design / 《编程之美》<br>The C Programming Language<br>The C++ Programming Language / Programming: Principles and Practice Using C++ / Accelerated C++<br>The Structure and Interpretation of Computer Programs （《计算机程序的构造和解释》）<br>Clean Code / Implementation Patterns<br>Design Patterns （《设计模式》） / Agile Software Development, Principles, Patterns, and Practices<br>Refactoring （《重构》）</p>
-<h3 id="云风推荐"><a href="#云风推荐" class="headerlink" title="云风推荐"></a>云风推荐</h3><p>C++编程思想<br>Effective C++<br>深度探索C++对象模型<br>C++语言的设计和演化<br>C专家编程<br>C陷阱与缺陷<br>C语言接口与实现<br>Lua程序设计<br>Linkers and Loaders<br>COM本质论<br>Windows核心编程<br>深入解析Windows操作系统<br>程序员修炼之道<br>代码大全<br>UNIX编程艺术<br>设计模式<br>代码优化：有效使用内存<br>深入理解计算机系统<br>深入理解LINUX内核<br>TCP/IP 详解</p>
-<h3 id="冯大辉"><a href="#冯大辉" class="headerlink" title="冯大辉"></a>冯大辉</h3><p>软件随想录<br>黑客与画家<br>重来<br>UNIX编程艺术<br>编程人生</p>
-<h3 id="豆瓣CTO"><a href="#豆瓣CTO" class="headerlink" title="豆瓣CTO"></a>豆瓣CTO</h3><p>Code Complete 2<br>The Mythical Man-Month （《人月神话》）<br>Code: The Hidden Language of Computer Hardware and Software （《编码的奥秘》）<br>TAOCP （不解释）<br>The Pragmatic Programmer （《程序员修炼之道》）<br>Design Patterns （《设计模式》）<br>The Structure and Interpretation of Computer Programs （《计算机程序的构造和解释》）<br>Refactoring （《重构》）<br>The C Programming Language<br>Introduction to Algorithms （《算法导论》）</p>
-<h2 id="已读："><a href="#已读：" class="headerlink" title="已读："></a>已读：</h2><h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><p>《统计学习方法》、《这就是搜索引擎》、《浪潮之巅》、《数学之美》</p>
-<h3 id="非技术"><a href="#非技术" class="headerlink" title="非技术"></a>非技术</h3><p>《苏菲的世界》、《如何阅读一本书》、《黑客与画家》、《解忧杂货铺》、《当我在跑步，我在谈论什么》、《白夜行》、《一个人的朝圣》、《人性的弱点》、《从0到1》、《35岁前要做的33件事》、《站在两个世界的边缘》、《极简欧洲史》、《未来在现实的第几层》、《再穷也要去旅游》、《活着》、《小王子》、《自控力》、《围城》、《此生未完成》、《黄金时代》、《拆掉思维里的墙》、《facebook效应》、《别为小事抓狂》、</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1629,7 +1665,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

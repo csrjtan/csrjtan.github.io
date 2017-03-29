@@ -7,6 +7,30 @@
     </url>
 
     <url>
+        <loc>https://csrjtan.github.io/2017/03/29/CDM-Review/</loc>
+        <lastmod>2017-03-29T04:44:40.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2016/06/01/books/</loc>
+        <lastmod>2017-03-28T15:03:56.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://csrjtan.github.io/2017/03/27/%E9%9B%85%E6%80%9D%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/</loc>
+        <lastmod>2017-03-28T14:49:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://csrjtan.github.io/2017/03/16/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/</loc>
         <lastmod>2017-03-16T05:03:21.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -57,14 +81,6 @@
     <url>
         <loc>https://csrjtan.github.io/2016/11/08/paper-reading-20161108/</loc>
         <lastmod>2016-11-08T12:54:19.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2016/06/01/books/</loc>
-        <lastmod>2016-10-26T13:55:18.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -481,22 +497,6 @@
     <url>
         <loc>https://csrjtan.github.io/2015/10/25/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%EF%BC%881%EF%BC%89/</loc>
         <lastmod>2016-05-28T14:25:14.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/10/20/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%88%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01%EF%BC%89/</loc>
-        <lastmod>2016-05-28T14:25:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://csrjtan.github.io/2015/12/23/%E3%80%8A%E7%88%B1%E7%9A%84%E4%BA%94%E7%A7%8D%E8%AF%AD%E8%A8%80%E3%80%8B/</loc>
-        <lastmod>2016-05-28T14:24:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

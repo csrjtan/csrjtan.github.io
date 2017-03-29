@@ -293,6 +293,262 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/29/CDM-Review/" itemprop="url">
+                  CDM_Review
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-29T09:50:05+08:00" content="2017-03-29">
+              2017-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/29/CDM-Review/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/29/CDM-Review/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天来总结一下Color Demosaicking（CDM）里面的重要论文和方法。希望能囊括AP, AHD, SA, LDI-NAT, DLMMSE, LSSC, GBTF, RI等方法</p>
+<h4 id="比较旧的：AP-AHD-SA等"><a href="#比较旧的：AP-AHD-SA等" class="headerlink" title="比较旧的：AP, AHD, SA等"></a>比较旧的：AP, AHD, SA等</h4><p>AP给出两个图像规律统计假设：1.自然图像在R,G,B通道间有较大的相关性（inter-color correlations) 2.G通道的采样率比R,B高一倍。则G通道的细节信息更丰富。它的方法包括两步：1.用了高低通滤波，然后构建inter-color恢复像素的公式 2.将结果投影到observed和label constrants sets上，进行fine-tune.（这些后来都有更好的方法）<br>Comment: AP这个方法效果已经不佳，但是它统计出来的inter-color correlation很重要</p>
+<p>SA让G和RB通道的像素估计进行一个交替循环地求解，类似于近似逼近的思想。迭代式求解涉及三个问题：1.从何开始（初始化方法） 2.该算法收敛吗（论文用AP的constrains set论证) 3.什么时候结束(更新不再提高，或到一个较少值)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/SA_1.png" alt=""><br>Comment: SA这个方法主要说明了一个Iterative求解CDM问题的可行性，但iterative问题需要说明清楚上述的三个问题。</p>
+<p>AHD这篇文章2005年提出了homogeneity概念，有效结合梯度较小的变化方向进行有效的像素估计，最后结合adaptive中值滤波的方法去除一下artifacts。效果比之前好，而且还快。</p>
+<h4 id="接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning"><a href="#接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning" class="headerlink" title="接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning"></a>接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning</h4><p>DLMMSE: 基于G和R/B通道的primal difference signals是low pass的，提出了基于directional minimum mean square-error estimation的方法，这里用到了horizon和vertical两个方向。先恢复G通道，然后用G恢复R/B通道。<br>论文首先给出统计表，说明GR和GB的相关性比RB的强，所以用G-R和G-B作为通道相关性的信号，然后估计真实值与观察值的误差。为了方便求解，而且假设两个信号demosaick noise是i.i.d gaussian，则LMMSE的公式可以简化为<img src="http://7xl4js.com1.z0.glb.clouddn.com/DLMMSE_1.png" alt=""> 其中x是观察值，mu_x是x的均值，sigma为方差，y为估计值。</p>
+<p>LDI-NAT的方法在之前的博文说过，这里总结一下，相比DLMMSE，LDI-NAT用LDI做一个初始化方法，然后结合non-local similarity的方法，构建矩阵进行SVD去噪，从而达到去马赛克噪声的效果。具体数学部分挺多的，请看原文或者之前博文。</p>
+<p>LSSC是09年提出的nonlocal+dictionary learning的美妙融合，成为了领域的milestone，当时做image restoration是效果最好的。先学字典，然后稀疏编码求解。这个字典的学习是精髓，不同于BM3D直接使用小波字典，这里作者用了L1,2 norm来使得同样的信号尽量获得同样的编码，用group sparsity从而使得字典更紧凑。</p>
+<p>Regularization-based: 由于CDM是一个ill-posed problem,所以一般人们习惯于加入正则项来约束退化模型，从而得到原始的估计信号，这就使得正则项对于整个问题的重要性不言而喻了。这里说一篇《cdm using inter-channel correlation and nonlocal self-similarity》的TIP文章，作者提出了两个重要的term来做CDM restoration问题。首先是TV-term和inter-color channel的结合，在difference map上做tv效果会比单独TV更佳。 然后是nonlocal matrix的low rank constraint，由于高频纹理复杂以及噪声影响，这个nonlocal matrix可能不是低秩的，这里用一个低秩矩阵加上Outliers矩阵来近似，意思是总能来nonlocal matrix附近找到一个低秩矩阵满足低秩，从而将假设放宽了一点。最后优化这两个正则项。（当然这是基于MLRI的初始化之后再做的demosaicking denoise),接下来都是凸优化的数学问题求解了。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/ISM_1.png" alt="最后的优化问题"></p>
+<h4 id="最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based"><a href="#最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based" class="headerlink" title="最后是又快又好的插值方法：GBTF， RI-based， CNN-based"></a>最后是又快又好的插值方法：GBTF， RI-based， CNN-based</h4><p>GBTF的论文可以理解为更细致的adaptive插值方法，先做一个LCC1的初始化，然后类似Total Variance的方法，构建一个difference map.在这个difference map上面做四个方法的加权插值，最后将这个estimate difference加回初始化图像，得到最终结果。特别地，对于R,B通道，提出用Laplacian filter加权拟合效果更佳。（这也是后来MLRI的思想）</p>
+<p>RI-based methods:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/RI_1.png" alt="RI流程"><br>RI是最近比较热门的方法，传统流程是在估计G通道之后，用R-G的difference做R图的恢复估计。现在RI是不直接在R-G difference map上面做，而是让G做引导图像，R做被滤波图像，得到tentative R,我们用tentative R - R 的difference(residual map)做插值恢复。最后作者用residual map和difference map对比一下，说明了residual map的像素梯度变化更缓和，有利于梯度插值，减少了插值误差，所以work.</p>
+<p>之后延伸了MLRI：bilinear interpolation perform better for minimum laplacian energies. 在G和R通道上分别做sparse laplacian filter的卷积操作，其余跟RI一样。我的理解是，做完这个laplacian filter之后，residual image变得更加smooth,所以效果又提升了。</p>
+<p>IRI： 将Iterative和RI结合，交替做G和R/B的恢复<br>ARI: 将MLRI和IRI加权融合，因为有时候MLRI处理不佳，有时候IRI对对于强相关区域处理不佳，所以ADAPTIVELY结合两者，再做加权平均。</p>
+<p>Deep JDD: 将CDM和DNS一起做，它的网络没有用初始化方法，而是rearrange CFA,加入一个噪声参数层，end-to-end train,用了大量的数据，并且用目前的criterion来提取Hard-case建立了复杂库，并用这些库对网络进行fine-tune。最后得到较佳的JDD结果。<br>个人理解：由于没有初始化方法，所以需要大量的数据来学习CDM的初始化，网络需要学习的内容复杂（针对自己的实验，如果没有初始化效果会十分不佳），专注于hard-case的CDM可能会导致平滑区域的CDM效果不佳，其实不太有必要（我没有hard case效果还是不错,这也是它的网络在Kodak上面表现不佳的原因). 其实用CNN做JDD是十分好用的，但目前还存在的问题大概是：1.在处理CDM和DNS的流程上应该如何较佳（张老师认为DNS-&gt;CDM会更好，而目前CFA DNS效果不佳，导致其后的CDM也不太好） 2.如何将CNN-JDD做得更快更好，拟合真实噪声的分布</p>
+<p>CNN-based的CDM，暂时我自己的网络用20层，64的kernel就已经把CDM效果做爆了，甚至比JDD要好。初始化方法是很有必要的，sequence end-to-end效果已经很好了，但这里面G channel细节信息更多error小，R/B channel细节信息较少，所以error大；如何用G CHANNEL来GUIDANCE成为问题。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/27/雅思笔记总结/" itemprop="url">
+                  雅思笔记总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-27T17:29:17+08:00" content="2017-03-27">
+              2017-03-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Life/" itemprop="url" rel="index">
+                    <span itemprop="name">Life</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/27/雅思笔记总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/27/雅思笔记总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>还有1小时上Ethics，无聊之际将旧有的笔记本总结一下，然后‘清理’吧</p>
+<h3 id="阅读真经"><a href="#阅读真经" class="headerlink" title="阅读真经"></a>阅读真经</h3><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">阅读先看题，定位快寻觅</span><br><span class="line">两种题后做，优先细节选</span><br><span class="line">同义多替换，单词有灵犀</span><br><span class="line">填词有规律，前后找痕迹</span><br><span class="line">并列需查重，生词不用疑</span><br><span class="line">难度为中等，变幻四种体</span><br><span class="line">填表填图题，一见笑眯眯</span><br><span class="line">顺藤能摸瓜，按图可索骥</span><br><span class="line">答案常集中，原始送分题</span><br><span class="line">段落选标题，连锁不简单</span><br><span class="line">段中找亮点，中心藏后边</span><br><span class="line">判断实不难，真假未提及</span><br><span class="line">末题少驳斥，首题少NG</span><br><span class="line">我有七种意，天下剑桥题</span><br><span class="line">多选找并列，单选是<span class="literal">True</span>题</span><br><span class="line">如遇选标题，末段加大意</span><br><span class="line">匹配乱序多，定位找同义</span><br><span class="line">段落含信息，小心有NB</span><br><span class="line">莫夸境界高，无招胜有招</span><br><span class="line">三剑已合璧，笑看雅思谜</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/27/雅思笔记总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/16/关于学习/" itemprop="url">
                   关于学习方法
                 </a>
@@ -1306,291 +1562,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/26/matconvnet配置/" itemprop="url">
-                  matconvnet配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-26T16:12:44+08:00" content="2016-06-26">
-              2016-06-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/26/matconvnet配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/26/matconvnet配置/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.vlfeat.org/matconvnet/" target="_blank" rel="external">matconvnet</a>,使用CNN做Image Demosaicking，由于组内的师兄主要使用这个框架，率先对这个框架进行快速上手使用和学习，CS231N也不能落下，之后可以考虑对CAFFE进行学习。</p>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>首选由于选择软件的版本上也做了点无用功，亲测之下使用一下组合是有效的。<strong>win8.1+VS2013+MatlabR2014a+CUDA7.5+Cudnn-rc5</strong>.</p>
-<p>由于系统和Matlab的兼容性问题，感觉如此的组合是最为高效可靠的。<br>首先是mex -setup的问题，MatlabR2014a尚不支持VS2015的，为此我还体验了一会儿WIN10和VS2015.但考虑到后期开发和兼容性的问题，使用稳定版本是最为可靠的！对于下载后的源码，mex -setup设置成功后，直接跑vl_compilenn，则通过编译CPU的版本。这里着重说一下GPU版本，因为编译执行了很多次，不是编译就是运行代码时候遇到问题了，这里说一下自己的理解和亲测的过程。</p>
-<p><a href="http://www.voidcn.com/blog/Hungryof/article/p-5047632.html" target="_blank" rel="external">matconvnet gpu的方法</a></p>
-<p>首先使用了CUDA5.5的版本，但由于在编译时遇到了点问题，意识到应该使用7.5版本，而且无论caffe还是最近来说，7.5版本是比较稳定，而且适应我当前使用的TITAN X的显卡设备。然后使用vl_complinn(‘enableGpu’,true)则可实现普通GPU的版本。然而一直卡在使用cuDnn包的时候编译或者运行就出错。后来发现是用的rc-4的包不正确，应当使用官方的包，直接下了rc-5的版本。[建议任何的框架和库都使用官方版本！]最后终于成功了，跑cifar的example,1500Hz for gpu; cuDnn成功后，达到6700Hz!</p>
-<h4 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h4><p>这俩天认真的学习了一下MatconvNet,主要看官网的所有资料，以及example例子，然后就是VGG的<a href="http://www.robots.ox.ac.uk/~vgg/practicals/cnn/" target="_blank" rel="external">tutorial</a></p>
-<p>顺带有空把后面每一个函数的注释看一下，学会用法；针对于使用CNN，可以参考一下过程：<br><strong><br>1.Prepare Data<br>2.Set up Training parameters<br><a href="http://3.Training" class="test test-url" target="_blank" rel="noopener noreferrer">3.Training</a> Process:<br>    for num = 1:nEpoch<br>        train model on training set<br>        test on validation set<br>    end<br>4.Test on fianl test data
-</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/21/CS231n-8/" itemprop="url">
-                  CS231n_8_9
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T19:16:47+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/CS231n-8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/CS231n-8/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Lec8"><a href="#Lec8" class="headerlink" title="Lec8"></a>Lec8</h3><p>Spatial Localization and Detection</p>
-<h4 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h4><p>Classification, Classificatin+Localization, Object Detection, Instance Segmentation.</p>
-<p>Localization, I:Image O:Box in the image(x,y,w,h) E:Intersection over Union.(IoU)</p>
-<h4 id="Claissification-Localization"><a href="#Claissification-Localization" class="headerlink" title="Claissification+Localization"></a>Claissification+Localization</h4><p>Output: Single Label and Bounding Box</p>
-<p><strong>Idea one</strong>: Two task head<br>1.Train a CNN<br>2.Attach new fully-connected “regression head” to the network(FC)<br>  2.1 Classification Head<br>  2.2 Regression Head<br>3.Train the regression head only with SGD and L2 loss<br><a href="http://4.At" class="test test-url" target="_blank" rel="noopener noreferrer">4.At</a> test time use both heads</p>
-<p><strong>Idea two</strong>: Sliding Window<br>Input: Bounding Box<br>Iteratively refine the BB into a optimal size and place.</p>
-<h4 id="Objects-Detection"><a href="#Objects-Detection" class="headerlink" title="Objects Detection"></a>Objects Detection</h4><p>Output: all the exist labels and BBs</p>
-<p>Problem: Need to test many positions and scales, use computationally demanding classifier</p>
-<p>Solution: Only look at a tiny subset of possible positions</p>
-<p><strong>Region Proposal</strong>:Bottom-up segmentation.</p>
-<p>RCNN: 1. Train a classification model on ImageNet</p>
-<ol>
-<li>Fine-tune model for detection(Throw finaly FC rathter than 20 Objects and one background, that is 4096*21 for the last layer.)</li>
-<li>Extract Features: Extract region proposals for all images, save the pool5 features to disk.</li>
-<li>Train one binary SVM per class to claissify region features.</li>
-<li>Bbox regression: Train a linear model to fine-grain the bbox</li>
-</ol>
-<p>Fast-RCNN: Build an end-to-end framework, much faster than RCNN.</p>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0621classification.png" alt=""></p>
-<h3 id="Lec9-Understanding-and-Visualizing"><a href="#Lec9-Understanding-and-Visualizing" class="headerlink" title="Lec9 Understanding and Visualizing"></a>Lec9 Understanding and Visualizing</h3><p>Visualizing the weights, t-SNE visualization</p>
-<p>Deconv Approaches:<br>1.Feed image into net<br>2.pick a layer, set gradients of the score vector to [0 0 1 .. 0], then bp to image<br><a href="http://3.Do" class="test test-url" target="_blank" rel="noopener noreferrer">3.Do</a> a small “Image Update”<br>4.Forward the Image</p>
-<ol>
-<li>Go to step 2</li>
-</ol>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/0621deconv.png" alt=""></p>
-<h4 id="Deconv"><a href="#Deconv" class="headerlink" title="Deconv"></a>Deconv</h4><p>Learn to visualize the weights, also deconv to reconstruct an larger size output.</p>
-<p>Deconv: reverse the convolution filter<br>DePool: record the position and set other be zero.<br>DeReLU: The same as the ReLU.</p>
-<h4 id="Neural-Style"><a href="#Neural-Style" class="headerlink" title="Neural Style"></a>Neural Style</h4><ol>
-<li>extract content targets</li>
-<li>extract style targets</li>
-<li>Optimize over image </li>
-</ol>
-<h4 id="BackPropping-is-powerful"><a href="#BackPropping-is-powerful" class="headerlink" title="BackPropping is powerful"></a>BackPropping is powerful</h4><ul>
-<li>Understanding</li>
-<li>Segmenting Objects in the Image</li>
-<li>Inverting codes and introducing privacy concerns</li>
-<li>Fun(NeuralStyle/DeepDream)</li>
-<li>Confusion and chaos(Adversarial Examples)</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1653,7 +1624,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

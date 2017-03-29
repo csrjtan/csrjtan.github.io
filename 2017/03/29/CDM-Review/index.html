@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="reivew CDM," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CSRJTAN" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="今天来总结一下Color Demosaicking（CDM）里面的重要论文和方法。希望能囊括AP, AHD, SA, LDI-NAT, DLMMSE, LSSC, GBTF, RI等方法
+比较旧的：AP, AHD, SA等AP给出两个图像规律统计假设：1.自然图像在R,G,B通道间有较大的相关性（inter-color correlations) 2.G通道的采样率比R,B高一倍。则G通道的细节信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CDM_Review">
+<meta property="og:url" content="https://csrjtan.github.io/2017/03/29/CDM-Review/index.html">
+<meta property="og:site_name" content="CSRJTAN">
+<meta property="og:description" content="今天来总结一下Color Demosaicking（CDM）里面的重要论文和方法。希望能囊括AP, AHD, SA, LDI-NAT, DLMMSE, LSSC, GBTF, RI等方法
+比较旧的：AP, AHD, SA等AP给出两个图像规律统计假设：1.自然图像在R,G,B通道间有较大的相关性（inter-color correlations) 2.G通道的采样率比R,B高一倍。则G通道的细节信">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/SA_1.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/DLMMSE_1.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/ISM_1.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/RI_1.png">
+<meta property="og:updated_time" content="2017-03-29T04:44:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CDM_Review">
+<meta name="twitter:description" content="今天来总结一下Color Demosaicking（CDM）里面的重要论文和方法。希望能囊括AP, AHD, SA, LDI-NAT, DLMMSE, LSSC, GBTF, RI等方法
+比较旧的：AP, AHD, SA等AP给出两个图像规律统计假设：1.自然图像在R,G,B通道间有较大的相关性（inter-color correlations) 2.G通道的采样率比R,B高一倍。则G通道的细节信">
+<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/SA_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '我是博主'
+    }
+  };
+</script>
+
+  <title> CDM_Review | CSRJTAN </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CSRJTAN</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Keep Moving</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tech">
+          <a href="/categories/Tech" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gavel"></i> <br />
+            
+            技术
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/categories/Read" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-life">
+          <a href="/categories/Life" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/2016/06/01/books/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            书单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CDM_Review
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-29T09:50:05+08:00" content="2017-03-29">
+              2017-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/29/CDM-Review/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/29/CDM-Review/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天来总结一下Color Demosaicking（CDM）里面的重要论文和方法。希望能囊括AP, AHD, SA, LDI-NAT, DLMMSE, LSSC, GBTF, RI等方法</p>
+<h4 id="比较旧的：AP-AHD-SA等"><a href="#比较旧的：AP-AHD-SA等" class="headerlink" title="比较旧的：AP, AHD, SA等"></a>比较旧的：AP, AHD, SA等</h4><p>AP给出两个图像规律统计假设：1.自然图像在R,G,B通道间有较大的相关性（inter-color correlations) 2.G通道的采样率比R,B高一倍。则G通道的细节信息更丰富。它的方法包括两步：1.用了高低通滤波，然后构建inter-color恢复像素的公式 2.将结果投影到observed和label constrants sets上，进行fine-tune.（这些后来都有更好的方法）<br>Comment: AP这个方法效果已经不佳，但是它统计出来的inter-color correlation很重要</p>
+<p>SA让G和RB通道的像素估计进行一个交替循环地求解，类似于近似逼近的思想。迭代式求解涉及三个问题：1.从何开始（初始化方法） 2.该算法收敛吗（论文用AP的constrains set论证) 3.什么时候结束(更新不再提高，或到一个较少值)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/SA_1.png" alt=""><br>Comment: SA这个方法主要说明了一个Iterative求解CDM问题的可行性，但iterative问题需要说明清楚上述的三个问题。</p>
+<p>AHD这篇文章2005年提出了homogeneity概念，有效结合梯度较小的变化方向进行有效的像素估计，最后结合adaptive中值滤波的方法去除一下artifacts。效果比之前好，而且还快。</p>
+<h4 id="接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning"><a href="#接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning" class="headerlink" title="接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning"></a>接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning</h4><p>DLMMSE: 基于G和R/B通道的primal difference signals是low pass的，提出了基于directional minimum mean square-error estimation的方法，这里用到了horizon和vertical两个方向。先恢复G通道，然后用G恢复R/B通道。<br>论文首先给出统计表，说明GR和GB的相关性比RB的强，所以用G-R和G-B作为通道相关性的信号，然后估计真实值与观察值的误差。为了方便求解，而且假设两个信号demosaick noise是i.i.d gaussian，则LMMSE的公式可以简化为<img src="http://7xl4js.com1.z0.glb.clouddn.com/DLMMSE_1.png" alt=""> 其中x是观察值，mu_x是x的均值，sigma为方差，y为估计值。</p>
+<p>LDI-NAT的方法在之前的博文说过，这里总结一下，相比DLMMSE，LDI-NAT用LDI做一个初始化方法，然后结合non-local similarity的方法，构建矩阵进行SVD去噪，从而达到去马赛克噪声的效果。具体数学部分挺多的，请看原文或者之前博文。</p>
+<p>LSSC是09年提出的nonlocal+dictionary learning的美妙融合，成为了领域的milestone，当时做image restoration是效果最好的。先学字典，然后稀疏编码求解。这个字典的学习是精髓，不同于BM3D直接使用小波字典，这里作者用了L1,2 norm来使得同样的信号尽量获得同样的编码，用group sparsity从而使得字典更紧凑。</p>
+<p>Regularization-based: 由于CDM是一个ill-posed problem,所以一般人们习惯于加入正则项来约束退化模型，从而得到原始的估计信号，这就使得正则项对于整个问题的重要性不言而喻了。这里说一篇《cdm using inter-channel correlation and nonlocal self-similarity》的TIP文章，作者提出了两个重要的term来做CDM restoration问题。首先是TV-term和inter-color channel的结合，在difference map上做tv效果会比单独TV更佳。 然后是nonlocal matrix的low rank constraint，由于高频纹理复杂以及噪声影响，这个nonlocal matrix可能不是低秩的，这里用一个低秩矩阵加上Outliers矩阵来近似，意思是总能来nonlocal matrix附近找到一个低秩矩阵满足低秩，从而将假设放宽了一点。最后优化这两个正则项。（当然这是基于MLRI的初始化之后再做的demosaicking denoise),接下来都是凸优化的数学问题求解了。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/ISM_1.png" alt="最后的优化问题"></p>
+<h4 id="最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based"><a href="#最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based" class="headerlink" title="最后是又快又好的插值方法：GBTF， RI-based， CNN-based"></a>最后是又快又好的插值方法：GBTF， RI-based， CNN-based</h4><p>GBTF的论文可以理解为更细致的adaptive插值方法，先做一个LCC1的初始化，然后类似Total Variance的方法，构建一个difference map.在这个difference map上面做四个方法的加权插值，最后将这个estimate difference加回初始化图像，得到最终结果。特别地，对于R,B通道，提出用Laplacian filter加权拟合效果更佳。（这也是后来MLRI的思想）</p>
+<p>RI-based methods:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/RI_1.png" alt="RI流程"><br>RI是最近比较热门的方法，传统流程是在估计G通道之后，用R-G的difference做R图的恢复估计。现在RI是不直接在R-G difference map上面做，而是让G做引导图像，R做被滤波图像，得到tentative R,我们用tentative R - R 的difference(residual map)做插值恢复。最后作者用residual map和difference map对比一下，说明了residual map的像素梯度变化更缓和，有利于梯度插值，减少了插值误差，所以work.</p>
+<p>之后延伸了MLRI：bilinear interpolation perform better for minimum laplacian energies. 在G和R通道上分别做sparse laplacian filter的卷积操作，其余跟RI一样。我的理解是，做完这个laplacian filter之后，residual image变得更加smooth,所以效果又提升了。</p>
+<p>IRI： 将Iterative和RI结合，交替做G和R/B的恢复<br>ARI: 将MLRI和IRI加权融合，因为有时候MLRI处理不佳，有时候IRI对对于强相关区域处理不佳，所以ADAPTIVELY结合两者，再做加权平均。</p>
+<p>Deep JDD: 将CDM和DNS一起做，它的网络没有用初始化方法，而是rearrange CFA,加入一个噪声参数层，end-to-end train,用了大量的数据，并且用目前的criterion来提取Hard-case建立了复杂库，并用这些库对网络进行fine-tune。最后得到较佳的JDD结果。<br>个人理解：由于没有初始化方法，所以需要大量的数据来学习CDM的初始化，网络需要学习的内容复杂（针对自己的实验，如果没有初始化效果会十分不佳），专注于hard-case的CDM可能会导致平滑区域的CDM效果不佳，其实不太有必要（我没有hard case效果还是不错,这也是它的网络在Kodak上面表现不佳的原因). 其实用CNN做JDD是十分好用的，但目前还存在的问题大概是：1.在处理CDM和DNS的流程上应该如何较佳（张老师认为DNS-&gt;CDM会更好，而目前CFA DNS效果不佳，导致其后的CDM也不太好） 2.如何将CNN-JDD做得更快更好，拟合真实噪声的分布</p>
+<p>CNN-based的CDM，暂时我自己的网络用20层，64的kernel就已经把CDM效果做爆了，甚至比JDD要好。初始化方法是很有必要的，sequence end-to-end效果已经很好了，但这里面G channel细节信息更多error小，R/B channel细节信息较少，所以error大；如何用G CHANNEL来GUIDANCE成为问题。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持分享，支持原创</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xl4js.com1.z0.glb.clouddn.com/wechatPayment.jpg" alt="CsrjTan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/reivew-CDM/" rel="tag">#reivew CDM</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/27/雅思笔记总结/" rel="next" title="雅思笔记总结">
+                <i class="fa fa-chevron-left"></i> 雅思笔记总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/29/CDM-Review/"
+           data-title="CDM_Review" data-url="https://csrjtan.github.io/2017/03/29/CDM-Review/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4js.com1.z0.glb.clouddn.com/avatar.jpg"
+               alt="CsrjTan" />
+          <p class="site-author-name" itemprop="name">CsrjTan</p>
+          <p class="site-description motion-element" itemprop="description">blog csrjtan tanrunj</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://arxiv.org/" title="arXiv" target="_blank">arXiv</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#比较旧的：AP-AHD-SA等"><span class="nav-number">1.</span> <span class="nav-text">比较旧的：AP, AHD, SA等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning"><span class="nav-number">2.</span> <span class="nav-text">接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based"><span class="nav-number">3.</span> <span class="nav-text">最后是又快又好的插值方法：GBTF， RI-based， CNN-based</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CsrjTan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"csrjtan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>

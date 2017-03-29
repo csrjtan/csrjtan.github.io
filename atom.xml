@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2017-03-16T05:03:21.000Z</updated>
+  <updated>2017-03-29T04:44:40.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CDM_Review</title>
+    <link href="https://csrjtan.github.io/2017/03/29/CDM-Review/"/>
+    <id>https://csrjtan.github.io/2017/03/29/CDM-Review/</id>
+    <published>2017-03-29T01:50:05.000Z</published>
+    <updated>2017-03-29T04:44:40.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天来总结一下Color Demosaicking（CDM）里面的重要论文和方法。希望能囊括AP, AHD, SA, LDI-NAT, DLMMSE, LSSC, GBTF, RI等方法&lt;/p&gt;
+&lt;h4 id=&quot;比较旧的：AP-AHD-SA等&quot;&gt;&lt;a href=&quot;#比较旧的：AP-AHD-SA等&quot; class=&quot;headerlink&quot; title=&quot;比较旧的：AP, AHD, SA等&quot;&gt;&lt;/a&gt;比较旧的：AP, AHD, SA等&lt;/h4&gt;&lt;p&gt;AP给出两个图像规律统计假设：1.自然图像在R,G,B通道间有较大的相关性（inter-color correlations) 2.G通道的采样率比R,B高一倍。则G通道的细节信息更丰富。它的方法包括两步：1.用了高低通滤波，然后构建inter-color恢复像素的公式 2.将结果投影到observed和label constrants sets上，进行fine-tune.（这些后来都有更好的方法）&lt;br&gt;Comment: AP这个方法效果已经不佳，但是它统计出来的inter-color correlation很重要&lt;/p&gt;
+&lt;p&gt;SA让G和RB通道的像素估计进行一个交替循环地求解，类似于近似逼近的思想。迭代式求解涉及三个问题：1.从何开始（初始化方法） 2.该算法收敛吗（论文用AP的constrains set论证) 3.什么时候结束(更新不再提高，或到一个较少值)&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/SA_1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;Comment: SA这个方法主要说明了一个Iterative求解CDM问题的可行性，但iterative问题需要说明清楚上述的三个问题。&lt;/p&gt;
+&lt;p&gt;AHD这篇文章2005年提出了homogeneity概念，有效结合梯度较小的变化方向进行有效的像素估计，最后结合adaptive中值滤波的方法去除一下artifacts。效果比之前好，而且还快。&lt;/p&gt;
+&lt;h4 id=&quot;接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning&quot;&gt;&lt;a href=&quot;#接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning&quot; class=&quot;headerlink&quot; title=&quot;接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning&quot;&gt;&lt;/a&gt;接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning&lt;/h4&gt;&lt;p&gt;DLMMSE: 基于G和R/B通道的primal difference signals是low pass的，提出了基于directional minimum mean square-error estimation的方法，这里用到了horizon和vertical两个方向。先恢复G通道，然后用G恢复R/B通道。&lt;br&gt;论文首先给出统计表，说明GR和GB的相关性比RB的强，所以用G-R和G-B作为通道相关性的信号，然后估计真实值与观察值的误差。为了方便求解，而且假设两个信号demosaick noise是i.i.d gaussian，则LMMSE的公式可以简化为&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/DLMMSE_1.png&quot; alt=&quot;&quot;&gt; 其中x是观察值，mu_x是x的均值，sigma为方差，y为估计值。&lt;/p&gt;
+&lt;p&gt;LDI-NAT的方法在之前的博文说过，这里总结一下，相比DLMMSE，LDI-NAT用LDI做一个初始化方法，然后结合non-local similarity的方法，构建矩阵进行SVD去噪，从而达到去马赛克噪声的效果。具体数学部分挺多的，请看原文或者之前博文。&lt;/p&gt;
+&lt;p&gt;LSSC是09年提出的nonlocal+dictionary learning的美妙融合，成为了领域的milestone，当时做image restoration是效果最好的。先学字典，然后稀疏编码求解。这个字典的学习是精髓，不同于BM3D直接使用小波字典，这里作者用了L1,2 norm来使得同样的信号尽量获得同样的编码，用group sparsity从而使得字典更紧凑。&lt;/p&gt;
+&lt;p&gt;Regularization-based: 由于CDM是一个ill-posed problem,所以一般人们习惯于加入正则项来约束退化模型，从而得到原始的估计信号，这就使得正则项对于整个问题的重要性不言而喻了。这里说一篇《cdm using inter-channel correlation and nonlocal self-similarity》的TIP文章，作者提出了两个重要的term来做CDM restoration问题。首先是TV-term和inter-color channel的结合，在difference map上做tv效果会比单独TV更佳。 然后是nonlocal matrix的low rank constraint，由于高频纹理复杂以及噪声影响，这个nonlocal matrix可能不是低秩的，这里用一个低秩矩阵加上Outliers矩阵来近似，意思是总能来nonlocal matrix附近找到一个低秩矩阵满足低秩，从而将假设放宽了一点。最后优化这两个正则项。（当然这是基于MLRI的初始化之后再做的demosaicking denoise),接下来都是凸优化的数学问题求解了。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/ISM_1.png&quot; alt=&quot;最后的优化问题&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based&quot;&gt;&lt;a href=&quot;#最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based&quot; class=&quot;headerlink&quot; title=&quot;最后是又快又好的插值方法：GBTF， RI-based， CNN-based&quot;&gt;&lt;/a&gt;最后是又快又好的插值方法：GBTF， RI-based， CNN-based&lt;/h4&gt;&lt;p&gt;GBTF的论文可以理解为更细致的adaptive插值方法，先做一个LCC1的初始化，然后类似Total Variance的方法，构建一个difference map.在这个difference map上面做四个方法的加权插值，最后将这个estimate difference加回初始化图像，得到最终结果。特别地，对于R,B通道，提出用Laplacian filter加权拟合效果更佳。（这也是后来MLRI的思想）&lt;/p&gt;
+&lt;p&gt;RI-based methods:&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/RI_1.png&quot; alt=&quot;RI流程&quot;&gt;&lt;br&gt;RI是最近比较热门的方法，传统流程是在估计G通道之后，用R-G的difference做R图的恢复估计。现在RI是不直接在R-G difference map上面做，而是让G做引导图像，R做被滤波图像，得到tentative R,我们用tentative R - R 的difference(residual map)做插值恢复。最后作者用residual map和difference map对比一下，说明了residual map的像素梯度变化更缓和，有利于梯度插值，减少了插值误差，所以work.&lt;/p&gt;
+&lt;p&gt;之后延伸了MLRI：bilinear interpolation perform better for minimum laplacian energies. 在G和R通道上分别做sparse laplacian filter的卷积操作，其余跟RI一样。我的理解是，做完这个laplacian filter之后，residual image变得更加smooth,所以效果又提升了。&lt;/p&gt;
+&lt;p&gt;IRI： 将Iterative和RI结合，交替做G和R/B的恢复&lt;br&gt;ARI: 将MLRI和IRI加权融合，因为有时候MLRI处理不佳，有时候IRI对对于强相关区域处理不佳，所以ADAPTIVELY结合两者，再做加权平均。&lt;/p&gt;
+&lt;p&gt;Deep JDD: 将CDM和DNS一起做，它的网络没有用初始化方法，而是rearrange CFA,加入一个噪声参数层，end-to-end train,用了大量的数据，并且用目前的criterion来提取Hard-case建立了复杂库，并用这些库对网络进行fine-tune。最后得到较佳的JDD结果。&lt;br&gt;个人理解：由于没有初始化方法，所以需要大量的数据来学习CDM的初始化，网络需要学习的内容复杂（针对自己的实验，如果没有初始化效果会十分不佳），专注于hard-case的CDM可能会导致平滑区域的CDM效果不佳，其实不太有必要（我没有hard case效果还是不错,这也是它的网络在Kodak上面表现不佳的原因). 其实用CNN做JDD是十分好用的，但目前还存在的问题大概是：1.在处理CDM和DNS的流程上应该如何较佳（张老师认为DNS-&amp;gt;CDM会更好，而目前CFA DNS效果不佳，导致其后的CDM也不太好） 2.如何将CNN-JDD做得更快更好，拟合真实噪声的分布&lt;/p&gt;
+&lt;p&gt;CNN-based的CDM，暂时我自己的网络用20层，64的kernel就已经把CDM效果做爆了，甚至比JDD要好。初始化方法是很有必要的，sequence end-to-end效果已经很好了，但这里面G channel细节信息更多error小，R/B channel细节信息较少，所以error大；如何用G CHANNEL来GUIDANCE成为问题。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来总结一下Color Demosaicking（CDM）里面的重要论文和方法。希望能囊括AP, AHD, SA, LDI-NAT, DLMMSE, LSSC, GBTF, RI等方法&lt;/p&gt;
+&lt;h4 id=&quot;比较旧的：AP-AHD-SA等&quot;&gt;&lt;a href=&quot;#比较旧的
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="reivew CDM" scheme="https://csrjtan.github.io/tags/reivew-CDM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>雅思笔记总结</title>
+    <link href="https://csrjtan.github.io/2017/03/27/%E9%9B%85%E6%80%9D%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/"/>
+    <id>https://csrjtan.github.io/2017/03/27/雅思笔记总结/</id>
+    <published>2017-03-27T09:29:17.000Z</published>
+    <updated>2017-03-28T14:49:22.000Z</updated>
+    
+    <content type="html">&lt;p&gt;还有1小时上Ethics，无聊之际将旧有的笔记本总结一下，然后‘清理’吧&lt;/p&gt;
+&lt;h3 id=&quot;阅读真经&quot;&gt;&lt;a href=&quot;#阅读真经&quot; class=&quot;headerlink&quot; title=&quot;阅读真经&quot;&gt;&lt;/a&gt;阅读真经&lt;/h3&gt;&lt;figure class=&quot;highlight ada&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;阅读先看题，定位快寻觅&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;两种题后做，优先细节选&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;同义多替换，单词有灵犀&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;填词有规律，前后找痕迹&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;并列需查重，生词不用疑&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;难度为中等，变幻四种体&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;填表填图题，一见笑眯眯&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;顺藤能摸瓜，按图可索骥&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;答案常集中，原始送分题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段落选标题，连锁不简单&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段中找亮点，中心藏后边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;判断实不难，真假未提及&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;末题少驳斥，首题少NG&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;我有七种意，天下剑桥题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;多选找并列，单选是&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;如遇选标题，末段加大意&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;匹配乱序多，定位找同义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段落含信息，小心有NB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;莫夸境界高，无招胜有招&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;三剑已合璧，笑看雅思谜&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;这是刘洪波雅思阅读真经，我感觉当年能阅读7.5这是对我整个雅思考试来说帮助最大的，所以每逢想起雅思就是这段经文了。同学们也要好好“查经”，他总结得特别好。&lt;/p&gt;
+&lt;h4 id=&quot;英语语法&quot;&gt;&lt;a href=&quot;#英语语法&quot; class=&quot;headerlink&quot; title=&quot;英语语法&quot;&gt;&lt;/a&gt;英语语法&lt;/h4&gt;&lt;p&gt;这里有语法树的&lt;a href=&quot;http://www.cnblogs.com/memset/archive/2013/03/26/2981778.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;英语语法&lt;/a&gt;。分为词法和语法， 词法包括名词、代词、数词、冠词、动词、介词、连词、形容词、副词；其中动词包括谓语动词和非谓语动词，谓语动词包括情态动词，时态，语态（主动，被动）和虚拟语气，非谓语动词包括不定式，现在/过去分词以及动名词。&lt;/p&gt;
+&lt;p&gt;然后是语法，分为一般规则和特殊规则。 一般的包括369，三类句子：简单句，并列句和复合句（定语/状语/名词性从句），六种简单句型，九种句子成分。 特殊规则又包括强调，倒装，语序，主谓一致，引语，平行和比较。&lt;/p&gt;
+&lt;h4 id=&quot;丰富写作&quot;&gt;&lt;a href=&quot;#丰富写作&quot; class=&quot;headerlink&quot; title=&quot;丰富写作&quot;&gt;&lt;/a&gt;丰富写作&lt;/h4&gt;&lt;p&gt;句式：句首状语提前，句上植入短语，现在分词和过去分词，强调句，虚拟语气，-ly结尾的副词，主被动交替和平行结构&lt;/p&gt;
+&lt;p&gt;连词：因：as, due to, owing to 果：thus, therefore, so, as a result 目的：thus+verbing 举例：for instance, such, this is confirmed by, the example of 对比：while, whereas, by contrast, unlike, one of the main differences between … and .. is 类比：similarly,  like …, 让步：in spite of, although, even if, even though, … as sb./sth. may be/seem … 假设：if…,(then) … 修饰定从： that, who, which, why(reason/reasons)&lt;/p&gt;
+&lt;p&gt;限定范围：apart from, as well as, rather than, instead of&lt;br&gt;Admittedly,… .Nevertheless, …&lt;br&gt;e.g. Some experts believe that it is better for children to egin learning a foreign language at primary school rather than secondary school.&lt;/p&gt;
+&lt;p&gt;下定义：means that, which means that, which is essentially&lt;/p&gt;
+&lt;p&gt;写作常用短语搭配：achieve one’s full potential, work-life balance, acquire knowledge, gain better understand, 坚持做adhere/stick to, hold on, boosting profits, deepen understanding of, combat/address/tackle a problem&lt;/p&gt;
+&lt;h4 id=&quot;经典句型&quot;&gt;&lt;a href=&quot;#经典句型&quot; class=&quot;headerlink&quot; title=&quot;经典句型&quot;&gt;&lt;/a&gt;经典句型&lt;/h4&gt;&lt;p&gt;1.According to a recent survey, millions people die each year from dieases linked to smoking&lt;br&gt;2.The last surveys show that quite a few children hae unpleasant association to homework.&lt;br&gt;&lt;a href=&quot;http://3.No&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;3.No&lt;/a&gt; invention has received more praise and abuse than Internet&lt;br&gt;4.People seem to fail to take into account the fact that education does not end with graduation.&lt;br&gt;5.An increasing number of people are beginning to realize that education is not complete with graduation.&lt;br&gt;6.When it comes to education, the majority of people believe that education is a lifetime study.&lt;br&gt;7.Many experts pont out that physical exercise contributes directly to a person’s physical fitness.&lt;br&gt;8.Proper measures must be taken to limit the number of foreign tourists and the great efforts should be made to protect local environment and history form the harmful effects of international tourism.&lt;br&gt;9.An increasing number of experts believe that migrants will exert positive effects on construction of city. However, this oppinion is now being questioned by more and more city residents, who complain that the migrants have bought many serious problems like crime and prostitution.&lt;br&gt;10.Many city residents complain that it’s so few buses in their city that they have to spend much more time waiting for a bus, which is usually crowed with a large number of passengers.&lt;br&gt;11.There is no denying the fact that air pollution is an extremely serious problem: the city authorities should take strong measures to deal with it.&lt;br&gt;12.An investigation shows that female workers tend to have a favorable attitude toward retirement.&lt;br&gt;13.A proper part-time job does not occupy students’ too much time. In fact, it is unhealthy for them to spend all of time on their study. As an old saying goes: All work and no play makes Jack a dull boy.&lt;br&gt;14.Any government, which is blind to this point, may pay a heavy price.&lt;br&gt;15.Nowadays, many students always go into raptures at the mere mention of the coming life of high school.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;还有1小时上Ethics，无聊之际将旧有的笔记本总结一下，然后‘清理’吧&lt;/p&gt;
+&lt;h3 id=&quot;阅读真经&quot;&gt;&lt;a href=&quot;#阅读真经&quot; class=&quot;headerlink&quot; title=&quot;阅读真经&quot;&gt;&lt;/a&gt;阅读真经&lt;/h3&gt;&lt;figure class=&quot;highlight ada&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;阅读先看题，定位快寻觅&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;两种题后做，优先细节选&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;同义多替换，单词有灵犀&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;填词有规律，前后找痕迹&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;并列需查重，生词不用疑&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;难度为中等，变幻四种体&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;填表填图题，一见笑眯眯&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;顺藤能摸瓜，按图可索骥&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;答案常集中，原始送分题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段落选标题，连锁不简单&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段中找亮点，中心藏后边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;判断实不难，真假未提及&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;末题少驳斥，首题少NG&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;我有七种意，天下剑桥题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;多选找并列，单选是&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;如遇选标题，末段加大意&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;匹配乱序多，定位找同义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段落含信息，小心有NB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;莫夸境界高，无招胜有招&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;三剑已合璧，笑看雅思谜&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
+    
+    
+      <category term="IELTS" scheme="https://csrjtan.github.io/tags/IELTS/"/>
+    
+  </entry>
   
   <entry>
     <title>关于学习方法</title>
@@ -305,98 +377,6 @@
     
     
       <category term="health" scheme="https://csrjtan.github.io/tags/health/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>matconvnet配置</title>
-    <link href="https://csrjtan.github.io/2016/06/26/matconvnet%E9%85%8D%E7%BD%AE/"/>
-    <id>https://csrjtan.github.io/2016/06/26/matconvnet配置/</id>
-    <published>2016-06-26T08:12:44.000Z</published>
-    <updated>2016-06-26T08:35:55.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.vlfeat.org/matconvnet/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;matconvnet&lt;/a&gt;,使用CNN做Image Demosaicking，由于组内的师兄主要使用这个框架，率先对这个框架进行快速上手使用和学习，CS231N也不能落下，之后可以考虑对CAFFE进行学习。&lt;/p&gt;
-&lt;h4 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;配置&lt;/h4&gt;&lt;p&gt;首选由于选择软件的版本上也做了点无用功，亲测之下使用一下组合是有效的。&lt;strong&gt;win8.1+VS2013+MatlabR2014a+CUDA7.5+Cudnn-rc5&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;由于系统和Matlab的兼容性问题，感觉如此的组合是最为高效可靠的。&lt;br&gt;首先是mex -setup的问题，MatlabR2014a尚不支持VS2015的，为此我还体验了一会儿WIN10和VS2015.但考虑到后期开发和兼容性的问题，使用稳定版本是最为可靠的！对于下载后的源码，mex -setup设置成功后，直接跑vl_compilenn，则通过编译CPU的版本。这里着重说一下GPU版本，因为编译执行了很多次，不是编译就是运行代码时候遇到问题了，这里说一下自己的理解和亲测的过程。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.voidcn.com/blog/Hungryof/article/p-5047632.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;matconvnet gpu的方法&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;首先使用了CUDA5.5的版本，但由于在编译时遇到了点问题，意识到应该使用7.5版本，而且无论caffe还是最近来说，7.5版本是比较稳定，而且适应我当前使用的TITAN X的显卡设备。然后使用vl_complinn(‘enableGpu’,true)则可实现普通GPU的版本。然而一直卡在使用cuDnn包的时候编译或者运行就出错。后来发现是用的rc-4的包不正确，应当使用官方的包，直接下了rc-5的版本。[建议任何的框架和库都使用官方版本！]最后终于成功了，跑cifar的example,1500Hz for gpu; cuDnn成功后，达到6700Hz!&lt;/p&gt;
-&lt;h4 id=&quot;学习&quot;&gt;&lt;a href=&quot;#学习&quot; class=&quot;headerlink&quot; title=&quot;学习&quot;&gt;&lt;/a&gt;学习&lt;/h4&gt;&lt;p&gt;这俩天认真的学习了一下MatconvNet,主要看官网的所有资料，以及example例子，然后就是VGG的&lt;a href=&quot;http://www.robots.ox.ac.uk/~vgg/practicals/cnn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;tutorial&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;顺带有空把后面每一个函数的注释看一下，学会用法；针对于使用CNN，可以参考一下过程：&lt;br&gt;&lt;strong&gt;&lt;br&gt;1.Prepare Data&lt;br&gt;2.Set up Training parameters&lt;br&gt;&lt;a href=&quot;http://3.Training&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;3.Training&lt;/a&gt; Process:&lt;br&gt;    for num = 1:nEpoch&lt;br&gt;        train model on training set&lt;br&gt;        test on validation set&lt;br&gt;    end&lt;br&gt;4.Test on fianl test data
-&lt;/strong&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;http://www.vlfeat.org/matconvnet/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;matconvnet&lt;/a&gt;,使用CNN做Image Demosaicking，由于组内的师兄主要使用这个框架，率先对这个框
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
-    
-    
-      <category term="matconvNet" scheme="https://csrjtan.github.io/tags/matconvNet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CS231n_8_9</title>
-    <link href="https://csrjtan.github.io/2016/06/21/CS231n-8/"/>
-    <id>https://csrjtan.github.io/2016/06/21/CS231n-8/</id>
-    <published>2016-06-21T11:16:47.000Z</published>
-    <updated>2016-06-21T12:47:49.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;Lec8&quot;&gt;&lt;a href=&quot;#Lec8&quot; class=&quot;headerlink&quot; title=&quot;Lec8&quot;&gt;&lt;/a&gt;Lec8&lt;/h3&gt;&lt;p&gt;Spatial Localization and Detection&lt;/p&gt;
-&lt;h4 id=&quot;Tasks&quot;&gt;&lt;a href=&quot;#Tasks&quot; class=&quot;headerlink&quot; title=&quot;Tasks&quot;&gt;&lt;/a&gt;Tasks&lt;/h4&gt;&lt;p&gt;Classification, Classificatin+Localization, Object Detection, Instance Segmentation.&lt;/p&gt;
-&lt;p&gt;Localization, I:Image O:Box in the image(x,y,w,h) E:Intersection over Union.(IoU)&lt;/p&gt;
-&lt;h4 id=&quot;Claissification-Localization&quot;&gt;&lt;a href=&quot;#Claissification-Localization&quot; class=&quot;headerlink&quot; title=&quot;Claissification+Localization&quot;&gt;&lt;/a&gt;Claissification+Localization&lt;/h4&gt;&lt;p&gt;Output: Single Label and Bounding Box&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Idea one&lt;/strong&gt;: Two task head&lt;br&gt;1.Train a CNN&lt;br&gt;2.Attach new fully-connected “regression head” to the network(FC)&lt;br&gt;  2.1 Classification Head&lt;br&gt;  2.2 Regression Head&lt;br&gt;3.Train the regression head only with SGD and L2 loss&lt;br&gt;&lt;a href=&quot;http://4.At&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;4.At&lt;/a&gt; test time use both heads&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Idea two&lt;/strong&gt;: Sliding Window&lt;br&gt;Input: Bounding Box&lt;br&gt;Iteratively refine the BB into a optimal size and place.&lt;/p&gt;
-&lt;h4 id=&quot;Objects-Detection&quot;&gt;&lt;a href=&quot;#Objects-Detection&quot; class=&quot;headerlink&quot; title=&quot;Objects Detection&quot;&gt;&lt;/a&gt;Objects Detection&lt;/h4&gt;&lt;p&gt;Output: all the exist labels and BBs&lt;/p&gt;
-&lt;p&gt;Problem: Need to test many positions and scales, use computationally demanding classifier&lt;/p&gt;
-&lt;p&gt;Solution: Only look at a tiny subset of possible positions&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Region Proposal&lt;/strong&gt;:Bottom-up segmentation.&lt;/p&gt;
-&lt;p&gt;RCNN: 1. Train a classification model on ImageNet&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Fine-tune model for detection(Throw finaly FC rathter than 20 Objects and one background, that is 4096*21 for the last layer.)&lt;/li&gt;
-&lt;li&gt;Extract Features: Extract region proposals for all images, save the pool5 features to disk.&lt;/li&gt;
-&lt;li&gt;Train one binary SVM per class to claissify region features.&lt;/li&gt;
-&lt;li&gt;Bbox regression: Train a linear model to fine-grain the bbox&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Fast-RCNN: Build an end-to-end framework, much faster than RCNN.&lt;/p&gt;
-&lt;h4 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0621classification.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Lec9-Understanding-and-Visualizing&quot;&gt;&lt;a href=&quot;#Lec9-Understanding-and-Visualizing&quot; class=&quot;headerlink&quot; title=&quot;Lec9 Understanding and Visualizing&quot;&gt;&lt;/a&gt;Lec9 Understanding and Visualizing&lt;/h3&gt;&lt;p&gt;Visualizing the weights, t-SNE visualization&lt;/p&gt;
-&lt;p&gt;Deconv Approaches:&lt;br&gt;1.Feed image into net&lt;br&gt;2.pick a layer, set gradients of the score vector to [0 0 1 .. 0], then bp to image&lt;br&gt;&lt;a href=&quot;http://3.Do&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;3.Do&lt;/a&gt; a small “Image Update”&lt;br&gt;4.Forward the Image&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Go to step 2&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/0621deconv.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Deconv&quot;&gt;&lt;a href=&quot;#Deconv&quot; class=&quot;headerlink&quot; title=&quot;Deconv&quot;&gt;&lt;/a&gt;Deconv&lt;/h4&gt;&lt;p&gt;Learn to visualize the weights, also deconv to reconstruct an larger size output.&lt;/p&gt;
-&lt;p&gt;Deconv: reverse the convolution filter&lt;br&gt;DePool: record the position and set other be zero.&lt;br&gt;DeReLU: The same as the ReLU.&lt;/p&gt;
-&lt;h4 id=&quot;Neural-Style&quot;&gt;&lt;a href=&quot;#Neural-Style&quot; class=&quot;headerlink&quot; title=&quot;Neural Style&quot;&gt;&lt;/a&gt;Neural Style&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;extract content targets&lt;/li&gt;
-&lt;li&gt;extract style targets&lt;/li&gt;
-&lt;li&gt;Optimize over image &lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&quot;BackPropping-is-powerful&quot;&gt;&lt;a href=&quot;#BackPropping-is-powerful&quot; class=&quot;headerlink&quot; title=&quot;BackPropping is powerful&quot;&gt;&lt;/a&gt;BackPropping is powerful&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Understanding&lt;/li&gt;
-&lt;li&gt;Segmenting Objects in the Image&lt;/li&gt;
-&lt;li&gt;Inverting codes and introducing privacy concerns&lt;/li&gt;
-&lt;li&gt;Fun(NeuralStyle/DeepDream)&lt;/li&gt;
-&lt;li&gt;Confusion and chaos(Adversarial Examples)&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Lec8&quot;&gt;&lt;a href=&quot;#Lec8&quot; class=&quot;headerlink&quot; title=&quot;Lec8&quot;&gt;&lt;/a&gt;Lec8&lt;/h3&gt;&lt;p&gt;Spatial Localization and Detection&lt;/p&gt;
-&lt;h4 id=&quot;Tasks&quot;&gt;&lt;a href=
-    
-    </summary>
-    
-      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
-    
-    
-      <category term="CNN 公开课" scheme="https://csrjtan.github.io/tags/CNN-%E5%85%AC%E5%BC%80%E8%AF%BE/"/>
     
   </entry>
   
