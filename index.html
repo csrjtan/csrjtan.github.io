@@ -293,6 +293,312 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/07/VDSR/" itemprop="url">
+                  Very Deep Super Resolution
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-07T23:15:59+08:00" content="2017-04-07">
+              2017-04-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/07/VDSR/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/07/VDSR/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这一篇是CVPR16 Kim的VDSR，通过VERY DEEP的简单模型，又快又好地解决了SR问题，成为暂时这个问题上的标杆模型。</p>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Our final model uses 20 weight layers. By cascading small filters many times in a deep network structure, contextual infor- mation over large image regions is exploited in an efficient way. With very deep networks, however, convergence speed becomes a critical issue during training. We propose a sim- ple yet effective training procedure. We learn residuals only and use extremely high learning rates (104 times higher than SRCNN [6]) enabled by adjustable gradient clipping.</p>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>Single image super-resolution(SISR):upsampling方法，而后neighbor embedding,如今用CNN； SRCNN的limitation: 1.relies on context of small image regions; 2.only works for single scale； VDSR的主要优点有：1.通过small size kernel but very deep, to obtain a large context(receptive region) 2.Convergence very fast by residual-learning and BN high learning rate 3.Multi-Scale Factor,把多个scale的SR融合进一个网络模型 </p>
+<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170407_01.png" alt="ARCHITECTURE"><br>20层CONV+BN+RELU，L2 LOSS, HIGH LEARN RATE WITH RESIDUAL LEARNING AND ADJUSTABLE WEIGHT CLIPPING.</p>
+<h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><ol>
+<li>THE DEEPER THE BETTER ON PSNR/SSIM</li>
+<li>RESIDUAL LEARNING WORKS</li>
+<li>MULTI-SCALE MODEL BETTER THAN SINGLE SCALE ON LARGE SCALE</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/07/VisualComputing-1/" itemprop="url">
+                  VisualComputing_1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-07T21:30:44+08:00" content="2017-04-07">
+              2017-04-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/07/VisualComputing-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/07/VisualComputing-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>老板的CV课程，在期末前做一下相关笔记总结</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h4 id="What-is-vision"><a href="#What-is-vision" class="headerlink" title="What is vision?"></a>What is vision?</h4><ul>
+<li>Perceive an integration of image data and prior knowledge in brain</li>
+<li>A field acquiring, processing, analyzing and understanding visual data</li>
+</ul>
+<p>Computer Vision &amp; Human Vision?</p>
+<ul>
+<li>ill-posed problems</li>
+<li>mathematical models</li>
+<li>discrete vs. continuous</li>
+<li>local vs. global optimization</li>
+</ul>
+<h4 id="What-kinds-of-Topics"><a href="#What-kinds-of-Topics" class="headerlink" title="What kinds of Topics?"></a>What kinds of Topics?</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_01.png" alt="相关学科"><br>Low Level: Image Denoising, Deblurring, Super-Resolution, photo-sketch synthesis, texture synthesis, optical flow, image matching</p>
+<p>Middle Level: image segmentation, motion capture, visual tracking, 3D reconstruction</p>
+<p>High Level: object detection, image understanding, video understanding</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_02.png" alt="具体应用问题"></p>
+<p>Related Problems: medical imaging, optical character recognition (OCR), face detection, smile detection, vision-based biometrics, shape capture, automatic driving</p>
+<h4 id="Why-image-restoration-challenging"><a href="#Why-image-restoration-challenging" class="headerlink" title="Why image restoration challenging?"></a>Why image restoration challenging?</h4><ul>
+<li>Real noise much more complex than additive white Gaussian</li>
+<li>Blur is non-uniform and complex to accurately estimate</li>
+<li>Space of image local structures is huge, inverse problem highly ill-posed</li>
+</ul>
+<h3 id="Sparse-Representation-and-Dictionary-Learning-on-Restoration"><a href="#Sparse-Representation-and-Dictionary-Learning-on-Restoration" class="headerlink" title="Sparse Representation and Dictionary Learning on Restoration"></a>Sparse Representation and Dictionary Learning on Restoration</h3><p>Linear system $Ax=b$, if A full rank, $x = A^{-1}b$; if tall matrix(over-determined) than approximate solution by $minimize||Ax-b||_2^2$; if fat matrix(underdetermined), no solution in general and some constraint should be imposed</p>
+<p>假设estimation与observer的最小距离是L0,L1,L2或其他：L0，非凸优化； L1，tightest convex relaxation of L0, 稀疏解; L2有闭合Dense解。具体到一个优化问题的等高线逼近时，各个NORM BALL的图形如下。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_03.png" alt="各个Norm Ball"><br>尽管L1能逼近L0，但有时候L1也会出现非稀疏解，数学上已经证明，满足RIP性质的话，用L1近似L0能确保得到稀疏解。RIP又称有限等距性质,直观解释为从A矩阵中的部分列向量与任意向量x的乘积结果收敛在一个环形邻域，如下图<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_04.png" alt="RIP"></p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_05.png" alt="直观解释"></p>
+<p>图像复原问题</p>
+<h4 id="Modeling"><a href="#Modeling" class="headerlink" title="Modeling"></a>Modeling</h4><p>$y=Hx+v$, H:observation matrix, v:noise<br>Keys to solve ill-posed problems:</p>
+<ul>
+<li>Modeling the degradation process</li>
+<li>Good Prior knowledge about the clean image</li>
+<li>Good objective function for minimization</li>
+</ul>
+<p>其中H在denoise是identity matrix; deblurring为blurring matrix; supperresolution是compound matrix of blurring and downsampling matrix; Inpainting是indication matrix of damaged pixels; </p>
+<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p>Filter based methods: Gaussian low-pass, PDE-based anisotropic diffusion, Bilateral filtering, Nonlocal means filtering; (local-&gt;non local performance improve greatly)</p>
+<p>Transform based methods: Fourier(‘Global, Orthogonal’), Wavelet(‘local, small’), Ridgelet(‘more redundant’), Dictionary Learning(‘over-complete’)</p>
+<ul>
+<li>Represent x over dictionary D, enforcing the new vector be sparse(robust)</li>
+<li>objective model $min_\alpha ||HD\alpha-y||_2^2+\lambda ||\alpha||_1$</li>
+</ul>
+<h4 id="The-basic-procedure"><a href="#The-basic-procedure" class="headerlink" title="The basic procedure"></a>The basic procedure</h4><ol>
+<li>Partition degraded image into overlapped patches(8*8)</li>
+<li>For each patch, solve the nonlinear L1-norm sparse coding problem:<br>$\hat{\alpha} = argmin_\alpha ||HD\alpha-y||_2^2+\lambda||\alpha||_1$</li>
+<li>Reconstruct each patch by $\hat{x}=D\hat{\alpha}$</li>
+<li>put the reconstructed patch back and average the overlapped pixels</li>
+<li>In practice, the 1~4 can be iterated for several rounds</li>
+</ol>
+<p>why sparse?</p>
+<ul>
+<li>Neuronscience</li>
+<li>Bayersian </li>
+<li>Compressive Sensing</li>
+</ul>
+<h4 id="How-to-solve"><a href="#How-to-solve" class="headerlink" title="How to solve?"></a>How to solve?</h4><p>L0: Greddy search(Matching pursuit, Orthogonal matching pursuit)<br>L1: </p>
+<ul>
+<li>Linear programming</li>
+<li>Iteratively reweighted least squares</li>
+<li>Proximal gradient descent</li>
+<li>Augmented Lagrangian methods(Alternating Direction Method of Multipliers, ADMM)</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/29/CDM-Review/" itemprop="url">
                   CDM_Review
                 </a>
@@ -1314,254 +1620,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/30/CS231n-总结/" itemprop="url">
-                  CS231n_总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T13:42:05+08:00" content="2016-08-30">
-              2016-08-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/30/CS231n-总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/CS231n-总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="结束CS231N课程笔记"><a href="#结束CS231N课程笔记" class="headerlink" title="结束CS231N课程笔记"></a>结束CS231N课程笔记</h3><p>CS231N课程的总结，到了后面关于RNN的用法以及detection和sequential学习都是新颖领域。</p>
-<p>(知乎专栏的翻译版)[<a href="https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit">https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit</a>]</p>
-<p>1.首先是PYTHON的教学，NUMPY使用。<br>2.图像分类方法：线性分类，SOFTMAX,SVM<br>3.优化方法：梯度下降、最优化方法<br>4.BP的具体原理和实现细节<br>5.CNN的学习<br>6.如何设置参数以及学习率<br>7.现在RNN发展和DETECTION</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/30/CS231n-总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/28/GoodMood/" itemprop="url">
-                  GoodMood
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-28T16:52:33+08:00" content="2016-07-28">
-              2016-07-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/28/GoodMood/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/GoodMood/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>刚完成了Confirmation,压力好大，缓不过气，每天都要充实的学习做实验和生活。阅读、记录、代码、健身、音乐，早睡早起，多交朋友，保持健康。</p>
-<p>这里搬运一些让自己好心情的方子：</p>
-<h4 id="14条交友原则"><a href="#14条交友原则" class="headerlink" title="14条交友原则"></a>14条交友原则</h4><p>1.保证<strong>充足睡眠</strong>情况下，早起让每天多出几个小时<br>2.做事情留出至少10分钟的余地，不要<strong>赶时间</strong><br>3.<strong>和喜欢的人说笑</strong><br>4.<strong>日事日毕</strong>，尽量8小时内解决问题，不要把工作带入生活<br>5.每两天来一次酣畅淋漓的<strong>运动</strong><br>6.对不重要的事情<strong>不争抢不较劲</strong>，如开车<br>7.多<strong>接触新事物</strong>带来新鲜感，多<strong>学习新技能</strong>带来成就感<br>8.<strong>改造环境</strong>，比如装饰房间<br>9.仔细读<strong>好书</strong>，让心灵成熟、自由，有更多创造快乐的方法<br>10.<strong>偶尔放松</strong>，通宵看球，和妹子开黑，吃零食看剧，躺床上看一天小说什么的。<br>11.每隔一段时间就换环境呆一段时间，<strong>度个假，旅个游</strong><br>12.每天给自己<strong>独处</strong>的时间<br>13.<strong>早睡</strong>，心里不会有负罪感，第二天精力充沛<br>14.<strong>不和不重要的人撕逼</strong><br>15.<strong>远离傻逼</strong></p>
-<h4 id="交友原则"><a href="#交友原则" class="headerlink" title="交友原则"></a>交友原则</h4><p>1.不要非和某人做朋友，不喜欢就保持距离<br>2.合得来的人要好好相处，不计较地乐于助人<br>3.不要胡思乱想，顺势而为<br>4.管理好自己的形象，衣着配饰得体，运动整洁<br>5.尽最大努力去赚钱，理清现实后不妄想得不到的东西<br>6.爱，不苟求。‘与有情人做快乐事，不理是劫还是缘’<br>7.温柔的对待父母<br>8.不买，可有可无的东西；必需品则买经典耐用的<br>9.有话就说，不知道怎么说才好就照直了说，恶言恶语当场反驳<br>10.别给自己的行为贴不好的标签，内向就是内向，不是抑郁<br>11.爱情本身不会影响生活，对爱情犹豫不决才会，为爱情忽略自我才会<br>12.找机会与看似快乐的陌生人玩耍，和爱自己的亲人吃饭。</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/Beauty.jpg" alt="美女们"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1607,7 +1665,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1624,7 +1682,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2017-03-29T04:44:40.000Z</updated>
+  <updated>2017-04-07T15:43:16.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -14,6 +14,120 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Very Deep Super Resolution</title>
+    <link href="https://csrjtan.github.io/2017/04/07/VDSR/"/>
+    <id>https://csrjtan.github.io/2017/04/07/VDSR/</id>
+    <published>2017-04-07T15:15:59.000Z</published>
+    <updated>2017-04-07T15:43:16.000Z</updated>
+    
+    <content type="html">&lt;p&gt;这一篇是CVPR16 Kim的VDSR，通过VERY DEEP的简单模型，又快又好地解决了SR问题，成为暂时这个问题上的标杆模型。&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h4&gt;&lt;p&gt;Our final model uses 20 weight layers. By cascading small filters many times in a deep network structure, contextual infor- mation over large image regions is exploited in an efficient way. With very deep networks, however, convergence speed becomes a critical issue during training. We propose a sim- ple yet effective training procedure. We learn residuals only and use extremely high learning rates (104 times higher than SRCNN [6]) enabled by adjustable gradient clipping.&lt;/p&gt;
+&lt;h4 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h4&gt;&lt;p&gt;Single image super-resolution(SISR):upsampling方法，而后neighbor embedding,如今用CNN； SRCNN的limitation: 1.relies on context of small image regions; 2.only works for single scale； VDSR的主要优点有：1.通过small size kernel but very deep, to obtain a large context(receptive region) 2.Convergence very fast by residual-learning and BN high learning rate 3.Multi-Scale Factor,把多个scale的SR融合进一个网络模型 &lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170407_01.png&quot; alt=&quot;ARCHITECTURE&quot;&gt;&lt;br&gt;20层CONV+BN+RELU，L2 LOSS, HIGH LEARN RATE WITH RESIDUAL LEARNING AND ADJUSTABLE WEIGHT CLIPPING.&lt;/p&gt;
+&lt;h4 id=&quot;Experiment&quot;&gt;&lt;a href=&quot;#Experiment&quot; class=&quot;headerlink&quot; title=&quot;Experiment&quot;&gt;&lt;/a&gt;Experiment&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;THE DEEPER THE BETTER ON PSNR/SSIM&lt;/li&gt;
+&lt;li&gt;RESIDUAL LEARNING WORKS&lt;/li&gt;
+&lt;li&gt;MULTI-SCALE MODEL BETTER THAN SINGLE SCALE ON LARGE SCALE&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这一篇是CVPR16 Kim的VDSR，通过VERY DEEP的简单模型，又快又好地解决了SR问题，成为暂时这个问题上的标杆模型。&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abs
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VisualComputing_1</title>
+    <link href="https://csrjtan.github.io/2017/04/07/VisualComputing-1/"/>
+    <id>https://csrjtan.github.io/2017/04/07/VisualComputing-1/</id>
+    <published>2017-04-07T13:30:44.000Z</published>
+    <updated>2017-04-07T15:43:19.000Z</updated>
+    
+    <content type="html">&lt;p&gt;老板的CV课程，在期末前做一下相关笔记总结&lt;/p&gt;
+&lt;h3 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h3&gt;&lt;h4 id=&quot;What-is-vision&quot;&gt;&lt;a href=&quot;#What-is-vision&quot; class=&quot;headerlink&quot; title=&quot;What is vision?&quot;&gt;&lt;/a&gt;What is vision?&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Perceive an integration of image data and prior knowledge in brain&lt;/li&gt;
+&lt;li&gt;A field acquiring, processing, analyzing and understanding visual data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Computer Vision &amp;amp; Human Vision?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ill-posed problems&lt;/li&gt;
+&lt;li&gt;mathematical models&lt;/li&gt;
+&lt;li&gt;discrete vs. continuous&lt;/li&gt;
+&lt;li&gt;local vs. global optimization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;What-kinds-of-Topics&quot;&gt;&lt;a href=&quot;#What-kinds-of-Topics&quot; class=&quot;headerlink&quot; title=&quot;What kinds of Topics?&quot;&gt;&lt;/a&gt;What kinds of Topics?&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_01.png&quot; alt=&quot;相关学科&quot;&gt;&lt;br&gt;Low Level: Image Denoising, Deblurring, Super-Resolution, photo-sketch synthesis, texture synthesis, optical flow, image matching&lt;/p&gt;
+&lt;p&gt;Middle Level: image segmentation, motion capture, visual tracking, 3D reconstruction&lt;/p&gt;
+&lt;p&gt;High Level: object detection, image understanding, video understanding&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_02.png&quot; alt=&quot;具体应用问题&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Related Problems: medical imaging, optical character recognition (OCR), face detection, smile detection, vision-based biometrics, shape capture, automatic driving&lt;/p&gt;
+&lt;h4 id=&quot;Why-image-restoration-challenging&quot;&gt;&lt;a href=&quot;#Why-image-restoration-challenging&quot; class=&quot;headerlink&quot; title=&quot;Why image restoration challenging?&quot;&gt;&lt;/a&gt;Why image restoration challenging?&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Real noise much more complex than additive white Gaussian&lt;/li&gt;
+&lt;li&gt;Blur is non-uniform and complex to accurately estimate&lt;/li&gt;
+&lt;li&gt;Space of image local structures is huge, inverse problem highly ill-posed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Sparse-Representation-and-Dictionary-Learning-on-Restoration&quot;&gt;&lt;a href=&quot;#Sparse-Representation-and-Dictionary-Learning-on-Restoration&quot; class=&quot;headerlink&quot; title=&quot;Sparse Representation and Dictionary Learning on Restoration&quot;&gt;&lt;/a&gt;Sparse Representation and Dictionary Learning on Restoration&lt;/h3&gt;&lt;p&gt;Linear system $Ax=b$, if A full rank, $x = A^{-1}b$; if tall matrix(over-determined) than approximate solution by $minimize||Ax-b||_2^2$; if fat matrix(underdetermined), no solution in general and some constraint should be imposed&lt;/p&gt;
+&lt;p&gt;假设estimation与observer的最小距离是L0,L1,L2或其他：L0，非凸优化； L1，tightest convex relaxation of L0, 稀疏解; L2有闭合Dense解。具体到一个优化问题的等高线逼近时，各个NORM BALL的图形如下。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_03.png&quot; alt=&quot;各个Norm Ball&quot;&gt;&lt;br&gt;尽管L1能逼近L0，但有时候L1也会出现非稀疏解，数学上已经证明，满足RIP性质的话，用L1近似L0能确保得到稀疏解。RIP又称有限等距性质,直观解释为从A矩阵中的部分列向量与任意向量x的乘积结果收敛在一个环形邻域，如下图&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_04.png&quot; alt=&quot;RIP&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_05.png&quot; alt=&quot;直观解释&quot;&gt;&lt;/p&gt;
+&lt;p&gt;图像复原问题&lt;/p&gt;
+&lt;h4 id=&quot;Modeling&quot;&gt;&lt;a href=&quot;#Modeling&quot; class=&quot;headerlink&quot; title=&quot;Modeling&quot;&gt;&lt;/a&gt;Modeling&lt;/h4&gt;&lt;p&gt;$y=Hx+v$, H:observation matrix, v:noise&lt;br&gt;Keys to solve ill-posed problems:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modeling the degradation process&lt;/li&gt;
+&lt;li&gt;Good Prior knowledge about the clean image&lt;/li&gt;
+&lt;li&gt;Good objective function for minimization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中H在denoise是identity matrix; deblurring为blurring matrix; supperresolution是compound matrix of blurring and downsampling matrix; Inpainting是indication matrix of damaged pixels; &lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;Filter based methods: Gaussian low-pass, PDE-based anisotropic diffusion, Bilateral filtering, Nonlocal means filtering; (local-&amp;gt;non local performance improve greatly)&lt;/p&gt;
+&lt;p&gt;Transform based methods: Fourier(‘Global, Orthogonal’), Wavelet(‘local, small’), Ridgelet(‘more redundant’), Dictionary Learning(‘over-complete’)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Represent x over dictionary D, enforcing the new vector be sparse(robust)&lt;/li&gt;
+&lt;li&gt;objective model $min_\alpha ||HD\alpha-y||_2^2+\lambda ||\alpha||_1$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;The-basic-procedure&quot;&gt;&lt;a href=&quot;#The-basic-procedure&quot; class=&quot;headerlink&quot; title=&quot;The basic procedure&quot;&gt;&lt;/a&gt;The basic procedure&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Partition degraded image into overlapped patches(8*8)&lt;/li&gt;
+&lt;li&gt;For each patch, solve the nonlinear L1-norm sparse coding problem:&lt;br&gt;$\hat{\alpha} = argmin_\alpha ||HD\alpha-y||_2^2+\lambda||\alpha||_1$&lt;/li&gt;
+&lt;li&gt;Reconstruct each patch by $\hat{x}=D\hat{\alpha}$&lt;/li&gt;
+&lt;li&gt;put the reconstructed patch back and average the overlapped pixels&lt;/li&gt;
+&lt;li&gt;In practice, the 1~4 can be iterated for several rounds&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;why sparse?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Neuronscience&lt;/li&gt;
+&lt;li&gt;Bayersian &lt;/li&gt;
+&lt;li&gt;Compressive Sensing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;How-to-solve&quot;&gt;&lt;a href=&quot;#How-to-solve&quot; class=&quot;headerlink&quot; title=&quot;How to solve?&quot;&gt;&lt;/a&gt;How to solve?&lt;/h4&gt;&lt;p&gt;L0: Greddy search(Matching pursuit, Orthogonal matching pursuit)&lt;br&gt;L1: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linear programming&lt;/li&gt;
+&lt;li&gt;Iteratively reweighted least squares&lt;/li&gt;
+&lt;li&gt;Proximal gradient descent&lt;/li&gt;
+&lt;li&gt;Augmented Lagrangian methods(Alternating Direction Method of Multipliers, ADMM)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;老板的CV课程，在期末前做一下相关笔记总结&lt;/p&gt;
+&lt;h3 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h3&gt;&lt;h4 
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="VisualComputing" scheme="https://csrjtan.github.io/tags/VisualComputing/"/>
+    
+  </entry>
   
   <entry>
     <title>CDM_Review</title>
@@ -316,67 +430,6 @@
     
     
       <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CS231n_总结</title>
-    <link href="https://csrjtan.github.io/2016/08/30/CS231n-%E6%80%BB%E7%BB%93/"/>
-    <id>https://csrjtan.github.io/2016/08/30/CS231n-总结/</id>
-    <published>2016-08-30T05:42:05.000Z</published>
-    <updated>2017-03-16T03:55:27.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;结束CS231N课程笔记&quot;&gt;&lt;a href=&quot;#结束CS231N课程笔记&quot; class=&quot;headerlink&quot; title=&quot;结束CS231N课程笔记&quot;&gt;&lt;/a&gt;结束CS231N课程笔记&lt;/h3&gt;&lt;p&gt;CS231N课程的总结，到了后面关于RNN的用法以及detection和sequential学习都是新颖领域。&lt;/p&gt;
-&lt;p&gt;(知乎专栏的翻译版)[&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit&lt;/a&gt;]&lt;/p&gt;
-&lt;p&gt;1.首先是PYTHON的教学，NUMPY使用。&lt;br&gt;2.图像分类方法：线性分类，SOFTMAX,SVM&lt;br&gt;3.优化方法：梯度下降、最优化方法&lt;br&gt;4.BP的具体原理和实现细节&lt;br&gt;5.CNN的学习&lt;br&gt;6.如何设置参数以及学习率&lt;br&gt;7.现在RNN发展和DETECTION&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;回到香港，最后一年的准备和学习&quot;&gt;&lt;a href=&quot;#回到香港，最后一年的准备和学习&quot; class=&quot;headerlink&quot; title=&quot;回到香港，最后一年的准备和学习&quot;&gt;&lt;/a&gt;回到香港，最后一年的准备和学习&lt;/h3&gt;&lt;p&gt;经过了一年的放养，每天度假似的过得战战兢兢，如履薄冰。遗憾于自己不抓紧，没有自学到很多东西之余，拖延着使得任务也一点一点的搁浅，让自己和周围的朋友都失望，实在是愧对自己。如何展现自己的能力和让自己得到价值的证明是首要思考的。&lt;/p&gt;
-&lt;p&gt;保持看书、锻炼的习惯，养成早起，日子过得很滋润，也得让自己抓紧有所贡献。就像王健林所说的，先划一个一个小目标，比如说先赚他一个亿。只是内心对于走科研的路子和决心越来越不能肯定了，还是只是希望自己混点小日子就过活，虽然明明知道自己过小日子也不会幸福快活，奈何对自己没有充足的信任。找到自己的才华和发力点，兴趣点是关键。热爱音乐，艺术，游戏的我，能在年轻的路上走得多远，我们拭目以待。当然英语我也是不排斥的，趁着年轻，可以逼着自己做些不喜欢的事情，考验自己的能力和内心承受。&lt;/p&gt;
-&lt;h3 id=&quot;关于人生方向和目标&quot;&gt;&lt;a href=&quot;#关于人生方向和目标&quot; class=&quot;headerlink&quot; title=&quot;关于人生方向和目标&quot;&gt;&lt;/a&gt;关于人生方向和目标&lt;/h3&gt;&lt;p&gt;这里设立五年的目标：1.经济上：能负起首付，买上小车，自给自足，一步一步过上满意的生活。&lt;br&gt;2.事业上：拿到PHD学位或者获得良好的工作岗位并得到升职的空间 3.家庭上：帮爸妈过上小康的生活，与另一半稳定温暖的生活 4.兴趣上：吉他和健身的造诣得到提升，还可以培养更多的兴趣，可以研发一下游戏周边有意义的活动 5.身心上：身体要锻炼，心灵要熏陶，眼界要开阔，精力要丰富，做成更多有意义的事情，建立自信。&lt;/p&gt;
-&lt;p&gt;一步一步的小目标：1.坚持早睡早起 2.坚持跑步和健身 3.坚持背单词和写代码 4.坚持看论文和看书 5.定期总结&lt;/p&gt;
-&lt;p&gt;设定了小目标之后，需要及时检验，以我对自己的了解，我喜欢玩游戏，所以这种及时和即时的反馈是十分重要。在获得正面反馈之后，必须及时定下新的任务，一步一步的挑战，下副本和打boss。这样的能力提高过程，伴随能力的提高以及自信的建立，重要的是建立量化指标和衡量能力的有效途径，对于经济，明显就是投资和金钱；对于事业，一方面是学位和职位，另一方面就是掌握的知识结构；对于家庭和生活，情感是最难以衡量的，只能尽自己的心情地去关怀和付出了；对于兴趣，吉他的熟练和记谱，健身的体重与肌肉，跑步的速度与长度；对于身心，每天多对自己微笑和加油，生活是自己的，每个人的世界都是由自己所决定的；&lt;/p&gt;
-&lt;p&gt;对于小目标来说：1.坚持早睡早起30天，50天，100天，300天 2.跑步和健身需要错开，一周保持3~4次，每次不少于30分钟，还需要量化统计自己的健身，看到自己的进步 3.单词和代码也是很好量化统计的 4.论文和看书也不例外。  这里建议使用特定的软件和本子来统计自己的进度和进步，用电脑或者笔记来总结和记录自己的进步吧，关键在于精力差的时候能走出破坏习惯的怪圈。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;结束CS231N课程笔记&quot;&gt;&lt;a href=&quot;#结束CS231N课程笔记&quot; class=&quot;headerlink&quot; title=&quot;结束CS231N课程笔记&quot;&gt;&lt;/a&gt;结束CS231N课程笔记&lt;/h3&gt;&lt;p&gt;CS231N课程的总结，到了后面关于RNN的用法以及detection和sequential学习都是新颖领域。&lt;/p&gt;
-&lt;p&gt;(知乎专栏的翻译版)[&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit&quot;&gt;https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit&lt;/a&gt;]&lt;/p&gt;
-&lt;p&gt;1.首先是PYTHON的教学，NUMPY使用。&lt;br&gt;2.图像分类方法：线性分类，SOFTMAX,SVM&lt;br&gt;3.优化方法：梯度下降、最优化方法&lt;br&gt;4.BP的具体原理和实现细节&lt;br&gt;5.CNN的学习&lt;br&gt;6.如何设置参数以及学习率&lt;br&gt;7.现在RNN发展和DETECTION&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>GoodMood</title>
-    <link href="https://csrjtan.github.io/2016/07/28/GoodMood/"/>
-    <id>https://csrjtan.github.io/2016/07/28/GoodMood/</id>
-    <published>2016-07-28T08:52:33.000Z</published>
-    <updated>2016-07-28T09:25:07.000Z</updated>
-    
-    <content type="html">&lt;p&gt;刚完成了Confirmation,压力好大，缓不过气，每天都要充实的学习做实验和生活。阅读、记录、代码、健身、音乐，早睡早起，多交朋友，保持健康。&lt;/p&gt;
-&lt;p&gt;这里搬运一些让自己好心情的方子：&lt;/p&gt;
-&lt;h4 id=&quot;14条交友原则&quot;&gt;&lt;a href=&quot;#14条交友原则&quot; class=&quot;headerlink&quot; title=&quot;14条交友原则&quot;&gt;&lt;/a&gt;14条交友原则&lt;/h4&gt;&lt;p&gt;1.保证&lt;strong&gt;充足睡眠&lt;/strong&gt;情况下，早起让每天多出几个小时&lt;br&gt;2.做事情留出至少10分钟的余地，不要&lt;strong&gt;赶时间&lt;/strong&gt;&lt;br&gt;3.&lt;strong&gt;和喜欢的人说笑&lt;/strong&gt;&lt;br&gt;4.&lt;strong&gt;日事日毕&lt;/strong&gt;，尽量8小时内解决问题，不要把工作带入生活&lt;br&gt;5.每两天来一次酣畅淋漓的&lt;strong&gt;运动&lt;/strong&gt;&lt;br&gt;6.对不重要的事情&lt;strong&gt;不争抢不较劲&lt;/strong&gt;，如开车&lt;br&gt;7.多&lt;strong&gt;接触新事物&lt;/strong&gt;带来新鲜感，多&lt;strong&gt;学习新技能&lt;/strong&gt;带来成就感&lt;br&gt;8.&lt;strong&gt;改造环境&lt;/strong&gt;，比如装饰房间&lt;br&gt;9.仔细读&lt;strong&gt;好书&lt;/strong&gt;，让心灵成熟、自由，有更多创造快乐的方法&lt;br&gt;10.&lt;strong&gt;偶尔放松&lt;/strong&gt;，通宵看球，和妹子开黑，吃零食看剧，躺床上看一天小说什么的。&lt;br&gt;11.每隔一段时间就换环境呆一段时间，&lt;strong&gt;度个假，旅个游&lt;/strong&gt;&lt;br&gt;12.每天给自己&lt;strong&gt;独处&lt;/strong&gt;的时间&lt;br&gt;13.&lt;strong&gt;早睡&lt;/strong&gt;，心里不会有负罪感，第二天精力充沛&lt;br&gt;14.&lt;strong&gt;不和不重要的人撕逼&lt;/strong&gt;&lt;br&gt;15.&lt;strong&gt;远离傻逼&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&quot;交友原则&quot;&gt;&lt;a href=&quot;#交友原则&quot; class=&quot;headerlink&quot; title=&quot;交友原则&quot;&gt;&lt;/a&gt;交友原则&lt;/h4&gt;&lt;p&gt;1.不要非和某人做朋友，不喜欢就保持距离&lt;br&gt;2.合得来的人要好好相处，不计较地乐于助人&lt;br&gt;3.不要胡思乱想，顺势而为&lt;br&gt;4.管理好自己的形象，衣着配饰得体，运动整洁&lt;br&gt;5.尽最大努力去赚钱，理清现实后不妄想得不到的东西&lt;br&gt;6.爱，不苟求。‘与有情人做快乐事，不理是劫还是缘’&lt;br&gt;7.温柔的对待父母&lt;br&gt;8.不买，可有可无的东西；必需品则买经典耐用的&lt;br&gt;9.有话就说，不知道怎么说才好就照直了说，恶言恶语当场反驳&lt;br&gt;10.别给自己的行为贴不好的标签，内向就是内向，不是抑郁&lt;br&gt;11.爱情本身不会影响生活，对爱情犹豫不决才会，为爱情忽略自我才会&lt;br&gt;12.找机会与看似快乐的陌生人玩耍，和爱自己的亲人吃饭。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/Beauty.jpg&quot; alt=&quot;美女们&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;刚完成了Confirmation,压力好大，缓不过气，每天都要充实的学习做实验和生活。阅读、记录、代码、健身、音乐，早睡早起，多交朋友，保持健康。&lt;/p&gt;
-&lt;p&gt;这里搬运一些让自己好心情的方子：&lt;/p&gt;
-&lt;h4 id=&quot;14条交友原则&quot;&gt;&lt;a href=&quot;#14条交友原则&quot;
-    
-    </summary>
-    
-      <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
-    
-    
-      <category term="health" scheme="https://csrjtan.github.io/tags/health/"/>
     
   </entry>
   

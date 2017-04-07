@@ -293,6 +293,254 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/13/leetcode3-6/" itemprop="url">
+                  leetcode3-6
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T14:55:42+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/13/leetcode3-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/leetcode3-6/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="LeetCode-3"><a href="#LeetCode-3" class="headerlink" title="LeetCode 3"></a>LeetCode 3</h4><p>Ques: Find the length of longest substring without repeating characters.</p>
+<p>思路：用table记录出现char字符的次数，256个ASCII字符初始化为-1.如果遇到重复，则记录在table里面，<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/13/leetcode3-6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/07/leetcode2/" itemprop="url">
+                  leetcode2&3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-07T13:59:56+08:00" content="2016-03-07">
+              2016-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/07/leetcode2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/07/leetcode2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="leetcode2-Add-Two-Numbers"><a href="#leetcode2-Add-Two-Numbers" class="headerlink" title="leetcode2:Add Two Numbers"></a>leetcode2:Add Two Numbers</h3><p>I:(2-&gt;4-&gt;3)+(5-&gt;6-&gt;4)<br>O:(7-&gt;0-&gt;8)<br>原则：有进位往后增加，无则扩展<br><figure class="highlight ocaml"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.</span><br><span class="line"> * <span class="keyword">struct</span> <span class="type">ListNode</span> &#123;</span><br><span class="line"> *     <span class="built_in">int</span> <span class="keyword">val</span>;</span><br><span class="line"> *     <span class="type">ListNode</span> *next;</span><br><span class="line"> *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */&lt;!--more--&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="type">Solution</span> &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="type">ListNode</span>* addTwoNumbers(<span class="type">ListNode</span>* l1, <span class="type">ListNode</span>* l2) &#123;</span><br><span class="line">        <span class="type">ListNode</span> dummy(<span class="number">0</span>);</span><br><span class="line">        <span class="type">ListNode</span>* p = &amp;dummy;</span><br><span class="line">        <span class="built_in">int</span> cn=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l1||l2)&#123;</span><br><span class="line">            <span class="built_in">int</span> <span class="keyword">val</span> = cn+(l1?l1-&gt;<span class="keyword">val</span>:<span class="number">0</span>)+(l2?l2-&gt;<span class="keyword">val</span>:<span class="number">0</span>);</span><br><span class="line">            cn = <span class="keyword">val</span>/<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">val</span> = <span class="keyword">val</span>%<span class="number">10</span>;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(<span class="keyword">val</span>);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l1)</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(l2)</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cn!=<span class="number">0</span>)&#123;</span><br><span class="line">            p-&gt;next = <span class="keyword">new</span> <span class="type">ListNode</span>(cn);</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="leetcode3-Longest-Substring-Without-Repeating-Characters"><a href="#leetcode3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="leetcode3:Longest Substring Without Repeating Characters"></a>leetcode3:Longest Substring Without Repeating Characters</h3><p>问题：寻找最大不重复字母的子串长度<br>解法：1.从每个元素找起始无重复字符串，时间复杂度为O(n^3)<br>      2.将没出现的字母放入set，当重复字母出现时，把已有之前的set的字母移除，并记录最长的子串长度<br>      3.用数组不用Map,直接定义一个变量来保存无重复字符串的第一个字符的下标，碰到重复的就更新下标</p>
+<figure class="highlight q"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> lengthOfLongestSubstring(<span class="built_in">string</span> s) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="built_in">tables</span>[<span class="number">256</span>];</span><br><span class="line">        fill(<span class="built_in">tables</span>,<span class="built_in">tables</span>+<span class="number">256</span>,<span class="number">-1</span>);</span><br><span class="line">        <span class="type">int</span> result=<span class="number">0</span>,lastRepeatedPos=<span class="number">-1</span>;</span><br><span class="line">        for(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//当找到重复元素且lastRepeatedPos小于找到重复元素的下表时，更新lastRepeatedPos</span></span><br><span class="line">            if(<span class="built_in">tables</span>[s[i]]!=<span class="number">-1</span>&amp;&amp;lastRepeatedPos&lt;<span class="built_in">tables</span>[s[i]])</span><br><span class="line">                lastRepeatedPos=<span class="built_in">tables</span>[s[i]];</span><br><span class="line">                </span><br><span class="line">            <span class="comment">//更新最大值</span></span><br><span class="line">            result=<span class="built_in">max</span>(result,i-lastRepeatedPos);</span><br><span class="line">            <span class="comment">//元素插入表中</span></span><br><span class="line">            <span class="built_in">tables</span>[s[i]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>总结：对于一个字符串，如果未出现重复，则该值放入数组中，由于ASCII最多有256种符号，则放入一个大小为256的数组里；如果出现重复的字母，即不为默认的-1，且第一个字符下标比这个重复字母下标小，则更新下标以及最长长度，并将该长度放入对应符号的数组值里。</p>
+<h4 id="std-fill用法"><a href="#std-fill用法" class="headerlink" title="std::fill用法"></a>std::fill用法</h4><p>void fill(first,last,val);<br>fill(array,array+n,element);</p>
+<p>memset(array,array+n,element);</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/06/paper-reading-20160306/" itemprop="url">
                   paper-reading-20160306
                 </a>
@@ -1256,251 +1504,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/30/C-Primer-Reading2/" itemprop="url">
-                  C++_Primer_Reading2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-30T16:05:37+08:00" content="2016-01-30">
-              2016-01-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/30/C-Primer-Reading2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/30/C-Primer-Reading2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="C-的编程模块"><a href="#C-的编程模块" class="headerlink" title="C++的编程模块"></a>C++的编程模块</h3><p>这一章讲述C++的函数，其中的乐趣在于大型库（标准ANSI库）和自己编写的函数，以及提高编程效率深入学习STL和BOOST C++提供的功能。<br><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">void</span> <span class="function"><span class="keyword">function</span><span class="title">Name</span>(<span class="params">parameterList</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	statement(s)</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/30/C-Primer-Reading2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/26/无人机项目/" itemprop="url">
-                  无人机项目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-26T21:29:44+08:00" content="2016-01-26">
-              2016-01-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/26/无人机项目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/26/无人机项目/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>苦苦做了几个月的项目，进展好慢，自己抗拒工程的心一直没有减退，还是自己抗拒进步，克服困难的心呢。</p>
-<h3 id="关于项目的现状"><a href="#关于项目的现状" class="headerlink" title="关于项目的现状"></a>关于项目的现状</h3><p>不要畏惧麻烦和困难，用工程和代码以及实验来解决问题，问题是常有的。项目现在复杂度和硬件上遇到不少麻烦，应该尽力去克服。<br>遇到的问题：1.旋翼和妙算未到 2.完成一套基本的操作流程 3.如何有效利用guidance的数据 4.优化slam里面的误差 5.避障和跟踪算法 6.飞行器的有效起飞和控制<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV1.jpg" alt="与崇雨讨论的进展图"></p>
-<h3 id="对于项目未来的构想"><a href="#对于项目未来的构想" class="headerlink" title="对于项目未来的构想"></a>对于项目未来的构想</h3><p>首先还是要热爱项目，对此充满希望，才能完善完成，首先附上现用的工具，列出接下来努力的方向和目标<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV2.png" alt="项目现状和使用技术"><br>可以看到，接下来可以对无人机的几个经典库进行有效的学习和利用，进行更强的关于理论性的学习。<a href="http://周四Dr.Li" class="test test-url" target="_blank" rel="noopener noreferrer">周四Dr.Li</a> shuai的课程，《代码大全》、《C++ Primer》、《算法导论》、《LINUX私房菜》、《OPENCV Code Book》、《统计学习方法》、《PCL学习使用》、《G2O的使用》以及SLAM相关方向的论文，但是好像有点多，所以我觉得代码和工程的能力是首当其冲，理论知识和英语的恶补也应该并驾齐驱。</p>
-<h3 id="暂时对于项目的架构"><a href="#暂时对于项目的架构" class="headerlink" title="暂时对于项目的架构"></a>暂时对于项目的架构</h3><p>主要是对于算法层上的组织，这几块高效的智能操作应当如何实施<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/UAV3.png" alt="无人机项目的整体架构"><br>是否可以考虑率先完成一个小的demo,进而进行某个点的深入学习研发。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1546,7 +1549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1563,7 +1566,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
