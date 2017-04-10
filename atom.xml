@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2017-04-10T03:07:20.000Z</updated>
+  <updated>2017-04-10T03:08:31.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>VisualComputing-2</title>
+    <title>VisualComputing_2</title>
     <link href="https://csrjtan.github.io/2017/04/08/VisualComputing-2/"/>
     <id>https://csrjtan.github.io/2017/04/08/VisualComputing-2/</id>
     <published>2017-04-08T07:13:57.000Z</published>
-    <updated>2017-04-10T03:07:20.000Z</updated>
+    <updated>2017-04-10T03:08:31.000Z</updated>
     
     <content type="html">&lt;p&gt;上一节讲了CV的介绍和Sparse Representation的内容，包括CV的概念、应用和难点；Sparse Representation的formulation, method以及步骤。当然还有为何Sparse Representation can work. 这一节讲一下Dictionary Learning和Representative works&lt;/p&gt;
 &lt;h3 id=&quot;Dictionary-Learning&quot;&gt;&lt;a href=&quot;#Dictionary-Learning&quot; class=&quot;headerlink&quot; title=&quot;Dictionary Learning&quot;&gt;&lt;/a&gt;Dictionary Learning&lt;/h3&gt;&lt;h4 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h4&gt;&lt;p&gt;在稀疏编码之前，需要学习一组过完备的字典，从而使得编码向量是稀疏的。以下分为两种字典，Analytical and Learn;&lt;br&gt;Analytical包括DCT bases, Wavelets, Curvelets…; Learn dictionaries from natural images: K-SVD, Coordinate descent, Online dictionary learning;&lt;/p&gt;
