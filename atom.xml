@@ -115,7 +115,7 @@
     <link href="https://csrjtan.github.io/2017/04/07/VisualComputing-1/"/>
     <id>https://csrjtan.github.io/2017/04/07/VisualComputing-1/</id>
     <published>2017-04-07T13:30:44.000Z</published>
-    <updated>2017-04-07T15:43:19.000Z</updated>
+    <updated>2017-04-10T06:18:48.000Z</updated>
     
     <content type="html">&lt;p&gt;老板的CV课程，在期末前做一下相关笔记总结&lt;/p&gt;
 &lt;h3 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h3&gt;&lt;h4 id=&quot;What-is-vision&quot;&gt;&lt;a href=&quot;#What-is-vision&quot; class=&quot;headerlink&quot; title=&quot;What is vision?&quot;&gt;&lt;/a&gt;What is vision?&lt;/h4&gt;&lt;ul&gt;
@@ -169,12 +169,33 @@
 &lt;li&gt;Bayersian &lt;/li&gt;
 &lt;li&gt;Compressive Sensing&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;How-to-solve&quot;&gt;&lt;a href=&quot;#How-to-solve&quot; class=&quot;headerlink&quot; title=&quot;How to solve?&quot;&gt;&lt;/a&gt;How to solve?&lt;/h4&gt;&lt;p&gt;L0: Greddy search(Matching pursuit, Orthogonal matching pursuit)&lt;br&gt;L1: &lt;/p&gt;
+&lt;h4 id=&quot;How-to-solve&quot;&gt;&lt;a href=&quot;#How-to-solve&quot; class=&quot;headerlink&quot; title=&quot;How to solve?&quot;&gt;&lt;/a&gt;How to solve?&lt;/h4&gt;&lt;p&gt;L0: Greddy search(Matching pursuit, Orthogonal matching pursuit)&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;MP: 贪婪地选取相关性最大的atoms&lt;/li&gt;
+&lt;li&gt;OMP: 正交地，把曾选的atoms的信息均用上，组合出新的投影向量&lt;br&gt;L1: &lt;/li&gt;
 &lt;li&gt;Linear programming&lt;/li&gt;
-&lt;li&gt;Iteratively reweighted least squares&lt;/li&gt;
-&lt;li&gt;Proximal gradient descent&lt;/li&gt;
+&lt;li&gt;Iteratively reweighted least squares：Trickly weighted L2 to L1&lt;/li&gt;
+&lt;li&gt;Proximal gradient descent: Soft-Thresholding with analytic solution&lt;/li&gt;
 &lt;li&gt;Augmented Lagrangian methods(Alternating Direction Method of Multipliers, ADMM)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;ADMM&quot;&gt;&lt;a href=&quot;#ADMM&quot; class=&quot;headerlink&quot; title=&quot;ADMM&quot;&gt;&lt;/a&gt;ADMM&lt;/h3&gt;&lt;h4 id=&quot;拉格朗日变换&quot;&gt;&lt;a href=&quot;#拉格朗日变换&quot; class=&quot;headerlink&quot; title=&quot;拉格朗日变换&quot;&gt;&lt;/a&gt;拉格朗日变换&lt;/h4&gt;&lt;p&gt;将Constraint结合拉格朗日乘子放在Objective function里面。&lt;br&gt;e.g $min\ f(x) \ s.t. Ax=b$&lt;br&gt;拉格朗日形式：$L(x,\lambda)=f(x)+\lambda (Ax-b)$&lt;br&gt;对于含有不等式约束的情况，结合KKT条件，$h(x)=0, \lambda&amp;gt;=0, \lambda*g(x)=0, g(x)&amp;lt;=0 $, 其中h是等式约束，g是不等式约束，$\lambda$是不等式乘子&lt;/p&gt;
+&lt;p&gt;KKT条件：对于问题 $L(x,\lambda) = f(x)+\lambda g(x)$&lt;br&gt;满足 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\Delta_x h(x,\lambda)=0 $&lt;/li&gt;
+&lt;li&gt;$\lambda&amp;gt;=0$&lt;/li&gt;
+&lt;li&gt;$\lambda *g(x)=0$&lt;/li&gt;
+&lt;li&gt;$g(x)&amp;lt;=0$&lt;/li&gt;
+&lt;li&gt;$\Delta_{xx} L(x,\lambda)$ is PSD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;对偶问题&quot;&gt;&lt;a href=&quot;#对偶问题&quot; class=&quot;headerlink&quot; title=&quot;对偶问题&quot;&gt;&lt;/a&gt;对偶问题&lt;/h4&gt;&lt;p&gt;对于原问题$L(x,\lambda)=f(x)+\lambda(Ax-b)$&lt;br&gt;对偶形式为：$g(\lambda)= inf_x(L(x,\lambda)) = -f^*(-A^T\lambda)-b^T\lambda)$,其中inf为确认下界（infimum)&lt;br&gt;对偶问题： $max\  g(\lambda)$&lt;br&gt;对偶上升法： $x^{k+1} = argmin_x L(x,\lambda^k)$&lt;/p&gt;
+&lt;p&gt;变量更新：$\lambda^{k+1}=\lambda^k +\alpha^k(Ax^{k+1}-b)$&lt;br&gt;对偶分解法：将目标函数分解成多个子函数 $f(x)=\Sigma_{i=1}^Nf_i(x_i)$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;增广拉格朗日&lt;/strong&gt;，为了增加Dual Ascent的鲁棒性，加入松弛函数&lt;br&gt;$$L_p(x,\lambda)=f(x)+\lambda^T(Ax-b)+(\rho/2)||Ax-b||_2^2$$&lt;/p&gt;
+&lt;h4 id=&quot;ADMM-1&quot;&gt;&lt;a href=&quot;#ADMM-1&quot; class=&quot;headerlink&quot; title=&quot;ADMM&quot;&gt;&lt;/a&gt;ADMM&lt;/h4&gt;&lt;p&gt;ADMM旨在将对偶上升可分解性和乘子法上界收敛属性融合在一起的算法；&lt;br&gt;优化问题：$$ min\ f(x)+g(z) \ \ s.t. \ Ax+Bz=c $$&lt;br&gt;得到增广拉格朗日形式：$ L_\rho(x,z,\lambda)=f(x)+g(z)+y^T(Ax+Bz-c)+(\rho/2)||Ax+Bz-c||_2^2 $&lt;/p&gt;
+&lt;p&gt;迭代方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ x^{k+1} = argmin_x L_p (x,z^k,\lambda^k) $&lt;/li&gt;
+&lt;li&gt;$ z^{k+1} = argmin_z L_p (x^{k+1},z,\lambda^k) $&lt;/li&gt;
+&lt;li&gt;$\lambda^{k+1} = \lambda^k + \rho(Ax^{k+1}+Bz^{k+1}-c) $&lt;br&gt;$\rho &amp;gt;0$,停止准则：对偶残差小于某个极小值$\epsilon$&lt;br&gt;收敛速度：对于一个高的精度要求收敛多次，但可以融合其他算法快速产生高精度&lt;br&gt;对于凸优化问题，KKT条件是对偶问题有相同解的保证。非凸的问题会存在Dual Gap.&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     

@@ -125,7 +125,7 @@ Computer Vi">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_03.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_04.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_05.png">
-<meta property="og:updated_time" content="2017-04-07T15:43:19.000Z">
+<meta property="og:updated_time" content="2017-04-10T06:18:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VisualComputing_1">
 <meta name="twitter:description" content="老板的CV课程，在期末前做一下相关笔记总结
@@ -435,12 +435,33 @@ Computer Vi">
 <li>Bayersian </li>
 <li>Compressive Sensing</li>
 </ul>
-<h4 id="How-to-solve"><a href="#How-to-solve" class="headerlink" title="How to solve?"></a>How to solve?</h4><p>L0: Greddy search(Matching pursuit, Orthogonal matching pursuit)<br>L1: </p>
+<h4 id="How-to-solve"><a href="#How-to-solve" class="headerlink" title="How to solve?"></a>How to solve?</h4><p>L0: Greddy search(Matching pursuit, Orthogonal matching pursuit)</p>
 <ul>
+<li>MP: 贪婪地选取相关性最大的atoms</li>
+<li>OMP: 正交地，把曾选的atoms的信息均用上，组合出新的投影向量<br>L1: </li>
 <li>Linear programming</li>
-<li>Iteratively reweighted least squares</li>
-<li>Proximal gradient descent</li>
+<li>Iteratively reweighted least squares：Trickly weighted L2 to L1</li>
+<li>Proximal gradient descent: Soft-Thresholding with analytic solution</li>
 <li>Augmented Lagrangian methods(Alternating Direction Method of Multipliers, ADMM)</li>
+</ul>
+<h3 id="ADMM"><a href="#ADMM" class="headerlink" title="ADMM"></a>ADMM</h3><h4 id="拉格朗日变换"><a href="#拉格朗日变换" class="headerlink" title="拉格朗日变换"></a>拉格朗日变换</h4><p>将Constraint结合拉格朗日乘子放在Objective function里面。<br>e.g $min\ f(x) \ s.t. Ax=b$<br>拉格朗日形式：$L(x,\lambda)=f(x)+\lambda (Ax-b)$<br>对于含有不等式约束的情况，结合KKT条件，$h(x)=0, \lambda&gt;=0, \lambda*g(x)=0, g(x)&lt;=0 $, 其中h是等式约束，g是不等式约束，$\lambda$是不等式乘子</p>
+<p>KKT条件：对于问题 $L(x,\lambda) = f(x)+\lambda g(x)$<br>满足 </p>
+<ul>
+<li>$\Delta_x h(x,\lambda)=0 $</li>
+<li>$\lambda&gt;=0$</li>
+<li>$\lambda *g(x)=0$</li>
+<li>$g(x)&lt;=0$</li>
+<li>$\Delta_{xx} L(x,\lambda)$ is PSD</li>
+</ul>
+<h4 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h4><p>对于原问题$L(x,\lambda)=f(x)+\lambda(Ax-b)$<br>对偶形式为：$g(\lambda)= inf_x(L(x,\lambda)) = -f^*(-A^T\lambda)-b^T\lambda)$,其中inf为确认下界（infimum)<br>对偶问题： $max\  g(\lambda)$<br>对偶上升法： $x^{k+1} = argmin_x L(x,\lambda^k)$</p>
+<p>变量更新：$\lambda^{k+1}=\lambda^k +\alpha^k(Ax^{k+1}-b)$<br>对偶分解法：将目标函数分解成多个子函数 $f(x)=\Sigma_{i=1}^Nf_i(x_i)$</p>
+<p><strong>增广拉格朗日</strong>，为了增加Dual Ascent的鲁棒性，加入松弛函数<br>$$L_p(x,\lambda)=f(x)+\lambda^T(Ax-b)+(\rho/2)||Ax-b||_2^2$$</p>
+<h4 id="ADMM-1"><a href="#ADMM-1" class="headerlink" title="ADMM"></a>ADMM</h4><p>ADMM旨在将对偶上升可分解性和乘子法上界收敛属性融合在一起的算法；<br>优化问题：$$ min\ f(x)+g(z) \ \ s.t. \ Ax+Bz=c $$<br>得到增广拉格朗日形式：$ L_\rho(x,z,\lambda)=f(x)+g(z)+y^T(Ax+Bz-c)+(\rho/2)||Ax+Bz-c||_2^2 $</p>
+<p>迭代方式：</p>
+<ul>
+<li>$ x^{k+1} = argmin_x L_p (x,z^k,\lambda^k) $</li>
+<li>$ z^{k+1} = argmin_z L_p (x^{k+1},z,\lambda^k) $</li>
+<li>$\lambda^{k+1} = \lambda^k + \rho(Ax^{k+1}+Bz^{k+1}-c) $<br>$\rho &gt;0$,停止准则：对偶残差小于某个极小值$\epsilon$<br>收敛速度：对于一个高的精度要求收敛多次，但可以融合其他算法快速产生高精度<br>对于凸优化问题，KKT条件是对偶问题有相同解的保证。非凸的问题会存在Dual Gap.</li>
 </ul>
 
       
@@ -637,7 +658,7 @@ Computer Vi">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-vision"><span class="nav-number">1.1.</span> <span class="nav-text">What is vision?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-kinds-of-Topics"><span class="nav-number">1.2.</span> <span class="nav-text">What kinds of Topics?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-image-restoration-challenging"><span class="nav-number">1.3.</span> <span class="nav-text">Why image restoration challenging?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sparse-Representation-and-Dictionary-Learning-on-Restoration"><span class="nav-number">2.</span> <span class="nav-text">Sparse Representation and Dictionary Learning on Restoration</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Modeling"><span class="nav-number">2.1.</span> <span class="nav-text">Modeling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Methodology"><span class="nav-number">2.2.</span> <span class="nav-text">Methodology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-basic-procedure"><span class="nav-number">2.3.</span> <span class="nav-text">The basic procedure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-solve"><span class="nav-number">2.4.</span> <span class="nav-text">How to solve?</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-vision"><span class="nav-number">1.1.</span> <span class="nav-text">What is vision?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-kinds-of-Topics"><span class="nav-number">1.2.</span> <span class="nav-text">What kinds of Topics?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-image-restoration-challenging"><span class="nav-number">1.3.</span> <span class="nav-text">Why image restoration challenging?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sparse-Representation-and-Dictionary-Learning-on-Restoration"><span class="nav-number">2.</span> <span class="nav-text">Sparse Representation and Dictionary Learning on Restoration</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Modeling"><span class="nav-number">2.1.</span> <span class="nav-text">Modeling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Methodology"><span class="nav-number">2.2.</span> <span class="nav-text">Methodology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-basic-procedure"><span class="nav-number">2.3.</span> <span class="nav-text">The basic procedure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-solve"><span class="nav-number">2.4.</span> <span class="nav-text">How to solve?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADMM"><span class="nav-number">3.</span> <span class="nav-text">ADMM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拉格朗日变换"><span class="nav-number">3.1.</span> <span class="nav-text">拉格朗日变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对偶问题"><span class="nav-number">3.2.</span> <span class="nav-text">对偶问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ADMM-1"><span class="nav-number">3.3.</span> <span class="nav-text">ADMM</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
