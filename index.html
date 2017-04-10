@@ -293,6 +293,166 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/08/VisualComputing-2/" itemprop="url">
+                  VisualComputing-2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-08T15:13:57+08:00" content="2017-04-08">
+              2017-04-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/08/VisualComputing-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/08/VisualComputing-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上一节讲了CV的介绍和Sparse Representation的内容，包括CV的概念、应用和难点；Sparse Representation的formulation, method以及步骤。当然还有为何Sparse Representation can work. 这一节讲一下Dictionary Learning和Representative works</p>
+<h3 id="Dictionary-Learning"><a href="#Dictionary-Learning" class="headerlink" title="Dictionary Learning"></a>Dictionary Learning</h3><h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>在稀疏编码之前，需要学习一组过完备的字典，从而使得编码向量是稀疏的。以下分为两种字典，Analytical and Learn;<br>Analytical包括DCT bases, Wavelets, Curvelets…; Learn dictionaries from natural images: K-SVD, Coordinate descent, Online dictionary learning;</p>
+<p>为什么需要字典学习？</p>
+<ul>
+<li>Over-complete learned dictionary often work better than analytically</li>
+<li>More adaptive to specific task/data</li>
+<li>Less strict constraints on mathematical properties of bases</li>
+<li>More flexible to model data</li>
+<li>Tend to produce sparser solution</li>
+</ul>
+<h4 id="L0：K-SVD"><a href="#L0：K-SVD" class="headerlink" title="L0：K-SVD"></a>L0：K-SVD</h4><p>对于L0稀疏的字典学习，我们可以用K-SVD方法近似求解，其中可以看成是K-MEANS的一种扩展<br>字典学习的问题可以Modeling为：<br>$$min_{D,A}||Y-DA||_F^2 \ \ s.t.\ \ ||a_i||_0 &lt;= T_0$$ 其中i为任意正数，$T_0$为稀疏值<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_01.png" alt="K-SVD"><br>如图，对于字典学习：</p>
+<ul>
+<li>首先是稀疏编码，可以用Matching Pursuit来优化求解；然后用K-SVD方法更新字典。 </li>
+<li>然后将DA进行K次分片叠加得到$DA=\sum_{i=1}^K d_i a_i^T$, 这里便是一个可用词典；剥离第K条，寻找新的d,x来更新该条目</li>
+<li>最后，只抽取非零的a组成新的矩阵$\Omega$作为系数矩阵，对误差能量矩阵作SVD分解，d取U的第一行，x取$\sum V^T$的乘积第一列</li>
+</ul>
+<p><strong>总结</strong>K-SVD的思想：K次分片，使得最后学得的字典over-complete; 选用第K个条目更新，每次只更新一个字典atom(one column in fat matrix); 对剥离后的‘空洞’做K-SVD， $E_k = U \sum V^T$, 新的d,a则取里面能量最大的元素， 这是对误差’空洞’的最佳逼近；只抽取非零系数组成新矩阵更新，有助于保持原来字典的稀疏性；</p>
+<p>对于L1字典，可以对D和A交替学习：当更新D时，这是Quadratic Programming; 当更新A时，这是LASSO Optimization (ADMM); </p>
+<h4 id="Representative-Work"><a href="#Representative-Work" class="headerlink" title="Representative Work"></a>Representative Work</h4><p>Online learning: 考虑新来的样本，直接在原来基础上更新词典的策略以及收敛性</p>
+<p>Multi-scale Dictionary learning: 由于complexity increases exponentially with signal dimension,所以一般用较小的patch size; 而multi-scale可以自适应地融合不同scale字典编码<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_02.png" alt="Multi-Scale"></p>
+<p>Double Sparsity: 可以针对高层次稀疏特征或者large patch再进行一次dictionary learning, 基于稀疏编码或着高维编码的再一次稀疏表示；<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_03.png" alt="Double Sparsity"></p>
+<h3 id="Restoration-Methods"><a href="#Restoration-Methods" class="headerlink" title="Restoration Methods"></a>Restoration Methods</h3><p>Filtering-based methods: Isotropic method, Anisotropic method<br>Transformation methods: Motivation, find new representation where signal and noise can be better separated; Wavelet transform</p>
+<h4 id="K-SVD-denoising"><a href="#K-SVD-denoising" class="headerlink" title="K-SVD denoising"></a>K-SVD denoising</h4><p>Basic Idea: 1.train over-complete dictionary 2.adopt trained dictionary to denoise patch in noisy image 3.Utilize the patch to reconstruct<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_04.png" alt="Modeling"><br>Limitations: 1.Solving sparse coding not effective enough 2.L0 is not good choice </p>
+<h4 id="BM3D"><a href="#BM3D" class="headerlink" title="BM3D"></a>BM3D</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_05.png" alt="BM3D"><br>BM3D denoising算是业内最为经典的去噪算法了，其中结合了Nonlocal self-similarity和sparsity两个最重要的priors，效果非常不错，速度一般</p>
+<p>步骤：首先通过non-local matching找到一组图片块；组成tensor进行维纳滤波，之后进行阈值抑制（这里相当于稀疏去噪）；最后对新的tensor结合原来的tensor再重复做维纳滤波和阈值抑制；得到去噪patches reconstruct到图像即可</p>
+<p>优缺点：1.有效挖掘了nonlocal similarity和sparsity 2.在DWT（小波)做协同滤波并不能描述复杂的图像结构</p>
+<h4 id="LSSC"><a href="#LSSC" class="headerlink" title="LSSC"></a>LSSC</h4><p><strong>Group Sparsity</strong><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_06.png" alt="Group SPARSITY"><br>与普通的L1 sparsity不同，Marial提出系数矩阵满足group sparsity的L1，2范数；使得同样的patch，在字典下应该具有统一的稀疏编码，保持元组具有相同稀疏的特性；仔细看12范数的表达形式，j是行，i是列，使得系数尽可能在同一行；</p>
+<p>整个流程和BM3D相似，只是在协同滤波和阈值抑制上，改成用group sparsity的字典学习和稀疏编码去噪</p>
+<p>Adaptive Sparse Domain Selection： 由于大的词典使得稀疏编码过程非常耗时，而大的词典对于描述图像局部结构又是很有必要；这个方法提出从大字典中选择一个子集可以提速</p>
+<p>Piece-wise Linear Estimation (PLE), Motivations:</p>
+<ul>
+<li>Sparse representation assumes <strong>Laplacian</strong> prior on coefficients, lead to nonlinear sparse coding estimator</li>
+<li>Use <strong>Mixture of Gaussians</strong> to approximate Laplacian</li>
+<li>Select one appropriate Gaussian Prior to reconstruct</li>
+</ul>
+<h4 id="Coupled-Dictionary-Learning"><a href="#Coupled-Dictionary-Learning" class="headerlink" title="Coupled Dictionary Learning"></a>Coupled Dictionary Learning</h4><p>Motivations:</p>
+<ul>
+<li>Used coupled dictionary to model the relationship between degraded image and its corresponding images</li>
+<li>Build the corresponding in sparse domain(same code but different dictionary)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_07.png" alt="SRSR"></li>
+</ul>
+<p>Semi-coupled Dictionary Learning: flexible the relationship between two dictionary, the sparse code with a pre-learned mapping</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/07/VDSR/" itemprop="url">
                   Very Deep Super Resolution
                 </a>
@@ -1493,133 +1653,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/08/paper-reading-20161108/" itemprop="url">
-                  CDM using inter-channel correlation and NSS
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-08T17:14:05+08:00" content="2016-11-08">
-              2016-11-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/08/paper-reading-20161108/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/paper-reading-20161108/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://ac.els-cdn.com/S092359651500168X/1-s2.0-S092359651500168X-main.pdf?_tid=1a82a922-a596-11e6-b1c6-00000aab0f02&amp;acdnat=1478597659_28a15da42ec23144e3bfab16a0639039" target="_blank" rel="external">原文链接</a></p>
-<h3 id="Title-CDM-with-ICC-and-NSS-nonlocal-self-similarity"><a href="#Title-CDM-with-ICC-and-NSS-nonlocal-self-similarity" class="headerlink" title="Title: CDM with ICC and NSS(nonlocal self-similarity)"></a>Title: CDM with ICC and NSS(nonlocal self-similarity)</h3><p>摘要：提出了novel modeling strategy and efficient algorithm. 在梯度上，使用inter-channel correlation。在约束项上，利用了Nonlocal self-similarity. 在提出了joint-model之后，将minimize problem分解成两个子问题，并迭代求解（凸优化里面的问题）。</p>
-<h4 id="Introduction-将CDM分成了四类"><a href="#Introduction-将CDM分成了四类" class="headerlink" title="Introduction:将CDM分成了四类"></a>Introduction:将CDM分成了四类</h4><p>一.inter-channel correlation: 1.最早的color difference方法，2.Gunturk AP使用了wavelet basis假定图像在high-frequency subbands are high correlated <a href="http://3.Li" class="test test-url" target="_blank" rel="noopener noreferrer">3.Li</a>认为图像经过gamma correction之后，再使用color difference is better 4.Jaiswal提出low-pass filter(LPF)结合（color difference）CD的方法 5.Kiku使用temtative residual interpolation rather than the color difference maps.</p>
-<p>二.locally estiamte a better gradient direction:<br>1.Hamilton and Adams使用了二阶梯度<br>2.Hirakwa采用了local homogenity<br>3.Zhang优化了directional filter of G-R and G-B by LMMSE</p>
-<p>三.Nonlocal Self-simialrity<br>1.Buades验证使用NSS可以reduce artfacts<br>2.Zhang使用LDI-NAT，用nonlocal adaptive thresholding来suppress artifact</p>
-<p>四.用prior knowledge来解决Ill-posed problem<br>1.Compress sensing with sparse coding<br><a href="http://2.Total" class="test test-url" target="_blank" rel="noopener noreferrer">2.Total</a> variation regularization: the smaller TV energy function gets a better PSNR in denoise<br>3.Gao提出了约束项，使用拉普拉斯操作后，图像的color difference are sparse.变得稀疏了，这篇论文的建模也用到了这个理论<br>4.基于字典学习（dictionary learning),Mairal认为natrual image服从sparse representation.</p>
-<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p>1.先用初始化方法得到init_demosaicked images.<br>2.加入Inter-channel correlation的约束项：<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_01.png" alt=""><br>3.根据l2-distance来查找similar patch，组成matrix. 由于patches都是相似的，所以matrix应该是sparse的，但由于噪声或者纹理丰富的原因，这里文章采用一个近似的方法，更好地满足稀疏特点<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_02.png" alt=""><br>$$L+S = M $$<br>这里D指水平和垂直的finite difference operators,M是patches组成的矩阵，S表示outliers,假设Frobenius norm(二范数) of S is small,L是满足稀疏的矩阵。从而得到construct L如上式所示。<br>4.得到最后的求解模型<img src="http://7xl4js.com1.z0.glb.clouddn.com/20161108_03.png" alt=""><br>5.求解过程是分解成两个子问题，分别迭代最优化求解X和L。</p>
-<h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><p>1.采用MLRI作为初始化方法<br>2.分为全图和Block-based NSS<br>3.包含窗口大小，patch大小，以及trade off hyperparameters的设置<br>4.在Kodak有41.06,McMaster有37.55，效果还不错</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1665,7 +1698,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-count">66</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

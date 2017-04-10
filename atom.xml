@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2017-04-07T15:43:16.000Z</updated>
+  <updated>2017-04-10T03:07:20.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VisualComputing-2</title>
+    <link href="https://csrjtan.github.io/2017/04/08/VisualComputing-2/"/>
+    <id>https://csrjtan.github.io/2017/04/08/VisualComputing-2/</id>
+    <published>2017-04-08T07:13:57.000Z</published>
+    <updated>2017-04-10T03:07:20.000Z</updated>
+    
+    <content type="html">&lt;p&gt;上一节讲了CV的介绍和Sparse Representation的内容，包括CV的概念、应用和难点；Sparse Representation的formulation, method以及步骤。当然还有为何Sparse Representation can work. 这一节讲一下Dictionary Learning和Representative works&lt;/p&gt;
+&lt;h3 id=&quot;Dictionary-Learning&quot;&gt;&lt;a href=&quot;#Dictionary-Learning&quot; class=&quot;headerlink&quot; title=&quot;Dictionary Learning&quot;&gt;&lt;/a&gt;Dictionary Learning&lt;/h3&gt;&lt;h4 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h4&gt;&lt;p&gt;在稀疏编码之前，需要学习一组过完备的字典，从而使得编码向量是稀疏的。以下分为两种字典，Analytical and Learn;&lt;br&gt;Analytical包括DCT bases, Wavelets, Curvelets…; Learn dictionaries from natural images: K-SVD, Coordinate descent, Online dictionary learning;&lt;/p&gt;
+&lt;p&gt;为什么需要字典学习？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Over-complete learned dictionary often work better than analytically&lt;/li&gt;
+&lt;li&gt;More adaptive to specific task/data&lt;/li&gt;
+&lt;li&gt;Less strict constraints on mathematical properties of bases&lt;/li&gt;
+&lt;li&gt;More flexible to model data&lt;/li&gt;
+&lt;li&gt;Tend to produce sparser solution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;L0：K-SVD&quot;&gt;&lt;a href=&quot;#L0：K-SVD&quot; class=&quot;headerlink&quot; title=&quot;L0：K-SVD&quot;&gt;&lt;/a&gt;L0：K-SVD&lt;/h4&gt;&lt;p&gt;对于L0稀疏的字典学习，我们可以用K-SVD方法近似求解，其中可以看成是K-MEANS的一种扩展&lt;br&gt;字典学习的问题可以Modeling为：&lt;br&gt;$$min_{D,A}||Y-DA||_F^2 \ \ s.t.\ \ ||a_i||_0 &amp;lt;= T_0$$ 其中i为任意正数，$T_0$为稀疏值&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_01.png&quot; alt=&quot;K-SVD&quot;&gt;&lt;br&gt;如图，对于字典学习：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先是稀疏编码，可以用Matching Pursuit来优化求解；然后用K-SVD方法更新字典。 &lt;/li&gt;
+&lt;li&gt;然后将DA进行K次分片叠加得到$DA=\sum_{i=1}^K d_i a_i^T$, 这里便是一个可用词典；剥离第K条，寻找新的d,x来更新该条目&lt;/li&gt;
+&lt;li&gt;最后，只抽取非零的a组成新的矩阵$\Omega$作为系数矩阵，对误差能量矩阵作SVD分解，d取U的第一行，x取$\sum V^T$的乘积第一列&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;K-SVD的思想：K次分片，使得最后学得的字典over-complete; 选用第K个条目更新，每次只更新一个字典atom(one column in fat matrix); 对剥离后的‘空洞’做K-SVD， $E_k = U \sum V^T$, 新的d,a则取里面能量最大的元素， 这是对误差’空洞’的最佳逼近；只抽取非零系数组成新矩阵更新，有助于保持原来字典的稀疏性；&lt;/p&gt;
+&lt;p&gt;对于L1字典，可以对D和A交替学习：当更新D时，这是Quadratic Programming; 当更新A时，这是LASSO Optimization (ADMM); &lt;/p&gt;
+&lt;h4 id=&quot;Representative-Work&quot;&gt;&lt;a href=&quot;#Representative-Work&quot; class=&quot;headerlink&quot; title=&quot;Representative Work&quot;&gt;&lt;/a&gt;Representative Work&lt;/h4&gt;&lt;p&gt;Online learning: 考虑新来的样本，直接在原来基础上更新词典的策略以及收敛性&lt;/p&gt;
+&lt;p&gt;Multi-scale Dictionary learning: 由于complexity increases exponentially with signal dimension,所以一般用较小的patch size; 而multi-scale可以自适应地融合不同scale字典编码&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_02.png&quot; alt=&quot;Multi-Scale&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Double Sparsity: 可以针对高层次稀疏特征或者large patch再进行一次dictionary learning, 基于稀疏编码或着高维编码的再一次稀疏表示；&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_03.png&quot; alt=&quot;Double Sparsity&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Restoration-Methods&quot;&gt;&lt;a href=&quot;#Restoration-Methods&quot; class=&quot;headerlink&quot; title=&quot;Restoration Methods&quot;&gt;&lt;/a&gt;Restoration Methods&lt;/h3&gt;&lt;p&gt;Filtering-based methods: Isotropic method, Anisotropic method&lt;br&gt;Transformation methods: Motivation, find new representation where signal and noise can be better separated; Wavelet transform&lt;/p&gt;
+&lt;h4 id=&quot;K-SVD-denoising&quot;&gt;&lt;a href=&quot;#K-SVD-denoising&quot; class=&quot;headerlink&quot; title=&quot;K-SVD denoising&quot;&gt;&lt;/a&gt;K-SVD denoising&lt;/h4&gt;&lt;p&gt;Basic Idea: 1.train over-complete dictionary 2.adopt trained dictionary to denoise patch in noisy image 3.Utilize the patch to reconstruct&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_04.png&quot; alt=&quot;Modeling&quot;&gt;&lt;br&gt;Limitations: 1.Solving sparse coding not effective enough 2.L0 is not good choice &lt;/p&gt;
+&lt;h4 id=&quot;BM3D&quot;&gt;&lt;a href=&quot;#BM3D&quot; class=&quot;headerlink&quot; title=&quot;BM3D&quot;&gt;&lt;/a&gt;BM3D&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_05.png&quot; alt=&quot;BM3D&quot;&gt;&lt;br&gt;BM3D denoising算是业内最为经典的去噪算法了，其中结合了Nonlocal self-similarity和sparsity两个最重要的priors，效果非常不错，速度一般&lt;/p&gt;
+&lt;p&gt;步骤：首先通过non-local matching找到一组图片块；组成tensor进行维纳滤波，之后进行阈值抑制（这里相当于稀疏去噪）；最后对新的tensor结合原来的tensor再重复做维纳滤波和阈值抑制；得到去噪patches reconstruct到图像即可&lt;/p&gt;
+&lt;p&gt;优缺点：1.有效挖掘了nonlocal similarity和sparsity 2.在DWT（小波)做协同滤波并不能描述复杂的图像结构&lt;/p&gt;
+&lt;h4 id=&quot;LSSC&quot;&gt;&lt;a href=&quot;#LSSC&quot; class=&quot;headerlink&quot; title=&quot;LSSC&quot;&gt;&lt;/a&gt;LSSC&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Group Sparsity&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_06.png&quot; alt=&quot;Group SPARSITY&quot;&gt;&lt;br&gt;与普通的L1 sparsity不同，Marial提出系数矩阵满足group sparsity的L1，2范数；使得同样的patch，在字典下应该具有统一的稀疏编码，保持元组具有相同稀疏的特性；仔细看12范数的表达形式，j是行，i是列，使得系数尽可能在同一行；&lt;/p&gt;
+&lt;p&gt;整个流程和BM3D相似，只是在协同滤波和阈值抑制上，改成用group sparsity的字典学习和稀疏编码去噪&lt;/p&gt;
+&lt;p&gt;Adaptive Sparse Domain Selection： 由于大的词典使得稀疏编码过程非常耗时，而大的词典对于描述图像局部结构又是很有必要；这个方法提出从大字典中选择一个子集可以提速&lt;/p&gt;
+&lt;p&gt;Piece-wise Linear Estimation (PLE), Motivations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sparse representation assumes &lt;strong&gt;Laplacian&lt;/strong&gt; prior on coefficients, lead to nonlinear sparse coding estimator&lt;/li&gt;
+&lt;li&gt;Use &lt;strong&gt;Mixture of Gaussians&lt;/strong&gt; to approximate Laplacian&lt;/li&gt;
+&lt;li&gt;Select one appropriate Gaussian Prior to reconstruct&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Coupled-Dictionary-Learning&quot;&gt;&lt;a href=&quot;#Coupled-Dictionary-Learning&quot; class=&quot;headerlink&quot; title=&quot;Coupled Dictionary Learning&quot;&gt;&lt;/a&gt;Coupled Dictionary Learning&lt;/h4&gt;&lt;p&gt;Motivations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Used coupled dictionary to model the relationship between degraded image and its corresponding images&lt;/li&gt;
+&lt;li&gt;Build the corresponding in sparse domain(same code but different dictionary)&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170408_07.png&quot; alt=&quot;SRSR&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Semi-coupled Dictionary Learning: flexible the relationship between two dictionary, the sparse code with a pre-learned mapping&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上一节讲了CV的介绍和Sparse Representation的内容，包括CV的概念、应用和难点；Sparse Representation的formulation, method以及步骤。当然还有为何Sparse Representation can work. 这一节
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="VisualComputing" scheme="https://csrjtan.github.io/tags/VisualComputing/"/>
+    
+  </entry>
   
   <entry>
     <title>Very Deep Super Resolution</title>
@@ -400,36 +463,6 @@
     
     
       <category term="教会 朋友" scheme="https://csrjtan.github.io/tags/%E6%95%99%E4%BC%9A-%E6%9C%8B%E5%8F%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CDM using inter-channel correlation and NSS</title>
-    <link href="https://csrjtan.github.io/2016/11/08/paper-reading-20161108/"/>
-    <id>https://csrjtan.github.io/2016/11/08/paper-reading-20161108/</id>
-    <published>2016-11-08T09:14:05.000Z</published>
-    <updated>2016-11-08T12:54:19.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;a href=&quot;http://ac.els-cdn.com/S092359651500168X/1-s2.0-S092359651500168X-main.pdf?_tid=1a82a922-a596-11e6-b1c6-00000aab0f02&amp;amp;acdnat=1478597659_28a15da42ec23144e3bfab16a0639039&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Title-CDM-with-ICC-and-NSS-nonlocal-self-similarity&quot;&gt;&lt;a href=&quot;#Title-CDM-with-ICC-and-NSS-nonlocal-self-similarity&quot; class=&quot;headerlink&quot; title=&quot;Title: CDM with ICC and NSS(nonlocal self-similarity)&quot;&gt;&lt;/a&gt;Title: CDM with ICC and NSS(nonlocal self-similarity)&lt;/h3&gt;&lt;p&gt;摘要：提出了novel modeling strategy and efficient algorithm. 在梯度上，使用inter-channel correlation。在约束项上，利用了Nonlocal self-similarity. 在提出了joint-model之后，将minimize problem分解成两个子问题，并迭代求解（凸优化里面的问题）。&lt;/p&gt;
-&lt;h4 id=&quot;Introduction-将CDM分成了四类&quot;&gt;&lt;a href=&quot;#Introduction-将CDM分成了四类&quot; class=&quot;headerlink&quot; title=&quot;Introduction:将CDM分成了四类&quot;&gt;&lt;/a&gt;Introduction:将CDM分成了四类&lt;/h4&gt;&lt;p&gt;一.inter-channel correlation: 1.最早的color difference方法，2.Gunturk AP使用了wavelet basis假定图像在high-frequency subbands are high correlated &lt;a href=&quot;http://3.Li&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;3.Li&lt;/a&gt;认为图像经过gamma correction之后，再使用color difference is better 4.Jaiswal提出low-pass filter(LPF)结合（color difference）CD的方法 5.Kiku使用temtative residual interpolation rather than the color difference maps.&lt;/p&gt;
-&lt;p&gt;二.locally estiamte a better gradient direction:&lt;br&gt;1.Hamilton and Adams使用了二阶梯度&lt;br&gt;2.Hirakwa采用了local homogenity&lt;br&gt;3.Zhang优化了directional filter of G-R and G-B by LMMSE&lt;/p&gt;
-&lt;p&gt;三.Nonlocal Self-simialrity&lt;br&gt;1.Buades验证使用NSS可以reduce artfacts&lt;br&gt;2.Zhang使用LDI-NAT，用nonlocal adaptive thresholding来suppress artifact&lt;/p&gt;
-&lt;p&gt;四.用prior knowledge来解决Ill-posed problem&lt;br&gt;1.Compress sensing with sparse coding&lt;br&gt;&lt;a href=&quot;http://2.Total&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;2.Total&lt;/a&gt; variation regularization: the smaller TV energy function gets a better PSNR in denoise&lt;br&gt;3.Gao提出了约束项，使用拉普拉斯操作后，图像的color difference are sparse.变得稀疏了，这篇论文的建模也用到了这个理论&lt;br&gt;4.基于字典学习（dictionary learning),Mairal认为natrual image服从sparse representation.&lt;/p&gt;
-&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;1.先用初始化方法得到init_demosaicked images.&lt;br&gt;2.加入Inter-channel correlation的约束项：&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;3.根据l2-distance来查找similar patch，组成matrix. 由于patches都是相似的，所以matrix应该是sparse的，但由于噪声或者纹理丰富的原因，这里文章采用一个近似的方法，更好地满足稀疏特点&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_02.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;$$L+S = M $$&lt;br&gt;这里D指水平和垂直的finite difference operators,M是patches组成的矩阵，S表示outliers,假设Frobenius norm(二范数) of S is small,L是满足稀疏的矩阵。从而得到construct L如上式所示。&lt;br&gt;4.得到最后的求解模型&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20161108_03.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;5.求解过程是分解成两个子问题，分别迭代最优化求解X和L。&lt;/p&gt;
-&lt;h4 id=&quot;Experiment&quot;&gt;&lt;a href=&quot;#Experiment&quot; class=&quot;headerlink&quot; title=&quot;Experiment&quot;&gt;&lt;/a&gt;Experiment&lt;/h4&gt;&lt;p&gt;1.采用MLRI作为初始化方法&lt;br&gt;2.分为全图和Block-based NSS&lt;br&gt;3.包含窗口大小，patch大小，以及trade off hyperparameters的设置&lt;br&gt;4.在Kodak有41.06,McMaster有37.55，效果还不错&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;http://ac.els-cdn.com/S092359651500168X/1-s2.0-S092359651500168X-main.pdf?_tid=1a82a922-a596-11e6-b1c6-00000aab0f02&amp;amp;acdnat=1
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
-    
-    
-      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
     
   </entry>
   
