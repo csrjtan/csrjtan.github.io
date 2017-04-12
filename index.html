@@ -560,7 +560,17 @@
 <p>对于MAP，现在假设$\theta$的先验分布为g,通过贝叶斯理论，对于$\theta$的后验分布如下：$$\theta \mapsto f(\theta|x) = \frac{f(x|\theta)g(\theta)}{\int_{\theta} f(x|\theta^{*})g(\theta^{*})d\theta^{*}}$$</p>
 <p>则MAP的目标为：$$\hat{\theta}_{MAP}(x)=argmax_{\theta} f(\theta|x) = argmax_{\theta} f(x|\theta)g(\theta)$$</p>
 <p>可以看出，MAP和MLE最大的区别是MAP加入了模型参数本身的概率分布，或者说MLE的模型参数概率为均匀固定值。</p>
-<h3 id="Collaborative-nature-of-SRC"><a href="#Collaborative-nature-of-SRC" class="headerlink" title="Collaborative nature of SRC"></a>Collaborative nature of SRC</h3><h3 id="Discriminative-Dictionary-Learning"><a href="#Discriminative-Dictionary-Learning" class="headerlink" title="Discriminative Dictionary Learning"></a>Discriminative Dictionary Learning</h3><h3 id="Collaborative-representation-for-image-sets"><a href="#Collaborative-representation-for-image-sets" class="headerlink" title="Collaborative representation for image sets"></a>Collaborative representation for image sets</h3>
+<h3 id="Collaborative-nature-of-SRC"><a href="#Collaborative-nature-of-SRC" class="headerlink" title="Collaborative nature of SRC"></a>Collaborative nature of SRC</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_01.png" alt=""><br>对于正则项，L1为sparse,L2为Collaborative</p>
+<p>佳哥的CVPR16文章A Probabilistic Collaborative Representation based Approach<br>for Pattern Classification，主要解释为什么SRC/CRC WORK,具有怎样的特性，结合了proCRC的Modeling，构建出这一分类器比传统分类器要较优；寻找一个common point for joint projection;分类问题相当于在分布空间上的映射。</p>
+<h3 id="Discriminative-Dictionary-Learning-DL"><a href="#Discriminative-Dictionary-Learning-DL" class="headerlink" title="Discriminative Dictionary Learning(DL)"></a>Discriminative Dictionary Learning(DL)</h3><p>Motivation:1.学习compacted字典 2.学习discriminative 3.effected</p>
+<h4 id="Shared-DL"><a href="#Shared-DL" class="headerlink" title="Shared DL"></a>Shared DL</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_02.png" alt="LC-KSVD"><br>Label Consistent-KSVD目的：学习一个线性变换A来约束了Sparse Code的Ideal形式,这里Q是预定义的理想编码形式，T是约束系数大小的。</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_03.png" alt="LC-KSVD"><br>首先计算Sparse Code，然后WX的结果就是分类类别结果</p>
+<p>Support Vector Guided DL(SVGDL), idea:自适应地对coding vector进行参数化。有些编码重要，部分编码相对不重要。</p>
+<h4 id="Class-specific-DL"><a href="#Class-specific-DL" class="headerlink" title="Class-specific DL"></a>Class-specific DL</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_04.png" alt="DDL"><br>所谓决策性字典学习就是把负样本也放进学习过程中进行字典训练。</p>
+<p>Fisher DDL exploit both representation residual and coding coefficient,引入使用了Fisher Criterion</p>
+<h4 id="Dictionary-Pair-Learning"><a href="#Dictionary-Pair-Learning" class="headerlink" title="Dictionary Pair Learning"></a>Dictionary Pair Learning</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_05.png" alt="DDL"><br>同一个Sparse Code,但是针对类别适应的字典，有点像多个2分类的SVM.</p>
+<h3 id="Collaborative-representation-for-image-sets"><a href="#Collaborative-representation-for-image-sets" class="headerlink" title="Collaborative representation for image sets"></a>Collaborative representation for image sets</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_06.png" alt="ISCR"><br>将Image Classification扩展到Image Set Classification</p>
+
           
         
       

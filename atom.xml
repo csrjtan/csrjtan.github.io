@@ -88,7 +88,7 @@
     <link href="https://csrjtan.github.io/2017/04/11/VisualComputing-3/"/>
     <id>https://csrjtan.github.io/2017/04/11/VisualComputing-3/</id>
     <published>2017-04-11T12:43:32.000Z</published>
-    <updated>2017-04-11T14:42:18.000Z</updated>
+    <updated>2017-04-12T11:57:59.000Z</updated>
     
     <content type="html">&lt;p&gt;这一节讲解如何用Dictionary learning做Classification Task&lt;/p&gt;
 &lt;h3 id=&quot;Sparse-representation-Classificaton&quot;&gt;&lt;a href=&quot;#Sparse-representation-Classificaton&quot; class=&quot;headerlink&quot; title=&quot;Sparse representation Classificaton&quot;&gt;&lt;/a&gt;Sparse representation Classificaton&lt;/h3&gt;&lt;p&gt;Problem Modeling:&lt;br&gt;$label(y) = argmin_k(r_k)$&lt;br&gt;$where\ \ r_k = ||y-X_k \hat{\alpha_k}||_2$&lt;/p&gt;
@@ -122,7 +122,17 @@
 &lt;p&gt;对于MAP，现在假设$\theta$的先验分布为g,通过贝叶斯理论，对于$\theta$的后验分布如下：$$\theta \mapsto f(\theta|x) = \frac{f(x|\theta)g(\theta)}{\int_{\theta} f(x|\theta^{*})g(\theta^{*})d\theta^{*}}$$&lt;/p&gt;
 &lt;p&gt;则MAP的目标为：$$\hat{\theta}_{MAP}(x)=argmax_{\theta} f(\theta|x) = argmax_{\theta} f(x|\theta)g(\theta)$$&lt;/p&gt;
 &lt;p&gt;可以看出，MAP和MLE最大的区别是MAP加入了模型参数本身的概率分布，或者说MLE的模型参数概率为均匀固定值。&lt;/p&gt;
-&lt;h3 id=&quot;Collaborative-nature-of-SRC&quot;&gt;&lt;a href=&quot;#Collaborative-nature-of-SRC&quot; class=&quot;headerlink&quot; title=&quot;Collaborative nature of SRC&quot;&gt;&lt;/a&gt;Collaborative nature of SRC&lt;/h3&gt;&lt;h3 id=&quot;Discriminative-Dictionary-Learning&quot;&gt;&lt;a href=&quot;#Discriminative-Dictionary-Learning&quot; class=&quot;headerlink&quot; title=&quot;Discriminative Dictionary Learning&quot;&gt;&lt;/a&gt;Discriminative Dictionary Learning&lt;/h3&gt;&lt;h3 id=&quot;Collaborative-representation-for-image-sets&quot;&gt;&lt;a href=&quot;#Collaborative-representation-for-image-sets&quot; class=&quot;headerlink&quot; title=&quot;Collaborative representation for image sets&quot;&gt;&lt;/a&gt;Collaborative representation for image sets&lt;/h3&gt;</content>
+&lt;h3 id=&quot;Collaborative-nature-of-SRC&quot;&gt;&lt;a href=&quot;#Collaborative-nature-of-SRC&quot; class=&quot;headerlink&quot; title=&quot;Collaborative nature of SRC&quot;&gt;&lt;/a&gt;Collaborative nature of SRC&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;对于正则项，L1为sparse,L2为Collaborative&lt;/p&gt;
+&lt;p&gt;佳哥的CVPR16文章A Probabilistic Collaborative Representation based Approach&lt;br&gt;for Pattern Classification，主要解释为什么SRC/CRC WORK,具有怎样的特性，结合了proCRC的Modeling，构建出这一分类器比传统分类器要较优；寻找一个common point for joint projection;分类问题相当于在分布空间上的映射。&lt;/p&gt;
+&lt;h3 id=&quot;Discriminative-Dictionary-Learning-DL&quot;&gt;&lt;a href=&quot;#Discriminative-Dictionary-Learning-DL&quot; class=&quot;headerlink&quot; title=&quot;Discriminative Dictionary Learning(DL)&quot;&gt;&lt;/a&gt;Discriminative Dictionary Learning(DL)&lt;/h3&gt;&lt;p&gt;Motivation:1.学习compacted字典 2.学习discriminative 3.effected&lt;/p&gt;
+&lt;h4 id=&quot;Shared-DL&quot;&gt;&lt;a href=&quot;#Shared-DL&quot; class=&quot;headerlink&quot; title=&quot;Shared DL&quot;&gt;&lt;/a&gt;Shared DL&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_02.png&quot; alt=&quot;LC-KSVD&quot;&gt;&lt;br&gt;Label Consistent-KSVD目的：学习一个线性变换A来约束了Sparse Code的Ideal形式,这里Q是预定义的理想编码形式，T是约束系数大小的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_03.png&quot; alt=&quot;LC-KSVD&quot;&gt;&lt;br&gt;首先计算Sparse Code，然后WX的结果就是分类类别结果&lt;/p&gt;
+&lt;p&gt;Support Vector Guided DL(SVGDL), idea:自适应地对coding vector进行参数化。有些编码重要，部分编码相对不重要。&lt;/p&gt;
+&lt;h4 id=&quot;Class-specific-DL&quot;&gt;&lt;a href=&quot;#Class-specific-DL&quot; class=&quot;headerlink&quot; title=&quot;Class-specific DL&quot;&gt;&lt;/a&gt;Class-specific DL&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_04.png&quot; alt=&quot;DDL&quot;&gt;&lt;br&gt;所谓决策性字典学习就是把负样本也放进学习过程中进行字典训练。&lt;/p&gt;
+&lt;p&gt;Fisher DDL exploit both representation residual and coding coefficient,引入使用了Fisher Criterion&lt;/p&gt;
+&lt;h4 id=&quot;Dictionary-Pair-Learning&quot;&gt;&lt;a href=&quot;#Dictionary-Pair-Learning&quot; class=&quot;headerlink&quot; title=&quot;Dictionary Pair Learning&quot;&gt;&lt;/a&gt;Dictionary Pair Learning&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_05.png&quot; alt=&quot;DDL&quot;&gt;&lt;br&gt;同一个Sparse Code,但是针对类别适应的字典，有点像多个2分类的SVM.&lt;/p&gt;
+&lt;h3 id=&quot;Collaborative-representation-for-image-sets&quot;&gt;&lt;a href=&quot;#Collaborative-representation-for-image-sets&quot; class=&quot;headerlink&quot; title=&quot;Collaborative representation for image sets&quot;&gt;&lt;/a&gt;Collaborative representation for image sets&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_06.png&quot; alt=&quot;ISCR&quot;&gt;&lt;br&gt;将Image Classification扩展到Image Set Classification&lt;/p&gt;
+</content>
     
     <summary type="html">
     
