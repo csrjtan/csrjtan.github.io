@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2017-04-15T08:52:53.000Z</updated>
+  <updated>2017-04-15T13:53:47.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Convolutional Neural Pyramid for Image Processing</title>
+    <link href="https://csrjtan.github.io/2017/04/15/paper-reading-20170415/"/>
+    <id>https://csrjtan.github.io/2017/04/15/paper-reading-20170415/</id>
+    <published>2017-04-15T10:07:12.000Z</published>
+    <updated>2017-04-15T13:53:47.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Jia jiaya组xiaoyong shen的CVPR17文章，主要通过金字塔卷积的方式来快速增加可视野；区别于传统的通过大kernel和增加层数的方法，这样增加可视野可以不至于导致大量的参数和运算的引入。&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h4&gt;&lt;p&gt;我们提出重要的卷积神经金字塔的框架用于low-level的vision和图像处理问题。重要发现表明，很多应用挖掘结构性信息需要大的感受野；而单纯堆叠卷积层或者用大的卷积核会带来计算量的巨大消耗。我们的金字塔结构可以快速增大感受野而不牺牲运算有效性。额外的增益包括了自适应金字塔深度和步骤性上采样使得对于VGA-SIZE的图像做到实时。这种方法可以应用于一系列的应用包括深度图恢复、图像补全和去噪、边缘增强等。&lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170415_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;这个金字塔结构主要包括特征提取、匹配映射和重建三个基本步骤，特征提取还是正常的卷积，在L0时不能使用任何pooling相关的操作（会丢失信息）;下采样的操作可以使用步长为2的卷积或者max pooling,发现max pooling较好；匹配过程的输出都是56 kernel的feature map方便之后重建，另外level越大，feature map size越小，增加的运算量也小，使得depth adaptive；上采样直接使用了deconvolution layer；重建的时候可以使用pixel-wise sum或者concatenate,发现用sum较好；最后加两层卷积来生成对应数量通道的desire output.&lt;/p&gt;
+&lt;h4 id=&quot;Experiment&quot;&gt;&lt;a href=&quot;#Experiment&quot; class=&quot;headerlink&quot; title=&quot;Experiment&quot;&gt;&lt;/a&gt;Experiment&lt;/h4&gt;&lt;p&gt;比较了不同深度的金字塔结构带来的运算和效果，5 level可以达到511*511的感受野，这是指数上升的，但内存和运算量都是越深增加得越慢，而且证明只使用一层金字塔结构就可以达到很不错的效果了。&lt;/p&gt;
+&lt;p&gt;至于网络的损失函数在使用像素L2同时，也使用了梯度图像的L2，前者确保PSNR，后者确保图像足够sharp。&lt;/p&gt;
+&lt;p&gt;总结：这个论文结合了传统的multi-scale或者金字塔的多尺度，这些都是肯定可用有效的结构信息，所以不难想到能提高，主要前几层下采样的feature map开销还是有的；相当来说把很深很瘦的网络，拉宽变浅，也变得更紧致了。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170415_02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Jia jiaya组xiaoyong shen的CVPR17文章，主要通过金字塔卷积的方式来快速增加可视野；区别于传统的通过大kernel和增加层数的方法，这样增加可视野可以不至于导致大量的参数和运算的引入。&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
   
   <entry>
     <title>VisualComputing_4</title>
@@ -531,41 +560,6 @@
     
     
       <category term="reivew CDM" scheme="https://csrjtan.github.io/tags/reivew-CDM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>雅思笔记总结</title>
-    <link href="https://csrjtan.github.io/2017/03/27/%E9%9B%85%E6%80%9D%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/"/>
-    <id>https://csrjtan.github.io/2017/03/27/雅思笔记总结/</id>
-    <published>2017-03-27T09:29:17.000Z</published>
-    <updated>2017-03-28T14:49:22.000Z</updated>
-    
-    <content type="html">&lt;p&gt;还有1小时上Ethics，无聊之际将旧有的笔记本总结一下，然后‘清理’吧&lt;/p&gt;
-&lt;h3 id=&quot;阅读真经&quot;&gt;&lt;a href=&quot;#阅读真经&quot; class=&quot;headerlink&quot; title=&quot;阅读真经&quot;&gt;&lt;/a&gt;阅读真经&lt;/h3&gt;&lt;figure class=&quot;highlight ada&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;阅读先看题，定位快寻觅&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;两种题后做，优先细节选&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;同义多替换，单词有灵犀&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;填词有规律，前后找痕迹&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;并列需查重，生词不用疑&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;难度为中等，变幻四种体&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;填表填图题，一见笑眯眯&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;顺藤能摸瓜，按图可索骥&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;答案常集中，原始送分题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段落选标题，连锁不简单&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段中找亮点，中心藏后边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;判断实不难，真假未提及&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;末题少驳斥，首题少NG&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;我有七种意，天下剑桥题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;多选找并列，单选是&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;如遇选标题，末段加大意&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;匹配乱序多，定位找同义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段落含信息，小心有NB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;莫夸境界高，无招胜有招&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;三剑已合璧，笑看雅思谜&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;这是刘洪波雅思阅读真经，我感觉当年能阅读7.5这是对我整个雅思考试来说帮助最大的，所以每逢想起雅思就是这段经文了。同学们也要好好“查经”，他总结得特别好。&lt;/p&gt;
-&lt;h4 id=&quot;英语语法&quot;&gt;&lt;a href=&quot;#英语语法&quot; class=&quot;headerlink&quot; title=&quot;英语语法&quot;&gt;&lt;/a&gt;英语语法&lt;/h4&gt;&lt;p&gt;这里有语法树的&lt;a href=&quot;http://www.cnblogs.com/memset/archive/2013/03/26/2981778.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;英语语法&lt;/a&gt;。分为词法和语法， 词法包括名词、代词、数词、冠词、动词、介词、连词、形容词、副词；其中动词包括谓语动词和非谓语动词，谓语动词包括情态动词，时态，语态（主动，被动）和虚拟语气，非谓语动词包括不定式，现在/过去分词以及动名词。&lt;/p&gt;
-&lt;p&gt;然后是语法，分为一般规则和特殊规则。 一般的包括369，三类句子：简单句，并列句和复合句（定语/状语/名词性从句），六种简单句型，九种句子成分。 特殊规则又包括强调，倒装，语序，主谓一致，引语，平行和比较。&lt;/p&gt;
-&lt;h4 id=&quot;丰富写作&quot;&gt;&lt;a href=&quot;#丰富写作&quot; class=&quot;headerlink&quot; title=&quot;丰富写作&quot;&gt;&lt;/a&gt;丰富写作&lt;/h4&gt;&lt;p&gt;句式：句首状语提前，句上植入短语，现在分词和过去分词，强调句，虚拟语气，-ly结尾的副词，主被动交替和平行结构&lt;/p&gt;
-&lt;p&gt;连词：因：as, due to, owing to 果：thus, therefore, so, as a result 目的：thus+verbing 举例：for instance, such, this is confirmed by, the example of 对比：while, whereas, by contrast, unlike, one of the main differences between … and .. is 类比：similarly,  like …, 让步：in spite of, although, even if, even though, … as sb./sth. may be/seem … 假设：if…,(then) … 修饰定从： that, who, which, why(reason/reasons)&lt;/p&gt;
-&lt;p&gt;限定范围：apart from, as well as, rather than, instead of&lt;br&gt;Admittedly,… .Nevertheless, …&lt;br&gt;e.g. Some experts believe that it is better for children to egin learning a foreign language at primary school rather than secondary school.&lt;/p&gt;
-&lt;p&gt;下定义：means that, which means that, which is essentially&lt;/p&gt;
-&lt;p&gt;写作常用短语搭配：achieve one’s full potential, work-life balance, acquire knowledge, gain better understand, 坚持做adhere/stick to, hold on, boosting profits, deepen understanding of, combat/address/tackle a problem&lt;/p&gt;
-&lt;h4 id=&quot;经典句型&quot;&gt;&lt;a href=&quot;#经典句型&quot; class=&quot;headerlink&quot; title=&quot;经典句型&quot;&gt;&lt;/a&gt;经典句型&lt;/h4&gt;&lt;p&gt;1.According to a recent survey, millions people die each year from dieases linked to smoking&lt;br&gt;2.The last surveys show that quite a few children hae unpleasant association to homework.&lt;br&gt;&lt;a href=&quot;http://3.No&quot; class=&quot;test test-url&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;3.No&lt;/a&gt; invention has received more praise and abuse than Internet&lt;br&gt;4.People seem to fail to take into account the fact that education does not end with graduation.&lt;br&gt;5.An increasing number of people are beginning to realize that education is not complete with graduation.&lt;br&gt;6.When it comes to education, the majority of people believe that education is a lifetime study.&lt;br&gt;7.Many experts pont out that physical exercise contributes directly to a person’s physical fitness.&lt;br&gt;8.Proper measures must be taken to limit the number of foreign tourists and the great efforts should be made to protect local environment and history form the harmful effects of international tourism.&lt;br&gt;9.An increasing number of experts believe that migrants will exert positive effects on construction of city. However, this oppinion is now being questioned by more and more city residents, who complain that the migrants have bought many serious problems like crime and prostitution.&lt;br&gt;10.Many city residents complain that it’s so few buses in their city that they have to spend much more time waiting for a bus, which is usually crowed with a large number of passengers.&lt;br&gt;11.There is no denying the fact that air pollution is an extremely serious problem: the city authorities should take strong measures to deal with it.&lt;br&gt;12.An investigation shows that female workers tend to have a favorable attitude toward retirement.&lt;br&gt;13.A proper part-time job does not occupy students’ too much time. In fact, it is unhealthy for them to spend all of time on their study. As an old saying goes: All work and no play makes Jack a dull boy.&lt;br&gt;14.Any government, which is blind to this point, may pay a heavy price.&lt;br&gt;15.Nowadays, many students always go into raptures at the mere mention of the coming life of high school.&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;还有1小时上Ethics，无聊之际将旧有的笔记本总结一下，然后‘清理’吧&lt;/p&gt;
-&lt;h3 id=&quot;阅读真经&quot;&gt;&lt;a href=&quot;#阅读真经&quot; class=&quot;headerlink&quot; title=&quot;阅读真经&quot;&gt;&lt;/a&gt;阅读真经&lt;/h3&gt;&lt;figure class=&quot;highlight ada&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;阅读先看题，定位快寻觅&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;两种题后做，优先细节选&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;同义多替换，单词有灵犀&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;填词有规律，前后找痕迹&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;并列需查重，生词不用疑&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;难度为中等，变幻四种体&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;填表填图题，一见笑眯眯&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;顺藤能摸瓜，按图可索骥&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;答案常集中，原始送分题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段落选标题，连锁不简单&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段中找亮点，中心藏后边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;判断实不难，真假未提及&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;末题少驳斥，首题少NG&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;我有七种意，天下剑桥题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;多选找并列，单选是&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;如遇选标题，末段加大意&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;匹配乱序多，定位找同义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;段落含信息，小心有NB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;莫夸境界高，无招胜有招&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;三剑已合璧，笑看雅思谜&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
-    
-    
-      <category term="IELTS" scheme="https://csrjtan.github.io/tags/IELTS/"/>
     
   </entry>
   
