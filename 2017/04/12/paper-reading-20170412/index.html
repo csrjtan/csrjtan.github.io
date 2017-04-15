@@ -105,21 +105,21 @@
 
 
 <meta name="description" content="这是CVPR16的一篇Orals，主要的工作是Argues RGB噪声经过In-camera imaging之后，不再具有channel-independent的特性；提出用多元高斯分布来拟合RGB dependent noise，并提出了一个NN模型来估计Patch based的多元高斯模型的参数
-AbstractModelling and analyzing noise in images i">
+Abstract建模和分析噪声是一个基础的任务。传统地，噪声分布被建模成通道独立的；在RAW图上，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Holistic Approach to Cross-Channel Image Noise Modeling and its Application to Image Denoising">
 <meta property="og:url" content="https://csrjtan.github.io/2017/04/12/paper-reading-20170412/index.html">
 <meta property="og:site_name" content="CSRJTAN">
 <meta property="og:description" content="这是CVPR16的一篇Orals，主要的工作是Argues RGB噪声经过In-camera imaging之后，不再具有channel-independent的特性；提出用多元高斯分布来拟合RGB dependent noise，并提出了一个NN模型来估计Patch based的多元高斯模型的参数
-AbstractModelling and analyzing noise in images i">
+Abstract建模和分析噪声是一个基础的任务。传统地，噪声分布被建模成通道独立的；在RAW图上，">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/paper_read_20170412_01.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/paper_read_20170412_02.png">
 <meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/paper_read_20170412_03.png">
-<meta property="og:updated_time" content="2017-04-12T13:26:22.000Z">
+<meta property="og:updated_time" content="2017-04-13T06:49:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A Holistic Approach to Cross-Channel Image Noise Modeling and its Application to Image Denoising">
 <meta name="twitter:description" content="这是CVPR16的一篇Orals，主要的工作是Argues RGB噪声经过In-camera imaging之后，不再具有channel-independent的特性；提出用多元高斯分布来拟合RGB dependent noise，并提出了一个NN模型来估计Patch based的多元高斯模型的参数
-AbstractModelling and analyzing noise in images i">
+Abstract建模和分析噪声是一个基础的任务。传统地，噪声分布被建模成通道独立的；在RAW图上，">
 <meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/paper_read_20170412_01.png">
 
 
@@ -370,7 +370,7 @@ AbstractModelling and analyzing noise in images i">
 
       
         <p>这是CVPR16的一篇Orals，主要的工作是Argues RGB噪声经过In-camera imaging之后，不再具有channel-independent的特性；提出用多元高斯分布来拟合RGB dependent noise，并提出了一个NN模型来估计Patch based的多元高斯模型的参数</p>
-<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Modelling and analyzing noise in images is a funda-<br>mental task in many computer vision systems. Tradition- ally, noise has been modelled per color channel assum- ing that the color channels are independent. Although the color channels can be considered as mutually independent in camera RAW images, signals from different color chan- nels get mixed during the imaging process inside the cam- era due to gamut mapping, tone-mapping, and compression. We show the influence of the in-camera imaging pipeline on noise and propose a new noise model in the 3D RGB space to accounts for the color channel mix-ups. A data-driven approach for determining the parameters of the new noise model is introduced as well as its application to image de- noising. The experiments show that our noise model rep- resents the noise in regular JPEG images more accurately compared to the previous models and is advantageous in image denoising.</p>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>建模和分析噪声是一个基础的任务。传统地，噪声分布被建模成通道独立的；在RAW图上，这是可以接受的，但经过相机成像过程处理之后（gamma,tone-mapping,JPEG压缩），噪声分布变得具有通道相关性；这篇文章通过像素分析每个步骤上的分布以及协方差矩阵来描述了这一种通道相关的关系，并用多元高斯分布模型来建模估计噪声，最后提出了训练MLP的方法来估计模型的参数，从而达到噪声分布。实验证明该方法的噪声估计更精确，而且结合BNLM达到比传统BNLM和BM3D都好的去噪结果。</p>
 <h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>两点贡献：1.提出观察RGB经过camera imaging之后会产生channel dependent的噪声 2.提出3D RGB空间来观察Patch based noise，然后训练MLP模型来预测噪声参数</p>
 <h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><p>最早的噪声估计是channel-independent Gaussian model,因为简单而且在camera imaging前，RGB的channel noise确实相关性比较低；后来Foi et al.[Practical poissonian-gaussian noise modeling and fitting for single-image raw-data.]提出了Poisonian-Gaussian Noise；之后Granados结合temporal和spatial noise来重构HDR图片噪声；Hwang et al.提出用Skellam distribution来表示噪声分布；</p>
 <p>最近比较Robust的有Noise Level Function(NLF) [Statistical calibration of ccd imaging process],效果还不错。</p>
@@ -506,7 +506,7 @@ AbstractModelling and analyzing noise in images i">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

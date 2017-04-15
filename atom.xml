@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2017-04-13T06:42:16.000Z</updated>
+  <updated>2017-04-15T08:52:53.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -16,11 +16,68 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>VisualComputing_4</title>
+    <link href="https://csrjtan.github.io/2017/04/13/VisualComputing-4/"/>
+    <id>https://csrjtan.github.io/2017/04/13/VisualComputing-4/</id>
+    <published>2017-04-13T12:44:23.000Z</published>
+    <updated>2017-04-15T08:52:53.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天记录一下第六节课程，主要是LOW RANK的技术&lt;/p&gt;
+&lt;h3 id=&quot;LOW-RANK-MINIMIZATION&quot;&gt;&lt;a href=&quot;#LOW-RANK-MINIMIZATION&quot; class=&quot;headerlink&quot; title=&quot;LOW RANK MINIMIZATION&quot;&gt;&lt;/a&gt;LOW RANK MINIMIZATION&lt;/h3&gt;&lt;p&gt;低秩分解（Low-rank Matrix Factorization)&lt;br&gt;Motivation: Visual Data often has an intrinsic low-rank structure&lt;br&gt;例如：FACE IMAGES, SURVEILLANCE VIDEO, MULTISPECTRAL IMAGE,这些数据都是高度冗余的(highly redundancy)，所以我们可以使用LOW RANK技术来降维，甚至数据复原和分类等&lt;/p&gt;
+&lt;p&gt;$$Y = X + E$$&lt;br&gt;Y是数据样本拉成向量后，堆叠成为的矩阵；X是隐含的低秩结构矩阵；E是Residual Matrix&lt;/p&gt;
+&lt;p&gt;我们可以这样建模低秩矩阵X，$X \in R^{d*r}$,d为数据的维度，n为样本的数量；构建Basis Matrix $U \in R^{d*r}$，其中$r&amp;lt;&amp;lt;d,n$,这是矩阵的秩;系数矩阵$V \in R^{n*r}$;&lt;br&gt;$X = U * V^T$, $Y = UV^T+E$&lt;/p&gt;
+&lt;p&gt;如何构建近似的低秩矩阵，如何估计E？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最佳近似估计，依赖于对residual(noise)的分布估计：1.iid GAUSSIAN； 2.iid LAPLACIAN 3.MIXTURE OF GAUSSIAN 4.MORE COMPLEX NOISE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_01.png&quot; alt=&quot;L2-LRMF&quot;&gt;&lt;br&gt;根据MLE得到L2的保真项其实就是对应”误差分布为独立同分布的高斯模型“的假设&lt;/p&gt;
+&lt;p&gt;其中对于X的分解可以直接用SVD：$X = USV^T$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_02.png&quot; alt=&quot;L1-LRMF&quot;&gt;&lt;br&gt;同理，L1的LRMF对应”误差分布为独立同分布的拉普拉斯模型“的假设&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_03.png&quot; alt=&quot;L1-L2 LRMF&quot;&gt;&lt;br&gt;L1的模型具有长尾效应，更适应于outliers和heavy noises的情况。&lt;/p&gt;
+&lt;p&gt;第三种是之前两种的混合噪声模型：$Y=UV^T+E+N$，一般使用variational bayes方法来求解此类问题。&lt;/p&gt;
+&lt;p&gt;最后是复杂噪声模型：Mog-LRMF(ICCV-2013), DP-GMM(CVPR,2015), MoEP-LRMF(ICCV,2015; TIP,2016)&lt;/p&gt;
+&lt;h4 id=&quot;LRMF-with-missing-elements&quot;&gt;&lt;a href=&quot;#LRMF-with-missing-elements&quot; class=&quot;headerlink&quot; title=&quot;LRMF with missing elements&quot;&gt;&lt;/a&gt;LRMF with missing elements&lt;/h4&gt;&lt;p&gt;Y可以是不完整矩阵，可以引入一个二元矩阵W：&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_04.png&quot; alt=&quot;Missing Element LRMF&quot;&gt;&lt;/p&gt;
+&lt;p&gt;对于F-norm的做法：&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_05.png&quot; alt=&quot;F-NORM LRMF&quot;&gt;&lt;/p&gt;
+&lt;p&gt;对于L1-norm的做法：&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_06.png&quot; alt=&quot;L1-NORM LRMF&quot;&gt;&lt;/p&gt;
+&lt;p&gt;优缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;矩阵的阶需要预定义&lt;/li&gt;
+&lt;li&gt;清晰地表达子空间和系数关系&lt;/li&gt;
+&lt;li&gt;容易嵌入对子空间的先验&lt;/li&gt;
+&lt;li&gt;不是凸优化问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Weighted-Nuclear-Norm-Minimization-WNNM&quot;&gt;&lt;a href=&quot;#Weighted-Nuclear-Norm-Minimization-WNNM&quot; class=&quot;headerlink&quot; title=&quot;Weighted Nuclear Norm Minimization(WNNM)&quot;&gt;&lt;/a&gt;Weighted Nuclear Norm Minimization(WNNM)&lt;/h3&gt;&lt;p&gt;针对矩阵的秩的正则化$Rank(X) = \Sigma||\sigma_i(X)||_0$&lt;/p&gt;
+&lt;p&gt;核范数Nuclear Norm: $||X||_* = \Sigma||\sigma_i(X)||_1$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_07.png&quot; alt=&quot;Nuclear-NORM Minimization&quot;&gt;&lt;br&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tightest Convex Envelop of rank minimization&lt;/li&gt;
+&lt;li&gt;Closed form solution&lt;br&gt;缺点：&lt;/li&gt;
+&lt;li&gt;对于所有的奇异值给以同样的权值，忽略了它们间不同的权值作用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;WNNM就是对此Formulation里面的奇异值作加权，但如此一来WNNM是非凸，sub-gradient方法不能用来分析它的优化过程。&lt;/p&gt;
+&lt;p&gt;以下的定理和引理确保了WNNM的优化可行性。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_08.png&quot; alt=&quot;Optimization&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_09.png&quot; alt=&quot;Corollary&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天记录一下第六节课程，主要是LOW RANK的技术&lt;/p&gt;
+&lt;h3 id=&quot;LOW-RANK-MINIMIZATION&quot;&gt;&lt;a href=&quot;#LOW-RANK-MINIMIZATION&quot; class=&quot;headerlink&quot; title=&quot;LOW RANK MINIMIZ
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="VisualComputing" scheme="https://csrjtan.github.io/tags/VisualComputing/"/>
+    
+  </entry>
+  
+  <entry>
     <title>精进_2</title>
     <link href="https://csrjtan.github.io/2017/04/13/%E7%B2%BE%E8%BF%9B-2/"/>
     <id>https://csrjtan.github.io/2017/04/13/精进-2/</id>
     <published>2017-04-13T02:14:01.000Z</published>
-    <updated>2017-04-13T06:42:16.000Z</updated>
+    <updated>2017-04-13T06:49:44.000Z</updated>
     
     <content type="html">&lt;p&gt;接着上一节读书笔记，讲完时间和选择之后，讨论一下如何全面地选择和执行行动&lt;/p&gt;
 &lt;h3 id=&quot;如何选择&quot;&gt;&lt;a href=&quot;#如何选择&quot; class=&quot;headerlink&quot; title=&quot;如何选择&quot;&gt;&lt;/a&gt;如何选择&lt;/h3&gt;&lt;h4 id=&quot;克服选择弱势&quot;&gt;&lt;a href=&quot;#克服选择弱势&quot; class=&quot;headerlink&quot; title=&quot;克服选择弱势&quot;&gt;&lt;/a&gt;克服选择弱势&lt;/h4&gt;&lt;p&gt;精细化：1.重新定义问题 2.因素穷举 3.因素赋权 4.列表比较 （但在主观意识强和牵涉面广的情况下不适用）&lt;/p&gt;
@@ -83,10 +140,10 @@
     <link href="https://csrjtan.github.io/2017/04/12/paper-reading-20170412/"/>
     <id>https://csrjtan.github.io/2017/04/12/paper-reading-20170412/</id>
     <published>2017-04-12T13:04:11.000Z</published>
-    <updated>2017-04-12T13:26:22.000Z</updated>
+    <updated>2017-04-13T06:49:40.000Z</updated>
     
     <content type="html">&lt;p&gt;这是CVPR16的一篇Orals，主要的工作是Argues RGB噪声经过In-camera imaging之后，不再具有channel-independent的特性；提出用多元高斯分布来拟合RGB dependent noise，并提出了一个NN模型来估计Patch based的多元高斯模型的参数&lt;/p&gt;
-&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h4&gt;&lt;p&gt;Modelling and analyzing noise in images is a funda-&lt;br&gt;mental task in many computer vision systems. Tradition- ally, noise has been modelled per color channel assum- ing that the color channels are independent. Although the color channels can be considered as mutually independent in camera RAW images, signals from different color chan- nels get mixed during the imaging process inside the cam- era due to gamut mapping, tone-mapping, and compression. We show the influence of the in-camera imaging pipeline on noise and propose a new noise model in the 3D RGB space to accounts for the color channel mix-ups. A data-driven approach for determining the parameters of the new noise model is introduced as well as its application to image de- noising. The experiments show that our noise model rep- resents the noise in regular JPEG images more accurately compared to the previous models and is advantageous in image denoising.&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h4&gt;&lt;p&gt;建模和分析噪声是一个基础的任务。传统地，噪声分布被建模成通道独立的；在RAW图上，这是可以接受的，但经过相机成像过程处理之后（gamma,tone-mapping,JPEG压缩），噪声分布变得具有通道相关性；这篇文章通过像素分析每个步骤上的分布以及协方差矩阵来描述了这一种通道相关的关系，并用多元高斯分布模型来建模估计噪声，最后提出了训练MLP的方法来估计模型的参数，从而达到噪声分布。实验证明该方法的噪声估计更精确，而且结合BNLM达到比传统BNLM和BM3D都好的去噪结果。&lt;/p&gt;
 &lt;h4 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h4&gt;&lt;p&gt;两点贡献：1.提出观察RGB经过camera imaging之后会产生channel dependent的噪声 2.提出3D RGB空间来观察Patch based noise，然后训练MLP模型来预测噪声参数&lt;/p&gt;
 &lt;h4 id=&quot;Related-Work&quot;&gt;&lt;a href=&quot;#Related-Work&quot; class=&quot;headerlink&quot; title=&quot;Related Work&quot;&gt;&lt;/a&gt;Related Work&lt;/h4&gt;&lt;p&gt;最早的噪声估计是channel-independent Gaussian model,因为简单而且在camera imaging前，RGB的channel noise确实相关性比较低；后来Foi et al.[Practical poissonian-gaussian noise modeling and fitting for single-image raw-data.]提出了Poisonian-Gaussian Noise；之后Granados结合temporal和spatial noise来重构HDR图片噪声；Hwang et al.提出用Skellam distribution来表示噪声分布；&lt;/p&gt;
 &lt;p&gt;最近比较Robust的有Noise Level Function(NLF) [Statistical calibration of ccd imaging process],效果还不错。&lt;/p&gt;
@@ -509,75 +566,6 @@
     
     
       <category term="IELTS" scheme="https://csrjtan.github.io/tags/IELTS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于学习方法</title>
-    <link href="https://csrjtan.github.io/2017/03/16/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://csrjtan.github.io/2017/03/16/关于学习/</id>
-    <published>2017-03-16T03:56:26.000Z</published>
-    <updated>2017-03-16T05:03:21.000Z</updated>
-    
-    <content type="html">&lt;p&gt;从WikiHow上面看到的生活经验，其实wikiHow上面的内容和方法论都很好，只是知易行难。&lt;/p&gt;
-&lt;h3 id=&quot;如何成为学霸&quot;&gt;&lt;a href=&quot;#如何成为学霸&quot; class=&quot;headerlink&quot; title=&quot;如何成为学霸&quot;&gt;&lt;/a&gt;如何成为学霸&lt;/h3&gt;&lt;h4 id=&quot;保持良好的学习状态&quot;&gt;&lt;a href=&quot;#保持良好的学习状态&quot; class=&quot;headerlink&quot; title=&quot;保持良好的学习状态&quot;&gt;&lt;/a&gt;保持良好的学习状态&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;无论大脑还是身体，都需要保持最高效的状态&lt;/li&gt;
-&lt;li&gt;充足的睡眠休息，外加适量的运动，最好是早睡早起&lt;/li&gt;
-&lt;li&gt;健康的饮食规律，少吃多油多脂高糖的垃圾食品，多吃健身餐&lt;/li&gt;
-&lt;li&gt;多喝水，保持充分的水分才能使得大脑良好地工作&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;找到适合自己的学习方法&quot;&gt;&lt;a href=&quot;#找到适合自己的学习方法&quot; class=&quot;headerlink&quot; title=&quot;找到适合自己的学习方法&quot;&gt;&lt;/a&gt;找到适合自己的学习方法&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;视觉学习者：通过图表、想象来帮助记忆&lt;/li&gt;
-&lt;li&gt;听觉学习者：轻音乐帮助记忆，多听课，通过语音学习&lt;/li&gt;
-&lt;li&gt;运动学习者：喜欢边学习边做动作，走来走去的，可以尝试橡皮泥&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;认真听讲&quot;&gt;&lt;a href=&quot;#认真听讲&quot; class=&quot;headerlink&quot; title=&quot;认真听讲&quot;&gt;&lt;/a&gt;认真听讲&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;让自己在前排听讲&lt;/li&gt;
-&lt;li&gt;积极认真回答问题&lt;/li&gt;
-&lt;li&gt;遇到问题与感兴趣的点举手提问&lt;/li&gt;
-&lt;li&gt;学习记笔记（后面详述）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;提前认真完成作业&quot;&gt;&lt;a href=&quot;#提前认真完成作业&quot; class=&quot;headerlink&quot; title=&quot;提前认真完成作业&quot;&gt;&lt;/a&gt;提前认真完成作业&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;遇到难题与同学讨论&lt;/li&gt;
-&lt;li&gt;可以求助老师与助教&lt;/li&gt;
-&lt;li&gt;寻找安静专注的学习环境（图书馆，书房等）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;通过其它方式补充课堂的学习内容&quot;&gt;&lt;a href=&quot;#通过其它方式补充课堂的学习内容&quot; class=&quot;headerlink&quot; title=&quot;通过其它方式补充课堂的学习内容&quot;&gt;&lt;/a&gt;通过其它方式补充课堂的学习内容&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;兴趣是最好的老师，跟随自己的兴趣&lt;/li&gt;
-&lt;li&gt;阅读相关的兴趣读物&lt;/li&gt;
-&lt;li&gt;寻找该知识的实用性场景，学以致用&lt;/li&gt;
-&lt;li&gt;例如在学习英语，可以通过影片纪录片来加强锻炼&lt;/li&gt;
-&lt;li&gt;放假期间，适当地进行知识回顾总结，以及预习下一阶段的课程&lt;/li&gt;
-&lt;li&gt;在备考时，提早开始复习（难度越大，复习越早）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;学会做人&quot;&gt;&lt;a href=&quot;#学会做人&quot; class=&quot;headerlink&quot; title=&quot;学会做人&quot;&gt;&lt;/a&gt;学会做人&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;懂得在别人做得好的时候，鼓励表扬他人，不要刻薄取笑&lt;/li&gt;
-&lt;li&gt;助人为乐，帮助他人解决问题，分享知识，分享学习笔记&lt;/li&gt;
-&lt;li&gt;尊重他人，多聆听别人的观点，学会理解&lt;/li&gt;
-&lt;li&gt;保持冷静，坚持自我&lt;/li&gt;
-&lt;li&gt;培养幽默感，保持学习的热情和积极乐观态度&lt;/li&gt;
-&lt;li&gt;做自己，做真正让自己开心充实的事情，与人分享热爱的事情，与能让你成长的人交朋友，不要过分在意他人对你的看法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;关于记笔记&quot;&gt;&lt;a href=&quot;#关于记笔记&quot; class=&quot;headerlink&quot; title=&quot;关于记笔记&quot;&gt;&lt;/a&gt;关于记笔记&lt;/h3&gt;&lt;p&gt;1.按学科特点，课程形式来记笔记，如讲座要求又快又好&lt;br&gt;2.记住自己的目标，留意你重视的信息，快速接受。如果是写作论文，需要关注论文的大纲，写下主旨性和关键性的想法&lt;br&gt;3.笔记方便思考记忆，加深了解信息，结构化思考知识&lt;br&gt;4.听讲为重，转述要点，学会概述&lt;br&gt;5.记下概念和术语，与正文分开&lt;br&gt;6.学会简写&lt;/p&gt;
-&lt;h4 id=&quot;关于读书笔记&quot;&gt;&lt;a href=&quot;#关于读书笔记&quot; class=&quot;headerlink&quot; title=&quot;关于读书笔记&quot;&gt;&lt;/a&gt;关于读书笔记&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;为术语下定义，可以记录页码，帮助回到文中理解&lt;/li&gt;
-&lt;li&gt;列出重要概念，帮助简化复杂的内容&lt;/li&gt;
-&lt;li&gt;为纲要天上内容，写下学习目的的摄像，看到相关信息并记下页码&lt;/li&gt;
-&lt;li&gt;标上不同的颜色，帮助突出重点，组织笔记结构&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;从WikiHow上面看到的生活经验，其实wikiHow上面的内容和方法论都很好，只是知易行难。&lt;/p&gt;
-&lt;h3 id=&quot;如何成为学霸&quot;&gt;&lt;a href=&quot;#如何成为学霸&quot; class=&quot;headerlink&quot; title=&quot;如何成为学霸&quot;&gt;&lt;/a&gt;如何成为学霸&lt;/h3&gt;&lt;h
-    
-    </summary>
-    
-      <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
-    
-    
-      <category term="高效 学习" scheme="https://csrjtan.github.io/tags/%E9%AB%98%E6%95%88-%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

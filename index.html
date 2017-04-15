@@ -293,6 +293,159 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/13/VisualComputing-4/" itemprop="url">
+                  VisualComputing_4
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-13T20:44:23+08:00" content="2017-04-13">
+              2017-04-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/13/VisualComputing-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/13/VisualComputing-4/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天记录一下第六节课程，主要是LOW RANK的技术</p>
+<h3 id="LOW-RANK-MINIMIZATION"><a href="#LOW-RANK-MINIMIZATION" class="headerlink" title="LOW RANK MINIMIZATION"></a>LOW RANK MINIMIZATION</h3><p>低秩分解（Low-rank Matrix Factorization)<br>Motivation: Visual Data often has an intrinsic low-rank structure<br>例如：FACE IMAGES, SURVEILLANCE VIDEO, MULTISPECTRAL IMAGE,这些数据都是高度冗余的(highly redundancy)，所以我们可以使用LOW RANK技术来降维，甚至数据复原和分类等</p>
+<p>$$Y = X + E$$<br>Y是数据样本拉成向量后，堆叠成为的矩阵；X是隐含的低秩结构矩阵；E是Residual Matrix</p>
+<p>我们可以这样建模低秩矩阵X，$X \in R^{d*r}$,d为数据的维度，n为样本的数量；构建Basis Matrix $U \in R^{d*r}$，其中$r&lt;&lt;d,n$,这是矩阵的秩;系数矩阵$V \in R^{n*r}$;<br>$X = U * V^T$, $Y = UV^T+E$</p>
+<p>如何构建近似的低秩矩阵，如何估计E？</p>
+<ul>
+<li>最佳近似估计，依赖于对residual(noise)的分布估计：1.iid GAUSSIAN； 2.iid LAPLACIAN 3.MIXTURE OF GAUSSIAN 4.MORE COMPLEX NOISE</li>
+</ul>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_01.png" alt="L2-LRMF"><br>根据MLE得到L2的保真项其实就是对应”误差分布为独立同分布的高斯模型“的假设</p>
+<p>其中对于X的分解可以直接用SVD：$X = USV^T$</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_02.png" alt="L1-LRMF"><br>同理，L1的LRMF对应”误差分布为独立同分布的拉普拉斯模型“的假设</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_03.png" alt="L1-L2 LRMF"><br>L1的模型具有长尾效应，更适应于outliers和heavy noises的情况。</p>
+<p>第三种是之前两种的混合噪声模型：$Y=UV^T+E+N$，一般使用variational bayes方法来求解此类问题。</p>
+<p>最后是复杂噪声模型：Mog-LRMF(ICCV-2013), DP-GMM(CVPR,2015), MoEP-LRMF(ICCV,2015; TIP,2016)</p>
+<h4 id="LRMF-with-missing-elements"><a href="#LRMF-with-missing-elements" class="headerlink" title="LRMF with missing elements"></a>LRMF with missing elements</h4><p>Y可以是不完整矩阵，可以引入一个二元矩阵W：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_04.png" alt="Missing Element LRMF"></p>
+<p>对于F-norm的做法：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_05.png" alt="F-NORM LRMF"></p>
+<p>对于L1-norm的做法：<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_06.png" alt="L1-NORM LRMF"></p>
+<p>优缺点：</p>
+<ul>
+<li>矩阵的阶需要预定义</li>
+<li>清晰地表达子空间和系数关系</li>
+<li>容易嵌入对子空间的先验</li>
+<li>不是凸优化问题</li>
+</ul>
+<h3 id="Weighted-Nuclear-Norm-Minimization-WNNM"><a href="#Weighted-Nuclear-Norm-Minimization-WNNM" class="headerlink" title="Weighted Nuclear Norm Minimization(WNNM)"></a>Weighted Nuclear Norm Minimization(WNNM)</h3><p>针对矩阵的秩的正则化$Rank(X) = \Sigma||\sigma_i(X)||_0$</p>
+<p>核范数Nuclear Norm: $||X||_* = \Sigma||\sigma_i(X)||_1$</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_07.png" alt="Nuclear-NORM Minimization"><br>优点：</p>
+<ul>
+<li>Tightest Convex Envelop of rank minimization</li>
+<li>Closed form solution<br>缺点：</li>
+<li>对于所有的奇异值给以同样的权值，忽略了它们间不同的权值作用</li>
+</ul>
+<p>WNNM就是对此Formulation里面的奇异值作加权，但如此一来WNNM是非凸，sub-gradient方法不能用来分析它的优化过程。</p>
+<p>以下的定理和引理确保了WNNM的优化可行性。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_08.png" alt="Optimization"><br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_09.png" alt="Corollary"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/13/精进-2/" itemprop="url">
                   精进_2
                 </a>
@@ -523,7 +676,7 @@
         
           
             <p>这是CVPR16的一篇Orals，主要的工作是Argues RGB噪声经过In-camera imaging之后，不再具有channel-independent的特性；提出用多元高斯分布来拟合RGB dependent noise，并提出了一个NN模型来估计Patch based的多元高斯模型的参数</p>
-<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Modelling and analyzing noise in images is a funda-<br>mental task in many computer vision systems. Tradition- ally, noise has been modelled per color channel assum- ing that the color channels are independent. Although the color channels can be considered as mutually independent in camera RAW images, signals from different color chan- nels get mixed during the imaging process inside the cam- era due to gamut mapping, tone-mapping, and compression. We show the influence of the in-camera imaging pipeline on noise and propose a new noise model in the 3D RGB space to accounts for the color channel mix-ups. A data-driven approach for determining the parameters of the new noise model is introduced as well as its application to image de- noising. The experiments show that our noise model rep- resents the noise in regular JPEG images more accurately compared to the previous models and is advantageous in image denoising.</p>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>建模和分析噪声是一个基础的任务。传统地，噪声分布被建模成通道独立的；在RAW图上，这是可以接受的，但经过相机成像过程处理之后（gamma,tone-mapping,JPEG压缩），噪声分布变得具有通道相关性；这篇文章通过像素分析每个步骤上的分布以及协方差矩阵来描述了这一种通道相关的关系，并用多元高斯分布模型来建模估计噪声，最后提出了训练MLP的方法来估计模型的参数，从而达到噪声分布。实验证明该方法的噪声估计更精确，而且结合BNLM达到比传统BNLM和BM3D都好的去噪结果。</p>
 <h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>两点贡献：1.提出观察RGB经过camera imaging之后会产生channel dependent的噪声 2.提出3D RGB空间来观察Patch based noise，然后训练MLP模型来预测噪声参数</p>
 <h4 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h4><p>最早的噪声估计是channel-independent Gaussian model,因为简单而且在camera imaging前，RGB的channel noise确实相关性比较低；后来Foi et al.[Practical poissonian-gaussian noise modeling and fitting for single-image raw-data.]提出了Poisonian-Gaussian Noise；之后Granados结合temporal和spatial noise来重构HDR图片噪声；Hwang et al.提出用Skellam distribution来表示噪声分布；</p>
 <p>最近比较Robust的有Noise Level Function(NLF) [Statistical calibration of ccd imaging process],效果还不错。</p>
@@ -1628,176 +1781,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/16/关于学习/" itemprop="url">
-                  关于学习方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-16T11:56:26+08:00" content="2017-03-16">
-              2017-03-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/16/关于学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/关于学习/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>从WikiHow上面看到的生活经验，其实wikiHow上面的内容和方法论都很好，只是知易行难。</p>
-<h3 id="如何成为学霸"><a href="#如何成为学霸" class="headerlink" title="如何成为学霸"></a>如何成为学霸</h3><h4 id="保持良好的学习状态"><a href="#保持良好的学习状态" class="headerlink" title="保持良好的学习状态"></a>保持良好的学习状态</h4><ul>
-<li>无论大脑还是身体，都需要保持最高效的状态</li>
-<li>充足的睡眠休息，外加适量的运动，最好是早睡早起</li>
-<li>健康的饮食规律，少吃多油多脂高糖的垃圾食品，多吃健身餐</li>
-<li>多喝水，保持充分的水分才能使得大脑良好地工作</li>
-</ul>
-<h4 id="找到适合自己的学习方法"><a href="#找到适合自己的学习方法" class="headerlink" title="找到适合自己的学习方法"></a>找到适合自己的学习方法</h4><ul>
-<li>视觉学习者：通过图表、想象来帮助记忆</li>
-<li>听觉学习者：轻音乐帮助记忆，多听课，通过语音学习</li>
-<li>运动学习者：喜欢边学习边做动作，走来走去的，可以尝试橡皮泥</li>
-</ul>
-<h4 id="认真听讲"><a href="#认真听讲" class="headerlink" title="认真听讲"></a>认真听讲</h4><ul>
-<li>让自己在前排听讲</li>
-<li>积极认真回答问题</li>
-<li>遇到问题与感兴趣的点举手提问</li>
-<li>学习记笔记（后面详述）</li>
-</ul>
-<h4 id="提前认真完成作业"><a href="#提前认真完成作业" class="headerlink" title="提前认真完成作业"></a>提前认真完成作业</h4><ul>
-<li>遇到难题与同学讨论</li>
-<li>可以求助老师与助教</li>
-<li>寻找安静专注的学习环境（图书馆，书房等）</li>
-</ul>
-<h4 id="通过其它方式补充课堂的学习内容"><a href="#通过其它方式补充课堂的学习内容" class="headerlink" title="通过其它方式补充课堂的学习内容"></a>通过其它方式补充课堂的学习内容</h4><ul>
-<li>兴趣是最好的老师，跟随自己的兴趣</li>
-<li>阅读相关的兴趣读物</li>
-<li>寻找该知识的实用性场景，学以致用</li>
-<li>例如在学习英语，可以通过影片纪录片来加强锻炼</li>
-<li>放假期间，适当地进行知识回顾总结，以及预习下一阶段的课程</li>
-<li>在备考时，提早开始复习（难度越大，复习越早）</li>
-</ul>
-<h3 id="学会做人"><a href="#学会做人" class="headerlink" title="学会做人"></a>学会做人</h3><ul>
-<li>懂得在别人做得好的时候，鼓励表扬他人，不要刻薄取笑</li>
-<li>助人为乐，帮助他人解决问题，分享知识，分享学习笔记</li>
-<li>尊重他人，多聆听别人的观点，学会理解</li>
-<li>保持冷静，坚持自我</li>
-<li>培养幽默感，保持学习的热情和积极乐观态度</li>
-<li>做自己，做真正让自己开心充实的事情，与人分享热爱的事情，与能让你成长的人交朋友，不要过分在意他人对你的看法</li>
-</ul>
-<h3 id="关于记笔记"><a href="#关于记笔记" class="headerlink" title="关于记笔记"></a>关于记笔记</h3><p>1.按学科特点，课程形式来记笔记，如讲座要求又快又好<br>2.记住自己的目标，留意你重视的信息，快速接受。如果是写作论文，需要关注论文的大纲，写下主旨性和关键性的想法<br>3.笔记方便思考记忆，加深了解信息，结构化思考知识<br>4.听讲为重，转述要点，学会概述<br>5.记下概念和术语，与正文分开<br>6.学会简写</p>
-<h4 id="关于读书笔记"><a href="#关于读书笔记" class="headerlink" title="关于读书笔记"></a>关于读书笔记</h4><ul>
-<li>为术语下定义，可以记录页码，帮助回到文中理解</li>
-<li>列出重要概念，帮助简化复杂的内容</li>
-<li>为纲要天上内容，写下学习目的的摄像，看到相关信息并记下页码</li>
-<li>标上不同的颜色，帮助突出重点，组织笔记结构</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1838,7 +1826,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
