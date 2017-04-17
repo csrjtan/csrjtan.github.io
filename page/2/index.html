@@ -293,6 +293,466 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/07/VDSR/" itemprop="url">
+                  Very Deep Super Resolution
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-07T23:15:59+08:00" content="2017-04-07">
+              2017-04-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/07/VDSR/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/07/VDSR/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这一篇是CVPR16 Kim的VDSR，通过VERY DEEP的简单模型，又快又好地解决了SR问题，成为暂时这个问题上的标杆模型。</p>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Our final model uses 20 weight layers. By cascading small filters many times in a deep network structure, contextual infor- mation over large image regions is exploited in an efficient way. With very deep networks, however, convergence speed becomes a critical issue during training. We propose a sim- ple yet effective training procedure. We learn residuals only and use extremely high learning rates (104 times higher than SRCNN [6]) enabled by adjustable gradient clipping.</p>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>Single image super-resolution(SISR):upsampling方法，而后neighbor embedding,如今用CNN； SRCNN的limitation: 1.relies on context of small image regions; 2.only works for single scale； VDSR的主要优点有：1.通过small size kernel but very deep, to obtain a large context(receptive region) 2.Convergence very fast by residual-learning and BN high learning rate 3.Multi-Scale Factor,把多个scale的SR融合进一个网络模型 </p>
+<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170407_01.png" alt="ARCHITECTURE"><br>20层CONV+BN+RELU，L2 LOSS, HIGH LEARN RATE WITH RESIDUAL LEARNING AND ADJUSTABLE WEIGHT CLIPPING.</p>
+<h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><ol>
+<li>THE DEEPER THE BETTER ON PSNR/SSIM</li>
+<li>RESIDUAL LEARNING WORKS</li>
+<li>MULTI-SCALE MODEL BETTER THAN SINGLE SCALE ON LARGE SCALE</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/07/VisualComputing-1/" itemprop="url">
+                  VisualComputing_1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-07T21:30:44+08:00" content="2017-04-07">
+              2017-04-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/07/VisualComputing-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/07/VisualComputing-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>老板的CV课程，在期末前做一下相关笔记总结</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h4 id="What-is-vision"><a href="#What-is-vision" class="headerlink" title="What is vision?"></a>What is vision?</h4><ul>
+<li>Perceive an integration of image data and prior knowledge in brain</li>
+<li>A field acquiring, processing, analyzing and understanding visual data</li>
+</ul>
+<p>Computer Vision &amp; Human Vision?</p>
+<ul>
+<li>ill-posed problems</li>
+<li>mathematical models</li>
+<li>discrete vs. continuous</li>
+<li>local vs. global optimization</li>
+</ul>
+<h4 id="What-kinds-of-Topics"><a href="#What-kinds-of-Topics" class="headerlink" title="What kinds of Topics?"></a>What kinds of Topics?</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_01.png" alt="相关学科"><br>Low Level: Image Denoising, Deblurring, Super-Resolution, photo-sketch synthesis, texture synthesis, optical flow, image matching</p>
+<p>Middle Level: image segmentation, motion capture, visual tracking, 3D reconstruction</p>
+<p>High Level: object detection, image understanding, video understanding</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_02.png" alt="具体应用问题"></p>
+<p>Related Problems: medical imaging, optical character recognition (OCR), face detection, smile detection, vision-based biometrics, shape capture, automatic driving</p>
+<h4 id="Why-image-restoration-challenging"><a href="#Why-image-restoration-challenging" class="headerlink" title="Why image restoration challenging?"></a>Why image restoration challenging?</h4><ul>
+<li>Real noise much more complex than additive white Gaussian</li>
+<li>Blur is non-uniform and complex to accurately estimate</li>
+<li>Space of image local structures is huge, inverse problem highly ill-posed</li>
+</ul>
+<h3 id="Sparse-Representation-and-Dictionary-Learning-on-Restoration"><a href="#Sparse-Representation-and-Dictionary-Learning-on-Restoration" class="headerlink" title="Sparse Representation and Dictionary Learning on Restoration"></a>Sparse Representation and Dictionary Learning on Restoration</h3><p>Linear system $Ax=b$, if A full rank, $x = A^{-1}b$; if tall matrix(over-determined) than approximate solution by $minimize||Ax-b||_2^2$; if fat matrix(underdetermined), no solution in general and some constraint should be imposed</p>
+<p>假设estimation与observer的最小距离是L0,L1,L2或其他：L0，非凸优化； L1，tightest convex relaxation of L0, 稀疏解; L2有闭合Dense解。具体到一个优化问题的等高线逼近时，各个NORM BALL的图形如下。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_03.png" alt="各个Norm Ball"><br>尽管L1能逼近L0，但有时候L1也会出现非稀疏解，数学上已经证明，满足RIP性质的话，用L1近似L0能确保得到稀疏解。RIP又称有限等距性质,直观解释为从A矩阵中的部分列向量与任意向量x的乘积结果收敛在一个环形邻域，如下图<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_04.png" alt="RIP"></p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170407_05.png" alt="直观解释"></p>
+<p>图像复原问题</p>
+<h4 id="Modeling"><a href="#Modeling" class="headerlink" title="Modeling"></a>Modeling</h4><p>$y=Hx+v$, H:observation matrix, v:noise<br>Keys to solve ill-posed problems:</p>
+<ul>
+<li>Modeling the degradation process</li>
+<li>Good Prior knowledge about the clean image</li>
+<li>Good objective function for minimization</li>
+</ul>
+<p>其中H在denoise是identity matrix; deblurring为blurring matrix; supperresolution是compound matrix of blurring and downsampling matrix; Inpainting是indication matrix of damaged pixels; </p>
+<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p>Filter based methods: Gaussian low-pass, PDE-based anisotropic diffusion, Bilateral filtering, Nonlocal means filtering; (local-&gt;non local performance improve greatly)</p>
+<p>Transform based methods: Fourier(‘Global, Orthogonal’), Wavelet(‘local, small’), Ridgelet(‘more redundant’), Dictionary Learning(‘over-complete’)</p>
+<ul>
+<li>Represent x over dictionary D, enforcing the new vector be sparse(robust)</li>
+<li>objective model $min_\alpha ||HD\alpha-y||_2^2+\lambda ||\alpha||_1$</li>
+</ul>
+<h4 id="The-basic-procedure"><a href="#The-basic-procedure" class="headerlink" title="The basic procedure"></a>The basic procedure</h4><ol>
+<li>Partition degraded image into overlapped patches(8*8)</li>
+<li>For each patch, solve the nonlinear L1-norm sparse coding problem:<br>$\hat{\alpha} = argmin_\alpha ||HD\alpha-y||_2^2+\lambda||\alpha||_1$</li>
+<li>Reconstruct each patch by $\hat{x}=D\hat{\alpha}$</li>
+<li>put the reconstructed patch back and average the overlapped pixels</li>
+<li>In practice, the 1~4 can be iterated for several rounds</li>
+</ol>
+<p>why sparse?</p>
+<ul>
+<li>Neuronscience</li>
+<li>Bayersian </li>
+<li>Compressive Sensing</li>
+</ul>
+<h4 id="How-to-solve"><a href="#How-to-solve" class="headerlink" title="How to solve?"></a>How to solve?</h4><p>L0: Greddy search(Matching pursuit, Orthogonal matching pursuit)</p>
+<ul>
+<li>MP: 贪婪地选取相关性最大的atoms</li>
+<li>OMP: 正交地，把曾选的atoms的信息均用上，组合出新的投影向量<br>L1: </li>
+<li>Linear programming</li>
+<li>Iteratively reweighted least squares：Trickly weighted L2 to L1</li>
+<li>Proximal gradient descent: Soft-Thresholding with analytic solution</li>
+<li>Augmented Lagrangian methods(Alternating Direction Method of Multipliers, ADMM)</li>
+</ul>
+<h3 id="ADMM"><a href="#ADMM" class="headerlink" title="ADMM"></a>ADMM</h3><h4 id="拉格朗日变换"><a href="#拉格朗日变换" class="headerlink" title="拉格朗日变换"></a>拉格朗日变换</h4><p>将Constraint结合拉格朗日乘子放在Objective function里面。<br>e.g $min\ f(x) \ s.t. Ax=b$<br>拉格朗日形式：$L(x,\lambda)=f(x)+\lambda (Ax-b)$<br>对于含有不等式约束的情况，结合KKT条件，$h(x)=0, \lambda&gt;=0, \lambda*g(x)=0, g(x)&lt;=0 $, 其中h是等式约束，g是不等式约束，$\lambda$是不等式乘子</p>
+<p>KKT条件：对于问题 $L(x,\lambda) = f(x)+\lambda g(x)$<br>满足 </p>
+<ul>
+<li>$\Delta_x h(x,\lambda)=0 $</li>
+<li>$\lambda&gt;=0$</li>
+<li>$\lambda *g(x)=0$</li>
+<li>$g(x)&lt;=0$</li>
+<li>$\Delta_{xx} L(x,\lambda)$ is PSD</li>
+</ul>
+<h4 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h4><p>对于原问题$L(x,\lambda)=f(x)+\lambda(Ax-b)$<br>对偶形式为：$g(\lambda)= inf_x(L(x,\lambda)) = -f^*(-A^T\lambda)-b^T\lambda)$,其中inf为确认下界（infimum)<br>对偶问题： $max\  g(\lambda)$<br>对偶上升法： $x^{k+1} = argmin_x L(x,\lambda^k)$</p>
+<p>变量更新：$\lambda^{k+1}=\lambda^k +\alpha^k(Ax^{k+1}-b)$<br>对偶分解法：将目标函数分解成多个子函数 $f(x)=\Sigma_{i=1}^Nf_i(x_i)$</p>
+<p><strong>增广拉格朗日</strong>，为了增加Dual Ascent的鲁棒性，加入松弛函数<br>$$L_p(x,\lambda)=f(x)+\lambda^T(Ax-b)+(\rho/2)||Ax-b||_2^2$$</p>
+<h4 id="ADMM-1"><a href="#ADMM-1" class="headerlink" title="ADMM"></a>ADMM</h4><p>ADMM旨在将对偶上升可分解性和乘子法上界收敛属性融合在一起的算法；<br>优化问题：$$ min\ f(x)+g(z) \ \ s.t. \ Ax+Bz=c $$<br>得到增广拉格朗日形式：$ L_\rho(x,z,\lambda)=f(x)+g(z)+y^T(Ax+Bz-c)+(\rho/2)||Ax+Bz-c||_2^2 $</p>
+<p>迭代方式：</p>
+<ul>
+<li>$ x^{k+1} = argmin_x L_p (x,z^k,\lambda^k) $</li>
+<li>$ z^{k+1} = argmin_z L_p (x^{k+1},z,\lambda^k) $</li>
+<li>$\lambda^{k+1} = \lambda^k + \rho(Ax^{k+1}+Bz^{k+1}-c) $<br>$\rho &gt;0$,停止准则：对偶残差小于某个极小值$\epsilon$<br>收敛速度：对于一个高的精度要求收敛多次，但可以融合其他算法快速产生高精度<br>对于凸优化问题，KKT条件是对偶问题有相同解的保证。非凸的问题会存在Dual Gap.</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/29/CDM-Review/" itemprop="url">
+                  CDM_Review
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-29T09:50:05+08:00" content="2017-03-29">
+              2017-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/29/CDM-Review/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/29/CDM-Review/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天来总结一下Color Demosaicking（CDM）里面的重要论文和方法。希望能囊括AP, AHD, SA, LDI-NAT, DLMMSE, LSSC, GBTF, RI等方法</p>
+<h4 id="比较旧的：AP-AHD-SA等"><a href="#比较旧的：AP-AHD-SA等" class="headerlink" title="比较旧的：AP, AHD, SA等"></a>比较旧的：AP, AHD, SA等</h4><p>AP给出两个图像规律统计假设：1.自然图像在R,G,B通道间有较大的相关性（inter-color correlations) 2.G通道的采样率比R,B高一倍。则G通道的细节信息更丰富。它的方法包括两步：1.用了高低通滤波，然后构建inter-color恢复像素的公式 2.将结果投影到observed和label constrants sets上，进行fine-tune.（这些后来都有更好的方法）<br>Comment: AP这个方法效果已经不佳，但是它统计出来的inter-color correlation很重要</p>
+<p>SA让G和RB通道的像素估计进行一个交替循环地求解，类似于近似逼近的思想。迭代式求解涉及三个问题：1.从何开始（初始化方法） 2.该算法收敛吗（论文用AP的constrains set论证) 3.什么时候结束(更新不再提高，或到一个较少值)<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/SA_1.png" alt=""><br>Comment: SA这个方法主要说明了一个Iterative求解CDM问题的可行性，但iterative问题需要说明清楚上述的三个问题。</p>
+<p>AHD这篇文章2005年提出了homogeneity概念，有效结合梯度较小的变化方向进行有效的像素估计，最后结合adaptive中值滤波的方法去除一下artifacts。效果比之前好，而且还快。</p>
+<h4 id="接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning"><a href="#接下来说一下速度比较慢，效果比较好的：DLMMSE-LDI-NAT-LSSC-Dict-Learning" class="headerlink" title="接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning"></a>接下来说一下速度比较慢，效果比较好的：DLMMSE, LDI-NAT, LSSC, Dict Learning</h4><p>DLMMSE: 基于G和R/B通道的primal difference signals是low pass的，提出了基于directional minimum mean square-error estimation的方法，这里用到了horizon和vertical两个方向。先恢复G通道，然后用G恢复R/B通道。<br>论文首先给出统计表，说明GR和GB的相关性比RB的强，所以用G-R和G-B作为通道相关性的信号，然后估计真实值与观察值的误差。为了方便求解，而且假设两个信号demosaick noise是i.i.d gaussian，则LMMSE的公式可以简化为<img src="http://7xl4js.com1.z0.glb.clouddn.com/DLMMSE_1.png" alt=""> 其中x是观察值，mu_x是x的均值，sigma为方差，y为估计值。</p>
+<p>LDI-NAT的方法在之前的博文说过，这里总结一下，相比DLMMSE，LDI-NAT用LDI做一个初始化方法，然后结合non-local similarity的方法，构建矩阵进行SVD去噪，从而达到去马赛克噪声的效果。具体数学部分挺多的，请看原文或者之前博文。</p>
+<p>LSSC是09年提出的nonlocal+dictionary learning的美妙融合，成为了领域的milestone，当时做image restoration是效果最好的。先学字典，然后稀疏编码求解。这个字典的学习是精髓，不同于BM3D直接使用小波字典，这里作者用了L1,2 norm来使得同样的信号尽量获得同样的编码，用group sparsity从而使得字典更紧凑。</p>
+<p>Regularization-based: 由于CDM是一个ill-posed problem,所以一般人们习惯于加入正则项来约束退化模型，从而得到原始的估计信号，这就使得正则项对于整个问题的重要性不言而喻了。这里说一篇《cdm using inter-channel correlation and nonlocal self-similarity》的TIP文章，作者提出了两个重要的term来做CDM restoration问题。首先是TV-term和inter-color channel的结合，在difference map上做tv效果会比单独TV更佳。 然后是nonlocal matrix的low rank constraint，由于高频纹理复杂以及噪声影响，这个nonlocal matrix可能不是低秩的，这里用一个低秩矩阵加上Outliers矩阵来近似，意思是总能来nonlocal matrix附近找到一个低秩矩阵满足低秩，从而将假设放宽了一点。最后优化这两个正则项。（当然这是基于MLRI的初始化之后再做的demosaicking denoise),接下来都是凸优化的数学问题求解了。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/ISM_1.png" alt="最后的优化问题"></p>
+<h4 id="最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based"><a href="#最后是又快又好的插值方法：GBTF，-RI-based，-CNN-based" class="headerlink" title="最后是又快又好的插值方法：GBTF， RI-based， CNN-based"></a>最后是又快又好的插值方法：GBTF， RI-based， CNN-based</h4><p>GBTF的论文可以理解为更细致的adaptive插值方法，先做一个LCC1的初始化，然后类似Total Variance的方法，构建一个difference map.在这个difference map上面做四个方法的加权插值，最后将这个estimate difference加回初始化图像，得到最终结果。特别地，对于R,B通道，提出用Laplacian filter加权拟合效果更佳。（这也是后来MLRI的思想）</p>
+<p>RI-based methods:<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/RI_1.png" alt="RI流程"><br>RI是最近比较热门的方法，传统流程是在估计G通道之后，用R-G的difference做R图的恢复估计。现在RI是不直接在R-G difference map上面做，而是让G做引导图像，R做被滤波图像，得到tentative R,我们用tentative R - R 的difference(residual map)做插值恢复。最后作者用residual map和difference map对比一下，说明了residual map的像素梯度变化更缓和，有利于梯度插值，减少了插值误差，所以work.</p>
+<p>之后延伸了MLRI：bilinear interpolation perform better for minimum laplacian energies. 在G和R通道上分别做sparse laplacian filter的卷积操作，其余跟RI一样。我的理解是，做完这个laplacian filter之后，residual image变得更加smooth,所以效果又提升了。</p>
+<p>IRI： 将Iterative和RI结合，交替做G和R/B的恢复<br>ARI: 将MLRI和IRI加权融合，因为有时候MLRI处理不佳，有时候IRI对对于强相关区域处理不佳，所以ADAPTIVELY结合两者，再做加权平均。</p>
+<p>Deep JDD: 将CDM和DNS一起做，它的网络没有用初始化方法，而是rearrange CFA,加入一个噪声参数层，end-to-end train,用了大量的数据，并且用目前的criterion来提取Hard-case建立了复杂库，并用这些库对网络进行fine-tune。最后得到较佳的JDD结果。<br>个人理解：由于没有初始化方法，所以需要大量的数据来学习CDM的初始化，网络需要学习的内容复杂（针对自己的实验，如果没有初始化效果会十分不佳），专注于hard-case的CDM可能会导致平滑区域的CDM效果不佳，其实不太有必要（我没有hard case效果还是不错,这也是它的网络在Kodak上面表现不佳的原因). 其实用CNN做JDD是十分好用的，但目前还存在的问题大概是：1.在处理CDM和DNS的流程上应该如何较佳（张老师认为DNS-&gt;CDM会更好，而目前CFA DNS效果不佳，导致其后的CDM也不太好） 2.如何将CNN-JDD做得更快更好，拟合真实噪声的分布</p>
+<p>CNN-based的CDM，暂时我自己的网络用20层，64的kernel就已经把CDM效果做爆了，甚至比JDD要好。初始化方法是很有必要的，sequence end-to-end效果已经很好了，但这里面G channel细节信息更多error小，R/B channel细节信息较少，所以error大；如何用G CHANNEL来GUIDANCE成为问题。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/27/雅思笔记总结/" itemprop="url">
                   雅思笔记总结
                 </a>
@@ -1181,381 +1641,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/30/CS231n-总结/" itemprop="url">
-                  CS231n_总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T13:42:05+08:00" content="2016-08-30">
-              2016-08-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/30/CS231n-总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/CS231n-总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="结束CS231N课程笔记"><a href="#结束CS231N课程笔记" class="headerlink" title="结束CS231N课程笔记"></a>结束CS231N课程笔记</h3><p>CS231N课程的总结，到了后面关于RNN的用法以及detection和sequential学习都是新颖领域。</p>
-<p>(知乎专栏的翻译版)[<a href="https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit">https://zhuanlan.zhihu.com/p/21930884?refer=intelligentunit</a>]</p>
-<p>1.首先是PYTHON的教学，NUMPY使用。<br>2.图像分类方法：线性分类，SOFTMAX,SVM<br>3.优化方法：梯度下降、最优化方法<br>4.BP的具体原理和实现细节<br>5.CNN的学习<br>6.如何设置参数以及学习率<br>7.现在RNN发展和DETECTION</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/30/CS231n-总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/28/GoodMood/" itemprop="url">
-                  GoodMood
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-28T16:52:33+08:00" content="2016-07-28">
-              2016-07-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/28/GoodMood/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/28/GoodMood/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>刚完成了Confirmation,压力好大，缓不过气，每天都要充实的学习做实验和生活。阅读、记录、代码、健身、音乐，早睡早起，多交朋友，保持健康。</p>
-<p>这里搬运一些让自己好心情的方子：</p>
-<h4 id="14条交友原则"><a href="#14条交友原则" class="headerlink" title="14条交友原则"></a>14条交友原则</h4><p>1.保证<strong>充足睡眠</strong>情况下，早起让每天多出几个小时<br>2.做事情留出至少10分钟的余地，不要<strong>赶时间</strong><br>3.<strong>和喜欢的人说笑</strong><br>4.<strong>日事日毕</strong>，尽量8小时内解决问题，不要把工作带入生活<br>5.每两天来一次酣畅淋漓的<strong>运动</strong><br>6.对不重要的事情<strong>不争抢不较劲</strong>，如开车<br>7.多<strong>接触新事物</strong>带来新鲜感，多<strong>学习新技能</strong>带来成就感<br>8.<strong>改造环境</strong>，比如装饰房间<br>9.仔细读<strong>好书</strong>，让心灵成熟、自由，有更多创造快乐的方法<br>10.<strong>偶尔放松</strong>，通宵看球，和妹子开黑，吃零食看剧，躺床上看一天小说什么的。<br>11.每隔一段时间就换环境呆一段时间，<strong>度个假，旅个游</strong><br>12.每天给自己<strong>独处</strong>的时间<br>13.<strong>早睡</strong>，心里不会有负罪感，第二天精力充沛<br>14.<strong>不和不重要的人撕逼</strong><br>15.<strong>远离傻逼</strong></p>
-<h4 id="交友原则"><a href="#交友原则" class="headerlink" title="交友原则"></a>交友原则</h4><p>1.不要非和某人做朋友，不喜欢就保持距离<br>2.合得来的人要好好相处，不计较地乐于助人<br>3.不要胡思乱想，顺势而为<br>4.管理好自己的形象，衣着配饰得体，运动整洁<br>5.尽最大努力去赚钱，理清现实后不妄想得不到的东西<br>6.爱，不苟求。‘与有情人做快乐事，不理是劫还是缘’<br>7.温柔的对待父母<br>8.不买，可有可无的东西；必需品则买经典耐用的<br>9.有话就说，不知道怎么说才好就照直了说，恶言恶语当场反驳<br>10.别给自己的行为贴不好的标签，内向就是内向，不是抑郁<br>11.爱情本身不会影响生活，对爱情犹豫不决才会，为爱情忽略自我才会<br>12.找机会与看似快乐的陌生人玩耍，和爱自己的亲人吃饭。</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/Beauty.jpg" alt="美女们"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/26/matconvnet配置/" itemprop="url">
-                  matconvnet配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-26T16:12:44+08:00" content="2016-06-26">
-              2016-06-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/26/matconvnet配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/26/matconvnet配置/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.vlfeat.org/matconvnet/" target="_blank" rel="external">matconvnet</a>,使用CNN做Image Demosaicking，由于组内的师兄主要使用这个框架，率先对这个框架进行快速上手使用和学习，CS231N也不能落下，之后可以考虑对CAFFE进行学习。</p>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>首选由于选择软件的版本上也做了点无用功，亲测之下使用一下组合是有效的。<strong>win8.1+VS2013+MatlabR2014a+CUDA7.5+Cudnn-rc5</strong>.</p>
-<p>由于系统和Matlab的兼容性问题，感觉如此的组合是最为高效可靠的。<br>首先是mex -setup的问题，MatlabR2014a尚不支持VS2015的，为此我还体验了一会儿WIN10和VS2015.但考虑到后期开发和兼容性的问题，使用稳定版本是最为可靠的！对于下载后的源码，mex -setup设置成功后，直接跑vl_compilenn，则通过编译CPU的版本。这里着重说一下GPU版本，因为编译执行了很多次，不是编译就是运行代码时候遇到问题了，这里说一下自己的理解和亲测的过程。</p>
-<p><a href="http://www.voidcn.com/blog/Hungryof/article/p-5047632.html" target="_blank" rel="external">matconvnet gpu的方法</a></p>
-<p>首先使用了CUDA5.5的版本，但由于在编译时遇到了点问题，意识到应该使用7.5版本，而且无论caffe还是最近来说，7.5版本是比较稳定，而且适应我当前使用的TITAN X的显卡设备。然后使用vl_complinn(‘enableGpu’,true)则可实现普通GPU的版本。然而一直卡在使用cuDnn包的时候编译或者运行就出错。后来发现是用的rc-4的包不正确，应当使用官方的包，直接下了rc-5的版本。[建议任何的框架和库都使用官方版本！]最后终于成功了，跑cifar的example,1500Hz for gpu; cuDnn成功后，达到6700Hz!</p>
-<h4 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h4><p>这俩天认真的学习了一下MatconvNet,主要看官网的所有资料，以及example例子，然后就是VGG的<a href="http://www.robots.ox.ac.uk/~vgg/practicals/cnn/" target="_blank" rel="external">tutorial</a></p>
-<p>顺带有空把后面每一个函数的注释看一下，学会用法；针对于使用CNN，可以参考一下过程：<br><strong><br>1.Prepare Data<br>2.Set up Training parameters<br><a href="http://3.Training" class="test test-url" target="_blank" rel="noopener noreferrer">3.Training</a> Process:<br>    for num = 1:nEpoch<br>        train model on training set<br>        test on validation set<br>    end<br>4.Test on fianl test data
-</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1601,7 +1686,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1618,7 +1703,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
