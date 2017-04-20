@@ -293,6 +293,135 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/20/paper-reading-20170420/" itemprop="url">
+                  Deep Video Deblurring
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-20T16:56:00+08:00" content="2017-04-20">
+              2017-04-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/20/paper-reading-20170420/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/paper-reading-20170420/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, flow alignment等方法在CNN网络中的影响做了实验评估</p>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>与单帧去模糊不一样，基于视频可以利用相邻帧的有效信息，进行”sharpen”的修补。但是对齐算法一般计算代价大，而且效果有限。对于聚合的方法而言，也需要算法能够识别出哪些区域可以精确对齐，哪些区域对齐不能。而用CNN end-to-end训练可以有效适应这些问题，关键在于如何仿真出或者生成出真实的模糊视频和高清视频，作者提出了一种生成式的位移模糊方法。</p>
+<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p>V-deblur, Idea: 从相邻帧borrowing “sharp” pixels，使当前帧有可能恢复出高质量视频帧。</p>
+<p>Aligning methods limitation: warping-based alignment is not robust around disocclusions and areas with low texture, and often yields warping artifacts. In addition to the align-ment computation cost, methods that rely on warping have to therefore disregard information from mis-aligned content or warping artifacts, which can be hard by looking at local image patches alone.</p>
+<p>Related Work: 1.Deblur using deconvolution 2.Multi-image aggregation 3.Data-driven approaches </p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_01.png" alt="Architecture"></p>
+<p>具体架构参数，利用了Skip connection,架构出encoder-decoder network，将15 frames堆叠一起作为输入，输出中间帧；（或者全部15帧）<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_03.png" alt="Architecture"></p>
+<h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><p>实验分别比较了single(s-CNN), dbn-noalgin(v-CNN), dbn-homo(CNN+RANSAC), dbn-algin(CNN+OPTICAL FLOW)</p>
+<p>实验参数：240fps Video用的patches:15<em>128</em>128, train 2million pairs, batchsize:64, ADAM, 45hrs<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_02.png" alt=""></p>
+<h4 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h4><p>在构建仿真模糊数据库时，只考虑了一种Motion Blur，没有考虑其他模糊类型；另外，对于没有用alignment的DBN-NO ALIGN的输出可能会模糊，需要进一步挖掘策略来使得输出更sharp,然后扩展训练集的video type.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/18/精进-5/" itemprop="url">
                   精进_5
                 </a>
@@ -364,7 +493,7 @@
         
           
             <p>回顾上一节如何去高度调用我们的大脑和潜意识，我认为这对于创作性的工作，包括学术科研工作都具有很不错的启发性意义，首先是断舍离，寻找出极简的生活和极简的思考方式，从而让自己更容易去专注去思考；其次是利用可视化工具和思考工具（矩阵、清单）来辅助思考和规划；最后讨论如何调用和利用潜意识辅助灵感。</p>
-<p>来到第五节，这是《精进》这本书的最篇读书笔记了，主要讲述如何优化学习方法（如何去努力），然后保留自己的个性，去发挥你的兴趣、性格和专长。</p>
+<p>来到第五节，这是《精进》这本书的最后一篇读书笔记了，主要讲述如何优化学习方法（如何去努力），然后保留自己的个性，去发挥你的兴趣、性格和专长。</p>
 <h3 id="不断优化你的“努力”方式"><a href="#不断优化你的“努力”方式" class="headerlink" title="不断优化你的“努力”方式"></a>不断优化你的“努力”方式</h3><blockquote>
 <p>‘才能’被定义为自发地重复出现且可被高效利用的思维、情感或行为模式<br>应该用成长型的心智看待自身的发展和学习：积极去学习，认为才能可以得到不断增长。<br>方法：改变自己的语言习惯，把封闭式、绝对化的<strong>总结性评论</strong>改为<strong>开放式的启发式提问</strong>，’不擅长做‘-&gt;’要做成，需要提高哪些地方？’；’做不好’-&gt;’还有哪些方法，如何做好？’；‘做得很好’-&gt;‘如何做得更好？‘；’我不能像他那样做’-&gt;’我能从他们身上学到什么？’</p>
 </blockquote>
@@ -1595,167 +1724,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/11/VisualComputing-3/" itemprop="url">
-                  VisualComputing_3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-11T20:43:32+08:00" content="2017-04-11">
-              2017-04-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Read/" itemprop="url" rel="index">
-                    <span itemprop="name">Read</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/11/VisualComputing-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/11/VisualComputing-3/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这一节讲解如何用Dictionary learning做Classification Task</p>
-<h3 id="Sparse-representation-Classificaton"><a href="#Sparse-representation-Classificaton" class="headerlink" title="Sparse representation Classificaton"></a>Sparse representation Classificaton</h3><p>Problem Modeling:<br>$label(y) = argmin_k(r_k)$<br>$where\ \ r_k = ||y-X_k \hat{\alpha_k}||_2$</p>
-<p>prons:</p>
-<ul>
-<li>novel use sparse coding for classification</li>
-<li>widely studied, improved and extended</li>
-<li>good performance</li>
-</ul>
-<p>cons:</p>
-<ul>
-<li>SRC is owed to use of sparse coding which is not accurate</li>
-<li>new type of classifier although the sparsity is helpful</li>
-<li>不是有效的局部结构性特征</li>
-<li>针对遮挡问题，字典过大</li>
-</ul>
-<p>通过局部特征（Gabor,SIFT)来解决局部特征，用robust coding可以解决遮挡问题的字典过大。<br>LASSO和L1-LASSO最大的区别是数据保真项$e=y-X\alpha$分别服从i.i.d. Gaussian or Laplacian distribution</p>
-<p>LASSO: $ min_{\alpha} ||y-X\alpha||_2^2 \ \ \ s.t.\ ||\alpha||_1&lt;=\sigma$</p>
-<p>L1-LASSO: $min_{\alpha}||y-X\alpha||_1 \ \ \ s.t.\ ||\alpha||_1&lt;=\sigma$</p>
-<h4 id="MLE"><a href="#MLE" class="headerlink" title="MLE"></a>MLE</h4><p>最大似然估计提供了一种给定观察数据来评估模型参数的方法，“模型已定，参数未知”。一个重要的假设：所有的采样都是独立同分布的。<br>假设$x_1,x_2,…,x_n$为独立同分布采样，$\theta$为模型参数，$f$为模型，则产生上述采样可表示为 $$f(x_1,x_2,…,x_n|\theta)= f(x_1|\theta)*f(x_2|\theta)…,f(x_n|\theta)$$</p>
-<p>似然的定义:$ L(\theta|x_1,…,x_n)=f(x_1,…,x_n|\theta)= f(x_1|\theta)*f(x_2|\theta)…,f(x_n|\theta) $</p>
-<p>最大似然对数: $ \hat{\theta}_{mle} = argmax_{\theta} \ell(\theta|x_1,…,x_n), \ell=\frac{1}{n} lnL$</p>
-<p>最大似然估计的步骤：</p>
-<ul>
-<li>写出似然函数</li>
-<li>对似然函数取对数，并整理</li>
-<li>求导数</li>
-<li>解似然方程</li>
-</ul>
-<h4 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h4><p>最大后验估计是根据经验数据对难以观察的量的点估计(Point Estimation)，与MLE类似；不同的是，MLE<strong>融入了估计量的先验分布</strong>在其中，MAP可以看做规则化的MLE。<br>回顾x为采样，$\theta$为模型参数，f为模型，则MLE可以表示为：$$\hat{\theta}_{MLE}(x) = argmax_{\theta} f(x|\theta)$$</p>
-<p>对于MAP，现在假设$\theta$的先验分布为g,通过贝叶斯理论，对于$\theta$的后验分布如下：$$\theta \mapsto f(\theta|x) = \frac{f(x|\theta)g(\theta)}{\int_{\theta} f(x|\theta^{*})g(\theta^{*})d\theta^{*}}$$</p>
-<p>则MAP的目标为：$$\hat{\theta}_{MAP}(x)=argmax_{\theta} f(\theta|x) = argmax_{\theta} f(x|\theta)g(\theta)$$</p>
-<p>可以看出，MAP和MLE最大的区别是MAP加入了模型参数本身的概率分布，或者说MLE的模型参数概率为均匀固定值。</p>
-<h3 id="Collaborative-nature-of-SRC"><a href="#Collaborative-nature-of-SRC" class="headerlink" title="Collaborative nature of SRC"></a>Collaborative nature of SRC</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_01.png" alt=""><br>对于正则项，L1为sparse,L2为Collaborative</p>
-<p>佳哥的CVPR16文章A Probabilistic Collaborative Representation based Approach<br>for Pattern Classification，主要解释为什么SRC/CRC WORK,具有怎样的特性，结合了proCRC的Modeling，构建出这一分类器比传统分类器要较优；寻找一个common point for joint projection;分类问题相当于在分布空间上的映射。</p>
-<h3 id="Discriminative-Dictionary-Learning-DL"><a href="#Discriminative-Dictionary-Learning-DL" class="headerlink" title="Discriminative Dictionary Learning(DL)"></a>Discriminative Dictionary Learning(DL)</h3><p>Motivation:1.学习compacted字典 2.学习discriminative 3.effected</p>
-<h4 id="Shared-DL"><a href="#Shared-DL" class="headerlink" title="Shared DL"></a>Shared DL</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_02.png" alt="LC-KSVD"><br>Label Consistent-KSVD目的：学习一个线性变换A来约束了Sparse Code的Ideal形式,这里Q是预定义的理想编码形式，T是约束系数大小的。</p>
-<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_03.png" alt="LC-KSVD"><br>首先计算Sparse Code，然后WX的结果就是分类类别结果</p>
-<p>Support Vector Guided DL(SVGDL), idea:自适应地对coding vector进行参数化。有些编码重要，部分编码相对不重要。</p>
-<h4 id="Class-specific-DL"><a href="#Class-specific-DL" class="headerlink" title="Class-specific DL"></a>Class-specific DL</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_04.png" alt="DDL"><br>所谓决策性字典学习就是把负样本也放进学习过程中进行字典训练。</p>
-<p>Fisher DDL exploit both representation residual and coding coefficient,引入使用了Fisher Criterion</p>
-<h4 id="Dictionary-Pair-Learning"><a href="#Dictionary-Pair-Learning" class="headerlink" title="Dictionary Pair Learning"></a>Dictionary Pair Learning</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_05.png" alt="DDL"><br>同一个Sparse Code,但是针对类别适应的字典，有点像多个2分类的SVM.</p>
-<h3 id="Collaborative-representation-for-image-sets"><a href="#Collaborative-representation-for-image-sets" class="headerlink" title="Collaborative representation for image sets"></a>Collaborative representation for image sets</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_06.png" alt="ISCR"><br>将Image Classification扩展到Image Set Classification</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1801,7 +1769,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

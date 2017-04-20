@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://csrjtan.github.io/"/>
-  <updated>2017-04-18T05:32:20.000Z</updated>
+  <updated>2017-04-20T09:35:34.000Z</updated>
   <id>https://csrjtan.github.io/</id>
   
   <author>
@@ -16,14 +16,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Deep Video Deblurring</title>
+    <link href="https://csrjtan.github.io/2017/04/20/paper-reading-20170420/"/>
+    <id>https://csrjtan.github.io/2017/04/20/paper-reading-20170420/</id>
+    <published>2017-04-20T08:56:00.000Z</published>
+    <updated>2017-04-20T09:35:34.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, flow alignment等方法在CNN网络中的影响做了实验评估&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h4&gt;&lt;p&gt;与单帧去模糊不一样，基于视频可以利用相邻帧的有效信息，进行”sharpen”的修补。但是对齐算法一般计算代价大，而且效果有限。对于聚合的方法而言，也需要算法能够识别出哪些区域可以精确对齐，哪些区域对齐不能。而用CNN end-to-end训练可以有效适应这些问题，关键在于如何仿真出或者生成出真实的模糊视频和高清视频，作者提出了一种生成式的位移模糊方法。&lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;V-deblur, Idea: 从相邻帧borrowing “sharp” pixels，使当前帧有可能恢复出高质量视频帧。&lt;/p&gt;
+&lt;p&gt;Aligning methods limitation: warping-based alignment is not robust around disocclusions and areas with low texture, and often yields warping artifacts. In addition to the align-ment computation cost, methods that rely on warping have to therefore disregard information from mis-aligned content or warping artifacts, which can be hard by looking at local image patches alone.&lt;/p&gt;
+&lt;p&gt;Related Work: 1.Deblur using deconvolution 2.Multi-image aggregation 3.Data-driven approaches &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_01.png&quot; alt=&quot;Architecture&quot;&gt;&lt;/p&gt;
+&lt;p&gt;具体架构参数，利用了Skip connection,架构出encoder-decoder network，将15 frames堆叠一起作为输入，输出中间帧；（或者全部15帧）&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_03.png&quot; alt=&quot;Architecture&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Experiment&quot;&gt;&lt;a href=&quot;#Experiment&quot; class=&quot;headerlink&quot; title=&quot;Experiment&quot;&gt;&lt;/a&gt;Experiment&lt;/h4&gt;&lt;p&gt;实验分别比较了single(s-CNN), dbn-noalgin(v-CNN), dbn-homo(CNN+RANSAC), dbn-algin(CNN+OPTICAL FLOW)&lt;/p&gt;
+&lt;p&gt;实验参数：240fps Video用的patches:15&lt;em&gt;128&lt;/em&gt;128, train 2million pairs, batchsize:64, ADAM, 45hrs&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Limitation&quot;&gt;&lt;a href=&quot;#Limitation&quot; class=&quot;headerlink&quot; title=&quot;Limitation&quot;&gt;&lt;/a&gt;Limitation&lt;/h4&gt;&lt;p&gt;在构建仿真模糊数据库时，只考虑了一种Motion Blur，没有考虑其他模糊类型；另外，对于没有用alignment的DBN-NO ALIGN的输出可能会模糊，需要进一步挖掘策略来使得输出更sharp,然后扩展训练集的video type.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, 
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
+  
+  <entry>
     <title>精进_5</title>
     <link href="https://csrjtan.github.io/2017/04/18/%E7%B2%BE%E8%BF%9B-5/"/>
     <id>https://csrjtan.github.io/2017/04/18/精进-5/</id>
     <published>2017-04-18T04:26:08.000Z</published>
-    <updated>2017-04-18T05:32:20.000Z</updated>
+    <updated>2017-04-18T05:34:57.000Z</updated>
     
     <content type="html">&lt;p&gt;回顾上一节如何去高度调用我们的大脑和潜意识，我认为这对于创作性的工作，包括学术科研工作都具有很不错的启发性意义，首先是断舍离，寻找出极简的生活和极简的思考方式，从而让自己更容易去专注去思考；其次是利用可视化工具和思考工具（矩阵、清单）来辅助思考和规划；最后讨论如何调用和利用潜意识辅助灵感。&lt;/p&gt;
-&lt;p&gt;来到第五节，这是《精进》这本书的最篇读书笔记了，主要讲述如何优化学习方法（如何去努力），然后保留自己的个性，去发挥你的兴趣、性格和专长。&lt;/p&gt;
+&lt;p&gt;来到第五节，这是《精进》这本书的最后一篇读书笔记了，主要讲述如何优化学习方法（如何去努力），然后保留自己的个性，去发挥你的兴趣、性格和专长。&lt;/p&gt;
 &lt;h3 id=&quot;不断优化你的“努力”方式&quot;&gt;&lt;a href=&quot;#不断优化你的“努力”方式&quot; class=&quot;headerlink&quot; title=&quot;不断优化你的“努力”方式&quot;&gt;&lt;/a&gt;不断优化你的“努力”方式&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;‘才能’被定义为自发地重复出现且可被高效利用的思维、情感或行为模式&lt;br&gt;应该用成长型的心智看待自身的发展和学习：积极去学习，认为才能可以得到不断增长。&lt;br&gt;方法：改变自己的语言习惯，把封闭式、绝对化的&lt;strong&gt;总结性评论&lt;/strong&gt;改为&lt;strong&gt;开放式的启发式提问&lt;/strong&gt;，’不擅长做‘-&amp;gt;’要做成，需要提高哪些地方？’；’做不好’-&amp;gt;’还有哪些方法，如何做好？’；‘做得很好’-&amp;gt;‘如何做得更好？‘；’我不能像他那样做’-&amp;gt;’我能从他们身上学到什么？’&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -468,71 +500,6 @@
     
     
       <category term="精进 励志 成长" scheme="https://csrjtan.github.io/tags/%E7%B2%BE%E8%BF%9B-%E5%8A%B1%E5%BF%97-%E6%88%90%E9%95%BF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VisualComputing_3</title>
-    <link href="https://csrjtan.github.io/2017/04/11/VisualComputing-3/"/>
-    <id>https://csrjtan.github.io/2017/04/11/VisualComputing-3/</id>
-    <published>2017-04-11T12:43:32.000Z</published>
-    <updated>2017-04-12T11:57:59.000Z</updated>
-    
-    <content type="html">&lt;p&gt;这一节讲解如何用Dictionary learning做Classification Task&lt;/p&gt;
-&lt;h3 id=&quot;Sparse-representation-Classificaton&quot;&gt;&lt;a href=&quot;#Sparse-representation-Classificaton&quot; class=&quot;headerlink&quot; title=&quot;Sparse representation Classificaton&quot;&gt;&lt;/a&gt;Sparse representation Classificaton&lt;/h3&gt;&lt;p&gt;Problem Modeling:&lt;br&gt;$label(y) = argmin_k(r_k)$&lt;br&gt;$where\ \ r_k = ||y-X_k \hat{\alpha_k}||_2$&lt;/p&gt;
-&lt;p&gt;prons:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;novel use sparse coding for classification&lt;/li&gt;
-&lt;li&gt;widely studied, improved and extended&lt;/li&gt;
-&lt;li&gt;good performance&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;cons:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;SRC is owed to use of sparse coding which is not accurate&lt;/li&gt;
-&lt;li&gt;new type of classifier although the sparsity is helpful&lt;/li&gt;
-&lt;li&gt;不是有效的局部结构性特征&lt;/li&gt;
-&lt;li&gt;针对遮挡问题，字典过大&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;通过局部特征（Gabor,SIFT)来解决局部特征，用robust coding可以解决遮挡问题的字典过大。&lt;br&gt;LASSO和L1-LASSO最大的区别是数据保真项$e=y-X\alpha$分别服从i.i.d. Gaussian or Laplacian distribution&lt;/p&gt;
-&lt;p&gt;LASSO: $ min_{\alpha} ||y-X\alpha||_2^2 \ \ \ s.t.\ ||\alpha||_1&amp;lt;=\sigma$&lt;/p&gt;
-&lt;p&gt;L1-LASSO: $min_{\alpha}||y-X\alpha||_1 \ \ \ s.t.\ ||\alpha||_1&amp;lt;=\sigma$&lt;/p&gt;
-&lt;h4 id=&quot;MLE&quot;&gt;&lt;a href=&quot;#MLE&quot; class=&quot;headerlink&quot; title=&quot;MLE&quot;&gt;&lt;/a&gt;MLE&lt;/h4&gt;&lt;p&gt;最大似然估计提供了一种给定观察数据来评估模型参数的方法，“模型已定，参数未知”。一个重要的假设：所有的采样都是独立同分布的。&lt;br&gt;假设$x_1,x_2,…,x_n$为独立同分布采样，$\theta$为模型参数，$f$为模型，则产生上述采样可表示为 $$f(x_1,x_2,…,x_n|\theta)= f(x_1|\theta)*f(x_2|\theta)…,f(x_n|\theta)$$&lt;/p&gt;
-&lt;p&gt;似然的定义:$ L(\theta|x_1,…,x_n)=f(x_1,…,x_n|\theta)= f(x_1|\theta)*f(x_2|\theta)…,f(x_n|\theta) $&lt;/p&gt;
-&lt;p&gt;最大似然对数: $ \hat{\theta}_{mle} = argmax_{\theta} \ell(\theta|x_1,…,x_n), \ell=\frac{1}{n} lnL$&lt;/p&gt;
-&lt;p&gt;最大似然估计的步骤：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;写出似然函数&lt;/li&gt;
-&lt;li&gt;对似然函数取对数，并整理&lt;/li&gt;
-&lt;li&gt;求导数&lt;/li&gt;
-&lt;li&gt;解似然方程&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;MAP&quot;&gt;&lt;a href=&quot;#MAP&quot; class=&quot;headerlink&quot; title=&quot;MAP&quot;&gt;&lt;/a&gt;MAP&lt;/h4&gt;&lt;p&gt;最大后验估计是根据经验数据对难以观察的量的点估计(Point Estimation)，与MLE类似；不同的是，MLE&lt;strong&gt;融入了估计量的先验分布&lt;/strong&gt;在其中，MAP可以看做规则化的MLE。&lt;br&gt;回顾x为采样，$\theta$为模型参数，f为模型，则MLE可以表示为：$$\hat{\theta}_{MLE}(x) = argmax_{\theta} f(x|\theta)$$&lt;/p&gt;
-&lt;p&gt;对于MAP，现在假设$\theta$的先验分布为g,通过贝叶斯理论，对于$\theta$的后验分布如下：$$\theta \mapsto f(\theta|x) = \frac{f(x|\theta)g(\theta)}{\int_{\theta} f(x|\theta^{*})g(\theta^{*})d\theta^{*}}$$&lt;/p&gt;
-&lt;p&gt;则MAP的目标为：$$\hat{\theta}_{MAP}(x)=argmax_{\theta} f(\theta|x) = argmax_{\theta} f(x|\theta)g(\theta)$$&lt;/p&gt;
-&lt;p&gt;可以看出，MAP和MLE最大的区别是MAP加入了模型参数本身的概率分布，或者说MLE的模型参数概率为均匀固定值。&lt;/p&gt;
-&lt;h3 id=&quot;Collaborative-nature-of-SRC&quot;&gt;&lt;a href=&quot;#Collaborative-nature-of-SRC&quot; class=&quot;headerlink&quot; title=&quot;Collaborative nature of SRC&quot;&gt;&lt;/a&gt;Collaborative nature of SRC&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;对于正则项，L1为sparse,L2为Collaborative&lt;/p&gt;
-&lt;p&gt;佳哥的CVPR16文章A Probabilistic Collaborative Representation based Approach&lt;br&gt;for Pattern Classification，主要解释为什么SRC/CRC WORK,具有怎样的特性，结合了proCRC的Modeling，构建出这一分类器比传统分类器要较优；寻找一个common point for joint projection;分类问题相当于在分布空间上的映射。&lt;/p&gt;
-&lt;h3 id=&quot;Discriminative-Dictionary-Learning-DL&quot;&gt;&lt;a href=&quot;#Discriminative-Dictionary-Learning-DL&quot; class=&quot;headerlink&quot; title=&quot;Discriminative Dictionary Learning(DL)&quot;&gt;&lt;/a&gt;Discriminative Dictionary Learning(DL)&lt;/h3&gt;&lt;p&gt;Motivation:1.学习compacted字典 2.学习discriminative 3.effected&lt;/p&gt;
-&lt;h4 id=&quot;Shared-DL&quot;&gt;&lt;a href=&quot;#Shared-DL&quot; class=&quot;headerlink&quot; title=&quot;Shared DL&quot;&gt;&lt;/a&gt;Shared DL&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_02.png&quot; alt=&quot;LC-KSVD&quot;&gt;&lt;br&gt;Label Consistent-KSVD目的：学习一个线性变换A来约束了Sparse Code的Ideal形式,这里Q是预定义的理想编码形式，T是约束系数大小的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_03.png&quot; alt=&quot;LC-KSVD&quot;&gt;&lt;br&gt;首先计算Sparse Code，然后WX的结果就是分类类别结果&lt;/p&gt;
-&lt;p&gt;Support Vector Guided DL(SVGDL), idea:自适应地对coding vector进行参数化。有些编码重要，部分编码相对不重要。&lt;/p&gt;
-&lt;h4 id=&quot;Class-specific-DL&quot;&gt;&lt;a href=&quot;#Class-specific-DL&quot; class=&quot;headerlink&quot; title=&quot;Class-specific DL&quot;&gt;&lt;/a&gt;Class-specific DL&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_04.png&quot; alt=&quot;DDL&quot;&gt;&lt;br&gt;所谓决策性字典学习就是把负样本也放进学习过程中进行字典训练。&lt;/p&gt;
-&lt;p&gt;Fisher DDL exploit both representation residual and coding coefficient,引入使用了Fisher Criterion&lt;/p&gt;
-&lt;h4 id=&quot;Dictionary-Pair-Learning&quot;&gt;&lt;a href=&quot;#Dictionary-Pair-Learning&quot; class=&quot;headerlink&quot; title=&quot;Dictionary Pair Learning&quot;&gt;&lt;/a&gt;Dictionary Pair Learning&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_05.png&quot; alt=&quot;DDL&quot;&gt;&lt;br&gt;同一个Sparse Code,但是针对类别适应的字典，有点像多个2分类的SVM.&lt;/p&gt;
-&lt;h3 id=&quot;Collaborative-representation-for-image-sets&quot;&gt;&lt;a href=&quot;#Collaborative-representation-for-image-sets&quot; class=&quot;headerlink&quot; title=&quot;Collaborative representation for image sets&quot;&gt;&lt;/a&gt;Collaborative representation for image sets&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_06.png&quot; alt=&quot;ISCR&quot;&gt;&lt;br&gt;将Image Classification扩展到Image Set Classification&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这一节讲解如何用Dictionary learning做Classification Task&lt;/p&gt;
-&lt;h3 id=&quot;Sparse-representation-Classificaton&quot;&gt;&lt;a href=&quot;#Sparse-representation-Classifi
-    
-    </summary>
-    
-      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
-    
-    
-      <category term="VisualComputing" scheme="https://csrjtan.github.io/tags/VisualComputing/"/>
     
   </entry>
   

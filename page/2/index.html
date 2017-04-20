@@ -293,6 +293,167 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/11/VisualComputing-3/" itemprop="url">
+                  VisualComputing_3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-11T20:43:32+08:00" content="2017-04-11">
+              2017-04-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Read/" itemprop="url" rel="index">
+                    <span itemprop="name">Read</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/11/VisualComputing-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/11/VisualComputing-3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这一节讲解如何用Dictionary learning做Classification Task</p>
+<h3 id="Sparse-representation-Classificaton"><a href="#Sparse-representation-Classificaton" class="headerlink" title="Sparse representation Classificaton"></a>Sparse representation Classificaton</h3><p>Problem Modeling:<br>$label(y) = argmin_k(r_k)$<br>$where\ \ r_k = ||y-X_k \hat{\alpha_k}||_2$</p>
+<p>prons:</p>
+<ul>
+<li>novel use sparse coding for classification</li>
+<li>widely studied, improved and extended</li>
+<li>good performance</li>
+</ul>
+<p>cons:</p>
+<ul>
+<li>SRC is owed to use of sparse coding which is not accurate</li>
+<li>new type of classifier although the sparsity is helpful</li>
+<li>不是有效的局部结构性特征</li>
+<li>针对遮挡问题，字典过大</li>
+</ul>
+<p>通过局部特征（Gabor,SIFT)来解决局部特征，用robust coding可以解决遮挡问题的字典过大。<br>LASSO和L1-LASSO最大的区别是数据保真项$e=y-X\alpha$分别服从i.i.d. Gaussian or Laplacian distribution</p>
+<p>LASSO: $ min_{\alpha} ||y-X\alpha||_2^2 \ \ \ s.t.\ ||\alpha||_1&lt;=\sigma$</p>
+<p>L1-LASSO: $min_{\alpha}||y-X\alpha||_1 \ \ \ s.t.\ ||\alpha||_1&lt;=\sigma$</p>
+<h4 id="MLE"><a href="#MLE" class="headerlink" title="MLE"></a>MLE</h4><p>最大似然估计提供了一种给定观察数据来评估模型参数的方法，“模型已定，参数未知”。一个重要的假设：所有的采样都是独立同分布的。<br>假设$x_1,x_2,…,x_n$为独立同分布采样，$\theta$为模型参数，$f$为模型，则产生上述采样可表示为 $$f(x_1,x_2,…,x_n|\theta)= f(x_1|\theta)*f(x_2|\theta)…,f(x_n|\theta)$$</p>
+<p>似然的定义:$ L(\theta|x_1,…,x_n)=f(x_1,…,x_n|\theta)= f(x_1|\theta)*f(x_2|\theta)…,f(x_n|\theta) $</p>
+<p>最大似然对数: $ \hat{\theta}_{mle} = argmax_{\theta} \ell(\theta|x_1,…,x_n), \ell=\frac{1}{n} lnL$</p>
+<p>最大似然估计的步骤：</p>
+<ul>
+<li>写出似然函数</li>
+<li>对似然函数取对数，并整理</li>
+<li>求导数</li>
+<li>解似然方程</li>
+</ul>
+<h4 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h4><p>最大后验估计是根据经验数据对难以观察的量的点估计(Point Estimation)，与MLE类似；不同的是，MLE<strong>融入了估计量的先验分布</strong>在其中，MAP可以看做规则化的MLE。<br>回顾x为采样，$\theta$为模型参数，f为模型，则MLE可以表示为：$$\hat{\theta}_{MLE}(x) = argmax_{\theta} f(x|\theta)$$</p>
+<p>对于MAP，现在假设$\theta$的先验分布为g,通过贝叶斯理论，对于$\theta$的后验分布如下：$$\theta \mapsto f(\theta|x) = \frac{f(x|\theta)g(\theta)}{\int_{\theta} f(x|\theta^{*})g(\theta^{*})d\theta^{*}}$$</p>
+<p>则MAP的目标为：$$\hat{\theta}_{MAP}(x)=argmax_{\theta} f(\theta|x) = argmax_{\theta} f(x|\theta)g(\theta)$$</p>
+<p>可以看出，MAP和MLE最大的区别是MAP加入了模型参数本身的概率分布，或者说MLE的模型参数概率为均匀固定值。</p>
+<h3 id="Collaborative-nature-of-SRC"><a href="#Collaborative-nature-of-SRC" class="headerlink" title="Collaborative nature of SRC"></a>Collaborative nature of SRC</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_01.png" alt=""><br>对于正则项，L1为sparse,L2为Collaborative</p>
+<p>佳哥的CVPR16文章A Probabilistic Collaborative Representation based Approach<br>for Pattern Classification，主要解释为什么SRC/CRC WORK,具有怎样的特性，结合了proCRC的Modeling，构建出这一分类器比传统分类器要较优；寻找一个common point for joint projection;分类问题相当于在分布空间上的映射。</p>
+<h3 id="Discriminative-Dictionary-Learning-DL"><a href="#Discriminative-Dictionary-Learning-DL" class="headerlink" title="Discriminative Dictionary Learning(DL)"></a>Discriminative Dictionary Learning(DL)</h3><p>Motivation:1.学习compacted字典 2.学习discriminative 3.effected</p>
+<h4 id="Shared-DL"><a href="#Shared-DL" class="headerlink" title="Shared DL"></a>Shared DL</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_02.png" alt="LC-KSVD"><br>Label Consistent-KSVD目的：学习一个线性变换A来约束了Sparse Code的Ideal形式,这里Q是预定义的理想编码形式，T是约束系数大小的。</p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_03.png" alt="LC-KSVD"><br>首先计算Sparse Code，然后WX的结果就是分类类别结果</p>
+<p>Support Vector Guided DL(SVGDL), idea:自适应地对coding vector进行参数化。有些编码重要，部分编码相对不重要。</p>
+<h4 id="Class-specific-DL"><a href="#Class-specific-DL" class="headerlink" title="Class-specific DL"></a>Class-specific DL</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_04.png" alt="DDL"><br>所谓决策性字典学习就是把负样本也放进学习过程中进行字典训练。</p>
+<p>Fisher DDL exploit both representation residual and coding coefficient,引入使用了Fisher Criterion</p>
+<h4 id="Dictionary-Pair-Learning"><a href="#Dictionary-Pair-Learning" class="headerlink" title="Dictionary Pair Learning"></a>Dictionary Pair Learning</h4><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_05.png" alt="DDL"><br>同一个Sparse Code,但是针对类别适应的字典，有点像多个2分类的SVM.</p>
+<h3 id="Collaborative-representation-for-image-sets"><a href="#Collaborative-representation-for-image-sets" class="headerlink" title="Collaborative representation for image sets"></a>Collaborative representation for image sets</h3><p><img src="http://7xl4js.com1.z0.glb.clouddn.com/vc_20170412_06.png" alt="ISCR"><br>将Image Classification扩展到Image Set Classification</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/08/VisualComputing-2/" itemprop="url">
                   VisualComputing_2
                 </a>
@@ -1550,130 +1711,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/08/认识教会的朋友/" itemprop="url">
-                  认识教会的朋友
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-08T20:21:20+08:00" content="2016-11-08">
-              2016-11-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/08/认识教会的朋友/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/认识教会的朋友/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这一段时间生活确实比较枯燥，感觉自己把自己给困住了，总结一下最近三个月的生活日常。</p>
-<p>首先今年宪源小朋友来科大读Msc了，也是学习机器学习内容，可以充实忙碌地学习工作了。来了之后组织女朋友和他情侣俩一块来到城门水塘，由于起床比较晚，中间不大会路，去到大概已经3点多了。从西铁线去到荃湾站，然后坐82号巴士到公园。</p>
-<p>城门水塘整个是一个麦理浩径的一段，所以十分的长，要走完感觉一天也勉强，一般就直接进去看看猴子，到了水塘附近找个美景拍拍照。这里确实风景优美，空气清新，是在香港这个钢铁森林里一个极好的郊野公园，以后有机会还要再来拍风景和人物美照。<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/2016110801.png" alt="离开水塘前的合照"></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/08/认识教会的朋友/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1719,7 +1756,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

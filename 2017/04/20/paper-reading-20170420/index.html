@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="paper," />
 
 
 
@@ -104,15 +104,23 @@
 
 
 
-<meta name="description" content="blog csrjtan tanrunj">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CSRJTAN">
-<meta property="og:url" content="https://csrjtan.github.io/tags/生活/index.html">
+<meta name="description" content="今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, flow alignment等方法在CNN网络中的影响做了实验评估
+Abstract与单帧去模糊不一样，基于视频可以利用相邻帧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Video Deblurring">
+<meta property="og:url" content="https://csrjtan.github.io/2017/04/20/paper-reading-20170420/index.html">
 <meta property="og:site_name" content="CSRJTAN">
-<meta property="og:description" content="blog csrjtan tanrunj">
+<meta property="og:description" content="今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, flow alignment等方法在CNN网络中的影响做了实验评估
+Abstract与单帧去模糊不一样，基于视频可以利用相邻帧">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_01.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_03.png">
+<meta property="og:image" content="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_02.png">
+<meta property="og:updated_time" content="2017-04-20T09:35:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSRJTAN">
-<meta name="twitter:description" content="blog csrjtan tanrunj">
+<meta name="twitter:title" content="Deep Video Deblurring">
+<meta name="twitter:description" content="今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, flow alignment等方法在CNN网络中的影响做了实验评估
+Abstract与单帧去模糊不一样，基于视频可以利用相邻帧">
+<meta name="twitter:image" content="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_01.png">
 
 
 
@@ -130,7 +138,7 @@
   };
 </script>
 
-  <title> 标签: 生活 | CSRJTAN </title>
+  <title> Deep Video Deblurring | CSRJTAN </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,7 +159,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,46 +277,177 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        生活
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Deep Video Deblurring
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-20T16:56:00+08:00" content="2017-04-20">
+              2017-04-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/20/paper-reading-20170420/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/paper-reading-20170420/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, flow alignment等方法在CNN网络中的影响做了实验评估</p>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>与单帧去模糊不一样，基于视频可以利用相邻帧的有效信息，进行”sharpen”的修补。但是对齐算法一般计算代价大，而且效果有限。对于聚合的方法而言，也需要算法能够识别出哪些区域可以精确对齐，哪些区域对齐不能。而用CNN end-to-end训练可以有效适应这些问题，关键在于如何仿真出或者生成出真实的模糊视频和高清视频，作者提出了一种生成式的位移模糊方法。</p>
+<h4 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h4><p>V-deblur, Idea: 从相邻帧borrowing “sharp” pixels，使当前帧有可能恢复出高质量视频帧。</p>
+<p>Aligning methods limitation: warping-based alignment is not robust around disocclusions and areas with low texture, and often yields warping artifacts. In addition to the align-ment computation cost, methods that rely on warping have to therefore disregard information from mis-aligned content or warping artifacts, which can be hard by looking at local image patches alone.</p>
+<p>Related Work: 1.Deblur using deconvolution 2.Multi-image aggregation 3.Data-driven approaches </p>
+<p><img src="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_01.png" alt="Architecture"></p>
+<p>具体架构参数，利用了Skip connection,架构出encoder-decoder network，将15 frames堆叠一起作为输入，输出中间帧；（或者全部15帧）<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_03.png" alt="Architecture"></p>
+<h4 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h4><p>实验分别比较了single(s-CNN), dbn-noalgin(v-CNN), dbn-homo(CNN+RANSAC), dbn-algin(CNN+OPTICAL FLOW)</p>
+<p>实验参数：240fps Video用的patches:15<em>128</em>128, train 2million pairs, batchsize:64, ADAM, 45hrs<br><img src="http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_02.png" alt=""></p>
+<h4 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h4><p>在构建仿真模糊数据库时，只考虑了一种Motion Blur，没有考虑其他模糊类型；另外，对于没有用alignment的DBN-NO ALIGN的输出可能会模糊，需要进一步挖掘策略来使得输出更sharp,然后扩展训练集的video type.</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2015/08/12/birth/" itemprop="url">
-              
-                <span itemprop="name">写在23岁生日前夕</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持分享，支持原创</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xl4js.com1.z0.glb.clouddn.com/wechatPayment.jpg" alt="CsrjTan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-08-12T20:15:30+08:00"
-              content="2015-08-12" >
-          08-12
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/paper/" rel="tag">#paper</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/18/精进-5/" rel="next" title="精进_5">
+                <i class="fa fa-chevron-left"></i> 精进_5
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -316,6 +455,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/20/paper-reading-20170420/"
+           data-title="Deep Video Deblurring" data-url="https://csrjtan.github.io/2017/04/20/paper-reading-20170420/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -335,8 +482,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xl4js.com1.z0.glb.clouddn.com/avatar.jpg"
@@ -407,6 +563,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Methodology"><span class="nav-number">2.</span> <span class="nav-text">Methodology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Experiment"><span class="nav-number">3.</span> <span class="nav-text">Experiment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Limitation"><span class="nav-number">4.</span> <span class="nav-text">Limitation</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -519,6 +686,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
