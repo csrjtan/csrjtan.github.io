@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>CSRJTAN</title>
+  <subtitle>Keep Moving</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://csrjtan.github.io/"/>
+  <updated>2017-05-07T15:15:42.000Z</updated>
+  <id>https://csrjtan.github.io/</id>
+  
+  <author>
+    <name>CsrjTan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Real-Time Video SR with Spatio-Temporal Network and MC</title>
+    <link href="https://csrjtan.github.io/2017/05/07/paper-reading-20170507/"/>
+    <id>https://csrjtan.github.io/2017/05/07/paper-reading-20170507/</id>
+    <published>2017-05-07T13:08:20.000Z</published>
+    <updated>2017-05-07T15:15:42.000Z</updated>
+    
+    <content type="html">&lt;p&gt;最近看了挺多关于video super resolution的论文，赶紧来总结分享一下。&lt;/p&gt;
+&lt;h4 id=&quot;Real-Time-Single-Image-and-Video-Super-Resolution-using-an-Efficient-Sub-Pixel-Convolutional-Neural-Network&quot;&gt;&lt;a href=&quot;#Real-Time-Single-Image-and-Video-Super-Resolution-using-an-Efficient-Sub-Pixel-Convolutional-Neural-Network&quot; class=&quot;headerlink&quot; title=&quot;Real-Time Single Image and Video Super-Resolution using an Efficient Sub-Pixel Convolutional Neural Network&quot;&gt;&lt;/a&gt;Real-Time Single Image and Video Super-Resolution using an Efficient Sub-Pixel Convolutional Neural Network&lt;/h4&gt;&lt;p&gt;首先是2016CVPR的这篇提出的sub-pixel convolutional layer，这是简单的思想，却确实指出了以前做SR思路上的问题。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20170507_01.png&quot; alt=&quot;Architecture&quot;&gt;&lt;br&gt;主要思想是：卷积网络应该主要在LR图像上做，然后在最后一层用更多的kernel number生成$r^2$的LR feature maps.然后直接映射出HR图像。&lt;br&gt;这个Efficient Sub-Pixel Convolution Layer就是对应映射，不需要训练参数，然后将前向训练的时候将训练误差传递到对应的LR feature maps就好了。&lt;/p&gt;
+&lt;p&gt;非常简单的思想，但有效：1.以前的SR都是将RGB-&amp;gt;YCrCb上，对Y做SR；做之前用Bicubic插值成大图，然后卷出结果。2.这导致很多计算量浪费了，同样参数的同样效果效果下，在HR上做卷积运算是在LR上做卷积的（2，3，4，对应超分辨的）倍数 3.另一个角度思考，这意味着Bicubic并没有增加原始数据的信息量，只是为了容易学习；但利用sub-pixel的话，减少了不必要的运算，达到非常快的效果。&lt;/p&gt;
+&lt;p&gt;看看实验结果：作者用三层卷积网络： 5&lt;em&gt;5&lt;/em&gt;64-&amp;gt;3&lt;em&gt;3&lt;/em&gt;32-&amp;gt;3&lt;em&gt;3&lt;/em&gt;r^2&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20170507_02.png&quot; alt=&quot;Experiment&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Real-Time-Video-Super-Resolution-with-Spatio-Temporal-Networks-and-Motion-Compensation&quot;&gt;&lt;a href=&quot;#Real-Time-Video-Super-Resolution-with-Spatio-Temporal-Networks-and-Motion-Compensation&quot; class=&quot;headerlink&quot; title=&quot;Real-Time Video Super-Resolution with Spatio-Temporal Networks and Motion Compensation&quot;&gt;&lt;/a&gt;Real-Time Video Super-Resolution with Spatio-Temporal Networks and Motion Compensation&lt;/h4&gt;&lt;p&gt;对于VIDEO的复原问题而言，主要分为两步：Register and Fusion, Register就是解决视频模糊抖动等干扰问题，然后让相邻帧提供更多有效信息给参考帧(Reference Frame), 这里一般涉及运动补偿（Motion Estimation/Motion Compensation); Fusion的话主要是如何将获得的复原特征或者复原数据进行融合得到最终复原结果。&lt;/p&gt;
+&lt;p&gt;其中Register的目标是：让相邻帧更好地提供空域上冗余的有效信息，一般需要知道相邻帧相对于参考帧的dense pixel-wise distance，（个人见解：这些像素应该如何用可以分三类：确定可用，可参考用，不可用）；现在学术上一般比较有效的方法：optical flow, CNN optical flow, Spatial Transform等。限制：一般Register都是cost expensive and not end-to-end trainable&lt;br&gt;Fusion的话：可以简单的堆砌concat,然后分为：early fusion, slow fusion and 3D convolution；其中得到的4D CUBES是序列，也能使用RNN（LSTM）的方法来更好挖掘空域信息。&lt;/p&gt;
+&lt;p&gt;回到这篇论文，2017 April， Arxiv上出了两篇做VSR还不错的文章，一篇是这个也是Twitter Wenzhe SHI等一帮人做的，上一节那个sub-pixel convolutional就是他们的工作。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20170507_03.png&quot; alt=&quot;Architecture&quot;&gt;&lt;br&gt;整个网络是end-to-end的，使用了Spatial Transform Network做Register,然后用Data Fusion融合在一起，最后结合一个Video-based Sub-pixel Convolutional Layer.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20170507_04.png&quot; alt=&quot;Fusion Tricks&quot;&gt;&lt;br&gt;其中比较了以上Fusion Tricks:slow fusion用shared kernel parameters则跟3D convolutional layer一样。 Spatial Loss 用的是Huber Loss(具体看论文，结合了flow map gradients)； early fusion效果更好，slow fusion则参数小&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20170507_05.png&quot; alt=&quot;register net&quot;&gt;&lt;br&gt;这个是具体spatial transform network的使用策略，构建了coarse to fine的flow estimation.&lt;/p&gt;
+&lt;p&gt;实验&lt;br&gt;网络参数： 3000&lt;em&gt;30 pair samples训练集, 5%做验证集， Adam 10-4，&lt;br&gt;测试时间：512&lt;/em&gt;383 29ms with GPU， 10^3 slower than VESPCN&lt;br&gt;结果： 9L-E3-MC(9层，3帧，做MC)&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/20170507_06.png&quot; alt=&quot;Experiment&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近看了挺多关于video super resolution的论文，赶紧来总结分享一下。&lt;/p&gt;
+&lt;h4 id=&quot;Real-Time-Single-Image-and-Video-Super-Resolution-using-an-Efficient-Sub-Pixel-C
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Deep Video Deblurring</title>
+    <link href="https://csrjtan.github.io/2017/04/20/paper-reading-20170420/"/>
+    <id>https://csrjtan.github.io/2017/04/20/paper-reading-20170420/</id>
+    <published>2017-04-20T08:56:00.000Z</published>
+    <updated>2017-04-20T09:35:34.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, flow alignment等方法在CNN网络中的影响做了实验评估&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h4&gt;&lt;p&gt;与单帧去模糊不一样，基于视频可以利用相邻帧的有效信息，进行”sharpen”的修补。但是对齐算法一般计算代价大，而且效果有限。对于聚合的方法而言，也需要算法能够识别出哪些区域可以精确对齐，哪些区域对齐不能。而用CNN end-to-end训练可以有效适应这些问题，关键在于如何仿真出或者生成出真实的模糊视频和高清视频，作者提出了一种生成式的位移模糊方法。&lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;V-deblur, Idea: 从相邻帧borrowing “sharp” pixels，使当前帧有可能恢复出高质量视频帧。&lt;/p&gt;
+&lt;p&gt;Aligning methods limitation: warping-based alignment is not robust around disocclusions and areas with low texture, and often yields warping artifacts. In addition to the align-ment computation cost, methods that rely on warping have to therefore disregard information from mis-aligned content or warping artifacts, which can be hard by looking at local image patches alone.&lt;/p&gt;
+&lt;p&gt;Related Work: 1.Deblur using deconvolution 2.Multi-image aggregation 3.Data-driven approaches &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_01.png&quot; alt=&quot;Architecture&quot;&gt;&lt;/p&gt;
+&lt;p&gt;具体架构参数，利用了Skip connection,架构出encoder-decoder network，将15 frames堆叠一起作为输入，输出中间帧；（或者全部15帧）&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_03.png&quot; alt=&quot;Architecture&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Experiment&quot;&gt;&lt;a href=&quot;#Experiment&quot; class=&quot;headerlink&quot; title=&quot;Experiment&quot;&gt;&lt;/a&gt;Experiment&lt;/h4&gt;&lt;p&gt;实验分别比较了single(s-CNN), dbn-noalgin(v-CNN), dbn-homo(CNN+RANSAC), dbn-algin(CNN+OPTICAL FLOW)&lt;/p&gt;
+&lt;p&gt;实验参数：240fps Video用的patches:15&lt;em&gt;128&lt;/em&gt;128, train 2million pairs, batchsize:64, ADAM, 45hrs&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170420_02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Limitation&quot;&gt;&lt;a href=&quot;#Limitation&quot; class=&quot;headerlink&quot; title=&quot;Limitation&quot;&gt;&lt;/a&gt;Limitation&lt;/h4&gt;&lt;p&gt;在构建仿真模糊数据库时，只考虑了一种Motion Blur，没有考虑其他模糊类型；另外，对于没有用alignment的DBN-NO ALIGN的输出可能会模糊，需要进一步挖掘策略来使得输出更sharp,然后扩展训练集的video type.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天读一下CVPR2017的spot light,用CNN做Video Debluring的。提出了encoder-style network来做V-deblur，主要提出了如何有效构建训练集，还比较了一系列方法，并对single,no-aligh,homography, 
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>精进_5</title>
+    <link href="https://csrjtan.github.io/2017/04/18/%E7%B2%BE%E8%BF%9B-5/"/>
+    <id>https://csrjtan.github.io/2017/04/18/精进-5/</id>
+    <published>2017-04-18T04:26:08.000Z</published>
+    <updated>2017-04-18T05:34:57.000Z</updated>
+    
+    <content type="html">&lt;p&gt;回顾上一节如何去高度调用我们的大脑和潜意识，我认为这对于创作性的工作，包括学术科研工作都具有很不错的启发性意义，首先是断舍离，寻找出极简的生活和极简的思考方式，从而让自己更容易去专注去思考；其次是利用可视化工具和思考工具（矩阵、清单）来辅助思考和规划；最后讨论如何调用和利用潜意识辅助灵感。&lt;/p&gt;
+&lt;p&gt;来到第五节，这是《精进》这本书的最后一篇读书笔记了，主要讲述如何优化学习方法（如何去努力），然后保留自己的个性，去发挥你的兴趣、性格和专长。&lt;/p&gt;
+&lt;h3 id=&quot;不断优化你的“努力”方式&quot;&gt;&lt;a href=&quot;#不断优化你的“努力”方式&quot; class=&quot;headerlink&quot; title=&quot;不断优化你的“努力”方式&quot;&gt;&lt;/a&gt;不断优化你的“努力”方式&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;‘才能’被定义为自发地重复出现且可被高效利用的思维、情感或行为模式&lt;br&gt;应该用成长型的心智看待自身的发展和学习：积极去学习，认为才能可以得到不断增长。&lt;br&gt;方法：改变自己的语言习惯，把封闭式、绝对化的&lt;strong&gt;总结性评论&lt;/strong&gt;改为&lt;strong&gt;开放式的启发式提问&lt;/strong&gt;，’不擅长做‘-&amp;gt;’要做成，需要提高哪些地方？’；’做不好’-&amp;gt;’还有哪些方法，如何做好？’；‘做得很好’-&amp;gt;‘如何做得更好？‘；’我不能像他那样做’-&amp;gt;’我能从他们身上学到什么？’&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;努力的策略性体现在对个人资源的调配、行动方向的选择、执行进度的把控和调适等；好的策略可以不断学习和优化。&lt;/p&gt;
+&lt;h4 id=&quot;发展个人的专长&quot;&gt;&lt;a href=&quot;#发展个人的专长&quot; class=&quot;headerlink&quot; title=&quot;发展个人的专长&quot;&gt;&lt;/a&gt;发展个人的专长&lt;/h4&gt;&lt;p&gt;对于’T型‘人才，先稳固构建自己的竖，更有利于迁移学习和拓宽那一横。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;拥有一项突出的才能对个人的发展是最为重要的，这是由于社会分工细化所决定的 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对于条件不佳的人，唯一能做的就是把自己不多的资源（时间、经历、金钱乃至勇气）聚拢起来，投注到做一件事情之上。（置之死地而后生）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/read_20170418_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;努力与收益的曲线图：清晰的事实表明，浅尝辄止的人很可能将一无所获，而专注投入走到最后的人将获得超额收益（金钱、心理、精神上）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;George Mosher: 仔细考察自己的优势和劣势。利用自己的优势努力工作，通过与人合作来平衡自己的劣势。回避在很多不同方向上空耗经历。保持专注，把自己能做的做到最好，并保持留意新的机会。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;发展自己的强项，并且寻找和结识与自己能力互补的人，将使你终身受益。&lt;/p&gt;
+&lt;p&gt;不要成为鲁迅说的“差不多”先生，把事情做到极致需要：1.长期专注和一丝不苟的精神 2.避免热情有余，少了冷静踏实；急于求成，少了耐心细致 3.不需要凡是追求完美，在主业上追求完美 &lt;/p&gt;
+&lt;h4 id=&quot;挑战自己&quot;&gt;&lt;a href=&quot;#挑战自己&quot; class=&quot;headerlink&quot; title=&quot;挑战自己&quot;&gt;&lt;/a&gt;挑战自己&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;高难度挑战，激发无限潜能&lt;br&gt;人是需要一些挫折、失败或者高难度的挑战来刺激的。如果总是一帆风顺，就会一直待在自己的’舒适区‘里不肯出来，潜能就无法被充分地激发了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;增加知识和技能的’提取强度‘，为了巩固知识的技能化：学习过程中经常测试联系；构建个人挑战阶梯：设置难度适应的问题；&lt;/p&gt;
+&lt;p&gt;这里举了一个英语翻译从业者的例子：从背单词-&amp;gt;考托福GRE-&amp;gt;听VOA、BBC(几个月)-&amp;gt;英语广播-&amp;gt;地方口音-&amp;gt;脱口秀-&amp;gt;翻译&lt;/p&gt;
+&lt;p&gt;大部分不能精通英语的中国人，主要还是没有胆量和勇气去挑战高难度的学习任务，让自己停留在常规性的任务里面。&lt;/p&gt;
+&lt;h4 id=&quot;培养兴趣&quot;&gt;&lt;a href=&quot;#培养兴趣&quot; class=&quot;headerlink&quot; title=&quot;培养兴趣&quot;&gt;&lt;/a&gt;培养兴趣&lt;/h4&gt;&lt;p&gt;不要盲目相信意志力，从培养真正的兴趣开始：一个人能长期坚持做一件事，一定是这件事带来的丰盈感和满足感超过了我的所有付出，一定是这件事日日夜夜萦绕在我的心头让我欲罢不能，一定是这件事唤起了我内心深处最强烈的兴趣。赐予力量的，是激情的驱动，而不是意志力的鞭策。&lt;/p&gt;
+&lt;p&gt;现代的生活，诱惑太多，导致’兴趣饥渴症‘和’兴趣寡淡症‘，在各种的尝试之中，依然找不到最根本热爱的东西；如果对于一件事的了解不深不透彻，总是浅尝辄止，是无法体会到这件事带来的妙处和乐趣的。这个时候可以尝试去坚持努力去做，因为努力而热爱。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;放弃对’兴趣‘的执念，宁可吃苦笨一点，去做一些并不特别喜欢但看上去富有挑战的事情或者做一些少有人去做但又看上去很有意义的事，咬紧牙关多坚持一段时间，也许能打破死循环的闭环，开启新的良性循环。先努力做事再在努力的过程中获得乐趣和热爱。&lt;/li&gt;
+&lt;li&gt;提升’浸润‘的深度：尽量让自己全身心地投入到所做的事情里面，用温暖的情感和良好的心理体验来激发兴趣。如把生活的乐趣融入读书的乐趣&lt;/li&gt;
+&lt;li&gt;增加互动，把单向的信息流动编程双向的信息演绎，将纯粹的知识获取变为技能上的操练。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;自我决定论的三种基本心理需求：自主的需要、能力的需要和归属的需要。&lt;br&gt;电脑极客和编程是自主程度最高的’工种‘，从零开始创造一个新世界，如果耐性而细致，你将成为新世界的上帝。&lt;/p&gt;
+&lt;h4 id=&quot;小节总结&quot;&gt;&lt;a href=&quot;#小节总结&quot; class=&quot;headerlink&quot; title=&quot;小节总结&quot;&gt;&lt;/a&gt;小节总结&lt;/h4&gt;&lt;p&gt;每个人都具有自己的独特优势，并且可以通过努力变得更优秀。&lt;/p&gt;
+&lt;p&gt;努力不是一味地用例，而是一种具有策略性的活动，可以不断学习和优化。&lt;/p&gt;
+&lt;p&gt;在个人资源有限的情况下，我们首先应该集中资源，投入发展自己的一项优势才能。&lt;/p&gt;
+&lt;p&gt;把时间主要投放在一个领域理，以尽量高的标准要求自己，培养出非常高的才能。&lt;/p&gt;
+&lt;p&gt;用相对少的时间广泛涉猎，以捕捉和发展未曾预料的资源和机会，实现个人才能的最大化。&lt;/p&gt;
+&lt;p&gt;不断为自己设计有难度的’非标准动作‘，在挑战中获得才能的提升和飞跃。&lt;/p&gt;
+&lt;p&gt;实践练习：在现在学习和工作中，最大的优势：1.英语阅读水平 2.深度学习编程 3.图像复原理论 属于的级别：研究生第二年&lt;br&gt;设计挑战：1.完成TIP初稿，多看多写 2.用DEEP LEARNING完成V-CDM,处理数据、定义网络、开始训练&lt;br&gt;每一次挑战中，把事情做到满意，再开始下一步挑战计划。&lt;/p&gt;
+&lt;p&gt;对目前的学习工作感兴趣吗？一般，主要做复原这个问题意义不那么重大，但是应该理解这只是锻炼Deel learning的一个入门途径，锻炼自己的基础能力：阅读论文，写作论文，编码能力，思考IDEA等。目标还是希望编写书籍，甚至从事教育与技术结合的职业。了解后，觉得这个方向还是很有趣和有意义的。如何去做使变得更好？1.多读相关论文，编写感想和IDEA 2.认真去学习DL，静下心来编码 3.耐心细致做实验，验证自己的构想。&lt;/p&gt;
+&lt;h3 id=&quot;成功属于唯一的，不可复制&quot;&gt;&lt;a href=&quot;#成功属于唯一的，不可复制&quot; class=&quot;headerlink&quot; title=&quot;成功属于唯一的，不可复制&quot;&gt;&lt;/a&gt;成功属于唯一的，不可复制&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;因为你的存在，多元的世界又增加了一种新的可能性&lt;br&gt;在求知的路上，选择做一个主动探索的学习者&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;标准化教育的风险：1.高校教育内容的更新速度赶不上社会整体的进步步伐 2.高校讲授的内容脱离应用环境，教师缺乏实操经验 &lt;/p&gt;
+&lt;p&gt;主动、自助的探索者：1.利用好本校的平台资源（图书馆、好的老师、优秀的同学学长） 2.善用互联网的优质教学资源（COURSERA、edX、TED等) 3.主动试错，成为新知识领域的先驱 4.以完成具有创造力的作品为目标（论文，项目，作品集)&lt;/p&gt;
+&lt;h4 id=&quot;从象牙塔到荒野求生&quot;&gt;&lt;a href=&quot;#从象牙塔到荒野求生&quot; class=&quot;headerlink&quot; title=&quot;从象牙塔到荒野求生&quot;&gt;&lt;/a&gt;从象牙塔到荒野求生&lt;/h4&gt;&lt;p&gt;如何求解现实问题？1.正确认识问题 2.对问题先进行个人独立的思考 3.借助其他资讯，进行二次思考 4.结合知识和理论，试着构建假设性理论和模型 5.根据情景扩展模型、根据现实复杂的情况修正模型 6.关心细节，通盘考虑现实，穷尽和评估各因素 7.用巧妙的方法去解决难题&lt;/p&gt;
+&lt;p&gt;现实的问题区别于理论问题：1.理论一般假设的理想环境 2.理论问题的发展可能会偏离现实 3.理论讲究一般性和可重现性 4.现实的问题复杂多样，瞬息万变 &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在现实世界中思考理论问题，在理论世界中思考现实问题，积极建立理论和现实的联结。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;独特性&quot;&gt;&lt;a href=&quot;#独特性&quot; class=&quot;headerlink&quot; title=&quot;独特性&quot;&gt;&lt;/a&gt;独特性&lt;/h4&gt;&lt;p&gt;独特性就是最好的竞争力，坚持自己的与众不同。正是独一无二，让你无可取替。&lt;/p&gt;
+&lt;p&gt;心智独特性的人具有的优势：1.在主流观点外洞察别人未曾发现的机会 2.形成个人核心竞争力，避免低层次的同质化竞争 3.拒绝他人和大众给自己贴上标签，以更开放和自由的心态发展自己 4.不必迎合社会主流而节约大量时间精力，可以专注于做好自己的事情 5.为大众带来新鲜的见解和启发，形成对公众的影响力 6.具有更高的可辨识性，更易于形成个人品牌 7.吸引到其他独特而优秀的人，与他们成为朋友或者合作伙伴。&lt;/p&gt;
+&lt;p&gt;不要为了追求社会认同而做事&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Susan Santag:我是个异端，而且每个人都可能成为异端，但大多数人不得不选择中庸之道。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;避开了追求社会认同的陷阱，也意识到去做酷事的价值以后，我们可能走上因独特而成功的道路。七个方法走向自我：1.抗拒自己的欲望，或者延迟满足欲望 2.质疑貌似可信的言论，不盲从任何人 3.屏蔽流行信息，或者只在固定时段接受流行信息 4.思考最不可能的事情，为其发展处可能性 5.保留和发展自己的’怪癖‘，并将其发展成自己的竞争力 6.为小事物狂热，并在小事物中发现大世界 7.开展思想试验和行动试验，让思想和行动互相激发&lt;/p&gt;
+&lt;h4 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h4&gt;&lt;p&gt;嘴一个主动的探索者，敢于突破种种局限，不断试错，形成自己的优势甚至是独特的知识资产。&lt;/p&gt;
+&lt;p&gt;不只在理想化的情境下去思考问题，而且要磨练把理论融汇于现实、考量现实复杂庆幸的本事。&lt;/p&gt;
+&lt;p&gt;在理论与现实的充分联结中，一步步地构筑自己独特的知识和经验体系，逐渐打磨出属于你个人独一无二的智识。&lt;/p&gt;
+&lt;p&gt;根据自己的内心需要，而不是外界认同，做出独立的选择，甚至做一些酷事。&lt;/p&gt;
+&lt;p&gt;如果你找到了一条别人都还没走过的路，只要把这条路走完，你就赢了。&lt;/p&gt;
+&lt;p&gt;实践练习：1.选择枯燥但有用的课程进行学习，并做好具体规划： 学习TENSOR FLOW的API，每天学习1小时并总结 2.这门课程增长什么样的知识和技能？学习DL的框架底层，熟悉PYTHON语言以及大型项目的设计思想。 在社会上价值如何？能有助于日后在工业界运用DL，方便学习和修改底层代码。 3.这个课程哪里优质资源可以帮助？a.GITHUB源码 b.PYTHON书籍 c.遇到问题查资料和发问&lt;br&gt;4.哪里理论可以实践？ a.用来解决AI问题 b.放到GITHUB上，供大家一起学习研究&lt;br&gt;其他问题：经过现实的检验，对于原本的理论是否有新的思考？在这门课程中，对比其他人观点，你有哪些独特的看法？经过一段学习，是否有比较酷的想法去尝试？在学习过程中，完成一个具有创造力的作品。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;回顾上一节如何去高度调用我们的大脑和潜意识，我认为这对于创作性的工作，包括学术科研工作都具有很不错的启发性意义，首先是断舍离，寻找出极简的生活和极简的思考方式，从而让自己更容易去专注去思考；其次是利用可视化工具和思考工具（矩阵、清单）来辅助思考和规划；最后讨论如何调用和利用
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="精进 励志 成长" scheme="https://csrjtan.github.io/tags/%E7%B2%BE%E8%BF%9B-%E5%8A%B1%E5%BF%97-%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>精进_4</title>
+    <link href="https://csrjtan.github.io/2017/04/17/%E7%B2%BE%E8%BF%9B-4/"/>
+    <id>https://csrjtan.github.io/2017/04/17/精进-4/</id>
+    <published>2017-04-17T11:29:19.000Z</published>
+    <updated>2017-04-17T13:55:07.000Z</updated>
+    
+    <content type="html">&lt;p&gt;回顾上一节，谈到如何去成为一个高段位的学习者：激发兴趣（快速获得成就感和意义）、做中学、积极练习和反馈等，这一节笔记主要讲述如何锻炼思维、激发灵感&lt;/p&gt;
+&lt;h4 id=&quot;学会断舍离&quot;&gt;&lt;a href=&quot;#学会断舍离&quot; class=&quot;headerlink&quot; title=&quot;学会断舍离&quot;&gt;&lt;/a&gt;学会断舍离&lt;/h4&gt;&lt;p&gt;信息爆炸的时代，我们需要调整好注意力，过滤有用的精华信息，避免沉迷于无用的信息海洋中。&lt;br&gt;如何过滤呢？ 1.利用“时间之尺”，从经典学起 2.精选权威的信息源（精通领域的，权威机构，知名期刊等） 3.不追逐当下流行或者过热的信息 4.着重事实信息，轻观点和评论 5.定期闭关，屏蔽外界纷扰 6.培养简洁的表达能力（《The element of writing》） 7.学会里面的“模式化”，透漏出的规律和关联 &lt;/p&gt;
+&lt;h4 id=&quot;迎接“灵光乍现”，运用潜意识&quot;&gt;&lt;a href=&quot;#迎接“灵光乍现”，运用潜意识&quot; class=&quot;headerlink&quot; title=&quot;迎接“灵光乍现”，运用潜意识&quot;&gt;&lt;/a&gt;迎接“灵光乍现”，运用潜意识&lt;/h4&gt;&lt;p&gt;1.先发散后收敛的思考顺序&lt;br&gt;2.《创意的生成》产生创意的五个步骤：a.尽可能多搜集原始材料 b.反复“咀嚼”资料并构思初始创意 c.中止有意识思考，启动潜意识思考 d.随时准备迎接“灵光乍现”时刻的来临 e.加以改造、完善，使之切实可用。&lt;br&gt;3.关掉不可能的声音（监督者），可以稍作白日梦畅想：早起时刻在笔记本写任何所思所感&lt;br&gt;4.让生活加入随机与混乱，灵感与有序的工作结合，才能发挥最大的作用&lt;br&gt;5.阅读的书籍，包含大量同主题的书籍（主题阅读），加上少数意外的书籍（泛主题阅读）&lt;/p&gt;
+&lt;h4 id=&quot;让思维转化成图像&quot;&gt;&lt;a href=&quot;#让思维转化成图像&quot; class=&quot;headerlink&quot; title=&quot;让思维转化成图像&quot;&gt;&lt;/a&gt;让思维转化成图像&lt;/h4&gt;&lt;p&gt;可视化的重要，主要解决了工作空间的记忆不足，使得思考更加抽象直接高效。&lt;/p&gt;
+&lt;p&gt;图像也参与思维的推进与创造，边画边想的过程也会萌生创意。&lt;/p&gt;
+&lt;p&gt;根据情景选用适合的图形：流程图、结构图、思维导图、DAG等。&lt;/p&gt;
+&lt;h4 id=&quot;难以周全的思考&quot;&gt;&lt;a href=&quot;#难以周全的思考&quot; class=&quot;headerlink&quot; title=&quot;难以周全的思考&quot;&gt;&lt;/a&gt;难以周全的思考&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;一个人思考问题的周全程度是个人思维品质的主要指标之一&lt;br&gt;原因：1.人们总是偏好生动形象的具体事例多于抽象的信息&lt;br&gt;2.“证实偏见”，倾向于相信自己验证的观点，而对其他可能性视而不见&lt;br&gt;3.每个人受自己已有知识和经验的限制，存在思维中的‘盲区’&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这里提及两个常用的“手脚架”：矩阵和清单&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/jj_20170417_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;矩阵是把问题进行不同维度属性的分解和组合，列出基本周全的表，良好的学习者应该交流中关注盲区。三部曲：1.提取定义维度 2.拓展维度的表现值 3.组合&lt;/p&gt;
+&lt;p&gt;第二种工具是清单，进行有效穷举，好处：方便传达知识，减少遗漏和信息冗余，可作为行动指南，规律性复用，可扩展性等&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个具有高度可塑的大脑在良好思维工具的辅佐下，在持续不断的行动打磨中，会变得强大到超出你的想象 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;小节总结&quot;&gt;&lt;a href=&quot;#小节总结&quot; class=&quot;headerlink&quot; title=&quot;小节总结&quot;&gt;&lt;/a&gt;小节总结&lt;/h4&gt;&lt;p&gt;既要简化外界输入的信息，也要简化我们表达出来的信息，为思维腾出更多的使用空间。&lt;/p&gt;
+&lt;p&gt;基于深入了解的简洁，不是乏味，而是意味着更加丰富的内涵 &lt;/p&gt;
+&lt;p&gt;为了让思维更好地发散，获得更多的灵感，一是要关掉大脑里评价的声音，二是要适当地引入混乱与随机。&lt;/p&gt;
+&lt;p&gt;思维依赖于工作记忆，通过将思维外显为图像，给予思维更多的探索空间，也能进一步推动思考的进行。&lt;/p&gt;
+&lt;p&gt;现实中的问题，总是牵涉太多的因素，借助矩阵、清单等工具，可以完善思考的周密程度。&lt;/p&gt;
+&lt;p&gt;实践练习：&lt;br&gt;1.统计每天关注的信息包括的领域：学术编程、阅读、音乐、健身、英语学习、NBA、DOTA2、朋友圈、微博、知乎、YOUTUBE等  最终保留3~5个有意义的信息领域：编程、健身、音乐、阅读、英语&lt;br&gt;2.关注领域中，最有用的信息渠道来源：&lt;br&gt;学术编程：Arxiv, CVPR，雷锋网； 健身：公众号 音乐：古典音乐（自己找） 英语：喜马拉雅、公众号、播客 阅读：豆瓣读书&lt;br&gt;3.最近发生的事：CVPR,ICLR上的论文；&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;回顾上一节，谈到如何去成为一个高段位的学习者：激发兴趣（快速获得成就感和意义）、做中学、积极练习和反馈等，这一节笔记主要讲述如何锻炼思维、激发灵感&lt;/p&gt;
+&lt;h4 id=&quot;学会断舍离&quot;&gt;&lt;a href=&quot;#学会断舍离&quot; class=&quot;headerlink&quot; title=&quot;学
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="精进 励志 成长" scheme="https://csrjtan.github.io/tags/%E7%B2%BE%E8%BF%9B-%E5%8A%B1%E5%BF%97-%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>精进_3</title>
+    <link href="https://csrjtan.github.io/2017/04/17/%E7%B2%BE%E8%BF%9B-3/"/>
+    <id>https://csrjtan.github.io/2017/04/17/精进-3/</id>
+    <published>2017-04-17T10:55:27.000Z</published>
+    <updated>2017-04-17T11:20:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;回顾上一节说到应该如何有效地去行动，尊重时间如同尊重我们的生命,这一小节谈一下如何学习&lt;/p&gt;
+&lt;h4 id=&quot;高段位的学习者&quot;&gt;&lt;a href=&quot;#高段位的学习者&quot; class=&quot;headerlink&quot; title=&quot;高段位的学习者&quot;&gt;&lt;/a&gt;高段位的学习者&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;只有最后能够作用于现实的学习，才是唯一有效的学习&lt;br&gt;这句话的意思就是在学习过程中，信息、知识和技能，只有最后的技能才是学习的终极目的，一切印刷在书本上的知识，如果不动态化、技能化地应用于生活之中，那么它将是一滩死水、一无是处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;带着核心问题去主动构建知识，制定好学习计划并实施学习，最后回顾和整理。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个优秀的学习者，必定是一个优秀的提问者。&lt;br&gt;学习应该是广度和深度的结合：广度让人不闭塞，深度让人专长&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当今的浅阅读，快文化，如何回归深度学习，或者学会‘解码’成为一个能力。通过类同的知识事物，作为参照物进行相似比较以及异处分析&lt;/p&gt;
+&lt;h4 id=&quot;做中学&quot;&gt;&lt;a href=&quot;#做中学&quot; class=&quot;headerlink&quot; title=&quot;做中学&quot;&gt;&lt;/a&gt;做中学&lt;/h4&gt;&lt;p&gt;最高效的学习方法，对于编程而言，最高效的方法是：直接动手编码，去开源社区学习优秀代码；在社区内进行讨论、评价，获得反馈。&lt;/p&gt;
+&lt;p&gt;如何让学习变得有趣，这也使得学习变得富有意义：1.调用多感官的即时反馈 2.动态多变的情景和挑战 3.与学习曲线相匹配的难度水平&lt;br&gt;统计心理学文章所知，最高效的学习手段依次是：1.测试练习：非升学考试的练习性测试 2.分散练习：在较长时期内使用较长间隔的分布式练习 3.交错练习：混合广泛知识点的练习 4.细致追问 5.自我阐释（写作、教学） 6.概括、标记重点、背诵和重复阅读&lt;/p&gt;
+&lt;p&gt;让知识技能化，相当于把课本上或者阅读到的内容灵动起来，变成一种思考框架，成为我们世界观或者观察事物的一种特殊视角。&lt;/p&gt;
+&lt;p&gt;知识操练的三种方法：1.写作时操练 2.游戏式操练 3.设计式操练（解决现实问题和参加比赛)&lt;/p&gt;
+&lt;p&gt;让知识转化成技能，并快速地获得兴趣、成就感，只有这样一步一步才能使事情变得有意义有进步有动力。&lt;/p&gt;
+&lt;h4 id=&quot;让广泛的知识发生化学作用，合力效应&quot;&gt;&lt;a href=&quot;#让广泛的知识发生化学作用，合力效应&quot; class=&quot;headerlink&quot; title=&quot;让广泛的知识发生化学作用，合力效应&quot;&gt;&lt;/a&gt;让广泛的知识发生化学作用，合力效应&lt;/h4&gt;&lt;p&gt;由于现实存在的复杂情况，需要在所学的知识之间创造关联。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只有广泛涉猎不同学科的知识，把这些学科中的基本理论编程用以观察和分析现实对象的思维模型，才能最大程度上避免思维上的偏差和狭隘。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;融合各类知识的方法：迁移、印证和互补&lt;/p&gt;
+&lt;p&gt;小节总结：&lt;br&gt;学习，应该以学习者心中的问题为中心，让问题引导我们去探索答案。&lt;/p&gt;
+&lt;p&gt;问题的提出，需要基于已有的知识体系，并通过问题将新、旧知识串联起来。&lt;/p&gt;
+&lt;p&gt;通过深入事物内部的解码，我们可以发现事物深厚的内涵，有机会掌握其中精巧细微的技法，不断重构自己的知识体系。&lt;/p&gt;
+&lt;p&gt;掌握了多少知识，并不取决于记忆了多少知识或者关联，而是取决于能调用多少知识以及知识关联&lt;/p&gt;
+&lt;p&gt;求知的三个层次：信息、知识和技能。技能是学习的重点，信息和知识是迈向终点的路与桥。&lt;/p&gt;
+&lt;p&gt;对一个现实问题的解决，或者对一个现实情境的洞察，往往需要同时调用不同知识谱系上的知识。&lt;/p&gt;
+&lt;p&gt;学会有意识地去分析不同领域知识之间的潜在关联，通过不同知识的迁移、印证、互补，获得启发，甚至生成新的思想或者发现。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;回顾上一节说到应该如何有效地去行动，尊重时间如同尊重我们的生命,这一小节谈一下如何学习&lt;/p&gt;
+&lt;h4 id=&quot;高段位的学习者&quot;&gt;&lt;a href=&quot;#高段位的学习者&quot; class=&quot;headerlink&quot; title=&quot;高段位的学习者&quot;&gt;&lt;/a&gt;高段位的学习者&lt;/h4&gt;&lt;b
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="精进 励志 成长" scheme="https://csrjtan.github.io/tags/%E7%B2%BE%E8%BF%9B-%E5%8A%B1%E5%BF%97-%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《交响梦情人》观后感</title>
+    <link href="https://csrjtan.github.io/2017/04/16/%E3%80%8A%E4%BA%A4%E5%93%8D%E6%A2%A6%E6%83%85%E4%BA%BA%E3%80%8B%E8%A7%82%E5%90%8E%E6%84%9F/"/>
+    <id>https://csrjtan.github.io/2017/04/16/《交响梦情人》观后感/</id>
+    <published>2017-04-16T06:52:21.000Z</published>
+    <updated>2017-04-17T10:55:02.000Z</updated>
+    
+    <content type="html">&lt;p&gt;复活节花了三天再一次刷完了《交响梦情人》，在开始专注写TIP论文之前，赶紧记录一下观影心得和现在不能平复的心情。&lt;/p&gt;
+&lt;p&gt;这部连续剧可谓日剧的良心之作，重新翻出来看的原因是由于之前朋友推荐看的《逃避虽然可耻但有用》，重燃起对日剧的喜爱。感觉日剧宣扬的正能量以及角色设计故事走向都很阳光喜感，鼓励人积极勇敢地去面对生活、面对困难，付出努力、收获人生；而交响梦情人讲述一帮音乐学院的大学生，在追求音乐、学习道理上遇到的各种趣事和困难，而且主要围绕的是古典音乐里面的交响乐。&lt;/p&gt;
+&lt;h4 id=&quot;角色和评价&quot;&gt;&lt;a href=&quot;#角色和评价&quot; class=&quot;headerlink&quot; title=&quot;角色和评价&quot;&gt;&lt;/a&gt;角色和评价&lt;/h4&gt;&lt;p&gt;千秋：男主，一个音乐世界的人才，自小到大有目标有冲劲有付出，才华横溢奈何因为一次事故导致害怕坐飞机，所以到了大四的时候依然留守在日本，对于自己的音乐事业和学习也停滞不前；他是一个喜欢挑战自我的人，从小提琴-&amp;gt;钢琴-&amp;gt;指挥，也是从心底里自发地热爱着音乐，音乐带给他生活的意义；看似停滞不前的音乐事业，只因偶遇女主野田和米奇大师，指挥的事业正是起航。&lt;br&gt;心得：希望自己也能成为像男主一样充满干劲，极度自律，热爱BenQ的学霸，向他学习这样认真肯付出的态度，终将迎接自己的收获。&lt;/p&gt;
+&lt;p&gt;野田：女主，一个基腐宅女，也是音乐天才，奈何志向只是成为一个幼师，主要缅怀着童年被钢琴老师暴力教学的阴影，性格上比较天真烂漫但也带着懦弱；相对来说没有那么的有目标和上进，但庆幸遇到良师益友带领着她走向自己的钢琴事业。&lt;br&gt;心得：发现自己和野田会有相似的地方，自己的目标总是成为如何优秀，如何自律的人，然而个人内心却是畏缩、害怕的，有时候因此而颓废、宅起来，失去了目标和生活的斗志。庆幸野田妹还有钢琴的天分，能遇到善于挖掘和培养学生的老师，在男主的激励下一步一步往前进；虽然也是痛苦万分，但也体验过各种快乐和了解自己对音乐真正的心意。&lt;/p&gt;
+&lt;p&gt;米奇指挥家：一个非常有个性的知名指挥家，善于发现和用自己独特的方式培养人才，音乐天才但却也沉溺于美色、酒精等不良嗜好，这样色色的大叔反而让人觉得这个角色很有趣。&lt;br&gt;心得：剧里面的老师都用心良苦，各种培训和指引着学生，然而这样的老师其实在生活中并不多见，毕竟这需要巨大的精力和时间，除非老师本身就把自己的生活和生命灌注于培养学生身上。&lt;/p&gt;
+&lt;p&gt;配角们：日剧或者漫画里面的配角们一般都是个性突出、有各自性格嗜好的热心朋友们，而且有可能整个剧集都没有奸角；大家都充满着正能量的，需要克服的困难和挑战的，都是自己或者以往的阴影。大家都是充满干劲、热爱地去生活，虽然可能成绩不显著，但还是默默地按着自己的方式去付出。为着自己喜爱的事情去付出，去奋斗，这么些岁月是生活本来、最真实最还原的样子；成功对于我们来说很重要，但它只是少部分时候的事情，更多的成功带来的鼓舞或者自信让我们可以在奋斗的路上勿忘初心，渐行渐成长着。&lt;/p&gt;
+&lt;h4 id=&quot;观影心得&quot;&gt;&lt;a href=&quot;#观影心得&quot; class=&quot;headerlink&quot; title=&quot;观影心得&quot;&gt;&lt;/a&gt;观影心得&lt;/h4&gt;&lt;p&gt;首先地，作为一个良心音乐主题日剧，要说的当然是音乐！因为音乐对于我的生命来说，也是极其重要的一环，尽管如今24的我，也希望自己能有一颗勇敢直面音乐，面对生活的心；岁月和时间是残酷的，在我自己燃烧光阴在娱乐视频和游戏上，它也会给我带来应有的结果。正如所说：“一个人如何对待时间，对待生活；生活便会报答以相应的东西。“要说迄今为止，有什么值得后悔；重头再来应该怎么去做会更好的话。确实会有那么一些事情：1.从小在学校以来应该珍惜机会，努力去培养自己的爱好（不要过分体谅家里的情况），知道自己的兴趣便勇敢地去做 2.不应该过分地宅在自己的世界里面，我明白到自己确实是真心热爱着游戏的，乃至自己的正常生活以及社交都受到了干扰，性格也变得内向不自信了 3.交更多的朋友，体验更广阔的世界 但是一切还好，迈入25的我，意识到自己的生命还有时间，珍惜住青春的尾巴，热情地去拥抱生命。游戏和视频等画面类的娱乐确实会给大脑带来冲击性的刺激，所以导致更加难以地自拔；尤其在选择内容和题材上做不好的话，在如今的互联网时代，真正的困难在于如何筛选有价值和有意义的内容。而且导致诱惑太多了，我们需要更强的自控力才能把控住自己的生活。在这一方面，我理解为：1.减少面对诱惑，如封锁诱惑的来源、减少接触的机会 2.自律地生活，如良好健康的作息、有计划的生活、适时地运动、坚持做必须做的事情、听音乐、爱阅读 3.减少不必要的活动，针对我的性格，要坚持做好一件事必须接触更少的资讯，不然很容易被带跑。&lt;/p&gt;
+&lt;p&gt;关于音乐，自小的我就喜欢听港台流行乐，发现粤语金曲的制作水平确实非常出彩的，然后就是台湾音乐的周杰伦、林俊杰等，他们的曲式结构真的凄美动人，尤其总是对爱情的描写，让人想入非非，也憧憬着美好的生活。较早的接触反而是日本音乐，由于老哥的流行带领，让我觉得音乐的旋律太重要了，而日本在艺术创作方面的文化水平确实非常的超前，所以我认为是亚洲第一的感觉。再后来更成熟一点之后，欣赏欧美音乐，节奏感和真实感，顺便学习一下英语。到了研究生阶段，听音乐更多地希望不要歌词，因为听音乐主要是辅以阅读和写代码。于此，纯音乐和后摇占据了一小段时间，当然古典也有，但古典的宏大和复杂，让我觉得不能专注。观看完《交响梦情人》之后，相信大家都会不能自拔的沉浸在美妙的古典音乐里面，我也真正地认真去解读古典音乐，领略早在中世界就有一大帮杰出的天才在为着全世界的音乐事业做出巨大的贡献。这些历经人类漫长历史而源远流长的经典，确实是美妙非凡，如今依然觉得是一大享受。甚至于觉得自己的吉他确实有点小家子气，钢琴太优美了。然而自己当初定下的先精通吉他的目标依然没有达成，更何况钢琴呢。虽然小时候就已经曾幻想长大以后，我有自己舒服的家，可以摆得下钢琴，偶尔闲来可以自弹一曲；才发现自己并不是满足于装逼，更多的确实是热爱上钢琴的声音了。学习这件事永不停止，但是需要寻找一个适合的契机和方式去进行罢了。&lt;/p&gt;
+&lt;p&gt;关于学习，在章节之内，大家热心慢慢地在日本表演获得许多人的赞赏，努力和进步存在于比赛和演出之间，发现自己的生活应当也如此，需要找到方法来量化自己的努力，在做中学，不然根本可能是在原地踏步，而且学得很累也很沮丧。同样作为留学党的我，过得并不是压力满满，主要是自己的要求和标准不够，如同女主一样。希望自己再接再厉，认真地付出，认真地学习；&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;复活节花了三天再一次刷完了《交响梦情人》，在开始专注写TIP论文之前，赶紧记录一下观影心得和现在不能平复的心情。&lt;/p&gt;
+&lt;p&gt;这部连续剧可谓日剧的良心之作，重新翻出来看的原因是由于之前朋友推荐看的《逃避虽然可耻但有用》，重燃起对日剧的喜爱。感觉日剧宣扬的正能量以及角色设计
+    
+    </summary>
+    
+      <category term="Life" scheme="https://csrjtan.github.io/categories/Life/"/>
+    
+    
+      <category term="观后感" scheme="https://csrjtan.github.io/tags/%E8%A7%82%E5%90%8E%E6%84%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Convolutional Neural Pyramid for Image Processing</title>
+    <link href="https://csrjtan.github.io/2017/04/15/paper-reading-20170415/"/>
+    <id>https://csrjtan.github.io/2017/04/15/paper-reading-20170415/</id>
+    <published>2017-04-15T10:07:12.000Z</published>
+    <updated>2017-04-15T13:53:47.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Jia jiaya组xiaoyong shen的CVPR17文章，主要通过金字塔卷积的方式来快速增加可视野；区别于传统的通过大kernel和增加层数的方法，这样增加可视野可以不至于导致大量的参数和运算的引入。&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h4&gt;&lt;p&gt;我们提出重要的卷积神经金字塔的框架用于low-level的vision和图像处理问题。重要发现表明，很多应用挖掘结构性信息需要大的感受野；而单纯堆叠卷积层或者用大的卷积核会带来计算量的巨大消耗。我们的金字塔结构可以快速增大感受野而不牺牲运算有效性。额外的增益包括了自适应金字塔深度和步骤性上采样使得对于VGA-SIZE的图像做到实时。这种方法可以应用于一系列的应用包括深度图恢复、图像补全和去噪、边缘增强等。&lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170415_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;这个金字塔结构主要包括特征提取、匹配映射和重建三个基本步骤，特征提取还是正常的卷积，在L0时不能使用任何pooling相关的操作（会丢失信息）;下采样的操作可以使用步长为2的卷积或者max pooling,发现max pooling较好；匹配过程的输出都是56 kernel的feature map方便之后重建，另外level越大，feature map size越小，增加的运算量也小，使得depth adaptive；上采样直接使用了deconvolution layer；重建的时候可以使用pixel-wise sum或者concatenate,发现用sum较好；最后加两层卷积来生成对应数量通道的desire output.&lt;/p&gt;
+&lt;h4 id=&quot;Experiment&quot;&gt;&lt;a href=&quot;#Experiment&quot; class=&quot;headerlink&quot; title=&quot;Experiment&quot;&gt;&lt;/a&gt;Experiment&lt;/h4&gt;&lt;p&gt;比较了不同深度的金字塔结构带来的运算和效果，5 level可以达到511*511的感受野，这是指数上升的，但内存和运算量都是越深增加得越慢，而且证明只使用一层金字塔结构就可以达到很不错的效果了。&lt;/p&gt;
+&lt;p&gt;至于网络的损失函数在使用像素L2同时，也使用了梯度图像的L2，前者确保PSNR，后者确保图像足够sharp。&lt;/p&gt;
+&lt;p&gt;总结：这个论文结合了传统的multi-scale或者金字塔的多尺度，这些都是肯定可用有效的结构信息，所以不难想到能提高，主要前几层下采样的feature map开销还是有的；相当来说把很深很瘦的网络，拉宽变浅，也变得更紧致了。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_20170415_02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Jia jiaya组xiaoyong shen的CVPR17文章，主要通过金字塔卷积的方式来快速增加可视野；区别于传统的通过大kernel和增加层数的方法，这样增加可视野可以不至于导致大量的参数和运算的引入。&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VisualComputing_4</title>
+    <link href="https://csrjtan.github.io/2017/04/13/VisualComputing-4/"/>
+    <id>https://csrjtan.github.io/2017/04/13/VisualComputing-4/</id>
+    <published>2017-04-13T12:44:23.000Z</published>
+    <updated>2017-04-15T08:52:53.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天记录一下第六节课程，主要是LOW RANK的技术&lt;/p&gt;
+&lt;h3 id=&quot;LOW-RANK-MINIMIZATION&quot;&gt;&lt;a href=&quot;#LOW-RANK-MINIMIZATION&quot; class=&quot;headerlink&quot; title=&quot;LOW RANK MINIMIZATION&quot;&gt;&lt;/a&gt;LOW RANK MINIMIZATION&lt;/h3&gt;&lt;p&gt;低秩分解（Low-rank Matrix Factorization)&lt;br&gt;Motivation: Visual Data often has an intrinsic low-rank structure&lt;br&gt;例如：FACE IMAGES, SURVEILLANCE VIDEO, MULTISPECTRAL IMAGE,这些数据都是高度冗余的(highly redundancy)，所以我们可以使用LOW RANK技术来降维，甚至数据复原和分类等&lt;/p&gt;
+&lt;p&gt;$$Y = X + E$$&lt;br&gt;Y是数据样本拉成向量后，堆叠成为的矩阵；X是隐含的低秩结构矩阵；E是Residual Matrix&lt;/p&gt;
+&lt;p&gt;我们可以这样建模低秩矩阵X，$X \in R^{d*r}$,d为数据的维度，n为样本的数量；构建Basis Matrix $U \in R^{d*r}$，其中$r&amp;lt;&amp;lt;d,n$,这是矩阵的秩;系数矩阵$V \in R^{n*r}$;&lt;br&gt;$X = U * V^T$, $Y = UV^T+E$&lt;/p&gt;
+&lt;p&gt;如何构建近似的低秩矩阵，如何估计E？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最佳近似估计，依赖于对residual(noise)的分布估计：1.iid GAUSSIAN； 2.iid LAPLACIAN 3.MIXTURE OF GAUSSIAN 4.MORE COMPLEX NOISE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_01.png&quot; alt=&quot;L2-LRMF&quot;&gt;&lt;br&gt;根据MLE得到L2的保真项其实就是对应”误差分布为独立同分布的高斯模型“的假设&lt;/p&gt;
+&lt;p&gt;其中对于X的分解可以直接用SVD：$X = USV^T$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_02.png&quot; alt=&quot;L1-LRMF&quot;&gt;&lt;br&gt;同理，L1的LRMF对应”误差分布为独立同分布的拉普拉斯模型“的假设&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_03.png&quot; alt=&quot;L1-L2 LRMF&quot;&gt;&lt;br&gt;L1的模型具有长尾效应，更适应于outliers和heavy noises的情况。&lt;/p&gt;
+&lt;p&gt;第三种是之前两种的混合噪声模型：$Y=UV^T+E+N$，一般使用variational bayes方法来求解此类问题。&lt;/p&gt;
+&lt;p&gt;最后是复杂噪声模型：Mog-LRMF(ICCV-2013), DP-GMM(CVPR,2015), MoEP-LRMF(ICCV,2015; TIP,2016)&lt;/p&gt;
+&lt;h4 id=&quot;LRMF-with-missing-elements&quot;&gt;&lt;a href=&quot;#LRMF-with-missing-elements&quot; class=&quot;headerlink&quot; title=&quot;LRMF with missing elements&quot;&gt;&lt;/a&gt;LRMF with missing elements&lt;/h4&gt;&lt;p&gt;Y可以是不完整矩阵，可以引入一个二元矩阵W：&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_04.png&quot; alt=&quot;Missing Element LRMF&quot;&gt;&lt;/p&gt;
+&lt;p&gt;对于F-norm的做法：&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_05.png&quot; alt=&quot;F-NORM LRMF&quot;&gt;&lt;/p&gt;
+&lt;p&gt;对于L1-norm的做法：&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_06.png&quot; alt=&quot;L1-NORM LRMF&quot;&gt;&lt;/p&gt;
+&lt;p&gt;优缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;矩阵的阶需要预定义&lt;/li&gt;
+&lt;li&gt;清晰地表达子空间和系数关系&lt;/li&gt;
+&lt;li&gt;容易嵌入对子空间的先验&lt;/li&gt;
+&lt;li&gt;不是凸优化问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Weighted-Nuclear-Norm-Minimization-WNNM&quot;&gt;&lt;a href=&quot;#Weighted-Nuclear-Norm-Minimization-WNNM&quot; class=&quot;headerlink&quot; title=&quot;Weighted Nuclear Norm Minimization(WNNM)&quot;&gt;&lt;/a&gt;Weighted Nuclear Norm Minimization(WNNM)&lt;/h3&gt;&lt;p&gt;针对矩阵的秩的正则化$Rank(X) = \Sigma||\sigma_i(X)||_0$&lt;/p&gt;
+&lt;p&gt;核范数Nuclear Norm: $||X||_* = \Sigma||\sigma_i(X)||_1$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_07.png&quot; alt=&quot;Nuclear-NORM Minimization&quot;&gt;&lt;br&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tightest Convex Envelop of rank minimization&lt;/li&gt;
+&lt;li&gt;Closed form solution&lt;br&gt;缺点：&lt;/li&gt;
+&lt;li&gt;对于所有的奇异值给以同样的权值，忽略了它们间不同的权值作用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;WNNM就是对此Formulation里面的奇异值作加权，但如此一来WNNM是非凸，sub-gradient方法不能用来分析它的优化过程。&lt;/p&gt;
+&lt;p&gt;以下的定理和引理确保了WNNM的优化可行性。&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_08.png&quot; alt=&quot;Optimization&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/vc_20170415_09.png&quot; alt=&quot;Corollary&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天记录一下第六节课程，主要是LOW RANK的技术&lt;/p&gt;
+&lt;h3 id=&quot;LOW-RANK-MINIMIZATION&quot;&gt;&lt;a href=&quot;#LOW-RANK-MINIMIZATION&quot; class=&quot;headerlink&quot; title=&quot;LOW RANK MINIMIZ
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="VisualComputing" scheme="https://csrjtan.github.io/tags/VisualComputing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>精进_2</title>
+    <link href="https://csrjtan.github.io/2017/04/13/%E7%B2%BE%E8%BF%9B-2/"/>
+    <id>https://csrjtan.github.io/2017/04/13/精进-2/</id>
+    <published>2017-04-13T02:14:01.000Z</published>
+    <updated>2017-04-13T06:49:44.000Z</updated>
+    
+    <content type="html">&lt;p&gt;接着上一节读书笔记，讲完时间和选择之后，讨论一下如何全面地选择和执行行动&lt;/p&gt;
+&lt;h3 id=&quot;如何选择&quot;&gt;&lt;a href=&quot;#如何选择&quot; class=&quot;headerlink&quot; title=&quot;如何选择&quot;&gt;&lt;/a&gt;如何选择&lt;/h3&gt;&lt;h4 id=&quot;克服选择弱势&quot;&gt;&lt;a href=&quot;#克服选择弱势&quot; class=&quot;headerlink&quot; title=&quot;克服选择弱势&quot;&gt;&lt;/a&gt;克服选择弱势&lt;/h4&gt;&lt;p&gt;精细化：1.重新定义问题 2.因素穷举 3.因素赋权 4.列表比较 （但在主观意识强和牵涉面广的情况下不适用）&lt;/p&gt;
+&lt;p&gt;因素穷举在工作选择的例子上：考虑冒险、权威、竞争、创造性、弹性时间、助人、收入、独立、影响他人、智力刺激和领导，户外工作、说服、劳动、声望、公共关注接触、认可度、研究性、季节性、旅行和变动性，以及工作强度、团队氛围、考评制度、晋升空间和工作环境、艺术性等因素&lt;/p&gt;
+&lt;h4 id=&quot;人生的构造是可以校正，做出建设性改变&quot;&gt;&lt;a href=&quot;#人生的构造是可以校正，做出建设性改变&quot; class=&quot;headerlink&quot; title=&quot;人生的构造是可以校正，做出建设性改变&quot;&gt;&lt;/a&gt;人生的构造是可以校正，做出建设性改变&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;深刻的经历和体验会被永久地保留下来，成为人生中无法改变的印痕&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Jeannie Suk《我想看到的世界》，反复鼓励年轻人“去发现和追求自己所热爱的东西”，不要只是追寻“某种预设期待的轨迹”。从芭蕾舞-&amp;gt;文学博士-&amp;gt;法学博士&lt;/p&gt;
+&lt;p&gt;”规则遵循理论“：人作出决定时，往往基于自己的身份，依循自己身份所应遵守的规则来判断。会产生”我们应该做什么“，而不是”我们想要做什么“；会想”我们只能做什么“，而不是”我们擅长做什么“；会纠结在”我现在已经是谁“，而不是”我未来可以是谁“；&lt;/p&gt;
+&lt;p&gt;校正假设、重新选择的过程被称为”建设性的改变“，这并不意味着重头再来，曾经的想法、选择、努力一定会在我们的人生中留下深刻的印记。&lt;/p&gt;
+&lt;h4 id=&quot;小节总结&quot;&gt;&lt;a href=&quot;#小节总结&quot; class=&quot;headerlink&quot; title=&quot;小节总结&quot;&gt;&lt;/a&gt;小节总结&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;所谓选择，就是要权衡好本末轻重，清楚自己人生中到底想要什么、追求什么。&lt;/li&gt;
+&lt;li&gt;为自己设定更高的目标，就会发现更多更好的选项，做出更加完美的决定。&lt;/li&gt;
+&lt;li&gt;过去的经历、习惯和思维惯性，常在完美思考时自动植入”隐含假设“，让我们意识不到更多的”可能选项“&lt;/li&gt;
+&lt;li&gt;如果有太多的可选项，应该把选择对象分解为不同的维度，然后对可选项从不同的维度做出评估。&lt;/li&gt;
+&lt;li&gt;在做涉及情感、喜好等主观性特别强的选择时，最好的方法是聆听内心的声音。&lt;/li&gt;
+&lt;li&gt;不管做了哪个选择，你的某些东西永远不会改变，最终带着你走向目的地的，可能并不是某一个选择，而是那些你不会改变的东西。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;如何行动&quot;&gt;&lt;a href=&quot;#如何行动&quot; class=&quot;headerlink&quot; title=&quot;如何行动&quot;&gt;&lt;/a&gt;如何行动&lt;/h3&gt;&lt;h4 id=&quot;最有效的就是即刻行动&quot;&gt;&lt;a href=&quot;#最有效的就是即刻行动&quot; class=&quot;headerlink&quot; title=&quot;最有效的就是即刻行动&quot;&gt;&lt;/a&gt;最有效的就是即刻行动&lt;/h4&gt;&lt;p&gt;开始并完成一件事，比做好它更重要。只要开始了，就有机会做好，而且会变得越来越容易做好。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;逃避拖延带来的心理成本比去努力做好这一件事更累。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1.把必须要做的小事要处理掉&lt;br&gt;2.对要做的事情做计划&lt;br&gt;3.实行最小化可行产品 &lt;/p&gt;
+&lt;p&gt;产品的定义：1.不是过程，而是结果 2.不是堆积，而是结构性的整合 3.能被别人检验使用的 4.能够独立地产生正向价值和影响的 5.同时它也是一种媒介，传递价值，传递你的才能 &lt;/p&gt;
+&lt;p&gt;传统的教育提醒我们”做准备“，然而过多的准备并没有直接”精益创业“来得直接&lt;/p&gt;
+&lt;p&gt;在切换任务的同时，也需要注意”转换消耗“带来的损失：在转换时，我们需要承受认知惯性和认知重构的代价&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/read_20170413_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;大部分的事情，真正有用和结构性的思考只在其中小部分的复杂问题，当把这些最难的部分解决之后，事情也就完成了大半，其余都是些打扫、完善、铺成的工作，作者把一件事情的思维比喻成三文治，我们做一件事之前，先把最关键的难题想明白了，其余的事情就水到渠成了。&lt;/p&gt;
+&lt;h4 id=&quot;前瞻性和总结性&quot;&gt;&lt;a href=&quot;#前瞻性和总结性&quot; class=&quot;headerlink&quot; title=&quot;前瞻性和总结性&quot;&gt;&lt;/a&gt;前瞻性和总结性&lt;/h4&gt;&lt;p&gt;对于即将执行的行动或者已经完成的行动，我们需要及时地进行前瞻性和总结性的分析，这使得我们在行动中不断地反省和进步；&lt;/p&gt;
+&lt;p&gt;因为文字和媒体并不能承载和表达所有的知识，一些实践类的知识涵盖过多较深的细节，而这些细节可能并没有办法被抽象地表达出来的；这就需要直接动手，积极反思。&lt;/p&gt;
+&lt;p&gt;如何反思？ 从以下的方面思考：1.信息：哪些是关键信息、从哪获得 2.预期：什么造成预期和事实的偏差 3.结果：怎样评价和描述结果 4.进度：什么影响了进度，过快还是过慢 5.工具：哪些有用的工具，如何使其发挥更好功效 6.情绪：我的情绪是什么引发的，如何有意识地调整 7.阻碍：做事过程暴露什么缺点，遇到哪些批评 8.意义：这件事对于我的意义，对于社会的意义&lt;br&gt;反思要主要三个关键：保证及时性、梳理事情的反应链、关注意外现象&lt;/p&gt;
+&lt;h4 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;当一件事情，不知道怎么做的时候，就直接开始做。只要开始了第一步，就会有第二、第三步。&lt;/li&gt;
+&lt;li&gt;克服”过度准备“的惯性，向前一步，把未完成的事情完成&lt;/li&gt;
+&lt;li&gt;乐于接受反面意见，有勇气否定并重新构造自己的产品&lt;/li&gt;
+&lt;li&gt;多线程工作，首先需要一段专注不受干扰的时间，完成工作中最核心部分的思考。&lt;/li&gt;
+&lt;li&gt;集中处理同质性的工作，可以减少不同质工作间的转换消耗。&lt;/li&gt;
+&lt;li&gt;从理论出发不一定能指导实践，只有在实践中通过反思积累的知识才能指导实践&lt;/li&gt;
+&lt;li&gt;行动后要及时反思，并梳理这件事情的”反应链“，特别关注其中发生的意外现象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;小节实践练习&quot;&gt;&lt;a href=&quot;#小节实践练习&quot; class=&quot;headerlink&quot; title=&quot;小节实践练习&quot;&gt;&lt;/a&gt;小节实践练习&lt;/h4&gt;&lt;p&gt;哪些小事，由于拖延而带来更大的负担，请在一个月内立刻完成这些事：1.整理生活和工作环境 2.整理笔记本信息 3.开始去做要事：配置环境，着手写论文，改代码等&lt;/p&gt;
+&lt;p&gt;最小化可行产品：编写TIP论文，最核心的部分是：核心结构的编写、CNN-CDM、CNN-JDD的实验比较，完成这个产品可以分为：1.编写框架结构 2.编写文段 3.设计实验 4.制作图表 5.完善各部分， 将成果公布并收集反馈意见，根据建议修正产品&lt;/p&gt;
+&lt;p&gt;在行动中反思：最近发生最大的一件事是ICME ORALS的论文，实验在很早就开始了，但人生第一篇论文一直砍不下来，跑了很多对比实验和参数，耗费了大部分的时间，关键的贡献都在其中1~2天内思考并完成了；得到启示：遇到问题要正面思考，不要拖延和回避，并积极请教，有经验的人确实能指导很大；意外：本应该如意的结果却在实验中体验不出来，在科研实验过程要严谨记录、尽量使工作具有连贯性，避免朝三暮四。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;接着上一节读书笔记，讲完时间和选择之后，讨论一下如何全面地选择和执行行动&lt;/p&gt;
+&lt;h3 id=&quot;如何选择&quot;&gt;&lt;a href=&quot;#如何选择&quot; class=&quot;headerlink&quot; title=&quot;如何选择&quot;&gt;&lt;/a&gt;如何选择&lt;/h3&gt;&lt;h4 id=&quot;克服选择弱势&quot;&gt;&lt;a hr
+    
+    </summary>
+    
+      <category term="Read" scheme="https://csrjtan.github.io/categories/Read/"/>
+    
+    
+      <category term="精进 励志 成长" scheme="https://csrjtan.github.io/tags/%E7%B2%BE%E8%BF%9B-%E5%8A%B1%E5%BF%97-%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Holistic Approach to Cross-Channel Image Noise Modeling and its Application to Image Denoising</title>
+    <link href="https://csrjtan.github.io/2017/04/12/paper-reading-20170412/"/>
+    <id>https://csrjtan.github.io/2017/04/12/paper-reading-20170412/</id>
+    <published>2017-04-12T13:04:11.000Z</published>
+    <updated>2017-04-13T06:49:40.000Z</updated>
+    
+    <content type="html">&lt;p&gt;这是CVPR16的一篇Orals，主要的工作是Argues RGB噪声经过In-camera imaging之后，不再具有channel-independent的特性；提出用多元高斯分布来拟合RGB dependent noise，并提出了一个NN模型来估计Patch based的多元高斯模型的参数&lt;/p&gt;
+&lt;h4 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h4&gt;&lt;p&gt;建模和分析噪声是一个基础的任务。传统地，噪声分布被建模成通道独立的；在RAW图上，这是可以接受的，但经过相机成像过程处理之后（gamma,tone-mapping,JPEG压缩），噪声分布变得具有通道相关性；这篇文章通过像素分析每个步骤上的分布以及协方差矩阵来描述了这一种通道相关的关系，并用多元高斯分布模型来建模估计噪声，最后提出了训练MLP的方法来估计模型的参数，从而达到噪声分布。实验证明该方法的噪声估计更精确，而且结合BNLM达到比传统BNLM和BM3D都好的去噪结果。&lt;/p&gt;
+&lt;h4 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h4&gt;&lt;p&gt;两点贡献：1.提出观察RGB经过camera imaging之后会产生channel dependent的噪声 2.提出3D RGB空间来观察Patch based noise，然后训练MLP模型来预测噪声参数&lt;/p&gt;
+&lt;h4 id=&quot;Related-Work&quot;&gt;&lt;a href=&quot;#Related-Work&quot; class=&quot;headerlink&quot; title=&quot;Related Work&quot;&gt;&lt;/a&gt;Related Work&lt;/h4&gt;&lt;p&gt;最早的噪声估计是channel-independent Gaussian model,因为简单而且在camera imaging前，RGB的channel noise确实相关性比较低；后来Foi et al.[Practical poissonian-gaussian noise modeling and fitting for single-image raw-data.]提出了Poisonian-Gaussian Noise；之后Granados结合temporal和spatial noise来重构HDR图片噪声；Hwang et al.提出用Skellam distribution来表示噪声分布；&lt;/p&gt;
+&lt;p&gt;最近比较Robust的有Noise Level Function(NLF) [Statistical calibration of ccd imaging process],效果还不错。&lt;/p&gt;
+&lt;h4 id=&quot;Methodology&quot;&gt;&lt;a href=&quot;#Methodology&quot; class=&quot;headerlink&quot; title=&quot;Methodology&quot;&gt;&lt;/a&gt;Methodology&lt;/h4&gt;&lt;p&gt;首先，作者列出在camera imaging过程中，导致R/G/B的Skellam分布变化；&lt;br&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_read_20170412_01.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;该图列出了在camera imaging前后（RAW,JPEG)的channel covariance发生巨大的变化，所以noise变得channel dependent;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_read_20170412_02.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;接着，从QQ-Plot来观察图像块（一般而言，分位图用于识别两个数据集的分布或者看它们是否同属于同一分布),从统计分布直观可得，噪声可以用多元高斯分布来建模估计：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xl4js.com1.z0.glb.clouddn.com/paper_read_20170412_03.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Experiments&quot;&gt;&lt;a href=&quot;#Experiments&quot; class=&quot;headerlink&quot; title=&quot;Experiments&quot;&gt;&lt;/a&gt;Experiments&lt;/h4&gt;&lt;p&gt;作者使用MLP来学习估计patch based多元噪声估计模型的参数，Ground Truth数据是通过时域求均值得到的noise-free image。用了L2的Loss function，再在准确的噪声估计基础上，使用BNLM[Bayesian non-local mean filter],效果比原来NBLM和BM3D都好。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是CVPR16的一篇Orals，主要的工作是Argues RGB噪声经过In-camera imaging之后，不再具有channel-independent的特性；提出用多元高斯分布来拟合RGB dependent noise，并提出了一个NN模型来估计Patch ba
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://csrjtan.github.io/categories/Tech/"/>
+    
+    
+      <category term="paper" scheme="https://csrjtan.github.io/tags/paper/"/>
+    
+  </entry>
+  
+</feed>
